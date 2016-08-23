@@ -3,7 +3,7 @@ layout: post
 title: "A Post with Images"
 description: "Examples and code for displaying images in posts."
 tags: [sample post, images, test]
-categories: [sample, intro]
+categories: [blog_sample]
 ---
 
 Here are some examples of what a post with images might look like. If you want to display two or three images next to each other responsively use `figure` with the appropriate `class`. Each instance of `figure` is auto-numbered and displayed in the caption.
@@ -82,8 +82,8 @@ Here is the block you might want to use:
 {% highlight jinja %}
 {% raw %}
 {% capture images %}
-	/images/abstract-10.jpg
-	/images/abstract-11.jpg
+	/images/blog_sample/abstract-10.jpg
+	/images/blog_sample/abstract-11.jpg
 	http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png
 {% endcapture %}
 {% include gallery images=images caption="Test images" cols=3 %}
@@ -99,8 +99,8 @@ Available values: [1..3].
 It will look something like this:
 
 {% capture images %}
-	/images/abstract-10.jpg
-	/images/abstract-11.jpg
+	/images/blog_sample/abstract-10.jpg
+	/images/blog_sample/abstract-11.jpg
 	http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png
 {% endcapture %}
 {% include gallery images=images caption="Test images" cols=3 %}

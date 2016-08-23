@@ -3,8 +3,9 @@ layout: post
 title: Sample Post with Feature Image
 description: "Sample Post with Feature Image"
 tags: [sample post]
+categories: [blog_sample]
 image:
-    feature: feature.jpg
+    feature: blog_sample/feature.jpg
     credit: dargadgetz
     creditlink: http://www.dargadgetz.com/ios-8-abstract-wallpaper-pack-for-iphone-5s-5c-and-ipod-touch-retina/
 ---

@@ -1,7 +1,8 @@
 ---
 layout: page
-title: About
+title: neo-hpstr-theme About
 share: true
+categories: [blog_sample]
 ---
 
 # Neo-HPSTR Jekyll Theme
@@ -26,7 +27,7 @@ You can see it running [here](http://blog.rhesoft.com/) and [here](http://aronbo
 * Author panel, with social links
 * Read more tag support(similar with Wordpress ).
 
-![Preview](http://aronbordin.com/images/neo-hpstr-jekyll-theme-preview.png)
+![Preview]({{ site.url }}/images/blog_sample/neo-hpstr-jekyll-theme-preview.png)
 
 
 ---

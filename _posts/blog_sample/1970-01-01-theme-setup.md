@@ -3,6 +3,7 @@ layout: page
 title: Theme Setup
 description: "Instructions on how to install and customize the modern Jekyll theme Neo-HPSTR."
 share: true
+categories: [blog_sample]
 ---
 
 General notes and suggestions for customizing **Neo-HPSTR**.
@@ -305,7 +306,7 @@ Post and page thumbnails work the same way. These are used by [Open Graph](https
 
 Here's an example of what a tweet to your site could look like if you activate Twitter Cards and include all the metas in your post's YAML.
 
-![Twitter Card summary large image screenshot]({{ site.url }}/images/twitter-card-summary-large-image.jpg)
+![Twitter Card summary large image screenshot]({{ site.url }}/images/blog_sample/twitter-card-summary-large-image.jpg)
 
 ### Videos
 
