@@ -28,6 +28,10 @@
         <h3><span class="entry-date"><time>&nbsp;</time></span></h3>
       {% endif %}
       
+      {% unless page.toc == false %}
+      {% include toc.html %}
+      {% endunless %}
+      
       {{ content }}
       <footer class="entry-meta">
         <span class="entry-tags">{% for tag in page.tags %}<a href="{{ site.url }}/tags#{{ tag }}" title="Pages tagged {{ tag }}" class="tag"><span class="term">{{ tag }}</span></a>{% unless forloop.last %}{% endunless %}{% endfor %}</span>
