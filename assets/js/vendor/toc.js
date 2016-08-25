@@ -23,6 +23,7 @@
     if (!headers.length || headers.length < settings.minimumHeaders || !output.length) {
       return;
     }
+    $(this).addClass('toc');
 
     if (0 === settings.showSpeed) {
       settings.showEffect = 'none';
