@@ -70,10 +70,10 @@ figcaption {
 blockquote {
 	font-family: $alt-font;
 	font-style: italic;
-	border-left: 8px solid $border-color;
+	border-left: 2px solid $border-color;
 	padding-left: 20px;
 	@media #{$medium} {
-		margin-left: -28px;
+		margin-left: -12px;
 	}
 }
 
