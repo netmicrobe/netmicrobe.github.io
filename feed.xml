@@ -1,0 +1,1976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">wi's Tech Blog</title>
+<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2021-07-20T14:26:19+08:00</updated>
+<id>/</id>
+<author>
+  <name>wi</name>
+  <uri>/</uri>
+  <email>njnu_wy@126.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[安装windows-image-deploy-server，自定义ISO]]></title>
+ <link rel="alternate" type="text/html" href="/cm/windows/%E5%AE%89%E8%A3%85windows-image-deploy-server-%E8%87%AA%E5%AE%9A%E4%B9%89ISO/" />
+  <id>/cm/windows/安装windows-image-deploy-server，自定义ISO</id>
+  <published>2021-07-05T00:00:00+08:00</published>
+  <updated>2021-07-05T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ARDjb2UV3Nw&quot;&gt;Youtube - Craft Computing - Install Windows like a PRO! Windows Deployment Services Tutorial&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PdKMiFKGQuc&amp;amp;t=1542s&quot;&gt;Youtube - Craft Computing - THIS is what Windows 10 should look like! - Custom Windows Image Tutorial&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://drive.google.com/file/d/1p5kzaeLoBzUDKqH1p4cgvi2sNShFHU5i/edit&quot;&gt;Youtube - Craft Computing - Decrapify Script&lt;/a&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;2020-DeCrapify.ps1&quot;&gt;2020-DeCrapify.ps1&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://kil0bit.blogspot.com/2020/09/how-to-make-your-own-windows-10-lite.html&quot;&gt;kilObit – Learn Tips &amp;amp; Tricks, Discover Apps &amp;amp; Games&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/en-au/software-download/windows10ISO&quot;&gt;Microsoft - Download Windows 10 Disc Image (ISO File)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.catalog.update.microsoft.com/Home.aspx&quot;&gt;Microsoft - Microsoft Update Catalog&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://msmgtoolkit.in/?i=2&quot;&gt;MSMG Toolkit&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;部署-windows-deployment-services&quot;&gt;部署 Windows Deployment Services&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装Windows Server 2019&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在 Server 2019 上 安装 Deployment Services
+    &lt;ol&gt;
+      &lt;li&gt;开始菜单 》Server Manager 》 Manage 》 Roles And Features&lt;/li&gt;
+      &lt;li&gt;一路 Next，选择 role： &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows Deployment Services&lt;/code&gt; &amp;gt; Add Feature &amp;gt; 一路 Next&lt;/li&gt;
+      &lt;li&gt;Role Services 要勾选 Deployment Server 和 Transport Server&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在 Server 2019 上 配置使用 Deployment Services
+    &lt;ol&gt;
+      &lt;li&gt;开始菜单 》 Windows Deployment Services&lt;/li&gt;
+      &lt;li&gt;邮件菜单 WDS-HL &amp;gt; Configure Server &amp;gt; 下一步 》 &lt;code class=&quot;highlighter-rouge&quot;&gt;Standalone Server&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Remote Installation Folder Location 保持默认 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\RemoteInstall&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;PXE Server Initial Settings : &lt;code class=&quot;highlighter-rouge&quot;&gt;Respond to all client computers(known or nknown)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;下一步直到配置完成。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;获取 windows image 文件
+    &lt;ol&gt;
+      &lt;li&gt;打开windows 10 iso，进入sources目录&lt;/li&gt;
+      &lt;li&gt;找到 boot.wim 和 install.wim，拷贝到 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\RemoteInstall&lt;/code&gt;
+        &lt;ol&gt;
+          &lt;li&gt;可以重命名下，后面好找，比如 boot.wim 重命名为 win10-202h-boot.wim&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;在 Deployment Server 中右击 boot images 文件夹图标，选择刚刚的boot.wim文件，并添加。&lt;/li&gt;
+      &lt;li&gt;在 Deployment Server 中右击 install images 文件夹图标， 创建一个Image Group，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;win10 20h2&lt;/code&gt;，选择刚刚的 install.wim文件，并添加所有出现的 image，但是 不勾选 &lt;code class=&quot;highlighter-rouge&quot;&gt;Use the default name and description for each of the selected images&lt;/code&gt;，后面自己取个简洁的名字。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;使用 Windows Deployment Server 给 VM 安装 windows
+    &lt;ol&gt;
+      &lt;li&gt;在virtualbox上创建虚拟机，设置 System &amp;gt; Motherboard &amp;gt; Boot Order &amp;gt; 勾选 Network 并放置到顶部&lt;/li&gt;
+      &lt;li&gt;启动虚拟机，按F12进行PXE 网络启动&lt;/li&gt;
+      &lt;li&gt;弹出的用户名，填写 Server 2019上的帐号，用户名： &lt;code class=&quot;highlighter-rouge&quot;&gt;WIN-FVLQEOJ3HLB\Administrator&lt;/code&gt;&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;WIN-FVLQEOJ3HLB&lt;/code&gt; 是 Windows Deployment Server 界面中的服务器名称。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;创建自定义的-windows-安装文件&quot;&gt;创建自定义的 windows 安装文件&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows System Image Manager&lt;/code&gt; 创建 answerfile （应答文件），answer file 包含了windows 10安装过程中的配置。&lt;/li&gt;
+  &lt;li&gt;下载 Windows ADK 工具集合，其中包含工具 Windows System Image Manager&lt;br /&gt;
+ &lt;a href=&quot;https://support.microsoft.com/en-us/windows/adk-download-for-windows-10-2a0b7ff2-79b7-b989-f727-43ae506e36ad&quot;&gt;ADK download for Windows 10&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;安装 ADK 工具集合，启动 &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows System Image Manager&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;文件 菜单 》新建应答文件&lt;/li&gt;
+  &lt;li&gt;Windows 映像 》Components 》amd64_Microsoft-Windows-Setup_10.0.19041.1_neutral
+    &lt;ol&gt;
+      &lt;li&gt;UserData 》 右键菜单 》添加设置以传送1 WindowsPE（1）&lt;/li&gt;
+      &lt;li&gt;UserData - AcceptEula: true&lt;/li&gt;
+      &lt;li&gt;UserData - ProductKey - Key : 产品序列号&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;amd64_Microsoft-Windows-Shell-Setup_10.0.19041.1_neutral
+    &lt;ol&gt;
+      &lt;li&gt;OOBE - 右键菜单 - Add Setting to Pass 7 oobeSystem
+        &lt;ol&gt;
+          &lt;li&gt;HideEULAPage : true&lt;/li&gt;
+          &lt;li&gt;HideOEMREgistrationScreen : true&lt;/li&gt;
+          &lt;li&gt;HideOnlineAccountScreen : true&lt;/li&gt;
+          &lt;li&gt;HideWirelessSetupInOOBE : true&lt;/li&gt;
+          &lt;li&gt;NetworkLocation: Work&lt;/li&gt;
+          &lt;li&gt;SkipMachineOOBE: true&lt;/li&gt;
+          &lt;li&gt;SkipUserOOBE: true&lt;/li&gt;
+          &lt;li&gt;删除 OOBE - VMModeOptimizations&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;UserAccounts - 右键菜单 - Add Setting to Pass 7 oobeSystem
+        &lt;ol&gt;
+          &lt;li&gt;AdministratorPassword - value : 设置管理员密码&lt;/li&gt;
+          &lt;li&gt;删除 DomainAccounts&lt;/li&gt;
+          &lt;li&gt;LocalAccounts - 右键菜单 - 插入新建 LocalAccount
+            &lt;ol&gt;
+              &lt;li&gt;Group: Administrator&lt;/li&gt;
+              &lt;li&gt;Name: your-account-name&lt;/li&gt;
+              &lt;li&gt;DisplayName: your-name&lt;/li&gt;
+              &lt;li&gt;LocalAccount - Password 设置密码&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;FirstLogonCommands - SynchronousCommands
+    &lt;ol&gt;
+      &lt;li&gt;CommandLine: &lt;code class=&quot;highlighter-rouge&quot;&gt;reg add &quot;HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce&quot; /v &quot;disabledmwappushservice&quot; /t REG_SZ /d &quot;sc config dmwappushservice start= disabled&quot;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;description: Disable DM WAP Push Service&lt;/li&gt;
+      &lt;li&gt;Order: 1&lt;/li&gt;
+      &lt;li&gt;RequireUserInput: false&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建的应答文件 unattend.xml，拷贝到当前运行的Windows 10 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\WIndows\System32\Sysprep&lt;/code&gt; 下面&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sysprep
+    &lt;ol&gt;
+      &lt;li&gt;双击启动Sysprep
+        &lt;ol&gt;
+          &lt;li&gt;System Cleanup Action: Enter System Out-of-Box Experience(OOBE)&lt;/li&gt;
+          &lt;li&gt;勾选 Generalize&lt;/li&gt;
+          &lt;li&gt;Shutdown Options: Shutdown&lt;/li&gt;
+          &lt;li&gt;确定后会运行一段时间，然后关机&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;如果报错，可查看 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\WIndows\System32\Sysprep\setupact.log&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;VM 设置从Network 启动，启动到Image Deploy Server&lt;/li&gt;
+  &lt;li&gt;看到 Windows Setup 界面后，按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift + F10&lt;/code&gt; 进入命令行界面
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; net use z: \\ip-of-deploy-server\REMINST /user:Administrator your-password
+
+ # 进入 z 盘
+ z:
+
+ # 生成wim文件
+ # 命令中的C:\ 是指windows系统盘，实际可能不一定是C盘，也可能D盘或者其他盘，执行前，用dir先查查看
+ dism /Capture-Image /ImageFile:Win10-Pro-20H2.wim /CaptureDir:C:\ /Name:&quot;Windows 10 Pro 20H2&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;生成wim文件存放在 deploy server 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\RemoteInstall&lt;/code&gt; 目录下&lt;/li&gt;
+  &lt;li&gt;将生成的 wim 文件导入 deploy server&lt;/li&gt;
+  &lt;li&gt;设置应答文件
+    &lt;ol&gt;
+      &lt;li&gt;双击这个Image，勾选 &lt;code class=&quot;highlighter-rouge&quot;&gt;Allow image to install in unattended mode&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;选择 Select File… ，在弹出的文件对话框中选择目标 &lt;code class=&quot;highlighter-rouge&quot;&gt;unattend.xml&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;附录&quot;&gt;附录&lt;/h2&gt;
+
+&lt;h3 id=&quot;installesd-与-installwim-文件转换&quot;&gt;install.esd 与 install.wim 文件转换&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开powershell，执行：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; dism /Get-WimInfo /WimFile:windows-20h2.stardard.esd
+
+ # SourceIndex 来自上一条命令，表面是esd中的哪个image
+
+ dism /export-image /SourceIMageFile:windows-20h2.stardard.esd /SourceIndex:1 /DestinationImageFile:C;\Wim\Win10-20h2-home.wim  /Compress:max /CheckIntegrity
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;运行-sysprep-报错-package-microsoftlanguageexperiencepackzh-cn_1904126680_neutral__8wekyb3d8bbwe-was-installed-for-a-user&quot;&gt;运行 Sysprep 报错 Package Microsoft.LanguageExperiencePackzh-CN_19041.26.68.0_neutral__8wekyb3d8bbwe was installed for a user&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.itsk.com/thread-412125-1-1.html&quot;&gt;https://www.itsk.com/thread-412125-1-1.html&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;2021-07-06 13:53:57, Error                 SYSPRP Package Microsoft.LanguageExperiencePackzh-CN_19041.26.68.0_neutral__8wekyb3d8bbwe was installed for a user, but not provisioned for all users. This package will not function properly in the sysprep image.
+2021-07-06 13:53:57, Error                 SYSPRP Failed to remove apps for the current user: 0x80073cf2.
+2021-07-06 13:53:57, Error                 SYSPRP Exit code of RemoveAllApps thread was 0x3cf2.
+2021-07-06 13:53:57, Error                 SYSPRP ActionPlatform::LaunchModule: Failure occurred while executing 'SysprepGeneralizeValidate' from C:\Windows\System32\AppxSysprep.dll; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error                 SYSPRP SysprepSession::Validate: Error in validating actions from C:\Windows\System32\Sysprep\ActionFiles\Generalize.xml; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error                 SYSPRP RunPlatformActions:Failed while validating Sysprep session actions; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error      [0x0f0070] SYSPRP RunDlls:An error occurred while running registry sysprep DLLs, halting sysprep execution. dwRet = 0x3cf2
+2021-07-06 13:53:57, Error      [0x0f00d8] SYSPRP WinMain:Hit failure while pre-validate sysprep generalize internal providers; hr = 0x80073cf2
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;解决方法：&lt;/p&gt;
+
+&lt;p&gt;删除这个包&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;PowerShell -Command &quot;Get-AppxPackage Microsoft.LanguageExperiencePackzh-CN* | Remove-AppxPackage&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/windows/%E5%AE%89%E8%A3%85windows-image-deploy-server-%E8%87%AA%E5%AE%9A%E4%B9%89ISO/&quot;&gt;安装windows-image-deploy-server，自定义ISO&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 05, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[centos7启动模式level设置]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/centos7%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8Flevel%E8%AE%BE%E7%BD%AE/" />
+  <id>/cm/linux/centos7启动模式level设置</id>
+  <published>2021-07-01T00:00:00+08:00</published>
+  <updated>2021-07-01T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.itzgeek.com/how-tos/linux/centos-how-tos/change-default-runlevel-in-centos-7-rhel-7.html&quot;&gt;Change default runlevel in CentOS 7 / RHEL 7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 当前target&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   如果是图形界面（原来的level 5）则显示：graphical.target&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   命令行界面（level 3），则显示： multi-user.target&lt;/span&gt;
+
+systemctl get-default
+
+
+
+&lt;span class=&quot;c&quot;&gt;# 设置为 level 3&lt;/span&gt;
+systemctl &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;-default multi-user.target
+
+&lt;span class=&quot;c&quot;&gt;# 设置为 level 3&lt;/span&gt;
+systemctl &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;-default graphical.target
+
+
+
+&lt;span class=&quot;c&quot;&gt;# 列出所有可用的target&lt;/span&gt;
+systemctl list-units --type&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;target
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/centos7%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8Flevel%E8%AE%BE%E7%BD%AE/&quot;&gt;centos7启动模式level设置&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 01, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Windows10轻量化]]></title>
+ <link rel="alternate" type="text/html" href="/cm/windows/Windows10%E8%BD%BB%E9%87%8F%E5%8C%96/" />
+  <id>/cm/windows/Windows10轻量化</id>
+  <published>2021-06-30T00:00:00+08:00</published>
+  <updated>2021-06-30T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://ameliorated.info&quot;&gt;Windows 10 AME&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/ChrisTitusTech/windows-lite-1903&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/windows/Windows10%E8%BD%BB%E9%87%8F%E5%8C%96/&quot;&gt;Windows10轻量化&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 30, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Windows10-快捷键和快捷命令.md]]></title>
+ <link rel="alternate" type="text/html" href="/cm/windows/Windows10-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E5%BF%AB%E6%8D%B7%E5%91%BD%E4%BB%A4/" />
+  <id>/cm/windows/Windows10-快捷键和快捷命令</id>
+  <published>2021-06-30T00:00:00+08:00</published>
+  <updated>2021-06-30T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;appwiz.cpl&lt;/code&gt;    启动应用管理器&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/windows/Windows10-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E5%BF%AB%E6%8D%B7%E5%91%BD%E4%BB%A4/&quot;&gt;Windows10-快捷键和快捷命令.md&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 30, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[pacman-Syyu-失败]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/pacman-Syyu-%E5%A4%B1%E8%B4%A5/" />
+  <id>/cm/linux/pacman-Syyu-失败</id>
+  <published>2021-06-29T00:00:00+08:00</published>
+  <updated>2021-06-29T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;报错-breaks-dependency-libcanberra0302gc0620e4-3-required-by-libcanberra-gstreamer&quot;&gt;报错： breaks dependency ‘libcanberra=0.30+2+gc0620e4-3’ required by libcanberra-gstreamer&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo pacman -Syyu
+
+:: Synchronizing package databases...
+ core                       169.2 KiB  41.7 KiB/s 00:04 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;##############################] 100%&lt;/span&gt;
+ extra                     1925.2 KiB   349 KiB/s 00:06 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;##############################] 100%&lt;/span&gt;
+ community                    6.6 MiB   296 KiB/s 00:23 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;##############################] 100%&lt;/span&gt;
+ multilib                   178.2 KiB   180 KiB/s 00:01 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;##############################] 100%&lt;/span&gt;
+:: Starting full system upgrade...
+:: Replace lib32-libcanberra-pulse with multilib/lib32-libcanberra? &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Y/n] 
+:: Replace libcanberra-pulse with extra/libcanberra? &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Y/n] 
+:: Replace qca with extra/qca-qt5? &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Y/n] 
+resolving dependencies...
+looking &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;conflicting packages...
+error: failed to prepare transaction &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;could not satisfy dependencies&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+:: installing libcanberra &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.30+2+gc0620e4-4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; breaks dependency &lt;span class=&quot;s1&quot;&gt;'libcanberra=0.30+2+gc0620e4-3'&lt;/span&gt; required by libcanberra-gstreamer
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;libcanberra-gstreamer&lt;/code&gt; 被从库里面移除了，所以报错。&lt;/p&gt;
+
+&lt;p&gt;把 &lt;code class=&quot;highlighter-rouge&quot;&gt;libcanberra-gstreamer&lt;/code&gt; 卸载就可解决。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;sudo pacman -Rs libcanberra-gstreamer
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/archlinux/comments/nu2m3v/update_is_failing/&quot;&gt;reddit 2021-06-07 - Update is failing&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/pacman-Syyu-%E5%A4%B1%E8%B4%A5/&quot;&gt;pacman-Syyu-失败&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 29, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[自定义android模拟器avd存放位置（ANDROID_AVD_HOME）]]></title>
+ <link rel="alternate" type="text/html" href="/cm/android/%E8%87%AA%E5%AE%9A%E4%B9%89android%E6%A8%A1%E6%8B%9F%E5%99%A8avd%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/" />
+  <id>/cm/android/自定义android模拟器avd存放位置</id>
+  <published>2021-06-28T00:00:00+08:00</published>
+  <updated>2021-06-28T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://newbedev.com/how-can-i-change-the-path-to-android-avd-in-my-android-studio&quot;&gt;How can I change the path to android\avd in my Android Studio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在需要的地方创建新的avd目录，例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;/your-data-dir/avd&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;配置 &lt;code class=&quot;highlighter-rouge&quot;&gt;ANDROID_AVD_HOME&lt;/code&gt; 全局变量
+    &lt;ul&gt;
+      &lt;li&gt;linux 上配置
+        &lt;ol&gt;
+          &lt;li&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/profile.d/&lt;/code&gt; 下创建 &lt;code class=&quot;highlighter-rouge&quot;&gt;my-android-avd.sh&lt;/code&gt;
+            &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  export ANDROID_AVD_HOME=/your-data-dir/avd
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;在Manjaro上，&lt;code class=&quot;highlighter-rouge&quot;&gt;kmenuedit&lt;/code&gt; 创建的启动项目，可能不会读取新的全局变量设置，注销或者重启下试试。&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;windows 设置，直接到环境变量的地方进行配置就好&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/android/%E8%87%AA%E5%AE%9A%E4%B9%89android%E6%A8%A1%E6%8B%9F%E5%99%A8avd%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/&quot;&gt;自定义android模拟器avd存放位置（ANDROID_AVD_HOME）&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 28, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[命令行使用android模拟器avd]]></title>
+ <link rel="alternate" type="text/html" href="/cm/android/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8avd/" />
+  <id>/cm/android/命令行使用android模拟器avd</id>
+  <published>2021-06-28T00:00:00+08:00</published>
+  <updated>2021-06-28T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.dongchunlin.com/2017/07/24/emulator-error-fail/&quot;&gt;Android模拟器启动失败之emulator错误集锦&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developer.android.com/studio/run/emulator-commandline&quot;&gt;developer.android.com - Start the emulator from the command line&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;列出可用avd&quot;&gt;列出可用avd&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;avdmanager list avd
+
+&lt;span class=&quot;c&quot;&gt;# 或&lt;/span&gt;
+
+emulator -list-avds
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;启动-avd&quot;&gt;启动 avd&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;emulator -avd Nexus7_API30_ARM
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动x86 image 报错 ，关了vbox虚拟机就可以启动了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;emulator -avd Nexus7_API30_ARM
+emulator: Android emulator version 30.7.4.0 (build_id 7453540) (CL:N/A)
+handleCpuAcceleration: feature check for hvf
+Fontconfig warning: &quot;/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf&quot;, line 6: unknown element &quot;reset-dirs&quot;
+cannot add library /Volumes/silo/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so: failed
+added library /Volumes/silo/android/sdk/emulator/lib64/vulkan/libvulkan.so
+cannot add library /Volumes/silo/android/sdk/emulator/lib64/vulkan/libvulkan.so.1: full
+ioctl(KVM_CREATE_VM) failed: 16 Device or resource busy
+qemu-system-x86_64: failed to initialize KVM: Device or resource busy
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动arm image 报错，最终 Android 11 的模拟器还是没法启动 arm image&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;emulator -avd Nexus7_API30_ARM
+
+emulator: Android emulator version 30.7.4.0 (build_id 7453540) (CL:N/A)
+Fontconfig warning: &quot;/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf&quot;, line 6: unknown element &quot;reset-dirs&quot;
+emulator: WARNING: Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'swiftshader_indirect' mode.
+cannot add library /Volumes/silo/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so: failed
+added library /Volumes/silo/android/sdk/emulator/lib64/vulkan/libvulkan.so
+cannot add library /Volumes/silo/android/sdk/emulator/lib64/vulkan/libvulkan.so.1: full
+emulator: INFO: ignore sdcard for arm at api level &amp;gt;= 30
+emulator: INFO: GrpcServices.cpp:315: Started GRPC server at 127.0.0.1:8554, security: Local
+emulator: INFO: EmulatorAdvertisement.cpp:93: Advertising in: /run/user/1000/avd/running/pid_7775.ini
+qemu-system-aarch64: PCI bus not available for hda
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;排查错误&quot;&gt;排查错误&lt;/h2&gt;
+
+&lt;h3 id=&quot;执行avdmanager报错javalangnoclassdeffounderror-javaxxmlbindannotationxmlschema&quot;&gt;执行avdmanager报错：java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlSchema&lt;/h3&gt;
+
+&lt;p&gt;原因我的arch linux 安装的 openjdk-15，安装了openjdk-8，用 &lt;code class=&quot;highlighter-rouge&quot;&gt;archlinux-java set java-8-openjdk&lt;/code&gt; 切换为 java 8 就好了。&lt;/p&gt;
+
+&lt;h3 id=&quot;avd-启动报错qt-library-not-found-at-emulatorlib64qtlib&quot;&gt;avd 启动报错：Qt library not found at ../emulator/lib64/qt/lib&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;emulator -avd Nexus7_API30_ARM
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;详细报错：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;[140276254512960]:ERROR:android/android-emu/android/qt/qt_setup.cpp:28:Qt library not found at ../emulator/lib64/qt/lib
+Could not launch '/home/wi/../emulator/qemu/linux-x86_64/qemu-system-aarch64': No such file or directory
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;解决方法：&lt;/p&gt;
+
+&lt;p&gt;可能使用的 &lt;code class=&quot;highlighter-rouge&quot;&gt;emulator&lt;/code&gt; 不对，应该使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;SDK-HOME/emulator&lt;/code&gt; 目录下的 ，而不是 &lt;code class=&quot;highlighter-rouge&quot;&gt;tools&lt;/code&gt; 目录下的。&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/android/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8avd/&quot;&gt;命令行使用android模拟器avd&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 28, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[mysql变更数据文件位置]]></title>
+ <link rel="alternate" type="text/html" href="/cm/mysql/mysql%E5%8F%98%E6%9B%B4%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/" />
+  <id>/cm/mysql/mysql变更数据文件位置</id>
+  <published>2021-06-24T00:00:00+08:00</published>
+  <updated>2021-06-24T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-change-a-mysql-data-directory-to-a-new-location-on-centos-7&quot;&gt;How to Change a MySQL Data Directory to a New Location on CentOS 7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;关闭 mysql&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo systemctl stop mysqld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;拷贝 mysql 数据文件夹到新的目录&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo rsync -av /var/lib/mysql /mnt/volume-nyc1-01&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;修改 mysql 服务器数据目录配置，到新的目录&lt;br /&gt;
+~~&lt;br /&gt;
+sudo vi /etc/my.cnf&lt;br /&gt;
+~~~&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;[mysqld]
+. . .
+datadir=/mnt/volume-nyc1-01/mysql
+socket=/mnt/volume-nyc1-01/mysql/mysql.sock
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;添加或修改 mysql 命令行配置&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;[client]
+port=3306
+socket=/mnt/volume-nyc1-01/mysql/mysql.sock
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;重启mysql&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo systemctl start mysqld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;如果启动失败，查看下相关日志： &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/mysqld.log&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果启动mysql报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;Can't change dir to 新的目录 (Errcode: 13)&lt;/code&gt;，可能是selinux的问题，解决方法参见下面附录&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;附录&quot;&gt;附录&lt;/h2&gt;
+
+&lt;h3 id=&quot;查看数据文件的位置&quot;&gt;查看数据文件的位置&lt;/h3&gt;
+
+&lt;p&gt;登陆 mysql 执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;select @@datadir;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;+-----------------+
+| @@datadir       |
++-----------------+
+| /var/lib/mysql/ |
++-----------------+
+1 row in set (0.00 sec)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;问题-修改数据目录配置后启动mysql报错cant-change-dir-to-新的目录-errcode-13&quot;&gt;问题： 修改数据目录配置后，启动mysql报错：&lt;code class=&quot;highlighter-rouge&quot;&gt;Can't change dir to 新的目录 (Errcode: 13)&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;210624 12:14:11 mysqld_safe Starting mysqld daemon with databases from /Volumes/mysql-data/mysql
+210624 12:14:11 [Warning] Can't create test file /Volumes/mysql-data/mysql/vbcent69x64.lower-test
+210624 12:14:11 [Warning] Can't create test file /Volumes/mysql-data/mysql/vbcent69x64.lower-test
+/usr/libexec/mysqld: Can't change dir to '/Volumes/mysql-data/mysql/' (Errcode: 13)
+210624 12:14:11 [ERROR] Aborting
+
+210624 12:14:11 [Note] /usr/libexec/mysqld: Shutdown complete
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;原因分析： 可能是selinux的问题，将&lt;code class=&quot;highlighter-rouge&quot;&gt;setenforce 0&lt;/code&gt; 临时关闭后，就可以正常启动了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;解决办法&quot;&gt;解决办法：&lt;/h4&gt;
+
+&lt;h5 id=&quot;方法一关闭-selinux&quot;&gt;方法一、关闭 selinux&lt;/h5&gt;
+
+&lt;h5 id=&quot;方法二设置-selinux&quot;&gt;方法二、设置 selinux&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.thegeekstuff.com/2016/05/move-mysql-directory/&quot;&gt;How to Move MySQL Data Directory to New Location on CentOS and Ubuntu&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/a/102599&quot;&gt;MySQL permission denied error even after setting security context for SELinux on VM&lt;br /&gt;
+  &lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://slaptijack.com/system-administration/mysql-selinux-cant-change-dir-errcode-13/&quot;&gt;MySQL + SELinux: Can’t change dir (Errcode: 13)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/TheManOfCoding/article/details/81566162&quot;&gt;/usr/libexec/mysqld: Can’t change dir to ‘/xxx’ (Errcode: 13) 解决&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vim /etc/selinux/targeted/contexts/files/file_contexts.local&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;添加 &lt;code class=&quot;highlighter-rouge&quot;&gt;/data/mysql(/.*)?   system_u:object_r:mysqld_db_t:s0&lt;/code&gt;&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/mysql/mysql%E5%8F%98%E6%9B%B4%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/&quot;&gt;mysql变更数据文件位置&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 24, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[centos更新报错问题.md]]></title>
+ <link rel="alternate" type="text/html" href="/cm/centos/centos%E6%9B%B4%E6%96%B0%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" />
+  <id>/cm/centos/centos更新报错问题</id>
+  <published>2021-06-24T00:00:00+08:00</published>
+  <updated>2021-06-24T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/pistachio123/p/14301949.html&quot;&gt;CentOS6 yum命令报错YumRepo Error: All mirror URLs are not using ftp, http[s] or file，修改yum源后404 Not Found&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;CentOS6 yum 命令报错 &lt;code class=&quot;highlighter-rouge&quot;&gt;YumRepo Error: All mirror URLs are not using ftp, http[s] or file&lt;/code&gt;，修改yum源后404 Not Found&lt;/p&gt;
+
+&lt;p&gt;据说是因为，CentOS6已经在2020年11月30日停止维护了。centos官方停止了对centos6的所有更新，并且下架了包括官方所有的centos6源，目前阿里、163、清华等centos6源已无法使用。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CentOS 6 停止维护更新日期： 2020年11月30日&lt;/li&gt;
+  &lt;li&gt;CentOS 7 停止维护更新日期： 2024年6月&lt;/li&gt;
+  &lt;li&gt;CentOS 8 停止维护更新日期： 2029年5月&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;解决办法&quot;&gt;解决办法&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;备份repo文件
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;编辑repo文件，&lt;code class=&quot;highlighter-rouge&quot;&gt;vim /etc/yum.repos.d/CentOS-Base.repo&lt;/code&gt;
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;添加如下到末尾：&lt;/p&gt;
+
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; [centos-office]
+ name=centos-office
+ failovermethod=priority
+ baseurl=https://vault.centos.org/6.10/os/x86_64/
+ gpgcheck=1
+ gpgkey=https://vault.centos.org/6.10/os/x86_64/RPM-GPG-KEY-CentOS-6
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;注释掉 mirrorlist 的设置，打开 baseurl 的设置&lt;/li&gt;
+      &lt;li&gt;将 &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; 中 &lt;code class=&quot;highlighter-rouge&quot;&gt;mirror.centos.org&lt;/code&gt; 地址替换为 &lt;code class=&quot;highlighter-rouge&quot;&gt;vault.centos.org&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;修改完成，执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;yum list&lt;/code&gt; 试试&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/centos/centos%E6%9B%B4%E6%96%B0%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/&quot;&gt;centos更新报错问题.md&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 24, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[virtualbox创建虚拟硬盘]]></title>
+ <link rel="alternate" type="text/html" href="/cm/vm/virtualbox%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%A1%AC%E7%9B%98/" />
+  <id>/cm/vm/virtualbox创建虚拟硬盘</id>
+  <published>2021-06-23T00:00:00+08:00</published>
+  <updated>2021-06-23T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;创建&quot;&gt;创建&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;某个虚拟机的 Settings  &amp;gt; Storage &amp;gt; Controller:SATA &amp;gt; 点击 &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; 图标 &amp;gt; Create new disk&lt;/li&gt;
+  &lt;li&gt;按照提示创建新的虚拟硬盘，成功后自动挂载到该虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;备份和恢复&quot;&gt;备份和恢复&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;备份
+    &lt;ol&gt;
+      &lt;li&gt;文件系统找到目标虚拟硬盘文件，拷贝下&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;恢复
+    &lt;ol&gt;
+      &lt;li&gt;在虚拟机中删除&lt;code class=&quot;highlighter-rouge&quot;&gt;脏了的&lt;/code&gt;硬盘&lt;/li&gt;
+      &lt;li&gt;在VM的&lt;code class=&quot;highlighter-rouge&quot;&gt;File菜单&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Virtual Media Manager...&lt;/code&gt;中也删除该硬盘介质&lt;br /&gt;
+  Hard disks &amp;gt; 选择该硬盘介质 &amp;gt; Remove &amp;gt; Keep 保留&lt;code class=&quot;highlighter-rouge&quot;&gt;脏了的&lt;/code&gt;硬盘虚拟文件&lt;/li&gt;
+      &lt;li&gt;在虚拟机中添加&lt;code class=&quot;highlighter-rouge&quot;&gt;之前备份&lt;/code&gt;的硬盘文件&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/vm/virtualbox%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%A1%AC%E7%9B%98/&quot;&gt;virtualbox创建虚拟硬盘&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 23, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[bundle-install-报错，作者从库中删除需要的gem包，例如，mimemagic]]></title>
+ <link rel="alternate" type="text/html" href="/dev/ruby/bundle-install-%E6%8A%A5%E9%94%99-%E4%BD%9C%E8%80%85%E4%BB%8E%E5%BA%93%E4%B8%AD%E5%88%A0%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84gem%E5%8C%85/" />
+  <id>/dev/ruby/bundle-install-报错，作者从库中删除需要的gem包</id>
+  <published>2021-06-16T00:00:00+08:00</published>
+  <updated>2021-06-16T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/mimemagicrb/mimemagic&quot;&gt;mimemagicrb / mimemagic github 主页&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://rubygems.org/gems/mimemagic/versions&quot;&gt;gems - mimemagic - All Versions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/66921259&quot;&gt;stackoverflow.com - Your bundle is locked to mimemagic (0.3.5), but that version could not be found in any of the sources listed in your Gemfile &lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;例子-mimemagic-033-的作者将它从gems库里面删除了再bundle-install-mimemagic--v-033-版本会报错&quot;&gt;例子： mimemagic (0.3.3) 的作者将它从gems库里面删除了，再bundle install mimemagic -v 0.3.3 版本会报错.&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;报错信息&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;Resolving dependencies...
+Your bundle is locked to mimemagic (0.3.3), but that version could not be found in any of the
+sources listed in your Gemfile. If you haven't changed sources, that means the author of
+mimemagic (0.3.3) has removed it. You'll need to update your bundle to a version other than
+mimemagic (0.3.3) that hasn't been removed in order to install.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;处理办法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;到github 找到 mimemagic 项目地址： &lt;a href=&quot;https://github.com/mimemagicrb/mimemagic&quot;&gt;https://github.com/mimemagicrb/mimemagic&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;找到 mimemagic (0.3.3) 对应的hash后，修改Gemfile：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: 'd5ebc0cd846dcc68142622c76ad71d021768b7c2'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/dev/ruby/bundle-install-%E6%8A%A5%E9%94%99-%E4%BD%9C%E8%80%85%E4%BB%8E%E5%BA%93%E4%B8%AD%E5%88%A0%E9%99%A4%E9%9C%80%E8%A6%81%E7%9A%84gem%E5%8C%85/&quot;&gt;bundle-install-报错，作者从库中删除需要的gem包，例如，mimemagic&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 16, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[rails-数据库-migration]]></title>
+ <link rel="alternate" type="text/html" href="/dev/ruby/rails-%E6%95%B0%E6%8D%AE%E5%BA%93-migration/" />
+  <id>/dev/ruby/rails-数据库-migration</id>
+  <published>2021-06-15T00:00:00+08:00</published>
+  <updated>2021-06-15T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/v4.2/&quot;&gt;Ruby on Rails Guides (v4.2.10)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://ruby-china.github.io/rails-guides/active_record_migrations.html&quot;&gt;ruby-china - Active Record 迁移&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;简单的例子&quot;&gt;简单的例子&lt;/h3&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateXcJtags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:xc_jtags&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:color&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# css style 语法&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;create_join_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:journals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:xc_jtags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:table_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:xc_jtags_journals&lt;/span&gt;
+
+    &lt;span class=&quot;no&quot;&gt;XcJtag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:&quot;自动QA&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:&quot;color:white; background-color:greenyellow;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;down&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;drop_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:xc_jtags&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;drop_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:xc_jtags_journals&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;创建-migration&quot;&gt;创建 migration&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/rails generate migration your-migration-file-name&lt;/code&gt; 来创建 migration,&lt;/p&gt;
+
+&lt;p&gt;自动生成后，可以修改 &lt;code class=&quot;highlighter-rouge&quot;&gt;db/migrate/YYYYMMDDHHMMSS_your-migration-file-name.rb&lt;/code&gt; 文件，根据需要增删代码。&lt;/p&gt;
+
+&lt;h3 id=&quot;添加字段&quot;&gt;添加字段&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bin/rails generate migration AddPartNumberToProducts
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果迁移名称是 AddXXXToYYY 或 RemoveXXXFromYYY 的形式，并且后面跟着字段名和类型列表，那么会生成包含合适的 add_column 或 remove_column 语句的迁移。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bin/rails generate migration AddPartNumberToProducts part_number:string
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddPartNumberToProducts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:products&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:part_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;创建表格model&quot;&gt;创建表格、model&lt;/h3&gt;
+
+&lt;p&gt;如果迁移名称是 CreateXXX 的形式，并且后面跟着字段名和类型列表，那么会生成用于创建包含指定字段的 XXX 数据表的迁移。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bin/rails generate migration CreateProducts name:string part_number:string
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateProducts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:products&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:part_number&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bin/rails generate model Product name:string description:text
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateProducts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:products&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:description&lt;/span&gt;
+ 
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;执行-migration&quot;&gt;执行 migration&lt;/h2&gt;
+
+&lt;h3 id=&quot;执行-migration-1&quot;&gt;执行 migration&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 之前所有的迁移&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:migrate
+
+&lt;span class=&quot;c&quot;&gt;# 如果指定了目标版本，Active Record 会运行该版本之前的所有迁移&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:migrate &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20080906120000
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;回滚-migration&quot;&gt;回滚 migration&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 回退一个migration&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:rollback
+
+&lt;span class=&quot;c&quot;&gt;# 回退 3个migration&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:rollback &lt;span class=&quot;nv&quot;&gt;STEP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+
+&lt;span class=&quot;c&quot;&gt;# redo 任务用于回滚最后一个迁移并再次运行这个迁移。&lt;/span&gt;
+bin/rails db:migrate:redo &lt;span class=&quot;nv&quot;&gt;STEP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;安装数据库-rails-dbsetup&quot;&gt;安装数据库 rails db:setup&lt;/h3&gt;
+
+&lt;p&gt;用于创建数据库，加载数据库模式，并使用种子数据初始化数据库。&lt;/p&gt;
+
+&lt;h3 id=&quot;重置数据库-rails-dbreset&quot;&gt;重置数据库 rails db:reset&lt;/h3&gt;
+
+&lt;p&gt;用于删除并重新创建数据库，其功能相当于 &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:drop db:setup&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;运行指定迁移&quot;&gt;运行指定迁移&lt;/h3&gt;
+
+&lt;p&gt;要想运行或撤销指定迁移，可以使用 db:migrate:up 和 db:migrate:down 任务。只需指定版本，对应迁移就会调用它的 change 、up 或 down 方法，例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;$ bin/rails db:migrate:up VERSION=20080906120000
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的命令会运行 20080906120000 这个迁移，调用它的 change 或 up 方法。db:migrate:up 任务会检查指定迁移是否已经运行过，如果已经运行过就不会执行任何操作。&lt;/p&gt;
+
+&lt;h3 id=&quot;在不同环境中运行迁移&quot;&gt;在不同环境中运行迁移&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/rails db:migrate&lt;/code&gt; 任务默认在&lt;strong&gt;开发环境&lt;/strong&gt;中运行迁移。要想在其他环境中运行迁移，可以在执行任务时使用 RAILS_ENV 环境变量说明所需环境。例如，要想在测试环境中运行迁移，可以执行下面的命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;$ bin/rails db:migrate RAILS_ENV=test
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;修改迁移运行时的输出&quot;&gt;修改迁移运行时的输出&lt;/h3&gt;
+
+&lt;p&gt;运行迁移时，默认会输出正在进行的操作，以及操作所花费的时间。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateProducts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;suppress_messages&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:products&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:description&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+    &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Created a table&quot;&lt;/span&gt;
+ 
+    &lt;span class=&quot;n&quot;&gt;suppress_messages&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:products&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;and an index!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+ 
+    &lt;span class=&quot;n&quot;&gt;say_with_time&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Waiting for a while'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+      &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;会生成下面的输出：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;==  CreateProducts: migrating =================================================
+-- Created a table
+   -&amp;gt; and an index!
+-- Waiting for a while
+   -&amp;gt; 10.0013s
+   -&amp;gt; 250 rows
+==  CreateProducts: migrated (10.0054s) =======================================
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;要是不想让 Active Record 生成任何输出，可以使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate VERBOSE=false&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;利用-migration-添加或修改数据&quot;&gt;利用 migration 添加或修改数据&lt;/h2&gt;
+
+&lt;p&gt;对于不能删除和重建的数据库，如生产环境的数据库，这些功能非常有用。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddInitialProducts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Product #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;description: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A product.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ 
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;down&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_all&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;种子数据&quot;&gt;种子数据&lt;/h3&gt;
+
+&lt;p&gt;在开发和测试环境中，经常需要重新加载数据库，这时“种子”特性就更有用了。使用“种子”特性很容易，只要用 Ruby 代码填充 db/seeds.rb 文件，然后执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:seed&lt;/code&gt; 命令即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;5.times do |i|
+  Product.create(name: &quot;Product ##{i}&quot;, description: &quot;A product.&quot;)
+end
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;相比之下，这种设置新建应用数据库的方法更加干净利落。&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/dev/ruby/rails-%E6%95%B0%E6%8D%AE%E5%BA%93-migration/&quot;&gt;rails-数据库-migration&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 15, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Manjaro-kde-截图工具]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/Manjaro-kde-%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7/" />
+  <id>/cm/linux/Manjaro-kde-截图工具</id>
+  <published>2021-06-11T00:00:00+08:00</published>
+  <updated>2021-06-11T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/questions/1079626/how-do-i-set-the-hotkey-print-to-rectangular-region-in-spectacle&quot;&gt;How do I set the hotkey Print to Rectangular Region in Spectacle?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;spectacle&quot;&gt;spectacle&lt;/h2&gt;
+
+&lt;p&gt;KDE自带截图工具。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;快捷键&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Meta + Shift + Print&lt;/code&gt; 截图一块选定区域&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Meta + Print&lt;/code&gt; 截图当前窗口&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;PrintScreen&lt;/code&gt; 截图整个屏幕，并呼出截图工具界面。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Shift + Print&lt;/code&gt; 截图整个桌面&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;快捷键配置： System Settings &amp;gt; Shortcuts &amp;gt; Spectacle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;使用spectacle进行区域截图进剪贴板&quot;&gt;使用spectacle进行区域截图进剪贴板&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/kde/comments/f8seng/spectacle_save_to_clipboard_in_background_mode/fiow84z?utm_source=share&amp;amp;utm_medium=web2x&amp;amp;context=3&quot;&gt;reddit - Spectacle (save to clipboard in background mode)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;默认没有这个快捷键需要自己创建。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;系统菜单搜索 custom Shortcuts 启动&lt;/li&gt;
+  &lt;li&gt;创建一个自定义的shortcut, 右键菜单 New &amp;gt; Gloabl Shortcut &amp;gt; Command/URL&lt;br /&gt;
+ Trigger: Ctrl + Print&lt;br /&gt;
+ Action: &lt;code class=&quot;highlighter-rouge&quot;&gt;spectacle -b -r -c&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/Manjaro-kde-%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7/&quot;&gt;Manjaro-kde-截图工具&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 11, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[manjaro上使用samba服务]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/manjaro%E4%B8%8A%E4%BD%BF%E7%94%A8samba%E6%9C%8D%E5%8A%A1/" />
+  <id>/cm/linux/manjaro上使用samba服务</id>
+  <published>2021-06-10T00:00:00+08:00</published>
+  <updated>2021-06-10T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/title/samba&quot;&gt;archlinux wiki - Samba&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/title/Fstab#Remote_filesystem&quot;&gt;archlinux wiki - Fstab#Remote_filesystem&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://man.archlinux.org/man/mount.cifs.8#FILE_AND_DIRECTORY_OWNERSHIP_AND_PERMISSIONS&quot;&gt;archlinux man - mount.cifs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.furorteutonicus.eu/2013/08/29/nofail-and-nobootwait-mount-options-in-fstab-prevent-boot-problems/&quot;&gt;NOFAIL AND NOBOOTWAIT MOUNT OPTIONS IN FSTAB PREVENT BOOT PROBLEMS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://timlehr.com/auto-mount-samba-cifs-shares-via-fstab-on-linux/&quot;&gt;Auto-mount Samba / CIFS shares via fstab on Linux&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;命令行工具-smbclient&quot;&gt;命令行工具 smbclient&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# 安装
+sudo pacman -S smbclient
+
+# 保证config文件存在，防止报错
+sudo touch /etc/samba/smb.conf
+
+# 列出对应用户可以使用的共享目录
+smbclient -L 【IP地址】 -U 【用户名】
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;kde---dolphin-文件管理器配置samba连接&quot;&gt;KDE - Dolphin 文件管理器配置samba连接&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;右键左侧导航栏目 &amp;gt; Add Entry…&lt;/li&gt;
+  &lt;li&gt;弹出对话框，填写：&lt;br /&gt;
+ Label： 名称，自己取个容易记住的&lt;br /&gt;
+ Location: smb://192.168.0.1/your-share-dir/&lt;/li&gt;
+  &lt;li&gt;点击OK后，输入用户名和密码，这个samba连接配置就保存在导航栏了&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;自动挂载到文件系统&quot;&gt;&lt;strong&gt;自动&lt;/strong&gt;挂载到文件系统&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo pacman -S cifs-utils&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;手动mount先试试
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; mount -t cifs //SERVER/sharename /mnt/mountpoint -o username=username,password=password,workgroup=workgroup,iocharset=utf8,uid=username,gid=group
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;可以添加&lt;code class=&quot;highlighter-rouge&quot;&gt;forceuid,forcegid&lt;/code&gt;来在mount强制所有者权限。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;可能会mount失败，使用命令 &lt;code class=&quot;highlighter-rouge&quot;&gt;dmesg&lt;/code&gt; 看看&lt;/li&gt;
+  &lt;li&gt;可能samba协议问题，例如：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; [30009.063303] No dialect specified on mount. Default has changed to a more secure dialect, SMB2.1 or later (e.g. SMB3), from CIFS (SMB1). To use the less secure SMB1 dialect to access old servers which do not support SMB3 (or SMB2.1) specify vers=1.0 on mount.
+ [30009.067536] CIFS VFS: cifs_mount failed w/return code = -2
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;加上 &lt;code class=&quot;highlighter-rouge&quot;&gt;vers=1.0&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;vers=2.0&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;vers=3.0&lt;/code&gt; 试试&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; mount -t cifs //SERVER/sharename /mnt/mountpoint -o username=username,password=password,iocharset=utf8,noperm,vers=1.0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;创建帐号密码文件&lt;br /&gt;
+ 例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;vi /etc/samba/credentials/hgst500g&lt;/code&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; username=myuser
+ password=mypass
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;用密码文件，手动mount先试试
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; mount -t cifs //192.168.0.32/users /run/media/samba/hgst500g -o credentials=/etc/samba/credentials/hgst500g,iocharset=utf8,noperm
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;方法一，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; 自动挂载
+    &lt;ol&gt;
+      &lt;li&gt;启动服务 systemd-networkd-wait-online.service 和 NetworkManager-wait-online.service
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; sudo systemctl enable systemd-networkd-wait-online.service
+ sudo systemctl enable NetworkManager-wait-online.service
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;编辑 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; ，添加：
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; //192.168.0.32/users /run/media/samba/hgst500g cifs noauto,x-systemd.automount,x-systemd.mount-timeout=30,_netdev,nofail,credentials=/etc/samba/credentials/hgst500g,iocharset=utf8,noperm 0 0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p&gt;fstab 相关参数说明，参见 &lt;a href=&quot;https://wiki.archlinux.org/title/Fstab#Remote_filesystem&quot;&gt;archlinux wiki - Fstab#Remote_filesystem&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;noauto,nofail&lt;/code&gt;，不要因为无法挂载导致操作系统无法启动
+        &lt;ul&gt;
+          &lt;li&gt;All specified devices within &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; will be automatically mounted on startup and when the -a flag is used with mount(8) unless the &lt;code class=&quot;highlighter-rouge&quot;&gt;noauto&lt;/code&gt; option is specified. Devices that are listed and not present will result in an error unless the &lt;code class=&quot;highlighter-rouge&quot;&gt;nofail&lt;/code&gt; option is used.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;_&lt;code class=&quot;highlighter-rouge&quot;&gt;netdev&lt;/code&gt; option ensures systemd understands that the mount is network dependent and order it after the network is online.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;noauto,x-systemd.automount&lt;/code&gt; 访问挂载的时候，才fsck&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x-systemd.mount-timeout=&lt;/code&gt; option to specify how long systemd should wait for the mount command to finish.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;noperm&lt;/code&gt;， override permission checking on the client altogether&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;方法二、作为 systemd unit 【还没试过～～～】
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;创建&lt;code class=&quot;highlighter-rouge&quot;&gt;.mount&lt;/code&gt; 文件&lt;br /&gt;
+ 例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/mnt-myshare.mount&lt;/code&gt;，&lt;br /&gt;
+ 这个名字对应的挂载目录是 &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/myshare&lt;/code&gt;， 否则目录不对应可能报错： systemd[1]: mnt-myshare.mount: Where= setting does not match unit name. Refusing..&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;/etc/systemd/system/mnt-myshare.mount&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; [Unit]
+ Description=Mount Share at boot
+
+ [Mount]
+ What=//server/share
+ Where=/mnt/myshare
+ Options=_netdev,credentials=/etc/samba/credentials/myshare,iocharset=utf8,rw
+ Type=cifs
+ TimeoutSec=30
+
+ [Install]
+ WantedBy=multi-user.target
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;创建 &lt;code class=&quot;highlighter-rouge&quot;&gt;.automount&lt;/code&gt; 文件&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;/etc/systemd/system/mnt-myshare.automount&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; [Unit]
+ Description=Automount myshare
+
+ [Automount]
+ Where=/mnt/myshare
+
+ [Install]
+ WantedBy=multi-user.target
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo systemctl enable mnt-myshare.automount&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/manjaro%E4%B8%8A%E4%BD%BF%E7%94%A8samba%E6%9C%8D%E5%8A%A1/&quot;&gt;manjaro上使用samba服务&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 10, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[manjaro使用openssh]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/manjaro-%E4%BD%BF%E7%94%A8openssh/" />
+  <id>/cm/linux/manjaro-使用openssh</id>
+  <published>2021-06-09T00:00:00+08:00</published>
+  <updated>2021-06-09T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;sudo pacman -S openssh
+
+sudo systemctl start sshd
+sudo systemctl enable sshd
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/manjaro-%E4%BD%BF%E7%94%A8openssh/&quot;&gt;manjaro使用openssh&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 09, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[linux-多网卡首选上网卡和路由配置]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/linux-%E5%A4%9A%E7%BD%91%E5%8D%A1%E9%A6%96%E9%80%89%E4%B8%8A%E7%BD%91%E5%8D%A1%E5%92%8C%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/" />
+  <id>/cm/linux/linux-多网卡首选上网卡和路由配置</id>
+  <published>2021-06-09T00:00:00+08:00</published>
+  <updated>2021-06-09T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://serverfault.com/a/836708&quot;&gt;How to set the preferred network interface in linux&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To make packets with destinations 192.168.10.* use eth0, and all other packets use eth1:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;View your current routing table&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ip route list&lt;/p&gt;
+
+&lt;p&gt;One entry will be something like “default via 192.168.1.1” where 192.168.1.1 is your router (a.k.a. gateway) ip address. Remember the gateways for eth0 and eth1, as we’ll need them later.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Delete the default route(s). (Warning: this will kick you offline.)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;ip route del default
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add a new default route (this will bring you back online). Replace 192.168.1.1, below, with your gateway ip address from above.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;ip route add default via 192.168.1.1 dev eth1
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add a specific route that will be served by eth0. More-specific routes automatically take precedence over less-specific ones.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;ip route add 192.168.10.0/24 via 192.168.1.1 dev eth0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Finally, you can ask Linux which interface will be used to send a packet to a specific ip address:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;ip route get 8.8.8.8
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If the configuration worked, packets to 8.8.8.8 (Google’s server) will use eth1. Packets to any ip on your local network:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;ip route get 192.168.10.7
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;will use eth0.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/linux-%E5%A4%9A%E7%BD%91%E5%8D%A1%E9%A6%96%E9%80%89%E4%B8%8A%E7%BD%91%E5%8D%A1%E5%92%8C%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/&quot;&gt;linux-多网卡首选上网卡和路由配置&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 09, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[grub菜单不显示]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/grub%E8%8F%9C%E5%8D%95%E4%B8%8D%E6%98%BE%E7%A4%BA/" />
+  <id>/cm/linux/grub菜单不显示</id>
+  <published>2021-06-09T00:00:00+08:00</published>
+  <updated>2021-06-09T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vi /etc/default/grub&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;修改菜单隐藏选项
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; # 隐藏
+ GRUB_TIMEOUT_STYLE=hidden
+
+ # 显示
+ GRUB_TIMEOUT_STYLE=menu
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo update-grub&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/grub%E8%8F%9C%E5%8D%95%E4%B8%8D%E6%98%BE%E7%A4%BA/&quot;&gt;grub菜单不显示&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 09, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[git-status-显示全路径]]></title>
+ <link rel="alternate" type="text/html" href="/cm/git/git-status-%E6%98%BE%E7%A4%BA%E5%85%A8%E8%B7%AF%E5%BE%84/" />
+  <id>/cm/git/git-status-显示全路径</id>
+  <published>2021-06-09T00:00:00+08:00</published>
+  <updated>2021-06-09T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/5238537&quot;&gt;How can I run “git status” and just get the filenames&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;git status --porcelain
+
+# 去掉修改标识
+git status --porcelain | sed s/^...//
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/git/git-status-%E6%98%BE%E7%A4%BA%E5%85%A8%E8%B7%AF%E5%BE%84/&quot;&gt;git-status-显示全路径&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 09, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Manjaro-kde-每次启动自动弹出一个下拉命令行窗口]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/Manjaro-kde-%E6%AF%8F%E6%AC%A1%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E5%BC%B9%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%8B%E6%8B%89%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3/" />
+  <id>/cm/linux/Manjaro-kde-每次启动自动弹出一个下拉命令行窗口</id>
+  <published>2021-06-08T00:00:00+08:00</published>
+  <updated>2021-06-08T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;系统菜单 》Autostart&lt;/li&gt;
+  &lt;li&gt;删除里面的 &lt;code class=&quot;highlighter-rouge&quot;&gt;Yakuake&lt;/code&gt; 条目&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;autostart 条目存放在： &lt;code class=&quot;highlighter-rouge&quot;&gt;/$HOME/.config/autostart&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Yakuake&lt;/code&gt; 条目其实是一个名为&lt;code class=&quot;highlighter-rouge&quot;&gt;org.kde.yakuake.desktop&lt;/code&gt;的xdesktop文件&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;[Desktop Entry]
+Name=Yakuake
+GenericName=Drop-down Terminal
+Exec=yakuake
+Icon=yakuake
+Type=Application
+Terminal=false
+Categories=Qt;KDE;System;TerminalEmulator;
+Comment=A drop-down terminal emulator based on KDE Konsole technology.
+X-DBUS-StartupType=Unique
+X-KDE-StartupNotify=false
+X-DBUS-ServiceName=org.kde.yakuake
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/Manjaro-kde-%E6%AF%8F%E6%AC%A1%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E5%BC%B9%E5%87%BA%E4%B8%80%E4%B8%AA%E4%B8%8B%E6%8B%89%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3/&quot;&gt;Manjaro-kde-每次启动自动弹出一个下拉命令行窗口&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 08, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[centos7支持ntfs格式]]></title>
+ <link rel="alternate" type="text/html" href="/cm/linux/centos/centos7%E6%94%AF%E6%8C%81ntfs%E6%A0%BC%E5%BC%8F/" />
+  <id>/cm/linux/centos/centos7支持ntfs格式</id>
+  <published>2021-06-04T00:00:00+08:00</published>
+  <updated>2021-06-04T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://manjaro.site/how-to-enable-ntfs-support-on-centos-7/&quot;&gt;How to Enable NTFS Support on CentOS 7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://bytefreaks.net/gnulinux/ntfs-support-on-centos-7&quot;&gt;NTFS Support on CentOS 7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.howtoforge.com/tutorial/mount-ntfs-centos/&quot;&gt;How to Mount a NTFS Drive on CentOS / RHEL / Scientific Linux&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装 ntfs-3g, fuse
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; yum install -y epel-release
+ yum install -y ntfs-3g fuse
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重启系统&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;mount 测试 &lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/sdb1 /mnt/ntfs-disk&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;自动挂载&lt;br /&gt;
+ 修改 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; UUID=xxxx      /mnt/ntfs-disk      ntfs-3g rw,umask=0000,defaults 0 0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;UUID 用 &lt;code class=&quot;highlighter-rouge&quot;&gt;lsblk -f&lt;/code&gt; 查看&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/cm/linux/centos/centos7%E6%94%AF%E6%8C%81ntfs%E6%A0%BC%E5%BC%8F/&quot;&gt;centos7支持ntfs格式&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 04, 2021.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>
