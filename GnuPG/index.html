@@ -1,0 +1,1035 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>GnuPG，关联 GPG, OpenGPG, key management, key server, 私钥， 公钥， arch linux， manjaro， pacman &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GnuPG，关联 GPG, OpenGPG, key management, key server, 私钥， 公钥， arch linux， manjaro， pacman">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/GnuPG/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/GnuPG/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">GnuPG，关联 GPG, OpenGPG, key management, key server, 私钥， 公钥， arch linux， manjaro， pacman</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-12-08T00:00:00+08:00">December 08, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://wiki.archlinux.org/title/GnuPG">wiki.archlinux.org - GnuPG</a></li>
+      <li><a href="https://wiki.archlinux.org/title/List_of_applications/Security#Encryption,_signing,_steganography">GnuPG图形前端</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Wikipedia:Public key fingerprint</a></li>
+      <li><a href="https://lore.kernel.org/lkml/20160815153401.9EC2BADC2C@smtp.postman.i2p/">fake keys found in the wild</a></li>
+      <li><a href="https://wiki.gnupg.org/WKD#Implementations">GnuPG - WKD</a></li>
+      <li><a href="https://www.gnupg.org/documentation/manuals/gnupg-devel/GPG-Configuration-Options.html">GnuPG - Configuration-Options</a></li>
+      <li><a href="https://wiki.archlinux.org/title/Pacman/Package_signing">pacman/Package signing</a></li>
+      <li><a href="https://man.archlinux.org/man/pacman.conf.5#PACKAGE_AND_DATABASE_SIGNATURE_CHECKING">pacman.conf - package and database signature checking</a></li>
+      <li><a href="https://archlinux.org/master-keys/">archlinux.org - Master Signing Keys</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>GnuPG，也被称为GPG， 是 OpenGPG 标准（RFC 4880，即 PGP）的完整免费实现。</p>
+
+<h2 id="安装">安装：</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo pacman -S gnupg
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>KDE 下安装图形前端：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c"># archlinux</span>
+sudo pacman -S kgpg
+<span class="c"># ubuntu</span>
+sudo apt install kgpg
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="配置">配置</h2>
+
+<p>默认存储配置的目录：  <code class="highlighter-rouge">~/.gnupg</code> ，这个目录权限一般是 <code class="highlighter-rouge">700</code> ，其中文件的权限是 <code class="highlighter-rouge">600</code></p>
+
+<h3 id="gpg-程序的配置文件-gpgconf">gpg 程序的配置文件： gpg.conf</h3>
+
+<p><code class="highlighter-rouge">gpg</code> 程序是 GnuPG 主要入口。</p>
+
+<p>用户的 gpg.conf 在 <code class="highlighter-rouge">~/.gnupg/gpg.conf</code><br />
+全局的 gpg.conf 在 <code class="highlighter-rouge">/etc/gnupg/gpg.conf</code></p>
+
+<p>配置文件的语法： gpg 命令的参数，去掉 <code class="highlighter-rouge">--</code> 可写入配置文件中，每行一个参数</p>
+
+<p>例如，命令 <code class="highlighter-rouge">gpg --no-default-keyring --keyring keyring-path ...</code></p>
+
+<p>对应配置文件的例子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>no-default-keyring
+keyring keyring-path
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="dirmngr-程序的配置文件-dirmngrconf">dirmngr 程序的配置文件： dirmngr.conf</h3>
+
+<p><code class="highlighter-rouge">dirmngr</code> 是一个内部程序，被 <code class="highlighter-rouge">gpg</code> 调用来访问 keyserver。</p>
+
+<p>用户的 dirmngr.conf 在 <code class="highlighter-rouge">~/.gnupg/dirmngr.conf</code><br />
+全局的 dirmngr.conf 在 <code class="highlighter-rouge">/etc/gnupg/dirmngr.conf</code></p>
+
+<h3 id="pacman">pacman</h3>
+
+<p><code class="highlighter-rouge">pacman</code> uses a different set of configuration files for package signature verification.</p>
+
+<p>参考 ： <a href="https://wiki.archlinux.org/title/Pacman/Package_signing">pacman/Package signing</a></p>
+
+<h2 id="使用">使用</h2>
+
+<h3 id="create-a-key-pair">Create a key pair</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --full-gen-key
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>默认使用 RSA 加密</li>
+  <li>默认 key 大小为 3072</li>
+  <li>key 有效期一般设置为一年，后期可续期，不用重新生成key。</li>
+  <li>不用设置comment，这个功能据说有问题。</li>
+  <li><code class="highlighter-rouge">name</code> 和 <code class="highlighter-rouge">email</code>，是公共信息，任何后面导入 key 的用户都能看见。</li>
+  <li><code class="highlighter-rouge">--gen-key</code> 参数，只需要输入 <code class="highlighter-rouge">name</code> 和 <code class="highlighter-rouge">email</code>，其他都是默认值。</li>
+</ul>
+
+<h3 id="list-keys">List keys</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># To list keys in your public key ring:</span>
+<span class="gp">$ </span>gpg --list-keys
+
+<span class="c"># To list keys in your secret key ring:</span>
+<span class="gp">$ </span>gpg --list-secret-keys
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="export-your-public-key">Export your public key</h3>
+
+<p>To generate an ASCII version of a user’s public key to file public-key.asc (e.g. to distribute it by e-mail):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>gpg --export --armor --output public-key.asc user-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>Add <code class="highlighter-rouge">--no-emit-version</code> to avoid printing the version number, or add the corresponding setting to your configuration file.</li>
+  <li>You can omit the <code class="highlighter-rouge">user-id</code> to export all public keys within your keyring. This is useful if you want to share multiple identities at once, or for importing in another application, e.g. Thunderbird.</li>
+</ul>
+
+<h3 id="import-a-public-key">Import a public key</h3>
+
+<p>In order to encrypt messages to others, as well as verify their signatures, you need their public key.</p>
+
+<p>使用 <code class="highlighter-rouge">gpg --import</code> 命令或者 <code class="highlighter-rouge">keyserver</code> 来导入公钥。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>To import a public key with file name public.key to your public key ring:
+
+<span class="gp">$ </span>gpg --import public-key.asc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>arch-linux pacman包需要导入 key ID，参见：</p>
+
+<ul>
+  <li><a href="https://wiki.archlinux.org/title/Pacman/Package_signing#Managing_the_keyring">pacman/Package signing#Managing the keyring</a></li>
+  <li><a href="https://wiki.archlinux.org/title/Makepkg#Signature_checking">Makepkg#Signature checking</a></li>
+</ul>
+
+<h3 id="keyserver">keyserver</h3>
+
+<p>发布公钥</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --send-keys key-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>搜索公钥</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --search-keys user-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To import a key from a key server:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --recv-keys key-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">auto-key-retrieve</code> 添加到 GPG 的配置文件，将会在需要时候，自动下载公钥。</p>
+
+<h4 id="key-servers">key servers</h4>
+
+<p>有名的 keyserver：</p>
+
+<ul>
+  <li>Ubuntu Keyserver: federated, no verification, keys cannot be deleted.<br />
+<a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a></li>
+  <li>Mailvelope Keyserver: central, verification of email IDs, keys can be deleted.<br />
+<a href="https://keys.mailvelope.com/">https://keys.mailvelope.com/</a></li>
+  <li>keys.openpgp.org: central, verification of email IDs, keys can be deleted, no third-party signatures (i.e. no Web of Trust support).<br />
+<a href="https://keys.openpgp.org/">https://keys.openpgp.org/</a></li>
+</ul>
+
+<p>更多的key server ， 参见： <a href="https://en.wikipedia.org/wiki/Key_server_(cryptographic)#Keyserver_examples">https://en.wikipedia.org/wiki/Key_server_(cryptographic)#Keyserver_examples</a></p>
+
+<h4 id="设置-key-server">设置 key server</h4>
+
+<p>配置文件设置：</p>
+
+<p><code class="highlighter-rouge">~/.gnupg/dirmngr.conf</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>keyserver hkp://keyserver.ubuntu.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>命令中临时指定：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --keyserver hkps://keys.openpgp.org/ --search-keys user-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="当前使用的-key-server">当前使用的 key server</h4>
+
+<p>参考：</p>
+<ul>
+  <li><a href="https://unix.stackexchange.com/questions/352759/gpg-key-server-for-key-search">stackexchange.com - GPG key server for key search?</a></li>
+  <li><a href="https://unix.stackexchange.com/a/663031">https://unix.stackexchange.com/a/663031</a></li>
+</ul>
+
+<p>有名的 key server 之间会相互同步公钥，所以其实使用哪个都差不多，除了网速上可能有不同。</p>
+
+<p>要知道默认使用的什么 key server ，可以 search key 看下，例如：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="c"># 到pacman缓存的包文件找个签名，看下包签名的key id</span>
+<span class="nb">cd</span> /var/cache/pacman/pkg
+
+gpg --verify zxing-cpp-1.4.0-1-x86_64.pkg.tar.zst.sig 
+gpg: 假定被签名的数据在‘zxing-cpp-1.4.0-1-x86_64.pkg.tar.zst’
+gpg: 签名建立于 Fri 08 Jul 2022 03:50:49 AM CST
+gpg:               使用 RSA 密钥 1519D5ABA65BF6FC2B73C7567A4E76095D8A52E4
+gpg: 无法检查签名：缺少公钥
+
+gpg -v --search-keys 1519D5ABA65BF6FC2B73C7567A4E76095D8A52E4
+gpg: data <span class="nb">source</span>: https://162.213.33.9:443
+<span class="o">(</span>1<span class="o">)</span>     Antonio Rojas &lt;arojas@archlinux.org&gt;
+        Antonio Rojas &lt;nqn76sw@gmail.com&gt;
+        Antonio Rojas &lt;nqn1976@gmail.com&gt;
+        Antonio Rojas &lt;arojas@us.es&gt;
+          4096 bit RSA key 4AC5588F941C2A25, 创建于：2014-10-21
+
+<span class="c"># 看下这个服务器域名，原来就是 keyserver.ubuntu.com</span>
+host 162.213.33.9
+9.33.213.162.in-addr.arpa domain name pointer keyserver.ubuntu.com.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="下载并设置信任解决verify之cant-check-signature-no-public-key">下载并设置信任，解决verify之”Can’t check signature: No public key”</h4>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://yanhan.github.io/posts/2014-03-04-gpg-how-to-trust-imported-key/">GPG - How to trust an imported key</a></li>
+      <li><a href="https://www.gnupg.org/gph/en/manual/x334.html">Validating other keys on your public keyring</a></li>
+      <li><a href="https://www.cnblogs.com/shenfeng/p/gpgverify.html">gpg –verify之”Can’t check signature: No public key”</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c"># 防止443端口有问题，从80端口下载</span>
+sudo gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 2B2458BF
+
+gpg --edit-key 2B2458BF
+<span class="c"># 进入编辑状态，输入 trust 命令，选择 'I trust ultimately'</span>
+<span class="c"># 在 verify 就不会报 No Public key</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="tips">tips</h4>
+
+<ul>
+  <li>
+    <p>If receiving fails with the message gpg: <code class="highlighter-rouge">keyserver receive failed: General error,</code> and you use the default hkps keyserver pool, make sure set the HKPS pool verification certificate with <code class="highlighter-rouge">hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem</code> in your <code class="highlighter-rouge">dirmngr.conf</code> and kill the old dirmngr process.</p>
+  </li>
+  <li>
+    <p>If receiving fails with the message <code class="highlighter-rouge">gpg: keyserver receive failed: Connection refused</code>, try using a different DNS server.</p>
+  </li>
+  <li>
+    <p>You can connect to the keyserver over <code class="highlighter-rouge">Tor</code> with <code class="highlighter-rouge">Tor#Torsocks</code>. Or using the <code class="highlighter-rouge">--use-tor</code> command line option.</p>
+  </li>
+  <li>
+    <p>You can connect to a keyserver using a proxy by setting the <code class="highlighter-rouge">http_proxy</code> environment variable and setting <code class="highlighter-rouge">honor-http-proxy</code> in <code class="highlighter-rouge">dirmngr.conf</code>. Alternatively, set <code class="highlighter-rouge">http-proxy host[:port]</code> in the configuration file to override the environment variable of the same name. Restart the <code class="highlighter-rouge">dirmngr.service</code> user service for the changes to take effect.</p>
+  </li>
+</ul>
+
+<h3 id="web-key-directory">Web Key Directory</h3>
+
+<p>The Web Key Service (WKS) 是一个key分发的新标准，根据email 的 domain 确定的 key server，称为 Web Key Directory(WKD)。</p>
+
+<p>When encrypting to an email address (e.g. user@example.com), GnuPG (&gt;=2.1.16) will query the domain (example.com) via HTTPS for the public OpenPGP key if it is not already in the local keyring.</p>
+
+<p>The option <code class="highlighter-rouge">auto-key-locate</code> will locate a key using the WKD protocol if there is no key on the local keyring for this email address.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --recipient user@example.org --auto-key-locate --encrypt doc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To check if your key can be found in the WKD you can use this <a href="https://metacode.biz/openpgp/web-key-directory">webinterface</a>.</p>
+
+<h2 id="key-维护">Key 维护</h2>
+
+<h3 id="备份私钥">备份私钥</h3>
+
+<p>备份</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --export-secret-keys --armor --output private-key.asc user-id
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>导入</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>gpg --import private-key.asc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="pacman-包的签名和认证">pacman 包的签名和认证</h2>
+
+<p><code class="highlighter-rouge">/etc/pacman.conf</code> 配置文件中有定义包签名认证的相关安全选项：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">SigLevel</code> 选项</li>
+</ul>
+
+<p>决定 <code class="highlighter-rouge">pacman -S</code> 安装软件时，认证的强度（the level of trust）。</p>
+
+<p>The <code class="highlighter-rouge">SigLevel</code> directive is valid in both the <code class="highlighter-rouge">[options]</code> and repository sections.</p>
+
+<p>If used in <code class="highlighter-rouge">[options]</code>, it sets a default value for any repository that does not provide the setting.</p>
+
+<ul>
+  <li>If set to <code class="highlighter-rouge">Never</code>, no signature checking will take place.</li>
+  <li>If set to <code class="highlighter-rouge">Optional</code> , signatures will be checked when present, but unsigned databases and packages will also be accepted.</li>
+  <li>If set to <code class="highlighter-rouge">Required</code>, signatures will be required on all packages and databases.</li>
+</ul>
+
+<p><strong>When to Check</strong></p>
+
+<p>These options control if and when signature checks should take place.<br />
+<code class="highlighter-rouge">Never</code></p>
+
+<p>All signature checking is suppressed, even if signatures are present.</p>
+
+<p><code class="highlighter-rouge">Optional</code> (default)</p>
+
+<p>Signatures are checked if present; absence of a signature is not an error. An invalid signature is a fatal error, as is a signature from a key not in the keyring.</p>
+
+<p><code class="highlighter-rouge">Required</code></p>
+
+<p>Signatures are required; absence of a signature or an invalid signature is a fatal error, as is a signature from a key not in the keyring.</p>
+
+<p><strong>What is Allowed</strong></p>
+
+<p>These options control what signatures are viewed as permissible. Note that neither of these options allows acceptance of invalid or expired signatures, or those from revoked keys.</p>
+
+<p><code class="highlighter-rouge">TrustedOnly </code>(default)</p>
+
+<p>If a signature is checked, it must be in the keyring and fully trusted; marginal trust does not meet this criteria.</p>
+
+<p><code class="highlighter-rouge">TrustAll</code></p>
+
+<p>If a signature is checked, it must be in the keyring, but is not required to be assigned a trust level (e.g., unknown or marginal trust).</p>
+
+<p>Options in both groups can additionally be prefixed with either <code class="highlighter-rouge">Package</code> or <code class="highlighter-rouge">Database</code>, which will cause it to only take effect on the specified object type. For example, <code class="highlighter-rouge">PackageTrustAll</code> would allow marginal and unknown trust level signatures for packages.</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

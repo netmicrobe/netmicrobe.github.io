@@ -1,0 +1,1501 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>一加5t-dumpling刷机 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="rom, adb, fastboot, bootloader, root, unlock, twrp">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一加5t-dumpling刷机">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/android/%E4%B8%80%E5%8A%A05t-dumpling%E5%88%B7%E6%9C%BA/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/android/%E4%B8%80%E5%8A%A05t-dumpling%E5%88%B7%E6%9C%BA/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">一加5t-dumpling刷机</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-07-24T00:00:00+08:00">July 24, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.oneplus.com/cn/support/softwareupgrade">OnePlus 系统下载和更新</a></li>
+      <li><a href="https://forum.xda-developers.com/oneplus-5t/development">xda-developers.com - OnePlus 5T ROMs, Kernels, Recoveries, &amp; Other Development</a></li>
+      <li><a href=""></a></li>
+      <li><a href="https://opengapps.org/">OpenGapps</a></li>
+      <li><a href=""></a></li>
+      <li><a href="https://www.techmesto.com/unlock-bootloader-oneplus-5/">How to Install TWRP Recovery and Root the OnePlus 5 </a><br />
+Last updated on January 28, 2018</li>
+      <li><a href="https://techbeasts.com/how-to-install-twrp-custom-recovery-on-oneplus-5t/">How to install Official TWRP Custom Recovery on OnePlus 5T</a><br />
+By Usama M -December 9, 2017</li>
+      <li><a href="https://www.thecustomdroid.com/install-twrp-root-oneplus-5-5t-android-pie-oxygenos/">Install TWRP and Root OnePlus 5/5T on Android Pie (OxygenOS 9.0+)</a><br />
+Jun 12, 2019•By Dhananjay Bhardwaj</li>
+      <li><a href="https://romprovider.com/twrp-3-1-oneplus-5t-download/">twrp 3.1.1 Oneplus 5T Download &amp; Install - ROM-Provider</a></li>
+      <li><a href="https://techkaran.co.in/category/roms/">https://techkaran.co.in/category/roms/</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="oneplus5-救砖--升级到-氢os-android-10-安装-twrp">OnePlus5 救砖 ， 升级到 氢OS Android 10, 安装 TWRP</h2>
+
+<ol>
+  <li>使用救砖包 <code class="highlighter-rouge">一加5T-线刷救砖.zip</code>
+    <ol>
+      <li>安装驱动
+        <ol>
+          <li>下载驱动 <a href="https://ava2.androidfilehost.com/dl/Yt2rQ2BT1AlGkGsPDT1bJQ/1596790027/889964283620777981/OnePlus.QualcomDrivers.zip?">OnePlus.QualcomDrivers.zip</a></li>
+          <li>解压驱动 <code class="highlighter-rouge">OnePlus.QualcomDrivers.zip</code></li>
+          <li>完全关机状态下按住左侧音量+不放，同时插入数据线，等待PC识别到<code class="highlighter-rouge">QHSUSB_BULCK</code>设备（设备管理器》其他设备》<code class="highlighter-rouge">QHSUSB_BULCK</code>）</li>
+          <li>在<code class="highlighter-rouge">QHSUSB_BULCK</code>上点右键—更新驱动程序—-浏览计算机以查找驱动程序软<br />
+ 件，定位到驱动文件夹，点下一步，出现红色警告框选择“始终安装此驱动程序”，直到提示安装完成。</li>
+          <li>打开设备管理器，查看“端口（COM和LPT）”，如果出现<code class="highlighter-rouge">Qualcomm HS-USB QDLoader 9008</code>底层驱动就安装好了。</li>
+        </ol>
+      </li>
+      <li>解压“一加5T-线刷救砖.zip”后，启动其中的 <code class="highlighter-rouge">MsmDownloadTool V4.0.exe</code>
+        <ol>
+          <li>软件显示“com设备”，选中“售后升级模式”，然后点击 Start 开始刷机，刷机过程中软件会有进度条显示<br />
+ <img src="MsmDownloadTool刷机界面.png" alt="" /></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>以上救砖包刷完，系统版本是： <code class="highlighter-rouge">氢OS 3.7.0_Android7.1.1</code> <br />
+ 这个版本系统很旧，几乎就是5T初代系统。<br />
+ 虽然 TWRP 3.1.1 能刷进去，然而没啥用，刷啥啥失败。<br />
+ 所有，<code class="highlighter-rouge">要把氢OS 往上升级到最新的 Android 10</code></p>
+  </li>
+  <li>手动升级氢OS
+    <ol>
+      <li>把全量zip 包拷贝到 sdcard 根目录</li>
+      <li>设置 》 系统升级 》 本地升级 》 选择zip文件</li>
+    </ol>
+
+    <ul>
+      <li>以如下顺序升级（目前试出来的升级路径）
+        <ul>
+          <li>OnePlus5THydrogen_43_OTA_028_all_1803012257_28f5389c27ff470b-Android8.0-H2Ov5.0.1.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_033_all_1805030053_da567685111-Android8.1-H2Ov5.1.0.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_034_all_1806192128_6b0dd8485097446c-Android8.1.0-H2Ov5.1.1.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_035_all_1807181315_4ac723147cbf42a6-Android8.1.0-H2Ov5.1.2.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_037_all_1812111156_bc6a5a8eace-Android8.1.0-H2Ov5.1.4.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_042_all_1903071639_31faaad99fb74e3e-Android9-H2Ov9.0.2.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_062_all_2005291737_04f9b97b5ae84d67-Android10-H2Ov10.0.0.zip</li>
+          <li>OnePlus5THydrogen_43_OTA_065_all_2012030405_03dba2c095454647-Android10-H2Ov10.0.3.zip</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>安装 TWRP
+    <ol>
+      <li>
+        <p>下载<code class="highlighter-rouge">twrp-3.5.1_9-0-dumpling.img</code> : <a href="https://twrp.me/oneplus/oneplus5t.html">官网 TeamWin - TWRP for OnePlus 5T</a>1.</p>
+      </li>
+      <li>解锁  (<strong>注意</strong> 执行解锁后，清除所有数据）
+        <ol>
+          <li>设置》系统》开发者选项》打开“OEM解锁”</li>
+          <li>启动系统的时候，按住 <code class="highlighter-rouge">音量 +</code> 进入 bootloader</li>
+          <li>电脑执行命令，调出解锁确认页面
+            <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> fastboot devices
+ fastboot oem unlock
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+          <li>提示页面，用音量键选择 YES ， 确认后，等待系统运行解锁，同时清除所有数据。</li>
+        </ol>
+      </li>
+      <li>启动系统的时候，按住 <code class="highlighter-rouge">音量 +</code> 进入 bootloader</li>
+      <li>刷入 TWRP
+        <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> fastboot devices
+ fastboot flash recovery twrp-3.5.1_9-0-dumpling.img
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>用音量键选择，启动到 recovery，电源键确定后，系统重启时，最好按住 <code class="highlighter-rouge">音量 -</code> 键，进入熟悉的蓝色TWRP界面，松掉<code class="highlighter-rouge">音量 -</code> 键</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="安装-magisk">安装 magisk</h3>
+
+<ol>
+  <li>安装 <code class="highlighter-rouge">Magisk-v24.3.apk</code></li>
+  <li>上传 boot.img 到手机某个目录
+    <ol>
+      <li>解压 OnePlus5THydrogen_43_OTA_065_all_2012030405_03dba2c095454647-Android10-H2Ov10.0.3.zip</li>
+      <li>将其中的 boot.img 上传： <code class="highlighter-rouge">adb push boot.img /sdcard/Download/</code></li>
+    </ol>
+  </li>
+  <li>在 Magisk App 中，点击 Magisk 卡片中的 安装 按钮。</li>
+  <li>点击“选择并修补一个文件”，然后选择事先准备好的 boot.img 或 recovery.img 文件。</li>
+  <li>修补完成后，使用 ADB 将修补好的镜像文件复制到你的电脑上。
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> adb pull /sdcard/Download/magisk_patched_[random_strings].img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>将修补好的镜像刷写到设备中。
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> adb reboot bootloader
+ fastboot flash boot /path/to/magisk_patched.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>重启</li>
+  <li>
+    <hr />
+  </li>
+  <li>隐藏 magisk</li>
+  <li>
+    <p>方法一、使用 magisk 的 Denylist<br />
+ 这个方法，虽然隐藏了magisk，但是也没法对在DenyList 里面的app加载module来操作了，相当于遵循了app的要求，避免了root。</p>
+
+    <p>测试过，人脸识别可以用这个方法通过。</p>
+
+    <ol>
+      <li>打开 magisk app 》设置 》开启 Zygisk(Beta)</li>
+      <li>开启 “Enforce Denylist” / 遵守排除列表</li>
+      <li>Configure DenyList / 配置排除列表</li>
+      <li>勾选需要隐藏root的app，例如， Google Play， Binance等</li>
+      <li>重启系统</li>
+    </ol>
+  </li>
+  <li>方法二、关闭 DenyList，使用 LSPosed + Shamiko + XPrivacyLua + Universal SafetyNet Fix</li>
+  <li></li>
+  <li>安装 LSPosed</li>
+  <li>magisk 》模块 》从本地安装 》选中 <code class="highlighter-rouge">LSPosed-v1.8.3-6552-zygisk-release.zip</code></li>
+  <li>安装完成后，重启系统</li>
+  <li>重启完成，看不到 LSPosed 粉红色的laucher 图标，安装下 manager.apk
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> adb shell su
+ cp manager.apk /sdcard/aaapk/lspd-manager-1.8.3.apk
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+    <p>到文件管理器，安装这个 apk后，就能看到图标了.</p>
+  </li>
+  <li></li>
+  <li>安装 Shamiko</li>
+  <li>从 magisk 本地安装 <code class="highlighter-rouge">Shamiko-v0.5.0-110-release.zip</code></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h2 id="刷机过的配置">刷机过的配置</h2>
+
+<h3 id="氢os-1003">氢OS 10.0.3</h3>
+
+<p>Magisk 24.3，开启zygisk，屏蔽支付宝等银行应用。</p>
+
+<h3 id="氢os-android-9--magisk-204">氢OS Android 9 + Magisk 20.4</h3>
+
+<ul>
+  <li>TWRP<br />
+<code class="highlighter-rouge">fastboot flash recovery twrp-3.4.0-0-cheeseburger--dumpling-mauronofrio.img</code></li>
+  <li>ROM<br />
+<code class="highlighter-rouge">OnePlus5THydrogen_43_OTA_062_all_2005291737_04f9b97b5ae84d67.zip</code></li>
+  <li>magisk<br />
+<code class="highlighter-rouge">Magisk-v20.4.zip</code>    <a href="https://github.com/topjohnwu/Magisk/releases">下载</a><br />
+<code class="highlighter-rouge">MagiskManager v7.3.4</code></li>
+  <li>Riru-Core<br />
+<code class="highlighter-rouge">magisk-riru-v21.3.zip</code>     <a href="https://github.com/RikkaApps/Riru/releases">下载</a></li>
+  <li>EdXposed<br />
+<code class="highlighter-rouge">EdXposed-YAHFA-v0.4.6.2.4529.-release.zip</code>   <a href="https://github.com/ElderDrivers/EdXposed/releases">下载</a></li>
+  <li>EdXposed Manager<br />
+<code class="highlighter-rouge">EdXposedManager-4.5.7</code>   <a href="https://github.com/ElderDrivers/EdXposedManager/releases/tag/v4.5.7.0.0">下载</a></li>
+</ul>
+
+<h3 id="crdroid-v68-android-10">crDroid v6.8 Android 10</h3>
+
+<ul>
+  <li>twrp-3.4.0-0-cheeseburger–dumpling-mauronofrio.img</li>
+  <li>ROM: crDroidAndroid-10.0-20200714-dumpling-v6.8.zip</li>
+  <li>Gapps: open_gapps-arm64-10.0-nano-20200823.zip</li>
+  <li>magisk: Magisk-v20.4.zip  ,  MagiskManager v7.3.4</li>
+  <li>Riru-Core: magisk-riru-v21.3.zip</li>
+  <li>EdXposed: EdXposed-YAHFA-v0.4.6.2.4529.-release.zip</li>
+  <li>
+    <p>EdXposed Manager: EdXposedManager-4.5.7</p>
+  </li>
+  <li>
+    <p>First Time Installation:<br />
+Backup before you begin<br />
+Remove PIN protection and then reboot to TWRP recovery<br />
+Wipe Data under Advanced (Do not use Format Data - which erases internal memory)<br />
+Wipe System and Cache under Advanced<br />
+Flash required firmware<br />
+Flash ROM + Gapps<br />
+Optionally - Flash supported root<br />
+Optionally - Flash No Verity v3 zip ONLY if you are decrypted [This is not tested on Android 10]<br />
+Reboot and profit!</p>
+  </li>
+  <li>Update Installation:<br />
+Backup before you begin<br />
+Reboot to TWRP recovery<br />
+Flash required firmware if new one available<br />
+Flash ROM<br />
+Optionally - Flash No Verity v3 zip ONLY if you are decrypted [This is not tested on Android 10]<br />
+Reboot and profit!</li>
+</ul>
+
+<h3 id="crdroidandroid-110-20211114-dumpling-v712--android-11">crDroidAndroid-11.0-20211114-dumpling-v7.12 / Android 11</h3>
+
+<ol>
+  <li>安装 TWRP 3.4.0.0 mauronofrio</li>
+  <li>
+    <p>升级 firmware<br />
+ 下载 <a href="https://altushost-swe.dl.sourceforge.net/project/lineageos-cheeseburger/firmware/dumpling/firmware_10.0.1_dumpling.zip">https://altushost-swe.dl.sourceforge.net/project/lineageos-cheeseburger/firmware/dumpling/firmware_10.0.1_dumpling.zip</a><br />
+ TWRP install 刚下载的 <code class="highlighter-rouge">firmware_10.0.1_dumpling.zip</code></p>
+
+    <p>如果不更新firmware,回报错：<code class="highlighter-rouge">Error: The package requires firmware version 10.0.1 or newer. Please upgrade firmware and retry</code></p>
+  </li>
+  <li>TWRP 安装 crDroid，即 crDroidAndroid-11.0-20211114-dumpling-v7.12.zip</li>
+  <li>安装 Open GApps<br />
+ 下载 <a href="https://sourceforge.net/projects/opengapps/files/x86_64/20220503/open_gapps-x86_64-11.0-pico-20220503.zip/download">https://sourceforge.net/projects/opengapps/files/x86_64/20220503/open_gapps-x86_64-11.0-pico-20220503.zip/download</a><br />
+ TWRP install 刚下载的 <code class="highlighter-rouge">open_gapps-x86_64-11.0-pico-20220503.zip</code></li>
+  <li>刷机完成，重启</li>
+</ol>
+
+<h3 id="crdroidandroid-121-20221219-dumpling-v812zip--android-12">crDroidAndroid-12.1-20221219-dumpling-v8.12.zip / Android 12</h3>
+
+<p>使用 TWRP 刷入，步骤同上，也还是不带 GApps</p>
+
+<p>刷好，系统占据 3.3G</p>
+
+<p>但是，<code class="highlighter-rouge">twrp 3.4 就进不去了</code>，刷了 twrp 3.7 才又能进入 Recovery ！</p>
+
+<h3 id="projectelixir_35_dumpling-130-20230113-0232-officialzip--android-13">ProjectElixir_3.5_dumpling-13.0-20230113-0232-OFFICIAL.zip / Android 13</h3>
+
+<p>使用 TWRP 3.7 刷的，一切顺利，就是TWRP 3.7 屏幕亮度支持有问题，屏幕搞的很暗</p>
+
+<p>自带Google框架、Google Play，直接支持全屏手势，点赞！！！</p>
+
+<p>刷好，系统 7.7G，应用500M-1G</p>
+
+<p>启动速度还行，界面也不错，但是<code class="highlighter-rouge">相机app打不开</code>。</p>
+
+<h3 id="projectelixir_34_dumpling-130-20221226-1149-officialzip--android-13">ProjectElixir_3.4_dumpling-13.0-20221226-1149-OFFICIAL.zip / Android 13</h3>
+
+<p>相比 Elixir 3.5 ，这个版本不存在 <code class="highlighter-rouge">相机app打不开</code> 。</p>
+
+<h3 id="projectelixir_21_dumpling-121-20220908-1008-officialzip--android--12l">ProjectElixir_2.1_dumpling-12.1-20220908-1008-OFFICIAL.zip / Android  12L</h3>
+
+<p>这个版本在 OnePlus 5T 上 <code class="highlighter-rouge">相机app是正常的</code>。自带Google框架、Google Play，直接支持全屏手势，</p>
+
+<p>但是有些地方还是英文没翻译，主管感受，打磨不细致。</p>
+
+<p>没有双击锁屏和解锁的功能，Elixir 3.5 是有的。</p>
+
+<h3 id="evolution_dumpling-ota-td1a221105001-11112225-unofficial-unsignedzip--android-13">evolution_dumpling-ota-td1a.221105.001-11112225-unofficial-unsigned.zip / Android 13</h3>
+
+<p>和 Elixir 差不多，且 <code class="highlighter-rouge">相机app正常</code>。</p>
+
+<p>自带Google框架、Google Play，直接支持全屏手势。</p>
+
+<h3 id="derpfest-12-official-shinju-dumpling-20220827zip--android-12l">DerpFest-12-Official-Shinju-dumpling-20220827.zip / Android 12L</h3>
+
+<p>版本号： SQ3A.220705.004</p>
+
+<p>带 Gapps, 刷完占用 3.8 G。<br />
+支持双击熄屏、亮屏。</p>
+
+<h3 id="lineage-191-20221227-nightly-dumpling-signedzip">lineage-19.1-20221227-nightly-dumpling-signed.zip</h3>
+
+<p>带 Gapps, 刷完占用 8.2 G。</p>
+
+<p>并没有自带拼音输入法，要自己到Play Store 去下载 GBoard - Google键盘，然后系统 》 语言和输入法中改成 GBoard。</p>
+
+<h2 id="firmware-下载">Firmware 下载</h2>
+
+<ul>
+  <li><a href="https://sourceforge.net/projects/crdroid/files/dumpling/6.x/firmware/">crDroid Android - firmware - 有最新的10.0.0_H1</a></li>
+  <li><a href="https://forum.xda-developers.com/showpost.php?p=76943628&amp;postcount=8">OxygenOS Firmware + Radio Flashable Zips</a></li>
+  <li><a href="https://forum.xda-developers.com/showthread.php?t=3728665">Doc’s Oneplus 5T Firmwares. Update 2018-08-14</a></li>
+  <li><a href="https://sourceforge.net/projects/lineageos-cheeseburger/files/firmware/dumpling/">lineageos - sourceforge.net - firmware</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<h2 id="twrp下载">TWRP下载</h2>
+
+<ul>
+  <li>TWRP
+    <ul>
+      <li><a href="https://twrp.me/oneplus/oneplus5t.html">官网 TeamWin - TWRP for OnePlus 5T</a>
+        <ul>
+          <li><a href="https://dl.twrp.me/dumpling/">https://dl.twrp.me/dumpling/</a><br />
+  可下载到 3.5.1, 3.5.0</li>
+          <li><a href="https://dl.twrp.me/cheeseburger_dumpling/">官网 twrp.me - TWRP for cheeseburger_dumpling 新版本TWRP 3.4.0 以上</a>
+            <ul>
+              <li><a href="https://dl.twrp.me/cheeseburger/">https://dl.twrp.me/cheeseburger/</a>  有老版本TWRP 3.1.1-0 到 3.4.0-1</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://forum.xda-developers.com/t/recovery-twrp-official-unofficial-v3-7-0-a12-cheeseburger-dumpling-25-12-2022.4351795/"> RECOVERY  TWRP Official/Unofficial v3.7.0 A12 Cheeseburger/Dumpling - 25/12/2022</a>
+        <ul>
+          <li><a href="https://sourceforge.net/projects/op5-5t/files/Android-12/TWRP/twrp-3.7.0_12-2-cheeseburger_dumpling.img/download">https://sourceforge.net/projects/op5-5t/files/Android-12/TWRP/twrp-3.7.0_12-2-cheeseburger_dumpling.img/download</a></li>
+        </ul>
+      </li>
+      <li><a href="https://forum.xda-developers.com/oneplus-5t/development/recovery-twrp-3-2-1-0-oreo-8-0-8-1-t3729673">xda-developers.com - TWRP 3.3.X by codeworkx</a></li>
+      <li><a href="https://github.com/engstk/android_device_oneplus_enchilada/releases/">engstk/android_device_oneplus_enchilada</a></li>
+      <li><a href="https://forum.xda-developers.com/oneplus-5/oneplus-5--5t-cross-device-development/recovery-unofficial-twrp-recovery-t4072857">RECOVERY 3.4.0-0 Cheeseburger/Dumpling Official/Unofficial TWRP for OnePlus 5/5T</a></li>
+      <li><a href="https://androidfilehost.com/?fid=745849072291689244">Download twrp 3.1.1 - o5ttwrp.img </a></li>
+      <li><a href="https://github.com/TeamWin/android_bootable_recovery">TeamWin/android_bootable_recoveryPublic</a></li>
+      <li><a href="https://github.com/TeamWin/android_device_oneplus_cheeseburger_dumpling">TeamWin/android_device_oneplus_cheeseburger_dumpling</a></li>
+      <li><a href="https://sourceforge.net/projects/op5-5t/files/Android-12/">https://sourceforge.net/projects/op5-5t/files/Android-12/</a></li>
+    </ul>
+  </li>
+  <li>OrangeFox
+    <ul>
+      <li><a href="https://forum.xda-developers.com/t/recovery-unofficial-r11-1_2-a12-orangefox-recovery-project-cheeseburger-dumpling-2022-10-18.4472209/"> RECOVERY  UNOFFICIAL  R11.1_2  A12  OrangeFox Recovery Project  Cheeseburger/Dumpling  2022-10-18 </a>
+        <ul>
+          <li><a href="https://sourceforge.net/projects/op5-5t/files/Android-12/OrangeFox/OrangeFox-R11.1_2_A12-Unofficial-OP5x5T.zip/download">OrangeFox Unnoficial download: R.11.1_2[A12] - 2022-10-18</a></li>
+        </ul>
+      </li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="os">OS</h2>
+
+<ul>
+  <li>官方rom - 氢OS下载
+    <ul>
+      <li><a href="https://www.oneplus.com/cn/support/softwareupgrade/details?code=PM1574150644071">OnePlus 官网 下载页 - 只有最新版</a></li>
+      <li><a href="https://www.oneplusbbs.com/forum.php?mod=viewthread&amp;tid=4298129&amp;u_atoken=220581a2-9683-48c2-844b-331ea221d66c&amp;u_asession=01cvdzxZeKNRebtuc53yEF67M0gTcUHlhJbGFA1mTtQlddJ-xtZ6_CLIZqD5YDis7kX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-PYbVB6NdkYosiDJ_n5WYWcR-Upo8TBTX9QGkYKUAZ72BkFo3NEHBv0PZUm6pbxQU&amp;u_asig=05_UDHsNjsfU-Q4Sf8CfJcSKMnQhmiDkVaRLuIGrjbo_61a5yg-8B1uI2dC7hbFfIaOirsUL-CzluLHQuWkB54jnYki32hKsIZYPtV3tZKSyPw3HKUPmLreOiwyQJJt5t-Go0xt1VvEAk0fTmxip8-QeGyz1rBWPPVi2ounZoOQdX9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzaTgvsEny3rZIEYwpgM-LpBSl1OnRtlRqM76Uq3xTZRLe6gTnc2XN6LTxyIOxstJg-3h9VXwMyh6PgyDIVSG1W9L0QOrmPDdC-N0w4fOw11Ou347zn66YkwTOXwXqJK2nv5sAQlOcuPwnx8f96l3XG16tpYpMIlF9rlARNdXwsrlmWspDxyAEEo4kbsryBKb9Q&amp;u_aref=jME6kDuWB%2FW7kveISntgSDilhjM%3D">【全量包】一加5T★所有版本★全量包★直链下载★持续更新 </a></li>
+      <li>
+        <hr />
+      </li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_004_all_1711172057_e983bd11cf7640f4.zip">【Android 7.1.1 稳定版】H2OS for OnePlus 5T 第1版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_005_all_1712062319_e6bade6bb51748c2.zip">【Android 7.1.1 稳定版】H2OS for OnePlus 5T 第2版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_006_all_1712252122_7bfbb044c90d4d6a.zip">【Android 7.1.1 稳定版】H2OS for OnePlus 5T 第3版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_028_all_1803012257_28f5389c27ff470b.zip">【Android8.0稳定版】H2OS For OnePlus 5T 第1版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_029_all_1803152035_5341b030f9b440c5.zip">【Android8.0稳定版】H2OS For OnePlus 5T 第2版</a></li>
+      <li><a href="http://otafsc.h2os.com/patch/CHN/OnePlus5THydrogen/OnePlus5THydrogen_43.H.33_033_1805030053/OnePlus5THydrogen_43_OTA_033_all_1805030053_da567685111.zip">【Android8.1稳定版】H2OS For OnePlus 5T 第1版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_034_all_1806192128_6b0dd8485097446c.zip">【Android8.1稳定版】H2OS For OnePlus 5T 第2版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_035_all_1807181315_4ac723147cbf42a6.zip">【Android8.1稳定版】H2OS For OnePlus 5T 第3版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_036_all_1808311753_a8ee608289394548.zip">【Android8.1稳定版】H2OS For OnePlus 5T 第4版</a></li>
+      <li><a href="http://otafsc.h2os.com/patch/CHN/OnePlus5THydrogen/OnePlus5THydrogen_43.K.37_037_1812111156/OnePlus5THydrogen_43_OTA_037_all_1812111156_bc6a5a8eace.zip">【Android8.1稳定版】H2OS For OnePlus 5T 第5版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_042_all_1903071639_31faaad99fb74e3e.zip">【Android9.0稳定版】H2OS For OnePlus 5T 第1版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_043_all_1905062049_8e7f398ee5ad45ac.zip">【Android9.0稳定版】H2OS For OnePlus 5T 第2版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_044_all_1906071754_7265adc40735459d.zip">【Android9.0稳定版】H2OS For OnePlus 5T 第3版</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_062_all_2005291737_04f9b97b5ae84d67.zip">Android 10-062_all_2005291737</a></li>
+      <li><a href="https://otafsc.h2os.com/patch/CHN/OnePlus5THydrogen/OnePlus5THydrogen_43.K.63_063_2008051533/OnePlus5THydrogen_43_OTA_063_all_2008051533_9e9621180070.zip">Android 10-063_all_2008051533</a></li>
+      <li><a href="https://otafsc.h2os.com/patch/CHN/OnePlus5THydrogen/OnePlus5THydrogen_43.K.64_064_2009080056/OnePlus5THydrogen_43_OTA_064_all_2009080056_4864965b3301a.zip">Android 10-064_all_2009080056</a></li>
+      <li><a href="http://download.h2os.com/5T/MP/OnePlus5THydrogen_43_OTA_065_all_2012030405_03dba2c095454647.zip">Android 10-065_all_2012030405</a></li>
+      <li><a href=""></a></li>
+      <li><a href="https://otafsc.h2os.com/patch/CHN/OnePlus5THydrogen/OnePlus5THydrogen_43.K.47_047_1912111651/OnePlus5THydrogen_43_OTA_047_all_1912111651_dc132.zip">OnePlus5THydrogen_43_OTA_047_all_1912111651_dc132.zip</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>lineage
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://download.lineageos.org/dumpling">Official Download</a></li>
+          <li><a href="https://sourceforge.net/projects/lineageos-cheeseburger/files/">https://sourceforge.net/projects/lineageos-cheeseburger/files/</a></li>
+          <li><a href="https://sourceforge.net/projects/cheeseburgerdumplings/files/17.1/dumpling/">unofficial - 17.1</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://wiki.lineageos.org/devices/dumpling/install">Install LineageOS on dumpling</a></li>
+          <li><a href="https://www.techrepublic.com/article/how-to-install-lineageos-16-on-oneplus-5t/">How to install LineageOS 16 on OnePlus 5T</a></li>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>[oneplus.com - LineageOS</td>
+                  <td>OnePlus 5T 16.0 Android 9](https://forums.oneplus.com/threads/rom-lineageos-oneplus-5t-16-0-android-9-official.794242/)</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li><a href="https://forum.xda-developers.com/oneplus-5t/development/rom-lineageos-17-0-q-oneplus-5t-t3978855">xda-developers.com - LineageOS 17.1 (Q) for Oneplus 5T by codeworkx</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Evolution X
+    <ul>
+      <li><a href="https://evolution-x.org">evolution-x Official Site</a><br />
+  官方不支持 Oneplus 5T，从Oneplus 6开始支持。</li>
+      <li><a href="https://sourceforge.net/projects/saadsprojects/files/dumpling/evolutionx/">Evolution - OnePlus5T - Download</a></li>
+    </ul>
+  </li>
+  <li>crDroid
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://crdroid.net/downloads#dumpling">crDroid - OnePlus5T - Download</a></li>
+          <li><a href="https://sourceforge.net/projects/crdroid/files/dumpling">crDroid - sourceforge - Download</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://forum.xda-developers.com/oneplus-5t/development/rom-crdroid-android-6-t3972533">xda-developers.com - crDroid</a></li>
+          <li><a href="https://forum.xda-developers.com/oneplus-5t/development/rom-crdroid-android-6-t3972533">xda-developers.com - crDroid Android 6.9 - 9 AUG 2020</a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Project Elixir
+    <ul>
+      <li><a href="https://projectelixiros.com">Official Site</a></li>
+      <li><a href="https://projectelixiros.com/device/dumpling">Official Site - Oneplus5T - Download</a>
+        <ul>
+          <li><a href="https://www.pling.com/p/1741337/">https://www.pling.com/p/1741337/</a></li>
+        </ul>
+      </li>
+      <li><a href="https://downloads.projectelixiros.com">https://downloads.projectelixiros.com</a></li>
+      <li><a href="https://forum.xda-developers.com/t/rom-oss-12-1-may-oneplus-5t-dumpling-project-elixir-official-gapps.4418947/">12.1 May - Project Elixir  OFFICIAL  GAPPS </a></li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>[ ROM   PHOENIX   OFFICIAL  PROJECT ELIXIR v1.0</td>
+              <td>Android 12 ](https://forum.xda-developers.com/t/rom-phoenix-official-project-elixir-v1-0-android-12.4355649/)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>下载
+        <ul>
+          <li><a href="https://downloads.projectelixiros.com/twelve/dumpling/">https://downloads.projectelixiros.com/twelve/dumpling/</a></li>
+          <li><a href="https://sourceforge.net/projects/project-elixir/files/">https://sourceforge.net/projects/project-elixir/files/</a></li>
+          <li><a href="https://sourceforge.net/projects/project-elixir/files/twelve/">Elixir - Android 12 下载</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Pixel Experience
+    <ul>
+      <li><a href="https://download.pixelexperience.org">Pixel Experience Official Site</a></li>
+      <li><a href="https://download.pixelexperience.org/dumpling/">Pixel Experience - OnePlus5T - Download</a><br />
+2022年底不再更新了。</li>
+      <li><a href="https://telegra.ph/How-to-install-Pixel-Experience-11-25">Guide: Installing Pixel Experience</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>PixelPlusUI
+    <ul>
+      <li><a href="https://ppui.site/home">PixelPlusUI Official Site</a><br />
+Oneplus只支持： 7Pro, 8Pro, 8T, 9R</li>
+    </ul>
+  </li>
+  <li>Proejct Blaze<br />
+no base Pixel. 支持小米、红米的机型，不支持一加。
+    <ul>
+      <li><a href="https://projectblaze.live">Proejct Blaze - Official Site</a></li>
+      <li><a href="https://projectblaze.live/download.html">Proejct Blaze - Download</a></li>
+    </ul>
+  </li>
+  <li>RiceDroid
+    <ul>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>Havoc
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://sourceforge.net/projects/havoc-os/files/dumpling/">sourceforge - havoc-os - dumpling download</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://github.com/Havoc-OS/official_devices/blob/ten/README.md">Havoc-OS/official_devices 电报群</a></li>
+          <li><a href="ttps://t.me/havoc_oneplus5">Oneplus 5T 电报群</a></li>
+          <li><a href="https://t.me/Tilaksid">Oneplus 5T Maintainer</a></li>
+          <li><a href="https://forum.xda-developers.com/oneplus-3/oneplus-3--3t-cross-device-development/rom-havoc-os-t3782811">Havoc-OS-3.7-10.0.0_r40-Official</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>AOSiP
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://aosip.dev/dumpling">official - dumpling</a></li>
+          <li><a href="https://sourceforge.net/projects/illusionproject/files/dumpling/">sourceforge.net - mirror - dumpling</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://forum.xda-developers.com/oneplus-5/oneplus-5--5t-cross-device-development/rom-android-source-illusion-project-t4117189">xda-developers.com - Android Open Source illusion Project</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>RR / Resurrection Remix
+    <ul>
+      <li><strong>End of development since 2020-02-13!</strong></li>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href=""></a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://www.getdroidtips.com/resurrection-remix-oneplus-5t/">Download Install Resurrection Remix on OnePlus 5T based 9.0 Pie - RR 7.0</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>LuisROM
+    <ul>
+      <li>本来是基于RR的，但RR 在 2020-02-13 停了，改为基于crDroid</li>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="http://luis-builds.de/downloads/lineageos/">LuisROM Download</a></li>
+          <li><a href="http://luis-builds.de/downloads/lineageos/rr/oneplus5t/">LuisROM RR 版本</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://forum.xda-developers.com/oneplus-5t/development/rom-unofficial-resurrection-remix-t3912512">My Unoffical Resurrection Remix (PIE)<br />
+(LuisROM) for Oneplus 5T (dumpling)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>RevengeOS
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href=""></a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>[xda-developers.com - RevengeOS 3.2</td>
+                  <td>OnePlus 5](https://forum.xda-developers.com/oneplus-5/development/10-0-revengeos-3-2-oneplus-5-t4072867)</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ViperOS
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://sourceforge.net/projects/viper-project/files/dumpling/">sourceforge.net - ViperOS - dumpling</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>[xda-developers.com - RevengeOS 3.2</td>
+                  <td>OnePlus 5](https://forum.xda-developers.com/oneplus-5/development/10-0-revengeos-3-2-oneplus-5-t4072867)</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>aicp - Android Ice Cold Project
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://dwnld.aicp-rom.com/#oneplus">aicp - dumpling</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://forum.xda-developers.com/oneplus-5/development/8-1-official-aicp-13-1-t3733171">Android Ice Cold Project 15</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>DerpFest
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://sourceforge.net/projects/derpfest/files/dumpling/">DerpFest - dumpling - sourceforge mirror</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://forum.xda-developers.com/oneplus-5t/development/rom-unofficial-aosip-aka-derpfest-t3978357">xda-developers - DerpFest Bare for OnePlus5T</a></li>
+          <li><a href="https://forum.xda-developers.com/t/rom-12l-derpfest-for-oneplus-5-t-official-2022-05-22.3978357/">DerpFest for OnePlus 5/T  Official 2022-05-22</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ElementalX
+    <ul>
+      <li><a href="https://elementalx.org/devices/oneplus-5t/">ElementalX - oneplus-5t</a></li>
+    </ul>
+  </li>
+  <li>Sailfish
+    <ul>
+      <li><a href="https://forum.xda-developers.com/t/rom-gnu-linux-ota-3-4-0-24-sailfish-os-for-oneplus-5t.4036409/">3.4.0.24 Sailfish OS for OnePlus 5T</a></li>
+      <li>下载
+        <ul>
+          <li><a href="https://download.lineageos.org/dumpling">the LineageOS 16.0 base ROM</a></li>
+          <li><a href="https://gitlab.com/sailfishos-porters-ci/dumpling-ci/pipelines?scope=tags">Sailfish OS release</a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </li>
+      <li>How to install
+        <ol>
+          <li>Backup all your data from the device to a computer</li>
+          <li>Download Pie Firmware 9.0.11, TWRP 3.4.x image, the LineageOS 16.0 base ROM &amp; a Sailfish OS release</li>
+          <li>Install device firmware version 9.0.11 (not the ROM!)</li>
+          <li>Flash TWRP 3.4.x as your recovery</li>
+          <li>Reformat /data to ext4 and check it for issues</li>
+          <li>Reboot to recovery</li>
+          <li>Wipe cache &amp; dalvik</li>
+          <li>Flash LineageOS 16.0</li>
+          <li>Flash anything else you normally flash for Android e.g. GApps, Magisk, no dm_verity etc</li>
+          <li>Flash Sailfish OS (the zip that contains rootfs.tar.bz2) from inside CI artifacts archive</li>
+          <li>Reboot and enjoy!</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>ArrowOS<br />
+​   * <a href="https://forum.xda-developers.com/t/rom-android-11-0-dumplng-arrowos-11-0.4194985/">ArrowOS 11.0</a>
+    <ul>
+      <li>下载
+        <ul>
+          <li><a href="https://arrowos.net/download.php">https://arrowos.net/download.php</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Project Zephyrus
+    <ul>
+      <li><a href="https://sourceforge.net/projects/projectzephyrus/files/dumpling/">https://sourceforge.net/projects/projectzephyrus/files/dumpling/</a></li>
+    </ul>
+  </li>
+  <li>nezukoos
+    <ul>
+      <li><a href="https://sourceforge.net/projects/nezukoos/files/dumpling/">https://sourceforge.net/projects/nezukoos/files/dumpling/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="解锁">解锁</h2>
+
+<ol>
+  <li>打开开发者模式，手机连接adb</li>
+  <li>设置》系统》开发者选项》打开“OEM解锁”</li>
+  <li>进入bootloader界面<br />
+ <code class="highlighter-rouge">adb reboot bootloader</code></li>
+  <li>进入bootloader，执行命令查看手机是否连接正常
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> fastboot devices
+ fastboot oem device-info
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>执行解锁命令<br />
+ <strong>注意！！</strong>  执行解锁后，所有数据将被删除，系统重置！<br />
+ <code class="highlighter-rouge">fastboot oem unlock</code> ，手机屏幕显示文字提醒，用“音量键”选择“UNLOCK THE BOOTLOADER”，“电源键”确认</li>
+  <li>到此解锁已完成<br />
+ 手机会自动重启（解锁后每次开机的时候都会多一个警告界面，连按两次电源键即可）。<br />
+ 稍等片刻（注意解完BL锁后会清楚所有的用户数据，提前做好备份）</li>
+</ol>
+
+<h2 id="lineage-刷机">lineage 刷机</h2>
+
+<ol>
+  <li>刷入twrp recovery<br />
+ <code class="highlighter-rouge">fastboot flash recovery twrp-3.3.1-x_blu_spark_v9.101_treble-op5_op5t.img</code></li>
+  <li>电源键启动后，一直按<code class="highlighter-rouge">音量下</code>进入TWRP</li>
+  <li>Wipe 》 Format Data</li>
+  <li>Wipe 》 Advance Wipe<br />
+     Wipe / 清除 》 Advanced Wipe 高级清除 》<br />
+     * 四清：选中<br />
+       * Dalvik Cache<br />
+       * System<br />
+       * Data<br />
+       * Cache</li>
+  <li>Advanced 》ADB Sideload
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> adb sideload lineage-16.0-20200721-nightly-dumpling-signed.zip
+ adb sideload open_gapps-arm64-9.0-nano-20200404.zip
+ adb sideload Magisk-v19.4.zip
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>重启手机</li>
+</ol>
+
+<h2 id="magisk-中-安装-edxposed">magisk 中 安装 EdXposed</h2>
+
+<p>目前Xposed只支持到Android 7.0（N），不支持 Android 8+，只能使用magisk中的 <code class="highlighter-rouge">EdXposed</code> 模块。</p>
+
+<ol>
+  <li>打开 magisk manager</li>
+  <li>下载安装：Riru(Riru-Core) v19.8 作者：Rikka
+    <ol>
+      <li>下载：到 <a href="https://github.com/RikkaApps/Riru/releases">https://github.com/RikkaApps/Riru/releases</a> 下载 <code class="highlighter-rouge">magisk-riru-core-v19.8.zip</code></li>
+      <li>安装：magisk manager 》模块》点击“+”号，浏览目录并选择<code class="highlighter-rouge">magisk-riru-core-v19.8.zip</code></li>
+    </ol>
+  </li>
+  <li>安装：Riru-EdXposed - v0.4.6.2(4529)(YAHFA)
+    <ul>
+      <li>下载安装： 到 <a href="https://github.com/ElderDrivers/EdXposed/releases">https://github.com/ElderDrivers/EdXposed/releases</a> 下载 <code class="highlighter-rouge">EdXposed-YAHFA-v0.4.6.2.4529.-release.zip</code></li>
+      <li>直接安装： magisk manager 》下载》搜索、下载安装</li>
+    </ul>
+  </li>
+  <li>下载安装：<code class="highlighter-rouge">EdXposedManager</code><br />
+ 下载：到 <a href="https://github.com/ElderDrivers/EdXposedManager/releases/tag/v4.5.7.0.0">https://github.com/ElderDrivers/EdXposedManager/releases/tag/v4.5.7.0.0</a> 下载 <code class="highlighter-rouge">EdXposedManager-4.5.7-45700-org.meowcat.edxposed.manager-release.apk</code><br />
+ 直接安装apk</li>
+  <li></li>
+</ol>
+
+<h2 id="常用技巧">常用技巧</h2>
+
+<h3 id="进入-recovery--fastboot-模式">进入 recovery &amp; FASTBOOT 模式</h3>
+
+<ul>
+  <li>
+    <p>fastboot<br />
+关机状态下同时按住：【音量下】和【电源键】</p>
+  </li>
+  <li>
+    <p>recovery<br />
+关机状态下同时按住：【音量上】和【电源键】</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>fastboot devices
+fastboot oem device-info
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="解锁-1">解锁</h3>
+
+<ol>
+  <li>打开开发者模式，手机连接adb</li>
+  <li>设置》系统》开发者选项》打开“OEM解锁”</li>
+  <li>进入bootloader界面<br />
+ <code class="highlighter-rouge">adb reboot bootloader</code></li>
+  <li>执行解锁命令<br />
+ <code class="highlighter-rouge">fastboot oem unlock</code> ，手机屏幕显示文字提醒，用“音量键”选择“UNLOCK THE BOOTLOADER”，“电源键”确认</li>
+  <li>到此解锁已完成<br />
+ 手机会自动重启（解锁后每次开机的时候都会多一个警告界面，连按两次电源键即可）。<br />
+ 稍等片刻（注意解完BL锁后会清楚所有的用户数据，提前做好备份）</li>
+</ol>
+
+<h2 id="卡刷">卡刷</h2>
+
+<ol>
+  <li>访问 <a href="https://www.h2os.com/">氢OS官方网站</a> 下载对应机型的<code class="highlighter-rouge">刷机包zip</code></li>
+  <li><code class="highlighter-rouge">刷机包zip</code> 拷贝到手机</li>
+  <li>关机状态下同时按住：【音量下】和【电源键】</li>
+  <li>选择 zip 包刷机</li>
+</ol>
+
+<h2 id="线刷">线刷</h2>
+
+<ul>
+  <li><strong>千万记住一点</strong> ：不同机型的线刷包不能互刷，只能下载跟自己机型匹配的线刷包使用。</li>
+</ul>
+
+<ol>
+  <li>安装驱动
+    <ol>
+      <li>下载驱动 <a href="https://ava2.androidfilehost.com/dl/Yt2rQ2BT1AlGkGsPDT1bJQ/1596790027/889964283620777981/OnePlus.QualcomDrivers.zip?">OnePlus.QualcomDrivers.zip</a></li>
+      <li>完全关机状态下按住左侧音量+不放，同时插入数据线，等待PC识别到<code class="highlighter-rouge">QHSUSB_BULCK</code>设备（设备管理器》其他设备》<code class="highlighter-rouge">QHSUSB_BULCK</code>）</li>
+      <li>在<code class="highlighter-rouge">QHSUSB_BULCK</code>上点右键—更新驱动程序—-浏览计算机以查找驱动程序软<br />
+件，定位到驱动文件夹，点下一步，出现红色警告框选择“始终安装此驱动程序”，直到提示安装完成。</li>
+      <li>打开设备管理器，查看“端口（COM和LPT）”，如果出现<code class="highlighter-rouge">Qualcomm HS-USB QDLoader 9008</code>底层驱动就安装好了。</li>
+    </ol>
+  </li>
+  <li>下载对应机型的<code class="highlighter-rouge">刷机包zip</code>
+    <ul>
+      <li>[oneplusbbs.com -【教程] 【资源组】一加手机全系列⑮机型线刷救砖资源★附教程](http://www.oneplusbbs.com/thread-4446250-1.html)<br />
+下载地址：<a href="https://pan.baidu.com/s/1cZXjgdQYmptg_KlTh7r5Fg">https://pan.baidu.com/s/1cZXjgdQYmptg_KlTh7r5Fg</a><br />
+提取码： lbwa</li>
+    </ul>
+  </li>
+  <li>解压“一加5T-线刷救砖.zip”后，启动其中的 <code class="highlighter-rouge">MsmDownloadTool V4.0.exe</code></li>
+  <li>软件显示“com设备”，选中“售后升级模式”，然后点击 Start 开始刷机，刷机过程中软件会有进度条显示<br />
+ <img src="MsmDownloadTool刷机界面.png" alt="" /></li>
+</ol>
+
+<h2 id="安装goolge-play商店">安装Goolge Play商店</h2>
+
+<ol>
+  <li>安装 酷安 市场</li>
+  <li>搜索并安装 <code class="highlighter-rouge">Google Play Store</code></li>
+  <li>然后登陆Google帐号就好了</li>
+</ol>
+
+<ul>
+  <li>一加氢OS 10.0.3 版本(Android 10) <br />
+  直接 安装 <code class="highlighter-rouge">28.0.34-21 [0][PR] 410833180</code> ，在商店里无法安装 chrome，重新卸载安装 <code class="highlighter-rouge">Google-play.23.2.11.apk</code> 就好了。不知道为啥。。。</li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#rom" title="Pages tagged rom" class="tag"><span class="term">rom</span></a><a href="/tags#adb" title="Pages tagged adb" class="tag"><span class="term">adb</span></a><a href="/tags#fastboot" title="Pages tagged fastboot" class="tag"><span class="term">fastboot</span></a><a href="/tags#bootloader" title="Pages tagged bootloader" class="tag"><span class="term">bootloader</span></a><a href="/tags#root" title="Pages tagged root" class="tag"><span class="term">root</span></a><a href="/tags#unlock" title="Pages tagged unlock" class="tag"><span class="term">unlock</span></a><a href="/tags#twrp" title="Pages tagged twrp" class="tag"><span class="term">twrp</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,1097 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>JavaScript BOM, Browser Object Model &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="JavaScript, oop, object-oriented, bom, browser">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript BOM, Browser Object Model">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/javascript-bom/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/javascript-bom/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">JavaScript BOM, Browser Object Model</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-09-08T00:00:00+08:00">September 08, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li>《 Object-Oriented JavaScript 》.2nd - Stoyan.Stefanov</li>
+    </ul>
+  </li>
+</ul>
+
+<p>BOM 是一系列对象，通过这些对象可以访问浏览器和电脑。这些对象，通过 <code class="highlighter-rouge">window</code> 访问。</p>
+
+<h2 id="bom-browser-object-model">BOM, Browser Object Model</h2>
+
+<h3 id="windowdocument">window.document</h3>
+
+<p>window.document is a BOM object that refers to the currently loaded document (page).</p>
+
+<p>详见 DOM相关文章。</p>
+
+<h3 id="windownavigator">window.navigator</h3>
+
+<p><code class="highlighter-rouge">navigator</code> 对象包含浏览器信息，有点像浏览器的“关于”</p>
+
+<blockquote>
+  <p>在console中直接查看navigator对象的内容：</p>
+  <blockquote>
+    <p><img src="view-navigator-obj-in-console.png" alt="" /></p>
+  </blockquote>
+</blockquote>
+
+<h4 id="windownavigatoruseragent">window.navigator.userAgent</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>&gt; window.navigator.userAgent;
+"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.28.10 (KHTML, like
+Gecko) Version/6.0.3 Safari/536.28.10"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'MSIE'</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// this is IE</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// not IE</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="windowlocation">window.location</h3>
+
+<p><code class="highlighter-rouge">location</code>对象包含url的信息。</p>
+
+<p>Imagine you’re on a page with a URL</p>
+<blockquote>
+  <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>http://search.phpied.com:8080/search?q=python&amp;what=script#results
+</pre></td></tr></tbody></table>
+</div>
+  </div>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">location</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">location</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="s2">"string"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="s1">' = "'</span> <span class="o">+</span> <span class="nx">location</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'"'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">执行结果：</span>
+<span class="nx">href</span> <span class="o">=</span> <span class="s2">"http://search.phpied.com:8080/search?q=python&amp;what=script#results"</span>
+<span class="nx">hash</span> <span class="o">=</span> <span class="s2">"#results"</span>
+<span class="nx">host</span> <span class="o">=</span> <span class="s2">"search.phpied.com:8080"</span>
+<span class="nx">hostname</span> <span class="o">=</span> <span class="s2">"search.phpied.com"</span>
+<span class="nx">pathname</span> <span class="o">=</span> <span class="s2">"/search"</span>
+<span class="nx">port</span> <span class="o">=</span> <span class="err">«</span><span class="mi">8080</span><span class="err">»</span>
+<span class="nx">protocol</span> <span class="o">=</span> <span class="err">«</span><span class="nx">http</span><span class="err">:»</span>
+<span class="nx">search</span> <span class="o">=</span> <span class="s2">"?q=python&amp;what=script"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="跳转到新的地址">跳转到新的地址</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'http://www.packtpub.com'</span><span class="p">;</span>
+<span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'http://www.packtpub.com'</span><span class="p">;</span>
+<span class="nx">location</span> <span class="o">=</span> <span class="s1">'http://www.packtpub.com'</span><span class="p">;</span>
+<span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="s1">'http://www.packtpub.com'</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="replace">replace</h4>
+
+<p>和 <code class="highlighter-rouge">assign</code> 效果一样，但不会在 history 中留下记录。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&gt; location.replace('http://www.yahoo.com');
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="reload-刷新页面">reload 刷新页面</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&gt; location.reload();
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="windowhistory">window.history</h3>
+
+<p>window.history allows limited access to the previously visited pages in the same<br />
+browser session.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1">// For example, you can see how many pages the user has visited</span>
+<span class="c1">// before coming to your page as follows:</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1">// as if the user had clicked on the Back/Forward browser buttons as follows:</span>
+<span class="o">&gt;</span> <span class="nx">history</span><span class="p">.</span><span class="nx">forward</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="nx">history</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c1">// the same as calling history.back()</span>
+<span class="o">&gt;</span> <span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// going two pages back</span>
+<span class="o">&gt;</span> <span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// Reload the current page</span>
+<span class="o">&gt;</span> <span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="windowframes">window.frames</h3>
+
+<p>window.frames is a collection of all of the frames in the current page.</p>
+
+<p>It doesn’t distinguish between frames and iframes (inline frames).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1">// Regardless of whether there are frames on the page or not, </span>
+<span class="c1">// window.frames always exists and points to window</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span> <span class="o">===</span> <span class="nb">window</span><span class="p">;</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>页面中存在一个 iframe</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;iframe</span> <span class="na">name=</span><span class="s">"myframe"</span> <span class="na">src=</span><span class="s">"hello.html"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">frames</span><span class="p">.</span><span class="nx">length</span>
+<span class="mi">1</span>
+
+<span class="c1">// To get access to the iframe's window，如下任一一种方法：</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">;</span>
+<span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">;</span>
+<span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="c1">// Using a property called top, you can access the top-most page</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">.</span><span class="nx">top</span> <span class="o">===</span> <span class="nb">window</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">.</span><span class="nx">top</span> <span class="o">===</span> <span class="nb">window</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="c1">// self is the same as window </span>
+<span class="o">&gt;</span> <span class="nx">self</span> <span class="o">===</span> <span class="nb">window</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">self</span> <span class="o">==</span> <span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">window</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="c1">// If a frame has a name attribute, you can not only access the frame by name</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="s1">'myframe'</span><span class="p">]</span> <span class="o">===</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">frames</span><span class="p">.</span><span class="nx">myframe</span> <span class="o">===</span> <span class="nb">window</span><span class="p">.</span><span class="nx">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="windowscreen">window.screen</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">screen</span><span class="p">.</span><span class="nx">colorDepth</span><span class="p">;</span>
+<span class="mi">32</span>
+
+<span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+<span class="mi">1440</span>
+<span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">availWidth</span><span class="p">;</span>
+<span class="mi">1440</span>
+<span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+<span class="mi">900</span>
+<span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">availHeight</span><span class="p">;</span>
+<span class="mi">847</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="windowdevicepixelratio-缩放比例">window.devicePixelRatio 缩放比例</h3>
+
+<p>网页在浏览器中的缩放比例，不缩放，值为 1；放大到 150%，值为 1.5；缩小到 90%，值为 0.9</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1">// the difference (ratio) between physical pixels and device pixels in the</span>
+<span class="c1">// retina displays in mobile devices (for example, value 2 in iPhone).</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">devicePixelRatio</span><span class="p">;</span>
+<span class="mi">1</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="open--close">open() , close()</h3>
+
+<p>打开/关闭浏览器窗口。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">win</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'http://www.packtpub.com'</span><span class="p">,</span> <span class="s1">'packt'</span><span class="p">,</span>
+<span class="s1">'width=300,height=300,resizable=yes'</span><span class="p">);</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span> <span class="c1">// closes the new window.</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="moveto--resizeto">moveTo() , resizeTo()</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">window.moveTo(100, 100)</code> moves the browser window to screen location x = 100 and y = 100</li>
+  <li><code class="highlighter-rouge">window.moveBy(10, -10)</code> moves the window 10 pixels to the right and 10 pixels up from its current location</li>
+  <li><code class="highlighter-rouge">window.resizeTo(x, y)</code> and <code class="highlighter-rouge">window.resizeBy(x, y)</code> accept the same parameters as the move methods but they resize the window as opposed to moving it</li>
+</ul>
+
+<h3 id="alert-prompt-confirm">alert(), prompt(), confirm()</h3>
+
+<p><code class="highlighter-rouge">alert()</code> is not an ECMAScript function, but a BOM method. 另外两个方法在 ECMAScript 中。</p>
+
+<ul>
+  <li>confirm() gives the user two options, OK and Cancel</li>
+  <li>prompt() collects textual input</li>
+</ul>
+
+<h4 id="confirm">confirm()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Are you cool?'</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// cool</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// no cool</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="window-confirm.png" alt="" /></p>
+
+<ul>
+  <li>Nothing gets written to the console until you close this message, this means that any JavaScript code execution freezes, waiting for the user’s answer</li>
+  <li>Clicking on OK returns true, clicking on Cancel or closing the message using the X icon (or the ESC key) returns false</li>
+</ul>
+
+<h4 id="prompt">prompt()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s1">'And your name was?'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">answer</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="window-prompt.png" alt="" /></p>
+
+<p>The value of answer is one of the following:</p>
+<ul>
+  <li><strong>null</strong> if you click on <code class="highlighter-rouge">Cancel</code> or the <code class="highlighter-rouge">X icon</code>, or press <kbd>ESC</kbd></li>
+  <li><strong>”” (empty string)</strong> if you click on OK or press <kbd>Enter</kbd> without typing anything</li>
+  <li><strong>A text string</strong> if you type something and then click on <code class="highlighter-rouge">OK</code> (or press <kbd>Enter</kbd>)</li>
+</ul>
+
+<h3 id="settimeout-setinterval">setTimeout(), setInterval()</h3>
+
+<p><code class="highlighter-rouge">setTimeout()</code> and <code class="highlighter-rouge">setInterval()</code> allow for scheduling the execution of a piece of code.</p>
+
+<ul>
+  <li>setTimeout() attempts to execute the given code once after a specified number of milliseconds.</li>
+  <li>setInterval() attempts to execute it repeatedly after a specified number of milliseconds has passed.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c1">// shows an alert after approximately 2 seconds (2000 milliseconds):</span>
+<span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">boo</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">'Boo!'</span><span class="p">);</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">boo</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="mi">4</span> <span class="c1">// 返回值是，计划执行的ID，可以用这个ID，通过 clearTimeout() 来 cancel timeout。</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">boo</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">boo</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'boo'</span><span class="p">);</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">boo</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="nx">boo</span>
+<span class="nx">boo</span>
+<span class="nx">boo</span>
+<span class="o">&gt;</span> <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以使用匿名函数</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span>
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'boo, boo'</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="mi">2000</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+
+<h3 id="feature-sniffing">feature sniffing</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span> <span class="o">===</span> <span class="s1">'function'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// feature is supported, let's use it</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// hmm, this feature is not supported, will have to</span>
+  <span class="c1">// think of another way</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#JavaScript" title="Pages tagged JavaScript" class="tag"><span class="term">JavaScript</span></a><a href="/tags#oop" title="Pages tagged oop" class="tag"><span class="term">oop</span></a><a href="/tags#object-oriented" title="Pages tagged object-oriented" class="tag"><span class="term">object-oriented</span></a><a href="/tags#bom" title="Pages tagged bom" class="tag"><span class="term">bom</span></a><a href="/tags#browser" title="Pages tagged browser" class="tag"><span class="term">browser</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

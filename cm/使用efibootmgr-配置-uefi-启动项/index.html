@@ -1,0 +1,1050 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>使用 efibootmgr 配置 uefi 启动项，关联 多系统, linux, grub, os-prober, UEFI &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 efibootmgr 配置 uefi 启动项，关联 多系统, linux, grub, os-prober, UEFI">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/%E4%BD%BF%E7%94%A8efibootmgr-%E9%85%8D%E7%BD%AE-uefi-%E5%90%AF%E5%8A%A8%E9%A1%B9/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/%E4%BD%BF%E7%94%A8efibootmgr-%E9%85%8D%E7%BD%AE-uefi-%E5%90%AF%E5%8A%A8%E9%A1%B9/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">使用 efibootmgr 配置 uefi 启动项，关联 多系统, linux, grub, os-prober, UEFI</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-01-09T00:00:00+08:00">January 09, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.cxybb.com/article/cgm88s/91830509">UEFI 与Linux基础：一_cgm88s的专栏-程序员宝宝_linux uefi</a></li>
+      <li><a href="https://wiki.gentoo.org/wiki/Efibootmgr">Gentoo wiki - Efibootmgr</a></li>
+      <li><a href="https://ask.fedoraproject.org/t/efibootmgr-nvme-how-to-create-entry-with-custom-label/19757/2">Efibootmgr + nvme: How to create entry with custom label</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>EFI 启动项，没法重命名，只能删除后，新建</li>
+  <li>MSI 主板 BIOS 能读取的启动项有限，x299 carbon 只有 5个！！<br />
+  设置位置： BIOS 》Settings 》Boot 》UEFI Hard Disk Drive BBS Priorites</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="c"># 查看当前启动项</span>
+efibootmgr
+
+<span class="c"># 查看当前启动项，更详细的信息（包含efi启动文件位置）</span>
+efibootmgr -v
+
+
+<span class="c"># 查看 /boot 下面的启动文件</span>
+tree /boot/ -L 3
+<span class="c"># 或</span>
+find . -type f -name <span class="s2">"*.efi"</span>
+
+<span class="c"># 创建启动项 -----------</span>
+<span class="c"># 创建从 /dev/sda 第二个分区 启动，启动项lable 为 Gentoo</span>
+efibootmgr -c -d /dev/sda -p 2 -L <span class="s2">"Gentoo"</span> -l <span class="s1">'\efi\boot\bootx64.efi'</span>
+
+<span class="c"># nvme 上创建启动项的例子</span>
+efibootmgr -c -d /dev/nvme0n1p5 -p 1 -L <span class="s2">"manjaro"</span> -l <span class="s1">'\efi\manjaro\grubx64.efi'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>删除 boot 项</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c"># 找到 boot entry 编号</span>
+efibootmgr
+
+<span class="c"># 删除对应编号的boot entry</span>
+<span class="c"># 比如，sudo efibootmgr -b E -B to remove the Boot000E entry.</span>
+efibootmgr -b 编号 -B
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="grub">grub</h2>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://wiki.archlinux.org/title/GRUB">wiki.archlinux.org - Grub</a></li>
+      <li><a href="https://wiki.archlinux.org/title/Chroot#Using_arch-chroot">wiki.archlinux.org - Using_arch-chroot</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="注册-当前的grub-到-efi启动项目中">注册 当前的grub 到 EFI启动项目中</h3>
+
+<p>使用 <code class="highlighter-rouge">grub-install</code> ， 等同于使用 <code class="highlighter-rouge">efibootmgr --create</code></p>
+
+<p><code class="highlighter-rouge">grub-install</code> creates the <code class="highlighter-rouge">/boot/grub</code> directory</p>
+
+<h3 id="创建-grubcfg">创建 <code class="highlighter-rouge">grub.cfg</code></h3>
+
+<p>使用 <code class="highlighter-rouge">grub-mkconfig</code> 创建 <code class="highlighter-rouge">grub.cfg</code></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>grub-mkconfig -o /boo/grub/grub.cfg
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">/boot/grub/grub.cfg</code> 是 grub 的主配置文件。生成配置文件的时候，如果不指定详细的配置参数，那么会自动根据当前所在系统或<code class="highlighter-rouge">chroot</code>到的目标系统，来自动生成配置，为每个安装的linux kernel 添加 <code class="highlighter-rouge">menuentry</code> 或 <code class="highlighter-rouge">submenu</code> 。</p>
+
+<p>如果新增或删除了一个kernel，可以再次执行下 <code class="highlighter-rouge">grub-mkconfig</code> 来刷新 grub 启动菜单。</p>
+
+<p>也可以手动编辑<code class="highlighter-rouge">/etc/grub.d/40_custom</code> ，来添加 menuentry后，执行下 <code class="highlighter-rouge">grub-mkconfig</code> 来刷新 grub 启动菜单。</p>
+
+<p>也可以手动添加<code class="highlighter-rouge">/boot/grub/custom.cfg</code> ，这个不用再执行 <code class="highlighter-rouge">grub-mkconfig</code> 刷新，因为 <code class="highlighter-rouge">/etc/grub.d/41_custom</code> 脚本之前已经包含这个逻辑。</p>
+
+<p>如果 <code class="highlighter-rouge">chroot</code> 到目标系统，执行 <code class="highlighter-rouge">grub-mkconfig</code> 生成 grub.cfg 时候报错：<code class="highlighter-rouge">grub-probe: error: failed to get canonical path of /dev/sdaX</code> ， 试着使用 <code class="highlighter-rouge">arch-chroot</code></p>
+
+<p><code class="highlighter-rouge">/etc/default/grub</code> 和 <code class="highlighter-rouge">/etc/grub.d/</code>的脚本文件，会影响 grub 配置文件的生成。<strong>TODO</strong> 这些脚本的具体功能，还不太清楚？？？</p>
+
+<ul>
+  <li>查找其他已安装的OS</li>
+</ul>
+
+<p><code class="highlighter-rouge">grub-mkconfig</code> 利用 <code class="highlighter-rouge">os-prober</code> 查找其他已安装的OS。</p>
+
+<p>如果报错： <code class="highlighter-rouge">Warning: os-prober will not be executed to detect other bootable partitions</code> ，那么通过编辑 <code class="highlighter-rouge">/etc/default/grub</code> 来允许使用 <code class="highlighter-rouge">os-prober</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>GRUB_DISABLE_OS_PROBER=false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>据说 <code class="highlighter-rouge">os-prober</code> 有安全风险，有些发行版可能默认禁用。</p>
+
+<h3 id="手动创建-grubcfg">手动创建 grub.cfg</h3>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://wiki.archlinux.org/title/Talk:GRUB#Manually_generate_grub.cfg">Manually_generate_grub.cfg</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>基本的Grub配置文件包含的配置项：</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">(hdX,Y)</code> is the partition Y on disk X, partition numbers starting at 1, disk numbers starting at 0</li>
+      <li><code class="highlighter-rouge">set default=N</code> is the default boot entry that is chosen after timeout for user action</li>
+      <li><code class="highlighter-rouge">set timeout=M</code> is the time M to wait in seconds for a user selection before default is booted</li>
+      <li><code class="highlighter-rouge">menuentry "title" {entry options}</code> is a boot entry titled title</li>
+      <li><code class="highlighter-rouge">set root=(hdX,Y)</code> sets the boot partition, where the kernel and GRUB modules are stored (boot need not be a separate partition, and may simply be a directory under the “root” partition (<code class="highlighter-rouge">/</code>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="boot-menuentry-例子">Boot menuentry 例子</h3>
+
+<p>“Shutdown” menu entry</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>menuentry "System shutdown" {
+	echo "System shutting down..."
+	halt
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>“Restart” menu entry</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>menuentry "System restart" {
+	echo "System rebooting..."
+	reboot
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>“UEFI Firmware Settings” menu entry</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>if [ ${grub_platform} == "efi" ]; then
+	menuentry 'UEFI Firmware Settings' --id 'uefi-firmware' {
+		fwsetup
+	}
+fi
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>UEFI Shell</p>
+
+<p>You can launch UEFI Shell by placing it in the root of the EFI system partition and adding this menu entry:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>menuentry "UEFI Shell" {
+	insmod fat
+	insmod chain
+	search --no-floppy --set=root --file /shellx64.efi
+	chainloader /shellx64.efi
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>gdisk</p>
+
+<p>Download the <a href="https://wiki.archlinux.org/title/Gdisk#gdisk_EFI_application">gdisk EFI application</a> and copy <code class="highlighter-rouge">gdisk_x64.efi</code> to <code class="highlighter-rouge">esp/EFI/tools/</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>menuentry "gdisk" {
+	insmod fat
+	insmod chain
+	search --no-floppy --set=root --file /EFI/tools/gdisk_x64.efi
+	chainloader /EFI/tools/gdisk_x64.efi
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Chainloading a unified kernel image</p>
+
+<p>If you have a unified kernel image generated from following Secure Boot or other means, you can add it to the boot menu. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>menuentry "Arch Linux" {
+	insmod fat
+	insmod chain
+	search --no-floppy --set=root --fs-uuid FILESYSTEM_UUID
+	chainloader /EFI/Linux/Arch-linux.efi
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>双系统</p>
+
+<p>Assuming that the other distribution is on partition sda2:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>menuentry "Other Linux" {
+	set root=(hd0,2)
+	linux /boot/vmlinuz (add other options here as required)
+	initrd /boot/initrd.img (if the other kernel uses/needs one)
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Alternatively let GRUB search for the right partition by UUID or file system label:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>menuentry "Other Linux" {
+    # assuming that UUID is 763A-9CB6
+    search --no-floppy --set=root --fs-uuid 763A-9CB6
+
+    # search by label OTHER_LINUX (make sure that partition label is unambiguous)
+    #search --no-floppy --set=root --label OTHER_LINUX
+
+    linux /boot/vmlinuz (add other options here as required, for example: root=UUID=763A-9CB6)
+    initrd /boot/initrd.img (if the other kernel uses/needs one)
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="grub-shell">grub shell</h3>
+
+<p>从 rescue 模式 切换到 normal 模式，以便使用更多命令。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>grub rescue&gt; set prefix=(hdX,Y)/boot/grub
+grub rescue&gt; insmod (hdX,Y)/boot/grub/i386-pc/normal.mod
+rescue:grub&gt; normal
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="从shell启动系统">从shell启动系统</h4>
+
+<p>使用 <code class="highlighter-rouge">chainloading</code>， Chainloading 表示加载另外一个 boot-loader</p>
+
+<p>Chainloading a partition’s VBR</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>set root=(hdX,Y)
+chainloader +1
+boot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>For example to chainload Windows stored in the first partition of the first hard disk,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>set root=(hd0,1)
+chainloader +1
+boot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Chainloading a disk’s MBR or a partitionless disk’s VBR</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>set root=hdX
+chainloader +1
+boot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Chainloading Windows/Linux installed in UEFI mode</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>insmod fat
+set root=(hd0,gpt4)
+chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+boot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">insmod fat</code> 用来加载 FAT 文件系统 ，才能访问 EFI 分区。 上例，<code class="highlighter-rouge">(hd0,gpt4)</code> or <code class="highlighter-rouge">/dev/sda4</code> 就是 EFI分区。</p>
+
+<h4 id="using-the-rescue-console">Using the rescue console</h4>
+
+<p>rescue 模式下可以使用命令： <code class="highlighter-rouge">insmod</code>, <code class="highlighter-rouge">ls</code>, <code class="highlighter-rouge">set</code>, <code class="highlighter-rouge">unset</code></p>
+
+<p><code class="highlighter-rouge">set</code> modifies variables and <code class="highlighter-rouge">insmod</code> inserts new modules to add functionality.</p>
+
+<p>开始修复grub之前，必须先知道 <code class="highlighter-rouge">/boot</code> 分区的位置，才能找到 grub。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>grub rescue&gt; set prefix=(hdX,Y)/boot/grub
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>添加 linux 模板来引入 <code class="highlighter-rouge">linux</code> 和 <code class="highlighter-rouge">initrd</code> 命令。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>grub rescue&gt; insmod i386-pc/linux.mod
+
+<span class="c">#或</span>
+grub rescue&gt; insmod linux
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>An example, booting Arch Linux:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>set root=(hd0,5)
+linux (hdX,Y)/vmlinuz-linux root=/dev/sda6
+initrd (hdX,Y)/initramfs-linux.img
+boot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>上例子， <code class="highlighter-rouge">(hd0,5)</code> 是 EFI 分区，<code class="highlighter-rouge">/dev/sda6</code> 是 linux 分区。</p>
+
+<p>成功启动进linux系统之后，可以开始修复grub了，比如， 修改<code class="highlighter-rouge">grub.cfg</code> 或者 重装GRUB。</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

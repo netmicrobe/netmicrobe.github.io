@@ -1,0 +1,1088 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>自己动手，制作内置root权限的ramdisk.img(boot.img) &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="刷机, flash, rom">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自己动手，制作内置root权限的ramdisk.img(boot.img)">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/phone/custom-rom-of-huawei/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/phone/custom-rom-of-huawei/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">自己动手，制作内置root权限的ramdisk.img(boot.img)</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-06-01T00:00:00+08:00">June 01, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="http://android-dls.com/wiki/index.php?title=HOWTO:_Unpack%2C_Edit%2C_and_Re-Pack_Boot_Images">HOWTO: Unpack, Edit, and Re-Pack Boot Images</a></li>
+      <li><a href="https://blog.csdn.net/u013491946/article/details/78116535">android-ramdisk.img分析、recovery.img&amp;boot.img执行过程</a></li>
+      <li><a href="https://blog.csdn.net/u013491946/article/details/78045609">ROM定制入门</a></li>
+      <li><a href="https://blog.csdn.net/u013491946/article/details/77891456">ROM定制开篇之ROOT权限提取原理</a></li>
+      <li><a href="https://blog.csdn.net/u013491946/article/details/77964008">Android解包命令:unpackbootimg与打包命令:mkbootimg使用</a></li>
+    </ul>
+  </li>
+  <li>摘自： <a href="https://club.huawei.com/thread-14889191-1-1.html">https://club.huawei.com/thread-14889191-1-1.html</a></li>
+</ul>
+
+<p>华为和荣耀的新机器一向twrp适配的非常慢，如果要获取root，最简便的办法就是做一个内置root权限的ramdisk.img包。<br />
+授人以鱼不如授人以渔，如果你有耐心，希望本文能帮到你。</p>
+
+<p>本文大致讲一下如何制作，毕竟无论国内还是国外，关于这个的内容少之又少，我走了很多弯路才摸索出来，所以分享出来，希望各位如果有心能帮助大家少走一些弯路，省一点精力和时间。<br />
+PS：伸手党专用，我已做好的内置supersu的ramdisk.img: <a href="http://club.huawei.com/forum.php?mod=viewthread&amp;tid=14888928&amp;page=1&amp;extra=#pid335885190">http://club.huawei.com/forum.php?mod=viewthread&amp;tid=14888928&amp;page=1&amp;extra=#pid335885190</a><br />
+或者使用magisk root： <a href="http://club.huawei.com/forum.php?mod=viewthread&amp;tid=15216460&amp;page=1&amp;extra=#pid341388051">http://club.huawei.com/forum.php?mod=viewthread&amp;tid=15216460&amp;page=1&amp;extra=#pid341388051</a></p>
+
+<h2 id="准备工作">准备工作</h2>
+
+<ol>
+  <li>下载supersu beta版，到xda-developor论坛自行下载，本文编写是的版本为 <a href="https://download.chainfire.eu/1220/SuperSU/SR5-SuperSU-v2.82-SR5-20171001224502.zip?retrieve_file=1">supersu beta 2.82 sr5</a>。</li>
+</ol>
+
+<h2 id="如何制作">如何制作</h2>
+
+<div><ul>
+<li>ramdisk.img 在荣耀V10上测试，失败，变砖！！</li>
+<li>仍然需要进一步研究。。。。</li>
+</ul></div>
+
+<ol>
+  <li>
+    <p>下载 Full-OTA <code class="highlighter-rouge">update.zip</code>，从中提取 <code class="highlighter-rouge">update.app</code><br />
+ 从 <a href="http://pro-teammt.ru/firmware-database/?firmware_model=&amp;firmware_page=1">http://pro-teammt.ru/firmware-database/?firmware_model=&amp;firmware_page=1</a> ，<br />
+ 搜搜自己的手机型号（可从“关于手机/型号”中查看），<br />
+ 比如 荣耀V10高配版为 <code class="highlighter-rouge">BKL-AL20</code>。下载大于1G甚至2G的FULL-OTA的update.zip文件。<br />
+ 下载完成后解压，得到update.app文件</p>
+  </li>
+  <li><code class="highlighter-rouge">update.app</code> 中提取出 <code class="highlighter-rouge">ramdisk.img</code> 和 <code class="highlighter-rouge">vendor.img</code>
+    <ol>
+      <li>下载 <a href="http://forum.xda-developers.com/showthread.php?t=2433454">Huawei update extrator</a></li>
+      <li>启动 Huawei update extrator，解包前，先到设置中，去掉 <strong>verify header 1. checksum</strong>，否则打不开</li>
+      <li>用Extractor 从 update.app 文件，提取出 <code class="highlighter-rouge">ramdisk.img</code> 和 <code class="highlighter-rouge">vendor.img</code></li>
+    </ol>
+  </li>
+  <li>解包ramdisk.img
+    <ol>
+      <li>下载 <a href="http://github.com/cofface/android_bootimg">Bootimg.exe</a> ，这个工具用来解包ramdisk.img</li>
+      <li>把ramdisk.img改名为boot.img，并与bootimg.exe放到同一个文件夹</li>
+      <li>在该文件夹启动cmd，输入 <code class="highlighter-rouge">bootimg.exe --unpack-bootimg</code>，解包</li>
+    </ol>
+  </li>
+  <li>加入 init.supersu.rc
+    <ol>
+      <li>编辑initrd文件夹下的init.rc文件，在<code class="highlighter-rouge">import /init.${ro.zygote}.rc</code>下添加一行<code class="highlighter-rouge">import init.supersu.rc</code></li>
+      <li>拷贝  <code class="highlighter-rouge">SR5-SuperSU-v2.82-SR5-20171001224502\common\init.supersu.rc</code> 到 initrd 下</li>
+    </ol>
+  </li>
+  <li>
+    <p>删除 initrd/verity_key 文件</p>
+  </li>
+  <li>
+    <p>从SuperSU提取打包出 <code class="highlighter-rouge">root.tar</code>，并拷贝到 /res/.su 下</p>
+
+    <p>解压supersu，把supersu的文件按照这个文件树重新组织，并打包成root.tar （注意，是tar，用tar cvf 命令）</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre> #  压缩文件 C:\android_bootimg-master\root.tar
+ SuperSU.apk
+ supersu_install
+ supersu_install\bin
+ supersu_install\bin\su
+ supersu_install\bin\daemonsu
+ supersu_install\bin\supolicy
+ supersu_install\bin\supolicy_wrapped
+ supersu_install\bin\sukernel
+ supersu_install\xbin
+ supersu_install\lib
+ supersu_install\lib\libsupol.so
+ supersu_install\etc
+ supersu_install\su.d
+ supersu_install\file_contexts
+ supersu_install\supersu_is_here
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>root.tar与supersu压缩包中文件的对应关系为：</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>bin/su 、 bin/daemonsu</td>
+          <td>arm64/su</td>
+        </tr>
+        <tr>
+          <td>bin/sukernel</td>
+          <td>arm64/sukernel</td>
+        </tr>
+        <tr>
+          <td>bin/supolicy_wrapped</td>
+          <td>arm64/supolicy</td>
+        </tr>
+        <tr>
+          <td>bin/supolicy</td>
+          <td>arm64/supolicy</td>
+        </tr>
+        <tr>
+          <td>lib/libsupol.so</td>
+          <td>arm64/libsupol.so</td>
+        </tr>
+        <tr>
+          <td>file_contexts</td>
+          <td>common/file_contexts</td>
+        </tr>
+        <tr>
+          <td>supersu_is_here</td>
+          <td>common/supersu_is_here</td>
+        </tr>
+        <tr>
+          <td>SuperSU.apk</td>
+          <td>common/Superuser.apk</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>复制完，别忘了<code class="highlighter-rouge">chmod +x supolicy</code> 等等</p>
+
+    <p>拷贝 root.tar 到 /res/.su 下</p>
+  </li>
+  <li>
+    <p>复制 fbe_bypass.sh，launch_daemonsu.sh，<a href="tar.7z">tar</a> 三个文件到/sbin下，<br />
+修改launch_daemonsu.sh文件，判断/data/adb/su/bin是否存在，如果不存在则解压root.tar到指定目录。</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c"># copy boot image backups</span>
+log_print <span class="s2">"copying boot image backups from /cache to /data"</span>
+cp -f /cache/stock_boot_<span class="k">*</span> /data/. 2&gt;/dev/null
+
+<span class="k">if</span> <span class="o">(</span><span class="nv">$SBIN</span><span class="o">)</span>; <span class="k">then</span>
+  <span class="c">### ### 添加这三句</span>
+  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">"/data/adb/su/bin"</span> <span class="o">]</span>; <span class="k">then</span>
+    /sbin/tar xvf /res/.su/root.tar -C /data
+  <span class="k">fi</span>
+  <span class="c">### ###</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>给init打补丁</p>
+
+    <p>找一台使用supersu2.6以上版本root过的手机，之后在cmd里输入：</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>adb push init /sdcard/init
+adb shell
+su
+    
+sed -i <span class="s1">'s/\/system\/etc\/selinux\/plat_sepolicy.cil/\/system\/etc\/selinux\/plat_sepolicy.xxx/g'</span> /sdcard/init
+    
+adb pull /sdcard/init init
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>给sepolicy打补丁，放到initrd目录下。</p>
+
+    <ol>
+      <li>
+        <p>提取sepolicy文件。<br />
+ 由于EMUI8使用了split sepolicy，所以ramdisk下没有sepolicy文件，<br />
+ 不过你可以从vendor.img中找到他。</p>
+
+        <ol>
+          <li>用<a href="http://www.romzhushou.com/">ROM助手</a>打开vendor.img，<br />
+ <img src="ROMassis_unpack_vendorimg.png" alt="" style="width:500px" /></li>
+          <li>复制 /etc/selinux/precompiled_sepolicy 出来，改名为 sepolicy 。</li>
+        </ol>
+      </li>
+      <li>
+        <p>给sepolicy打补丁</p>
+
+        <p>之后同样，用已使用supersu2.6版本以上root过的手机，继续操作如下：</p>
+
+        <div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre> adb push sepolicy /sdcard/sepolicy
+ adb shell
+ su
+ supolicy --file /sdcard/sepolicy /sdcard/sepolicy_out --sdk<span class="o">=</span>26
+   supolicy v2.82 <span class="o">(</span>ndk:arm64-v8a<span class="o">)</span> - Copyright <span class="o">(</span>C<span class="o">)</span> 2014-2017 - Chainfire &amp; CCMT
+
+   Patching policy <span class="o">[</span>/sdcard/sepolicy] --&gt; <span class="o">[</span>/sdcard/sepolicy_out] ...
+   libsepol.policydb_index_others: security:  1 users, 4 roles, 2182 types, 0 bools
+   libsepol.policydb_index_others: security: 1 sens, 1024 cats
+   libsepol.policydb_index_others: security:  91 classes, 25768 rules, 0 cond rules
+   - Success
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+
+        <p><strong>注意，注意！！！</strong> 千万不要忘记后面的 <code class="highlighter-rouge">--sdk=26</code></p>
+      </li>
+      <li>
+        <p>将新的sepolicy放到 initrd 目录下。<br />
+ 把sepolicy_out文件复制出来，改名为sepolicy，放到initrd目录下。</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>更改 cpiolist.txt 文件，把我们新增的几个文件和文件夹加到里面</p>
+
+    <pre>
+compress_level:6
+<span style="background:yellow">dir . 0755</span>
+dir acct 0755
+slink bugreports /data/user_de/0/com.android.shell/files/bugreports 0644
+dir cache 0770
+slink charger /sbin/charger 0644
+dir config 0500
+slink d /sys/kernel/debug 0644
+dir data 0771
+slink default.prop system/etc/prop.default 0600
+dir dev 0755
+dir dload 0755
+file dload/update_huawei_dload.zip initrd/dload\update_huawei_dload.zip 0644
+slink etc /system/etc 0644
+file fstab.zram1024m initrd/fstab.zram1024m 0640
+file fstab.zram1280m initrd/fstab.zram1280m 0640
+file fstab.zram1536m initrd/fstab.zram1536m 0640
+file fstab.zram2240m initrd/fstab.zram2240m 0640
+file fstab.zram256m initrd/fstab.zram256m 0640
+file fstab.zram512m initrd/fstab.zram512m 0640
+file fstab.zram768m initrd/fstab.zram768m 0640
+file init initrd/init 0750
+file init.environ.rc initrd/init.environ.rc 0750
+file init.rc initrd/init.rc 0750
+<span style="background:yellow">file init.supersu.rc initrd/init.supersu.rc 0750</span>
+file init.usb.configfs.rc initrd/init.usb.configfs.rc 0750
+file init.usb.rc initrd/init.usb.rc 0750
+file init.zygote32.rc initrd/init.zygote32.rc 0750
+file init.zygote64_32.rc initrd/init.zygote64_32.rc 0750
+dir mnt 0755
+dir oem 0755
+dir patch 0755
+dir patch/cust 0755
+dir patch/cust/upper 0755
+dir patch/cust/work 0755
+dir patch/product 0755
+dir patch/product/upper 0755
+dir patch/product/work 0755
+dir patch/system 0755
+dir patch/system/upper 0755
+dir patch/system/work 0755
+dir patch/vendor 0755
+dir patch/vendor/upper 0755
+dir patch/vendor/work 0755
+dir patch_hw 0755
+dir proc 0755
+dir res 0755
+file res/keys initrd/res\keys 0644
+file res/native_packages.xml initrd/res\native_packages.xml 0644
+file resetFactory.cfg initrd/resetFactory.cfg 0644
+<span style="background:yellow">dir res/.su 0750</span>
+<span style="background:yellow">file res/.su/root.tar initrd/res\.su\root.tar 0750</span>
+file rootscan.conf initrd/rootscan.conf 0644
+dir sbin 0750
+file sbin/adbd initrd/sbin\adbd 0750
+file sbin/charger initrd/sbin\charger 0750
+file sbin/cota initrd/sbin\cota 0750
+file sbin/cust initrd/sbin\cust 0750
+file sbin/cust_init initrd/sbin\cust_init 0750
+file sbin/factory_reset initrd/sbin\factory_reset 0750
+<span style="background:yellow">file sbin/fbe_bypass.sh initrd/sbin\fbe_bypass.sh 0700</span>
+file sbin/fsck.f2fs_s initrd/sbin\fsck.f2fs_s 0750
+file sbin/hdbd initrd/sbin\hdbd 0750
+file sbin/huawei_dload initrd/sbin\huawei_dload 0750
+file sbin/hw_ueventd initrd/sbin\hw_ueventd 0750
+file sbin/kmsgcat initrd/sbin\kmsgcat 0750
+<span style="background:yellow">file sbin/launch_daemonsu.sh initrd/sbin\launch_daemonsu.sh 0700</span>
+file sbin/logctl_service initrd/sbin\logctl_service 0750
+file sbin/ntfs-3gd initrd/sbin\ntfs-3gd 0750
+file sbin/oeminfo_nvm_server initrd/sbin\oeminfo_nvm_server 0750
+file sbin/resize.f2fs_s initrd/sbin\resize.f2fs_s 0750
+<span style="background:yellow">file sbin/tar initrd/sbin\tar 0750</span>
+slink sbin/ueventd ../init 0750
+file sbin/volisnotd initrd/sbin\volisnotd 0750
+slink sbin/watchdogd ../init 0750
+file sbin/xlogcat-early initrd/sbin\xlogcat-early 0750
+slink sdcard /storage/self/primary 0644
+<span style="background:yellow">file sepolicy initrd/sepolicy 0644</span>
+dir storage 0751
+dir .subackup 0
+file .subackup/0000_fstab.zram1024m initrd/.subackup\0000_fstab.zram1024m 0640
+file .subackup/0001_fstab.zram1280m initrd/.subackup\0001_fstab.zram1280m 0640
+file .subackup/0002_fstab.zram1536m initrd/.subackup\0002_fstab.zram1536m 0640
+file .subackup/0003_fstab.zram2240m initrd/.subackup\0003_fstab.zram2240m 0640
+file .subackup/0004_fstab.zram256m initrd/.subackup\0004_fstab.zram256m 0640
+file .subackup/0005_fstab.zram512m initrd/.subackup\0005_fstab.zram512m 0640
+file .subackup/0006_fstab.zram768m initrd/.subackup\0006_fstab.zram768m 0640
+file .subackup/0007_init initrd/.subackup\0007_init 0750
+file .subackup/0008_init.rc initrd/.subackup\0008_init.rc 0750
+file .subackup/0009_verity_key initrd/.subackup\0009_verity_key 0644
+file .subackup/index initrd/.subackup\index 0644
+dir sys 0755
+dir system 0755
+file ueventd.rc initrd/ueventd.rc 0644
+dir vendor 0755
+<span style="background:lightsalmon">file verity_key initrd/verity_key 0644  删除这行</span>
+file version.prop initrd/version.prop 0644
+</pre>
+  </li>
+  <li>
+    <p>最后，重新打包<br />
+输入 <code class="highlighter-rouge">bootimg.exe --repack-ramdisk</code>，看看有没有报错，<br />
+如果没有，再输入 <code class="highlighter-rouge">bootimg --repack-bootimg</code>，会生成一个boot-new.img文件。</p>
+  </li>
+  <li>你就得到了一个内置root权限的boot.img，使用 <code class="highlighter-rouge">fastboot flash ramdisk boot-new.img</code> 刷到手机里吧。</li>
+</ol>
+
+<h2 id="题外话生成-sepolicy-的方法">题外话，生成 sepolicy 的方法</h2>
+
+<p>对于SpilitSepolicy设备，除提取vendor下的precompiled_sepolicy外，还可以自己使用官方文件编译，很简单。</p>
+
+<p>首先找到如下几个文件：</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>PLAT_CIL="/system/etc/selinux/plat_sepolicy.cil"
+MAPPING_CIL=$(find /system/etc/selinux | grep mapping | grep -m 1 "\.cil$")
+NONPLAT_CIL="/vendor/etc/selinux/nonplat_sepolicy.cil"
+POLICY_VERSION=$(cat /sys/fs/selinux/policyvers)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>其中MAPPING_CIL在荣耀V10上B132版本上，是/system/etc/selinux/mapping/26.0.cil<br />
+之后，使用系统中已经内置的secilc编译，编译格式：</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>secilc "$PLAT_CIL" -M true -c "$POLICY_VERSION" "$MAPPING_CIL" "$NONPLAT_CIL" -o /sdcard/sepolicy -f /dev/null
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果提示没有权限，你可以先把这些文件都adb pull 出来，之后复制到sdcard上，之后再编译，比如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>secilc "/sdcard/sepolicy/system/etc/selinux/plat_sepolicy.cil" -M true -c "30" "/sdcard/sepolicy/system/etc/selinux/mapping/26.0.cil" "/sdcard/sepolicy/vendor/etc/selinux/nonplat_sepolicy.cil" -o /sdcard/sepolicy/sepolicy -f /dev/null
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>这样同样可以得到sepolicy文件，之后再把这个文件用上文所说的方法用supolicy去patch一下，同样可正常使用。</p>
+
+<h2 id="bootimg">boot.img</h2>
+
+<ul>
+  <li><a href="http://www.banxiayue.com/bootimgdownload.html">http://www.banxiayue.com/bootimgdownload.html</a></li>
+  <li><a href="https://xingzhou.name/2014/01/02/818/">boot.img 和 recovery.img 文件结构与知识</a></li>
+  <li><a href="http://android-dls.com/wiki/index.php?title=HOWTO:_Unpack%2C_Edit%2C_and_Re-Pack_Boot_Images">HOWTO: Unpack, Edit, and Re-Pack Boot Images</a></li>
+</ul>
+
+<p>boot.img在一般情况下包括了ramdisk、kernel,  KERNEL_CMDLINE, FLASH_PAGE_SIZE四个部分</p>
+
+<h2 id="ramdisk">ramdisk</h2>
+
+<p>ramdisk.img是组成boot.img的重要部分，从Android/build/core/Makefile中可以看到ramdisk.img的生成该过程.</p>
+
+<p>ramdisk.img是用mkbootfs工具从out/target/product/tcc8900/root目录制作得到,</p>
+
+<p>ramdisk映像是一个最基础的小型文件系统，它包括了初始化系统所需要的全部核心文件，例如:初始化init进程以及init.rc（可以用于设置很多系统的参数）等文件。如果你您希望了解更多关于此文件的信息可以参考以下网址：</p>
+
+<p>http://git.source.android.com/?p=kernel/common.git;a=blob;f=Documentation/filesystems/ramfs-rootfs-initramfs.txt</p>
+
+<h2 id="recovery">recovery</h2>
+
+<p>recovery映像包含了一些额外的文件，例如一个叫做recovery的二进制程序，以及一些对该程序支持性的资源图片文件（当你您按下home+power组合键的时候就会运行这个recovery程序）。</p>
+
+<h2 id="bootimgexe-使用教程">bootimg.exe 使用教程</h2>
+
+<p><a href="http://www.banxiayue.com/bootimgdownload.html">http://www.banxiayue.com/bootimgdownload.html</a></p>
+
+<p>bootimg.exe工具命令大全</p>
+
+<p>bootimg –cpio-list<br />
+bootimg –repack-565 oemlogo.mbn（生成开机第一屏文件）<br />
+bootimg –repack-bootimg boot.img（生成boot.img及recovery.img文件）<br />
+bootimg –repack-ramdisk ramdisk（生成ramdisk文件）<br />
+bootimg –repack-rle<br />
+bootimg –unpack-565 oemlogo.mbn（解开开机第一屏文件）<br />
+bootimg –unpack-bootimg boot.img（解开boot.img及recovery.img文件）<br />
+bootimg –unpack-ramdisk ramdisk（解开ramdisk文件）<br />
+bootimg –unpack-rle<br />
+bootimg –unpack-updata UPDATA.APP（解开UPDATA.APP文件）<br />
+bootimg –unpack-yafffs system.img（解开system.img及userdata.img文件）<br />
+bootimg –unpack-yaffs system.img（解开system.img及userdata.img文件）<br />
+bootimg –unpack-yaffs2 system.img（解开system.img及userdata.img文件）</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#刷机" title="Pages tagged 刷机" class="tag"><span class="term">刷机</span></a><a href="/tags#flash" title="Pages tagged flash" class="tag"><span class="term">flash</span></a><a href="/tags#rom" title="Pages tagged rom" class="tag"><span class="term">rom</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,894 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>excel 中利用 VLOOKUP & INDIRECT 查找信息表中的记录，并获取记录字段 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="office, excel, vlookup">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="excel 中利用 VLOOKUP & INDIRECT 查找信息表中的记录，并获取记录字段">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/office/excel-query-lookup-reference/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/office/excel-query-lookup-reference/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">excel 中利用 VLOOKUP & INDIRECT 查找信息表中的记录，并获取记录字段</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-12-28T00:00:00+08:00">December 28, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://support.office.com/en-us/article/VLOOKUP-function-0BBC8083-26FE-4963-8AB8-93A18AD188A1">Microsoft - Excel - Formulas and functions - Reference - VLOOKUP function</a></li>
+      <li><a href="https://support.office.com/en-us/article/Look-up-values-in-a-list-of-data-c249efc5-5847-4329-bfee-ecffead5ef88">Microsoft - Look up values in a list of data</a></li>
+      <li><a href="https://zhuanlan.zhihu.com/p/29887818">知乎 - Excel公式中如何固定获取相对单元格的值</a></li>
+      <li><a href="https://support.office.com/en-us/article/Lookup-and-reference-functions-reference-8aa21a3a-b56a-4055-8257-3ec89df2b23e?ui=en-US&amp;rs=en-US&amp;ad=US">Microsoft - Lookup and reference functions - reference</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="场景">场景</h2>
+
+<p>需要实现：如果“甲表 人员联系方式表”中B列某人电话改变，“乙表 进出货记录”中B列电话也要随之改变。</p>
+
+<p>甲表 人员联系方式</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>姓名</td>
+      <td>电话</td>
+      <td>地址</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>张三</td>
+      <td>16992880081</td>
+      <td>上海路8号</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>李四</td>
+      <td>19982920971</td>
+      <td>湖南路9号</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>赵武</td>
+      <td>18100001111</td>
+      <td>广州路20号</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>乙表 进出货记录</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>姓名</td>
+      <td>电话</td>
+      <td>进出货记录</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>张三</td>
+      <td>16992880081</td>
+      <td>进货100袋大米</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>赵武</td>
+      <td>18100001111</td>
+      <td>领走5包薯条</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>李四</td>
+      <td>19982920971</td>
+      <td>进货10条鲨鱼</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>张三</td>
+      <td>16992880081</td>
+      <td>进货50吨大麦</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="实现方法">实现方法</h2>
+
+<ol>
+  <li>找到“乙表”电话号码字段所在记录，名字字段的内容</li>
+  <li>根据名字检索“甲表”获得电话号码</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>=VLOOKUP(INDIRECT(ADDRESS(ROW(),COLUMN()-1)),人员联系方式!$A$1:$B$4,2,FALSE)
+
+# 如果查找失败，可能是excel数值转换的问题，例如，是更加电话号码来检索，使用VALUE函数就好了
+# 原因目前还没搞清楚。。。
+=VLOOKUP(VALUE(INDIRECT(ADDRESS(ROW(),COLUMN()-1))),人员联系方式!$A$1:$B$4,2,FALSE)
+
+# 出现NA未找到的情况，excel显示NA，可以使用IFNA函数来转换为需要的值，例如，下面转换为空字符串
+=IFNA(VLOOKUP(VALUE(INDIRECT(ADDRESS(ROW(),COLUMN()-1))),人员联系方式!$A$1:$B$4,2,FALSE),"")
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="定位函数">定位函数</h3>
+
+<h4 id="如何获取相对单元格上的值">如何获取相对单元格上的值</h4>
+
+<ul>
+  <li>取同一列上一行的值：<code class="highlighter-rouge">=INDIRECT(ADDRESS(ROW()-1,COLUMN()))</code></li>
+  <li>取上同一行向左两列：<code class="highlighter-rouge">=INDIRECT(ADDRESS(ROW(),COLUMN()-2))</code></li>
+  <li>取上同一行向左一列：<code class="highlighter-rouge">=INDIRECT(ADDRESS(ROW(),COLUMN()-1))</code></li>
+</ul>
+
+<h4 id="row函数">ROW()函数</h4>
+
+<p>ROW()函数的调用格式为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>=ROW([reference])
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>其中reference是一个数据区域。ROW()函数会返回这个数据区域的首行行号。</li>
+  <li>如果不给定reference，则返回公式所在单元格的行号。</li>
+</ul>
+
+<p>例如 <code class="highlighter-rouge">=ROW(A2:F7)</code> 得到的值是2，因为这个数据区域的是从第2行开始的。</p>
+
+<h4 id="column函数">COLUMN()函数</h4>
+
+<p>COLUMN()函数的调用格式：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>=COLUMN([refrence])
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>和ROW()函数相对应的，COLUMN()函数返回的是列号，不过它返回值的是以数字形式表示的，而不是以Excel界面中A列、B列这种字母表示。</li>
+  <li>如果不给定reference，则返回公式所在单元格的列号。</li>
+</ul>
+
+<p>例如 <code class="highlighter-rouge">=COLUMN(K4:M10)</code> 得到的值是11，因为第K列是第11列。</p>
+
+<h4 id="address函数">ADDRESS()函数</h4>
+
+<p>ADDRESS()函数的调用格式是</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>=ADDRESS(row_num, column_num, [abs_num], [a1], [sheet_text])
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>它的作用是给定单元格所在的行号和列号（都是数字）后返回它在Excel中表示的地址，类似$A$2、D$7这种形式。其中</p>
+
+<ul>
+  <li>row_num：在单元格引用中使用的行号。</li>
+  <li>column_num：在单元格引用中使用的列标。</li>
+  <li>abs_num：用以指定返回地址的类型，可选参数值和意义如下：
+    <ul>
+      <li>值为 1 ：绝对引用，为默认值。返回的地址类似$A$2这种绝对引用的地址。</li>
+      <li>值为 2 ：绝对行号，相对列标。类似A$2。</li>
+      <li>值为 3 ：相对行号，绝对列标。类似$A2。</li>
+      <li>值为 4 ：相对引用。类似A2。</li>
+    </ul>
+  </li>
+  <li>a1：布尔值，用于设置返回地址的形式。
+    <ul>
+      <li>如果值为TRUE，则返回值的形式为<code class="highlighter-rouge">&lt;字母表示的列号&gt;&lt;数字表示的行号&gt;</code>，比如 <code class="highlighter-rouge">=ADDRESS(1, 8, 4, TRUE)</code> 返回的是H1；</li>
+      <li>如果值为FALSE，则返回值形式为<code class="highlighter-rouge">R&lt;数字表示的行号&gt;C&lt;数字表示的列号&gt;</code>，比如 <code class="highlighter-rouge">=ADDRESS(1, 8, 4, FALSE)</code> 返回的是R[1]C[8]。</li>
+      <li>默认值是TRUE。</li>
+    </ul>
+  </li>
+  <li>sheet_text：文本值，指定作为外部引用的工作表的名称，如果省略 sheet_text，则不使用任何工作表名。</li>
+</ul>
+
+<h4 id="indirect函数">INDIRECT()函数</h4>
+
+<p>INDIRECT()函数的调用格式是</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>=INDIRECT(ref_text, [a1])
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>作用是返回ref_text所表示的单元格的引用。其中</p>
+
+<ul>
+  <li>ref_text：文本值，<br />
+表示所引用单元格的地址，可以是类似A8形式的地址，也可以是类似R8C1形式的地址，<br />
+但如果使用后一种形式，要把参数a1的值设置为FALSE。</li>
+  <li>a1: 布尔值。
+    <ul>
+      <li>若值为TRUE表示参数ref_text表示的引用格式是类似A8形式的地址，</li>
+      <li>若为FALSE，则表示ref_text表示的引用格式是类似R8C1形式的地址。</li>
+      <li>默认值为TRUE。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="vlookup">VLOOKUP</h3>
+
+<blockquote>
+  <p>=VLOOKUP(<strong>lookup value</strong>, <strong>lookup range</strong>, the <strong>column number</strong> containing the return value, <strong>how to match</strong>).</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>The value you want to look up, also called the <strong>lookup value</strong>.</p>
+  </li>
+  <li>
+    <p>The <strong>lookup range</strong> where the lookup value is located. Remember that the <strong>lookup value</strong> should always be in the <strong>first column</strong> in the range for VLOOKUP to work correctly. For example, if your lookup value is in cell C2 then your range should start with C.</p>
+  </li>
+  <li>
+    <p>The <strong>column number</strong> in the range that contains the return value. For example, if you specify B2: D11 as the range, you should count B as the first column, C as the second, and so on.</p>
+  </li>
+  <li>
+    <p>Optionally, you can specify TRUE if you want an approximate match or FALSE if you want an exact match of the return value. If you don’t specify anything, the default value will always be TRUE or approximate match.</p>
+  </li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#office" title="Pages tagged office" class="tag"><span class="term">office</span></a><a href="/tags#excel" title="Pages tagged excel" class="tag"><span class="term">excel</span></a><a href="/tags#vlookup" title="Pages tagged vlookup" class="tag"><span class="term">vlookup</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

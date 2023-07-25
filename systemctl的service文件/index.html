@@ -1,0 +1,971 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>systemd的service文件，关联 linux，自启动，systemctl &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="systemd的service文件，关联 linux，自启动，systemctl">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/systemctl%E7%9A%84service%E6%96%87%E4%BB%B6/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/systemctl%E7%9A%84service%E6%96%87%E4%BB%B6/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">systemd的service文件，关联 linux，自启动，systemctl</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-05-07T00:00:00+08:00">May 07, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">systemd.service — Service unit configuration - man page</a></li>
+      <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#">systemd.exec — Execution environment configuration - man page</a></li>
+      <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html#">systemd.unit — Unit configuration - man page</a></li>
+      <li><a href="https://www.freedesktop.org/software/systemd/man/systemd-run.html#">systemd-run - man page</a></li>
+      <li><a href=""></a></li>
+      <li><a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">digitalocean.com - Understanding Systemd Units and Unit Files</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="systemcd-unit-file-概述">systemcd unit file 概述</h3>
+
+<p>systemd 读取这个 unit configuration file 来控制进程启动/关闭。</p>
+
+<p>一般的section: <code class="highlighter-rouge">[Unit]</code> 和 <code class="highlighter-rouge">[Install]</code> sections 包含 common configuration items</p>
+
+<p>Unit-Specific Section 和类型有关系，例如：</p>
+
+<p>service unit ，会包含<code class="highlighter-rouge">[Service]</code> section ，设置些 service specific configuration options。</p>
+
+<h3 id="systemcd-unit-file-存放位置">systemcd unit file 存放位置</h3>
+
+<p><code class="highlighter-rouge">/lib/systemd/system</code>   软件安装的service文件，不要手动修改</p>
+
+<p><code class="highlighter-rouge">/etc/systemd/system</code>    供admin修改的地方，同样unit文件可以覆盖 <code class="highlighter-rouge">/lib/systemd/system</code> 里面的设置。</p>
+
+<p><code class="highlighter-rouge">/run/systemd/system</code>    存放运行时 unit 文件，优先级介于 <code class="highlighter-rouge">/etc/systemd/system</code>  和 <code class="highlighter-rouge">/lib/systemd/system</code> 之间。</p>
+
+<h3 id="unit-file-内容详解">unit file 内容详解</h3>
+
+<p>文件有一个个section组成。 section name 大小写敏感。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">[</span>Section]
+<span class="nv">Directive1</span><span class="o">=</span>value
+<span class="nv">Directive2</span><span class="o">=</span>value
+
+. . .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p>覆盖设置的方法，示例：</p>
+
+    <ol>
+      <li><code class="highlighter-rouge">/lib/systemd/system/foo.service</code> 中默认设置： <code class="highlighter-rouge">Directive1=default_value</code></li>
+      <li>执行 <code class="highlighter-rouge">sudo systemctl edit foo</code> 会生成 <code class="highlighter-rouge">/etc/systemd/system/foo.service.d/override.conf</code></li>
+      <li>添加或修改 override.conf 或这 其他 .conf 文件中设置，就能覆盖系统默认设置了。</li>
+      <li>要清除某个设置，就不要赋值，例如： <code class="highlighter-rouge">Directive1=</code></li>
+    </ol>
+
+    <ul>
+      <li>注意<br />
+如果Dependencies（例如，After= 等），不能使用赋空的方法清除，必须创建一个完全备份（<code class="highlighter-rouge">systemctl edit --full foo</code>），然后修改。</li>
+      <li>参考：
+        <ul>
+          <li><a href="https://askubuntu.com/a/659268">https://askubuntu.com/a/659268</a></li>
+          <li><a href="https://unix.stackexchange.com/a/468067">https://unix.stackexchange.com/a/468067</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="unit-section"><code class="highlighter-rouge">[Unit]</code> Section</h4>
+
+<p>一般就是第一个section，描述些unit的基本信息。</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">Description=</code> This directive can be used to describe the name and basic functionality of the unit. It is returned by various systemd tools, so it is good to set this to something short, specific, and informative.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Documentation=</code> This directive provides a location for a list of URIs for documentation. These can be either internally available man pages or web accessible URLs. The systemctl status command will expose this information, allowing for easy discoverability.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Requires=</code> This directive lists any units upon which this unit essentially depends. If the current unit is activated, the units listed here must successfully activate as well, else this unit will fail. These units are started in parallel with the current unit by default.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Wants=</code> This directive is similar to <code class="highlighter-rouge">Requires=</code>, but less strict. Systemd will attempt to start any units listed here when this unit is activated. If these units are not found or fail to start, the current unit will continue to function. This is the recommended way to configure most dependency relationships. Again, this implies a parallel activation unless modified by other directives.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">BindsTo=</code> This directive is similar to <code class="highlighter-rouge">Requires=</code>, but also causes the current unit to stop when the associated unit terminates.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Before=</code> The units listed in this directive will not be started until the current unit is marked as started if they are activated at the same time. This does not imply a dependency relationship and must be used in conjunction with one of the above directives if this is desired.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">After=</code> The units listed in this directive will be started before starting the current unit. This does not imply a dependency relationship and one must be established through the above directives if this is required.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Conflicts=</code> This can be used to list units that cannot be run at the same time as the current unit. Starting a unit with this relationship will cause the other units to be stopped.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Condition...=</code> There are a number of directives that start with Condition which allow the administrator to test certain conditions prior to starting the unit. This can be used to provide a generic unit file that will only be run when on appropriate systems. If the condition is not met, the unit is gracefully skipped.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Assert...=</code> Similar to the directives that start with Condition, these directives check for different aspects of the running environment to decide whether the unit should activate. However, unlike the Condition directives, a negative result causes a failure with this directive.</p>
+  </li>
+</ul>
+
+<h4 id="install-section"><code class="highlighter-rouge">[Install]</code> Section</h4>
+
+<p>用来定义 unit enable/disable 的行为。</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">WantedBy=</code> The <code class="highlighter-rouge">WantedBy=</code> directive is the most common way to specify how a unit should be enabled. This directive allows you to specify a dependency relationship in a similar way to the Wants= directive does in the <code class="highlighter-rouge">[Unit]</code> section. The difference is that this directive is included in the ancillary unit allowing the primary unit listed to remain relatively clean. When a unit with this directive is enabled, a directory will be created within <code class="highlighter-rouge">/etc/systemd/system</code> named after the specified unit with <code class="highlighter-rouge">.wants</code> appended to the end. Within this, a symbolic link to the current unit will be created, creating the dependency.</p>
+
+    <p>实例：</p>
+
+    <p><code class="highlighter-rouge">/usr/lib/systemd/system/NetworkManager.service</code> 设置了：</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="o">[</span>Install]
+  <span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>那么enable这个unit，就会在文件夹 <code class="highlighter-rouge">/etc/systemd/system/multi-user.target.wants</code> 下，会产生一个指向 <code class="highlighter-rouge">NetworkManager.service</code> 的link 文件。</p>
+
+    <p>disable 这个unit，则会删除这个 link 文件。</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  <span class="nv">$ </span>ls -l /etc/systemd/system/multi-user.target.wants/NetworkManager.service 
+
+  lrwxrwxrwx 1 root root 46  5月 26  2021 /etc/systemd/system/multi-user.target.wants/NetworkManager.service -&gt; /usr/lib/systemd/system/NetworkManager.service
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">RequiredBy=</code> 和<code class="highlighter-rouge">WantedBy=</code>类似，除了更严格，这个unit启动不了，required-by 的 unit 就会直接失败。和<code class="highlighter-rouge">WantedBy=</code>类似，会在<code class="highlighter-rouge">/etc/systemd/system/</code> 下生成目录 <code class="highlighter-rouge">the-required-by-unit.requires</code>，在里面创建依赖unit 的 link 文件。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Alias=</code> 可以使用这个alias来 enable/disable 这个unit。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Also=</code> This directive allows units to be enabled or disabled as a set. Supporting units that should always be available when this unit is active can be listed here. They will be managed as a group for installation tasks.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">DefaultInstance=</code> For template units (covered later) which can produce unit instances with unpredictable names, this can be used as a fallback value for the name if an appropriate name is not provided.</p>
+  </li>
+</ul>
+
+<h4 id="service-section"><code class="highlighter-rouge">[Service]</code> Section</h4>
+
+<p>service 类型的 unit 专有 section。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Type=</code> directive
+    <ul>
+      <li>
+        <p><code class="highlighter-rouge">simple</code> The main process of the service is specified in the start line. This is the default if the <code class="highlighter-rouge">Type=</code> and <code class="highlighter-rouge">Busname=</code> directives are not set, but the <code class="highlighter-rouge">ExecStart=</code> is set. Any communication should be handled outside of the unit through a second unit of the appropriate type (like through a .socket unit if this unit must communicate using sockets).</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">forking</code> This service type is used when the service forks a child process, exiting the parent process almost immediately. This tells systemd that the process is still running even though the parent exited.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">oneshot</code> This type indicates that the process will be short-lived and that systemd should wait for the process to exit before continuing on with other units. This is the default <code class="highlighter-rouge">Type=</code> and <code class="highlighter-rouge">ExecStart=</code> are not set. It is used for one-off tasks.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">dbus</code> This indicates that unit will take a name on the D-Bus bus. When this happens, systemd will continue to process the next unit.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">notify</code> This indicates that the service will issue a notification when it has finished starting up. The systemd process will wait for this to happen before proceeding to other units.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">idle</code> This indicates that the service will not be run until all jobs are dispatched.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">RemainAfterExit=</code> This directive is commonly used with the <code class="highlighter-rouge">oneshot</code> type. It indicates that the service should be considered active even after the process exits.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">PIDFile=</code> If the service type is marked as <code class="highlighter-rouge">“forking”</code>, this directive is used to set the path of the file that should contain the process ID number of the main child that should be monitored.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">BusName=</code> This directive should be set to the D-Bus bus name that the service will attempt to acquire when using the <code class="highlighter-rouge">“dbus”</code> service type.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">NotifyAccess=</code> This specifies access to the socket that should be used to listen for notifications when the <code class="highlighter-rouge">“notify”</code> service type is selected This can be “none”, “main”, or “all”. The default, “none”, ignores all status messages. The “main” option will listen to messages from the main process and the “all” option will cause all members of the service’s control group to be processed.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecStart=</code> This specifies the full path and the arguments of the command to be executed to start the process. This may only be specified once (except for “oneshot” services). If the path to the command is preceded by a dash “-” character, non-zero exit statuses will be accepted without marking the unit activation as failed.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecStartPre=</code> This can be used to provide additional commands that should be executed before the main process is started. This can be used multiple times. Again, commands must specify a full path and they can be preceded by “-” to indicate that the failure of the command will be tolerated.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecStartPost=</code> This has the same exact qualities as ExecStartPre= except that it specifies commands that will be run after the main process is started.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecReload=</code> This optional directive indicates the command necessary to reload the configuration of the service if available.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecStop=</code> This indicates the command needed to stop the service. If this is not given, the process will be killed immediately when the service is stopped.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">ExecStopPost=</code> This can be used to specify commands to execute following the stop command.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">RestartSec=</code> If automatically restarting the service is enabled, this specifies the amount of time to wait before attempting to restart the service.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Restart=</code> This indicates the circumstances under which systemd will attempt to automatically restart the service. This can be set to values like “always”, “on-success”, “on-failure”, “on-abnormal”, “on-abort”, or “on-watchdog”. These will trigger a restart according to the way that the service was stopped.</p>
+  </li>
+  <li><code class="highlighter-rouge">TimeoutSec=</code> This configures the amount of time that systemd will wait when stopping or stopping the service before marking it as failed or forcefully killing it. You can set separate timeouts with TimeoutStartSec= and TimeoutStopSec= as well.</li>
+</ul>
+
+<h4 id="socket-section"><code class="highlighter-rouge">[Socket]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="mount-section"><code class="highlighter-rouge">[Mount]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="automount-section"><code class="highlighter-rouge">[Automount]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="swap-section"><code class="highlighter-rouge">[Swap]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="path-section"><code class="highlighter-rouge">[Path]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="timer-section"><code class="highlighter-rouge">[Timer]</code> Section</h4>
+
+<p>略</p>
+
+<h4 id="slice-section"><code class="highlighter-rouge">[Slice]</code> Section</h4>
+
+<p>略</p>
+
+<h3 id="systemd-unit-类型">systemd unit 类型</h3>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">.service</code>: A service unit describes how to manage a service or application on the server. This will include how to start or stop the service, under which circumstances it should be automatically started, and the dependency and ordering information for related software.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.socket</code>: A socket unit file describes a network or IPC socket, or a FIFO buffer that systemd uses for socket-based activation. These always have an associated .service file that will be started when activity is seen on the socket that this unit defines.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.device</code>: A unit that describes a device that has been designated as needing systemd management by <code class="highlighter-rouge">udev</code> or the <code class="highlighter-rouge">sysfs</code> filesystem. Not all devices will have <code class="highlighter-rouge">.device</code> files. Some scenarios where <code class="highlighter-rouge">.device</code> units may be necessary are for ordering, mounting, and accessing the devices.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.mount</code>: This unit defines a mountpoint on the system to be managed by systemd. These are named after the mount path, with slashes changed to dashes. Entries within /etc/fstab can have units created automatically.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.automount</code>: An .automount unit configures a mountpoint that will be automatically mounted. These must be named after the mount point they refer to and must have a matching <code class="highlighter-rouge">.mount</code> unit to define the specifics of the mount.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.swap</code>: This unit describes swap space on the system. The name of these units must reflect the device or file path of the space.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.target</code>: 类似 run-level。 A target unit is used to provide synchronization points for other units when booting up or changing states. They also can be used to bring the system to a new state. Other units specify their relation to targets to become tied to the target’s operations.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.path</code>: This unit defines a path that can be used for path-based activation. By default, a <code class="highlighter-rouge">.service</code> unit of the same base name will be started when the path reaches the specified state. This uses <code class="highlighter-rouge">inotify</code> to monitor the path for changes.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.timer</code>: A <code class="highlighter-rouge">.timer</code> unit defines a timer that will be managed by systemd, similar to a cron job for delayed or scheduled activation. A matching unit will be started when the timer is reached.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.snapshot</code>: A .snapshot unit is created automatically by the systemctl snapshot command. It allows you to reconstruct the current state of the system after making changes. Snapshots do not survive across sessions and are used to roll back temporary states.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.slice</code>: A .slice unit is associated with Linux Control Group nodes, allowing resources to be restricted or assigned to any processes associated with the slice. The name reflects its hierarchical position within the cgroup tree. Units are placed in certain slices by default depending on their type.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">.scope</code>: Scope units are created automatically by systemd from information received from its bus interfaces. These are used to manage sets of system processes that are created externally.</p>
+  </li>
+</ul>
+
+<h4 id="unit-模板--template">unit 模板 / Template</h4>
+
+<p>模板文件名以 <code class="highlighter-rouge">@</code> 结尾： <code class="highlighter-rouge">example@.service</code></p>
+
+<p>应用模板出的unit 示例，通过 <code class="highlighter-rouge">@</code> 添加参数来生成： <code class="highlighter-rouge">example@instance1.service</code></p>
+
+<ul>
+  <li>可以用在unit file 中的specifiers：
+    <ul>
+      <li><code class="highlighter-rouge">%n</code> Anywhere where this appears in a template file, the full resulting unit name will be inserted.</li>
+      <li><code class="highlighter-rouge">%N</code> This is the same as the above, but any escaping, such as those present in file path patterns, will be reversed.</li>
+      <li><code class="highlighter-rouge">%p</code> This references the unit name prefix. This is the portion of the unit name that comes before the @ symbol.</li>
+      <li><code class="highlighter-rouge">%P</code> This is the same as above, but with any escaping reversed.</li>
+      <li><code class="highlighter-rouge">%i</code> This references the instance name, which is the identifier following the @ in the instance unit. This is one of the most commonly used specifiers because it will be guaranteed to be dynamic. The use of this identifier encourages the use of configuration significant identifiers. For example, the port that the service will be run at can be used as the instance identifier and the template can use this specifier to set up the port specification.</li>
+      <li><code class="highlighter-rouge">%I</code> This specifier is the same as the above, but with any escaping reversed.</li>
+      <li><code class="highlighter-rouge">%f</code> This will be replaced with the unescaped instance name or the prefix name, prepended with a /.</li>
+      <li><code class="highlighter-rouge">%c</code> This will indicate the control group of the unit, with the standard parent hierarchy of /sys/fs/cgroup/ssytemd/ removed.</li>
+      <li><code class="highlighter-rouge">%u</code> The name of the user configured to run the unit.</li>
+      <li><code class="highlighter-rouge">%U</code> The same as above, but as a numeric UID instead of name.</li>
+      <li><code class="highlighter-rouge">%H</code> The host name of the system that is running the unit.</li>
+      <li><code class="highlighter-rouge">%%</code> This is used to insert a literal percentage sign.</li>
+    </ul>
+  </li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

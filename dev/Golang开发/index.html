@@ -1,0 +1,1245 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Golang开发，关联 编程开发, web, gin, &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang开发，关联 编程开发, web, gin,">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/Golang%E5%BC%80%E5%8F%91/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/Golang%E5%BC%80%E5%8F%91/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Golang开发，关联 编程开发, web, gin,</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-06-01T00:00:00+08:00">June 01, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://go.dev/">Go官网</a></li>
+      <li><a href="https://golang.google.cn/">Go官网 - 中国</a></li>
+      <li><a href="https://golang-tech-stack.com/tutorial/">Golang技术栈</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="golang-的一些知识">Golang 的一些知识</h2>
+
+<ul>
+  <li>Go 不支持 面向对象的语法</li>
+</ul>
+
+<h3 id="go-帮助文档查看">Go 帮助文档查看</h3>
+
+<p>在线文档 ： https://pkg.go.dev</p>
+
+<p>本地文档</p>
+
+<ul>
+  <li>godoc</li>
+</ul>
+
+<p>安装： <code class="highlighter-rouge">go get golang.org/x/tools/cmd/godoc</code><br />
+使用：<br />
+<code class="highlighter-rouge">godoc</code> 会在本地启动一个web server.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>godoc -http<span class="o">=</span>:8081
+<span class="c"># 或者，</span>
+godoc -http :8081
+</pre></td></tr></tbody></table>
+</div>
+</div>
+<p>然后，浏览器访问： http://localhost:8081/</p>
+
+<ul>
+  <li>go doc</li>
+</ul>
+
+<p><code class="highlighter-rouge">go doc</code> 就是一个纯粹执行一次的命令行，例如：</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>go doc fmt
+go doc fmt.Printf
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="manjaro">manjaro</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>sudo pacman -Syy go
+
+<span class="c"># 安装好看下版本和环境设置</span>
+go version
+go env
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="debian">debian</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo apt install golang-go
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="hello-world">Hello World</h2>
+
+<ol>
+  <li>hello-world.go<br />
+~~~go<br />
+package main</li>
+</ol>
+
+<p>import “fmt”</p>
+
+<p>func main() {<br />
+	fmt.Println(“hello world!”);<br />
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre></td><td class="code"><pre>
+1. 运行方法一： 编译&amp;运行
+    `go build` 会生成一个没有go后缀的可执行文件
+    ~~~sh
+    go build hello-world.go
+    ./hello-world
+    ~~~
+1. 运行方法一： 脚本方式执行
+    ~~~sh
+    go run hello-world.og
+    ~~~
+
+## 开发工具
+
+### Visual Studio Code
+
+* 参考
+  * [2 Ways to install VS code on Debian 11 Bullseye Linux](https://www.how2shout.com/linux/ways-to-install-vscode-on-debian-11-bullseye-linux/)
+  * []()
+  * []()
+
+
+1. 安装 vscode
+    ~~~sh
+    # Arch linux 安装
+    sudo pacman -S code
+    ~~~
+
+    ~~~sh
+    # debian
+    curl -sSL https://packages.microsoft.com/keys/microsoft.asc -o microsoft.asc
+    gpg --no-default-keyring --keyring ./ms_vscode_key_temp.gpg --import ./microsoft.asc
+    gpg --no-default-keyring --keyring ./ms_vscode_key_temp.gpg --export &gt; ./ms_vscode_key.gpg
+    sudo mv ms_vscode_key.gpg /etc/apt/trusted.gpg.d/
+
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+
+    sudo apt update
+
+    sudo apt install code
+    ~~~
+1. 安装插件
+1. 启动 vscode ，左边导航条 Extension 按钮
+1. 查找插件： Go , Code Runner， 点击 安装。
+
+
+* 代码模板生成
+    * `pkgm` 自动生成 `package main + func main()`
+    * 变量名.print  自动生成 打印变量的Printf语句
+    * `fp` 生成 `fmt.Println()`
+
+
+
+## 语言的格式特性
+
+* 不要import 包，而不使用包的功能
+* 不要定义了变量，而不使用
+
+* `{}` 只能使用一种格式缩进
+    正确缩进格式：
+    ~~~go
+    func main {
+      fmt.Println("Hello")
+    }
+    ~~~
+
+    错误大括号格式，编译器会报错：
+    ~~~go
+    func main 
+    {
+      fmt.Println("Hello")
+    }
+    ~~~
+
+* 代码段，必须放入 `{}`，哪怕只有一句话
+* 函数可以返回多个值
+* 不能进行数据类型的隐式转换
+
+
+## 变量定义和使用
+
+* 如果赋予初始值，编译器会猜测变量类型。
+* 如果没有赋予初始值，编译器会以变量类型，赋予一个空值。
+* `:=` official name: short assignment statement
+    用在 func 内部。
+* `var` 关键词在日常使用不多，主要使用：
+    * 在没有初始值的全局变量和局部变量。也就是，在 func 代码块之外的变量，都用 `var` 声明一下。
+    * 需要显式定义变量的类型
+
+~~~go
+var Global int = 1234 // int 类型的Global 全局变量
+var AnotherGlobal = -2123
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="匿名变量-_">匿名变量 <code class="highlighter-rouge">_</code></h3>
+
+<p>用<code class="highlighter-rouge">_</code>忽略部分函数返回值：</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="k">func</span><span class="x"> </span><span class="n">getNameAndAge</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="k">return</span><span class="x"> </span><span class="s">"john"</span><span class="p">,</span><span class="x"> </span><span class="m">22</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">age</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">getNameAndAge</span><span class="p">()</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="常量定义">常量定义</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">const</code> 关键词定义常量，常量名称一般是全部大写
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">const</span><span class="x"> </span><span class="n">constantName</span><span class="x"> </span><span class="p">[</span><span class="k">type</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">value</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h2 id="调试-debug">调试 Debug</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">fmt.Println</code></li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Initial j value:"</span><span class="p">,</span><span class="x"> </span><span class="n">j</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">fmt.Printf</code></li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Global=%d, i=%d, j=%d, k=%.2f.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">Global</span><span class="p">,</span><span class="x"> </span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="n">j</span><span class="p">,</span><span class="x"> </span><span class="n">k</span><span class="p">)</span><span class="x">
+
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"age: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">age</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// %T 来查看变量类型</span><span class="x">
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"myVar's data type is: %T</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">myVar</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="控制流语法">控制流语法</h2>
+
+<h3 id="ifelse">if…else</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">anyFunctionCall</span><span class="p">()</span><span class="x">
+</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="c">// Do sth if there's an error</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="switch">switch</h3>
+
+<p>switch 有2种写法</p>
+
+<p>switch 带判断条件：</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="k">switch</span><span class="x"> </span><span class="n">argument</span><span class="x"> </span><span class="p">{</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="s">"0"</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Zero!"</span><span class="p">)</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="s">"1"</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"One!"</span><span class="p">)</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="s">"2"</span><span class="p">,</span><span class="x"> </span><span class="s">"3"</span><span class="p">,</span><span class="x"> </span><span class="s">"4"</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"2 or 3 or 4"</span><span class="p">)</span><span class="x">
+  </span><span class="k">fallthrough</span><span class="x"> </span><span class="c">// fallthrough 表示继续下一个判断，而不是跳出switch</span><span class="x">
+</span><span class="k">default</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Value:"</span><span class="p">,</span><span class="x"> </span><span class="n">argument</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>case 带判断条件：</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="k">switch</span><span class="x"> </span><span class="p">{</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="n">value</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="m">0</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"args[1] = 0"</span><span class="p">)</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="n">value</span><span class="x"> </span><span class="o">&gt;</span><span class="x"> </span><span class="m">0</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"args[1] is positive integer"</span><span class="p">)</span><span class="x">
+</span><span class="k">case</span><span class="x"> </span><span class="n">value</span><span class="x"> </span><span class="o">&lt;</span><span class="x"> </span><span class="m">0</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"args[1] is negative integer"</span><span class="p">)</span><span class="x">
+</span><span class="k">default</span><span class="o">:</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"SHALL NOT happen: "</span><span class="p">,</span><span class="x"> </span><span class="n">value</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="循环和遍历">循环和遍历</h2>
+
+<p>Go 只支持 for ，不支持 while，各种循环模式都靠 for 和 range 来实现。</p>
+
+<p>简单的for</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">for</span><span class="x"> </span><span class="n">i</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">0</span><span class="p">;</span><span class="x"> </span><span class="n">i</span><span class="x"> </span><span class="o">&lt;</span><span class="x"> </span><span class="m">10</span><span class="p">;</span><span class="x"> </span><span class="n">i</span><span class="o">++</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="s">" "</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">()</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>当while 用的for</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c">// for loop used as while</span><span class="x">
+</span><span class="n">i</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">0</span><span class="x">
+</span><span class="k">for</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="k">if</span><span class="x"> </span><span class="n">i</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="m">10</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">break</span><span class="x">
+  </span><span class="p">}</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="s">"  "</span><span class="p">)</span><span class="x">
+  </span><span class="n">i</span><span class="o">++</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">()</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>用 for + range 遍历数组</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">aSlice</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="o">-</span><span class="m">2</span><span class="p">,</span><span class="x"> </span><span class="o">-</span><span class="m">1</span><span class="p">,</span><span class="x"> </span><span class="m">0</span><span class="p">,</span><span class="x"> </span><span class="m">1</span><span class="p">,</span><span class="x"> </span><span class="m">2</span><span class="p">}</span><span class="x">
+</span><span class="k">for</span><span class="x"> </span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="n">v</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">aSlice</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"index:"</span><span class="p">,</span><span class="x"> </span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="s">"  Value:"</span><span class="p">,</span><span class="x"> </span><span class="n">v</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">for _, v := range aSlice</code> 中的 <code class="highlighter-rouge">_</code> 表示不需要使用index，就不用变量来存储了。</p>
+
+<h2 id="用户输入">用户输入</h2>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Please give me your name:"</span><span class="p">)</span><span class="x">
+</span><span class="k">var</span><span class="x"> </span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="x">
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">)</span><span class="x">
+</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Your name is "</span><span class="p">,</span><span class="x"> </span><span class="n">name</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="命令行参数">命令行参数</h2>
+
+<p>存放在 <code class="highlighter-rouge">os.Args</code> 中。</p>
+
+<p>例子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>go run some.go fileToProcess -n 10 /tmp "A phrase"
+
+os.Args[0]  some.go
+os.Args[1]  fileToProcess
+os.Args[2]  -n
+os.Args[3]  10
+os.Args[4]  /tmp
+os.Args[5]  "A phrase"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="数据类型">数据类型</h2>
+
+<ul>
+  <li>string 转 interger</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">strconv</span><span class="o">.</span><span class="n">Atoi</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>string 转 float</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">f</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">strconv</span><span class="o">.</span><span class="n">ParseFloat</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="x"> </span><span class="m">64</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="字符串-string">字符串 string</h2>
+
+<h3 id="fmtsprintf-生成格式化字符串"><code class="highlighter-rouge">fmt.Sprintf</code> 生成格式化字符串</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">full_name</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%s %s"</span><span class="p">,</span><span class="x"> </span><span class="n">last_name</span><span class="p">,</span><span class="x"> </span><span class="n">first_name</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="字符串连接方法">字符串连接方法</h3>
+
+<ol>
+  <li>使用 <code class="highlighter-rouge">+</code> 号</li>
+  <li>使用 <code class="highlighter-rouge">string.Join()</code>
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="x"> </span><span class="n">s</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="kt">string</span><span class="o">.</span><span class="n">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="n">last_name</span><span class="p">,</span><span class="n">first_name</span><span class="p">},</span><span class="x"> </span><span class="s">","</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>使用 <code class="highlighter-rouge">bytes.Buffer</code></li>
+</ol>
+
+<h3 id="字符串内容提取">字符串内容提取</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">str</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"hello world"</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"str[n]: %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">str</span><span class="p">[</span><span class="m">0</span><span class="p">])</span><span class="x">     </span><span class="c">// 第1个字符 h</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"str[n]: %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">str</span><span class="p">[</span><span class="m">10</span><span class="p">])</span><span class="x">    </span><span class="c">// 第10个字符 d</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"str[3:5]: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">str</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">7</span><span class="p">])</span><span class="x"> </span><span class="c">// lo w</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"str[3:]: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">str</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="p">])</span><span class="x">   </span><span class="c">// lo world</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"str[:7]: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">str</span><span class="p">[</span><span class="o">:</span><span class="m">7</span><span class="p">])</span><span class="x">   </span><span class="c">// hello w</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="转义字符">转义字符</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>s := "Hello\tWorld!"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="go-的并发模型--concurrency-model">Go 的并发模型 / concurrency model</h2>
+
+<h2 id="mod-项目">mod 项目</h2>
+
+<ul>
+  <li>初始化</li>
+</ul>
+
+<p>例如：</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="n">mkdir</span><span class="x"> </span><span class="n">my</span><span class="o">-</span><span class="n">little</span><span class="o">-</span><span class="n">mod</span><span class="x">
+</span><span class="n">cd</span><span class="x"> </span><span class="n">my</span><span class="o">-</span><span class="n">little</span><span class="o">-</span><span class="n">mod</span><span class="x">
+</span><span class="k">go</span><span class="x"> </span><span class="n">mod</span><span class="x"> </span><span class="n">init</span><span class="x"> </span><span class="n">my</span><span class="o">-</span><span class="n">little</span><span class="o">-</span><span class="n">mod</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

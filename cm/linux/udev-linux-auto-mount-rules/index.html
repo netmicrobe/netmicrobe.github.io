@@ -1,0 +1,1130 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>udev 自动挂载规则 / auto mount rules &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="udev">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="udev 自动挂载规则 / auto mount rules">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/udev-linux-auto-mount-rules/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/udev-linux-auto-mount-rules/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">udev 自动挂载规则 / auto mount rules</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-04-01T00:00:00+08:00">April 01, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="http://reactivated.net/writing_udev_rules.html">Writing udev rules</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="介绍">介绍</h2>
+
+<p>udev is the “new” way of managing /dev directories, designed to clear up some issues with previous /dev implementations, and provide a robust path forward. In order to create and name /dev device nodes corresponding to devices that are present in the system, udev relies on matching information provided by sysfs with rules provided by the user. This documentation aims to detail the process of rule-writing, one of the only udev-related tasks that must (optionally) be performed by the user.</p>
+
+<p><code class="highlighter-rouge">udev</code> 是替代 <code class="highlighter-rouge">devfs</code> 管理 <code class="highlighter-rouge">/dev</code> 目录的新方法，利用 <code class="highlighter-rouge">sysfs</code> 和用户自定义规则来自动挂载移动存储设备。</p>
+
+<p><code class="highlighter-rouge">sysfs</code> 是从 2.6 kernel 开始的新文件系统，能够输出连接系统的硬件信息，<code class="highlighter-rouge">udev</code> 可以利用这些信息来创建 device node。 sysfs is mounted at /sys and is browseable.</p>
+
+<h3 id="built-in-persistent-naming-schemes">Built-in persistent naming schemes</h3>
+
+<p>udev provides out-of-the-box persistent naming for storage devices in the /dev/disk directory. To view the persistent names which have been created for your storage hardware, you can use the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre># ls -lR /dev/disk
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>This works for all storage types.</p>
+
+<h2 id="rule-writing">Rule writing</h2>
+
+<h3 id="rule-files">Rule files</h3>
+
+<p>udev reads a series of rules files. These files are kept in the <code class="highlighter-rouge">/etc/udev/rules.d</code> directory, and they all must have the <code class="highlighter-rouge">.rules</code> suffix.</p>
+
+<p>Default udev rules are stored in <code class="highlighter-rouge">/etc/udev/rules.d/50-udev.rules</code>.</p>
+
+<p><code class="highlighter-rouge">/etc/udev/rules.d/</code>中的文件一般按照文件名排序（lexical order）解析, 为了在Default rules之前生效，自定的rules建议写到<code class="highlighter-rouge">/etc/udev/rules.d/10-local.rules</code>。</p>
+
+<h3 id="semantics">semantics</h3>
+
+<ul>
+  <li>In a rules file, lines starting with “#” are treated as comments.</li>
+  <li>Every other non-blank line is a rule.</li>
+  <li>Rules cannot span multiple lines.</li>
+  <li>One device can be matched by more than one rule.</li>
+  <li>It is important to understand that udev will not stop processing when it finds a matching rule, it will continue searching and attempt to apply every rule that it knows about.</li>
+</ul>
+
+<h3 id="rule-syntax">Rule syntax</h3>
+
+<ul>
+  <li>Each rule is constructed from a series of key-value pairs, which are separated by commas.</li>
+  <li>match keys are conditions used to identify the device which the rule is acting upon.</li>
+  <li>
+    <p>When all <strong>match</strong> keys in a rule correspond to the device being handled, then the rule is applied and the actions of the <em>*assignment</em> keys are invoked.</p>
+
+    <ul>
+      <li>例子
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="hdb", NAME="my_spare_disk"
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ul>
+
+    <p>The above rule includes one <strong>match</strong> key <strong>(KERNEL)</strong> and one <strong>assignment</strong> key <strong>(NAME)</strong>.</p>
+
+    <ul>
+      <li>the match key is related to its value through the <strong>equality operator (==)</strong></li>
+      <li>the assignment key is related to its value through the <strong>assignment operator (=)</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="basic-rules">Basic Rules</h4>
+
+<ul>
+  <li>common match keys
+    <ul>
+      <li>KERNEL - match against the kernel name for the device</li>
+      <li>SUBSYSTEM - match against the subsystem of the device</li>
+      <li>DRIVER - match against the name of the driver backing the device</li>
+    </ul>
+  </li>
+  <li>The most basic assignment keys
+    <ul>
+      <li>NAME - the name that shall be used for the device node</li>
+      <li>SYMLINK - a list of symbolic links which act as alternative names for the device node</li>
+    </ul>
+  </li>
+</ul>
+
+<p>If you wish to provide alternate names for this device node, you use the symbolic link functionality. With the SYMLINK assignment, you are actually maintaining a list of symbolic links, all of which will be pointed at the real device node. To manipulate these links, we introduce a new operator for appending to lists: +=. You can append multiple symlinks to the list from any one rule by separating each one with a space.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="hdb", NAME="my_spare_disk"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The above rule says: match a device which was named by the kernel as hdb, and instead of calling it hdb, name the device node as my_spare_disk. The device node appears at /dev/my_spare_disk.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="hdb", DRIVER=="ide-disk", SYMLINK+="sparedisk"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The above rule says: match a device which was named by the kernel as hdb AND where the driver is ide-disk. Name the device node with the default name and create a symbolic link to it named sparedisk. Note that we did not specify a device node name, so udev uses the default. In order to preserve the standard /dev layout, your own rules will typically leave the NAME alone but create some SYMLINKs and/or perform other assignments.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="hdc", SYMLINK+="cdrom cdrom0"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The above rule is probably more typical of the types of rules you might be writing. It creates two symbolic links at /dev/cdrom and /dev/cdrom0, both of which point at /dev/hdc. Again, no NAME assignment was specified, so the default kernel name (hdc) is used.</p>
+
+<h4 id="matching-sysfs-attributes">Matching sysfs attributes</h4>
+
+<p>can identify devices based on advanced properties such as vendor codes, exact product numbers, serial numbers, storage capacities, number of partitions, etc.</p>
+
+<p>Many drivers export information like this into sysfs, and udev allows us to incorporate sysfs-matching into our rules, using the ATTR key with a slightly different syntax.</p>
+
+<p>例如，</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>SUBSYSTEM=="block", ATTR{size}=="234441648", SYMLINK+="my_disk"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="device-hierarchy">Device hierarchy</h4>
+
+<p>The Linux kernel actually represents devices in a tree-like structure, and this information is exposed through sysfs and useful when writing rules. For example, the device representation of my hard disk device is a child of the SCSI disk device, which is in turn a child of the Serial ATA controller device, which is in turn a child of the PCI bus device. It is likely that you will find yourself needing to refer to information from a parent of the device in question, for example the serial number of my hard disk device is not exposed at the device level, it is exposed by its direct parent at the SCSI disk level.</p>
+
+<ul>
+  <li>KERNELS - match against the kernel name for the device, or the kernel name for any of the parent devices</li>
+  <li>SUBSYSTEMS - match against the subsystem of the device, or the subsystem of any of the parent devices</li>
+  <li>DRIVERS - match against the name of the driver backing the device, or the name of the driver backing any of the parent devices</li>
+  <li>ATTRS - match a sysfs attribute of the device, or a sysfs attribute of any of the parent devices</li>
+</ul>
+
+<h4 id="string-substitutions">String substitutions</h4>
+
+<p>略，参考 <a href="http://reactivated.net/writing_udev_rules.html#strsubst">http://reactivated.net/writing_udev_rules.html#strsubst</a></p>
+
+<h4 id="string-matching">String matching</h4>
+
+<p>udev allows you to use shell-style pattern matching. There are 3 patterns supported:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>* - match any character, zero or more times
+? - match any character exactly once
+[] - match any single character specified in the brackets, ranges are also permitted
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>例子：</p>
+
+<p>The first rule matches all floppy disk drives, and ensures that the device nodes are placed in the /dev/floppy directory, as well as creating a symbolic link from the default name.  <code class="highlighter-rouge">%n</code> <code class="highlighter-rouge">%k</code> 之类的字符串含义，参见 “String substitutions”</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="fd[0-9]*", NAME="floppy/%n", SYMLINK+="%k"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The second rule ensures that hiddev devices are only present in the /dev/usb directory.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="hiddev*", NAME="usb/%k"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="finding-information-from-sysfs">Finding information from sysfs</h2>
+
+<h3 id="sysfs-tree">sysfs tree</h3>
+
+<p><code class="highlighter-rouge">sysfs</code> 把设备的信息都存到 /sys 的各级目录结构中。</p>
+
+<p>这些个目录结构中，有各种link和实际设备对于的device nodes文件夹（top-level device paths）。</p>
+
+<p>Top-level device paths can be classified as sysfs directories which contain a dev file, the following command will list these for you:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre># find /sys -name dev
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="磁盘容量">磁盘容量</h3>
+
+<p>When you write rules based on sysfs information, you are simply matching attribute contents of some files in one part of the chain. For example, I can read the size of my hard disk as follows:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># cat /sys/block/sda/size
+234441648
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="udevinfo-命令">udevinfo 命令</h3>
+
+<p>udevinfo 命令直接打印出设备信息。</p>
+
+<p>注意，Ubuntu上使用 <code class="highlighter-rouge">udevadm</code>，往下看。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre># udevinfo -a -p /sys/block/sda
+
+  looking at device '/block/sda':
+    KERNEL=="sda"
+    SUBSYSTEM=="block"
+    ATTR{stat}=="  128535     2246  2788977   766188    73998   317300  3132216  5735004        0   516516  6503316"
+    ATTR{size}=="234441648"
+    ATTR{removable}=="0"
+    ATTR{range}=="16"
+    ATTR{dev}=="8:0"
+
+  looking at parent device '/devices/pci0000:00/0000:00:07.0/host0/target0:0:0/0:0:0:0':
+    KERNELS=="0:0:0:0"
+    SUBSYSTEMS=="scsi"
+    DRIVERS=="sd"
+    ATTRS{ioerr_cnt}=="0x0"
+    ATTRS{iodone_cnt}=="0x31737"
+    ATTRS{iorequest_cnt}=="0x31737"
+    ATTRS{iocounterbits}=="32"
+    ATTRS{timeout}=="30"
+    ATTRS{state}=="running"
+    ATTRS{rev}=="3.42"
+    ATTRS{model}=="ST3120827AS     "
+    ATTRS{vendor}=="ATA     "
+    ATTRS{scsi_level}=="6"
+    ATTRS{type}=="0"
+    ATTRS{queue_type}=="none"
+    ATTRS{queue_depth}=="1"
+    ATTRS{device_blocked}=="0"
+
+  looking at parent device '/devices/pci0000:00/0000:00:07.0':
+    KERNELS=="0000:00:07.0"
+    SUBSYSTEMS=="pci"
+    DRIVERS=="sata_nv"
+    ATTRS{vendor}=="0x10de"
+    ATTRS{device}=="0x037f"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="udevadm">udevadm</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>udevadm info -q path -n /dev/sda1
+udevadm info -q all -n /dev/sda1
+
+udevadm info -a -p <span class="k">$(</span>udevadm info -q path -n /dev/sda1<span class="k">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># you can list the partitions with:</span>
+sudo fdisk -l
+
+<span class="c"># or</span>
+sudo blkid
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="usbview">usbview</h4>
+
+<p>GUI工具，参考 <a href="http://www.kroah.com/linux/usb/">http://www.kroah.com/linux/usb/</a></p>
+
+<h2 id="advanced-topics">Advanced topics</h2>
+
+<h3 id="controlling-permissions-and-ownership">Controlling permissions and ownership</h3>
+
+<p>udev allows you to use additional assignments in rules to control ownership and permission attributes on each device.</p>
+
+<p>The <code class="highlighter-rouge">GROUP</code> assignment allows you to define which Unix group should own the device node.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="fb[0-9]*", NAME="fb/%n", SYMLINK+="%k", GROUP="video"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The <code class="highlighter-rouge">OWNER</code> key, perhaps less useful, allows you to define which Unix user should have ownership permissions on the device node.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="fd[0-9]*", OWNER="john"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>udev defaults to creating nodes with Unix permissions of 0660 (read/write to owner and group). If you need to, you can override these defaults on certain devices using rules including the MODE assignment. As an example, the following rule defines that the inotify node shall be readable and writable to everyone:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="inotify", NAME="misc/%k", SYMLINK+="%k", MODE="0666"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="using-external-programs-to-name-devices">Using external programs to name devices</h3>
+
+<p>利用 外部程序 和 %k %n等参数来命名device，“String substitutions”高级版呀，此处略，参考：</p>
+
+<p><a href="http://reactivated.net/writing_udev_rules.html#external-naming">http://reactivated.net/writing_udev_rules.html#external-naming</a></p>
+
+<h3 id="running-external-programs-upon-certain-events">Running external programs upon certain events</h3>
+
+<p>此处略，参考：</p>
+
+<p><a href="http://reactivated.net/writing_udev_rules.html#external-run">http://reactivated.net/writing_udev_rules.html#external-run</a></p>
+
+<h3 id="environment-interaction">Environment interaction</h3>
+
+<p>udev provides an ENV key for environment variables which can be used for both matching and assignment.</p>
+
+<p><strong>In the assignment case</strong>, you can set environment variables which you can then match against later. 例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="fd0", SYMLINK+="floppy", ENV{some_var}="value"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>In the matching case</strong>, you can ensure that rules only run depending on the value of an environment variable.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="fd0", ENV{an_env_var}=="yes", SYMLINK+="floppy"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="additional-options">Additional options</h3>
+
+<p>Another assignment which can prove useful is the OPTIONS list. A few options are available:</p>
+
+<ul>
+  <li><strong>all_partitions</strong> - create all possible partitions for a block device, rather than only those that were initially detected</li>
+  <li><strong>ignore_device</strong> - ignore the event completely</li>
+  <li><strong>last_rule</strong> - ensure that no later rules have any effect</li>
+</ul>
+
+<p>For example, the rule below sets the group ownership on my hard disk node, and ensures that no later rule can have any effect:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="sda", GROUP="disk", OPTIONS+="last_rule"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="usb-printer">USB Printer</h3>
+
+<p>I power on my printer, and it is assigned device node /dev/lp0. Not satisfied with such a bland name, I decide to use udevinfo to aid me in writing a rule which will provide an alternative name:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre># udevinfo -a -p $(udevinfo -q path -n /dev/lp0)
+  looking at device '/class/usb/lp0':
+    KERNEL=="lp0"
+    SUBSYSTEM=="usb"
+    DRIVER==""
+    ATTR{dev}=="180:0"
+
+  looking at parent device '/devices/pci0000:00/0000:00:1d.0/usb1/1-1':
+    SUBSYSTEMS=="usb"
+    ATTRS{manufacturer}=="EPSON"
+    ATTRS{product}=="USB Printer"
+    ATTRS{serial}=="L72010011070626380"vide an alternative name:
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>My rule becomes:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>SUBSYSTEM=="usb", ATTRS{serial}=="L72010011070626380", SYMLINK+="epson_680"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="usb-hard-disk">USB Hard Disk</h3>
+
+<p>A USB hard disk is comparable to the USB camera I described above, however typical usage patterns are different. In the camera example, I explained that I am not interested in the sdb node - it’s only real use is for partitioning (e.g. with fdisk), but why would I want to partition my camera!?</p>
+
+<p>Of course, if you have a 100GB USB hard disk, it is perfectly understandable that you might want to partition it, in which case we can take advantage of udev’s string substitutions:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>KERNEL=="sd*", SUBSYSTEMS=="scsi", ATTRS{model}=="USB 2.0 Storage Device", SYMLINK+="usbhd%n"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>This rule creates symlinks such as:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>/dev/usbhd - The fdiskable node
+/dev/usbhd1 - The first partition (mountable)
+/dev/usbhd2 - The second partition (mountable)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="testing-and-debugging">Testing and debugging</h2>
+
+<h3 id="putting-your-rules-into-action">Putting your rules into action</h3>
+
+<p>udev will not automatically reprocess all devices and attempt to apply the new rule(s). For example, To make the symbolic link show up, you can either disconnect and reconnect your camera, or alternatively in the case of non-removable devices, you can run <code class="highlighter-rouge">udevtrigger</code>.</p>
+
+<p>If your kernel does not have inotify support, new rules will not be detected automatically. In this situation, you must run <code class="highlighter-rouge">udevcontrol reload_rules</code> after making any rule file modifications for those modifications to take effect.</p>
+
+<h3 id="udevtest">udevtest</h3>
+
+<p>If you know the top-level device path in sysfs, you can use <code class="highlighter-rouge">udevtest</code> to show the actions which udev would take.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre># udevtest /class/sound/dsp
+main: looking at device '/class/sound/dsp' from subsystem 'sound'
+udev_rules_get_name: add symlink 'dsp'
+udev_rules_get_name: rule applied, 'dsp' becomes 'sound/dsp'
+udev_device_event: device '/class/sound/dsp' already known, remove possible symlinks
+udev_node_add: creating device node '/dev/sound/dsp', major = '14', minor = '3', mode = '0660', uid = '0', gid = '18'
+udev_node_add: creating symlink '/dev/dsp' to 'sound/dsp'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Note the /sys prefix was removed from the udevtest command line argument, this is because udevtest operates on device paths. Also note that udevtest is purely a testing/debugging tool, it does not create any device nodes, despite what the output suggests!</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#udev" title="Pages tagged udev" class="tag"><span class="term">udev</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

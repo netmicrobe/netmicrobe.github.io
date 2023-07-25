@@ -1,0 +1,1167 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>scrcpy 将 Android 手机屏幕实时投射到电脑 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="scrcpy, mint">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrcpy 将 Android 手机屏幕实时投射到电脑">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/android/scrcpy-%E5%B0%86Android%E6%89%8B%E6%9C%BA%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E6%8A%95%E5%B0%84%E5%88%B0%E7%94%B5%E8%84%91/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/android/scrcpy-%E5%B0%86Android%E6%89%8B%E6%9C%BA%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E6%8A%95%E5%B0%84%E5%88%B0%E7%94%B5%E8%84%91/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">scrcpy 将 Android 手机屏幕实时投射到电脑</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-06-25T00:00:00+08:00">June 25, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://github.com/Genymobile/scrcpy">Github - Genymobile/scrcpy</a></li>
+      <li><a href="https://github.com/Genymobile/scrcpy/blob/master/BUILD.md">Build scrcpy</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="从软件库安装">从软件库安装</h2>
+
+<h3 id="linux">Linux</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># ubuntu
+apt install scrcpy
+
+# arch aur
+yay -S scrcpy
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="使用">使用</h2>
+
+<ol>
+  <li>连上手机（打开“usb调试”）</li>
+  <li>电脑运行 <code class="highlighter-rouge">scrcpy</code>，GUI启动，立即投射当前手机屏幕</li>
+</ol>
+
+<h3 id="多个手机同时连接">多个手机同时连接</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>$ adb devices
+List of devices attached
+26b98700	device
+c676c6b3	device
+
+# 连接第1个手机
+$ scrcpy -s 26b98700
+
+# 连接第2个手机
+$ scrcpy -s c676c6b3
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="scrcpy--h-查看帮助"><code class="highlighter-rouge">scrcpy -h</code> 查看帮助。</h3>
+
+<h3 id="拖动安装apk">拖动安装apk</h3>
+
+<p>从电脑拖动apk，就可以将apk安装到设备。</p>
+
+<h3 id="快捷键">快捷键</h3>
+
+<p>Ctrl + b    | back键<br />
+Ctrl + h    | home键<br />
+Ctrl + s    | app switch<br />
+Ctrl + m    | menu键<br />
+Ctrl + Up   | 音量上<br />
+Ctrl + Down | 音量下* d613b10 (HEAD, origin/textpaste) Add a new method for text injection</p>
+<ul>
+  <li>cc4e1e2 Add more convenience methods for injection</li>
+  <li>4bbabfb Move injection methods to Device</li>
+  <li>ffc5751 Avoid clipboard synchronization loop</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Ctrl + p</td>
+      <td>关机键(turn screen on/off)</td>
+    </tr>
+    <tr>
+      <td>Right-click</td>
+      <td>power on(when screen is off)</td>
+    </tr>
+    <tr>
+      <td>Ctrl+o</td>
+      <td>turn device screen off (keep mirroring)</td>
+    </tr>
+    <tr>
+      <td>Ctrl+n</td>
+      <td>expand notification panel</td>
+    </tr>
+    <tr>
+      <td>Ctrl+Shift+n</td>
+      <td>collapse notification panel</td>
+    </tr>
+    <tr>
+      <td>Ctrl+c</td>
+      <td>copy device clipboard to computer</td>
+    </tr>
+    <tr>
+      <td>Ctrl+v</td>
+      <td>paste computer clipboard to device</td>
+    </tr>
+    <tr>
+      <td>Ctrl+i</td>
+      <td>enable/disable FPS counter (print frames/second in logs)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="trouble-shooting">trouble shooting</h2>
+
+<h3 id="鼠标键盘无效">鼠标、键盘无效</h3>
+
+<p>可能需要在手机中设置： Developer options -&gt; 勾选 “USB debugging(Security settings)”</p>
+
+<p>参考： <a href="https://github.com/Genymobile/scrcpy/issues/70#issuecomment-373286323">https://github.com/Genymobile/scrcpy/issues/70#issuecomment-373286323</a></p>
+
+<h2 id="依赖包安装">依赖包安装</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre># runtime dependencies
+sudo apt install ffmpeg libsdl2-2.0-0
+
+# client build dependencies
+sudo apt install make gcc git pkg-config meson ninja-build \
+                 libavcodec-dev libavformat-dev libavutil-dev \
+                 libsdl2-dev
+
+# server build dependencies
+sudo apt install openjdk-8-jdk
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>On old versions (like Ubuntu 16.04), meson is too old. In that case, install it from pip3:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>sudo apt install python3-pip
+
+# 解决 ModuleNotFoundError: No module named 'setuptools' 报错
+pip3 install --upgrade setuptools
+
+# 解决 error: invalid command 'bdist_wheel' 报错
+pip3 install --upgrade wheel
+
+pip3 install --upgrade meson
+
+# meson 的安装位置 /home/wi/.local/bin/meson
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="编译-scrcpy-服务器电脑端">编译 scrcpy 服务器（电脑端）</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>export ANDROID_HOME=~/android/sdk
+
+git clone https://github.com/Genymobile/scrcpy
+cd scrcpy
+
+# then, build
+# Note: ninja must be run as a non-root user (only ninja install must be run as root).
+meson x --buildtype release --strip -Db_lto=true
+cd x
+# 因为GFW，可能会编译失败，可以通过proxy联网： proxychains ninja
+ninja
+
+# 安装
+sudo ninja install    # without sudo on Windows
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>This installs two files:</p>
+
+<ul>
+  <li>/usr/local/bin/scrcpy</li>
+  <li>/usr/local/share/scrcpy/scrcpy-server.jar</li>
+</ul>
+
+<p>卸载</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo ninja uninstall
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="在-manjaro-上编译">在 Manjaro 上编译</h3>
+
+<p>Manjaro 21.1.0 Pahvo</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c"># install dependencies</span>
+yay -S meson ffmpeg sdl2 gcc git pkgconf ninja jdk11-openjdk
+
+<span class="c"># config</span>
+<span class="nb">export </span><span class="nv">ANDROID_SDK_ROOT</span><span class="o">=</span>~/Android/Sdk
+meson x --buildtype release --strip -Db_lto<span class="o">=</span><span class="nb">true</span>
+
+<span class="c"># build</span>
+ninja -Cx  <span class="c"># DO NOT RUN AS ROOT</span>
+
+<span class="c"># Install</span>
+sudo ninja -Cx install    <span class="c"># without sudo on Windows</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>scrcpy --version
+
+scrcpy 1.13
+
+dependencies:
+ - SDL 2.0.16
+ - libavcodec 58.134.100
+ - libavformat 58.76.100
+ - libavutil 56.70.100
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># Uninstall</span>
+sudo ninja -Cx uninstall  <span class="c"># without sudo on Windows</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="在-manjaro-上交叉编译-windows上的版本">在 Manjaro 上交叉编译 Windows上的版本</h4>
+
+<ol>
+  <li>安装编译工具
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> yay -S mingw-w64-binutils mingw-w64-headers mingw-w64-gcc mingw-w64-tools
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>安装依赖包</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> <span class="c"># 安装过程会不断出现下载失败，解决方法如下</span>
+ yay -S mingw-w64-sdl2 mingw-w64-ffmpeg 
+
+ <span class="c"># mingw-w64-make mingw-w64-pkg-config mingw-w64-meson</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ul>
+      <li>
+        <p>下载失败的解决办法</p>
+
+        <ul>
+          <li>
+            <p>报错示例</p>
+
+            <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  curl: (56) OpenSSL SSL_read: Connection reset by peer, errno 104
+  ==&gt; ERROR: Failure while downloading https://static.rust-lang.org/dist/2021-07-29/rust-std-1.54.0-x86_64-unknown-linux-gnu.tar.xz
+      Aborting...
+  error downloading sources: mingw-w64-rust
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+          <li>
+            <p>解决办法</p>
+
+            <ol>
+              <li>按照报错提示，使用迅雷下载对应的包</li>
+              <li>在 <code class="highlighter-rouge">~/.cache/yay</code> 搜索对应的包（没下载完全，一般有个 part 后缀），用下载的包覆盖到对应目录</li>
+              <li>在继续执行 <code class="highlighter-rouge">yay -S mingw-w64-sdl2 mingw-w64-ffmpeg</code></li>
+            </ol>
+
+            <p>列一些依赖包的下载链接：</p>
+
+            <ul>
+              <li><a href="https://static.rust-lang.org/dist/rustc-1.55.0-src.tar.xz">https://static.rust-lang.org/dist/rustc-1.55.0-src.tar.xz</a></li>
+              <li><a href="https://ftp.openbsd.org/pub/OpenBSD/distfiles/rust/rustc-1.55.0-src.tar.xz">https://ftp.openbsd.org/pub/OpenBSD/distfiles/rust/rustc-1.55.0-src.tar.xz</a></li>
+              <li><a href="https://static.rust-lang.org/dist/2021-07-29/rust-std-1.54.0-x86_64-unknown-* linux-gnu.tar.xz">https://static.rust-lang.org/dist/2021-07-29/rust-std-1.54.0-x86_64-unknown-* linux-gnu.tar.xz</a></li>
+              <li><a href="https://static.rust-lang.org/dist/2021-07-29/rustc-1.54.0-x86_64-unknown-linux-gnu.tar.xz">https://static.rust-lang.org/dist/2021-07-29/rustc-1.54.0-x86_64-unknown-linux-gnu.tar.xz</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>curl: (7) Failed to connect to cmocka.org port 443 after 594 ms: Connection refused
+==&gt; ERROR: Failure while downloading https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
+    Aborting...
+error downloading sources: mingw-w64-cmocka
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ol>
+  <li>
+    <p>生成windows执行文件</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> ./release.sh
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h5 id="报错-gpg-keyserver-receive-failed">报错： <code class="highlighter-rouge">gpg: keyserver receive failed</code></h5>
+
+<ul>
+  <li>现象</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>:: PGP keys need importing:
+ -&gt; 0E51E7F06EF719FBD072782A5F56E5AFA63CCD33, required by: mingw-w64-icu
+==&gt; Import? [Y/n] 
+:: Importing keys with gpg...
+gpg: keyserver receive failed: No data
+problem importing keys
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>解决方法</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>wget https://raw.githubusercontent.com/unicode-org/icu/master/KEYS
+gpg --import KEYS
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>参考： <a href="https://aur.archlinux.org/packages/mingw-w64-icu/#comment-758487">https://aur.archlinux.org/packages/mingw-w64-icu/#comment-758487</a></li>
+</ul>
+
+<h2 id="支持中文输入">支持中文输入</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://zhuanlan.zhihu.com/p/149014163">zhihu.com - 阅读源码，分析并解决scrcpy无法正常输入中文的问题</a></li>
+      <li><a href="https://github.com/Genymobile/scrcpy/tree/d613b10efcdf0d1cf76e30871e136ba0ff444e6e">https://github.com/Genymobile/scrcpy/tree/d613b10efcdf0d1cf76e30871e136ba0ff444e6e</a></li>
+      <li><a href="https://github.com/Genymobile/scrcpy/pull/1426">Genymobile/scrcpy - Inject UTF-8 text #1426</a></li>
+      <li><a href="https://github.com/Genymobile/scrcpy/blob/master/BUILD.md">Genymobile/scrcpy - Build scrcpy</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>下载对应支持Unicode输入的源码<br />
+ 对应的分支：<code class="highlighter-rouge">origin/textpaste</code>   <code class="highlighter-rouge">d613b10efcdf0d1cf76e30871e136ba0ff444e6e</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> https://github.com/Genymobile/scrcpy.git
+ git co d613b10efcdf0d1cf76e30871e136ba0ff444e6e
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>编译安装</li>
+  <li>如果输入中文时出现: 字母也被输入的情况，启动时携带 <code class="highlighter-rouge">--prefer-text</code>
+    <ol>
+      <li>我在Manjaro 21.1 上使用 fcitx ，不用 <code class="highlighter-rouge">--prefer-text</code> 参数也能正常输入中文。</li>
+    </ol>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">*</span> d613b10 <span class="o">(</span>HEAD, origin/textpaste<span class="o">)</span> Add a new method <span class="k">for </span>text injection
+<span class="k">*</span> cc4e1e2 Add more convenience methods <span class="k">for </span>injection
+<span class="k">*</span> 4bbabfb Move injection methods to Device            <span class="c"># 从这里都在主线</span>
+<span class="k">*</span> ffc5751 Avoid clipboard synchronization loop
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="屏幕隐私设置快捷键一键隐藏scrcpy窗口">屏幕隐私，设置快捷键，一键隐藏scrcpy窗口</h2>
+
+<ol>
+  <li>创建shell文件 <code class="highlighter-rouge">mini-scrcpy.sh</code>，并将执行路径配置到PATH中
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre> <span class="c">#!/bin/bash</span>
+ <span class="nv">WID_V</span><span class="o">=</span><span class="k">$(</span>xdotool search --onlyvisible --class <span class="s2">"scrcpy"</span><span class="k">)</span>
+ <span class="nv">WID</span><span class="o">=</span><span class="k">$(</span>xdotool search --class <span class="s2">"scrcpy"</span><span class="k">)</span>
+
+ <span class="nb">echo</span> <span class="s2">"V: </span><span class="nv">$WID_V</span><span class="s2">"</span>
+ <span class="nb">echo</span> <span class="s2">"WID: </span><span class="nv">$WID</span><span class="s2">"</span>
+
+ <span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$WID_V</span> <span class="o">&amp;&amp;</span> -n <span class="nv">$WID</span> <span class="o">]]</span>; <span class="k">then</span>
+   <span class="c"># already minimized, raise up it</span>
+   <span class="nb">echo</span> <span class="s1">'already minimized, raise up it'</span>
+   xdotool windowactivate <span class="nv">$WID</span>
+ <span class="k">elif</span> <span class="o">[[</span> -n <span class="nv">$WID_V</span> <span class="o">&amp;&amp;</span> -n <span class="nv">$WID</span> <span class="o">]]</span>; <span class="k">then</span>
+   <span class="c"># minimize it!</span>
+   <span class="nb">echo</span> <span class="s1">'minimize it!'</span>
+   xdotool windowminimize <span class="nv">$WID</span>
+ <span class="k">fi</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>并将<code class="highlighter-rouge">mini-scrcpy.sh</code>执行路径配置到PATH中<br />
+ 修改 .bashrc
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> export PATH="$PATH:/your-scrpt-path"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>设置快捷键
+    <ul>
+      <li>manjaro xfce4 上设置快捷键
+        <ol>
+          <li>在开始菜单输入 <code class="highlighter-rouge">keyboard</code> 启动 Keyboard 设置程序</li>
+          <li>Application Shortcuts 添加快捷键，对应命令为 <code class="highlighter-rouge">/your-scrpt-path/mini-scrcpy.sh</code></li>
+        </ol>
+      </li>
+      <li>在 KDE 上设置快捷键
+        <ol>
+          <li>开始菜单 》shortcuts 》Custom Shortcuts 》Edit 》 New 》 Global Shortcut 》 Command/URL</li>
+          <li>选择sh文件地址</li>
+          <li>Apply</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#scrcpy" title="Pages tagged scrcpy" class="tag"><span class="term">scrcpy</span></a><a href="/tags#mint" title="Pages tagged mint" class="tag"><span class="term">mint</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

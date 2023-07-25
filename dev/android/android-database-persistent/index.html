@@ -1,0 +1,2187 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>android 上使用sqlite数据库存储 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="android, room, persistence, sqlite">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android 上使用sqlite数据库存储">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/android/android-database-persistent/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/android/android-database-persistent/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">android 上使用sqlite数据库存储</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-02-09T00:00:00+08:00">February 09, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://developer.android.com/guide/topics/data/data-storage.html#db">API Guides - Data Storage</a></li>
+      <li><a href="https://developer.android.com/training/data-storage/sqlite.html">TRAINING - SQLITE</a></li>
+      <li><a href="https://developer.android.com/training/data-storage/room/index.html">Saving Data Using the Room Persistence Library</a></li>
+      <li><a href="https://developer.android.com/topic/libraries/architecture/adding-components.html">Develop - Libraries - Architecture Components - Adding Components to your Project</a></li>
+      <li><a href="https://developer.android.com/topic/libraries/architecture/room.html">Develop - Libraries - Architecture Components - Room Persistence Library</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="room-persistence-library">Room Persistence Library</h2>
+
+<p>The Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.</p>
+
+<p>There are 3 major components in Room:</p>
+<ul>
+  <li><a href="https://developer.android.com/reference/android/arch/persistence/room/Database.html">Database</a>
+    <ul>
+      <li>annotated with <code class="highlighter-rouge">@Database</code></li>
+      <li>Be an abstract class that extends <code class="highlighter-rouge">RoomDatabase</code></li>
+      <li>Include <strong>the list of entities</strong> associated with the database within the annotation.</li>
+      <li>Contain an abstract method that has 0 arguments and returns the class that is annotated with <code class="highlighter-rouge">@Dao</code>.</li>
+    </ul>
+  </li>
+  <li>Entity
+    <ul>
+      <li>Represents a table within the database.</li>
+    </ul>
+  </li>
+  <li>DAO
+    <ul>
+      <li>Contains the methods used for accessing the database.</li>
+    </ul>
+  </li>
+</ul>
+
+<p style="width:70%"><img src="room_architecture.png" alt="" /></p>
+
+<ul>
+  <li><strong>Note</strong>: You should follow the singleton design pattern when instantiating an AppDatabase object, as each RoomDatabase instance is fairly expensive, and you rarely need access to multiple instances.</li>
+</ul>
+
+<h3 id="完整的简单例子">完整的简单例子</h3>
+
+<h4 id="gradle-配置">Gradle 配置</h4>
+
+<ul>
+  <li>project-root\build.gradle</li>
+</ul>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="c1">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
+
+<span class="k">buildscript</span> <span class="o">{</span>
+    <span class="k">repositories</span> <span class="o">{</span>
+        <span class="n">google</span><span class="o">()</span>
+        <span class="n">jcenter</span><span class="o">()</span>
+    <span class="o">}</span>
+    <span class="k">dependencies</span> <span class="o">{</span>
+        <span class="n">classpath</span> <span class="s1">'com.android.tools.build:gradle:3.0.1'</span>
+
+        <span class="c1">// NOTE: Do not place your application dependencies here; they belong</span>
+        <span class="c1">// in the individual module build.gradle files</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">allprojects</span> <span class="o">{</span>
+    <span class="k">repositories</span> <span class="o">{</span>
+        <span class="n">google</span><span class="o">()</span>
+        <span class="n">jcenter</span><span class="o">()</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">task</span> <span class="nf">clean</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Delete</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">delete</span> <span class="n">rootProject</span><span class="o">.</span><span class="na">buildDir</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>project-root\app\build.gradle</li>
+</ul>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></td><td class="code"><pre><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
+
+<span class="n">android</span> <span class="o">{</span>
+    <span class="n">compileSdkVersion</span> <span class="mi">26</span>
+    <span class="n">buildToolsVersion</span> <span class="s2">"27.0.3"</span>
+    <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="n">applicationId</span> <span class="s2">"com.wispeedio.setdingding"</span>
+        <span class="n">minSdkVersion</span> <span class="mi">18</span>
+        <span class="n">targetSdkVersion</span> <span class="mi">23</span>
+        <span class="n">versionCode</span> <span class="mi">1</span>
+        <span class="n">versionName</span> <span class="s2">"1.0"</span>
+        <span class="n">testInstrumentationRunner</span> <span class="s2">"android.support.test.runner.AndroidJUnitRunner"</span>
+        <span class="n">vectorDrawables</span><span class="o">.</span><span class="na">useSupportLibrary</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">javaCompileOptions</span> <span class="o">{</span>
+            <span class="n">annotationProcessorOptions</span> <span class="o">{</span>
+                <span class="n">arguments</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"room.schemaLocation"</span><span class="o">:</span> <span class="s2">"$projectDir/schemas"</span><span class="o">.</span><span class="na">toString</span><span class="o">()]</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">buildTypes</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+            <span class="n">minifyEnabled</span> <span class="kc">false</span>
+            <span class="n">proguardFiles</span> <span class="nf">getDefaultProguardFile</span><span class="o">(</span><span class="s1">'proguard-android.txt'</span><span class="o">),</span> <span class="s1">'proguard-rules.pro'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">dependencies</span> <span class="o">{</span>
+    <span class="n">compile</span> <span class="nf">fileTree</span><span class="o">(</span><span class="nl">dir:</span> <span class="s1">'libs'</span><span class="o">,</span> <span class="nl">include:</span> <span class="o">[</span><span class="s1">'*.jar'</span><span class="o">])</span>
+    <span class="n">androidTestCompile</span><span class="o">(</span><span class="s1">'com.android.support.test.espresso:espresso-core:2.0'</span><span class="o">,</span> <span class="o">{</span>
+        <span class="n">exclude</span> <span class="nl">group:</span> <span class="s1">'com.android.support'</span><span class="o">,</span> <span class="nl">module:</span> <span class="s1">'support-annotations'</span>
+    <span class="o">})</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support:appcompat-v7:26.1.0'</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support:design:26.1.0'</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support:support-vector-drawable:26.1.0'</span>
+    <span class="n">testCompile</span> <span class="s1">'junit:junit:4.10'</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support.test:testing-support-lib:0.1'</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'</span>
+
+    <span class="n">annotationProcessor</span> <span class="s2">"android.arch.lifecycle:compiler:1.1.0"</span>
+
+    <span class="c1">// Room (use 1.1.0-alpha1 for latest alpha)</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.persistence.room:runtime:1.0.0"</span>
+    <span class="n">annotationProcessor</span> <span class="s2">"android.arch.persistence.room:compiler:1.0.0"</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="entity-定义">Entity 定义</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">wispeedio</span><span class="o">.</span><span class="na">dbtesting</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.PrimaryKey</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Command Entity
+ */</span>
+<span class="nd">@Entity</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="n">Command</span><span class="o">.</span><span class="na">TABLE_NAME</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Command</span> <span class="o">{</span>
+  <span class="cm">/** The name of the Cheese table. */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TABLE_NAME</span> <span class="o">=</span> <span class="s">"commands"</span><span class="o">;</span>
+
+  <span class="nd">@PrimaryKey</span><span class="o">(</span><span class="n">autoGenerate</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+  <span class="c1">// =========== initial fields ===========</span>
+  <span class="cm">/** 何时执行 */</span>
+  <span class="kd">public</span> <span class="n">Date</span> <span class="n">when_start</span><span class="o">;</span>
+
+  <span class="cm">/** 执行的最长时间，单位：毫秒。*/</span>
+  <span class="kd">public</span> <span class="kt">long</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">60000</span><span class="o">;</span> <span class="c1">// 默认 一分钟 超时。</span>
+
+  <span class="cm">/** 状态：未执行；执行中；执行成功；执行失败；执行超时；已取消； */</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="n">status</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_NOT_RUN</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_RUNNING</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_SUCCESS</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_FAILED</span>  <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_TIMEOUT</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ST_CANCELLED</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span> <span class="c1">// “取消”操作只针对定时且未执行的命令</span>
+
+  <span class="cm">/** 命令 */</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">cmd</span><span class="o">;</span>
+
+  <span class="cm">/** 命令类型：目前只有一种，shell命令 */</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">cmd_type</span> <span class="o">=</span> <span class="s">"shell"</span><span class="o">;</span>
+
+  <span class="cm">/** 来源：目前只有短信下发的命令 */</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">source</span><span class="o">;</span>
+
+  <span class="c1">// =========== initial fields ===========</span>
+
+  <span class="cm">/** 完成时间 */</span>
+  <span class="kd">public</span> <span class="n">Date</span> <span class="n">when_done</span><span class="o">;</span>
+
+  <span class="cm">/** 执行结果描述 */</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">result</span><span class="o">;</span>
+
+  <span class="cm">/** 备注 */</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">memo</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">StringBuffer</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"CMD [ "</span><span class="o">);</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" ] "</span><span class="o">);</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">when_start</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="dao-定义">DAO 定义</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">wispeedio</span><span class="o">.</span><span class="na">dbtesting</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Dao</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Insert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Query</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="cm">/**
+ *
+ */</span>
+<span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CommandDao</span> <span class="o">{</span>
+  <span class="nd">@Insert</span>
+  <span class="kt">long</span><span class="o">[]</span> <span class="nf">insertAll</span><span class="o">(</span><span class="n">Command</span><span class="o">...</span> <span class="n">commands</span><span class="o">);</span>
+
+  <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM "</span> <span class="o">+</span> <span class="n">Command</span><span class="o">.</span><span class="na">TABLE_NAME</span><span class="o">)</span>
+  <span class="n">Command</span><span class="o">[]</span> <span class="nf">loadAll</span><span class="o">();</span>
+
+  <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT COUNT(*) FROM "</span> <span class="o">+</span> <span class="n">Command</span><span class="o">.</span><span class="na">TABLE_NAME</span><span class="o">)</span>
+  <span class="kt">int</span> <span class="nf">count</span><span class="o">();</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="converters-定义">Converters 定义</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">wispeedio</span><span class="o">.</span><span class="na">dbtesting</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.TypeConverter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="cm">/**
+ *
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Converters</span> <span class="o">{</span>
+  <span class="nd">@TypeConverter</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Date</span> <span class="nf">fromTimestamp</span><span class="o">(</span><span class="n">Long</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@TypeConverter</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Long</span> <span class="nf">dateToTimestamp</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">date</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="database-定义">Database 定义</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">wispeedio</span><span class="o">.</span><span class="na">dbtesting</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.arch.persistence.db.SupportSQLiteOpenHelper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Database</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.DatabaseConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.InvalidationTracker</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.Room</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.RoomDatabase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.arch.persistence.room.TypeConverters</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+
+<span class="cm">/**
+ *
+ */</span>
+<span class="nd">@Database</span><span class="o">(</span><span class="n">entities</span><span class="o">={</span><span class="n">Command</span><span class="o">.</span><span class="na">class</span><span class="o">},</span> <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="nd">@TypeConverters</span><span class="o">({</span><span class="n">Converters</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AppDatabase</span> <span class="kd">extends</span> <span class="n">RoomDatabase</span> <span class="o">{</span>
+
+  <span class="cm">/** The only instance */</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">AppDatabase</span> <span class="n">sInstance</span><span class="o">;</span>
+
+  <span class="cm">/**
+   * Gets the singleton instance of Database
+   * @param context
+   * @return The singleton instance of AppDatabase.
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">AppDatabase</span> <span class="nf">getInstance</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span> <span class="n">sInstance</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+      <span class="n">sInstance</span> <span class="o">=</span> <span class="n">Room</span><span class="o">.</span><span class="na">databaseBuilder</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">(),</span>
+          <span class="n">AppDatabase</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"appdb"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">sInstance</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * @return The DAO for the Command table.
+   */</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">CommandDao</span> <span class="nf">command</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="使用数据库mainactivity-按钮响应处理">使用数据库，MainActivity 按钮响应处理</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td class="code"><pre>      <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">insert</span><span class="o">:</span>
+        <span class="k">new</span> <span class="nf">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">(){</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">Command</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Command</span><span class="o">();</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="na">when_start</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
+            <span class="n">CommandDao</span> <span class="n">cmdDao</span> <span class="o">=</span> <span class="n">AppDatabase</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">).</span><span class="na">command</span><span class="o">();</span>
+            <span class="kt">long</span><span class="o">[]</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">cmdDao</span><span class="o">.</span><span class="na">insertAll</span><span class="o">(</span><span class="n">cmd</span><span class="o">);</span>
+            <span class="n">AppConfig</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"ids : "</span> <span class="o">+</span> <span class="n">ids</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">ids</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+              <span class="n">AppConfig</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"ids length : "</span> <span class="o">+</span> <span class="n">ids</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+              <span class="k">for</span><span class="o">(</span><span class="kt">long</span> <span class="nl">i:</span><span class="n">ids</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">AppConfig</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"id : "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+              <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="n">Command</span><span class="o">[]</span> <span class="n">commands</span> <span class="o">=</span> <span class="n">cmdDao</span><span class="o">.</span><span class="na">loadAll</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">commands</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">commands</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+              <span class="k">for</span> <span class="o">(</span><span class="n">Command</span> <span class="n">c</span> <span class="o">:</span> <span class="n">commands</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">AppConfig</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+              <span class="o">}</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">}).</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">break</span><span class="o">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="配置-buildgradle">配置 build.gradle</h3>
+
+<ul>
+  <li><a href="https://developer.android.com/studio/releases/gradle-plugin.html">Android Plugin for Gradle Release Notes</a></li>
+  <li><a href="https://developer.android.com/topic/libraries/architecture/adding-components.html">Adding Components to your Project</a></li>
+</ul>
+
+<p>Main Dependencies<br />
+Includes Lifecycles, LiveData, ViewModel, Room, and Paging.</p>
+
+<p>It also includes test helpers for testing LiveData as well as testing Room migrations.</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="k">dependencies</span> <span class="o">{</span>
+    <span class="c1">// ViewModel and LiveData</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.lifecycle:extensions:1.1.0"</span>
+    <span class="c1">// alternatively, just ViewModel</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.lifecycle:viewmodel:1.1.0"</span>
+    <span class="c1">// alternatively, just LiveData</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.lifecycle:livedata:1.1.0"</span>
+
+    <span class="n">annotationProcessor</span> <span class="s2">"android.arch.lifecycle:compiler:1.1.0"</span>
+
+    <span class="c1">// Room (use 1.1.0-alpha1 for latest alpha)</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.persistence.room:runtime:1.0.0"</span>
+    <span class="n">annotationProcessor</span> <span class="s2">"android.arch.persistence.room:compiler:1.0.0"</span>
+
+    <span class="c1">// Paging</span>
+    <span class="n">implementation</span> <span class="s2">"android.arch.paging:runtime:1.0.0-alpha5"</span>
+
+    <span class="c1">// Test helpers for LiveData</span>
+    <span class="n">testImplementation</span> <span class="s2">"android.arch.core:core-testing:1.1.0"</span>
+
+    <span class="c1">// Test helpers for Room</span>
+    <span class="n">testImplementation</span> <span class="s2">"android.arch.persistence.room:testing:1.0.0"</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="简单例子1个-entity-1个-dao">简单例子，1个 entity ，1个 DAO</h3>
+
+<ul>
+  <li>User.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@PrimaryKey</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">uid</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"first_name"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"last_name"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+
+    <span class="c1">// Getters and setters are ignored for brevity,</span>
+    <span class="c1">// but they're required for Room to work.</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>UserDao.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user"</span><span class="o">)</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">getAll</span><span class="o">();</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE uid IN (:userIds)"</span><span class="o">)</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">loadAllByIds</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">userIds</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE first_name LIKE :first AND "</span>
+           <span class="o">+</span> <span class="s">"last_name LIKE :last LIMIT 1"</span><span class="o">)</span>
+    <span class="n">User</span> <span class="nf">findByName</span><span class="o">(</span><span class="n">String</span> <span class="n">first</span><span class="o">,</span> <span class="n">String</span> <span class="n">last</span><span class="o">);</span>
+
+    <span class="nd">@Insert</span>
+    <span class="kt">void</span> <span class="nf">insertAll</span><span class="o">(</span><span class="n">User</span><span class="o">...</span> <span class="n">users</span><span class="o">);</span>
+
+    <span class="nd">@Delete</span>
+    <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>AppDatabase.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nd">@Database</span><span class="o">(</span><span class="n">entities</span> <span class="o">=</span> <span class="o">{</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">},</span> <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AppDatabase</span> <span class="kd">extends</span> <span class="n">RoomDatabase</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">UserDao</span> <span class="nf">userDao</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>After creating the files above, you get an instance of the created database using the following code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">AppDatabase</span> <span class="n">db</span> <span class="o">=</span> <span class="n">Room</span><span class="o">.</span><span class="na">databaseBuilder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span>
+        <span class="n">AppDatabase</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"database-name"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="entity">Entity</h3>
+
+<ul>
+  <li>每个 Entity类 对应数据库中的一个 table</li>
+  <li>By default, Room creates a column for each field that’s defined in the entity.
+    <ul>
+      <li>If an entity has fields that you don’t want to persist, you can annotate them using <code class="highlighter-rouge">@Ignore</code></li>
+    </ul>
+  </li>
+  <li>must reference the entity class through the entities array in the Database class.</li>
+  <li>To persist a field, Room must have access to it. You can make a field <strong>public</strong>, or you can provide a <strong>getter and setter</strong> for it.</li>
+</ul>
+
+<h4 id="primary-key-主键">primary key 主键</h4>
+
+<ul>
+  <li>每个 entity 必须至少指定一个属性为主键。即使只有一个field，依然需要冠以 <code class="highlighter-rouge">@PrimaryKey</code></li>
+  <li>多个列组合成主键
+    <div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Entity</span><span class="o">(</span><span class="n">primaryKeys</span> <span class="o">=</span> <span class="o">{</span><span class="s">"firstName"</span><span class="o">,</span> <span class="s">"lastName"</span><span class="o">})</span>
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="o">]</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>if you want Room to assign automatic IDs to entities, you can set the @PrimaryKey’s <code class="highlighter-rouge">autoGenerate</code> property.</li>
+</ul>
+
+<h4 id="表名列名">表名、列名</h4>
+
+<ul>
+  <li>默认使用类名作为表名。使用<code class="highlighter-rouge">tableName</code>属性可以更改
+    <div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nd">@Entity</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"users"</span><span class="o">)</span>
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>默认field即列名。使用<code class="highlighter-rouge">@ColumnInfo.name</code>修改列名。
+    <div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="nd">@Entity</span><span class="o">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s">"users"</span><span class="o">)</span>
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@PrimaryKey</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"first_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"last_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h4 id="标注索引-indices唯一约束-uniqueness">标注索引 indices、唯一约束 uniqueness</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="c1">// "last_name", "address"组合起来的索引，命名为 name</span>
+<span class="nd">@Entity</span><span class="o">(</span><span class="n">indices</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@Index</span><span class="o">(</span><span class="s">"name"</span><span class="o">),</span>
+        <span class="nd">@Index</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="s">"last_name"</span><span class="o">,</span> <span class="s">"address"</span><span class="o">})})</span>
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@PrimaryKey</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"last_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1">// 唯一约束</span>
+<span class="nd">@Entity</span><span class="o">(</span><span class="n">indices</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@Index</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="s">"first_name"</span><span class="o">,</span> <span class="s">"last_name"</span><span class="o">},</span>
+        <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)})</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="define-relationships-between-objects">Define relationships between objects</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="nd">@Entity</span><span class="o">(</span><span class="n">foreignKeys</span> <span class="o">=</span> <span class="nd">@ForeignKey</span><span class="o">(</span><span class="n">entity</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+                                  <span class="n">parentColumns</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">,</span>
+                                  <span class="n">childColumns</span> <span class="o">=</span> <span class="s">"user_id"</span><span class="o">))</span>
+<span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+    <span class="nd">@PrimaryKey</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">bookId</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user_id"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>you can tell SQLite to delete all books for a user if the corresponding instance of User is deleted by including <code class="highlighter-rouge">onDelete = CASCADE</code> in the <code class="highlighter-rouge">@ForeignKey</code> annotation.</li>
+  <li>SQLite handles <code class="highlighter-rouge">@Insert(onConflict = REPLACE)</code> as a set of REMOVE and REPLACE operations instead of a single UPDATE operation.</li>
+</ul>
+
+<h4 id="create-nested-objects">Create nested objects</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="kd">class</span> <span class="nc">Address</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">street</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">state</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">city</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"post_code"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">postCode</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// The table representing a User object then contains columns with the following names: id, firstName, street, state, city, and post_code.</span>
+<span class="nd">@Entity</span>
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@PrimaryKey</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@Embedded</span>
+    <span class="kd">public</span> <span class="n">Address</span> <span class="n">address</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="accessing-data-using-room-daos">Accessing data using Room DAOs</h3>
+
+<h4 id="insert">Insert</h4>
+
+<ul>
+  <li>When you create a DAO method and annotate it with <a href="https://developer.android.com/reference/android/arch/persistence/room/Insert.html">@Insert</a>, Room generates an implementation that inserts all parameters into the database in a single transaction.</li>
+  <li>If the @Insert method receives only 1 parameter, it can return a long, which is the new rowId for the inserted item</li>
+  <li>If the parameter is an array or a collection, it should return long[] or List<Long> instead.</Long></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Insert</span><span class="o">(</span><span class="n">onConflict</span> <span class="o">=</span> <span class="n">OnConflictStrategy</span><span class="o">.</span><span class="na">REPLACE</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertUsers</span><span class="o">(</span><span class="n">User</span><span class="o">...</span> <span class="n">users</span><span class="o">);</span>
+
+    <span class="nd">@Insert</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertBothUsers</span><span class="o">(</span><span class="n">User</span> <span class="n">user1</span><span class="o">,</span> <span class="n">User</span> <span class="n">user2</span><span class="o">);</span>
+
+    <span class="nd">@Insert</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertUsersAndFriends</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">friends</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="update">Update</h4>
+
+<ul>
+  <li>传参1个或多个 entity，Room根据主键找到对应记录更新。</li>
+  <li>you can have this method return an int value instead, indicating the number of rows updated in the database.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Update</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateUsers</span><span class="o">(</span><span class="n">User</span><span class="o">...</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="delete">Delete</h4>
+
+<ul>
+  <li>The Delete convenience method removes a set of entities, given as parameters, from the database.</li>
+  <li>uses the primary keys to find the entities to delete.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Delete</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteUsers</span><span class="o">(</span><span class="n">User</span><span class="o">...</span> <span class="n">users</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="query-for-information">Query for information</h3>
+
+<ul>
+  <li>Each <a href="https://developer.android.com/reference/android/arch/persistence/room/Query.html">@Query</a> method is verified at compile time, so if there is a problem with the query, a compilation error occurs instead of a runtime failure.</li>
+  <li>It gives a warning if only some field names match.</li>
+  <li>It gives an error if no field names match</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">User</span><span class="o">[]</span> <span class="nf">loadAllUsers</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="passing-parameters-into-the-query">Passing parameters into the query</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE age &gt; :minAge"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">User</span><span class="o">[]</span> <span class="nf">loadAllUsersOlderThan</span><span class="o">(</span><span class="kt">int</span> <span class="n">minAge</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE age BETWEEN :minAge AND :maxAge"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">User</span><span class="o">[]</span> <span class="nf">loadAllUsersBetweenAges</span><span class="o">(</span><span class="kt">int</span> <span class="n">minAge</span><span class="o">,</span> <span class="kt">int</span> <span class="n">maxAge</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE first_name LIKE :search "</span>
+           <span class="o">+</span> <span class="s">"OR last_name LIKE :search"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">findUserWithName</span><span class="o">(</span><span class="n">String</span> <span class="n">search</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="returning-subsets-of-columns">Returning subsets of columns</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="c1">// create the following plain old Java-based object (POJO) to fetch the user's first name and last name:</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NameTuple</span> <span class="o">{</span>
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"first_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@ColumnInfo</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"last_name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// use this POJO in your query method:</span>
+
+<span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT first_name, last_name FROM user"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">NameTuple</span><span class="o">&gt;</span> <span class="nf">loadFullName</span><span class="o">();</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="passing-a-collection-of-arguments">Passing a collection of arguments</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT first_name, last_name FROM user WHERE region IN (:regions)"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">NameTuple</span><span class="o">&gt;</span> <span class="nf">loadUsersFromRegions</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">regions</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="observable-queries">Observable queries</h4>
+
+<p>Room generates all necessary code to update the <a href="https://developer.android.com/reference/android/arch/lifecycle/LiveData.html">LiveData</a> when the database is updated.</p>
+
+<h4 id="reactive-queries-with-rxjava">Reactive queries with RxJava</h4>
+
+<p>Room can also return RxJava2 <a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html">Publisher</a> and <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a> objects from the queries you define. To use this functionality, add the android.arch.persistence.room:rxjava2 artifact from the Room group into your build Gradle dependencies. You can then return objects of types defined in RxJava2, as shown in the following code snippet:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * from user where id = :id LIMIT 1"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Flowable</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">loadUserById</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>For more details, see the Google Developers <a href="https://medium.com/google-developers/room-rxjava-acb0cd4f3757">Room and RxJava</a> article.</p>
+
+<h4 id="direct-cursor-access">Direct cursor access</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE age &gt; :minAge LIMIT 5"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Cursor</span> <span class="nf">loadRawUsersOlderThan</span><span class="o">(</span><span class="kt">int</span> <span class="n">minAge</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="querying-multiple-tables">Querying multiple tables</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM book "</span>
+           <span class="o">+</span> <span class="s">"INNER JOIN loan ON loan.book_id = book.id "</span>
+           <span class="o">+</span> <span class="s">"INNER JOIN user ON user.id = loan.user_id "</span>
+           <span class="o">+</span> <span class="s">"WHERE user.name LIKE :userName"</span><span class="o">)</span>
+   <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Book</span><span class="o">&gt;</span> <span class="nf">findBooksBorrowedByNameSync</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c1">// You can also return POJOs from these queries. For example, you can write a query that loads a user and their pet's name as follows:</span>
+
+<span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MyDao</span> <span class="o">{</span>
+   <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT user.name AS userName, pet.name AS petName "</span>
+          <span class="o">+</span> <span class="s">"FROM user, pet "</span>
+          <span class="o">+</span> <span class="s">"WHERE user.id = pet.user_id"</span><span class="o">)</span>
+   <span class="kd">public</span> <span class="n">LiveData</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">UserPet</span><span class="o">&gt;&gt;</span> <span class="nf">loadUserAndPetNames</span><span class="o">();</span>
+
+   <span class="c1">// You can also define this class in a separate file, as long as you add the</span>
+   <span class="c1">// "public" access modifier.</span>
+   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">UserPet</span> <span class="o">{</span>
+       <span class="kd">public</span> <span class="n">String</span> <span class="n">userName</span><span class="o">;</span>
+       <span class="kd">public</span> <span class="n">String</span> <span class="n">petName</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="migrating-room-databases">Migrating Room databases</h3>
+
+<ul>
+  <li>Each <a href="https://developer.android.com/reference/android/arch/persistence/room/migration/Migration.html">Migration</a> class specifies a startVersion and endVersion.</li>
+  <li>At runtime, Room runs each Migration class’s migrate() method, using the correct order to migrate the database to a later version.</li>
+  <li>Caution: If you don’t provide the necessary migrations, Room rebuilds the database instead, which means you’ll lose all of your data in the database.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="n">Room</span><span class="o">.</span><span class="na">databaseBuilder</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">MyDb</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"database-name"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">addMigrations</span><span class="o">(</span><span class="n">MIGRATION_1_2</span><span class="o">,</span> <span class="n">MIGRATION_2_3</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+
+<span class="kd">static</span> <span class="kd">final</span> <span class="n">Migration</span> <span class="n">MIGRATION_1_2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Migration</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">migrate</span><span class="o">(</span><span class="n">SupportSQLiteDatabase</span> <span class="n">database</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">database</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="s">"CREATE TABLE `Fruit` (`id` INTEGER, "</span>
+                <span class="o">+</span> <span class="s">"`name` TEXT, PRIMARY KEY(`id`))"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+
+<span class="kd">static</span> <span class="kd">final</span> <span class="n">Migration</span> <span class="n">MIGRATION_2_3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Migration</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">migrate</span><span class="o">(</span><span class="n">SupportSQLiteDatabase</span> <span class="n">database</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">database</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="s">"ALTER TABLE Book "</span>
+                <span class="o">+</span> <span class="s">" ADD COLUMN pub_year INTEGER"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="export-schemas">Export schemas</h4>
+
+<p>Upon compilation, Room exports your database’s schema information into a JSON file. <br />
+To export the schema, set the room.schemaLocation annotation processor property in your build.gradle file, as shown in the following code snippet:</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="c1">// build.gradle</span>
+
+<span class="n">android</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">javaCompileOptions</span> <span class="o">{</span>
+            <span class="n">annotationProcessorOptions</span> <span class="o">{</span>
+                <span class="n">arguments</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"room.schemaLocation"</span><span class="o">:</span>
+                             <span class="s2">"$projectDir/schemas"</span><span class="o">.</span><span class="na">toString</span><span class="o">()]</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To test these migrations, add the android.arch.persistence.room:testing Maven artifact from Room into your test dependencies, and add the schema location as an asset folder, as shown in the following code snippet:</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c1">// build.gradle</span>
+
+<span class="n">android</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="k">sourceSets</span> <span class="o">{</span>
+        <span class="n">androidTest</span><span class="o">.</span><span class="na">assets</span><span class="o">.</span><span class="na">srcDirs</span> <span class="o">+=</span> <span class="n">files</span><span class="o">(</span><span class="s2">"$projectDir/schemas"</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>A sample migration test appears in the following code snippet:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre><span class="nd">@RunWith</span><span class="o">(</span><span class="n">AndroidJUnit4</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MigrationTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TEST_DB</span> <span class="o">=</span> <span class="s">"migration-test"</span><span class="o">;</span>
+
+    <span class="nd">@Rule</span>
+    <span class="kd">public</span> <span class="n">MigrationTestHelper</span> <span class="n">helper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MigrationTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">helper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MigrationTestHelper</span><span class="o">(</span><span class="n">InstrumentationRegistry</span><span class="o">.</span><span class="na">getInstrumentation</span><span class="o">(),</span>
+                <span class="n">MigrationDb</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getCanonicalName</span><span class="o">(),</span>
+                <span class="k">new</span> <span class="nf">FrameworkSQLiteOpenHelperFactory</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">migrate1To2</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">SupportSQLiteDatabase</span> <span class="n">db</span> <span class="o">=</span> <span class="n">helper</span><span class="o">.</span><span class="na">createDatabase</span><span class="o">(</span><span class="n">TEST_DB</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+
+        <span class="c1">// db has schema version 1. insert some data using SQL queries.</span>
+        <span class="c1">// You cannot use DAO classes because they expect the latest schema.</span>
+        <span class="n">db</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(...);</span>
+
+        <span class="c1">// Prepare for the next version.</span>
+        <span class="n">db</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+        <span class="c1">// Re-open the database with version 2 and provide</span>
+        <span class="c1">// MIGRATION_1_2 as the migration process.</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">helper</span><span class="o">.</span><span class="na">runMigrationsAndValidate</span><span class="o">(</span><span class="n">TEST_DB</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="n">MIGRATION_1_2</span><span class="o">);</span>
+
+        <span class="c1">// MigrationTestHelper automatically verifies the schema changes,</span>
+        <span class="c1">// but you need to validate that the data was migrated properly.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="test-on-an-android-device">Test on an Android device</h3>
+
+<p>The recommended approach for testing your database implementation is writing a JUnit test that runs on an Android device. Because these tests don’t require creating an activity, they should be faster to execute than your UI tests.</p>
+
+<p>When setting up your tests, you should create an in-memory version of your database to make your tests more hermetic, as shown in the following example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="nd">@RunWith</span><span class="o">(</span><span class="n">AndroidJUnit4</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleEntityReadWriteTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">UserDao</span> <span class="n">mUserDao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">TestDatabase</span> <span class="n">mDb</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createDb</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">InstrumentationRegistry</span><span class="o">.</span><span class="na">getTargetContext</span><span class="o">();</span>
+        <span class="n">mDb</span> <span class="o">=</span> <span class="n">Room</span><span class="o">.</span><span class="na">inMemoryDatabaseBuilder</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">TestDatabase</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">mUserDao</span> <span class="o">=</span> <span class="n">mDb</span><span class="o">.</span><span class="na">getUserDao</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@After</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">closeDb</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">mDb</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeUserAndReadInList</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">TestUtil</span><span class="o">.</span><span class="na">createUser</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"george"</span><span class="o">);</span>
+        <span class="n">mUserDao</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">byName</span> <span class="o">=</span> <span class="n">mUserDao</span><span class="o">.</span><span class="na">findUsersByName</span><span class="o">(</span><span class="s">"george"</span><span class="o">);</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">byName</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">equalTo</span><span class="o">(</span><span class="n">user</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="use-type-converters">Use type converters</h3>
+
+<p>For example, if we want to persist instances of Date, we can write the following TypeConverter to store the equivalent Unix timestamp in the database:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Converters</span> <span class="o">{</span>
+    <span class="nd">@TypeConverter</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Date</span> <span class="nf">fromTimestamp</span><span class="o">(</span><span class="n">Long</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@TypeConverter</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Long</span> <span class="nf">dateToTimestamp</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">date</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Next, you add the <a href="https://developer.android.com/reference/android/arch/persistence/room/TypeConverters.html">@TypeConverters</a> annotation to the AppDatabase class so that Room can use the converter that you’ve defined for each entity and DAO in that AppDatabase:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c1">// AppDatabase.java</span>
+
+<span class="nd">@Database</span><span class="o">(</span><span class="n">entities</span> <span class="o">=</span> <span class="o">{</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">},</span> <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<span class="nd">@TypeConverters</span><span class="o">({</span><span class="n">Converters</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AppDatabase</span> <span class="kd">extends</span> <span class="n">RoomDatabase</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">UserDao</span> <span class="nf">userDao</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Using these converters, you can then use your custom types in other queries, just as you would use primitive types</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c1">// User.java</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">birthday</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// UserDao.java</span>
+
+<span class="nd">@Dao</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserDao</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"SELECT * FROM user WHERE birthday BETWEEN :from AND :to"</span><span class="o">)</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">findUsersBornBetweenDates</span><span class="o">(</span><span class="n">Date</span> <span class="n">from</span><span class="o">,</span> <span class="n">Date</span> <span class="n">to</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a><a href="/tags#room" title="Pages tagged room" class="tag"><span class="term">room</span></a><a href="/tags#persistence" title="Pages tagged persistence" class="tag"><span class="term">persistence</span></a><a href="/tags#sqlite" title="Pages tagged sqlite" class="tag"><span class="term">sqlite</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

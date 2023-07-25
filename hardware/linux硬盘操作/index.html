@@ -1,0 +1,1109 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>linux 磁盘操作 , 关联 disk, 硬盘，分区, partition，df, blockdev, fdisk, gdisk, lsblk, mkfs, e2label, ntfsfix, GPT, MBR, GUID, EFI, sector, nvme， hardware, 4K对齐 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 磁盘操作 , 关联 disk, 硬盘，分区, partition，df, blockdev, fdisk, gdisk, lsblk, mkfs, e2label, ntfsfix, GPT, MBR, GUID, EFI, sector, nvme， hardware, 4K对齐">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/hardware/linux%E7%A1%AC%E7%9B%98%E6%93%8D%E4%BD%9C/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/hardware/linux%E7%A1%AC%E7%9B%98%E6%93%8D%E4%BD%9C/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">linux 磁盘操作 , 关联 disk, 硬盘，分区, partition，df, blockdev, fdisk, gdisk, lsblk, mkfs, e2label, ntfsfix, GPT, MBR, GUID, EFI, sector, nvme， hardware, 4K对齐</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-04-24T00:00:00+08:00">April 24, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="http://manpages.ubuntu.com/manpages/xenial/man8/e2label.8.html">Ubuntu Manuals - e2label</a></li>
+      <li><a href="https://www.bettertechtips.com/linux/check-hard-disk-serial-number-linux/">How to Check the Hard Disk Serial Number in Linux</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="磁盘信息获取">磁盘信息获取</h2>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://www.linuxnix.com/find-block-size-linux/">https://www.linuxnix.com/find-block-size-linux/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="smartctl-获取磁盘的设备信息">smartctl 获取磁盘的设备信息</h3>
+
+<p><code class="highlighter-rouge">smartctl</code> 可以获取磁盘的型号、序列号、固件版本等。</p>
+
+<p><code class="highlighter-rouge">--all</code> 参数查看所有 SMART 信息。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre>sudo smartctl -i /dev/sdb
+
+smartctl 7.3 2022-02-28 r5338 <span class="o">[</span>x86_64-linux-5.15.65-1-MANJARO] <span class="o">(</span><span class="nb">local </span>build<span class="o">)</span>
+Copyright <span class="o">(</span>C<span class="o">)</span> 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+<span class="o">===</span> START OF INFORMATION SECTION <span class="o">===</span>
+Model Family:     Western Digital Ultrastar DC HC550
+Device Model:     WUH721816ALE6L4
+Serial Number:    2PG28KL8
+LU WWN Device Id: 5 000cca 2c1c1f20f
+Add. Product Id:  202131
+Firmware Version: PCGAW232
+User Capacity:    16,000,900,661,248 bytes <span class="o">[</span>16.0 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    7200 rpm
+Form Factor:      3.5 inches
+Device is:        In smartctl database 7.3/5319
+ATA Version is:   ACS-4 published, ANSI INCITS 529-2018
+SATA Version is:  SATA 3.3, 6.0 Gb/s <span class="o">(</span>current: 6.0 Gb/s<span class="o">)</span>
+Local Time is:    Wed Dec  7 09:57:06 2022 CST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>正对U盘，上面命令可能出错，加上type参数试试：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo smartctl -i -d scsi /dev/sdb
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="df--h-各分区空间使用情况"><code class="highlighter-rouge">df -h</code> 各分区空间使用情况</h3>
+
+<h3 id="lsblk-获取硬盘和分区列表"><code class="highlighter-rouge">lsblk</code> 获取硬盘和分区列表</h3>
+
+<p><code class="highlighter-rouge">lsblk -lf</code> 打印出文件系统格式、UUID、挂载点</p>
+
+<h3 id="sudo-fdisk--l--fdisk-显示分区信息"><code class="highlighter-rouge">sudo fdisk -l</code>  fdisk 显示分区信息</h3>
+
+<h3 id="blockdev-获取磁盘的-block-size"><code class="highlighter-rouge">blockdev</code> 获取磁盘的 block size</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>blockdev --getbsz partition
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Example, 4K的block size</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># blockdev --getbsz /dev/sda1 
+4096
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="分区表">分区表</h2>
+
+<h3 id="分区表格式查看是mbr-还是-gpt">分区表格式查看，是MBR 还是 GPT？</h3>
+
+<ul>
+  <li>
+    <p>方法1： <code class="highlighter-rouge">gdisk -l /dev/sda | grep -A4 '^Partition table scan:'</code></p>
+
+    <p>如果是MBR，就显示：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>Partition table scan:
+  MBR: MBR only
+  BSD: not present
+  APM: not present
+  GPT: not present
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>如果是 GPT，就显示：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>方法2： <code class="highlighter-rouge">parted /dev/sda print | grep -i '^Partition Table'</code></p>
+
+    <p>如果是MBR，就显示： Partition Table: msdos</p>
+  </li>
+  <li>
+    <p>方法3 <code class="highlighter-rouge">fdisk -l /dev/sda</code></p>
+
+    <p>如果是GPT格式，就显示如下，因为fdisk不支持GPT：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre># WARNING: GPT (GUID Partition Table) detected on '/dev/sda'! The util fdisk doesn't support GPT. Use GNU Parted.
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="将-gpt-转换为-mbr">将 GPT 转换为 MBR</h3>
+
+<ul>
+  <li><a href="https://sites.google.com/site/aleksanderbrain/ubuntu-server/disk-management/convert-from-gpt-to-mbr-partition-table">Convert from GPT to MBR partition table</a></li>
+</ul>
+
+<p><code class="highlighter-rouge">gdisk /dev/sdx</code></p>
+
+<p>MBR to GPT<br />
+Enter w to write GPT partition on disk.</p>
+
+<p>Press y to confirm your choice.</p>
+
+<p>GPT to MBR<br />
+Enter r to enter in recovery and transformation options.</p>
+
+<p>Enter g to convert GPT to MBR partition.</p>
+
+<h2 id="磁盘分区格式化">磁盘分区、格式化</h2>
+
+<h3 id="mkfs-格式化">mkfs 格式化</h3>
+
+<ul>
+  <li>
+    <p>NTFS<br />
+<code class="highlighter-rouge">sudo mkfs.ntfs /dev/sdc1</code></p>
+
+    <p>需要安装 ntfs-3g，格式化的时间很长，竟然要全部写零。。 <strong>执行需谨慎！！</strong></p>
+
+    <p><code class="highlighter-rouge">-f, --fast, -Q, --quick</code><br />
+Perform quick (fast) format. This will skip both zeroing of the volume and bad sector checking.</p>
+  </li>
+  <li>
+    <p>ext4<br />
+<code class="highlighter-rouge">sudo mkfs.ext4 /dev/sdc1</code></p>
+  </li>
+  <li>
+    <p>vfat<br />
+<code class="highlighter-rouge">sudo mkfs.vfat /dev/sdc1</code></p>
+  </li>
+</ul>
+
+<h3 id="fdisk-格式化">fdisk 格式化</h3>
+
+<ul>
+  <li>FAT32
+    <ul>
+      <li>对应名称为： C 295 FAT32(LBA)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="创建efi分区">创建EFI分区</h3>
+
+<ul>
+  <li><a href="https://askubuntu.com/questions/267994/how-do-i-create-an-efi-partition">https://askubuntu.com/questions/267994/how-do-i-create-an-efi-partition</a></li>
+  <li>
+    <p><a href="https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php/EFI_System_Partition.html#Format_the_partition">EFI System Partition - linuxsecrets.com</a></p>
+  </li>
+  <li>使用 gdisk 创建EFI分区</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>gdisk /dev/sdxY
+t
+ef00
+
+# After creating the ESP, you must format it as FAT32:
+mkfs.fat -F32 /dev/sdxY
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>gdisk partition type</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>A small, under 1MB partition with code EF02
+The EFI partition with code EF00
+A windows Recovery Environment partition, code 2700
+A windows System Reserved partition containing the BCD, MSR code 0C01
+followed by the OS partition, perhaps code 0700
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="清除硬盘">清除硬盘</h3>
+
+<ul>
+  <li><a href="https://how-to.fandom.com/wiki/How_to_wipe_a_hard_drive_clean_in_Linux">How to wipe a hard drive clean in Linux</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre># 清除硬盘内容，比较慢
+dd if=/dev/zero of=/dev/sda
+# 使用随机数据覆盖，据说更安全，执行起来相当慢
+dd if=/dev/urandom of=/dev/hda
+
+# wipe just the MBR
+dd if=/dev/zero of=/dev/sda bs=446 count=1
+
+# To remove the partition table &amp; MBR
+dd if=/dev/zero of=/dev/sda bs=512 count=1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="磁盘备份和恢复">磁盘备份和恢复</h2>
+
+<p><a href="https://askubuntu.com/a/563946">https://askubuntu.com/a/563946</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>partclone.ntfs -b -N -s /dev/sda3 -o /dev/sdb3
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Partclone puked on the ntfs needing chkdisk run in Windows, so a quick fix got partclone happy:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>ntfsfix -b /dev/sda3
+ntfsfix -d /dev/sda3
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><a href="https://blog.csdn.net/menogen/article/details/38059671">dd命令的conv=fsync,oflag=sync/dsync</a></p>
+
+<p><a href="https://www.linux.com/learn/full-metal-backup-using-dd-command">Full Metal Backup Using the dd Command</a></p>
+
+<h2 id="linux-sync-命令">linux sync 命令</h2>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://unix.stackexchange.com/questions/48235/can-i-watch-the-progress-of-a-sync-operation">stackexchange.com - Can I watch the progress of a <code class="highlighter-rouge">sync</code> operation?</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>将内存中的缓存写入磁盘。</p>
+
+<ul>
+  <li>
+    <p>如何查看sync进度<br />
+有时候会有某个很慢的盘，严重拖慢 <code class="highlighter-rouge">sync</code> 速度。</p>
+
+    <p>这时可以通过查看 <code class="highlighter-rouge">/sys/block/&lt;device&gt;/stat</code> 文件第9列数据，为<code class="highlighter-rouge">0</code>表示flush完成。</p>
+  </li>
+</ul>
+
+<h3 id="e2label-修改-ext2ext3ext4-文件系统的label">e2label 修改 ext2/ext3/ext4 文件系统的label</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo apt-get install e2fsprogs
+e2label device [ new-label ]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="挂载分区-mount--umount">挂载分区 mount / umount</h2>
+
+<h3 id="挂载-efi-分区">挂载 EFI 分区</h3>
+
+<p>直接mount即可，例如， <code class="highlighter-rouge">sudo mount /dev/nvme0n1p1 /media/jake/efi</code></p>
+
+<h2 id="linux-修改-sector-size">linux 修改 sector size</h2>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://developer.ibm.com/tutorials/l-linux-on-4kb-sector-disks/">Linux on 4 KB sector disks: Practical advice</a></li>
+      <li><a href="https://unix.stackexchange.com/a/562615">Switching HDD sector size to 4096 bytes</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c"># manjaro 为例</span>
+sudo pacman -S nvme-cli
+
+<span class="c"># 查看 目标硬盘的特性，关注其中 LBA Format 有几种模式</span>
+nvme id-ns -H /dev/nvmeXnY
+<span class="c"># 上述命令，以pm983a为例，支持2中LBA</span>
+... ...
+LBA Format 0: Metadata Size: 0 bytes - Data Size: 4096 bytes <span class="o">(</span><span class="k">in </span>use<span class="o">)</span>
+LBA Format 1: Metadata Size: 0 bytes - Data Size: 512 bytes 
+
+<span class="c"># 我要将 sector size 从 4K 改成 512</span>
+nvme format --lbaf<span class="o">=</span>1 /dev/nvmeXnY
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="4k-对齐">4k 对齐</h2>
+
+<p><code class="highlighter-rouge">gdisk -l</code>  或 <code class="highlighter-rouge">fdisk -l</code> 查看各个分区和磁盘的sector信息。</p>
+
+<p>如果是 <code class="highlighter-rouge">Sector size (logical/physical): 512 bytes / 4096 bytes</code> 说明4K物理扇区盘，模拟512扇区，这种兼容性最高，性能也行，但是就是要看看是不是分区4K对齐了。</p>
+
+<p>分区4K对齐： <code class="highlighter-rouge">分区的起始扇区 % 8 == 0</code>  实际管理是对齐 2048（1M）： <code class="highlighter-rouge">起始扇区 % 2048 == 0</code></p>
+
+<p>如果4K不对齐，会看到类似： <code class="highlighter-rouge">Partition 1 does not start on physical sector boundary.</code></p>
+
+<h2 id="查看硬盘温度">查看硬盘温度</h2>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.cyberciti.biz/tips/howto-monitor-hard-drive-temperature.html">Linux Monitor Hard Disks Temperature With hddtemp</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="hddtemp">hddtemp</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="c"># 安装</span>
+sudo apt-get install hddtemp
+<span class="c"># or</span>
+sudo yum install hddtemp
+<span class="c"># or</span>
+sudo pacman -S hddtemp
+
+<span class="c"># 列出所有硬盘温度</span>
+hddtemp
+<span class="c"># or</span>
+hddtemp /dev/sda
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="从源代码安装">从源代码安装</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="gp">$ </span>wget http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
+
+<span class="gp">$ </span>tar -jxvf hddtemp-0.3-beta15.tar.bz2
+<span class="gp">$ </span><span class="nb">cd </span>hddtemp-0.3-beta15
+<span class="gp">$ </span>./configure
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+
+<span class="c"># Install hard disk temperature database at /usr/share/misc or /etc directory:</span>
+<span class="gp">$ </span><span class="nb">cd</span> /usr/share/misc
+wget http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>使用 wireshark &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 wireshark">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/wireshark%E4%BD%BF%E7%94%A8/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/wireshark%E4%BD%BF%E7%94%A8/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">使用 wireshark</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-03-10T00:00:00+08:00">March 10, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.cnblogs.com/linyfeng/p/9496126.html">Beng Dou - cnblogs.com - wireshark抓包新手使用教程</a></li>
+      <li><a href="https://www.jianshu.com/p/55ec409c739e">简书 - 安易学车 - Wireshark使用教程</a></li>
+      <li><a href="https://blog.csdn.net/qq_30682027/article/details/83021901">CSDN - 欢欢2776479680 - Wireshark使用教程</a></li>
+      <li><a href="https://www.wireshark.org">Wireshark官网</a></li>
+      <li><a href="https://www.wireshark.org/docs/">Wireshark官网 - 文档</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Wireshark is available for <strong>free</strong>, is <strong>open source</strong>, and is one of the best packet analyzers available today.</p>
+
+<h2 id="wireshark-功能">Wireshark 功能</h2>
+
+<h3 id="简单抓包示例">简单抓包示例</h3>
+
+<ol>
+  <li>打开wireshark 2.6.5</li>
+  <li>择菜单栏上Capture -&gt; Option，勾选目标网卡 Promiscuous(混杂模式)<br />
+ 勾选：”Enable promiscuous mode on all interfaces”<br />
+ 点击 Start 按钮</li>
+  <li>启动后，wireshark处于抓包状态中。</li>
+</ol>
+
+<h3 id="wireshark-功能区简介">wireshark 功能区简介</h3>
+
+<ol>
+  <li>
+    <p>Display Filter(显示过滤器)<br />
+ 用于设置过滤条件进行数据包列表过滤。菜单路径：Analyze -&gt; Display Filters。</p>
+  </li>
+  <li>
+    <p>Packet List Pane(数据包列表)<br />
+ 显示捕获到的数据包，每个数据包包含编号，时间戳，源地址，目标地址，协议，长度，以及数据包信息。 不同协议的数据包使用了不同的颜色区分显示。<br />
+ 协议颜色标识定位在菜单栏 View -&gt; Coloring Rules。</p>
+  </li>
+  <li>
+    <p>Packet Details Pane(数据包详细信息), 在数据包列表中选择指定数据包<br />
+ （1）Frame: 物理层的数据帧概况<br />
+ （2）Ethernet II: 数据链路层以太网帧头部信息<br />
+ （3）Internet Protocol Version 4: 互联网层IP包头部信息<br />
+ （4）Transmission Control Protocol: 传输层T的数据段头部信息，此处是TCP<br />
+ （5）Hypertext Transfer Protocol: 应用层的信息，此处是HTTP协议</p>
+
+    <p><img src="packet_details_pane.png" alt="" /></p>
+
+    <p>TCP包的具体内容</p>
+
+    <p><img src="tcp_packet_details01.png" alt="" /><br />
+ <img src="tcp_packet_details02.png" alt="" /><br />
+ <img src="tcp_packet_details03.png" alt="" /></p>
+  </li>
+</ol>
+
+<h4 id="数据包列表中时间戳显示格式">数据包列表中时间戳显示格式。</h4>
+
+<p>调整方法为View -&gt; Time Display Format -&gt; Date and Time of Day。</p>
+
+<h3 id="wireshark-io图形工具分析数据流">Wireshark IO图形工具分析数据流</h3>
+
+<p>菜单 Statistics – IO Graphs</p>
+
+<ul>
+  <li>
+    <p>常用排错过滤条件:</p>
+
+    <p>对于排查网络延时/应用问题有一些过滤条件是非常有用的：</p>
+
+    <ul>
+      <li>tcp.analysis.lost_segment：<br />
+表明已经在抓包中看到不连续的序列号。报文丢失会造成重复的ACK，这会导致重传。</li>
+      <li>tcp.analysis.duplicate_ack：<br />
+显示被确认过不止一次的报文。大凉的重复ACK是TCP端点之间高延时的迹象。</li>
+      <li>tcp.analysis.retransmission：<br />
+显示抓包中的所有重传。如果重传次数不多的话还是正常的，过多重传可能有问题。<br />
+这通常意味着应用性能缓慢和/或用户报文丢失。</li>
+      <li>tcp.analysis.window_update：<br />
+将传输过程中的TCP window大小图形化。<br />
+如果看到窗口大小下降为零，这意味着发送方已经退出了，并等待接收方确认所有已传送数据。<br />
+这可能表明接收端已经不堪重负了。</li>
+      <li>tcp.analysis.bytes_in_flight：<br />
+某一时间点网络上未确认字节数。<br />
+未确认字节数不能超过你的TCP窗口大小（定义于最初3此TCP握手），为了最大化吞吐量你想要获得尽可能接近TCP窗口大小。<br />
+如果看到连续低于TCP窗口大小，可能意味着报文丢失或路径上其他影响吞吐量的问题。</li>
+      <li>tcp.analysis.ack_rtt：<br />
+衡量抓取的TCP报文与相应的ACK。如果这一时间间隔比较长那可能表示某种类型的网络延时（报文丢失，拥塞，等等）。</li>
+    </ul>
+  </li>
+  <li>
+    <p>函数:<br />
+　　IO Graphs有六个可用函数：SUM, MIN, AVG, MAX, COUNT, LOAD。</p>
+  </li>
+</ul>
+
+<h2 id="wireshark-过滤">Wireshark 过滤</h2>
+
+<h3 id="过滤器">过滤器</h3>
+
+<p>wireshark工具中自带了两种类型的过滤器：抓包过滤器、显示过滤器</p>
+
+<ul>
+  <li>
+    <p>抓包过滤器<br />
+捕获过滤器的菜单栏路径为Capture -&gt; Capture Filters。用于在抓取数据包前设置。</p>
+  </li>
+  <li>
+    <p>显示过滤器<br />
+显示过滤器是用于在抓取数据包后设置过滤条件进行过滤数据包。<br />
+通常是在抓取数据包时设置条件相对宽泛或者没有设置导致抓取的数据包内容较多时使用显示过滤器设置条件过滤以方便分析。</p>
+  </li>
+</ul>
+
+<h3 id="过滤规则">过滤规则</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>抓包过滤规则可以包含 Type（host、net、port）、方向Dir（src、dst）、协议Proto（ether、ip、tcp、udp、http、icmp、ftp等）、逻辑运算符（&amp;&amp; 与、</td>
+      <td> </td>
+      <td>或、！非）等参数。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="抓包过滤器规则">抓包过滤器规则</h4>
+
+<ul>
+  <li>
+    <p>协议过滤<br />
+比较简单，直接在抓包过滤框中直接输入协议名即可。</p>
+
+    <ul>
+      <li>tcp，只显示TCP协议的数据包列表</li>
+      <li>http，只查看HTTP协议的数据包列表</li>
+    </ul>
+  </li>
+  <li>IP过滤
+    <ul>
+      <li>host 192.168.1.104</li>
+      <li>src host 192.168.1.104</li>
+      <li>dst host 192.168.1.104</li>
+    </ul>
+  </li>
+  <li>端口过滤
+    <ul>
+      <li>port 80</li>
+      <li>src port 80</li>
+      <li>dst port 80</li>
+    </ul>
+  </li>
+  <li>逻辑运算符&amp;&amp; 与、|| 或、！非<br />
+<code class="highlighter-rouge">src host 192.168.1.104 &amp;&amp; dst port 80</code> 抓取主机地址为192.168.1.80、目的端口为80的数据包<br />
+<code class="highlighter-rouge">host 192.168.1.104 || host 192.168.1.102</code> 抓取主机为192.168.1.104或者192.168.1.102的数据包<br />
+<code class="highlighter-rouge">！broadcast</code> 不抓取广播数据包</li>
+</ul>
+
+<h4 id="显示过滤器规则">显示过滤器规则</h4>
+
+<ul>
+  <li>比较操作符<br />
+比较操作符有== 等于、！= 不等于、&gt; 大于、&lt; 小于、&gt;= 大于等于、&lt;=小于等于。</li>
+  <li>协议过滤<br />
+比较简单，直接在Filter框中直接输入协议名即可。注意：协议名称需要输入小写。
+    <ul>
+      <li>tcp，只显示TCP协议的数据包列表</li>
+      <li>http，只查看HTTP协议的数据包列表</li>
+      <li>icmp，只显示ICMP协议的数据包列表</li>
+    </ul>
+  </li>
+  <li>ip过滤</li>
+  <li><code class="highlighter-rouge">ip.src ==192.168.1.104</code> 显示源地址为192.168.1.104的数据包列表</li>
+  <li><code class="highlighter-rouge">ip.dst==192.168.1.104</code>, 显示目标地址为192.168.1.104的数据包列表</li>
+  <li><code class="highlighter-rouge">ip.addr == 192.168.1.104</code> 显示源IP地址或目标IP地址为192.168.1.104的数据包列表</li>
+  <li>端口过滤
+    <ul>
+      <li><code class="highlighter-rouge">tcp.port ==80</code>,  显示源主机或者目的主机端口为80的数据包列表。</li>
+      <li><code class="highlighter-rouge">tcp.srcport == 80</code>,  只显示TCP协议的源主机端口为80的数据包列表。</li>
+      <li><code class="highlighter-rouge">tcp.dstport == 80</code>，只显示TCP协议的目的主机端口为80的数据包列表。</li>
+    </ul>
+  </li>
+  <li>Http模式过滤<br />
+<code class="highlighter-rouge">http.request.method=="GET"</code>,   只显示HTTP GET方法的。</li>
+  <li>逻辑运算符为 and/or/not<br />
+过滤多个条件组合时，使用and/or。<br />
+比如获取IP地址为192.168.1.104的ICMP数据包表达式为 <code class="highlighter-rouge">ip.addr == 192.168.1.104 and icmp</code></li>
+  <li>
+    <p>按照数据包内容过滤。<br />
+例如，<code class="highlighter-rouge">data contains "abcd"</code></p>
+
+    <p>假设以IMCP层中的内容进行过滤，</p>
+    <ol>
+      <li>可以单击选中界面中的码流，在下方进行选中数据。如下<br />
+ <img src="data_filter01.png" alt="" /></li>
+      <li>右键菜单选择： Apply as Filter -&gt; Selected</li>
+      <li>想过滤出data数据包中包含”abcd”内容，在过滤器中填写 <code class="highlighter-rouge">data contains "abcd"</code><br />
+ <img src="data_filter02.png" alt="" /></li>
+    </ol>
+  </li>
+</ul>
+
+<h5 id="follow-tcp-stream-方式过滤出本次会话相关的所有packet">Follow TCP Stream 方式过滤出本次会话相关的所有Packet</h5>
+
+<ol>
+  <li>选中报文，右键菜单选择：Follow TCP Stream</li>
+  <li>会看到在服务器和目标端之间的全部会话。</li>
+</ol>
+
+<h2 id="wireshark-分析">WireShark 分析</h2>
+
+<h3 id="tcp-三次握手">TCP 三次握手</h3>
+
+<ol>
+  <li>客户端-&gt;服务器：发送标识为SYN=1、随机产生的客户端序号seq（发送序号）</li>
+  <li>服务器-&gt;客户端：发送标识为SYN=1、ACK=1、第一步产生的客户端序号seq+1（确认序号）、随机产生的服务端序号seq</li>
+  <li>客户端-&gt;服务器：第一步产生的客户端序号seq+1（发送序号）、第二步产生的服务端序号seq+1（确认序号）、ACK=1</li>
+</ol>
+
+<p><img src="tcp_shake01.png" alt="" /></p>
+
+<h3 id="tcpip数据包">tcp/ip数据包</h3>
+
+<p>标志位对应的功能：</p>
+
+<ul>
+  <li>URG： 紧急指针（ urgent pointer）有效。</li>
+  <li>ACK： 确认序号有效。</li>
+  <li>PSH： 接收方应该尽快将这个报文段交给应用层。</li>
+  <li>RST： 重建连接。</li>
+  <li>SYN： 同步序号用来发起一个连接。</li>
+  <li>FIN： 发端完成发送任务。</li>
+  <li>窗口大小：用于流量控制。</li>
+  <li>
+    <p>检验和：检验和覆盖了整个的 TCP报文段： TCP首部和TCP数据，与udp相似需要计算伪首部。</p>
+  </li>
+  <li>
+    <p>tcp数据包结构及在wireshark中的位置</p>
+
+    <p><img src="tcp_packet_format01.png" alt="" /></p>
+
+    <p><img src="tcp_packet_analyze01.png" alt="" /><br />
+<img src="tcp_packet_analyze02.png" alt="" /></p>
+  </li>
+  <li>
+    <p>ip数据包</p>
+
+    <p><img src="ip_packet_format01.png" alt="" /><br />
+<img src="ip_packet_analyze01.png" alt="" /></p>
+  </li>
+</ul>
+
+<h2 id="ubuntu-上使用-wireshark">Ubuntu 上使用 wireshark</h2>
+
+<h3 id="安装-wireshark">安装 WireShark</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo apt install wireshark
+sudo usermod -aG wireshark $(whoami)
+sudo reboot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="windows-使用">Windows 使用</h2>
+
+<p>Win10系统，安装完成后，选择抓包但是不显示网卡，下载win10pcap兼容性安装包。</p>
+
+<p>下载路径： <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fwww.win10pcap.org%2Fdownload%2F">win10pcap兼容性安装包</a></p>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="wireshark-vs-fiddler">Wireshark VS Fiddler</h3>
+
+<p>Fiddler是在windows上运行的程序，专门用来捕获HTTP，HTTPS的。</p>
+
+<p>wireshark能获取HTTP，也能获取HTTPS，但是不能解密HTTPS，所以wireshark看不懂HTTPS中的内容</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

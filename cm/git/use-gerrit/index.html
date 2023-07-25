@@ -1,0 +1,865 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Using Gerrit &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, git, gerrit">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Gerrit">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/git/use-gerrit/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/git/use-gerrit/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Using Gerrit</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2015-04-09T00:00:00+08:00">April 09, 2015</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="先设置本地git的用户信息">先设置本地git的用户信息</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="gp">$ </span>git config --global user.name <span class="s2">"John Doe"</span>
+<span class="gp">$ </span>git config --global user.email johndoe@example.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="who-is-admin">Who is Admin</h2>
+
+<p>The first user to login automatically gets the administrator status.</p>
+
+<p>Create a the new Git repository in Gerrit via the following command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre># assumes that Gerrit runs on port 29418
+# on localhost
+
+ssh -p 29418 &lt;userid&gt;@localhost gerrit create-project demo/gerrittest
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="for-developer">For Developer</h2>
+
+<p>You can also do this setup directly via the Git command line.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config remote.origin.push refs/heads/*:refs/for/*
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="设置full-name邮箱">设置full-name、邮箱</h3>
+
+<p>进入帐号设置，验证邮箱并设置Full-Name。<br />
+邮箱验证会发验证邮件到邮箱。</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_set_fullname_mail_on_page.png" alt="" /></p>
+
+<h3 id="添加公匙">添加公匙</h3>
+
+<p>在~/.ssh下执行 ssh-keygen 来生成密钥对（公钥/私钥）。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh-keygen -C "test gerrit for developerA" -f id_developera
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>执行后，会在目录下面生成文件：id_developera（私钥），id_developera.pub（公钥）。</p>
+
+<p>将公钥的内容拷贝到gerrit网站上帐号设置》”SSH Public Keys“。</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_set_ssh_key_on_page.png" alt="" /></p>
+
+<h3 id="cygwin多个ssh帐号设置">Cygwin多个SSH帐号设置</h3>
+
+<p>同样，在~/.ssh 下生成密钥对，在gerrit网站上设置帐号的公钥。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh-keygen -C "test gerrit for developerB" -f id_developerb
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>在Cygwin中设置新的SSH 连接。在 ~/.ssh/config 中设置：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>Host gerrit-developerA
+Hostname localhost
+Port 29418
+User developerA
+IdentityFile /home/ethan/.ssh/id_developera
+ 
+Host gerrit-developerB
+Hostname localhost
+Port 29418
+User developerB
+IdentityFile /home/ethan/.ssh/id_developerb
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>在ssh-agent中注册：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>eval `ssh-agent -s`
+ssh-add /home/ethan/.ssh/id_developerb
+ssh-add -l       # 列出添加的内容
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>参考：<a href="https://gist.github.com/suziewong/4378434">https://gist.github.com/suziewong/4378434</a></li>
+</ul>
+
+<h3 id="安装change-id-hook">安装change-id hook</h3>
+
+<p>下载gerrit-site上的committ-msg hook，例如： http://localhost:7666/gerrit/tools/hooks/commit-msg</p>
+
+<p>拷贝到项目的.git/hooks 目录下。</p>
+
+<p>有了这个hook，每次commit都会生成一个Change ID到comment里边。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>commit bfd38249b52bad688e7f71dd4b26ee189e02ef10
+Author: developerA &lt;developerA@163.com&gt;
+Date:   Sun Feb 9 15:24:49 2014 +0800
+ 
+  add second file
+ 
+  Change-Id: I7bdc292c32696a733e445a2afa4cb03ed2d07acc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="修改并提交committo-review">修改并提交Commit（to review）</h3>
+
+<p>例子：</p>
+
+<p>git push origin master:refs/for/master</p>
+
+<p>将会生成一个 review在gerrit网站上。</p>
+
+<h3 id="处理冲突">处理冲突</h3>
+
+<p>提交review的commit已经落后于gerrit上目标分支，不是fast-forward提交：<br />
+可能会产生自动merge；<br />
+也可能会产生conflict；</p>
+
+<p>所以如果长时间没有push，那么先下载目标分支rebase一下：<br />
+git pull –rebase    # 此处命令省略 remote分支参数，读者根据需要自己添加。</p>
+
+<p>如果产生Conflict，那就需要pull –rebase一下，然后手动修改解决conflict，git add修改的文件。<br />
+重新提交commit去review。如果想修改下commit message，说明下新的修改，可以使用 git commit –amend，但是不要修改message中自动生成的change-id。</p>
+
+<h2 id="for-reviewer">For Reviewer</h2>
+
+<h3 id="reviewing-a-change-request">Reviewing a change request</h3>
+
+<p>导航菜单 All &gt; Open 列出所有待reviewer的CR</p>
+
+<p>CR详情：</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_change_request_webpage.png" alt="" /></p>
+
+<p>点击Side-by-Side，查看修改。Commit Message也能进行review。<br />
+点击右侧行号，可以添加comment。</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_add_comments_to_cr.png" alt="" /></p>
+
+<h3 id="publishing-your-review-result">Publishing your review result</h3>
+
+<p>点Review就可以将评审结果发布出来。可以打分 +2 到 -2。</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_cr_preview.png" alt="" /></p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_cr_score.png" alt="" /></p>
+
+<p>点击 Publish and Submit，发布评审结果的同时，将Change提交到目标branch上。</p>
+
+<h2 id="for-all-users">For All Users</h2>
+
+<p>下载CR的commit</p>
+
+<p>gerrit网站CR详情页面提供下载各种命令：</p>
+
+<p><img src="/images/cm/git/gerrit/gerrit_download_cr.png" alt="" /></p>
+
+<h2 id="gerrit网站按显示快捷键提醒">Gerrit网站按“？”显示快捷键提醒</h2>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="http://www.vogella.com/tutorials/Gerrit/article.html">http://www.vogella.com/tutorials/Gerrit/article.html</a></li>
+  <li><a href="http://blog.csdn.net/yz2574648679/article/details/10362747">http://blog.csdn.net/yz2574648679/article/details/10362747</a></li>
+</ul>
+
+<h3 id="更多资料">更多资料</h3>
+
+<ul>
+  <li>Gerrit Code Review - A Quick Introduction
+    <ul>
+      <li><a href="http://gerrit-documentation.googlecode.com/svn/Documentation/2.6/intro-quick.html">http://gerrit-documentation.googlecode.com/svn/Documentation/2.6/intro-quick.html</a></li>
+      <li><a href="http://gerrit-documentation.googlecode.com/svn/Documentation/2.7/intro-quick.html">http://gerrit-documentation.googlecode.com/svn/Documentation/2.7/intro-quick.html</a></li>
+    </ul>
+  </li>
+  <li>Gerrit at Eclipse
+    <ul>
+      <li><a href="http://wiki.eclipse.org/Gerrit">http://wiki.eclipse.org/Gerrit</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#git" title="Pages tagged git" class="tag"><span class="term">git</span></a><a href="/tags#gerrit" title="Pages tagged gerrit" class="tag"><span class="term">gerrit</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

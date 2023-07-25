@@ -1,0 +1,2043 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>JavaScript 内建对象 built-in objects &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="JavaScript, oop, object-oriented, js-built-in">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 内建对象 built-in objects">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/javascript-built-in-objects/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/javascript-built-in-objects/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">JavaScript 内建对象 built-in objects</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-09-08T00:00:00+08:00">September 08, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li>《 Object-Oriented JavaScript 》.2nd - Stoyan.Stefanov</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="built-in-objects">Built-in Objects</h2>
+
+<ul>
+  <li>Data wrapper objects
+    <ul>
+      <li>Object, Array, Function, Boolean, Number, and String</li>
+    </ul>
+  </li>
+  <li>Utility objects
+    <ul>
+      <li>Math, Date, and RegExp</li>
+    </ul>
+  </li>
+  <li>Error objects
+    <ul>
+      <li>Error, other error objects</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="object">Object</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>The <code class="highlighter-rouge">.constructor</code> property returns a reference to the constructor function</li>
+  <li><code class="highlighter-rouge">o.toString()</code> is a method that returns a string representation of the object</li>
+  <li><code class="highlighter-rouge">o.valueOf()</code> returns a single-value representation of the object; often this is the object itself</li>
+</ul>
+
+<h3 id="array">Array</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">[]</code> 获取元素</li>
+  <li><code class="highlighter-rouge">length</code> 数组中元素数目</li>
+  <li><code class="highlighter-rouge">push()</code> 在数组末尾追加一个元素，返回数组大小</li>
+  <li><code class="highlighter-rouge">pop()</code> 删除数组末尾元素，并返回该元素</li>
+  <li><code class="highlighter-rouge">sort()</code> sorts the array and returns it.</li>
+  <li><code class="highlighter-rouge">join(glue-str)</code> 返回一个字符串，用 glue-str 将数组所有元素连接在一起。</li>
+  <li><code class="highlighter-rouge">slice(start-index, end-index)</code> 从数组中切除一段形成新数组，并返回；原数组不改变。</li>
+  <li><code class="highlighter-rouge">splice(start-index, length, inject-element-01, inject-element-02, ...)</code>  The first two parameters define the start index and length (number of elements) of the slice to be removed; the other parameters pass the new values:。modifies the source array。</li>
+</ul>
+
+<h4 id="length">length</h4>
+
+<p>可以设置 length 来改变数组大小</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="mi">1</span>
+
+<span class="err">放大</span>
+
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="mi">5</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span> <span class="nx">x</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="err">缩小</span>
+
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="mi">2</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span> <span class="nx">x</span> <span class="mi">1</span><span class="p">]</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="push--pop">push &amp; pop</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">push()</code> 在数组末尾追加一个元素，返回数组大小</li>
+  <li><code class="highlighter-rouge">pop()</code> 删除数组末尾元素，并返回该元素</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">];</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'new'</span><span class="p">);</span>
+<span class="mi">6</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">,</span> <span class="s2">"new"</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="s2">"new"</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="sort">sort</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">sort()</code> sorts the array and returns it.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">;</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="join">join</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">join(glue-str)</code> 返回一个字符串，用 glue-str 将数组所有元素连接在一起。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">' is not '</span><span class="p">);</span>
+<span class="s2">"1 is not 3 is not 5 is not 7 is not test"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="slice">slice</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">slice(start-index, end-index)</code> 从数组中切除一段形成新数组，并返回；原数组不改变。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="splice">splice</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">splice(start-index, length, inject-element-01, inject-element-02, ...)</code>  The first two parameters define the start index and length (number of elements) of the slice to be removed; the other parameters pass the new values:。modifies the source array。返回一个新数组，由被替换的元素组成。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="function">Function</h3>
+
+<p>function 实际也是一个 object.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">myfunc</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">myfunc</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nb">Function</span><span class="p">()</span> <span class="p">{</span> <span class="p">[</span><span class="kr">native</span> <span class="nx">code</span><span class="p">]</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">length()</code> 返回能接受的参数的数目</li>
+  <li><code class="highlighter-rouge">prototype</code> 该属性只对构造函数有意义，返回构造函数所对应的对象模板。</li>
+  <li><code class="highlighter-rouge">toString()</code> 返回函数定义代码</li>
+  <li><code class="highlighter-rouge">call(object-acts-this, args...)</code> 将本object 的方法应用到其他object，嫁接啊！</li>
+  <li><code class="highlighter-rouge">apply(object-acts-this， args-array)</code> 和 <code class="highlighter-rouge">call</code> 相同，只是参数以数组形式传入</li>
+  <li><code class="highlighter-rouge">arguments</code> 返回函数参数值列表，返回值类似 array，支持[]、length ，但不是array，不支持 slice()、sort()等方法</li>
+</ul>
+
+<h4 id="length-1">length</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">myfunc</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">myfunc</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="mi">3</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="prototype">prototype</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">prototype</code> 该属性只对构造函数有意义，返回构造函数所对应的对象模板。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">ninja</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Ninja'</span><span class="p">,</span>
+  <span class="na">say</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'I am a '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="s2">"object"</span>
+
+<span class="o">&gt;</span> <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">ninja</span><span class="p">;</span> <span class="c1">// 修改构造函数的 prototype 属性，构造出新类型的对象</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">baby_ninja</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="nx">baby_ninja</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"Ninja"</span>
+<span class="o">&gt;</span> <span class="nx">baby_ninja</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span>
+<span class="s2">"I am a Ninja"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="tostring">toString</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">toString()</code> 返回函数定义代码</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">myfunc</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">myfunc</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"function myfunc(a, b, c) {
+return a + b + c;
+}"</span>
+
+<span class="c1">// 内建函数打印不出来代码，只能得到 native code 的提示。</span>
+
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"function parseInt() { [native code] }"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="call--apply">call &amp; apply</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">call(object-acts-this, args...)</code> 将本object 的方法应用到其他object，嫁接啊！</li>
+  <li><code class="highlighter-rouge">apply(object-acts-this， args-array)</code> 和 <code class="highlighter-rouge">call</code> 相同，只是参数以数组形式传入</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">some_obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Ninja'</span><span class="p">,</span>
+  <span class="na">say</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">who</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Haya '</span> <span class="o">+</span> <span class="nx">who</span> <span class="o">+</span> <span class="s1">', I am a '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">some_obj</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="s1">'Dude'</span><span class="p">);</span>
+<span class="s2">"Haya Dude, I am a Ninja"</span>
+
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">my_obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Scripting guru'</span><span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">some_obj</span><span class="p">.</span><span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">my_obj</span><span class="p">,</span> <span class="s1">'Dude'</span><span class="p">);</span>         <span class="c1">// 以 my_obj 为 this，执行 some_obj.say</span>
+<span class="s2">"Haya Dude, I am a Scripting guru"</span>
+
+
+<span class="c1">// 用 call 调用多个参数的方法</span>
+<span class="nx">some_obj</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">my_obj</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">);</span>
+
+
+<span class="c1">// apply vs call</span>
+<span class="nx">some_obj</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">my_obj</span><span class="p">,</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]);</span>
+<span class="nx">some_obj</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">my_obj</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="arguments">arguments</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">arguments</code> 返回函数参数值列表，返回值类似 array，支持[]、length ，但不是array，不支持 slice()、sort()等方法</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">arguments</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c1">// 将 arguments 转换为 array 的方法</span>
+<span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="c1">// 或者 Array.prototype.slice.call(arguments)</span>
+<span class="k">return</span> <span class="nx">args</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="number">Number</h3>
+
+<p>使用 new Number 可以创建 Number 对象。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="s1">'12.12'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">n</span><span class="p">;</span>
+<span class="mf">12.12</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
+<span class="s2">"number"</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="s1">'12.12'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
+<span class="s2">"object"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="number-的常量">Number 的常量</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">MAX_VALUE</span><span class="p">;</span>
+<span class="mf">1.7976931348623157</span><span class="nx">e</span><span class="o">+</span><span class="mi">308</span>
+
+<span class="o">&gt;</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_VALUE</span><span class="p">;</span>
+<span class="mi">5</span><span class="nx">e</span><span class="o">-</span><span class="mi">324</span>
+
+<span class="o">&gt;</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">POSITIVE_INFINITY</span><span class="p">;</span>
+<span class="kc">Infinity</span>
+
+<span class="o">&gt;</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">NEGATIVE_INFINITY</span><span class="p">;</span>
+<span class="o">-</span><span class="kc">Infinity</span>
+
+<span class="o">&gt;</span> <span class="nb">Number</span><span class="p">.</span><span class="kc">NaN</span><span class="p">;</span>
+<span class="kc">NaN</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="数字转换为字符串">数字转换为字符串</h4>
+
+<p><a href="" name="number-to-string"></a></p>
+
+<ul>
+  <li><code class="highlighter-rouge">toFixed(小数点后数字数目)</code></li>
+  <li><code class="highlighter-rouge">toExponential()</code></li>
+  <li><code class="highlighter-rouge">toString(进制)</code></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mf">123.456</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="s2">"123.5"</span>
+
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">12345</span><span class="p">).</span><span class="nx">toExponential</span><span class="p">();</span>
+<span class="s2">"1.2345e+4"</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"255"</span>
+<span class="o">&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="s2">"255"</span>
+<span class="o">&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+<span class="s2">"ff"</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="s2">"11"</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="s2">"3"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="string">String</h3>
+
+<p><code class="highlighter-rouge">new String</code> 创建 String 对象。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">primitive</span> <span class="o">=</span> <span class="s1">'Hello'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">primitive</span><span class="p">;</span>
+<span class="s2">"string"</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'world'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="s2">"object"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="string-对象支持--操作等效函数-charat">String 对象支持 [] 操作。等效函数 charAt</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="s2">"w"</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="s2">"d"</span>
+
+<span class="c1">// 等效函数 charAt</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="s2">"d"</span>
+
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="mi">5</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="valueof-tostring-都可以返回字符串值"><code class="highlighter-rouge">valueOf</code> <code class="highlighter-rouge">toString</code> 都可以返回字符串值</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">();</span>
+<span class="s2">"world"</span>
+<span class="o">&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"world"</span>
+<span class="o">&gt;</span> <span class="nx">obj</span> <span class="o">+</span> <span class="s2">""</span><span class="p">;</span>
+<span class="s2">"world"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="length-返回字符串长度"><code class="highlighter-rouge">length</code> 返回字符串长度</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="s2">"potato"</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="mi">6</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="touppercase--tolowercase"><code class="highlighter-rouge">toUpperCase</code> &amp; <code class="highlighter-rouge">toLowerCase</code></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">"Couch potato"</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<span class="s2">"COUCH POTATO"</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<span class="s2">"couch potato"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="字符串搜索-indexof--lastindexof">字符串搜索 indexOf &amp; lastIndexOf</h4>
+
+<p>未找到匹配字符串返回 -1</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">"Couch potato"</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'o'</span><span class="p">);</span>
+<span class="mi">1</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'o'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="mi">7</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">'o'</span><span class="p">);</span>
+<span class="mi">11</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'Couch'</span><span class="p">);</span>
+<span class="mi">0</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'couch'</span><span class="p">);</span>  <span class="c1">// 未找到匹配字符串返回 -1</span>
+<span class="o">-</span><span class="mi">1</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="slice--substring-提取部分字符串">slice &amp; substring 提取部分字符串</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s2">"Couch potato"</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="s2">"ouch"</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="s2">"ouch"</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>   <span class="c1">// 提取到末尾</span>
+<span class="s2">"ouch potat"</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 反向提取</span>
+<span class="s2">"C"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="split-将字符串拆成字符串数组">split ，将字符串拆成字符串数组</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">);</span>
+<span class="p">[</span><span class="s2">"Couch"</span><span class="p">,</span> <span class="s2">"potato"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="join-将字符串数组组合为字符串">join ，将字符串数组，组合为字符串</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">);</span>
+<span class="s2">"Couch, potato"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="concat-在字符串末尾追加字符串">concat 在字符串末尾追加字符串</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s2">"es"</span><span class="p">);</span>
+<span class="s2">"Couch potatoes"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="math">Math</h3>
+
+<p>Math 和其他 built-in 对象不同， 不是构造方法，是一个全局对象，包含使用的常量和方法。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="c1">// The constant π:</span>
+<span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+<span class="mf">3.141592653589793</span>
+
+<span class="c1">// Square root of 2:</span>
+<span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">SQRT2</span><span class="p">;</span>
+<span class="mf">1.4142135623730951</span>
+
+<span class="c1">// Euler's constant:</span>
+<span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">E</span><span class="p">;</span>
+<span class="mf">2.718281828459045</span>
+
+<span class="c1">// Natural logarithm of 2:</span>
+<span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">LN2</span><span class="p">;</span>
+<span class="mf">0.6931471805599453</span>
+
+<span class="c1">// Natural logarithm of 10:</span>
+<span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">LN10</span><span class="p">;</span>
+<span class="mf">2.302585092994046</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="random-function-returns-a-number-between-0-and-1">random() function returns a number between 0 and 1</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+<span class="mf">0.3649461670235814</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>For numbers between any two values, use the formula <code class="highlighter-rouge">((max - min) * Math.random()) + min</code> .</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1">// 2-10的随机数</span>
+<span class="o">&gt;</span> <span class="mi">8</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+<span class="mf">9.175650496668485</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="小数转整数floor-ceil-round">小数转整数，floor, ceil, round</h4>
+
+<ul>
+  <li>floor() to round down</li>
+  <li>ceil() to round up</li>
+  <li>round() to round to the nearest</li>
+</ul>
+
+<h4 id="min-max-比较并返回结果">min, max 比较并返回结果</h4>
+
+<h4 id="数学计算乘方开方三角函数">数学计算，乘方、开方、三角函数</h4>
+
+<ul>
+  <li>raise to a power using pow()</li>
+  <li>find the square root using sqrt()</li>
+  <li>trigonometric operations—sin(), cos(), atan()</li>
+</ul>
+
+<h3 id="date">Date</h3>
+
+<h4 id="new-date">new Date</h4>
+
+<ul>
+  <li>
+    <p>今天</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="nx">Wed</span> <span class="nx">Feb</span> <span class="mi">27</span> <span class="mi">2013</span> <span class="mi">23</span><span class="err">:</span><span class="mi">49</span><span class="err">:</span><span class="mi">28</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>指定日期&amp;时间字符串</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">'2015 11 12'</span><span class="p">);</span>
+  <span class="nx">Thu</span> <span class="nx">Nov</span> <span class="mi">12</span> <span class="mi">2015</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">'1 1 2016'</span><span class="p">);</span>
+  <span class="nx">Fri</span> <span class="nx">Jan</span> <span class="mi">01</span> <span class="mi">2016</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">'1 mar 2016 5:30'</span><span class="p">);</span>
+  <span class="nx">Tue</span> <span class="nx">Mar</span> <span class="mi">01</span> <span class="mi">2016</span> <span class="mi">05</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>指定时间部件</p>
+
+    <ul>
+      <li>Year</li>
+      <li>Month: 0 (January) to 11 (December)</li>
+      <li>Day: 1 to 31</li>
+      <li>Hour: 0 to 23</li>
+      <li>Minutes: 0 to 59</li>
+      <li>Seconds: 0 to 59</li>
+      <li>Milliseconds: 0 to 999</li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">05</span><span class="p">,</span> <span class="mi">03</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+  <span class="nx">Tue</span> <span class="nx">Jan</span> <span class="mi">01</span> <span class="mi">2015</span> <span class="mi">17</span><span class="err">:</span><span class="mi">05</span><span class="err">:</span><span class="mi">03</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">29</span><span class="p">);</span>
+  <span class="nx">Mon</span> <span class="nx">Feb</span> <span class="mi">29</span> <span class="mi">2016</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+  <span class="c1">// 自动转化为下个月第一天</span>
+  <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+  <span class="nx">Tue</span> <span class="nx">Mar</span> <span class="mi">01</span> <span class="mi">2016</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>指定 timestamp</p>
+  </li>
+</ul>
+
+<dl>
+  <dt>timestamp</dt>
+  <dd>the number of milliseconds since the UNIX epoch, where 0 milliseconds is January 1, 1970</dd>
+</dl>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1357027200000</span><span class="p">);</span>
+<span class="nx">Tue</span> <span class="nx">Jan</span> <span class="mi">01</span> <span class="mi">2013</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="set--get-操作日期组件">set* &amp; get* 操作日期组件</h4>
+
+<p>getMonth(), setMonth(), getHours(), setHours(), and so on.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>
+<span class="c1">// getMonth , setMonth</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">Sun</span> <span class="nx">Feb</span> <span class="mi">01</span> <span class="mi">2015</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">setMonth</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="mi">1425196800000</span>
+<span class="o">&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">Sun</span> <span class="nx">Mar</span> <span class="mi">01</span> <span class="mi">2015</span> <span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">();</span>
+<span class="mi">2</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="gettime-返回-timestamp">gettime 返回 timestamp</h4>
+
+<h4 id="todatestring-返回日期字符串">toDateString 返回日期字符串</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toDateString</span><span class="p">();</span>
+<span class="s2">"Mon Jun 20 2016"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="date-全局对象">Date 全局对象</h4>
+
+<ul>
+  <li>
+    <p>Date() 返回日期字符串</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="nx">Wed</span> <span class="nx">Feb</span> <span class="mi">27</span> <span class="mi">2013</span> <span class="mi">23</span><span class="err">:</span><span class="mi">51</span><span class="err">:</span><span class="mi">46</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"it doesn't matter"</span><span class="p">);</span>
+  <span class="nx">Wed</span> <span class="nx">Feb</span> <span class="mi">27</span> <span class="mi">2013</span> <span class="mi">23</span><span class="err">:</span><span class="mi">51</span><span class="err">:</span><span class="mi">52</span> <span class="nx">GMT</span><span class="o">-</span><span class="mi">0800</span> <span class="p">(</span><span class="nx">PST</span><span class="p">)</span>
+
+  <span class="o">&gt;</span> <span class="k">typeof</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="s2">"string"</span>
+
+  <span class="o">&gt;</span> <span class="k">typeof</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="s2">"object"</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>Date.parse 将字符串转化为 timestamp</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">'Jan 11, 2018'</span><span class="p">);</span>
+  <span class="mi">1515657600000</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>Date.UTC 将日期组件转化为 UTC timestamp</p>
+
+    <p>其他 Date 函数都是本地时间。Date.UTC 返回的是全球标准时间。<br />
+  中国在东8区，比UTC晚8个小时。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">UTC</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+  <span class="mi">1515628800000</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>Date.now 返回当前时间的 timestamp</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+  <span class="mi">1362038353044</span>
+  <span class="o">&gt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">===</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+  <span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="regexp-正则表达式">RegExp 正则表达式</h3>
+
+<p>Javascript 使用 Perl 5 的正则表达式 语法。</p>
+
+<p>创建正在表达式对象：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">"j.*t"</span><span class="p">);</span>
+
+<span class="c1">// 等价</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="sr">/j.*t/</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="regexp-设置开关">RegExp 设置开关</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">g</code> for global，默认为关/false，搜索到“第一个匹配”后即停止</li>
+  <li><code class="highlighter-rouge">i</code> for ignoreCase，默认为 false</li>
+  <li><code class="highlighter-rouge">m</code> for multiline ，默认为 false，不会跨行搜索</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c1">// 创建RegExp对象时，第二个参数，可以指定开关。</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'j.*t'</span><span class="p">,</span> <span class="s1">'gmi'</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">re</span><span class="p">.</span><span class="nx">global</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="c1">// global 在RegExp对象创建时候指定，之后不能修改</span>
+<span class="o">&gt;</span> <span class="nx">re</span><span class="p">.</span><span class="nx">global</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">re</span><span class="p">.</span><span class="nx">global</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="c1">// 也可以在 pattern 字符串中指定设置</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="sr">/j.*t/ig</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">re</span><span class="p">.</span><span class="nx">global</span><span class="p">;</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="test--exec">test &amp; exec</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">test</code> 方法检查字符串中是否有匹配项</li>
+  <li><code class="highlighter-rouge">exec</code> 返回匹配项的数组</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="sr">/j.*t/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">"Javascript"</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="c1">// ignore case 后就匹配了</span>
+
+<span class="o">&gt;</span> <span class="sr">/j.*t/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">"Javascript"</span><span class="p">);</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="sr">/j.*t/i</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">"Javascript"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="err">"</span><span class="nx">Javascript</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="-1-匹配内容复用"><code class="highlighter-rouge">$&amp;</code> <code class="highlighter-rouge">$1</code> 匹配内容复用</h4>
+
+<p><a href="" name="regex-reuse"></a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>
+<span class="c1">// $&amp; 表示匹配到的项目</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">"_$&amp;"</span><span class="p">);</span>
+<span class="s2">"_Hello_Java_Script_World"</span>
+
+<span class="c1">// $1, $2 模式中使用 () 来标注的匹配项目的部分</span>
+ <span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">([</span><span class="sr">A-Z</span><span class="se">])</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">"_$1"</span><span class="p">);</span>
+<span class="s2">"_Hello_Java_Script_World"</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="s2">"stoyan@phpied.com"</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">email</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">.*</span><span class="se">)</span><span class="sr">@.*/</span><span class="p">,</span> <span class="s2">"$1"</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">username</span><span class="p">;</span>
+<span class="s2">"stoyan"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="支持正则表达式参数的-string-methods">支持正则表达式参数的 String methods</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">match()</code> returns an array of matches</li>
+  <li><code class="highlighter-rouge">search()</code> returns the position of the first match</li>
+  <li><code class="highlighter-rouge">replace()</code> allows you to substitute matched text with another string</li>
+  <li><code class="highlighter-rouge">split()</code> also accepts a regexp when splitting a string into array elements</li>
+</ul>
+
+<h5 id="match-例子"><code class="highlighter-rouge">match</code> 例子：</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'HelloJavaScriptWorld'</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/a/</span><span class="p">);</span>
+<span class="p">[</span><span class="s2">"a"</span><span class="p">]</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/a/g</span><span class="p">);</span>
+<span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">]</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/j.*a/i</span><span class="p">);</span>
+<span class="p">[</span><span class="s2">"Java"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">search</code> samples</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'HelloJavaScriptWorld'</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/j.*a/i</span><span class="p">);</span>
+<span class="mi">5</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="replace-samples"><code class="highlighter-rouge">replace</code> samples</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'HelloJavaScriptWorld'</span><span class="p">);</span>
+
+<span class="c1">// 删除所有大写字母</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+<span class="s2">"elloavacriptorld"</span>
+
+<span class="c1">// 不带global设置，删除第一个大写字母</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">/</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+<span class="s2">"elloJavaScriptWorld"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>其他例子参见： <a href="#regex-reuse">匹配内容复用</a></p>
+
+<ul>
+  <li>
+    <p>Replace Callback</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">replaceCallback</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="nx">match</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="o">&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="nx">replaceCallback</span><span class="p">);</span>
+  <span class="s2">"_hello_java_script_world"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>callback function 其实不只一个参数：</p>
+
+    <ul>
+      <li>The first parameter is the match</li>
+      <li>The last is the string being searched</li>
+      <li>The one before last is the position of the match</li>
+      <li>The rest of the parameters contain any strings matched by any groups in your regex pattern</li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre>  <span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">glob</span><span class="p">;</span>
+  <span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="sr">/</span><span class="se">(</span><span class="sr">.*</span><span class="se">)</span><span class="sr">@</span><span class="se">(</span><span class="sr">.*</span><span class="se">)\.(</span><span class="sr">.*</span><span class="se">)</span><span class="sr">/</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">glob</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">' at '</span> <span class="o">+</span>
+      <span class="nx">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s1">' dot '</span> <span class="o">+</span>
+      <span class="nx">arguments</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="p">};</span>
+
+  <span class="o">&gt;</span> <span class="s2">"stoyan@phpied.com"</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">re</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+  <span class="s2">"stoyan at phpied dot com"</span>
+
+  <span class="o">&gt;</span> <span class="nx">glob</span><span class="p">;</span>
+  <span class="p">[</span><span class="s2">"stoyan@phpied.com"</span><span class="p">,</span> <span class="s2">"stoyan"</span><span class="p">,</span> <span class="s2">"phpied"</span><span class="p">,</span> <span class="s2">"com"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">"stoyan@phpied.com"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h5 id="split"><code class="highlighter-rouge">split</code></h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">csv</span> <span class="o">=</span> <span class="s1">'one, two,three ,four'</span><span class="p">;</span>
+
+<span class="c1">// 避免将空格带入数组元素</span>
+
+<span class="o">&gt;</span> <span class="nx">csv</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">*,</span><span class="se">\s</span><span class="sr">*/</span><span class="p">);</span>
+<span class="p">[</span><span class="s2">"one"</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">,</span> <span class="s2">"four"</span><span class="p">]</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="error-objects">Error Objects</h3>
+
+<ul>
+  <li>Error
+    <ul>
+      <li>EvalError</li>
+      <li>RangeError,</li>
+      <li>ReferenceError</li>
+      <li>SyntaxError</li>
+      <li>TypeError</li>
+      <li>URIError</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="trycatchfinally">try/catch/finally</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">try</span> <span class="p">{</span>
+  <span class="nx">iDontExist</span><span class="p">();</span> <span class="c1">// 不存在的方法，调用，FF&amp;chrome会抛出 ReferenceError，IE会抛出 TypeError</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s1">'Finally!'</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="throw-抛出自定义-error"><code class="highlighter-rouge">throw</code> 抛出自定义 Error</h4>
+
+<p><code class="highlighter-rouge">new Error</code> 出 error object。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="k">try</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">maybeExists</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">total</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Division by zero!'</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="mi">50</span> <span class="o">/</span> <span class="nx">total</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s1">'Finally!'</span><span class="p">);</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>直接抛出 object</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">throw</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s2">"MyError"</span><span class="p">,</span>
+  <span class="na">message</span><span class="p">:</span> <span class="s2">"OMG! Something terrible has happened"</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#JavaScript" title="Pages tagged JavaScript" class="tag"><span class="term">JavaScript</span></a><a href="/tags#oop" title="Pages tagged oop" class="tag"><span class="term">oop</span></a><a href="/tags#object-oriented" title="Pages tagged object-oriented" class="tag"><span class="term">object-oriented</span></a><a href="/tags#js-built-in" title="Pages tagged js-built-in" class="tag"><span class="term">js-built-in</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,1490 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>systemd概述 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="systemd, autostart">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="systemd概述">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/systemd%E6%A6%82%E8%BF%B0/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/systemd%E6%A6%82%E8%BF%B0/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">systemd概述</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-02-01T00:00:00+08:00">February 01, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://cloud.tencent.com/developer/article/1516125">可能是史上最全面易懂的 Systemd 服务管理教程！( 强烈建议收藏 )</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="概念说明">概念说明</h2>
+
+<h3 id="systemd-支持的-12-种-unit-文件类型">Systemd 支持的 12 种 Unit 文件类型</h3>
+
+<p>.automount：用于控制自动挂载文件系统，相当于 SysV-init 的 autofs 服务<br />
+.device：对于 /dev 目录下的设备，主要用于定义设备之间的依赖关系<br />
+.mount：定义系统结构层次中的一个挂载点，可以替代过去的 /etc/fstab 配置文件<br />
+.path：用于监控指定目录或文件的变化，并触发其它 Unit 运行<br />
+.scope：这种 Unit 文件不是用户创建的，而是 Systemd 运行时产生的，描述一些系统服务的分组信息<br />
+.service：封装守护进程的启动、停止、重启和重载操作，是最常见的一种 Unit 文件<br />
+.slice：用于表示一个 CGroup 的树，通常用户不会自己创建这样的 Unit 文件<br />
+.snapshot：用于表示一个由 systemctl snapshot 命令创建的 Systemd Units 运行状态快照<br />
+.socket：监控来自于系统或网络的数据消息，用于实现基于数据自动触发服务启动<br />
+.swap：定义一个用户做虚拟内存的交换分区<br />
+.target：用于对 Unit 文件进行逻辑分组，引导其它 Unit 的执行。它替代了 SysV-init 运行级别的作用，并提供更灵活的基于特定设备事件的启动方式<br />
+.timer：用于配置在特定时间触发的任务，替代了 Crontab 的功能</p>
+
+<h3 id="systemd-目录">Systemd 目录</h3>
+
+<p>Unit 文件按照 Systemd 约定，应该被放置指定的三个系统目录之一中。这三个目录是有优先级的，如下所示，越靠上的优先级越高。因此，在三个目录中有同名文件的时候，只有优先级最高的目录里的那个文件会被使用。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/etc/systemd/system</code>：系统或用户自定义的配置文件</li>
+  <li><code class="highlighter-rouge">/run/systemd/system</code>：软件运行时生成的配置文件</li>
+  <li><code class="highlighter-rouge">/usr/lib/systemd/system</code>：系统或第三方软件安装时添加的配置文件。<br />
+  CentOS 7：Unit 文件指向该目录<br />
+  ubuntu 16：被移到了 /lib/systemd/system</li>
+</ul>
+
+<p>Systemd 默认从目录 /etc/systemd/system/ 读取配置文件。但是，里面存放的大部分文件都是符号链接，指向目录 /usr/lib/systemd/system/，真正的配置文件存放在那个目录。</p>
+
+<h3 id="unit-和-target">Unit 和 Target</h3>
+
+<p>Unit 是 Systemd 管理系统资源的基本单元，可以认为每个系统资源就是一个 Unit，并使用一个 Unit 文件定义。在 Unit 文件中需要包含相应服务的描述、属性以及需要运行的命令。</p>
+
+<p>Target 是 Systemd 中用于指定系统资源启动组的方式，相当于 SysV-init 中的运行级别。</p>
+
+<p>简单说，Target 就是一个 Unit 组，包含许多相关的 Unit 。启动某个 Target 的时候，Systemd 就会启动里面所有的 Unit。从这个意义上说，Target 这个概念类似于”状态点”，启动某个 Target 就好比启动到某种状态。</p>
+
+<h3 id="unit-文件结构">Unit 文件结构</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>[Unit]
+Description=Hello World
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill busybox1
+ExecStartPre=-/usr/bin/docker rm busybox1
+ExecStartPre=/usr/bin/docker pull busybox
+ExecStart=/usr/bin/docker run --name busybox1 busybox /bin/ sh -c "while true; do echo Hello World; sleep 1; done"
+ExecStop="/usr/bin/docker stop busybox1"
+ExecStopPost="/usr/bin/docker rm busybox1"
+
+[Install]
+WantedBy=multi-user.target
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Unit 文件可以分为三个配置区段：</p>
+
+<ul>
+  <li>Unit 和 Install 段：所有 Unit 文件通用，用于配置服务（或其它系统资源）的描述、依赖和随系统启动的方式</li>
+  <li>Service 段：服务（Service）类型的 Unit 文件（后缀为 .service）特有的，用于定义服务的具体管理和操作方法</li>
+</ul>
+
+<h4 id="unit-段">Unit 段</h4>
+
+<p>Description：描述这个 Unit 文件的信息<br />
+Documentation：指定服务的文档，可以是一个或多个文档的 URL 路径<br />
+Requires：依赖的其它 Unit 列表，列在其中的 Unit 模板会在这个服务启动时的同时被启动。并且，如果其中任意一个服务启动失败，这个服务也会被终止<br />
+Wants：与 Requires 相似，但只是在被配置的这个 Unit 启动时，触发启动列出的每个 Unit 模块，而不去考虑这些模板启动是否成功<br />
+After：与 Requires 相似，但是在后面列出的所有模块全部启动完成以后，才会启动当前的服务<br />
+Before：与 After 相反，在启动指定的任务一个模块之间，都会首先确证当前服务已经运行<br />
+Binds To：与 Requires 相似，失败时失败，成功时成功，但是在这些模板中有任意一个出现意外结束或重启时，这个服务也会跟着终止或重启<br />
+Part Of：一个 Bind To 作用的子集，仅在列出的任务模块失败或重启时，终止或重启当前服务，而不会随列出模板的启动而启动<br />
+OnFailure：当这个模板启动失败时，就会自动启动列出的每个模块<br />
+Conflicts：与这个模块有冲突的模块，如果列出的模块中有已经在运行的，这个服务就不能启动，反之亦然</p>
+
+<h3 id="install-段">Install 段</h3>
+
+<p>这部分配置的目标模块通常是特定运行目标的 .target 文件，用来使得服务在系统启动时自动运行。这个区段可以包含三种启动约束：</p>
+
+<p>WantedBy：和 Unit 段的 Wants 作用相似，只有后面列出的不是服务所依赖的模块，而是依赖当前服务的模块。它的值是一个或多个 Target，当前 Unit 激活时（enable）符号链接会放入 /etc/systemd/system 目录下面以 <Target 名=""> + .wants 后缀构成的子目录中，如 “/etc/systemd/system/multi-user.target.wants/“</Target></p>
+
+<p>RequiredBy：和 Unit 段的 Wants 作用相似，只有后面列出的不是服务所依赖的模块，而是依赖当前服务的模块。它的值是一个或多个 Target，当前 Unit 激活时，符号链接会放入 /etc/systemd/system 目录下面以 <Target 名=""> + .required 后缀构成的子目录中
+Also：当前 Unit enable/disable 时，同时 enable/disable 的其他 Unit
+Alias：当前 Unit 可用于启动的别名</Target></p>
+
+<h3 id="service-段">Service 段</h3>
+
+<p>用来 Service 的配置，只有 Service 类型的 Unit 才有这个区块。它的主要字段分为服务生命周期和服务上下文配置两个方面。</p>
+
+<p>服务生命周期控制相关<br />
+Type：定义启动时的进程行为，它有以下几种值：<br />
+Type=simple：默认值，执行ExecStart指定的命令，启动主进程</p>
+
+<p>Type=forking：以 fork 方式从父进程创建子进程，创建后父进程会立即退出</p>
+
+<p>Type=oneshot：一次性进程，Systemd 会等当前服务退出，再继续往下执行</p>
+
+<p>Type=dbus：当前服务通过D-Bus启动</p>
+
+<p>Type=notify：当前服务启动完毕，会通知Systemd，再继续往下执行</p>
+
+<p>Type=idle：若有其他任务执行完毕，当前服务才会运行<br />
+RemainAfterExit：值为 true 或 false（默认）。当配置为 true 时，Systemd 只会负责启动服务进程，之后即便服务进程退出了，Systemd 也仍然会认为这个服务还在运行中。这个配置主要是提供给一些并非常驻内存，而是启动注册后立即退出，然后等待消息按需启动的特殊类型服务使用的。<br />
+ExecStart：启动当前服务的命令<br />
+ExecStartPre：启动当前服务之前执行的命令<br />
+ExecStartPos：启动当前服务之后执行的命令<br />
+ExecReload：重启当前服务时执行的命令<br />
+ExecStop：停止当前服务时执行的命令<br />
+ExecStopPost：停止当其服务之后执行的命令<br />
+RestartSec：自动重启当前服务间隔的秒数<br />
+Restart：定义何种情况 Systemd 会自动重启当前服务，可能的值包括 always（总是重启）、on-success、on-failure、on-abnormal、on-abort、on-watchdog<br />
+TimeoutStartSec：启动服务时等待的秒数，这一配置对于使用 Docker 容器而言显得尤为重要，因其第一次运行时可能需要下载镜像，严重延时会容易被 Systemd 误判为启动失败杀死。通常，对于这种服务，将此值指定为 0，从而关闭超时检测<br />
+TimeoutStopSec：停止服务时的等待秒数，如果超过这个时间仍然没有停止，Systemd 会使用 SIGKILL 信号强行杀死服务的进程</p>
+
+<p>服务上下文配置相关<br />
+Environment：为服务指定环境变量<br />
+EnvironmentFile：指定加载一个包含服务所需的环境变量的列表的文件，文件中的每一行都是一个环境变量的定义<br />
+Nice：服务的进程优先级，值越小优先级越高，默认为 0。其中 -20 为最高优先级，19 为最低优先级<br />
+WorkingDirectory：指定服务的工作目录<br />
+RootDirectory：指定服务进程的根目录（/ 目录）。如果配置了这个参数，服务将无法访问指定目录以外的任何文件<br />
+User：指定运行服务的用户<br />
+Group：指定运行服务的用户组<br />
+MountFlags：服务的 Mount Namespace 配置，会影响进程上下文中挂载点的信息，即服务是否会继承主机上已有挂载点，以及如果服务运行执行了挂载或卸载设备的操作，是否会真实地在主机上产生效果。可选值为 shared、slaved 或 private<br />
+shared：服务与主机共用一个 Mount Namespace，继承主机挂载点，且服务挂载或卸载设备会真实地反映到主机上<br />
+slave：服务使用独立的 Mount Namespace，它会继承主机挂载点，但服务对挂载点的操作只有在自己的 Namespace 内生效，不会反映到主机上<br />
+private：服务使用独立的 Mount Namespace，它在启动时没有任何任何挂载点，服务对挂载点的操作也不会反映到主机上</p>
+
+<p>LimitCPU / LimitSTACK / LimitNOFILE / LimitNPROC 等：限制特定服务的系统资源量，例如 CPU、程序堆栈、文件句柄数量、子进程数量等</p>
+
+<ul>
+  <li><strong>注意</strong>：如果在 ExecStart、ExecStop 等属性中使用了 Linux 命令，则必须要写出完整的绝对路径。对于 ExecStartPre 和 ExecStartPost 辅助命令，若前面有个 “-” 符号，表示忽略这些命令的出错。因为有些 “辅助” 命令本来就不一定成功，比如尝试清空一个文件，但文件可能不存在。</li>
+</ul>
+
+<h3 id="sysv-init-运行级别与-systemd-target-对应的-unit">SysV-init 运行级别与 Systemd Target 对应的 Unit</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>SysV-Init Level</td>
+      <td>Systemd Target</td>
+      <td>备注</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>poweroff.target</td>
+      <td>关闭系统</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>rescue.target</td>
+      <td>单用户系统</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>multi-user.target</td>
+      <td>用户定义/域特定运行级别，默认等同级别3</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>multi-user.target</td>
+      <td>多用户模式</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>multi-user.target</td>
+      <td>用户定义/域特定运行级别，默认等同级别3</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>graphical.target</td>
+      <td>多用户，图形界面</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>reboot.target</td>
+      <td>重启</td>
+    </tr>
+    <tr>
+      <td>emergency</td>
+      <td>emergency.target</td>
+      <td>急救模式</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="unit-文件占位符和模板">Unit 文件占位符和模板</h3>
+
+<h4 id="unit-文件占位符">Unit 文件占位符</h4>
+
+<p>在 Unit 文件中，有时会需要使用到一些与运行环境有关的信息，例如节点 ID、运行服务的用户等。这些信息可以使用占位符来表示，然后在实际运行被动态地替换实际的值。</p>
+
+<p><code class="highlighter-rouge">%n</code>：完整的 Unit 文件名字，包括 .service 后缀名<br />
+<code class="highlighter-rouge">%p</code>：Unit 模板文件名中 @ 符号之前的部分，不包括 @ 符号<br />
+<code class="highlighter-rouge">%i</code>：Unit 模板文件名中 @ 符号之后的部分，不包括 @ 符号和 .service 后缀名<br />
+<code class="highlighter-rouge">%t</code>：存放系统运行文件的目录，通常是 “run”<br />
+<code class="highlighter-rouge">%u</code>：运行服务的用户，如果 Unit 文件中没有指定，则默认为 root<br />
+<code class="highlighter-rouge">%U</code>：运行服务的用户 ID<br />
+<code class="highlighter-rouge">%h</code>：运行服务的用户 Home 目录，即 %{HOME} 环境变量的值<br />
+<code class="highlighter-rouge">%s</code>：运行服务的用户默认 Shell 类型，即 %{SHELL} 环境变量的值<br />
+<code class="highlighter-rouge">%m</code>：实际运行节点的 Machine ID，对于运行位置每个的服务比较有用<br />
+<code class="highlighter-rouge">%b</code>：Boot ID，这是一个随机数，每个节点各不相同，并且每次节点重启时都会改变<br />
+<code class="highlighter-rouge">%H</code>：实际运行节点的主机名<br />
+<code class="highlighter-rouge">%v</code>：内核版本，即 “uname -r” 命令输出的内容<br />
+<code class="highlighter-rouge">%%</code>：在 Unit 模板文件中表示一个普通的百分号</p>
+
+<h4 id="unit-模板">Unit 模板</h4>
+
+<p>在现实中，往往有一些应用需要被复制多份运行。例如，用于同一个负载均衡器分流的多个服务实例，或者为每个 SSH 连接建立一个独立的 sshd 服务进程。</p>
+
+<p>Unit 模板文件的写法与普通的服务 Unit 文件基本相同，不过 Unit 模板的文件名是以 @ 符号结尾的。通过模板启动服务实例时，需要在其文件名的 @ 字符后面附加一个参数字符串。</p>
+
+<p>示例：<code class="highlighter-rouge">apache@.service</code></p>
+
+<ul>
+  <li><strong>apache@.service 模板</strong></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre>[Unit]
+Description=My Advanced Service Template
+After=etcd.service docker.service
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill apache%i
+ExecStartPre=-/usr/bin/docker rm apache%i
+ExecStartPre=/usr/bin/docker pull coreos/apache
+ExecStart=/usr/bin/docker run --name apache%i -p %i:80 coreos/apache /usr/sbin/apache2ctl -D FOREGROUND
+ExecStartPost=/usr/bin/etcdctl set /domains/example.com/%H:%i running
+ExecStop=/usr/bin/docker stop apache1
+ExecStopPost=/usr/bin/docker rm apache1
+ExecStopPost=/usr/bin/etcdctl rm /domains/example.com/%H:%i
+[Install]
+WantedBy=multi-user.target
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>在服务启动时需要在 @ 后面放置一个用于区分服务实例的附加字符参数，通常这个参数用于监控的端口号或控制台 TTY 编译号。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>systemctl start apache@8080.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Systemd 在运行服务时，总是会先尝试找到一个完整匹配的 Unit 文件，如果没有找到，才会尝试选择匹配模板。例如上面的命令，System 首先会在约定的目录下寻找名为 apache@8080.service 的文件，如果没有找到，而文件名中包含 @ 字符，它就会尝试去掉后缀参数匹配模板文件。对于 apache@8080.service，systemd 会找到 apache@.service 模板文件，并通过这个模板文件将服务实例化。</p>
+
+<h3 id="服务的生命周期">服务的生命周期</h3>
+
+<p>当一个新的 Unit 文件被放入 /etc/systemd/system/ 或 /usr/lib/systemd/system/ 目录中时，它是不会被自识识别的。</p>
+
+<p>服务的激活<br />
+<code class="highlighter-rouge">systemctl enable</code>：在 /etc/systemd/system/ 建立服务的符号链接，指向 /usr/lib/systemd/system/ 中<br />
+<code class="highlighter-rouge">systemctl start</code>：依次启动定义在 Unit 文件中的 ExecStartPre、ExecStart 和 ExecStartPost 命令</p>
+
+<h4 id="服务的启动和停止">服务的启动和停止</h4>
+
+<p>systemctl start：依次启动定义在 Unit 文件中的 ExecStartPre、ExecStart 和 ExecStartPost 命令<br />
+systemctl stop：依次停止定义在 Unit 文件中的 ExecStopPre、ExecStop 和 ExecStopPost 命令<br />
+systemctl restart：重启服务<br />
+systemctl kill：立即杀死服务</p>
+
+<h4 id="服务的开机启动和取消">服务的开机启动和取消</h4>
+
+<p>systemctl enable：除了激活服务以外，也可以置服务为开机启动<br />
+systemctl disable：取消服务的开机启动</p>
+
+<h4 id="服务的修改和移除">服务的修改和移除</h4>
+
+<p>systemctl daemon-reload：Systemd 会将 Unit 文件的内容写到缓存中，因此当 Unit 文件被更新时，需要告诉 Systemd 重新读取所有的 Unit 文件<br />
+systemctl reset-failed：移除标记为丢失的 Unit 文件。在删除 Unit 文件后，由于缓存的关系，即使通过 daemon-reload 更新了缓存，在 list-units 中依然会显示标记为 not-found 的 Unit。</p>
+
+<h3 id="target-管理">Target 管理</h3>
+
+<p>Target 就是一个 Unit 组，包含许多相关的 Unit 。启动某个 Target 的时候，Systemd 就会启动里面所有的 Unit。</p>
+
+<p>在传统的 SysV-init 启动模式里面，有 RunLevel 的概念，跟 Target 的作用很类似。不同的是，RunLevel 是互斥的，不可能多个 RunLevel 同时启动，但是多个 Target 可以同时启动。</p>
+
+<h3 id="日志管理">日志管理</h3>
+
+<p>Systemd 通过其标准日志服务 Journald 提供的配套程序 journalctl 将其管理的所有后台进程打印到 std:out（即控制台）的输出重定向到了日志文件。</p>
+
+<p>Systemd 的日志文件是二进制格式的，必须使用 Journald 提供的 journalctl 来查看，默认不带任何参数时会输出系统和所有后台进程的混合日志。</p>
+
+<p>默认日志最大限制为所在文件系统容量的 10%，可以修改 /etc/systemd/journald.conf 中的 SystemMaxUse 来指定该最大限制。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre></td><td class="code"><pre># 查看所有日志（默认情况下 ，只保存本次启动的日志）
+$ sudo journalctl
+
+# 查看内核日志（不显示应用日志）：--dmesg 或 -k
+$ sudo journalctl -k
+
+# 查看系统本次启动的日志（其中包括了内核日志和各类系统服务的控制台输出）：--system 或 -b
+$ sudo journalctl -b
+$ sudo journalctl -b -0
+
+# 查看上一次启动的日志（需更改设置）
+$ sudo journalctl -b -1
+
+# 查看指定服务的日志：--unit 或 -u
+$ sudo journalctl -u docker.servcie
+
+# 查看指定服务的日志
+$ sudo journalctl /usr/lib/systemd/systemd
+
+# 实时滚动显示最新日志
+$ sudo journalctl -f
+
+# 查看指定时间的日志
+$ sudo journalctl --since="2012-10-30 18:17:16"
+$ sudo journalctl --since "20 min ago"
+$ sudo journalctl --since yesterday
+$ sudo journalctl --since "2015-01-10" --until "2015-01-11 03:00"
+$ sudo journalctl --since 09:00 --until "1 hour ago"
+
+# 显示尾部的最新 10 行日志：--lines 或 -n
+$ sudo journalctl -n
+
+# 显示尾部指定行数的日志
+$ sudo journalctl -n 20
+
+# 将最新的日志显示在前面
+$ sudo journalctl -r -u docker.service
+
+# 改变输出的格式：--output 或 -o
+$ sudo journalctl -r -u docker.service -o json-pretty
+
+# 查看指定进程的日志
+$ sudo journalctl _PID=1
+
+# 查看某个路径的脚本的日志
+$ sudo journalctl /usr/bin/bash
+
+# 查看指定用户的日志
+$ sudo journalctl _UID=33 --since today
+
+# 查看某个 Unit 的日志
+$ sudo journalctl -u nginx.service
+$ sudo journalctl -u nginx.service --since today
+
+# 实时滚动显示某个 Unit 的最新日志
+$ sudo journalctl -u nginx.service -f
+
+# 合并显示多个 Unit 的日志
+$ journalctl -u nginx.service -u php-fpm.service --since today
+
+# 查看指定优先级（及其以上级别）的日志，共有 8 级
+# 0: emerg
+# 1: alert
+# 2: crit
+# 3: err
+# 4: warning
+# 5: notice
+# 6: info
+# 7: debug
+$ sudo journalctl -p err -b
+
+# 日志默认分页输出，--no-pager 改为正常的标准输出
+$ sudo journalctl --no-pager
+
+# 以 JSON 格式（单行）输出
+$ sudo journalctl -b -u nginx.service -o json
+
+# 以 JSON 格式（多行）输出，可读性更好
+$ sudo journalctl -b -u nginx.serviceqq
+ -o json-pretty
+
+# 显示日志占据的硬盘空间
+$ sudo journalctl --disk-usage
+
+# 指定日志文件占据的最大空间
+$ sudo journalctl --vacuum-size=1G
+
+# 指定日志文件保存多久
+$ sudo journalctl --vacuum-time=1years
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="日常使用">日常使用</h2>
+
+<h3 id="获取当前正在使用的运行目标">获取当前正在使用的运行目标</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre>systemctl list-units --type=target
+
+# 列出正在运行的 Unit
+$ systemctl list-units
+
+# 列出所有Unit，包括没有找到配置文件的或者启动失败的
+$ systemctl list-units --all
+
+# 列出所有没有运行的 Unit
+$ systemctl list-units --all --state=inactive
+
+# 列出所有加载失败的 Unit
+$ systemctl list-units --failed
+
+# 列出所有正在运行的、类型为 service 的 Unit
+$ systemctl list-units --type=service
+
+# 查看 Unit 配置文件的内容
+$ systemctl cat docker.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="查看-unit-的状态">查看 Unit 的状态</h3>
+
+<p>enabled：已建立启动链接<br />
+disabled：没建立启动链接<br />
+static：该配置文件没有 <code class="highlighter-rouge">[Install]</code> 部分（无法执行），只能作为其他配置文件的依赖<br />
+masked：该配置文件被禁止建立启动链接</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre># 显示系统状态
+$ systemctl status
+
+# 显示单个 Unit 的状态
+$ systemctl status bluetooth.service
+
+# 显示远程主机的某个 Unit 的状态
+$ systemctl -H root@rhel7.example.com status httpd.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="unit-的管理">Unit 的管理</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre># 立即启动一个服务
+$ sudo systemctl start apache.service
+
+# 立即停止一个服务
+$ sudo systemctl stop apache.service
+
+# 重启一个服务
+$ sudo systemctl restart apache.service
+
+# 杀死一个服务的所有子进程
+$ sudo systemctl kill apache.service
+
+# 重新加载一个服务的配置文件
+$ sudo systemctl reload apache.service
+
+# 重载所有修改过的配置文件
+$ sudo systemctl daemon-reload
+
+# 显示某个 Unit 的所有底层参数
+$ systemctl show httpd.service
+
+# 显示某个 Unit 的指定属性的值
+$ systemctl show -p CPUShares httpd.service
+
+# 设置某个 Unit 的指定属性
+$ sudo systemctl set-property httpd.service CPUShares=500
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="查看-unit-的依赖关系">查看 Unit 的依赖关系</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 列出一个 Unit 的所有依赖，默认不会列出 target 类型
+$ systemctl list-dependencies nginx.service
+
+# 列出一个 Unit 的所有依赖，包括 target 类型
+$ systemctl list-dependencies --all nginx.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="systemd-工具集">Systemd 工具集</h2>
+
+<p>systemctl：用于检查和控制各种系统服务和资源的状态<br />
+bootctl：用于查看和管理系统启动分区<br />
+hostnamectl：用于查看和修改系统的主机名和主机信息<br />
+journalctl：用于查看系统日志和各类应用服务日志<br />
+localectl：用于查看和管理系统的地区信息<br />
+loginctl：用于管理系统已登录用户和 Session 的信息<br />
+machinectl：用于操作 Systemd 容器<br />
+timedatectl：用于查看和管理系统的时间和时区信息<br />
+systemd-analyze 显示此次系统启动时运行每个服务所消耗的时间，可以用于分析系统启动过程中的性能瓶颈<br />
+systemd-ask-password：辅助性工具，用星号屏蔽用户的任意输入，然后返回实际输入的内容<br />
+systemd-cat：用于将其他命令的输出重定向到系统日志<br />
+systemd-cgls：递归地显示指定 CGroup 的继承链<br />
+systemd-cgtop：显示系统当前最耗资源的 CGroup 单元<br />
+systemd-escape：辅助性工具，用于去除指定字符串中不能作为 Unit 文件名的字符<br />
+systemd-hwdb：Systemd 的内部工具，用于更新硬件数据库<br />
+systemd-delta：对比当前系统配置与默认系统配置的差异<br />
+systemd-detect-virt：显示主机的虚拟化类型<br />
+systemd-inhibit：用于强制延迟或禁止系统的关闭、睡眠和待机事件<br />
+systemd-machine-id-setup：Systemd 的内部工具，用于给 Systemd 容器生成 ID<br />
+systemd-notify：Systemd 的内部工具，用于通知服务的状态变化<br />
+systemd-nspawn：用于创建 Systemd 容器<br />
+systemd-path：Systemd 的内部工具，用于显示系统上下文中的各种路径配置<br />
+systemd-run：用于将任意指定的命令包装成一个临时的后台服务运行<br />
+systemd-stdio- bridge：Systemd 的内部 工具，用于将程序的标准输入输出重定向到系统总线<br />
+systemd-tmpfiles：Systemd 的内部工具，用于创建和管理临时文件目录<br />
+systemd-tty-ask-password-agent：用于响应后台服务进程发出的输入密码请求</p>
+
+<h3 id="systemctl">systemctl</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre># 重启系统
+$ sudo systemctl reboot
+
+# 关闭系统，切断电源
+$ sudo systemctl poweroff
+
+# CPU停止工作
+$ sudo systemctl halt
+
+# 暂停系统
+$ sudo systemctl suspend
+
+# 让系统进入冬眠状态
+$ sudo systemctl hibernate
+
+# 让系统进入交互式休眠状态
+$ sudo systemctl hybrid-sleep
+
+# 启动进入救援状态（单用户状态）
+$ sudo systemctl rescue
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="systemd-analyze">systemd-analyze</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre># 查看启动耗时
+$ systemd-analyze
+
+# 查看每个服务的启动耗时
+$ systemd-analyze blame
+
+# 显示瀑布状的启动过程流
+$ systemd-analyze critical-chain
+
+# 显示指定服务的启动流
+$ systemd-analyze critical-chain atd.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="hostnamectl">hostnamectl</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 显示当前主机的信息
+$ hostnamectl
+
+# 设置主机名。
+$ sudo hostnamectl set-hostname rhel7
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="timedatectl">timedatectl</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre># 查看当前时区设置
+$ timedatectl
+
+# 显示所有可用的时区
+$ timedatectl list-timezones
+
+# 设置当前时区
+$ sudo timedatectl set-timezone America/New_York
+$ sudo timedatectl set-time YYYY-MM-DD
+$ sudo timedatectl set-time HH:MM:SS
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="loginctl">loginctl</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre># 列出当前 session
+$ loginctl list-sessions
+
+# 列出当前登录用户
+$ loginctl list-users
+
+# 列出显示指定用户的信息
+$ loginctl show-user ruanyf
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="systemd-ask-password">systemd-ask-password</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ PASSWORD=$(systemd-ask-password "Input Your Passowrd:")
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="systemd-run">systemd-run</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>systemd-run 可以将一个指定的操作变成后台运行的服务。它的效果似乎与直接在命令后加上表示后台运行的 &amp; 符号很相似。然而，它让命令成为服务还意味着，它的生命周期将由 Systemd 控制。具体来说，包括以下好处：
+
+服务的生命击期由 Systemd 接管，不会随着启动它的控制台关闭而结束
+可以通过 systemctl 工具管理服务的状态
+可以通过 journalctl 工具查看和管理服务的日志信息
+可以通过 Systemd 提供的方法限制服务的 CPU、内存、磁盘 IO 等系统资源的使用情况。
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#systemd" title="Pages tagged systemd" class="tag"><span class="term">systemd</span></a><a href="/tags#autostart" title="Pages tagged autostart" class="tag"><span class="term">autostart</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

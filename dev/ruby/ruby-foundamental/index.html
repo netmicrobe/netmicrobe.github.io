@@ -1,0 +1,1540 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Ruby 基本语法快速入门 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="ruby">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby 基本语法快速入门">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/ruby/ruby-foundamental/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/ruby/ruby-foundamental/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Ruby 基本语法快速入门</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2016-01-06T00:00:00+08:00">January 06, 2016</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="一般语法">一般语法</h2>
+
+<p>每句代码一行，不用分号结尾<br />
+代码缩进 <strong>不影响</strong> 代码含义，一般缩进单位是 2个空格。</p>
+
+<h2 id="注释">注释</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1"># 这是一个单行注释。</span>
+
+<span class="vi">@counter</span>      <span class="c1"># 跟踪页面被点击的次数</span>
+<span class="vi">@siteCounter</span>  <span class="c1"># 跟踪所有页面被点击的次数</span>
+
+<span class="cm">=begin
+这是一个多行注释。
+可扩展至任意数量的行。
+但 =begin 和 =end</span> <span class="err">只能出现在第一行和最后一行。</span> 
+<span class="o">=</span><span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="命名规则">命名规则</h2>
+
+<p>全局变量，a dollar sign ($) 开头<br />
+类的实例变量，@ 开头<br />
+类的变量，@@ 开头<br />
+局部变量、函数参数、方法名，以小写字母或下划线（_）开头<br />
+类名、模块名、常量名，大写字母开头</p>
+
+<p>多个单词的实例变量名称，单词之间 用下划线（_）分割。</p>
+
+<p>多个单词的类名，使用驼峰表示法。</p>
+
+<p>函数名后可以跟3种符号： ?  !  =</p>
+
+<ul>
+  <li>例子
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>Local Variable:    name fish_and_chips x_axis thx1138 _x _26
+Instance Variable:    @name @point_1 @X @_ @plan9
+Class Variable:    @@total @@symtab @@N @@x_pos @@SINGLE
+Global Variable:    $debug $CUSTOMER $_ $plan9 $Global
+Class Name:    String ActiveRecord MyClass
+Constant Name:    FEET_PER_MILE DEBUG
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h2 id="变量">变量</h2>
+
+<p>变量无需声明</p>
+
+<h2 id="函数">函数</h2>
+
+<p>函数定义：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">say_goodnight</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Good night, "</span> <span class="o">+</span> <span class="nb">name</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="数字">数字</h2>
+
+<p>相关的类型： Integer, Fixnum , Bignum, Float</p>
+
+<p>字符串转换为整型： Integer(your-string)</p>
+
+<p>使用数字进行循环：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="mi">3</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span> <span class="nb">print</span> <span class="s2">"X"</span> <span class="p">}</span>
+<span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">print</span> <span class="n">i</span><span class="p">,</span> <span class="s2">" "</span> <span class="p">}</span>
+<span class="mi">99</span><span class="p">.</span><span class="nf">downto</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">print</span> <span class="n">i</span><span class="p">,</span> <span class="s2">" "</span> <span class="p">}</span>
+<span class="mi">50</span><span class="p">.</span><span class="nf">step</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">print</span> <span class="n">i</span><span class="p">,</span> <span class="s2">" "</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="字符串-string">字符串 String</h2>
+
+<p>单引号和双引号都行： ‘string-literals-in-single-quotation’  “string-literals-in-double-quotation”<br />
+还可以用 %q , %Q或%</p>
+
+<p>双引号的字符串，可以包含特殊转义字符串，如 \n  #{expression} 。连函数调用都支持： #{name.capitalize}</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>    <span class="k">def</span> <span class="nf">say_goodnight</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Good night, </span><span class="si">#{</span><span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">end</span>
+    <span class="nb">puts</span> <span class="n">say_goodnight</span><span class="p">(</span><span class="s1">'uncle'</span><span class="p">)</span>
+
+    <span class="ss">produces:
+    </span><span class="no">Good</span> <span class="n">night</span><span class="p">,</span> <span class="no">Uncle</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="字符串连接用-">字符串连接用 +</h3>
+
+<p>例如， “hello “ + “world!”</p>
+
+<h3 id="可以通过--访问和设置字符串中的单个字符">可以通过 [] 访问和设置，字符串中的单个字符</h3>
+
+<p>例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="n">person</span> <span class="o">=</span> <span class="s2">"Tim"</span>
+<span class="nb">puts</span> <span class="s2">"person is </span><span class="si">#{</span><span class="n">person</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'J'</span>
+<span class="nb">puts</span> <span class="s2">"person is </span><span class="si">#{</span><span class="n">person</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="ss">produces:
+</span><span class="n">person</span> <span class="n">is</span> <span class="no">Tim</span>
+<span class="n">person</span> <span class="n">is</span> <span class="no">Jim</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="常用字符串方法">常用字符串方法</h3>
+
+<p>downcase 方法，转换string中字母为小写。<br />
+scan(正则表达式)，搜索出字符串中所有match正则表达式的部分，形成数组。</p>
+
+<p>例子：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">words_from_string</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/[\w']+/</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="nb">p</span> <span class="n">words_from_string</span><span class="p">(</span><span class="s2">"But I didn't inhale, he said (emphatically)"</span><span class="p">)</span>
+
+<span class="ss">produces:
+</span><span class="p">[</span><span class="s2">"but"</span><span class="p">,</span> <span class="s2">"i"</span><span class="p">,</span> <span class="s2">"didn't"</span><span class="p">,</span> <span class="s2">"inhale"</span><span class="p">,</span> <span class="s2">"he"</span><span class="p">,</span> <span class="s2">"said"</span><span class="p">,</span> <span class="s2">"emphatically"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="start_with--字符串以什么开头">start_with?  字符串以什么开头</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nb">puts</span> <span class="s1">'abcdefg'</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">)</span>  <span class="c1">#=&gt; true</span>
+
+<span class="c1"># 可以接受多个参数</span>
+<span class="s1">'abcdefg'</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span> <span class="s1">'xyz'</span><span class="p">,</span> <span class="s1">'opq'</span><span class="p">,</span> <span class="s1">'ab'</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="检查字符串是否为空----stringblank">检查字符串是否为空？  - string.blank?</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="kp">nil</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="s2">"   "</span>
+
+<span class="n">a</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; true</span>
+<span class="n">b</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; true</span>
+<span class="n">c</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; true</span>
+<span class="n">c1</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; true</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="s2">"1"</span>
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"1"</span><span class="p">]</span>
+
+<span class="n">d</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; false</span>
+<span class="n">e</span><span class="p">.</span><span class="nf">blank?</span> <span class="c1">#=&gt; false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="清除字符串中空格等不可见的格式字符--strip--strip">清除字符串中空格等不可见的格式字符 / strip / strip!</h4>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://linuxhint.com/ruby-string-trim-whitespace/">https://linuxhint.com/ruby-string-trim-whitespace/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nb">puts</span> <span class="s2">"      </span><span class="se">\t</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> first     "</span><span class="p">.</span><span class="nf">strip</span> <span class="c1"># -&gt; first</span>
+<span class="nb">puts</span> <span class="s2">" </span><span class="se">\r\n</span><span class="s2"> second</span><span class="se">\n</span><span class="s2"> "</span><span class="p">.</span><span class="nf">strip</span> <span class="c1"># -&gt; second</span>
+<span class="nb">puts</span> <span class="s2">"</span><span class="se">\f\v\r\n\t</span><span class="s2"> third"</span><span class="p">.</span><span class="nf">strip</span> <span class="c1"># - third</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以用 <code class="highlighter-rouge">delete</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">str</span> <span class="o">=</span> <span class="s2">" String "</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">str</span>
+
+<span class="n">str</span> <span class="o">=</span> <span class="s2">" </span><span class="se">\t</span><span class="s2"> </span><span class="se">\r</span><span class="s2"> </span><span class="se">\n</span><span class="s2">String "</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">" </span><span class="se">\t\r\n\ </span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">str</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="here-document">here document</h3>
+
+<p>例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="n">string</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">END_OF_STRING</span><span class="sh">
+The body of the string is the input lines up to
+one starting with the same text that followed the '&lt;&lt;'
+</span><span class="no">END_OF_STRING</span>
+
+<span class="no">Normally</span><span class="p">,</span> <span class="n">this</span> <span class="n">terminator</span> <span class="n">must</span> <span class="n">start</span> <span class="k">in</span> <span class="n">column</span> <span class="n">one</span><span class="o">.</span>
+<span class="no">However</span><span class="p">,</span> <span class="k">if</span> <span class="n">you</span> <span class="n">put</span> <span class="n">a</span> <span class="n">minus</span> <span class="n">sign</span> <span class="n">after</span> <span class="n">the</span> <span class="o">&lt;&lt;</span> <span class="n">characters</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">indent</span> <span class="n">the</span> <span class="ss">terminator:
+
+</span><span class="n">string</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">END_OF_STRING</span><span class="sh">
+    The body of the string is the input lines up to
+    one starting with the same text that followed the '&lt;&lt;'
+</span><span class="no">    END_OF_STRING</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="stringsplit-方法">String#split 方法</h3>
+
+<p>依据分隔符（可以是，正则表达式），对字符串进行分解，提前可用字段。</p>
+
+<p>例子，提取歌曲信息：</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>tut_stdtypes/songdata
+/jazz/j00132.mp3 | 3:45 | Fats     Waller      | Ain't Misbehavin'
+/jazz/j00319.mp3 | 2:58 | Louis    Armstrong   | Wonderful World
+/bgrass/bg0732.mp3| 4:09 | Strength in Numbers | Texas Red
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="no">Song</span> <span class="o">=</span> <span class="no">Struct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:length</span><span class="p">)</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"songdata"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">song_file</span><span class="o">|</span>
+    <span class="n">songs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">song_file</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+        <span class="n">file</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/\s*\|\s*/</span><span class="p">)</span>
+        <span class="nb">name</span><span class="p">.</span><span class="nf">squeeze!</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+        <span class="n">mins</span><span class="p">,</span> <span class="n">secs</span> <span class="o">=</span> <span class="n">length</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/\d+/</span><span class="p">)</span>
+        <span class="n">songs</span> <span class="o">&lt;&lt;</span> <span class="no">Song</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">mins</span><span class="p">.</span><span class="nf">to_i</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">secs</span><span class="p">.</span><span class="nf">to_i</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="nb">puts</span> <span class="n">songs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="ss">produces:
+</span><span class="c1">#&lt;struct Song title="Wonderful World", name="Louis Armstrong", length=178&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="字符串中搜索-include">字符串中搜索 include?</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">my_string</span> <span class="o">=</span> <span class="s2">"abcdefg"</span>
+<span class="k">if</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">include?</span> <span class="s2">"cde"</span>
+   <span class="nb">puts</span> <span class="s2">"String includes 'cde'"</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="数组">数组</h2>
+
+<h3 id="定义初始化引用">定义、初始化、引用</h3>
+
+<p>如下例：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14</span> <span class="p">]</span> <span class="c1"># array with three elements</span>
+<span class="nb">puts</span> <span class="s2">"The first element is </span><span class="si">#{</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="c1"># set the third element</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="kp">nil</span>
+<span class="nb">puts</span> <span class="s2">"The array is now </span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># inspect 将 Array 转换为字符串格式：[ 元素1，元素2, ... ]</span>
+
+<span class="ss">produces:
+</span><span class="no">The</span> <span class="n">first</span> <span class="n">element</span> <span class="n">is</span> <span class="mi">1</span>
+<span class="no">The</span> <span class="n">array</span> <span class="n">is</span> <span class="n">now</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cat"</span><span class="p">,</span> <span class="kp">nil</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="空数组写法">空数组写法</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="vi">@books_in_stock</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="检查数组是否为空-any">检查数组是否为空 any?</h3>
+
+<h3 id="向数组中追加元素">向数组中追加元素</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="vi">@books_in_stock</span> <span class="o">&lt;&lt;</span> <span class="no">BookInStock</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"《Ruby入门》"</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="元素赋值">元素赋值</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">]</span> <span class="c1">#=&gt; [1, 3, 5, 7, 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'bat'</span>          <span class="c1">#=&gt; [1, "bat", 5, 7, 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'cat'</span>         <span class="c1">#=&gt; [1, "bat", "cat", 7, 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span>       <span class="c1">#=&gt; [1, "bat", "cat", [9, 8], 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>             <span class="c1">#=&gt; [1, "bat", "cat", [9, 8], 9, nil, 99]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="数组长度-arraylength">数组长度 array.length</h3>
+
+<h3 id="提取连续元素">提取连续元素</h3>
+
+<p>a[index, count] 提取方法，例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># =&gt; [3, 5, 7]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># =&gt; [7]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>a[begin…end] 提取法，例如：  注意 2个点，3个点含义不同</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># =&gt; [3, 5, 7]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># =&gt; [3, 5]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># =&gt;  [7]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="连续元素替换插入等--操作符的nx功能">连续元素替换，插入等 []= 操作符的nx功能</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">]</span>    <span class="c1">#=&gt;    [1, 3, 5, 7, 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'cat'</span>            <span class="c1">#=&gt;    [1, 3, "cat", 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'dog'</span>            <span class="c1">#=&gt;    [1, 3, "dog", "cat", 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span> <span class="p">]</span>   <span class="c1">#=&gt;    [1, 9, 8, 7, "dog", "cat", 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1">#=&gt;    ["dog", "cat", 9]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">.</span><span class="nf">.</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">98</span>        <span class="c1">#=&gt;    ["dog", "cat", 9, nil, nil, 99, 98]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="数组当成-栈-使用">数组当成 栈 使用</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span> <span class="s2">"red"</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span> <span class="s2">"green"</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">push</span> <span class="s2">"blue"</span>
+<span class="n">stack</span>                <span class="c1"># =&gt; ["red", "green", "blue"]</span>
+
+<span class="n">stack</span><span class="p">.</span><span class="nf">pop</span>    <span class="c1">#    =&gt;    "blue"</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">pop</span>    <span class="c1">#    =&gt;    "green"</span>
+<span class="n">stack</span><span class="p">.</span><span class="nf">pop</span>    <span class="c1">#    =&gt;    "red"</span>
+<span class="n">stack</span>        <span class="c1">#    =&gt;    []</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="数组当成-fifo队列-使用">数组当成 FIFO队列 使用</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">push</span> <span class="s2">"red"</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">push</span> <span class="s2">"green"</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">shift</span> <span class="c1"># =&gt; "red"</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">shift</span> <span class="c1"># =&gt; "green"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="获取前后连续元素-first--last">获取前后连续元素 first &amp; last</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="n">array</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">]</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">first</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">last</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># =&gt; [4, 5, 6, 7]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="for-循环遍历数组">for 循环遍历数组</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">array</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">]</span>
+<span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="n">array</span>
+    <span class="nb">p</span> <span class="n">num</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="hash-表">Hash 表</h2>
+
+<p>Key-Value键值对数组，Key 必须唯一。</p>
+
+<p>例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="n">inst_section</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'cello'</span> <span class="o">=&gt;</span><span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'clarinet'</span> <span class="o">=&gt;</span> <span class="s1">'woodwind'</span><span class="p">,</span>
+    <span class="s1">'drum'</span><span class="o">=&gt;</span> <span class="s1">'percussion'</span>
+<span class="p">}</span>
+<span class="nb">puts</span> <span class="n">inst_section</span><span class="p">[</span><span class="s1">'cello'</span><span class="p">]</span>  <span class="c1"># 引用</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>初始化值默认nil，例如，访问一个不存在的 key， 其 value 为 nil。<br />
+改变 value 的初始化值，例如，默认为0：  your-hash = Hash.new(0)</p>
+
+<h3 id="hash-长度获取length-方法">Hash 长度获取，length 方法</h3>
+
+<p>使用 Symbol 作为 Key</p>
+
+<p>例子，3种表示方法，都是等价的，第2、3种表示方法，都是使用 Symbol 作为 Key：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'dog'</span> <span class="o">=&gt;</span> <span class="s1">'canine'</span><span class="p">,</span> <span class="s1">'cat'</span> <span class="o">=&gt;</span> <span class="s1">'feline'</span><span class="p">,</span> <span class="s1">'donkey'</span> <span class="o">=&gt;</span> <span class="s1">'asinine'</span> <span class="p">}</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:dog</span> <span class="o">=&gt;</span> <span class="s1">'canine'</span><span class="p">,</span> <span class="ss">:cat</span> <span class="o">=&gt;</span> <span class="s1">'feline'</span><span class="p">,</span> <span class="ss">:donkey</span> <span class="o">=&gt;</span> <span class="s1">'asinine'</span> <span class="p">}</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">dog: </span><span class="s1">'canine'</span><span class="p">,</span> <span class="ss">cat: </span><span class="s1">'feline'</span><span class="p">,</span> <span class="ss">donkey: </span><span class="s1">'asinine'</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="检查key-是否存在--hashhas_keytarget_key">检查Key 是否存在：  hash.has_key?(target_key)</h3>
+
+<h2 id="range">Range</h2>
+
+<p>Ranges as Sequences<br />
+In Ruby, these sequences are created using the .. and … range operators. The two-dot form creates an<br />
+inclusive range, and the three-dot form creates a range that excludes the specified high value.</p>
+
+<p>low..high  包含low，high，以及之间的值<br />
+low…high 包含low，以及之间的值，不包含high值</p>
+
+<h3 id="rangeto_a--转换为数组">Range#to_a  转换为数组</h3>
+
+<p>例如：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">to_a</span>            <span class="c1"># =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="p">(</span><span class="s1">'bar'</span><span class="p">.</span><span class="nf">.</span><span class="s1">'bat'</span><span class="p">).</span><span class="nf">to_a</span>   <span class="c1"># =&gt; ["bar", "bas", "bat"]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="rangeto_enum-转换为-enumerator">Range#to_enum 转换为 Enumerator</h3>
+
+<p>例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="n">enum</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'bar'</span><span class="p">.</span><span class="nf">.</span><span class="s1">'bat'</span><span class="p">).</span><span class="nf">to_enum</span>
+<span class="n">enum</span><span class="p">.</span><span class="nf">next</span>    <span class="c1"># =&gt; "bar"</span>
+<span class="n">enum</span><span class="p">.</span><span class="nf">next</span>    <span class="c1"># =&gt; "bas"</span>
+
+<span class="no">Ranges</span> <span class="n">as</span> <span class="no">Conditions</span>
+
+<span class="k">while</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">gets</span>
+    <span class="nb">puts</span> <span class="n">line</span> <span class="k">if</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/start/</span> <span class="p">.</span><span class="nf">.</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/end/</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="ranges-as-intervals">Ranges as Intervals</h3>
+
+<p>whether some value falls within the interval represented by the range</p>
+
+<p>例子：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">)</span>       <span class="o">===</span> <span class="mi">5</span>             <span class="c1"># =&gt; true</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">)</span>       <span class="o">===</span> <span class="mi">15</span>            <span class="c1"># =&gt; false</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">)</span>       <span class="o">===</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14159</span>       <span class="c1"># =&gt; true</span>
+<span class="p">(</span><span class="s1">'a'</span><span class="p">.</span><span class="nf">.</span><span class="s1">'j'</span><span class="p">)</span>    <span class="o">===</span> <span class="s1">'c'</span>           <span class="c1"># =&gt; true</span>
+<span class="p">(</span><span class="s1">'a'</span><span class="p">.</span><span class="nf">.</span><span class="s1">'j'</span><span class="p">)</span>    <span class="o">===</span> <span class="s1">'z'</span>           <span class="c1"># =&gt; false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>例子：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="n">car_age</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">.</span><span class="nf">to_f</span>
+<span class="c1"># let's assume it's 9.5</span>
+<span class="k">case</span> <span class="n">car_age</span>
+<span class="k">when</span> <span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">1</span>
+    <span class="nb">puts</span> <span class="s2">"Mmm.. new car smell"</span>
+<span class="k">when</span> <span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">3</span>
+    <span class="nb">puts</span> <span class="s2">"Nice and new"</span>
+<span class="k">when</span> <span class="mi">3</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">10</span>
+    <span class="nb">puts</span> <span class="s2">"Reliable but slightly dinged"</span>
+<span class="k">when</span> <span class="mi">10</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">30</span>
+    <span class="nb">puts</span> <span class="s2">"Clunker"</span>
+<span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"Vintage gem"</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="symbol-代号">Symbol 代号</h2>
+
+<p>全局的唯一标识符，以冒号开头，例如：   :state_ok    :state_error</p>
+
+<p>常用来作为hash的key，例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="n">inst_section</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">:cello</span> <span class="o">=&gt;</span><span class="s1">'string'</span><span class="p">,</span>
+    <span class="ss">:drum</span> <span class="o">=&gt;</span> <span class="s1">'percussion'</span>
+<span class="p">}</span>
+<span class="nb">puts</span> <span class="n">inst_section</span><span class="p">[</span><span class="ss">:cello</span><span class="p">]</span>  <span class="c1"># 引用</span>
+
+<span class="c1"># 简化形式，等价上面的 inst_section</span>
+<span class="n">inst_section</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">cello</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="n">drum</span> <span class="o">=&gt;</span> <span class="s1">'percussion'</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="程序的控制结构">程序的控制结构</h2>
+
+<h3 id="if">if</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="n">today</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+<span class="k">if</span> <span class="n">today</span><span class="p">.</span><span class="nf">saturday?</span>
+    <span class="nb">puts</span> <span class="s2">"Do chores around the house"</span>
+<span class="k">elsif</span> <span class="n">today</span><span class="p">.</span><span class="nf">sunday?</span>
+    <span class="nb">puts</span> <span class="s2">"Relax"</span>
+<span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"Go to work"</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>produces:<br />
+Go to work</p>
+
+<h4 id="if-的变体">if 的变体</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nb">puts</span> <span class="s2">"Danger, Will Robinson"</span> <span class="k">if</span> <span class="n">radiation</span> <span class="o">&gt;</span> <span class="mi">3000</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="while">while</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="k">while</span> <span class="n">weight</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="n">and</span> <span class="n">num_pallets</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+    <span class="n">pallet</span> <span class="o">=</span> <span class="n">next_pallet</span><span class="p">()</span>
+    <span class="n">weight</span> <span class="o">+=</span> <span class="n">pallet</span><span class="p">.</span><span class="nf">weight</span>
+    <span class="n">num_pallets</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="while-的变体">while 的变体</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">square</span> <span class="o">=</span> <span class="n">square</span><span class="o">*</span><span class="n">square</span> <span class="k">while</span> <span class="n">square</span> <span class="o">&lt;</span> <span class="mi">1000</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="for-循环">for 循环</h3>
+
+<p>例子：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="o">.</span><span class="mi">5</span>
+    <span class="c1"># ...</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="正则表达式--regular-expressions">正则表达式  Regular Expressions</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.rubyguides.com/2015/06/ruby-regex/">Mastering Ruby Regular Expressions</a></li>
+      <li><a href="https://ruby-doc.org/core-2.4.0/Regexp.html">Regexp</a></li>
+      <li><a href="http://ruby-for-beginners.rubymonstas.org/advanced/regular_expressions.html">Regular Expressions</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>/pattern/</p>
+
+<h3 id="-操作符">=~ 操作符</h3>
+
+<p>使用方式：字符串 =~ /pattern/<br />
+If the pattern is found in the string,<br />
+=~ returns its starting position; otherwise, it returns nil.</p>
+
+<p>例如：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">line</span> <span class="o">=</span> <span class="nb">gets</span>
+<span class="k">if</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/Perl|Python/</span>
+    <span class="nb">puts</span> <span class="s2">"Scripting language mentioned: </span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="match-方法">match 方法</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>  <span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"202206"</span>
+ <span class="o">=&gt;</span> <span class="s2">"202206"</span> 
+<span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>  <span class="o">&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">%r{(</span><span class="se">\d</span><span class="sr">{4})(</span><span class="se">\d</span><span class="sr">{2})}</span><span class="p">)</span>
+ <span class="o">=&gt;</span> <span class="c1">#&lt;MatchData "202206" 1:"2022" 2:"06"&gt; </span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>  <span class="o">&gt;</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+ <span class="o">=&gt;</span> <span class="s2">"202206"</span> 
+<span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>  <span class="o">&gt;</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+ <span class="o">=&gt;</span> <span class="s2">"2022"</span> 
+<span class="mi">2</span><span class="o">.</span><span class="mi">3</span><span class="o">.</span><span class="mi">7</span>  <span class="o">&gt;</span> <span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+ <span class="o">=&gt;</span> <span class="s2">"06"</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="利用-regex-替换">利用 regex 替换</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="n">line</span> <span class="o">=</span> <span class="nb">gets</span>
+
+<span class="c1"># replace first 'Perl' with 'Ruby'</span>
+<span class="n">newline</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span> <span class="sr">/Perl/</span><span class="p">,</span> <span class="s1">'Ruby'</span> <span class="p">)</span>
+
+<span class="c1"># replace every 'Python' with 'Ruby'</span>
+<span class="n">newerline</span> <span class="o">=</span> <span class="n">newline</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span> <span class="sr">/Python/</span><span class="p">,</span> <span class="s1">'Ruby'</span> <span class="p">)</span>
+
+<span class="c1"># You can replace every occurrence of Perl and Python with Ruby using this:</span>
+<span class="n">newline</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span> <span class="sr">/Perl|Python/</span> <span class="p">,</span> <span class="s1">'Ruby'</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="时间">时间</h2>
+
+<ul>
+  <li>获取时间戳</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nb">require</span> <span class="s1">'date'</span>
+
+<span class="nb">p</span> <span class="no">DateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%s'</span><span class="p">)</span> <span class="c1"># "1384526946" (seconds)</span>
+<span class="nb">p</span> <span class="no">DateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%Q'</span><span class="p">)</span> <span class="c1"># "1384526946523" (milliseconds)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>从字符串生成 date 对象</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="n">str</span> <span class="o">=</span> <span class="s2">"Tue, 10 Aug 2010 01:20:19 +0400"</span>
+
+<span class="c1"># Date.parse 会忽略时间</span>
+<span class="nb">puts</span> <span class="no">Date</span><span class="p">.</span><span class="nf">parse</span> <span class="n">str</span>
+
+<span class="c1"># Time.parse 是日期+时间</span>
+<span class="nb">puts</span> <span class="no">Time</span><span class="p">.</span><span class="nf">parse</span> <span class="n">str</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>从时间生成字符串</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">datetime</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-%d %H:%M:%S'</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#ruby" title="Pages tagged ruby" class="tag"><span class="term">ruby</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

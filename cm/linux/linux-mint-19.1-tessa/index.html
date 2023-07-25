@@ -1,0 +1,2149 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Linux mint 19.1 Tessa 使用，关联 update-alternatives, apt, fcitx, xfce4, lm-sensors, bluetooth, glxinfo, GPU Driver, lspci, lshw, hibernate, virtualbox, exfat &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="mint, distribution">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux mint 19.1 Tessa 使用，关联 update-alternatives, apt, fcitx, xfce4, lm-sensors, bluetooth, glxinfo, GPU Driver, lspci, lshw, hibernate, virtualbox, exfat">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/linux-mint-19.1-tessa/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/linux-mint-19.1-tessa/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Linux mint 19.1 Tessa 使用，关联 update-alternatives, apt, fcitx, xfce4, lm-sensors, bluetooth, glxinfo, GPU Driver, lspci, lshw, hibernate, virtualbox, exfat</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-03-21T00:00:00+08:00">March 21, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://linuxmint-developer-guide.readthedocs.io/en/latest/mint-tools.html">Mint tools - Linux Mint Developer Guide</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="基于的ubuntu版本">基于的Ubuntu版本</h2>
+
+<ul>
+  <li>Linux Mint 19.3 Tricia: is based on Ubuntu 18.04.3 LTS and Linux Kernel 5.0.</li>
+  <li>Linux mint 19.1 Tessa :</li>
+</ul>
+
+<h2 id="timeshift-系统备份">timeshift 系统备份</h2>
+
+<p>注意！！如果挂载了其他硬盘的分区（特别是大体积的数据分区），备份前，要在设置中排除掉。</p>
+
+<p>timeshift -&gt;</p>
+
+<h2 id="安装系统">安装系统</h2>
+
+<h3 id="apt">apt</h3>
+
+<h4 id="改为国内源">改为国内源</h4>
+
+<p>System Menu -&gt; Software Source</p>
+
+<h3 id="中文环境">中文环境</h3>
+
+<h4 id="安装中文语言支持">安装中文语言支持</h4>
+
+<ol>
+  <li>开始菜单 &gt; Preferences &gt; Language &gt; Install \/ Remove Language…</li>
+  <li>选择 Chinese, China UTF-8 ，点击 Install language packs</li>
+</ol>
+
+<h4 id="安装-fcitx-输入法">安装 fcitx 输入法</h4>
+
+<ol>
+  <li>开始菜单 &gt; Preferences &gt; Input Methods 选择 Simplified Chinese ，按其中提示安装就好了</li>
+</ol>
+
+<ul>
+  <li>注意：如果装好后，在状态栏看不到 键盘小图标，直接去 开始菜单 &gt; Preferences &gt; Fcitx Configuration</li>
+</ul>
+
+<h4 id="fcitx-特殊字符输入">fcitx 特殊字符输入</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li>Unicode 码表：　<a href="https://unicode-table.com/cn/search">https://unicode-table.com/cn/search</a></li>
+      <li>fcitx - Unicode : <a href="https://fcitx-im.org/wiki/Unicode">https://fcitx-im.org/wiki/Unicode</a></li>
+      <li>fcitx - Punctuation : <a href="https://fcitx-im.org/wiki/Punctuation">https://fcitx-im.org/wiki/Punctuation</a></li>
+    </ul>
+  </li>
+  <li>如何输入Unicode字符
+    <ol>
+      <li>Ctrl+Alt+Shift+U</li>
+      <li>输入unicode值</li>
+    </ol>
+    <ul>
+      <li>To search hex, type U+ or 0x as prefix.</li>
+      <li>To search decimal value, type number directly.</li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>0x3010</td>
+      <td>【</td>
+      <td>左实心凹形括号</td>
+    </tr>
+    <tr>
+      <td>0x3011</td>
+      <td>】</td>
+      <td>右实心凹形括号</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="fcitx使用">fcitx使用</h4>
+
+<p>全角、半角切换</p>
+
+<p><img src="fcitx-conf.png" alt="" /></p>
+
+<h2 id="硬件配置">硬件配置</h2>
+
+<h3 id="cpu-温度监控">CPU 温度监控</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>sudo apt install lm-sensors
+sudo apt install xfce4-sensors-plugin
+sudo -i
+chmod u+s /usr/sbin/hddtemp
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>系统状态栏右键菜单 -&gt; Panel -&gt; Add New Items… -&gt; 搜索sensor -&gt; 选中 sensor plugin -&gt; 点击 Add<br />
+右击系统状态栏上“Sensors”字样 -&gt; 右键菜单选择属性设置，勾选需要显示在状态栏的属性的“Show”</p>
+
+<h3 id="bluetooth-设置">bluetooth 设置</h3>
+
+<h4 id="开启关闭bluetooth">开启关闭bluetooth</h4>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://medium.com/@vxp/solved-how-to-disable-bluetooth-at-startup-on-linux-mint-19-tara-cinnamon-f5e0bd97e14d">https://medium.com/@vxp/solved-how-to-disable-bluetooth-at-startup-on-linux-mint-19-tara-cinnamon-f5e0bd97e14d</a></li>
+      <li><a href="https://forums.linuxmint.com/viewtopic.php?t=208589">https://forums.linuxmint.com/viewtopic.php?t=208589</a></li>
+      <li><a href="https://community.linuxmint.com/tutorial/view/2281">https://community.linuxmint.com/tutorial/view/2281</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>默认系统安装好，蓝牙是打开的。</p>
+
+<p>启动时，就关闭蓝牙，不知道会不会提升点性能。</p>
+
+<ol>
+  <li>System Menu -&gt; Session and Startup -&gt; Application Autostart -&gt; Add</li>
+  <li>添加一个启动命令
+    <ul>
+      <li>Name: bt-close</li>
+      <li>Command: <code class="highlighter-rouge">rfkill block bluetooth</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="显卡驱动">显卡驱动</h3>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://vulkan.lunarg.com/sdk/home">Vulkan SDK Home</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre># check your VGA graphic card model and driver in use
+$ sudo lshw -c video
+
+# check which AMD related modules are already loaded 
+$ lsmod | grep amd
+
+# check boot messages for more information about the graphics card driver in use
+$ dmesg | grep -i amdgpu
+
+# Graphic Info
+$ inxi -G
+# 脱敏的所有系统设置信息
+$ inxi -Fxz
+# 简要信息
+$ inxi -a
+
+$ glxinfo
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="amd-驱动">AMD 驱动</h3>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://linuxconfig.org/amd-radeon-ubuntu-20-04-driver-installation">AMD Radeon Ubuntu 20.04 Driver Installation</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="从ppa安装amd-gpu-driver">从ppa安装AMD GPU Driver</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update &amp;&amp; sudo apt -y upgrade
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>恢复默认AMD driver</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>$ sudo apt install ppa-purge
+$ sudo ppa-purge ppa:oibaf/graphics-drivers
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="amdgpu-说明">AMDGPU 说明</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://www.amd.com/en/support/kb/faq/gpu-635">How-To Install/Uninstall AMD Radeon™ Software AMDGPU-PRO Driver for Linux® on an Ubuntu System</a></li>
+      <li><a href="https://amdgpu-install.readthedocs.io/en/latest/">Radeon™ Software for Linux® Installation - readthedocs.io</a></li>
+      <li><a href="https://wiki.debian.org/AMDGPUDriverOnStretchAndBuster2">How to install official AMDGPU linux driver with kernel 4.19.x on Stretch and Buster - Debian.org</a></li>
+    </ul>
+  </li>
+  <li>2种Stack
+    <ul>
+      <li>All-Open Stack
+        <ul>
+          <li>Base kernel drivers</li>
+          <li>Base accelerated graphics drivers</li>
+          <li>Mesa OpenGL</li>
+          <li>Mesa multimedia</li>
+        </ul>
+      </li>
+      <li>Pro Stack
+        <ul>
+          <li>Base kernel drivers</li>
+          <li>Base accelerated graphics drivers</li>
+          <li>Mesa multimedia</li>
+          <li>Pro OpenGL</li>
+          <li>Pro OpenCL
+            <ul>
+              <li>PAL OpenCL stack (supports Vega 10 and later products)</li>
+              <li>Legacy OpenCL stack (supports legacy products older than Vega 10)</li>
+            </ul>
+          </li>
+          <li>Pro Vulkan</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>amdgpu-install
+    <ul>
+      <li><code class="highlighter-rouge">--opencl</code> 可以制定OpenCL实现，也可不指定，全部安装  <br />
+  <code class="highlighter-rouge">--opencl=pal</code> PAL: Provides support for Vega 10 and newer hardware.<br />
+  <code class="highlighter-rouge">--opencl=legacy</code> Legacy: Provides support for hardware older than Vega 10.<br />
+  <code class="highlighter-rouge">--opencl=pal,legacy</code> 2种实现都安装</li>
+    </ul>
+  </li>
+  <li>
+    <p>安装 All-Open Stack</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>./amdgpu-install -y
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>卸载： <code class="highlighter-rouge">amdgpu-uninstall</code></p>
+  </li>
+  <li>安装 Pro Stack
+    <ul>
+      <li><code class="highlighter-rouge">./amdgpu-pro-install -y</code><br />
+Base kernel<br />
+Accelerated graphics<br />
+Mesa multimedia<br />
+Pro OpenGL<br />
+Pro Vulkan</li>
+      <li><code class="highlighter-rouge">./amdgpu-pro-install -y --opencl=pal,legacy</code><br />
+Base kernel<br />
+Accelerated graphics<br />
+Mesa multimedia<br />
+Pro OpenGL<br />
+Pro Vulkan<br />
+Pro OpenCL</li>
+      <li><code class="highlighter-rouge">./amdgpu-pro-install -y --opencl=pal,legacy --headless</code><br />
+Only base kernel<br />
+Pro OpenCL (headless mode)</li>
+      <li>卸载： <code class="highlighter-rouge">amdgpu-pro-uninstall</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="安装-amdgpu-pro">安装 AMDGPU PRO</h4>
+
+<ul>
+  <li>refer to
+    <ul>
+      <li><a href="https://forums.linuxmint.com/viewtopic.php?p=1515630&amp;sid=7f32e7ab57bb0ab11ac5f976d00ca138#p1515630">How do I install AMDGPU-Pro on Mint 19?</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/amdgpu-installation">Radeon Software for Linux Installation - amd.com</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/faq/amdgpu-installation">Radeon™ Software for Linux® Installation - amd.com</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/rn-prorad-lin-18-40">Radeon™ Software for Linux® 18.40</a></li>
+      <li><a href="https://www.amd.com/zh-hans/support/kb/release-notes/rn-rad-lin-19-10-unified">Radeon™ Software for Linux® 19.10</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/rn-rad-lin-19-20-unified">Radeon™ Software for Linux® 19.20</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/rn-rad-lin-19-30-unified">Radeon™ Software for Linux® 19.30</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux">Radeon™ Software for Linux® 19.50</a></li>
+      <li><a href="https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-10">Radeon™ Software for Linux® 20.10</a></li>
+    </ul>
+  </li>
+  <li>Linux Mint 19.3 , amdgpu-pro-install 安装情况：
+    <ul>
+      <li>Radeon™ Software for Linux® 18.40<br />
+安装时提示：WARNING: amdgpu dkms failed for running kernel<br />
+可以正常启动，运行VirtualBox报错： amdgpu_device_initialize: amdgpu_get_auth (1) failed (-1)</li>
+      <li>Radeon™ Software for Linux® 19.20<br />
+可以正常启动，运行VirtualBox报错： amdgpu_device_initialize: amdgpu_get_auth (1) failed (-1)</li>
+      <li>Radeon™ Software for Linux® 19.30  不显示xfce session，整个黑屏</li>
+      <li>Radeon™ Software for Linux® 19.50  安装时候在“Building initial module for 5.0.0-32-generic”要很久，登陆进xfce session，整个白屏。</li>
+    </ul>
+  </li>
+  <li>Linux Mint 19.3 , amdgpu-install 安装情况：
+    <ul>
+      <li>Radeon™ Software for Linux® 18.40<br />
+安装时提示：WARNING: amdgpu dkms failed for running kernel<br />
+可以正常启动，也能正常运行VirtualBox</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>从 AMD 官网 <a href="https://www.amd.com/en/support/kb/release-notes/rn-prorad-lin-18-40">Radeon™ Software for Linux® 18.40 Highlights</a> 下载 deb 安装包
+    <ul>
+      <li><a href="https://drivers.amd.com/drivers/linux/amdgpu-pro-18.40-697810-ubuntu-18.04.tar.xz">Radeon™ Software for Linux® version 18.40  for Ubuntu 18.04.1</a></li>
+    </ul>
+  </li>
+  <li>下载好 <code class="highlighter-rouge">amdgpu-pro-18.40-697810-ubuntu-18.04.tar.xz</code></li>
+  <li>将 mint 19 伪装成 ubuntu 18.04<br />
+ amdgpu的ubuntu 18.04的deb包，安装前，严格检查 <code class="highlighter-rouge">/etc/os-release</code> ，不是 ubuntu 18.04 就不能安装<br />
+ 会报错：”ERROR: This package can only be installed on Ubuntu 18.04.”
+    <ul>
+      <li>解决办法：修改 os-release
+        <ol>
+          <li><code class="highlighter-rouge">ID=linuxmint</code> 改为 <code class="highlighter-rouge">ID=ubuntu</code></li>
+          <li><code class="highlighter-rouge">VERSION_ID="19.3"</code> 改为 <code class="highlighter-rouge">VERSION_ID="18.04"</code></li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>解压并安装
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> tar Jxvf amdgpu-pro-18.40-697810-ubuntu-18.04.tar.xz
+ ./amdgpu-pro-install --opencl=pal,legacy
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>将当前用户加入video组 <code class="highlighter-rouge">sudo usermod -a -G video $LOGNAME</code></li>
+  <li>
+    <p>重启系统</p>
+  </li>
+  <li>After rebooting, if you unable to get to the desktop.
+    <ol>
+      <li><code class="highlighter-rouge">Ctrl + Alt + F1</code> 进入命令行</li>
+      <li>re-install those packages, right after Radeon Software for Linux 19.10 is uninstalled,</li>
+      <li>before rebooting. It can also be used in tty1:<br />
+ <code class="highlighter-rouge">apt install xserver-xorg xserver-xorg-video-all</code></li>
+    </ol>
+  </li>
+  <li>检查是否安装成功
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre> $ grep hybrid /var/log/Xorg.0.log
+ AMDGPU(0): AMDGPU DDX hybrid version: xx.xx.x.xx
+ AMDGPU(0): AMDGPU kernel module hybrid version: xx.xx.x.xx
+
+ # The module libglx.so should be loading from here
+ # /opt/amdgpu-pro/lib/xorg/modules/extensions
+ $ grep libglx /var/log/Xorg.0.log
+ Loading /opt/amdgpu-pro/lib/xorg/modules/extensions/libglx.so
+
+ # find out if you have AMDGPU-Pro already installed
+ dpkg -l amdgpu-pro
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<p>卸载： <code class="highlighter-rouge">amdgpu-pro-uninstall</code></p>
+
+<h3 id="显示相关配置">显示相关配置</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://forums.linuxmint.com/viewtopic.php?t=104497">https://forums.linuxmint.com/viewtopic.php?t=104497</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>显示器配置工具有： <code class="highlighter-rouge">xfce4-display-settings</code> 、 <code class="highlighter-rouge">lxrandr</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 显卡信息
+
+lspci | grep VGA
+# 或
+lshw -C display
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="多个显示器设置">多个显示器设置</h4>
+
+<p><code class="highlighter-rouge">xrandr</code> 命令查看显示器情况，一般 LVDS1 是laptop的显示器，VGA1或HDMI1 是外接显示器。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre># 显示器信息
+xrandr -q
+
+# 设置主显示器，replace &lt;name&gt; with the monitor that you want to make primary
+xrandr --output &lt;name&gt; --primary
+# put the command in your .xinitrc file, or set the primary monitor in ~/.config/monitors.xml 
+# change no to yes between &lt;primary&gt; and &lt;/primary&gt; and change yes to no for the monitor that should not be primary
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 以LVDS1为主输出, 在LVDS1的右边以VGA1显示器为第二输出. 
+xrandr --output VGA1 --right-of LVDS1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>其他位置关系参数还有：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>--right-of
+--left-of
+--above
+--below
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="xfce4-display-settings-显示器模式的gui设置工具">xfce4-display-settings 显示器模式的GUI设置工具</h5>
+
+<p><code class="highlighter-rouge">xfce4-display-settings -m</code> 或者 电脑的投影切换功能键，都可以将显示器模式选择窗口调出来。</p>
+
+<p><code class="highlighter-rouge">xfce4-display-settings</code> 会调出窗口，显示当前所有显示器情况。</p>
+
+<h3 id="hibernate-休眠功能">hibernate 休眠功能</h3>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://forums.linuxmint.com/viewtopic.php?t=277510"> forums.linuxmint.com - Why hibernate doesn’t work?</a><br />
+提到升级内核问题。</li>
+      <li><a href="https://zedt.eu/tech/linux/enable-hibernation-xubuntu-16-04/">Enable hibernation in Xubuntu 16.04</a><br />
+提到如何在界面上显示“休眠”按钮</li>
+      <li><a href="https://mxlinux.org/wiki/system/hibernate/">mxlinux.org - Hibernate</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>升级内核<br />
+ mint-19.1-tessa 安装的内核版本是 <code class="highlighter-rouge">4.15.0-20-generic</code>，不支持休眠。<br />
+ 需要升级内核：
+    <ol>
+      <li>开始菜单打开<code class="highlighter-rouge">Update Manager</code>，菜单 view -&gt; Linux kernels</li>
+      <li>选择安装 <code class="highlighter-rouge">4.18.0-17</code></li>
+      <li>关机，再启动</li>
+    </ol>
+  </li>
+  <li>查看swap分区的UUID： <code class="highlighter-rouge">lsblk -f</code></li>
+  <li>添加 grub 的启动参数
+    <ul>
+      <li>修改 <code class="highlighter-rouge">/etc/default/grub</code> ，添加 <code class="highlighter-rouge">resume = /dev/disk/by-uuid/the-swap-partition-uuid</code>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash resume=/dev/disk/by-uuid/bdc2c09a-15ae-4c09-9c3c-564f94b41c20"
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>重新安装 <code class="highlighter-rouge">pm-utils</code> 和 <code class="highlighter-rouge">swsusp</code>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre> dpkg -l pm-utils uswsusp
+ sudo apt remove pm-utils 
+ sudo apt update
+ sudo apt install pm-utils uswsusp
+ dpkg -l pm-utils uswsusp
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>在界面上显示“休眠”按钮
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo -i
+ vim /var/lib/polkit-1/localauthority/10-vendor.d/com.ubuntu.desktop.pkla
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>搜索 <code class="highlighter-rouge">[Disable hibernate by default in upower]</code> 和 <code class="highlighter-rouge">[Disable hibernate by default in logind]</code>，<br />
+ 将其中 <code class="highlighter-rouge">ResultActive</code> 的值从 <code class="highlighter-rouge">no</code> 改为 <code class="highlighter-rouge">yes</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre> [Disable hibernate by default in upower]
+ Identity=unix-user:*
+ Action=org.freedesktop.upower.hibernate
+ ResultActive=yes
+
+ [Disable hibernate by default in logind]
+ Identity=unix-user:*
+ Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;
+ ResultActive=yes
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>保存文件，就能在“关机对话框”和“登录界面右上角”看到hibernate了。</p>
+  </li>
+</ol>
+
+<h4 id="休眠命令">休眠命令</h4>
+
+<ol>
+  <li>sysvinit : <code class="highlighter-rouge">sudo pm-hibernate</code></li>
+  <li>systemd  : <code class="highlighter-rouge">systemctl hibernate</code></li>
+</ol>
+
+<h4 id="设置定时休眠到点直接休眠">设置定时休眠（到点直接休眠）</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://askubuntu.com/questions/785509/hibernating-from-cron">https://askubuntu.com/questions/785509/hibernating-from-cron</a></li>
+      <li><a href="https://www.osnews.com/story/24111/wake-your-linux-up-from-sleep-for-a-cron-job/">https://www.osnews.com/story/24111/wake-your-linux-up-from-sleep-for-a-cron-job/</a></li>
+      <li><a href="https://opensource.com/article/17/11/how-use-cron-linux">https://opensource.com/article/17/11/how-use-cron-linux</a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>进入root的crontab
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo -i
+ crontab -e
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>调出vi，添加一行规则，
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> 13 11 * * * sudo pm-hibernate
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+    <p>上面例子， 11点13分休眠，<br />
+ 注意！！ 即使是root 的crontab，还是要求写<code class="highlighter-rouge">sudo</code>，<br />
+ 可能是因为权限问题，设置可能在如下两个目录的设置文件中：</p>
+    <ul>
+      <li><code class="highlighter-rouge">/etc/polkit-1/</code></li>
+      <li><code class="highlighter-rouge">/var/lib/polkit-1</code></li>
+    </ul>
+  </li>
+  <li>保存后退出vi，系统过段时间reload root 的 crontab</li>
+</ol>
+
+<h4 id="设置定时休眠检查锁屏状态才休眠">设置定时休眠（检查锁屏状态，才休眠）</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li>sudoers
+        <ul>
+          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos">How To Edit the Sudoers File on Ubuntu and CentOS</a></li>
+          <li><a href="https://www.atrixnet.com/allow-an-unprivileged-user-to-run-a-certain-command-with-sudo/">Allow An Unprivileged User To Run A Certain Command With Sudo</a></li>
+        </ul>
+      </li>
+      <li>DBus
+        <ul>
+          <li>工具：dbus-send, qdbus, d-feet(GUI)</li>
+          <li><a href="https://superuser.com/a/820619">Use D-Bus to get lockscreen’s actived/deactived signals.</a></li>
+          <li><a href="https://unix.stackexchange.com/questions/197032/detect-if-screensaver-is-active">https://unix.stackexchange.com/questions/197032/detect-if-screensaver-is-active</a></li>
+        </ul>
+      </li>
+      <li><a href="https://serverfault.com/a/700307">get the DBUS ADDRESS from the environment</a></li>
+      <li><a href="https://www.linuxjournal.com/article/10455">Control Your Linux Desktop with D-Bus</a></li>
+      <li><a href="https://askubuntu.com/a/35255">Is there a programmable way to tell if the screen is locked?</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li>xfce4
+        <ul>
+          <li>mint19.1 tessa 用的锁屏工具是轻量级的light-locker，而不是 xscreensaver</li>
+          <li>light-locker-command 可以锁屏、检查锁屏状态、idle时间等，但是只能在session中的shell使用，不能在cron的命令中使用。</li>
+          <li><a href="https://github.com/the-cavalry/light-locker">github - light-locker</a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </li>
+      <li></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>赋予当前用户（例如，john）休眠命令权限</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo visudo -f /etc/sudoers.d/su4john
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>添加一行</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> wi ALL=(ALL) NOPASSWD: /usr/sbin/pm-hibernate
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>创建脚本 lock-to-hibernate ，用来判断是否锁屏之后才休眠</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo notepadqq --allow-root --new-window /usr/local/bin/lock-to-hibernate
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre> <span class="c">#!/bin/bash</span>
+
+ <span class="c"># this script will be used in cron.</span>
+ <span class="c"># when cron triggers this script, it turn computer to hibernate if screen is locked.</span>
+
+ <span class="nv">DBUS_ADDRESS</span><span class="o">=</span><span class="k">$(</span>grep -z DBUS_SESSION_BUS_ADDRESS /proc/<span class="k">$(</span>pidof -s xfce4-session<span class="k">)</span>/environ | awk -F<span class="o">=</span> <span class="s1">'{print $2"="$3}'</span><span class="k">)</span>
+ <span class="nv">idle</span><span class="o">=</span><span class="k">$(</span>dbus-send --bus<span class="o">=</span><span class="s2">"</span><span class="nv">$DBUS_ADDRESS</span><span class="s2">"</span> --dest<span class="o">=</span>org.freedesktop.ScreenSaver --type<span class="o">=</span>method_call --print-reply --reply-timeout<span class="o">=</span>20000 /org/freedesktop/ScreenSaver org.freedesktop.ScreenSaver.GetActive &amp;2&gt;&amp;1<span class="k">)</span>
+
+ <span class="c">#echo "pidof -s xfce4-session = " $(pidof -s xfce4-session) &gt;&gt; /home/wi/lock-to-hibernate.log</span>
+ <span class="c">#echo "DBUS_ADDRESS = " $DBUS_ADDRESS &gt;&gt; /home/wi/lock-to-hibernate.log</span>
+ <span class="c">#echo "x-x-idle = " $idle &gt;&gt; /home/wi/lock-to-hibernate.log</span>
+
+ <span class="k">if</span> <span class="o">(</span> <span class="nb">echo</span> <span class="nv">$idle</span> | grep <span class="s2">"boolean true"</span> <span class="o">)</span>;
+ <span class="k">then
+   </span><span class="nb">echo</span> <span class="s2">"try to hibernate"</span> &gt;&gt; /home/wi/lock-to-hibernate.log
+   sudo pm-hibernate
+ <span class="k">else
+   </span><span class="nb">echo</span> <span class="s2">"failed to hibernate"</span> &gt;&gt; /home/wi/lock-to-hibernate.log
+ <span class="k">fi</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>设置cron定时执行脚本 lock-to-hibernate</p>
+
+    <p>执行 <code class="highlighter-rouge">crontab -e</code> 后添加如下定时规则（18:30休眠，等明天再开工，加班就22:30再休眠）：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> 30 18,22 * * * /usr/local/bin/lock-to-hibernate
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h4 id="定时锁屏的脚本">定时锁屏的脚本</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="c"># this script will be used in cron.</span>
+<span class="c"># when cron triggers this script, it turn computer to locked.</span>
+
+<span class="nv">DBUS_ADDRESS</span><span class="o">=</span><span class="k">$(</span>grep -z DBUS_SESSION_BUS_ADDRESS /proc/<span class="k">$(</span>pidof -s xfce4-session<span class="k">)</span>/environ | awk -F<span class="o">=</span> <span class="s1">'{print $2"="$3}'</span><span class="k">)</span>
+<span class="nv">idle</span><span class="o">=</span><span class="k">$(</span>dbus-send --bus<span class="o">=</span><span class="s2">"</span><span class="nv">$DBUS_ADDRESS</span><span class="s2">"</span> --dest<span class="o">=</span>org.freedesktop.ScreenSaver --type<span class="o">=</span>method_call --print-reply --reply-timeout<span class="o">=</span>20000 /org/freedesktop/ScreenSaver org.freedesktop.ScreenSaver.Lock &amp;2&gt;&amp;1<span class="k">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="virtualbox">VirtualBox</h2>
+
+<h3 id="安装-5226">安装 5.2.26</h3>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.virtualbox.org/manual/UserManual.html#vboxmanage-extpack">https://www.virtualbox.org/manual/UserManual.html#vboxmanage-extpack</a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>从<a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_2">官网</a> 下载 VirtualBox 5.2.26
+    <ul>
+      <li><strong>virtualbox-5.2_5.2.26-128414~Ubuntu~bionic_amd64.deb</strong> Linux Hosts: Ubuntu 18.04 / 18.10 / Debian 10</li>
+      <li><strong>Oracle_VM_VirtualBox_Extension_Pack-5.2.26.vbox-extpack</strong></li>
+    </ul>
+  </li>
+  <li>安装 Virtualbox ： 双击 Deb 安装包</li>
+  <li>安装 extension package ：执行　<code class="highlighter-rouge">VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.26.vbox-extpack</code>
+    <ul>
+      <li>安装完成，可执行命令来查看结果： <code class="highlighter-rouge">VBoxManage list extpacks</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="共享文件夹设置">共享文件夹设置</h3>
+
+<h4 id="兼容mac的挂载路径">兼容mac的挂载路径</h4>
+
+<p>共享文件在移动硬盘上，会导致不同系统挂载路径不同。使用软链接文件，可以解决这个问题。</p>
+
+<p>例如，在Mac上共享目录地址是： <code class="highlighter-rouge">/Volumes/your-ssd-label/share-data</code> ，<br />
+在 Ubuntu上由于udisks2，移动usb block设备，都被挂载到 <code class="highlighter-rouge">/media/your-login-name/your-ssd-label</code>，<br />
+所以，创建一个软链接可以解决这个问题，<code class="highlighter-rouge">ln -s /media/your-login-name/your-ssd-label/share-data /Volumes/your-ssd-label/share-data</code></p>
+
+<p>这里多说两句，据说udisks2没有提供设置来修改挂载路径，只能放到 <code class="highlighter-rouge">/media</code> 下，<br />
+想通过在 udev 的 <code class="highlighter-rouge">/etc/udev/rules.d/</code> 添加add和remove规则，来自动挂载到 <code class="highlighter-rouge">/Volumes</code> 也是徒劳，<br />
+规则里面的shell脚本，没有root权限啊，不能执行<code class="highlighter-rouge">mount</code>命令哈。</p>
+
+<h2 id="文件系统">文件系统</h2>
+
+<h3 id="支持-exfat">支持 exfat</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install -y exfat-fuse exfat-utils
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="使用更快的exfat">使用更快的exfat</h4>
+
+<ul>
+  <li><a href="https://github.com/arter97/exfat-linux"> arter97 / exfat-linux - github</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>sudo add-apt-repository ppa:arter97/exfat-linux
+sudo apt update
+
+sudo apt-get remove exfat-fuse exfat-utils
+sudo apt install exfat-dkms
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="cdrom-上文件无法执行脚本">cdrom 上文件无法执行脚本</h3>
+
+<p>cdrom 上文件无法执行脚本，检查是否mount时，设置了 “noexec” 选项。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mount -v | grep cdrom
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>重新挂载一下就好：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mount -o remount,ro,exec /media/cdrom
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="xfce-gui">Xfce GUI</h2>
+
+<h3 id="添加-desktop-app入口">添加 Desktop App入口</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/">Desktop Entry Specification</a></li>
+      <li><a href="https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Icon Theme Specification</a></li>
+      <li><a href="https://specifications.freedesktop.org/menu-spec/latest/">Desktop Menu Specification</a></li>
+      <li><a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html">Recognized desktop entry keys</a></li>
+    </ul>
+  </li>
+  <li>apps should look in $HOME/.icons (for backwards compatibility), in $XDG_DATA_DIRS/icons and in /usr/share/pixmaps (in that order).</li>
+  <li>hicolor theme
+    <ul>
+      <li>In order to have a place for third party applications to install their icons there should always exist a theme called “hicolor”</li>
+      <li>Implementations are required to look in the “hicolor” theme if an icon was not found in the current theme.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>例子：</p>
+
+<ol>
+  <li>拷贝chrome 的 desktop entry
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> cd /usr/share/applications
+ sudo cp google-chrome.desktop google-chrome-custom.desktop 
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>修改新的 desktop entry<br />
+ <code class="highlighter-rouge">sudo vim google-chrome-custom.desktop</code><br />
+ 修改 所有 <code class="highlighter-rouge">Exec</code> 参数值出现的地方，添加一些chrome的自定义参数<br />
+ icon使用自定义 <code class="highlighter-rouge">Icon=google-chrome-custom</code>，把 <code class="highlighter-rouge">/usr/share/icons/hicolor/256x256/apps/google-chrome.png</code> 修改下，放到 <code class="highlighter-rouge">~/.icons/google-chrome-custom.png</code> 下面。</li>
+</ol>
+
+<h2 id="cinnamon-gui">Cinnamon GUI</h2>
+
+<h3 id="font-设置">Font 设置</h3>
+
+<p>开始菜单 -&gt; Font Selection -&gt; 设置字体</p>
+
+<p>有 San 字样的是宋体， Noto 是Google的开源字体集，例如： “Noto San Moto Regular” Noto等宽宋体</p>
+
+<h2 id="文件编辑">文件编辑</h2>
+
+<h3 id="xed">xed</h3>
+
+<p>xed是系统自带的编辑器，默认安装。</p>
+
+<p>从命令行启动xed编辑sudo权限的文件： <code class="highlighter-rouge">xed admin:///where-your-file</code></p>
+
+<h2 id="图形界面-xfce">图形界面 Xfce</h2>
+
+<h3 id="快捷键">快捷键</h3>
+
+<p>设置和查看到位置： Windows Manager -&gt; keyborad</p>
+
+<dl>
+  <dt>Ctrl + Alt + D</dt>
+  <dd>显示桌面</dd>
+  <dt>Windows key</dt>
+  <dd>Brings up the Whisker menu</dd>
+  <dt>Ctrl-Alt-Del</dt>
+  <dd>Locks the desktop by calling xflock4</dd>
+  <dt>Alt-F2</dt>
+  <dd>Brings up a dialog box to run an application</dd>
+  <dt>Alt-F3</dt>
+  <dd>Opens the Application Finder which also allows editing menu entries</dd>
+  <dt>Alt-F4</dt>
+  <dd>关闭当前窗口</dd>
+  <dt>PrtScr</dt>
+  <dd>Opens the Screenshooter for screen captures</dd>
+</dl>
+
+<hr />
+<p>: —</p>
+
+<dl>
+  <dt>Ctrl-Alt-L</dt>
+  <dd>锁屏幕</dd>
+  <dt>Ctrl-Alt-Bksp</dt>
+  <dd>Closes the session (without saving!) and returns you to the login screen</dd>
+  <dt>Ctrl-Alt-F1</dt>
+  <dd>Drops you out of your X session to a command line; use Ctrl-Alt-F7 to return.</dd>
+  <dt>Alt-F1</dt>
+  <dd>Opens this MX Linux Users Manual</dd>
+</dl>
+
+<h2 id="常用软件">常用软件</h2>
+
+<h3 id="默认图形浏览器-xviewer">默认图形浏览器 xviewer</h3>
+
+<p>在命令行中直接调用： <code class="highlighter-rouge">xviewer your-image.png</code></p>
+
+<h3 id="切换默认编辑器">切换默认编辑器</h3>
+
+<p>mint19.1 默认是nano编辑器，想切换到vim用如下命令：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo update-alternatives --config editor
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="notepadqq">notepadqq</h3>
+
+<p>类似 notepad++ 的编辑器。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get update
+sudo apt-get install notepadqq
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>ps: 不要使用snap安装，按照的版本很怪，打开文件时候一个文件都读取不到。</p>
+
+<p>或者，编译安装：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>sudo apt-get update
+sudo apt-get install -y qt5-default qttools5-dev-tools qtwebengine5-dev libqt5websockets5-dev libqt5svg5 libqt5svg5-dev libuchardet-dev
+
+git clone https://github.com/notepadqq/notepadqq.git
+cd notepadqq/
+./configure --prefix /usr
+make
+sudo make install
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="root权限运行-notepadqq">root权限运行 notepadqq</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo notepadqq --allow-root --new-window file-owned-by-root
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="brave-浏览器">Brave 浏览器</h3>
+
+<ul>
+  <li>参考： <a href="https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux">https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+source /etc/os-release
+
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
+
+sudo apt update
+
+sudo apt install brave-keyring brave-browser
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="xmind8">xmind8</h3>
+
+<ol>
+  <li>到官网下载 <a href="https://www.xmind.net/download/xmind8">https://www.xmind.net/download/xmind8</a></li>
+  <li>解压 xmind-8-update8-linux.zip</li>
+  <li>运行解压后目录中 setup.sh ： <code class="highlighter-rouge">sudo ./setup.sh</code></li>
+  <li>进入 <code class="highlighter-rouge">XMind_amd64/</code></li>
+  <li>编辑 <code class="highlighter-rouge">XMind.ini</code>，最后一行添加参数 <code class="highlighter-rouge">--add-modules=java.se.ee</code><br />
+ 不修改 ini 文件，直接运行 <code class="highlighter-rouge">./XMind_amd64/Xmind</code> 会报错 <code class="highlighter-rouge">org.eclipse.e4.core.di.InjectionException: java.lang.NoClassDefFoundError: javax/annotation/PostConstruct</code> 。<br />
+ 参考： <a href="http://support.xmind.net/customer/portal/questions/17144128-xmind-starts-but-then-is-aborted-just-before-starting-to-run">Xmind Support Center - XMind starts but then is aborted just before starting to run</a></li>
+  <li>运行 <code class="highlighter-rouge">./XMind_amd64/Xmind</code></li>
+</ol>
+
+<h4 id="启动-xmind8-报错javalangillegalstateexception-unable-to-acquire-application-service">启动 xmind8 报错：“java.lang.IllegalStateException: Unable to acquire application service”</h4>
+
+<p>报错：“java.lang.IllegalStateException: Unable to acquire application service. Ensure that the org.eclipse.core.runtime bundle is resolved and started (see config.ini).”</p>
+
+<ul>
+  <li>解决方法：在 <code class="highlighter-rouge">Xmind.ini</code> 中添加：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>-configuration
+/opt/xmind/XMind_amd64/./configuration
+-data
+/opt/xmind/XMind_amd64/../workspace
+-startup
+/opt/xmind/XMind_amd64/../plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar
+--launcher.library
+/opt/xmind/XMind_amd64/../plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.300.v20150602-1417
+--launcher.defaultAction
+openFile
+-vmargs
+-Dfile.encoding=UTF-8
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h4 id="xmind-desktop-configure">xmind desktop configure</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://github.com/pld-linux/xmind/blob/master/xmind.desktop">https://github.com/pld-linux/xmind/blob/master/xmind.desktop</a></li>
+      <li><a href="https://www.xmind.net/m/PuDC/">https://www.xmind.net/m/PuDC/</a></li>
+      <li><a href="https://blog.scottlowe.org/2018/09/01/better-xmind-gnome-integration/">https://blog.scottlowe.org/2018/09/01/better-xmind-gnome-integration/</a></li>
+      <li><a href="https://www.freedesktop.org/wiki/Specifications/AddingMIMETutor/">freedesktop - Tutorial: adding MIME information to the database</a></li>
+      <li><a href="https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en">Add a custom MIME type for all users</a></li>
+      <li><a href="https://developer.gnome.org/integration-guide/stable/mime.html.en">Adding MIME types</a></li>
+      <li><a href="http://steronius.blogspot.com/2018/02/custom-mime-file-type-icon-in-xfce.html">Custom Mime File Type Icon in XFCE Thunar</a></li>
+      <li><a href="https://unix.stackexchange.com/questions/23776/how-to-change-a-file-type-icon-in-xfce-thunar">How to change a file type icon in XFCE (Thunar)?</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>$ cat /usr/share/applications/xmind.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=xmind8
+Comment=mindmap tool
+Icon=/opt/xmind/xmind.256.png
+Exec=/opt/xmind/xmind-8-update8-linux/XMind_amd64/XMind %F
+Path=/opt/xmind/xmind-8-update8-linux/XMind_amd64
+Terminal=false
+Categories=Office;Productivity;Development;X-XFCE;X-Xfce-Toplevel;
+MimeType=application/vnd.xmind.workbook;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>图标是从 <code class="highlighter-rouge">xmind-8-update8-linux/XMind_amd64/configuration/org.eclipse.osgi/983/0/.cp/icons/</code> 拷贝出来的。</p>
+
+<p>文件浏览器thunar 中xmind文件图标设置。</p>
+
+<ol>
+  <li>创建文件 <code class="highlighter-rouge">/usr/share/mime/packages/xmind.xml</code>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre> &lt;?xml version="1.0" encoding="utf-8"?&gt;
+ &lt;mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info"&gt;
+     &lt;mime-type type="application/vnd.xmind.workbook"&gt;
+         &lt;comment&gt;XMind Workbook&lt;/comment&gt;
+         &lt;glob pattern="*.xmind"/&gt;
+         &lt;glob pattern="*.XMIND"/&gt;
+         &lt;glob pattern="*.XMind"/&gt;
+         &lt;generic-icon name="xmind"/&gt;
+     &lt;/mime-type&gt;
+ &lt;/mime-info&gt;
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>运行如下命令，刷新mime type database
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo update-mime-database -V /usr/share/mime
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="development">Development</h2>
+
+<h3 id="git">git</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>git config --global user.name your-name
+git config --global user.email your-email@some-site.com
+
+git config --global alias.l "log --decorate --oneline --graph"
+git config --global alias.ll "log --oneline --decorate --graph -10"
+git config --global alias.st status
+git config --global alias.d diff
+git config --global alias.co checkout
+git config --global alias.pushall '!git remote | xargs -L1 -I R git push R '
+git config --global alias.rv "remote -v"
+
+git config --global core.autocrlf input
+git config --global color.ui true
+git config --global core.filemode false
+git config --global http.sslverify false
+git config --global http.postbuffer 524288000
+
+git config --global core.editor "vim"
+git config --global core.checkStat minimal
+
+git config --global core.quotepath false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>默认颜色方案在 <strong>黑色半透明</strong> 背景的terminal下看着费劲，要改下color scheme：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>git config --global color.status.changed "cyan normal bold"
+git config --global color.status.untracked "red normal bold"
+git config --global color.status.added "green normal bold"
+
+git config --global color.diff.new "green normal bold"
+git config --global color.diff.old "red normal bold"
+git config --global color.diff.frag "magenta normal bold"
+git config --global color.diff.meta "yellow normal bold"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="java--jdk">Java / JDK</h3>
+
+<h4 id="多个jdk安装和管理">多个JDK安装和管理</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://www.oodlestechnologies.com/blogs/Managing-Multiple-version-of-JDK-on-Ubuntu/">Managing Multiple version of JDK on Ubuntu</a></li>
+      <li><a href="https://askubuntu.com/questions/740757/switch-between-multiple-java-versions">Switch between multiple java versions</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>sudo apt-get install openjdk-11-jdk
+sudo apt-get install openjdk-8-jdk
+
+# 两个JDK都安装在 /usr/lib/jvm 下面
+# /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+java -version
+sudo update-alternatives --list java
+sudo update-alternatives --query java
+
+# java 和 javac 记得都一起改
+sudo update-alternatives --config java 
+sudo update-alternatives --config javac
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="jmeter">jmeter</h3>
+
+<p>设置GUI启动</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>vi /usr/share/applications/apache-jmeter.desktop
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=apache-jmeter
+Comment=testing tool
+Icon=/opt/jmeter/apache-jmeter-5.1.1/icon-apache.png
+Exec=/opt/jmeter/apache-jmeter-5.1.1/bin/jmeter.sh
+Path=/opt/jmeter/apache-jmeter-5.1.1/bin/
+Terminal=false
+Categories=Productivity;Development;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>图标 <code class="highlighter-rouge">icon-apache.png</code> 是从 <code class="highlighter-rouge">/opt/jmeter/apache-jmeter-5.1.1/lib/ext/ApacheJMeter_core.jar</code> 里面找的apache羽毛图标。</p>
+
+<h3 id="ruby">ruby</h3>
+
+<h4 id="use-rvm-install-ruby">use rvm install ruby</h4>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://github.com/rvm/ubuntu_rvm">https://github.com/rvm/ubuntu_rvm</a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>从 ppa 安装 rvm<br />
+ ~~~<br />
+ sudo apt-get install software-properties-common<br />
+ sudo apt-add-repository -y ppa:rael-gc/rvm<br />
+ sudo apt-get update<br />
+ sudo apt-get install rvm</p>
+  </li>
+  <li>
+    <p>将用户加入rvm组</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> usermod -a -G rvm root redmine
+
+ # 检查用户所在的组
+ groups root
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>改成国内源</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> cp /usr/share/rvm/src/rvm/config/db /usr/share/rvm/src/rvm/config/db.bk.2019-04-12.origin
+ vim /usr/share/rvm/src/rvm/config/db
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre> # ruby-china.org 域名改成 ruby-china.com，2019年org域名没申请下来
+ ruby_url=https://cache.ruby-china.com/pub/ruby
+ ruby_url_fallback_1=https://ftp.ruby-china.com/pub/ruby
+ #ruby_url=https://cache.ruby-china.org/pub/ruby
+ #ruby_url_fallback_1=https://ftp.ruby-china.org/pub/ruby
+    
+ #ruby_url=https://cache.ruby-lang.org/pub/ruby
+ #ruby_url_fallback_1=https://ftp.ruby-lang.org/pub/ruby
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>注销再登录后使用 <code class="highlighter-rouge">rvm</code>。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">rvm</code> 只能使用在 login shell</p>
+
+    <p>2种方法切换到login shell。</p>
+
+    <ul>
+      <li>临时： 执行 <code class="highlighter-rouge">bash --login</code></li>
+      <li>gnome-terminal 设置： Edit 菜单 -&gt; Preferences -&gt; your profile -&gt; Command 选项页<br />
+勾选 “Run command as a login shell”</li>
+    </ul>
+
+    <p>或者，修改 <code class="highlighter-rouge">.bashrc</code> 以便在普通交互 gnome-terminal 中使用：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> if [[ -s "/etc/profile.d/rvm.sh" ]]; then
+     . "/etc/profile.d/rvm.sh"
+ fi
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>安装ruby</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> rvm list known
+ rvm install 2.5
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>配置gem的国内源</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> gem sources --add http://gems.ruby-china.com/ --remove https://rubygems.org/
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="android">Android</h3>
+
+<h4 id="android-studio">Android Studio</h4>
+
+<p>安装</p>
+
+<ol>
+  <li>下载tar.gz ： <a href="https://developer.android.com/studio">https://developer.android.com/studio</a><br />
+ 例如： android-studio-ide-183.5522156-linux.tar.gz</li>
+  <li>解压到目标文件夹 <br />
+ 例如：<code class="highlighter-rouge">/opt/android/android-studio</code></li>
+  <li>创建sdk目录，注意，不要是android-studio 的子目录<br />
+ 例如：<code class="highlighter-rouge">/opt/android/android-sdk</code></li>
+  <li>命令行启动： <code class="highlighter-rouge"><span class="p">{</span><span class="err">installation</span><span class="w"> </span><span class="err">home</span><span class="p">}</span><span class="err">/bin/studio.sh</span></code></li>
+</ol>
+
+<p>配置成 desktop application</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>$ cat /usr/share/applications/android-studio.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=android-studio
+Comment=android IDE
+Icon=/opt/android/android-studio/bin/studio.png
+Exec=/opt/android/android-studio/bin/studio.sh
+Path=/opt/android/android-studio/bin
+Terminal=false
+Categories=Productivity;Development;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="adb-等platform-tools">adb 等platform tools</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo apt install android-sdk-platform-tools
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Package: android-sdk-platform-tools<br />
+Version: 27.0.0+10~18.04.2</p>
+
+<p>不过这工具有点老，更不上android sdk 更新。</p>
+
+<h4 id="adb-devices-报错no-permissions-user-in-plugdev-group-are-your-udev-rules-wrong">adb devices 报错：no permissions (user in plugdev group; are your udev rules wrong?);</h4>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://askubuntu.com/a/909227">https://askubuntu.com/a/909227</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>解决方法：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo adb kill-server
+sudo adb start-server
+adb devices
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="在virtualbox上安装">在virtualbox上安装</h2>
+
+<h3 id="启动花屏问题">启动花屏问题</h3>
+
+<p>iso在virtualbox启动后会花屏，使用 ctrl + alt + F1 切换的命令行， ctrl + alt + F7 再切回图形界面就好啦。</p>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://github.com/linuxmint/linuxmint/issues/49">Github mint 项目 - Mint 19 won’t install under VirtualBox</a></li>
+      <li><a href="https://bugs.launchpad.net/ubuntu/+source/lubuntu-meta/+bug/1766859">Display corrupted in virtualbox</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="启动盘制作工具">启动盘制作工具</h2>
+
+<h3 id="windows-启动盘制作工具-woeusb">Windows 启动盘制作工具 WoeUSB</h3>
+
+<ul>
+  <li><a href="https://github.com/slacka/WoeUSB">github - slacka/WoeUSB</a></li>
+  <li><a href="https://launchpad.net/%7Enilarimogard/+archive/ubuntu/webupd8">ubuntu WebUpd8 ppa</a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#mint" title="Pages tagged mint" class="tag"><span class="term">mint</span></a><a href="/tags#distribution" title="Pages tagged distribution" class="tag"><span class="term">distribution</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

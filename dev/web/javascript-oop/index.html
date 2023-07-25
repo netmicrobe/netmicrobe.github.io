@@ -1,0 +1,3653 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>JavaScript Object Oriented Programming 面向对象简介 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="JavaScript, oop, object-oriented">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Object Oriented Programming 面向对象简介">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/javascript-oop/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/javascript-oop/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">JavaScript Object Oriented Programming 面向对象简介</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-09-08T00:00:00+08:00">September 08, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li>《 Object-Oriented JavaScript 》.2nd - Stoyan.Stefanov</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="javascript-术语和演进">JavaScript 术语和演进</h2>
+
+<h3 id="术语">术语</h3>
+
+<dl>
+  <dt>ECMAScript</dt>
+  <dd>ECMA发布。JavaScript 纯语言规范，不包含特定浏览器相关的功能</dd>
+  <dt>DOM</dt>
+  <dd>W3C发布。Document Object Model. html/xml 文档结构对象化，便于 script 操作。</dd>
+  <dt>BOM</dt>
+  <dd>Browser Object Model</dd>
+</dl>
+
+<h3 id="演进">演进</h3>
+
+<ul>
+  <li>1996 - 2001 <br />
+IE和Netscape大战，IE6 胜利。</li>
+  <li>2004<br />
+Gmail and Google Maps 发布，JavaScript 趋于成熟。</li>
+  <li>2006<br />
+XMLHttpRequest（XHR） 被浏览器普遍支持，2006.4 形成 W3C 草案。Ajax 兴起。</li>
+  <li>2009.12<br />
+ECMAScript 5（简称ES5） 被官方接受（Officially Accepted）。</li>
+  <li>2014.10<br />
+HTML5 <i class="fa fa-html5" aria-hidden="true"></i> published in October 2014 by the World Wide Web Consortium (W3C)</li>
+</ul>
+
+<h2 id="特殊的指令">特殊的指令</h2>
+
+<h3 id="use-strict">“use strict”;</h3>
+
+<p><code class="highlighter-rouge">"use strict";</code>  声明后，这个函数或者这个js程序，严格遵守 ES5</p>
+
+<ul>
+  <li>注意：这只是个字符串，JS允许只写个字符串，但不指定给变量。这样ES5向后兼容老浏览器。</li>
+</ul>
+
+<h2 id="嵌入html文档">嵌入HTML文档</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JS test<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"somefile.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">a</span><span class="o">++</span><span class="p">;</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="基本语法">基本语法</h2>
+
+<h3 id="变量">变量</h3>
+
+<ol>
+  <li>
+    <p>var 定义变量</p>
+  </li>
+  <li>
+    <p>变量名只包含字母、数字、下划线，且数字不能是第一个</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">thisIsAVariable</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">_and_this_too</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">mix12three</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>定义的同时赋值</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>同时定义&amp;赋值多个变量</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">v1</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span> <span class="o">=</span> <span class="s1">'hello'</span><span class="p">,</span> <span class="nx">v4</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">v5</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>The $ character in variable names</p>
+
+    <p>You may see the dollar sign character ($) used in variable names, as in<br />
+$myvar or less commonly my$var. This character is allowed to appear<br />
+anywhere in a variable name, although previous versions of the ECMA<br />
+standard discouraged its use in handwritten programs and suggested<br />
+it should only be used in generated code (programs written by other<br />
+programs). This suggestion is not well respected by the JavaScript<br />
+community, and $ is in fact commonly used in practice as a function name.</p>
+  </li>
+  <li>
+    <p>变量名大小写敏感</p>
+  </li>
+</ol>
+
+<h4 id="变量作用域">变量作用域</h4>
+
+<ol>
+  <li>If a variable is defined inside a function, it’s not visible outside of the function</li>
+  <li>The term “global variables” describes variables you define outside of any function (in the global program code), as opposed to “local variables”, which are defined inside a function.</li>
+  <li>if you don’t use var to declare a variable, this variable is automatically assigned a global scope.</li>
+</ol>
+
+<h3 id="操作符">操作符</h3>
+
+<p>和Java相同，<br />
+算数操作符： <code class="highlighter-rouge">+-*/ ++ -- += -=</code><br />
+逻辑操作符： <code class="highlighter-rouge">!</code> <code class="highlighter-rouge">&amp;&amp;</code> <code class="highlighter-rouge">||</code></p>
+
+<h3 id="数据类型">数据类型</h3>
+
+<h4 id="原始数据类型">原始数据类型</h4>
+
+<ol>
+  <li>Number: 整数 or 浮点数，例如: <code class="highlighter-rouge">1</code>, <code class="highlighter-rouge">100</code>, <code class="highlighter-rouge">3.14</code>.
+    <ol>
+      <li>八进制，以 <code class="highlighter-rouge">0</code> 开头：<code class="highlighter-rouge">0377</code> = 十进制的 255</li>
+      <li>十六进制，以 <code class="highlighter-rouge">0x</code> 开头： <code class="highlighter-rouge">0xff</code> = 十进制的 255</li>
+      <li>指数表示，<code class="highlighter-rouge">数字e指数</code> ： <code class="highlighter-rouge">2e+3</code> = 2 x 1000 = 2000</li>
+      <li>Infinity</li>
+      <li>NaN</li>
+    </ol>
+  </li>
+  <li>String: 字符串，例如： “a”, “one”, and “one 2 three”.
+    <ol>
+      <li>\u加四个数字，表示unicode特殊字符，例如：”\u0421\u0442\u043E\u044F\u043D” = “Стoян”</li>
+      <li>\r 回车； \n 换行； \t 制表符；</li>
+    </ol>
+  </li>
+  <li>Boolean: <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>.
+    <ol>
+      <li>任何类型，可以用两个逻辑否转换成boolean值，例如：var b = “one”; !!b == true<br />
+ 可以转换为 true 的值：
+        <ul>
+          <li>空字符串</li>
+          <li>null</li>
+          <li>undefined</li>
+          <li><code class="highlighter-rouge">0</code></li>
+          <li>‘NaN`</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Undefined: <code class="highlighter-rouge">undefined</code> 。不存在的变量、声明后未赋值的变量。</li>
+  <li>Null: <code class="highlighter-rouge">null</code>。 It means no value, an empty value, or nothing. The difference with undefined is that if a variable has a value null, it’s still defined, it just so happens that its value is nothing.</li>
+</ol>
+
+<h4 id="typeof-检查变量类型">typeof 检查变量类型</h4>
+
+<ul>
+  <li>typeof 返回值
+    <ul>
+      <li>“number”</li>
+      <li>“string”</li>
+      <li>“boolean”</li>
+      <li>“undefined”</li>
+      <li>“object”</li>
+      <li>“function”</li>
+    </ul>
+  </li>
+</ul>
+
+<p>例子：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
+
+<span class="err">结果：</span>
+<span class="s2">"number"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="数组">数组</h4>
+
+<h5 id="初始化">初始化：</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="获取数组长度-arraylength">获取数组长度， Array.length</h5>
+
+<h5 id="添加更新元素">添加、更新元素</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'three'</span><span class="p">;</span>
+<span class="s2">"three"</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">]</span>
+
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'four'</span><span class="p">;</span>
+<span class="s2">"four"</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">,</span> <span class="s2">"four"</span><span class="p">]</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'new'</span><span class="p">;</span>
+<span class="s2">"new"</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">undefined</span> <span class="nx">x</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"new"</span><span class="p">]</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="删除元素">删除元素：</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="o">&gt;</span> <span class="k">delete</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="s2">"undefined"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="数组元素">数组元素</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">];</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="nb">Array</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="字符串数组">字符串数组</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s1">'one'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="s2">"o"</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="s2">"n"</span>
+<span class="o">&gt;</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="s2">"e"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="流程控制语法">流程控制语法</h3>
+
+<h4 id="if">if</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">||</span> <span class="nx">a</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">=</span> <span class="s1">'a is not between -2 and 2'</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">b</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">=</span> <span class="s1">'both a and b are zeros'</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">=</span> <span class="s1">'a and b are equal'</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">=</span> <span class="s1">'I give up'</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="switch">switch</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">'1'</span><span class="p">,</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="err">:</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="s1">'Number 1'</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="s1">'1'</span><span class="err">:</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="s1">'String 1'</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="s1">'I don\'t know'</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="while--do-while-loop">while / do-while loop</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+  <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="for-loop">for loop</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">somevar</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span><span class="kd">var</span> <span class="nx">punishment</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">punishment</span> <span class="o">+=</span> <span class="s1">'I will never do this again, '</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="for-in-loop">for-in loop</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s1">'\n'</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="s1">'index: '</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">', value: '</span> <span class="o">+</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'\n'</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="注释">注释</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1">// beginning of line</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// anywhere on the line</span>
+
+<span class="cm">/* multi-line comment on a single line */</span>
+
+<span class="cm">/*
+comment that spans several lines
+*/</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="functions">functions</h3>
+
+<h4 id="定义-functions">定义 functions</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">result</span><span class="p">;</span>
+<span class="mi">3</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="另一种-定义function-方式指定function-变量">另一种 定义function 方式，指定function 变量</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">define</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">define</span><span class="p">;</span>
+<span class="s2">"function"</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">express</span><span class="p">;</span>
+<span class="s2">"function"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="anonymous-functions---callback-functions">Anonymous functions - Callback functions</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">invokeAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="p">()</span> <span class="o">+</span> <span class="nx">b</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">one</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">two</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="nx">invokeAdd</span><span class="p">(</span><span class="nx">one</span><span class="p">,</span> <span class="nx">two</span><span class="p">);</span>
+<span class="mi">3</span>
+
+<span class="c1">// 或者</span>
+
+<span class="o">&gt;</span> <span class="nx">invokeAdd</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">});</span>
+<span class="mi">3</span>
+
+<span class="c1">// 再或者</span>
+
+<span class="o">&gt;</span> <span class="nx">invokeAdd</span><span class="p">(</span>
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">},</span>
+  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">);</span>
+<span class="mi">3</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="anonymous-functions---immediate-functions">Anonymous functions - Immediate functions</h4>
+
+<p>匿名函数直接立即执行，用于某些不想引入全局变量的情况。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="p">(</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello '</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">'!'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">)(</span><span class="s1">'dude'</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="inner-private-functions-函数中再定义函数">Inner (private) functions 函数中再定义函数</h4>
+
+<p>这种函数，只能在所定义的父函数中调用。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">outer</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">inner</span><span class="p">(</span><span class="nx">theinput</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">theinput</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="s1">'The result is '</span> <span class="o">+</span> <span class="nx">inner</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="functions-that-return-functions">Functions that return functions</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s1">'A!'</span><span class="p">);</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'B!'</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">newFunc</span> <span class="o">=</span> <span class="nx">a</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="nx">newFunc</span><span class="p">();</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="arguments-特殊函数变量">arguments 特殊函数变量</h4>
+
+<p>在 function 中用 arguments 这个特殊变量，可以使得 function 可以处理任意数量的参数。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">args</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">arguments</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">args</span><span class="p">();</span>
+<span class="p">[]</span>
+<span class="o">&gt;</span> <span class="nx">args</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">'ninja'</span><span class="p">);</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"ninja"</span><span class="p">]</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="改写自己的-function-rewrite-themself">改写自己的 function, rewrite themself</h4>
+
+<p>应用场景：一次性工作，之后就不再执行之前的函数体。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s1">'A!'</span><span class="p">);</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'B!'</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">someSetup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">setup</span> <span class="o">=</span> <span class="s1">'done'</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">actualWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Worky-worky'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">someSetup</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">actualWork</span><span class="p">;</span>
+<span class="p">}());</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="动态生成一系列函数">动态生成一系列函数</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">binder</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">binder</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="object">Object</h2>
+
+<h3 id="properties">properties</h3>
+
+<p>最简单的Object，就是个 Hash Table：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">breed</span><span class="p">:</span> <span class="s1">'Turtle'</span><span class="p">,</span>
+  <span class="na">occupation</span><span class="p">:</span> <span class="s1">'Ninja'</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>key 可以用引号括起来，也可以不括，除非有些特殊字符，例如，<code class="highlighter-rouge">空格</code>，<code class="highlighter-rouge">$</code>等。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">$omething</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">'yes or no'</span><span class="p">:</span> <span class="s1">'yes'</span><span class="p">,</span>
+  <span class="s1">'!@#$%^&amp;*'</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="accessing-an-objects-properties">Accessing an object’s properties</h4>
+
+<ul>
+  <li>Using the square bracket notation, for example hero[‘occupation’]</li>
+  <li>Using the dot notation, for example hero.occupation
+    <ul>
+      <li>某些场合不能用，例如，property 名字不是合法的变量名字</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Catch-22'</span><span class="p">,</span>
+  <span class="na">published</span><span class="p">:</span> <span class="mi">1961</span><span class="p">,</span>
+  <span class="na">author</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">firstname</span><span class="p">:</span> <span class="s1">'Joseph'</span><span class="p">,</span>
+    <span class="na">lastname</span><span class="p">:</span> <span class="s1">'Heller'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="o">&gt;</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">firstname</span><span class="p">;</span>
+<span class="s2">"Joseph"</span>
+<span class="o">&gt;</span> <span class="nx">book</span><span class="p">[</span><span class="s1">'author'</span><span class="p">][</span><span class="s1">'lastname'</span><span class="p">];</span>
+<span class="s2">"Heller"</span>
+<span class="o">&gt;</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="p">[</span><span class="s1">'lastname'</span><span class="p">];</span>
+<span class="s2">"Heller"</span>
+<span class="o">&gt;</span> <span class="nx">book</span><span class="p">[</span><span class="s1">'author'</span><span class="p">].</span><span class="nx">lastname</span><span class="p">;</span>
+<span class="s2">"Heller"</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'firstname'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="s2">"Joseph"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="methods">methods</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">breed</span><span class="p">:</span> <span class="s1">'Turtle'</span><span class="p">,</span>
+  <span class="na">occupation</span><span class="p">:</span> <span class="s1">'Ninja'</span><span class="p">,</span>
+  <span class="na">say</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'I am '</span> <span class="o">+</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">occupation</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span>
+<span class="s2">"I am Ninja"</span>
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">[</span><span class="s1">'say'</span><span class="p">]();</span>
+<span class="s2">"I am Ninja"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="动态修改-properties--methods">动态修改 properties &amp; methods</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">breed</span><span class="p">;</span>
+<span class="s2">"undefined"</span>
+
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">breed</span> <span class="o">=</span> <span class="s1">'turtle'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Leonardo'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">sayName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">};</span>
+
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">sayName</span><span class="p">();</span>
+<span class="s2">"Leonardo"</span>
+
+<span class="o">&gt;</span> <span class="k">delete</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">sayName</span><span class="p">();</span>
+<span class="s2">"undefined"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="this-关键字">this 关键字</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Rafaelo'</span><span class="p">,</span>
+  <span class="na">sayName</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">sayName</span><span class="p">();</span>
+<span class="s2">"Rafaelo"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="构造函数">构造函数</h3>
+
+<p>构造函数，其实就是Class定义，以 function 形式存在。</p>
+
+<p>编码约定：作为构造函数的function name ，首字母大写。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">occupation</span> <span class="o">=</span> <span class="s1">'Ninja'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">whoAreYou</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I'm "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">" and I'm a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">occupation</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">h1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hero</span><span class="p">(</span><span class="s1">'Michelangelo'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">h2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hero</span><span class="p">(</span><span class="s1">'Donatello'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">whoAreYou</span><span class="p">();</span>
+<span class="s2">"I'm Michelangelo and I'm a Ninja"</span>
+<span class="o">&gt;</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">whoAreYou</span><span class="p">();</span>
+<span class="s2">"I'm Donatello and I'm a Ninja"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="查看对象的构造函数-some-objectconstructor">查看对象的构造函数 some-object.constructor</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>提取 object 的构造方法，来构造一个新的同类型对象。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">h3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">h2</span><span class="p">.</span><span class="nx">constructor</span><span class="p">(</span><span class="s1">'Rafaello'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"Rafaello"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="instanceof">instanceof</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">Hero</span><span class="p">()</span> <span class="p">{}</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hero</span><span class="p">();</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="o">&gt;</span> <span class="nx">h</span> <span class="k">instanceof</span> <span class="nx">Hero</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">h</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">o</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="object-赋值都是传递的引用">Object 赋值都是传递的引用</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="p">{</span><span class="na">howmany</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">mycopy</span> <span class="o">=</span> <span class="nx">original</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">mycopy</span><span class="p">.</span><span class="nx">howmany</span><span class="p">;</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="nx">mycopy</span><span class="p">.</span><span class="nx">howmany</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="mi">100</span>
+<span class="o">&gt;</span> <span class="nx">original</span><span class="p">.</span><span class="nx">howmany</span><span class="p">;</span>
+<span class="mi">100</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="o">&gt;</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span>
+<span class="mi">0</span>
+<span class="kd">var</span> <span class="nx">original</span> <span class="o">=</span> <span class="p">{</span><span class="na">howmany</span><span class="p">:</span> <span class="mi">100</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">nullify</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span> <span class="nx">o</span><span class="p">.</span><span class="nx">howmany</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+<span class="nx">nullify</span><span class="p">(</span><span class="nx">original</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="compare-objects">compare objects</h4>
+
+<p>When you compare objects, you’ll get true only if you compare two references to the same object.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">fido</span> <span class="o">=</span> <span class="p">{</span><span class="na">breed</span><span class="p">:</span> <span class="s1">'dog'</span><span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">benji</span> <span class="o">=</span> <span class="p">{</span><span class="na">breed</span><span class="p">:</span> <span class="s1">'dog'</span><span class="p">};</span>
+<span class="o">&gt;</span> <span class="nx">benji</span> <span class="o">===</span> <span class="nx">fido</span><span class="p">;</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nx">benji</span> <span class="o">==</span> <span class="nx">fido</span><span class="p">;</span>
+<span class="kc">false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="global-object">Global Object</h3>
+
+<ul>
+  <li>The host environment provides a global object and all global variables are accessible as properties of the global object.</li>
+  <li>If your host environment is the web browser, the global object is called <code class="highlighter-rouge">window</code>.
+    <ul>
+      <li>在所有函数外面使用 <code class="highlighter-rouge">this</code>，也能访问到全局对象。</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="mi">1</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="built-in-function">built-in function</h4>
+
+<p>全局函数，实际也是 全局对象的属性。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'101 dalmatians'</span><span class="p">);</span>
+<span class="mi">101</span>
+<span class="o">&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'101 dalmatians'</span><span class="p">);</span>
+<span class="mi">101</span>
+<span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'101 dalmatians'</span><span class="p">);</span>
+<span class="mi">101</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="prototype">Prototype</h2>
+
+<h3 id="指定-prototype-为-object-对象">指定 Prototype 为 object 对象</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="s2">"object"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="向-prototype-添加属性方法">向 prototype 添加属性&amp;方法</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Gadget</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">whatAreYou</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'I am a '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> 
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>另外一种方法：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">rating</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getInfo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'Rating: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">rating</span> <span class="o">+</span>
+    <span class="s1">', price: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="object-属性访问沿prototype溯源而上">object 属性访问，沿prototype溯源而上</h3>
+
+<p>some-object.some-property 取值顺序：</p>
+<ol>
+  <li>寻找 some-object 自己的属性 some-property 有没有值<br />
+ 有则返回，否则，继续</li>
+  <li>寻找 some-object.constructor.prototype 是否有属性 some-property <br />
+ 有则返回，否则，溯源而上，寻找 prototype 的 prototype 是否有此属性</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">newtoy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gadget</span><span class="p">(</span><span class="s1">'webcam'</span><span class="p">,</span> <span class="s1">'black'</span><span class="p">);</span>
+
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"webcam"</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">rating</span><span class="p">;</span>   <span class="c1">// 获取的是 prototype 的属性</span>
+<span class="mi">3</span>
+
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Gadget</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">rating</span><span class="p">;</span>
+<span class="mi">3</span>
+
+<span class="c1">// 追溯到 object's toString() method</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"[object Object]"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="hasownproperty检查是否-object-自己的属性而不是prototype-的"><code class="highlighter-rouge">hasOwnProperty</code>检查是否 object 自己的属性，而不是prototype 的</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="object-自己的同名属性优先于覆盖prototype的属性">object 自己的同名属性，优先于（覆盖）prototype的属性</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">Gadget</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'mirror'</span><span class="p">;</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">toy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gadget</span><span class="p">(</span><span class="s1">'camera'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"camera"</span>
+
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="kc">true</span>
+
+<span class="c1">// 删除 object 自有属性后，溯源到 prototype的属性</span>
+
+<span class="o">&gt;</span> <span class="k">delete</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"mirror"</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="c1">// 直接复制，添加对象属性</span>
+
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'camera'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"camera"</span>
+
+<span class="c1">// 方法也是属性</span>
+
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"[object Object]"</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="c1">// toString 是 Object.prototype 的属性</span>
+
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nx">toy</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'toString'</span><span class="p">);</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="遍历对象的属性-enumerating-properties">遍历对象的属性 enumerating properties</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">productid</span><span class="p">:</span> <span class="mi">666</span><span class="p">,</span>
+  <span class="na">section</span><span class="p">:</span> <span class="s1">'products'</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://example.org/page.php?'</span><span class="p">,</span>
+    <span class="nx">i</span><span class="p">,</span>
+    <span class="nx">query</span> <span class="o">=</span> <span class="p">[];</span>
+    
+<span class="c1">// 遍历对象的属性</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">query</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="nx">params</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="nx">url</span> <span class="o">+=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'&amp;'</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="enumerable">enumerable</h4>
+
+<ul>
+  <li>不是所有属性都是能遍历出来的，能否遍历用 <code class="highlighter-rouge">propertyIsEnumerable</code> 检查。
+    <ul>
+      <li><code class="highlighter-rouge">propertyIsEnumerable()</code> returns <code class="highlighter-rouge">false</code> for all of the prototype’s properties, even those that are enumerable and show up in the for-in loop.</li>
+    </ul>
+  </li>
+  <li>ES5 可以指定属性是否 enumerable ， 而ES3没有这个自由。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Gadget</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nx">Gadget</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">rating</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">newtoy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gadget</span><span class="p">(</span><span class="s1">'webcam'</span><span class="p">,</span> <span class="s1">'black'</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">newtoy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span> <span class="o">+</span> <span class="s1">' = '</span> <span class="o">+</span> <span class="nx">newtoy</span><span class="p">[</span><span class="nx">prop</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// 结果：</span>
+<span class="nx">name</span> <span class="o">=</span> <span class="nx">webcam</span>
+<span class="nx">color</span> <span class="o">=</span> <span class="nx">black</span>
+<span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">price</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nx">rating</span> <span class="o">=</span> <span class="mi">3</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="c1">// 只打印自有属性</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">newtoy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">newtoy</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">prop</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="nx">newtoy</span><span class="p">[</span><span class="nx">prop</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 结果：</span>
+<span class="nx">name</span><span class="o">=</span><span class="nx">webcam</span>
+<span class="nx">color</span><span class="o">=</span><span class="nx">black</span>
+<span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">propertyIsEnumerable</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="kc">true</span>
+
+<span class="c1">// Most built-in properties and methods are not enumerable.</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">propertyIsEnumerable</span><span class="p">(</span><span class="s1">'constructor'</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="nx">Any</span> <span class="nx">properties</span> <span class="nx">coming</span> <span class="nx">down</span> <span class="nx">the</span> <span class="nx">prototype</span> <span class="nx">chain</span> <span class="nx">are</span> <span class="nx">not</span> <span class="nx">enumerable</span><span class="p">.</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">propertyIsEnumerable</span><span class="p">(</span><span class="s1">'price'</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="c1">// however, that such properties are enumerable if you reach the object contained</span>
+<span class="c1">// in the prototype and invoke its propertyIsEnumerable() method.</span>
+<span class="o">&gt;</span> <span class="nx">newtoy</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">propertyIsEnumerable</span><span class="p">(</span><span class="s1">'price'</span><span class="p">);</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="isprototypeof-检查对象是否是另一个对象的-prototype"><code class="highlighter-rouge">isPrototypeOf()</code> 检查对象是否是另一个对象的 prototype</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">monkey</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">hair</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">feeds</span><span class="p">:</span> <span class="s1">'bananas'</span><span class="p">,</span>
+  <span class="na">breathes</span><span class="p">:</span> <span class="s1">'air'</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">Human</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Human</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">monkey</span><span class="p">;</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">george</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Human</span><span class="p">(</span><span class="s1">'George'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">monkey</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">george</span><span class="p">);</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="objectgetprototypeof-获取对象的prototype对象es5支持"><code class="highlighter-rouge">Object.getPrototypeOf</code> 获取对象的prototype对象，ES5支持</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">george</span><span class="p">).</span><span class="nx">feeds</span><span class="p">;</span>
+<span class="s2">"bananas"</span>
+
+<span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">george</span><span class="p">)</span> <span class="o">===</span> <span class="nx">monkey</span><span class="p">;</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="special-property-proto-获取对象的prototype对象es5之前的某些浏览器支持">special property <strong>proto</strong> 获取对象的prototype对象，ES5之前的某些浏览器支持</h4>
+
+<ul>
+  <li><strong>注意：</strong> IE 不支持 <strong>proto</strong> 属性。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">monkey</span> <span class="o">=</span> <span class="p">{</span>
+<span class="na">feeds</span><span class="p">:</span> <span class="s1">'bananas'</span><span class="p">,</span>
+<span class="na">breathes</span><span class="p">:</span> <span class="s1">'air'</span>
+<span class="p">};</span>
+<span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">Human</span><span class="p">()</span> <span class="p">{}</span>
+<span class="o">&gt;</span> <span class="nx">Human</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">monkey</span><span class="p">;</span>
+
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">developer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Human</span><span class="p">();</span>
+
+<span class="c1">// 使用 __proto__</span>
+<span class="o">&gt;</span> <span class="nx">developer</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">monkey</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">developer</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+<span class="s2">"object"</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">developer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="s2">"undefined"</span>
+<span class="o">&gt;</span> <span class="k">typeof</span> <span class="nx">developer</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="s2">"object"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="secret-link-__proto__">secret link <code class="highlighter-rouge">__proto__</code></h3>
+
+<h3 id="扩展-built-in-对象">扩展 built-in 对象</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1">// trim() method for strings, which is a method </span>
+<span class="c1">//    that exists in ES5 but is missing in older browsers</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">!==</span> <span class="s1">'function'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^</span><span class="se">\s</span><span class="sr">+|</span><span class="se">\s</span><span class="sr">+$/g</span><span class="p">,</span><span class="s1">''</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="s2">" hello "</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+<span class="s2">"hello"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="inheritance-继承">inheritance 继承</h2>
+
+<h3 id="设置-构造函数的-prototype-后同时也要设置-prototypeconstructor">设置 构造函数的 prototype 后，同时也要设置 prototype.constructor</h3>
+
+<p>默认情况下 ，function 对象创建时，function的prototype对象同时创建，且prototype对象的constructor 属性指向自身。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">Cat</span><span class="p">()</span> <span class="p">{};</span>
+<span class="s2">"undefined"</span>
+
+<span class="o">&gt;</span> <span class="nx">Cat</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">Cat</span><span class="p">()</span> <span class="p">{}</span>
+
+<span class="o">&gt;</span> <span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="nb">Object</span> <span class="p">{</span><span class="nl">constructor</span><span class="p">:</span> <span class="kd">function</span><span class="p">}</span>
+  <span class="nl">constructor</span><span class="p">:</span> <span class="kd">function</span> <span class="nx">Cat</span><span class="p">()</span>
+  <span class="nl">__proto__</span><span class="p">:</span> <span class="nb">Object</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果修改了 <code class="highlighter-rouge">prototype</code>，这个 <code class="highlighter-rouge">prototype.constructor</code> 没有设置，则溯源到 <code class="highlighter-rouge">Object.constructor</code> : <code class="highlighter-rouge">function Object()</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">&gt;</span><span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nb">Object</span> <span class="p">{}</span>
+  <span class="nl">__proto__</span><span class="p">:</span> <span class="nb">Object</span>
+    <span class="nl">constructor</span><span class="p">:</span> <span class="kd">function</span> <span class="nb">Object</span><span class="p">()</span> <span class="p">{</span> <span class="p">[</span><span class="kr">native</span> <span class="nx">code</span><span class="p">]</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="利用-prototype-链实现继承-inheritence">利用 prototype 链实现继承 inheritence</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Shape</span><span class="p">(){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Shape'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">TwoDShape</span><span class="p">(){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">Triangle</span><span class="p">(</span><span class="nx">side</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="nx">side</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// prototype 链</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwoDShape</span><span class="p">();</span>
+
+<span class="c1">// reset the constructor after inheriting</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">TwoDShape</span><span class="p">;</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Triangle</span><span class="p">;</span>
+
+<span class="c1">// 访问自己的方法</span>
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mi">25</span>
+
+<span class="c1">// 通过 prototype 链，访问到祖先类的方法</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Triangle"</span>
+
+<span class="c1">// 重置了Prototype 的 constructor 后， constructor 是正确的</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Triangle</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="c1">// instanceOf 操作符，可以识别出类型</span>
+<span class="o">&gt;</span> <span class="nx">my</span> <span class="k">instanceof</span> <span class="nx">Shape</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">my</span> <span class="k">instanceof</span> <span class="nx">TwoDShape</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">my</span> <span class="k">instanceof</span> <span class="nx">Triangle</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nx">my</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">;</span>
+<span class="kc">false</span>
+
+<span class="c1">// The same happens when you call isPropertyOf()on the constructors passing my:</span>
+<span class="o">&gt;</span><span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">my</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">my</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">my</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">my</span><span class="p">);</span>
+<span class="kc">false</span>
+
+<span class="c1">// 父类的构造方法同样可以使用</span>
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">td</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwoDShape</span><span class="p">();</span>
+<span class="o">&gt;</span><span class="nx">td</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">TwoDShape</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">td</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"2D shape"</span>
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
+<span class="o">&gt;</span><span class="nx">s</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Shape</span><span class="p">;</span>
+<span class="kc">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="利用临时构造方法实现继承-inheritence">利用临时构造方法，实现继承 inheritence</h3>
+
+<p>this approach supports the idea that only properties and methods<br />
+added to the prototype should be inherited, and own properties should not.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre></td><td class="code"><pre><span class="c1">// Shape 类</span>
+
+<span class="kd">function</span> <span class="nx">Shape</span><span class="p">()</span> <span class="p">{}</span>
+<span class="c1">// augment prototype</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Shape'</span><span class="p">;</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// TwoDShape 类</span>
+
+<span class="kd">function</span> <span class="nx">TwoDShape</span><span class="p">()</span> <span class="p">{}</span>
+<span class="c1">// take care of inheritance</span>
+<span class="kd">var</span> <span class="nx">F</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+<span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">TwoDShape</span><span class="p">;</span>
+<span class="c1">// augment prototype</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
+
+<span class="c1">// Triangle 类</span>
+
+<span class="kd">function</span> <span class="nx">Triangle</span><span class="p">(</span><span class="nx">side</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="nx">side</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// take care of inheritance</span>
+<span class="kd">var</span> <span class="nx">F</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+<span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Triangle</span><span class="p">;</span>
+<span class="c1">// augment prototype</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// ---- 开始测试</span>
+
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mi">25</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Triangle"</span>
+
+<span class="c1">// 检查 Prototype 链</span>
+
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Triangle</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">===</span> <span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Shape</span><span class="p">;</span>
+<span class="kc">true</span>
+
+<span class="c1">// also the parents' properties are not overwritten by the children:</span>
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
+<span class="o">&gt;</span><span class="nx">s</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"Shape"</span>
+
+<span class="o">&gt;</span><span class="s2">"I am a "</span> <span class="o">+</span> <span class="k">new</span> <span class="nx">TwoDShape</span><span class="p">();</span> <span class="c1">// calling toString()</span>
+<span class="s2">"I am a 2D shape"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="继承的语法收拢到-extend-函数以便-复用">继承的语法，收拢到 <code class="highlighter-rouge">extend</code> 函数，以便 <em>复用</em></h3>
+
+<h4 id="extend">extend</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">extend</span><span class="p">(</span><span class="nx">Child</span><span class="p">,</span> <span class="nx">Parent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">F</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+  <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+  <span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+  <span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Child</span><span class="p">;</span>
+  <span class="nx">Child</span><span class="p">.</span><span class="nx">uber</span> <span class="o">=</span> <span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<blockquote>
+  <blockquote>
+    <p>如下是使用了 extend 继承函数的例子</p>
+  </blockquote>
+
+  <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c1">// define -&gt; augment</span>
+<span class="kd">function</span> <span class="nx">Shape</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Shape'</span><span class="p">;</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">uber</span>
+ <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">uber</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
+ <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// define -&gt; inherit -&gt; augment</span>
+<span class="kd">function</span> <span class="nx">TwoDShape</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nx">extend</span><span class="p">(</span><span class="nx">TwoDShape</span><span class="p">,</span> <span class="nx">Shape</span><span class="p">);</span> <span class="c1">// 继承～～～</span>
+<span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+  </div>
+</blockquote>
+
+<h4 id="extend2--copy-properties">extend2 , copy properties</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">extend2</span><span class="p">(</span><span class="nx">Child</span><span class="p">,</span> <span class="nx">Parent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">uber</span> <span class="o">=</span> <span class="nx">p</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="extend-copy-shallow-copy-不需要-prototype对象之间直接继承">Extend Copy, Shallow Copy 不需要 prototype，对象之间直接继承</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">extendCopy</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">vari</span> <span class="k">in</span> <span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">uber</span> <span class="o">=</span> <span class="nx">p</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 基础对象</span>
+<span class="kd">var</span> <span class="nx">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Shape'</span><span class="p">,</span>
+  <span class="na">toString</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 继承一次</span>
+<span class="kd">var</span> <span class="nx">twoDee</span> <span class="o">=</span> <span class="nx">extendCopy</span><span class="p">(</span><span class="nx">shape</span><span class="p">);</span>
+<span class="nx">twoDee</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
+<span class="nx">twoDee</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">uber</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 继承两次</span>
+<span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="nx">extendCopy</span><span class="p">(</span><span class="nx">twoDee</span><span class="p">);</span>
+<span class="nx">triangle</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+<span class="nx">triangle</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 使用对象</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mi">25</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Shape, 2D shape, Triangle"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="deep-copy">Deep Copy</h3>
+
+<p>相对只拷贝 reference 的 <em>shallow copy</em></p>
+
+<p>deep copy 是个迭代的过程。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">deepCopy</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">c</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">||</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'object'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">c</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">?</span> <span class="p">[]</span> <span class="p">:</span> <span class="p">{};</span>
+        <span class="nx">deepCopy</span><span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">c</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">c</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p>注意： <code class="highlighter-rouge">Array.isArray()</code> exists since ES5 ，要兼容 ES3的browser，使用如下自定义函数：</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  <span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="o">!==</span> <span class="s2">"function"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">candidate</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">candidate</span><span class="p">)</span> <span class="o">===</span> <span class="s1">'[object Array]'</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="objectcreate">Object.create</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="o">&gt;</span><span class="kd">var</span> <span class="nx">square</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">triangle</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">Object.create</code> 相当于 如下的 object()</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">object</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="nx">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+  <span class="nx">n</span><span class="p">.</span><span class="nx">uber</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="nx">object</span><span class="p">(</span><span class="nx">twoDee</span><span class="p">);</span>
+<span class="nx">triangle</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+<span class="nx">triangle</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Shape, 2D shape, Triangle"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="prototype-inheritence-和-copy-properties-混合使用">prototype inheritence 和 copy properties 混合使用</h3>
+
+<ul>
+  <li>Use prototypal inheritance to use an existing object as a prototype of a new one</li>
+  <li>Copy all of the properties of another object into the newly created one</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">objectPlus</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span> <span class="nx">stuff</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="nx">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">F</span><span class="p">();</span>
+  <span class="nx">n</span><span class="p">.</span><span class="nx">uber</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">stuff</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">stuff</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Create a 2D object by inheriting shape and adding more properties. </span>
+<span class="kd">var</span> <span class="nx">twoDee</span> <span class="o">=</span> <span class="nx">objectPlus</span><span class="p">(</span><span class="nx">shape</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'2D shape'</span><span class="p">,</span>
+  <span class="na">toString</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">uber</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// create a triangle object that inherits from 2D and adds more properties.</span>
+<span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="nx">objectPlus</span><span class="p">(</span> <span class="nx">twoDee</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Triangle'</span><span class="p">,</span>
+  <span class="na">getArea</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">side</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">height</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">});</span>
+
+<span class="c1">// creating a concrete triangle my with defined side and height</span>
+<span class="kd">var</span> <span class="nx">my</span> <span class="o">=</span> <span class="nx">objectPlus</span><span class="p">(</span><span class="nx">triangle</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">side</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">});</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mi">8</span>
+<span class="o">&gt;</span><span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Shape, 2D shape, Triangle, Triangle"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="多重继承-multiple-inheritence">多重继承 multiple inheritence</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">multi</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">stuff</span><span class="p">,</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stuff</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">vari</span> <span class="k">in</span> <span class="nx">stuff</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">stuff</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">n</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">stuff</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Shape'</span><span class="p">,</span>
+  <span class="na">toString</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">vartwoDee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'2D shape'</span><span class="p">,</span>
+  <span class="na">dimensions</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="nx">multi</span><span class="p">(</span><span class="nx">shape</span><span class="p">,</span> <span class="nx">twoDee</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Triangle'</span><span class="p">,</span>
+  <span class="na">getArea</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">side</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="na">height</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">});</span>
+
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mi">25</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">dimensions</span><span class="p">;</span>
+<span class="mi">2</span>
+<span class="o">&gt;</span><span class="nx">triangle</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Triangle"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="mixins">Mixins</h4>
+
+<p>需要某些 object 的方法，又不需要 这些object 进入 inheritence 序列，</p>
+
+<p>就可以使用上述 <code class="highlighter-rouge">multi()</code> ，将方法和参数 “mixin” 进来。</p>
+
+<h3 id="寄生继承-parasitic-inheritence">寄生继承 Parasitic Inheritence</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre><span class="nx">vartwoD</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'2D shape'</span><span class="p">,</span>
+  <span class="na">dimensions</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">triangle</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="nx">object</span><span class="p">(</span><span class="nx">twoD</span><span class="p">);</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span><span class="s1">'Triangle'</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">h</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">that</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Because triangle() is a normal function, not a constructor, it doesn't require the new</span>
+<span class="nx">operator</span><span class="p">.</span> 
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">dimensions</span><span class="p">;</span>
+<span class="mi">2</span>
+
+<span class="c1">// But because it returns an object, calling it with new by mistake works too.</span>
+<span class="o">&gt;</span><span class="nx">vart2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">t2</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+<span class="mf">12.5</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="借用父类构造器的继承-borrowing-a-constructor">借用父类构造器的继承 borrowing a constructor</h3>
+
+<p>This can be called stealing a constructor, or inheritance by<br />
+borrowing a constructor</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Shape</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Shape'</span><span class="p">;</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">Triangle</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// 利用 Object.apply 借用 Shape's constructor</span>
+  <span class="nx">Shape</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="s2">"Triangle"</span>
+
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="mi">101</span>
+
+<span class="c1">// The triangle failed to get the Shape function's prototype properties </span>
+<span class="c1">// because there was never a new Shape() instance created, so the prototype was never used. </span>
+
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"[object Object]"</span>
+
+<span class="c1">// ---</span>
+<span class="c1">// 利用 prototype 继承</span>
+<span class="kd">function</span> <span class="nx">Triangle</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Shape</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="borrow-a-constructor-and-copy-its-prototype">Borrow a constructor and copy its prototype</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Shape</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Shape'</span><span class="p">;</span>
+<span class="nx">Shape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">Triangle</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Shape</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">extend2</span><span class="p">(</span><span class="nx">Triangle</span><span class="p">,</span> <span class="nx">Shape</span><span class="p">);</span>
+<span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+
+<span class="c1">// Testing</span>
+
+<span class="o">&gt;</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="s2">"Triangle"</span>
+<span class="o">&gt;</span><span class="nx">t</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="mi">101</span>
+
+<span class="c1">// No double inheritance:</span>
+<span class="o">&gt;</span><span class="k">typeof</span> <span class="nx">t</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="s2">"undefined"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="webkit-console">WebKit console</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html">http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html</a></li>
+      <li><a href="http://michaelsync.net/2007/09/09/firebug-tutorial-logging-profiling-and-commandline-part-i">Firebug Tutorial - Logging, Profiling and CommandLine (Part I)</a></li>
+      <li><a href="http://michaelsync.net/2007/09/10/firebug-tutorial-logging-profiling-and-commandline-part-ii">Firebug Tutorial - Logging, Profiling and CommandLine (Part II)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">WebKit console</code> 提供了 <code class="highlighter-rouge">console</code> 对象来向 console 输出内容。</p>
+
+<h3 id="consolelog--error-debug-warn">console.log() , error(), debug(), warn()</h3>
+
+<ul>
+  <li>console.log()
+    <ul>
+      <li>输出日志</li>
+    </ul>
+  </li>
+  <li>console.error()
+    <ul>
+      <li>输出错误日志，红色高亮。</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="console.png" alt="" /></p>
+
+<h3 id="占位符">占位符</h3>
+
+<p>console对象的上面5种方法，都可以使用printf风格的占位符。不过，占位符的种类比较少，只支持字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）四种。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"%d年%d月%d日"</span><span class="p">,</span><span class="mi">2011</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">26</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"圆周率是%f"</span><span class="p">,</span><span class="mf">3.1415926</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">%o</code> 占位符，可以用来查看一个对象内部情况。比如，有这样一个对象：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">dog</span> <span class="o">=</span> <span class="p">{}</span> <span class="p">;</span>
+<span class="nx">dog</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">"大毛"</span> <span class="p">;</span>
+<span class="nx">dog</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">"黄色"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"%o"</span><span class="p">,</span><span class="nx">dog</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="分组显示-consolegroup-和-consolegroupend">分组显示， console.group() 和 console.groupEnd()</h3>
+
+<p>如果信息太多，可以分组显示，用到的方法是console.group()和console.groupEnd()。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="s2">"第一组信息"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"第一组第一条"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"第一组第二条"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="s2">"第二组信息"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"第二组第一条"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"第二组第二条"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="console分组显示.png" alt="" /></p>
+
+<h3 id="consoledir">console.dir()</h3>
+
+<p><code class="highlighter-rouge">console.dir()</code> 可以显示一个对象所有的属性和方法。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1">// 例如，查看document对象的属性和方法</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="consoledirxml">console.dirxml()</h3>
+
+<p><code class="highlighter-rouge">console.dirxml()</code> 用来显示网页的某个节点（node）所包含的html/xml 文档内容。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"table1"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dirxml</span><span class="p">(</span><span class="nx">table</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="consoleassert">console.assert()</h3>
+
+<p><code class="highlighter-rouge">console.assert()</code> 用来判断一个表达式或变量是否为真。</p>
+
+<p>如果结果为否，则在控制台输出一条相应信息，并且抛出一个异常。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span> <span class="nx">result</span> <span class="p">);</span>
+<span class="kd">var</span> <span class="nx">year</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">year</span> <span class="o">==</span> <span class="mi">2011</span> <span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="console-assert断言.png" alt="" /></p>
+
+<h3 id="consoletrace">console.trace()</h3>
+
+<p><code class="highlighter-rouge">console.trace()</code> 用来追踪函数的调用轨迹。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">trace</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">add3</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="k">return</span> <span class="nx">add2</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">);}</span>
+<span class="kd">function</span> <span class="nx">add2</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="k">return</span> <span class="nx">add1</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">);}</span>
+<span class="kd">function</span> <span class="nx">add1</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">);}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>运行后，会显示add()的调用轨迹，从上到下依次为add()、add1()、add2()、add3()。</p>
+
+<p><img src="console-trace效果示意.png" alt="" /></p>
+
+<h3 id="计时功能-consoletime-和-consoletimeend">计时功能 <code class="highlighter-rouge">console.time()</code> 和 <code class="highlighter-rouge">console.timeEnd()</code></h3>
+
+<p><code class="highlighter-rouge">console.time()</code> 和 <code class="highlighter-rouge">console.timeEnd()</code> ，用来显示代码的运行时间。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s2">"计时器一"</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">j</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">;</span><span class="nx">j</span><span class="o">++</span><span class="p">){}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s2">"计时器一"</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="console计时器示意.png" alt="" /></p>
+
+<h3 id="性能分析-consoleprofile">性能分析 console.profile()</h3>
+
+<p>性能分析（Profiler）就是分析程序各个部分的运行时间，找出瓶颈所在，使用的方法是console.profile()。</p>
+
+<p>假定有一个函数Foo()，里面调用了另外两个函数funcA()和funcB()，其中funcA()调用10次，funcB()调用1次。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">Foo</span><span class="p">(){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="nx">funcA</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nx">funcB</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">funcA</span><span class="p">(</span><span class="nx">count</span><span class="p">){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">count</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">funcB</span><span class="p">(</span><span class="nx">count</span><span class="p">){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">count</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>然后，就可以分析Foo()的运行性能了。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">profile</span><span class="p">(</span><span class="s1">'性能分析器一'</span><span class="p">);</span>
+<span class="nx">Foo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">profileEnd</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>控制台会显示一张性能分析表，如下图。</p>
+
+<p><img src="console性能分析示例.png" alt="" /></p>
+
+<p>除了使用console.profile()方法，firebug还提供了一个”概况”（Profiler）按钮。第一次点击该按钮，”性能分析”开始，你可以对网页进行某种操作（比如ajax操作），然后第二次点击该按钮，”性能分析”结束，该操作引发的所有运算就会进行性能分析。</p>
+
+<h2 id="常用技巧">常用技巧</h2>
+
+<h3 id="typeof-检查变量是否存在">typeof 检查变量是否存在</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">somevar</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="类型转换">类型转换</h3>
+
+<h4 id="parseint">parseInt()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'123'</span><span class="p">);</span>
+<span class="mi">123</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'abc123'</span><span class="p">);</span>
+<span class="kc">NaN</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'1abc23'</span><span class="p">);</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'123abc'</span><span class="p">);</span>
+<span class="mi">123</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>第二个参数，是使用的什么进制，缺省为 10 进制。</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'FF'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kc">NaN</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'FF'</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="mi">255</span>
+
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'0377'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="mi">377</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'0377'</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="mi">255</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="parsefloat">parseFloat()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="s1">'1.23'</span><span class="p">);</span>
+<span class="mf">1.23</span>
+<span class="o">&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="s1">'a123.34'</span><span class="p">);</span>
+<span class="kc">NaN</span>
+<span class="o">&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="s1">'12a3.34'</span><span class="p">);</span>
+<span class="mi">12</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>支持指数</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="s1">'123e-2'</span><span class="p">);</span>
+<span class="mf">1.23</span>
+<span class="o">&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="s1">'1e10'</span><span class="p">);</span>
+<span class="mi">10000000000</span>
+<span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="s1">'1e10'</span><span class="p">);</span>
+<span class="mi">1</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="isnan">isNaN()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="mf">1.23</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'abc123'</span><span class="p">));</span>
+<span class="kc">true</span>
+
+<span class="c1">// 遇到字符串参数，自动转化为数字</span>
+
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="s1">'1.23'</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">isNaN</span><span class="p">(</span><span class="s1">'a1.23'</span><span class="p">);</span>
+<span class="kc">true</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="isfinite">isFinite()</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">isFinite</span><span class="p">(</span><span class="kc">Infinity</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">isFinite</span><span class="p">(</span><span class="o">-</span><span class="kc">Infinity</span><span class="p">);</span>
+<span class="kc">false</span>
+<span class="o">&gt;</span> <span class="nb">isFinite</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nb">isFinite</span><span class="p">(</span><span class="mi">1</span><span class="nx">e308</span><span class="p">);</span>
+<span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nb">isFinite</span><span class="p">(</span><span class="mi">1</span><span class="nx">e309</span><span class="p">);</span>
+<span class="kc">false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>the biggest number in JavaScript is 1.7976931348623157e+308, so 1e309 is effectively infinity.</p>
+
+<h4 id="数字转换为字符串">数字转换为字符串</h4>
+
+<p>参见： <a href="#number-to-string">数字转换为字符串</a></p>
+
+<h3 id="encodedecode-uris">Encode/decode URIs</h3>
+
+<ul>
+  <li>encodeURI()</li>
+  <li>decodeURI()</li>
+  <li>encodeURIComponent()</li>
+  <li>decodeURIComponent()</li>
+</ul>
+
+<p>encodeURI() 与 encodeURIComponent() 的区别是，前者encode 整个 url，后者encode所有可以编码的字符，一般用于 encode query string。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://www.packtpub.com/script.php?q=this and that'</span><span class="p">;</span>
+<span class="o">&gt;</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="s2">"http://www.packtpub.com/script.php?q=this%20and%20that"</span>
+
+<span class="o">&gt;</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="s2">"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis%20and%20that"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>注意 escape() and unescape() 编码函数已经废弃，使用的老旧的编码规范。</li>
+</ul>
+
+<h3 id="eval">eval()</h3>
+
+<p>接受代码字符串，并执行。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">'var ii = 2;'</span><span class="p">);</span>
+<span class="o">&gt;</span> <span class="nx">ii</span><span class="p">;</span>
+<span class="mi">2</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="使用-objecttostring-检查-object-的类型">使用 <code class="highlighter-rouge">Object.toString</code> 检查 object 的类型</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">({});</span>
+<span class="s2">"[object Object]"</span>
+<span class="o">&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">([]);</span>
+<span class="s2">"[object Array]"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1">// 简化</span>
+<span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">toStr</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c1">// 函数参数的类型 the array-like object arguments</span>
+
+<span class="o">&gt;</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">toStr</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}());</span>
+<span class="s2">"[object Arguments]"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1">// inspect DOM elements</span>
+<span class="o">&gt;</span> <span class="nx">toStr</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="s2">"[object HTMLBodyElement]"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="shims--polyfills-对老版本浏览器的兼容插件">shims , polyfills 对“老版本浏览器”的兼容插件</h3>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#JavaScript" title="Pages tagged JavaScript" class="tag"><span class="term">JavaScript</span></a><a href="/tags#oop" title="Pages tagged oop" class="tag"><span class="term">oop</span></a><a href="/tags#object-oriented" title="Pages tagged object-oriented" class="tag"><span class="term">object-oriented</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,898 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>2022-10-13-python-scrapy-爬虫，关联 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022-10-13-python-scrapy-爬虫，关联">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/python/python-scrapy-%E7%88%AC%E8%99%AB/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/python/python-scrapy-%E7%88%AC%E8%99%AB/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">2022-10-13-python-scrapy-爬虫，关联</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-10-13T00:00:00+08:00">October 13, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="http://projectsedu.com">《聚焦Python分布式爬虫必学框架Scrapy 打造搜索引擎》-作者的博客</a></li>
+      <li><a href="https://docs.djangoproject.com/zh-hans/4.1/">django 4.1 官方文档</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="scrapy-vs-requests--beautifulsoup">scrapy vs requests + beautifulsoup</h2>
+
+<ul>
+  <li>requests + beautifulsoup 都是库， scrapy 是框架</li>
+  <li>使用scrapy 框架同时，也能使用 requests、beautifulsoup。</li>
+  <li>scrapy 基于 twisted， 异步能力好，性能有优势</li>
+  <li>scrapy 可以扩展，提供很多内置功能，内置 css 和 xpath selector 方便，beautifulsoup用python写的，比较慢。</li>
+</ul>
+
+<h2 id="正则表达式">正则表达式</h2>
+
+<ul>
+  <li>贪婪匹配
+    <ul>
+      <li>非贪婪匹配<code class="highlighter-rouge">.*</code> ，从字符串最后面开始，最小满足的匹配；</li>
+      <li>贪婪匹配 <code class="highlighter-rouge">.*?</code></li>
+    </ul>
+
+    <p>比如，str = “XXX出生于2011年”<br />
+  <code class="highlighter-rouge">.*(\d+)年</code> ： 匹配出 1年<br />
+  <code class="highlighter-rouge">.*?(\d+)年</code> ： 匹配出 2011年</p>
+  </li>
+  <li><code class="highlighter-rouge">\s</code> 空格等空白字符</li>
+  <li><code class="highlighter-rouge">\S</code> 与 <code class="highlighter-rouge">\s</code> 相反</li>
+  <li><code class="highlighter-rouge">\w</code> 即 <code class="highlighter-rouge">[A-Za-z0-9]</code></li>
+  <li><code class="highlighter-rouge">\W</code> 与 <code class="highlighter-rouge">\w</code> 相反</li>
+  <li><code class="highlighter-rouge">[\u4E00-\u9FA5]</code> 中文字符</li>
+</ul>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">match_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r".*(</span><span class="err">\</span><span class="s">d+).*"</span><span class="p">,</span> <span class="n">target_str</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">match_re</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">match_re</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="常用字符串方法">常用字符串方法</h2>
+
+<ul>
+  <li>replace(target, replacement)</li>
+  <li>strip() 清除空格、回车等字符。</li>
+  <li></li>
+  <li></li>
+</ul>
+
+<h2 id="深度优先和广度优先">深度优先和广度优先</h2>
+
+<p>遍历网站的算法。</p>
+
+<p>深度优先，一般使用递归方法。</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">depth_tree</span><span class="p">(</span><span class="n">tree_node</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tree_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">tree_note</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">tree_node</span><span class="o">.</span><span class="n">_left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">depth_tree</span><span class="p">(</span><span class="n">tree_node</span><span class="o">.</span><span class="n">_left</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">tree_node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">depth_tree</span><span class="p">(</span><span class="n">tree_node</span><span class="o">.</span><span class="n">_right</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>广度优先，使用队列的方法。</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">level_queue</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="s">"""利用队列实现树的广度优先遍历"""</span>
+    <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">return</span>
+    <span class="n">my_queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="n">my_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">my_queue</span><span class="p">:</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">my_queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">elem</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lchild</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">my_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">lchild</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">rchild</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">my_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">rchild</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="url-去重的方法">url 去重的方法</h2>
+
+<ul>
+  <li>url 保存到数据库中</li>
+  <li>url 保存到set 中<br />
+  缺点： 太占内存</li>
+  <li>url 经过 md5 等方法哈希后保存到set 中<br />
+  优点： 节省内存；scrapy 用的方法</li>
+  <li>用 bitmap 方法，将url通过hash函数映射到某一位。</li>
+</ul>
+
+<h2 id="xpath">xpath</h2>
+
+<p>用来在 xml 和 html 中进行定位。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">article</code>   ： 选取所有 article 元素的所有子节点</li>
+  <li><code class="highlighter-rouge">/article</code>  ： 选取根元素 article</li>
+  <li><code class="highlighter-rouge">article/a</code> ： 选取所有属于 article 的子元素的 a 元素</li>
+  <li><code class="highlighter-rouge">//div</code>     ： 选取所有div 子元素（不论出现在文档任何地方）</li>
+  <li><code class="highlighter-rouge">article//div</code>  ： 选取所有属于 article 元素的后代的 div 元素，不管他在 article 之下的任何位置</li>
+  <li><code class="highlighter-rouge">//@class</code>      ： 选取所有名为 class 的属性</li>
+  <li><code class="highlighter-rouge">/article/div[1]</code> ： 选取属于 article 子元素的第一个div 元素</li>
+  <li><code class="highlighter-rouge">/article/div[last()]</code>  ： 选取属于 article 子元素的最后一个 div元素</li>
+  <li><code class="highlighter-rouge">/article/div[last()-1]</code>： 选取属于 article 子元素的倒数第二个div 元素</li>
+  <li><code class="highlighter-rouge">//div[@lang]</code>          ： 选取所有拥有lang 属性的 div元素</li>
+  <li><code class="highlighter-rouge">//div[@lang='eng']</code>    ： 选取所有lang 属性为 eng 的 div 元素</li>
+  <li><code class="highlighter-rouge">//div[contains(@class, 'icon')]</code> ： 选取所有 div元素，它的class属性包含 icon 属性</li>
+  <li><code class="highlighter-rouge">/div/*</code> ： 选取属于 div 元素的所有子节点</li>
+  <li><code class="highlighter-rouge">//*</code> ： 选取所有元素</li>
+  <li><code class="highlighter-rouge">//div[@*]</code> ： 选取所有带属性的 div 元素</li>
+  <li><code class="highlighter-rouge">/div/a | //div/p</code> ： 选取所有div 元素的 a 和 p 元素</li>
+  <li><code class="highlighter-rouge">//span | //ul</code> ： 选取文档中的 span 和 url 元素</li>
+  <li><code class="highlighter-rouge">article/div/p | //span</code> ： 选取所有属于article 元素的div 元素的 p元素，以及文档中所有的span 元素。</li>
+</ul>
+
+<h2 id="css-选择器">CSS 选择器</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">*</code> ： 所有节点</li>
+  <li><code class="highlighter-rouge">#container</code> ： id 为 container 的节点</li>
+  <li><code class="highlighter-rouge">.container</code> ： class 包含 container 的节点</li>
+  <li><code class="highlighter-rouge">li a</code> ：  li 下的所有 a 节点</li>
+  <li><code class="highlighter-rouge">ul + p</code> ： ul 后面的第一个 p 元素</li>
+  <li><code class="highlighter-rouge">div#container &gt; ul</code> ： id 为 container 的 div 的第一个 ul 子元素</li>
+  <li><code class="highlighter-rouge">ul ~ p</code> ： 与 ul 相邻的所有 p 元素</li>
+  <li><code class="highlighter-rouge">a[title]</code> ： 所有存在title 属性的 a 元素</li>
+  <li><code class="highlighter-rouge">a[href="http://jobbole.com"]</code> ： 所有 href属性为 jobbole.com 的 a元素</li>
+  <li><code class="highlighter-rouge">a[href*="jobbole"]</code> ： 所有href 属性包含 jobbole 的 a元素</li>
+  <li><code class="highlighter-rouge">a[href^="http"]</code> ： 所有href 属性值以 http开头的 a元素</li>
+  <li><code class="highlighter-rouge">a[href$=".jpg"]</code> ： 所有href 属性值以 .jpg 结尾的 a元素</li>
+  <li><code class="highlighter-rouge">input[type=radio]:checked</code> ： 所有选中状态的radio 元素</li>
+  <li><code class="highlighter-rouge">div:not(#container)</code> ： 所有id非container 的div元素</li>
+  <li><code class="highlighter-rouge">li:nth-child(3)</code> ： 第三个li 元素</li>
+  <li><code class="highlighter-rouge">tr:nth-child(2n)</code> ： 所有偶数序号的tr 元素</li>
+  <li>`` ：</li>
+  <li>`` ：</li>
+</ul>
+
+<h2 id="scrapy-完成一个简单的爬虫项目">scrapy 完成一个简单的爬虫项目</h2>
+
+<p>安装scrapy：</p>
+
+<p><code class="highlighter-rouge">pip install scrapy</code></p>
+
+<p>创建scrapy 工程：</p>
+
+<p><code class="highlighter-rouge">scrapy startproject YourSpiderProject</code></p>
+
+<p>创建 spider 模板：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>cd YourSpiderProject
+scrapy genspider someblog www.someblog.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>someblog.py</li>
+</ul>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">SomeblogSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"someblog"</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s">"www.someblog.com"</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">"http://www.someblog.com"</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">re_selector</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'/*[@id="1234"]/div[1]/h1/text()'</span><span class="p">)</span>
+        <span class="k">pass</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="scrapy-shell-模式">scrapy shell 模式</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>scrapy shell http://www.someblog.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>进入console后，可以使用 response</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="gp">&gt;&gt;&gt; </span>title <span class="o">=</span> response.xpath<span class="o">(</span><span class="s1">'/*[@id="1234"]/div[1]/h1/text()'</span><span class="o">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>title.extract<span class="o">()</span> <span class="c"># 将 selector 转换为一个数组</span>
+
+<span class="gp">&gt;&gt;&gt; </span>title.extract<span class="o">()[</span>0]
+
+<span class="gp">&gt;&gt;&gt; </span>title.xpath<span class="o">(</span><span class="s2">"//*"</span><span class="o">)</span>  <span class="c"># 继续搜索，下面所有的节点</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

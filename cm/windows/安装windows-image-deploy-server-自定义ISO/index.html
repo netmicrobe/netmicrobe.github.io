@@ -1,0 +1,938 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>安装windows-image-deploy-server，自定义ISO &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装windows-image-deploy-server，自定义ISO">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/windows/%E5%AE%89%E8%A3%85windows-image-deploy-server-%E8%87%AA%E5%AE%9A%E4%B9%89ISO/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/windows/%E5%AE%89%E8%A3%85windows-image-deploy-server-%E8%87%AA%E5%AE%9A%E4%B9%89ISO/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">安装windows-image-deploy-server，自定义ISO</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-07-05T00:00:00+08:00">July 05, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=ARDjb2UV3Nw">Youtube - Craft Computing - Install Windows like a PRO! Windows Deployment Services Tutorial</a></li>
+      <li><a href="https://www.youtube.com/watch?v=PdKMiFKGQuc&amp;t=1542s">Youtube - Craft Computing - THIS is what Windows 10 should look like! - Custom Windows Image Tutorial</a>
+        <ul>
+          <li><a href="https://drive.google.com/file/d/1p5kzaeLoBzUDKqH1p4cgvi2sNShFHU5i/edit">Youtube - Craft Computing - Decrapify Script</a>
+            <ul>
+              <li><a href="2020-DeCrapify.ps1">2020-DeCrapify.ps1</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://kil0bit.blogspot.com/2020/09/how-to-make-your-own-windows-10-lite.html">kilObit – Learn Tips &amp; Tricks, Discover Apps &amp; Games</a></li>
+      <li><a href="https://www.microsoft.com/en-au/software-download/windows10ISO">Microsoft - Download Windows 10 Disc Image (ISO File)</a></li>
+      <li><a href="https://www.catalog.update.microsoft.com/Home.aspx">Microsoft - Microsoft Update Catalog</a></li>
+      <li><a href="https://msmgtoolkit.in/?i=2">MSMG Toolkit</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install">Microsoft - Download and install the Windows ADK</a></li>
+      <li><a href=""></a></li>
+      <li>
+        <h2><a href=""></a></h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="部署-windows-deployment-services">部署 Windows Deployment Services</h2>
+
+<ol>
+  <li></li>
+  <li>
+    <p>安装Windows Server 2019</p>
+  </li>
+  <li>在 Server 2019 上 安装 Deployment Services
+    <ol>
+      <li>开始菜单 》Server Manager 》 Manage 》 Roles And Features</li>
+      <li>一路 Next，选择 role： <code class="highlighter-rouge">Windows Deployment Services</code> &gt; Add Feature &gt; 一路 Next</li>
+      <li>Role Services 要勾选 Deployment Server 和 Transport Server</li>
+    </ol>
+  </li>
+  <li>在 Server 2019 上 配置使用 Deployment Services
+    <ol>
+      <li>开始菜单 》 Windows Deployment Services</li>
+      <li>邮件菜单 WDS-HL &gt; Configure Server &gt; 下一步 》 <code class="highlighter-rouge">Standalone Server</code></li>
+      <li>Remote Installation Folder Location 保持默认 <code class="highlighter-rouge">C:\RemoteInstall</code></li>
+      <li>PXE Server Initial Settings : <code class="highlighter-rouge">Respond to all client computers(known or nknown)</code></li>
+      <li>下一步直到配置完成。</li>
+    </ol>
+  </li>
+  <li>获取 windows image 文件
+    <ol>
+      <li>打开windows 10 iso，进入sources目录</li>
+      <li>找到 boot.wim 和 install.wim，拷贝到 <code class="highlighter-rouge">C:\RemoteInstall</code>
+        <ol>
+          <li>可以重命名下，后面好找，比如 boot.wim 重命名为 win10-202h-boot.wim</li>
+        </ol>
+      </li>
+      <li>在 Deployment Server 中右击 boot images 文件夹图标，选择刚刚的boot.wim文件，并添加。</li>
+      <li>在 Deployment Server 中右击 install images 文件夹图标， 创建一个Image Group，比如<code class="highlighter-rouge">win10 20h2</code>，选择刚刚的 install.wim文件，并添加所有出现的 image，但是 不勾选 <code class="highlighter-rouge">Use the default name and description for each of the selected images</code>，后面自己取个简洁的名字。</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>使用 Windows Deployment Server 给 VM 安装 windows
+    <ol>
+      <li>在virtualbox上创建虚拟机，设置 System &gt; Motherboard &gt; Boot Order &gt; 勾选 Network 并放置到顶部</li>
+      <li>启动虚拟机，按F12进行PXE 网络启动</li>
+      <li>弹出的用户名，填写 Server 2019上的帐号，用户名： <code class="highlighter-rouge">WIN-FVLQEOJ3HLB\Administrator</code><br />
+ <code class="highlighter-rouge">WIN-FVLQEOJ3HLB</code> 是 Windows Deployment Server 界面中的服务器名称。</li>
+    </ol>
+  </li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h2 id="创建自定义的-windows-安装文件">创建自定义的 windows 安装文件</h2>
+
+<ol>
+  <li>使用 <code class="highlighter-rouge">Windows System Image Manager</code> 创建 answerfile （应答文件），answer file 包含了windows 10安装过程中的配置。</li>
+  <li>下载 Windows ADK 工具集合，其中包含工具 Windows System Image Manager<br />
+ <a href="https://support.microsoft.com/en-us/windows/adk-download-for-windows-10-2a0b7ff2-79b7-b989-f727-43ae506e36ad">ADK download for Windows 10</a></li>
+  <li>安装 ADK 工具集合，启动 <code class="highlighter-rouge">Windows System Image Manager</code></li>
+  <li>文件 菜单 》新建应答文件</li>
+  <li>Windows 映像 》Components 》amd64_Microsoft-Windows-Setup_10.0.19041.1_neutral
+    <ol>
+      <li>UserData 》 右键菜单 》添加设置以传送1 WindowsPE（1）</li>
+      <li>UserData - AcceptEula: true</li>
+      <li>UserData - ProductKey - Key : 产品序列号</li>
+    </ol>
+  </li>
+  <li>amd64_Microsoft-Windows-Shell-Setup_10.0.19041.1_neutral
+    <ol>
+      <li>OOBE - 右键菜单 - Add Setting to Pass 7 oobeSystem
+        <ol>
+          <li>HideEULAPage : true</li>
+          <li>HideOEMREgistrationScreen : true</li>
+          <li>HideOnlineAccountScreen : true</li>
+          <li>HideWirelessSetupInOOBE : true</li>
+          <li>NetworkLocation: Work</li>
+          <li>SkipMachineOOBE: true</li>
+          <li>SkipUserOOBE: true</li>
+          <li>删除 OOBE - VMModeOptimizations</li>
+        </ol>
+      </li>
+      <li>UserAccounts - 右键菜单 - Add Setting to Pass 7 oobeSystem
+        <ol>
+          <li>AdministratorPassword - value : 设置管理员密码</li>
+          <li>删除 DomainAccounts</li>
+          <li>LocalAccounts - 右键菜单 - 插入新建 LocalAccount
+            <ol>
+              <li>Group: Administrator</li>
+              <li>Name: your-account-name</li>
+              <li>DisplayName: your-name</li>
+              <li>LocalAccount - Password 设置密码</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>FirstLogonCommands - SynchronousCommands
+    <ol>
+      <li>CommandLine: <code class="highlighter-rouge">reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "disabledmwappushservice" /t REG_SZ /d "sc config dmwappushservice start= disabled"</code></li>
+      <li>description: Disable DM WAP Push Service</li>
+      <li>Order: 1</li>
+      <li>RequireUserInput: false</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>
+    <p>创建的应答文件 unattend.xml，拷贝到当前运行的Windows 10 的 <code class="highlighter-rouge">C:\WIndows\System32\Sysprep</code> 下面</p>
+  </li>
+  <li>Sysprep
+    <ol>
+      <li>双击启动Sysprep
+        <ol>
+          <li>System Cleanup Action: Enter System Out-of-Box Experience(OOBE)</li>
+          <li>勾选 Generalize</li>
+          <li>Shutdown Options: Shutdown</li>
+          <li>确定后会运行一段时间，然后关机</li>
+        </ol>
+      </li>
+      <li>如果报错，可查看 <code class="highlighter-rouge">C:\WIndows\System32\Sysprep\setupact.log</code></li>
+    </ol>
+  </li>
+  <li>VM 设置从Network 启动，启动到Image Deploy Server</li>
+  <li>看到 Windows Setup 界面后，按下 <code class="highlighter-rouge">Shift + F10</code> 进入命令行界面
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre> net use z: \\ip-of-deploy-server\REMINST /user:Administrator your-password
+
+ # 进入 z 盘
+ z:
+
+ # 生成wim文件
+ # 命令中的C:\ 是指windows系统盘，实际可能不一定是C盘，也可能D盘或者其他盘，执行前，用dir先查查看
+ dism /Capture-Image /ImageFile:Win10-Pro-20H2.wim /CaptureDir:C:\ /Name:"Windows 10 Pro 20H2"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>生成wim文件存放在 deploy server 的 <code class="highlighter-rouge">C:\RemoteInstall</code> 目录下</li>
+  <li>将生成的 wim 文件导入 deploy server</li>
+  <li>设置应答文件
+    <ol>
+      <li>双击这个Image，勾选 <code class="highlighter-rouge">Allow image to install in unattended mode</code></li>
+      <li>选择 Select File… ，在弹出的文件对话框中选择目标 <code class="highlighter-rouge">unattend.xml</code></li>
+    </ol>
+  </li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<p>这个方法生成install.wim 打包进 iso，安装时到专业版、教育版选项的时候，没有选项了。。。。</p>
+
+<h2 id="将当前运行的-windows-10-生成-iso-安装文件">将当前运行的 Windows 10 生成 iso 安装文件</h2>
+
+<ol>
+  <li>删除当前用户，此电脑 》管理 》用户</li>
+  <li>运行 <code class="highlighter-rouge">cleanmgr</code> ，进行临时文件清理</li>
+  <li><code class="highlighter-rouge">%windir%\System32\Sysprep\sysprep.exe /audit /reboot</code>
+    <ol>
+      <li>重启后，弹出“系统准备工具 3.14”对话框，上面2个选项：</li>
+      <li>系统清理操作：进入系统全新体验（OOBE）</li>
+      <li>勾选“通用”</li>
+      <li>关机选项：关机</li>
+    </ol>
+  </li>
+  <li>确定关机</li>
+  <li>启动这个windows就进入了 欢迎设置界面。一通安装windows配置。。。</li>
+  <li>在C盘另外的盘，例如D盘，创建文件夹 <code class="highlighter-rouge">Scratch</code></li>
+  <li>从windows安装U盘启动</li>
+  <li>启动到Windows安装的第一个界面时，按 <code class="highlighter-rouge">Shift + F10</code> 进入命令行</li>
+  <li><code class="highlighter-rouge">diskpart</code> 进入 diskpart 软件</li>
+  <li><code class="highlighter-rouge">list vol</code> 看看各个分区的盘符，例如，系统盘C现在是F，D盘现在是E</li>
+  <li><code class="highlighter-rouge">dism /capture-image /imagefile:E:\install.wim /captureDir:F:\ /ScratchDir:E:\Scratch /name:"windoes10Prox64" /compress:maximum /checkintegrity /verify /bootable</code></li>
+  <li>执行完成，重启进入Windows之后，D盘就可以看到 <code class="highlighter-rouge">install.wim</code> 文件</li>
+  <li>mount windows 原来iso文件，进入mount的光盘，把文件都拷贝出来，例如，新建个名叫 myiso 文件夹放着。</li>
+  <li>用生成的 <code class="highlighter-rouge">install.wim</code> 替换 <code class="highlighter-rouge">myiso/sources/install.wim</code></li>
+  <li>下载 Windows ADK 工具 <code class="highlighter-rouge">adksetup</code><br />
+ <a href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install">https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install</a></li>
+  <li>已管理员身份运行 <code class="highlighter-rouge">adksetup</code>
+    <ol>
+      <li>Select the Features you want to install 页面选择： 只选 Deployment Tools</li>
+    </ol>
+  </li>
+  <li>安装完成后，在开始菜单找到 <code class="highlighter-rouge">Deployment and Imaging Tools</code>，这是个命令行工具，已管理员身份运行</li>
+  <li>运行<br />
+<code class="highlighter-rouge">oscdimg.exe -m -o -u2 -udfver102 -bootdata:2#p0,e,bd:\myiso\boot\etfsboot.com#pEF,e,bd:\myiso\efi\microsoft\boot\efisys.bin d:\myiso d:\Windows10Prox64.iso</code></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="installesd-与-installwim-文件转换">install.esd 与 install.wim 文件转换</h3>
+
+<ol>
+  <li>打开powershell，执行：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre> dism /Get-WimInfo /WimFile:windows-20h2.stardard.esd
+
+ # SourceIndex 来自上一条命令，表面是esd中的哪个image
+
+ dism /export-image /SourceIMageFile:windows-20h2.stardard.esd /SourceIndex:1 /DestinationImageFile:C;\Wim\Win10-20h2-home.wim  /Compress:max /CheckIntegrity
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="运行-sysprep-报错-package-microsoftlanguageexperiencepackzh-cn_1904126680_neutral__8wekyb3d8bbwe-was-installed-for-a-user">运行 Sysprep 报错 Package Microsoft.LanguageExperiencePackzh-CN_19041.26.68.0_neutral__8wekyb3d8bbwe was installed for a user</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.itsk.com/thread-412125-1-1.html">https://www.itsk.com/thread-412125-1-1.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>2021-07-06 13:53:57, Error                 SYSPRP Package Microsoft.LanguageExperiencePackzh-CN_19041.26.68.0_neutral__8wekyb3d8bbwe was installed for a user, but not provisioned for all users. This package will not function properly in the sysprep image.
+2021-07-06 13:53:57, Error                 SYSPRP Failed to remove apps for the current user: 0x80073cf2.
+2021-07-06 13:53:57, Error                 SYSPRP Exit code of RemoveAllApps thread was 0x3cf2.
+2021-07-06 13:53:57, Error                 SYSPRP ActionPlatform::LaunchModule: Failure occurred while executing 'SysprepGeneralizeValidate' from C:\Windows\System32\AppxSysprep.dll; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error                 SYSPRP SysprepSession::Validate: Error in validating actions from C:\Windows\System32\Sysprep\ActionFiles\Generalize.xml; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error                 SYSPRP RunPlatformActions:Failed while validating Sysprep session actions; dwRet = 0x3cf2
+2021-07-06 13:53:57, Error      [0x0f0070] SYSPRP RunDlls:An error occurred while running registry sysprep DLLs, halting sysprep execution. dwRet = 0x3cf2
+2021-07-06 13:53:57, Error      [0x0f00d8] SYSPRP WinMain:Hit failure while pre-validate sysprep generalize internal providers; hr = 0x80073cf2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>解决方法：</p>
+
+<p>删除这个包</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>PowerShell -Command "Get-AppxPackage Microsoft.LanguageExperiencePackzh-CN* | Remove-AppxPackage"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

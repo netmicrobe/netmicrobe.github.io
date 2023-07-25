@@ -1,0 +1,935 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>使用dd进行系统备份，关联 分区，os，diskgenius, 7za, bzip2, bunzip2, xz, nvme, lba &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用dd进行系统备份，关联 分区，os，diskgenius, 7za, bzip2, bunzip2, xz, nvme, lba">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/%E4%BD%BF%E7%94%A8dd%E8%BF%9B%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/%E4%BD%BF%E7%94%A8dd%E8%BF%9B%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">使用dd进行系统备份，关联 分区，os，diskgenius, 7za, bzip2, bunzip2, xz, nvme, lba</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-01-28T00:00:00+08:00">January 28, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://serverfault.com/a/853753">dd on entire disk, but do not want empty portion</a></li>
+      <li><a href="https://developer.ibm.com/tutorials/l-linux-on-4kb-sector-disks/">Linux on 4 KB sector disks: Practical advice</a></li>
+      <li><a href="https://unix.stackexchange.com/a/562615">Switching HDD sector size to 4096 bytes</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="系统迁移实战">系统迁移实战</h2>
+
+<ol>
+  <li>
+    <p>备份各个系统分区<br />
+ 使用dd对系统分区进行备份，包括win10,linux的分区<br />
+ 使用 diskgenius 对 windows 分区进行下备份，生成 pmf 文件</p>
+
+    <p><strong>注意</strong></p>
+    <ol>
+      <li>备份的时候将分区信息一定记录一下：分区的精确大小、原来磁盘的扇区大小（sector size），总扇区数目</li>
+      <li>将 EFS，MSR分区大小也记录下</li>
+    </ol>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> <span class="c"># 备份分区到镜像文件，并用 7za 压缩</span>
+ dd <span class="k">if</span><span class="o">=</span>/dev/sda1 <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">conv</span><span class="o">=</span>sync,noerror <span class="nv">status</span><span class="o">=</span>progress | 7za a -si -t7z -mx<span class="o">=</span>1 -m0<span class="o">=</span>LZMA2 -mmt<span class="o">=</span>8  /path/to/backup.img.7z
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>使用 diskgenius 在新的硬盘上
+    <ol>
+      <li>使用GUID磁盘引导区格式</li>
+      <li>先创建一样大小的 EFS，MSR分区</li>
+      <li>检查 扇区大小 是否和原来磁盘一样，一般2种（512字节、4K字节）</li>
+    </ol>
+  </li>
+  <li>如果扇区大小 和原来磁盘 <strong>不一样</strong>，进入linux系统修改下
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre> <span class="c"># manjaro 为例</span>
+ sudo pacman -S nvme-cli
+
+ <span class="c"># 查看 目标硬盘的特性，关注其中 LBA Format 有几种模式</span>
+ nvme id-ns -H /dev/nvmeXnY
+ <span class="c"># 上述命令，以pm983a为例，支持2中LBA</span>
+ ... ...
+ LBA Format 0: Metadata Size: 0 bytes - Data Size: 4096 bytes <span class="o">(</span><span class="k">in </span>use<span class="o">)</span>
+ LBA Format 1: Metadata Size: 0 bytes - Data Size: 512 bytes 
+
+ <span class="c"># 我要将 sector size 从 4K 改成 512</span>
+ nvme format --lbaf<span class="o">=</span>1 /dev/nvmeXnY
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>题外话，从 4K 改成 512，没觉得速度有下降，可能pm983a的写速度 1.1G/s 本来就弱鸡</p>
+  </li>
+  <li>恢复数据到系统分区<br />
+ 使用 dd，如果不行也可以用 diskgenius 把之前备份 pmf 拿来试试
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> <span class="c"># 从镜像文件恢复</span>
+ 7za x /path/to/backup.img.7z -so | dd <span class="nv">of</span><span class="o">=</span>/dev/sda1 <span class="nv">status</span><span class="o">=</span>progress
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>然后，开始重建系统的启动引导啦，就是弄那个 EFS 分区</p>
+  </li>
+  <li>首先搞 Windows
+    <ol>
+      <li>Windows 10 系统安装盘引导进入系统 ，语言选择界面，点“下一步”<br />
+ 使用MBR的系统安装盘才能正确引导，rufus做的UEFI的引导盘进不去，启动蓝屏报错。</li>
+      <li>选择“修复计算机” 》疑难解答 》命令提示符</li>
+      <li>命令行修复引导记录
+        <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre> Diskpart   【启动Diskpart工具】
+ list disk 【找出启动磁盘的序号】
+ sel disk 0 【选择启动磁盘，按各个机器情况写数字】
+ list vol 【找出EFI分区序号，FAT32格式，一二百兆大小都正常】
+ sel vol 3【选择EFI分区，按各个机器情况写数字】
+ assign <span class="nv">letter</span><span class="o">=</span>v：【把EFI分区设定为v盘】
+ <span class="nb">exit</span>【退出disk part命令集】
+
+ format v: /FS:FAT32 【以FAT32格式化v盘，即EFI分区】
+ bcdboot c:<span class="se">\w</span>indows /s v: /f UEFI 【修复bcd引导记录】 
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+
+        <p>至此重启，顺利回到原来的系统<br />
+ 最后一条命令只适用于1709以后版本win10的ISO启动盘</p>
+      </li>
+    </ol>
+  </li>
+  <li>然后恢复linux系统启动
+    <ol>
+      <li><code class="highlighter-rouge">lsblk -f</code> 找到 linux 的分区<br />
+ 例如，我的 linux 分区是 <code class="highlighter-rouge">/dev/nvme0n1p9</code> efi 分区是 <code class="highlighter-rouge">/dev/nvme0n1p2</code></li>
+      <li>手动chroot
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre> sudo mount /dev/nvme0n1p9 /mnt
+ sudo mount /dev/nvme0n1p2 /mnt/boot/efi
+ cd /mnt
+ sudo mount -t proc proc /mnt/proc
+ sudo mount -t sysfs sys /mnt/sys
+ sudo mount -o bind /dev /mnt/dev
+ sudo mount -t devpts pts /mnt/dev/pts/
+ sudo chroot /mnt
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>执行grub命令修复
+        <ul>
+          <li>manjaro恢复
+            <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck -v
+  update-grub
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+          <li>ubuntu 系列distro 恢复
+            <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  grub-install /dev/sdX
+  grub-install --recheck /dev/sdX
+  update-grub
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>最后记得修改下 fstab 里面 EFI 分区UUID，因为EFI分区是新建的，和原来的UUID不一样</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="dd-备份">dd 备份</h2>
+
+<h3 id="dd-备份分区">dd 备份分区</h3>
+
+<ul>
+  <li>备份整个分区<br />
+这个简单，直接执行
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 1048576 个字节 = 1M
+sudo dd if=/dev/sda of=/where-your-store/target-os.img bs=1048576 conv=sync,noerror status=progress
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>备份分区中有数据的部分</p>
+
+    <ul>
+      <li><strong>注意</strong> <code class="highlighter-rouge">count=?M</code> 参数使用 <code class="highlighter-rouge">df -BM</code> 显示出来的值是不对的，偏小，比如：<br />
+  在nvme的硬盘 /dev/nvme0n1 上一个 100G 的分区：
+        <ul>
+          <li>用 <code class="highlighter-rouge">sudo fdisk -l /dev/nvme0n1</code> 分区大小 209715200 个sector（一个sector 512字节，也就是 100G）</li>
+          <li>用 <code class="highlighter-rouge">df -B512</code> 查看分区，数据是 205376064，也即 205376064 / 2 / 1024 = 100281.28125M</li>
+          <li>相差将近 2118M</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>加载这个分区，<code class="highlighter-rouge">df -BM</code> 查看数据使用</p>
+
+    <p>例如： 一个100G的分区，/dev/nvme0n1p8</p>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> $ df -BM /dev/nvme0n1p8
+
+ Filesystem     1M-blocks   Used Available Use% Mounted on
+ /dev/nvme0n1p8   100282M 15650M    79497M  17% /
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>COUNT-VAL = 分区大小 - 1M-blocks + Used + 几个G的旷量<br />
+ 例如，上面 100G分区，COUNT-VAL = 102400M - 100282M + 15650M + 2000M旷量 = 19768M</li>
+  <li>备份： <code class="highlighter-rouge">sudo dd if=/dev/sda of=/where-your-store/target-os.img bs=1048576 count=19768 conv=sync,noerror status=progress</code></li>
+</ol>
+
+<h2 id="dd-配合压缩工具备份">dd 配合压缩工具备份</h2>
+
+<p>直接 dd 出来 image 文件进行压缩节约的空间还是很客观的，15G能压缩到7G。 所以一般配合压缩工具一起进行备份。</p>
+
+<p>manjaro 默认有7zip 和 bzip2 。 推荐使用7zip，速度快很多，100+M/s，而bzip2只有 20-30M/s。</p>
+
+<h3 id="7zip--dd">7zip + dd</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 备份分区到镜像文件，并用 7za 压缩
+dd if=/dev/sda1 bs=1048576 conv=sync,noerror status=progress | 7za a -si -t7z -mx=1 -m0=LZMA2 -mmt=8  /path/to/backup.img.7z
+
+# 从镜像文件恢复
+7za x /path/to/backup.img.7z -so | dd of=/dev/sda1 status=progress
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="bzip2--dd">bzip2 + dd</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># backup
+dd if=/dev/nvme0n1p8 bs=1M conv=sync,noerror status=progress | bzip2 -9f &gt; /Volumes/silo/_backups/os.dd/manjaro.img.bz2
+
+# restore
+bunzip2 -dc /path/to/backup.img.bz2 | dd of=/dev/sda1 status=progress
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="xz--dd">xz + dd</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># backup
+dd if=/dev/disk2s1 bs=1048576 conv=sync,noerror | pv -s 30271m |  xz -z -3ve --threads=0 &gt; /Volumes/Lexar/t5w10_1803.img_30271m.xz
+
+# restore
+xz -dc --threads=0 /Volumes/Lexar/t5w10_1803.img.xz | pv | dd of=/dev/disk2s1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="gzip--dd">gzip + dd</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 备份分区到镜像文件，并用 gzip 压缩
+dd if=/dev/sdb1 bs=64M conv=sync,noerror status=progress | gzip -c &gt; /path/to/backup.img.gz
+
+# 从镜像文件恢复
+gunzip -c /path/to/backup.img.gz | sudo dd of=/dev/sdb1 status=progress
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

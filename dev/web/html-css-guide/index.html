@@ -1,0 +1,2158 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>html , css 速查手册 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="html, css">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html , css 速查手册">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/html-css-guide/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/html-css-guide/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">html , css 速查手册</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-11-07T00:00:00+08:00">November 07, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>refer
+    <ul>
+      <li>《CSS: The Missing Manual, 4th Edition》</li>
+      <li>《CSS设计指南（第3版）》, Charles Wyke-Simth</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="css-基础">CSS 基础</h2>
+
+<h3 id="style-语法">Style 语法</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">p</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="css-引入方式">css 引入方式</h3>
+
+<ul>
+  <li>外部
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/style.css"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>内部
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;style&gt;</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#FF7643</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h2 id="selector">Selector</h2>
+
+<h3 id="type-selector">type selector</h3>
+
+<p>selector 本身是 tag 名称。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nt">h2</span> <span class="p">{</span> 
+  <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"Century Gothic"</span><span class="p">,</span> <span class="s1">"Gill Sans"</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#000000</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-selector">class selector</h3>
+
+<p><code class="highlighter-rouge">.类名</code> 类选择符前面是点(.),紧跟着类名,两者之间没有空格。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nc">.special</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span><span class="m">#FF0000</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span><span class="s1">"Monotype Corsiva"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"special"</span><span class="nt">&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="限定到tag上的-class-selector">限定到tag上的 class selector</h4>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nt">p</span><span class="nc">.special</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span><span class="m">#FF0000</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span><span class="s1">"Monotype Corsiva"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="one-tag-multiple-classes-多类选择符">One Tag, Multiple Classes 多类选择符</h4>
+
+<p>HTML 的 class 属性可以有多个空格分隔的值。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn add"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn delete"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn edit"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/button&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>In the HTML tag, just add the class attribute, and, for the value, add<br />
+each class name, separated by a space. The browser will combine the properties<br />
+from the various classes and apply the final, combined set of styles to the element</p>
+
+<p>选择同时存在这两个类名的元素，两个类名之间没有空格,选择同时具有这两个类名的那个元素。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nc">.specialtext.featured</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">120%</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="id-selectors">ID Selectors</h3>
+
+<p>ID 选择符</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"specialtext"</span><span class="nt">&gt;</span>This is the special text.<span class="nt">&lt;/p&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nf">#specialtext</span> <span class="p">{</span><span class="err">CSS</span> <span class="err">样式声明</span><span class="p">}</span>
+<span class="err">或</span>
+<span class="nt">p</span><span class="nf">#specialtext</span> <span class="p">{</span><span class="err">CSS</span> <span class="err">样式声明</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="同样的样式同时赋予不同的selector">同样的样式，同时赋予不同的selector</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#F1CD33</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">p</span><span class="o">,</span> <span class="nc">.copyright</span><span class="o">,</span> <span class="nf">#banner</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#F1CD33</span><span class="p">;</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="上下文选择符-descendant-combinator-selectors">上下文选择符 Descendant Combinator Selectors</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c">/* any &lt;strong&gt; tag inside an h1 is red */</span>
+<span class="nt">h1</span> <span class="nt">strong</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c">/* Apply this style to every link (a) that’s a descendant of another 
+   tag that has the intro class applied to it.
+ */</span>
+<span class="nc">.intro</span> <span class="nt">a</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="特殊上下文选择符">特殊上下文选择符</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;section&gt;</span>
+<span class="nt">&lt;h2&gt;</span>An H2 Heading<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>This is paragraph 1<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Paragraph 2 has <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>a link<span class="nt">&lt;/a&gt;</span> in it.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="子选择符-">子选择符 <code class="highlighter-rouge">&gt;</code></h4>
+
+<p><code class="highlighter-rouge">标签 1 &gt; 标签 2</code><br />
+标签 2 必须是标签 1 的子元素,或者反过来说,标签 1 必须是标签 2 的父元素。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">h2</span> <span class="p">{</span><span class="nl">font-style</span><span class="p">:</span><span class="nb">italic</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="紧邻同胞选择符">紧邻同胞选择符+</h4>
+
+<p><code class="highlighter-rouge">标签 1 + 标签 2</code><br />
+标签 2 必须紧跟在其同胞标签 1 的后面。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">h2</span> <span class="o">+</span> <span class="nt">p</span> <span class="p">{</span><span class="nl">font-variant</span><span class="p">:</span><span class="nb">small-caps</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="一般同胞选择符-">一般同胞选择符 <code class="highlighter-rouge">~</code></h4>
+
+<p><code class="highlighter-rouge">标签 1 ~ 标签 2</code><br />
+标签 2 必须跟(不一定紧跟)在其同胞标签 1 后面。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">h2</span> <span class="o">~</span> <span class="nt">a</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">red</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="通用选择符-the-universal-selector-asterisk">通用选择符* The Universal Selector (Asterisk)</h4>
+
+<p>通用选择符<code class="highlighter-rouge">*</code>(常被称为星号选择符)是一个通配符,它匹配任何元素.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="c">/* 会导致所有元素(的文本和边框)都变成绿色。*/</span>
+<span class="o">*</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">green</span><span class="p">;}</span>
+
+<span class="c">/* 这样只会把 p 包含的所有元素的文本变成红色。*/</span>
+<span class="nt">p</span> <span class="o">*</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">red</span><span class="p">;}</span>
+
+<span class="c">/* 任何是 section 孙子元素,而非子元素的 a 标签都会被选中。
+至于 a的父元素是什么,没有关系。*/</span>
+<span class="nt">section</span> <span class="o">*</span> <span class="nt">a</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">1.3em</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可用于清除样式：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">*</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="属性选择符">属性选择符</h3>
+
+<p>更多 <a href="http://www.stylinwith-css.com">http://www.stylinwith-css.com</a></p>
+
+<h4 id="属性名选择符">属性名选择符</h4>
+
+<p><code class="highlighter-rouge">标签名[属性名]</code> 选择任何带有属性名的标签名。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c">/*会导致像下面这个带有 title 属性的 HTML img 元素显示 2 像素宽的蓝色边框,
+至于 title 属性有什么值,无关紧要,只要有这个属性在就行啦。*/</span>
+<span class="nt">img</span><span class="o">[</span><span class="nt">title</span><span class="o">]</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">2px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/yellow_flower.jpg"</span> <span class="na">title=</span><span class="s">"yellow flower"</span> <span class="na">alt=</span><span class="s">"yellow flower"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="属性值选择符">属性值选择符</h4>
+
+<p><code class="highlighter-rouge">标签名[属性名="属性值"]</code> <br />
+在 HTML5 中,属性值的引号可加可不加,在此为了清楚起见,我们加了。<br />
+选择任何带有值为属性值的属性名的标签名。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">/*在图片的 title 属性值为 red flower 的情况下,才会为图片添加边框。*/</span>
+<span class="nt">img</span><span class="o">[</span><span class="nt">title</span><span class="o">=</span><span class="s1">"red flower"</span><span class="o">]</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">4px</span> <span class="nb">solid</span> <span class="no">green</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/red_flower.jpg"</span> <span class="na">title=</span><span class="s">"red flower"</span> <span class="na">alt=</span><span class="s">"red flower"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="pseudo-classes伪类">Pseudo-Classes（伪类）</h2>
+
+<h3 id="ui伪类">UI伪类</h3>
+
+<h4 id="links的特殊状态样式">Links的特殊状态样式</h4>
+
+<ul>
+  <li>a:link
+    <ul>
+      <li>链接的一般状态，未访问、鼠标也没悬停。</li>
+    </ul>
+  </li>
+  <li>a:visited
+    <ul>
+      <li>根据浏览器的历史记录，已经访问过的链接</li>
+    </ul>
+  </li>
+  <li>a:hover
+    <ul>
+      <li>鼠标悬停在链接上的时候，设置样式，可以提高下互动效果。</li>
+      <li>这个虚拟selector <code class="highlighter-rouge">:hover</code>，可以用在其他页面元素上，例如，<code class="highlighter-rouge">p:hover</code>，<code class="highlighter-rouge">.highlight:hover</code>。</li>
+    </ul>
+  </li>
+  <li>a:active
+    <ul>
+      <li>点击链接，按下鼠标，还没松开</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="focus">:focus</h4>
+
+<p><code class="highlighter-rouge">e:focus</code> 在这个以及后续的例子中,e 表示任何元素,如 p、h1、section,等等。</p>
+
+<p>元素被点击，就会获得焦点。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">/* 输入框获得焦点时，赋予的样式 */</span>
+<span class="nt">input</span><span class="nd">:focus</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="target">:target</h4>
+
+<p><code class="highlighter-rouge">e:target</code> 如果用户点击一个指向页面中其他元素的链接,则那个元素就是目标(target),可以用 <code class="highlighter-rouge">:target</code> 伪类选中它。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#more_info"</span><span class="nt">&gt;</span>More Information<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"more_info"</span><span class="nt">&gt;</span>This is the information you are looking for.<span class="nt">&lt;/h2&gt;</span>
+
+<span class="c">&lt;!-- 单击链接转向 ID 为 more_info 的元素时,为该元素添加浅灰色背景。 --&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nf">#more_info</span><span class="nd">:target</span> <span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="m">#eee</span><span class="p">;}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="结构化伪类">结构化伪类</h3>
+
+<p>更多参考： <a href="http://www.stylinwithcss.com">http://www.stylinwithcss.com</a></p>
+
+<h4 id="first-child-和last-child">:first-child 和:last-child</h4>
+
+<p>:first-child 代表一组同胞元素中的第一个元素,而:last-child 则代表最后一个。<br />
+比如,把下面的规则</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">ol</span><span class="nc">.results</span> <span class="nt">li</span><span class="nd">:first-child</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">blue</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>应用给以下标记，文本“My Fast Pony”就会变成蓝色。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"results"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>My Fast Pony<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Steady Trotter<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Slow Ol' Nag<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="nth-child">:nth-child</h4>
+
+<p><code class="highlighter-rouge">e:nth-child(n)</code> e 表示元素名,n 表示一个数值(也可以使用 odd 或 even)。</p>
+
+<p>:nth-child 伪类最常用于提高表格的可读性,对表格的所有行交替应用不同颜色。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">/*选择一组列表项中的每个第三项*/</span>
+<span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="pseudo-elements-伪元素">Pseudo-Elements 伪元素</h2>
+
+<p>顾名思义,伪元素就是你的文档中若有实无的元素。</p>
+
+<p>更多伪元素请参考 <a href="http://www.stylinwithcss.com">http://www.stylinwithcss.com</a></p>
+
+<h3 id="first-letter-伪元素">::first-letter 伪元素</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">/*第一个字放大3倍*/</span>
+<span class="nt">p</span><span class="nd">::first-letter</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">300%</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="first-line-伪元素">::first-line 伪元素</h3>
+
+<p><code class="highlighter-rouge">e::first-line</code> 可以选中文本段落(一般情况下是段落)的第一行。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>/*把第一行以小型大写字母显示*/
+p::first-line {font-variant:small-caps;}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="before-和after-伪元素">::before 和::after 伪元素</h3>
+
+<ul>
+  <li>例子
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"age"</span><span class="nt">&gt;</span>25<span class="nt">&lt;/p&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">p</span><span class="nc">.age</span><span class="nd">::before</span> <span class="p">{</span><span class="nl">content</span><span class="p">:</span><span class="s1">"Age: "</span><span class="p">;}</span>
+  <span class="nt">p</span><span class="nc">.age</span><span class="nd">::after</span> <span class="p">{</span><span class="nl">content</span><span class="p">:</span><span class="s1">" years."</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>显示成：Age: 25 years.</p>
+  </li>
+</ul>
+
+<h2 id="继承">继承</h2>
+
+<p>子节点可以继承父节点的某些CSS属性。</p>
+
+<p>CSS 中有很多属性是可以继承的,其中相当一部分都跟文本有关,比如颜色、字体、字号。</p>
+
+<p>由于字体和文本样式是可以继承的,所以在使用相对字体单位(如百分比和 em)时<br />
+要格外小心。如果某个标签的字体大小被设置为 80%,而它的一个后代的字体大小<br />
+也被设置为 80%,那么该后代中文本最终的字体大小将是 64%(80%的 80%)<br />
+。这有时候可能并不是你想要的结果。</p>
+
+<h2 id="层叠">层叠</h2>
+
+<p>层叠,就是层叠样式表中的层叠,是一种样式在文档层次中逐层叠加的过程,目的是让浏览器面对某个标签特定属性值的多个来源,确定最终使用哪个值。</p>
+
+<h3 id="样式来源">样式来源</h3>
+
+<p>浏览器层叠各个来源样式的顺序:</p>
+<ul>
+  <li>浏览器默认样式表</li>
+  <li>用户样式表</li>
+  <li>作者链接样式表(按照它们链接到页面的先后顺序)</li>
+  <li>作者嵌入样式</li>
+  <li>作者行内样式</li>
+</ul>
+
+<h3 id="层叠规则">层叠规则</h3>
+
+<ul>
+  <li>参考这个链接:
+    <ul>
+      <li><a href="http://www.w3.org/TR/CSS2/cascade.html">http://www.w3.org/TR/CSS2/cascade.html</a></li>
+      <li>CSS 优先级特性 <a href="http://liunian.info/css-specificity.html">http://liunian.info/css-specificity.html</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>层叠规则一</strong><br />
+  找到应用给每个元素和属性的所有声明。浏览器在加载每个页面时,<br />
+  都会据此查到每一条 CSS 规则,标识出所有受到影响的 HTML 元素。</p>
+  </li>
+  <li>
+    <p><strong>层叠规则二</strong><br />
+  按照顺序和权重排序。浏览器依次检查 5 个来源,并设定匹配的属性。<br />
+  如果匹配的属性在下一个来源也有定义,则更新该属性的值,如此循环,直到检查<br />
+  完页面中所有标签受影响属性的全部 5 个来源为止。</p>
+
+    <p>声明也可以有权重。<br />
+  <code class="highlighter-rouge">p {color:green !important; font-size:12pt;}</code><br />
+  <code class="highlighter-rouge">空格!important 分号(;)</code> 用于加重声明的权重。</p>
+  </li>
+  <li>
+    <p><strong>层叠规则三</strong><br />
+  按特指度排序。除了有点拗口之外, <a href="#calc-specificity">特指度(specificity)</a> 其实表示一条规则有多明确。</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"largetext"</span><span class="nt">&gt;</span>A bit of text<span class="nt">&lt;/p&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">p</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;}</span>
+  <span class="nt">p</span><span class="nc">.largetext</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">16px</span><span class="p">;}</span>   <span class="c">/*胜出*/</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">p</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;}</span>
+  <span class="nc">.largetext</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">16px</span><span class="p">;}</span> <span class="c">/* 胜出，类名选择符比普通的标签选择符具有更高的特指度。*/</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li><strong>层叠规则四</strong><br />
+  顺序决定权重。如果两条规则都影响某元素的同一个属性,而且它们的特指度也相同,则位置最靠下(或后声明)的规则胜出。</li>
+</ul>
+
+<h4 id="计算特指度">计算特指度</h4>
+
+<p><a name="calc-specificity"></a></p>
+
+<p>有一个简单的记分规则,即 对每个选择符都要按下面的“ICE”公式计算三个值:<br />
+<code class="highlighter-rouge">I-C-E</code></p>
+
+<p>三个字母间的短横线是分隔符,并非减号。针对这个公式的计分办法如下:</p>
+<ol>
+  <li>选择符中有一个 ID,就在 I 的位置上加 1;</li>
+  <li>选择符中有一个类,就在 C 的位置上加 1;</li>
+  <li>选择符中有一个元素(标签)名,就在 E 的位置上加 1;</li>
+  <li>得到一个三位数。</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>这个例子，每个选择符都比前一个选择符的特指度更高。
+
+P
+p.largetext
+p#largetext
+body p#largetext
+body p#largetext ul.mylist
+body p#largetext ul.mylist li
+0-0-1 特指度=1
+0-1-1 特指度=11
+1-0-1 特指度=101
+1-0-2 特指度=102
+1-1-3 特指度=113
+1-1-4 特指度=114
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="css-属性值">CSS 属性值</h2>
+
+<h3 id="文本值">文本值。</h3>
+
+<p>例如, <code class="highlighter-rouge">font-weight:bold</code> 声明中的 bold 就一个文本值。<br />
+文本值也叫做关键字。</p>
+
+<h3 id="数字值">数字值。</h3>
+
+<p>数字值后面都有一个单位,例如英寸或点。</p>
+
+<p>在声明 <code class="highlighter-rouge">font-size:12px</code> 中, 12是数字值,而 px 是单位(像素)。如果数字值为0,那么就不用带单位了。</p>
+
+<p>数字值用于描述元素的各种长度(在 CSS 里,“长度”的含义比较广,还包括高度、<br />
+宽度、粗细,等等)。数字值主要分两类:绝对值和相对值。</p>
+
+<p>绝对值描述的是一个真实的长度，一般用像素px；用于打印的话，最好使用英寸（in）。</p>
+
+<p>相对值，em 和 ex 都是字体大小的单位,但在 CSS 中,它们作为长度单位适用于任何元素。</p>
+
+<p>em ,它表示一种字体中 <strong>字母 M 的宽度</strong> ,因此它的具体大小取决于你使用的字体。<br />
+而 ex 呢,等于给定字体中 <strong>字母 x 的高度</strong>(小写字母 x代表一种字体的字母中间部分的高度,不包括字母上、下突出的部分——如 d 和 p 上下都出头儿)。</p>
+
+<h3 id="颜色值">颜色值。</h3>
+
+<ul>
+  <li>参见：
+    <ul>
+      <li><a href="http://www.w3.org/TR/css3-color/#html4">http://www.w3.org/TR/css3-color/#html4</a></li>
+      <li><a href="http://en.wikipedia.org/wiki/X11_color_names">http://en.wikipedia.org/wiki/X11_color_names</a></li>
+      <li><a href="http://colrd.com">http://colrd.com</a> Colrd 是一个 Pinterest 风格的站点,其中有很多能启发人创造力的图片和<br />
+照片,以及相应的调色板。</li>
+      <li><a href="http://kuler.com">http://kuler.com</a> Adobe Kuler 的官方站点提供了数千种色样、调色板创建工具,以及其他<br />
+人正在选用的时尚颜色。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>颜色值可以用几种不同的格式来写,包括 RGB(Red, Green, Blue,红绿蓝)、HSL(Hue, Saturation, Luminance,色相,饱和度,亮度)和十六进制值(例如color:#336699)。</p>
+
+<h4 id="w3c-定义了-16-个颜色关键字">W3C 定义了 16 个颜色关键字</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>aqua(浅绿色)</td>
+      <td>black(黑色)</td>
+      <td>blue(蓝色)</td>
+      <td>fuchsia(紫红色)</td>
+    </tr>
+    <tr>
+      <td>gray(灰色)</td>
+      <td>green(绿色)</td>
+      <td>lime(黄绿色)</td>
+      <td>maroon(褐红色)</td>
+    </tr>
+    <tr>
+      <td>navy(深蓝色)</td>
+      <td>olive(茶青色)</td>
+      <td>purple(紫色)</td>
+      <td>red(红色)</td>
+    </tr>
+    <tr>
+      <td>silver(银色)</td>
+      <td>teal(青色)</td>
+      <td>white(白色)</td>
+      <td>yellow(黄色)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="十六进制颜色rrggbb-或rgb">十六进制颜色(#RRGGBB 或#RGB)</h4>
+
+<h4 id="rgb-颜色值r-g--b">RGB 颜色值(R, G , B)</h4>
+
+<p><code class="highlighter-rouge">rgb(r, g, b)</code> ， 比如,rgb(0,255,0)表示纯绿色。</p>
+
+<h4 id="rgb-百分比值r-g-b">RGB 百分比值(R%, G%, B%)</h4>
+
+<p><code class="highlighter-rouge">r%, g%, b%</code></p>
+
+<h4 id="hsl-色相-饱和度-亮度">HSL (色相, 饱和度%, 亮度%)</h4>
+
+<p><code class="highlighter-rouge">HSL(0,0%,0%)</code></p>
+
+<h4 id="alpha-通道">Alpha 通道</h4>
+
+<p>RGB 和 HSL 都支持 Alpha 通道,用于设置颜色的不透明度。相应的格式分别叫 RGBA 和 HSLA。</p>
+
+<h2 id="css-布局">CSS 布局</h2>
+
+<h3 id="盒子模型">盒子模型</h3>
+
+<ul>
+  <li>
+    <p>没有宽度的盒子</p>
+
+    <p>所谓“没有宽度”就是指没有显式地设置元素的 width 属性</p>
+
+    <ul>
+      <li>如果不设置块级元素的 width 属性,那么这个属性的默认值是 auto,结果会让元素的宽度扩展到与父元素同宽。</li>
+    </ul>
+  </li>
+  <li>
+    <p>有宽度的盒子</p>
+
+    <p>设置块级元素的 width 属性，元素的宽度就__不会__扩展到与父元素同宽。</p>
+
+    <p>盒子的 width 属性设定的只是盒子内容区的宽度,而非盒子要占据的水平宽度。</p>
+  </li>
+</ul>
+
+<h3 id="浮动-float-与-清除-clear">浮动 float 与 清除 clear</h3>
+
+<h4 id="float">float</h4>
+
+<ul>
+  <li>CSS 设计 float 属性的主要目的,是为了实现文本绕排图片的效果。</li>
+  <li>然而,这个属性居然也成了创建 <strong>多栏布局</strong> 最简单的方式。</li>
+  <li>
+    <p>浮动元素脱离了文档流,其父元素也看不到它了,因而也不会包围它。</p>
+  </li>
+  <li>
+    <p>文本绕排图片<br />
+  为了实现文本绕排图片的浮动效果,必须在标记中先写图片,然后再写环绕它的文本。</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  <span class="nt">&lt;img</span> <span class="err">......</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;p&gt;</span>...the paragraph text...<span class="nt">&lt;/p&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  <span class="c">/*为简明起见,省略了字体声明*/</span>
+  <span class="nt">p</span> <span class="p">{</span><span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+  <span class="c">/*外边距防止图片紧挨文本*/</span>
+  <span class="nt">img</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span> <span class="m">4px</span> <span class="m">4px</span> <span class="m">0</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p><img src="float-text-around.png" alt="" /></p>
+
+    <blockquote>
+      <p>浮动非图片元素时,必须给它设定宽度,否则后果难以预料。图片无所谓,因为它本身有默认的宽度</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>创建分栏<br />
+  给段落设定宽度,然后也浮动它即可。</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  <span class="c">/*添加 float:left; width:200px;*/</span>
+  <span class="nt">p</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+  <span class="nt">img</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span> <span class="m">4px</span> <span class="m">4px</span> <span class="m">0</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p><img src="float-multi-column.png" alt="" /></p>
+
+    <blockquote>
+      <p>多栏布局<br />
+如果你创建了三个浮动、固定宽度的元素,它们就会像这样并排在一行,构成三栏布局的框架。每个元素都可以作为容器,包含其他元素。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>围住浮动元素的三种方法</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="nt">&lt;section&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/rubber_duck2.jpg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>It's fun to float.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;footer&gt;</span> Here is the footer element that runs across the bottom of the
+  page.<span class="nt">&lt;/footer&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">section</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">0</span><span class="p">;}</span>
+
+  <span class="c">/*删除默认的上下外边距*/</span>
+  <span class="nt">p</span> <span class="p">{</span><span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;}</span>
+
+  <span class="c">/*为简明起见,省略了字体声明*/</span>
+  <span class="nt">footer</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ol>
+      <li>
+        <p>方法一:为父元素添加 <code class="highlighter-rouge">overflow:hidden</code></p>
+
+        <p><code class="highlighter-rouge">overflow:hidden</code> 除了截掉超出显示范围的内容外，还有另一个作用，<br />
+ 即它能可靠地迫使父元素包含其浮动的子元素。</p>
+
+        <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> <span class="c">/*
+   把 overflow:hidden 声明应用到容器元素后,
+   footer回到页底部，而不是环绕图片
+ */</span>
+ <span class="nt">section</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">0</span><span class="p">;</span> <span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;}</span>
+ <span class="nt">img</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;}</span>
+ <span class="nt">p</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>
+        <p>方法二:同时浮动父元素</p>
+
+        <p>促使父元素包围其浮动子元素的方法,是也让父元素浮动起来。</p>
+
+        <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre> <span class="c">/* 添加 float:left; width:100%; */</span>
+ <span class="nt">section</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;</span> <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">100%</span><span class="p">;}</span>
+ <span class="nt">img</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;}</span>
+ <span class="c">/*添加 clear:left;*/</span>
+ <span class="nt">footer</span> <span class="p">{</span><span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span> <span class="nl">clear</span><span class="p">:</span><span class="nb">left</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>
+        <p>方法三:添加非浮动的清除元素</p>
+
+        <p>清除元素的方式有两种。</p>
+
+        <ul>
+          <li>
+            <p>第一种</p>
+
+            <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">&lt;section&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/rubber_duck.jpg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>It's fun to float.<span class="nt">&lt;/p&gt;</span>
+  <span class="c">&lt;!-- 由于没有默认的样式,不会引入多余空间,div 元素很适合这个目的。 --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"clear_me"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;footer&gt;</span> Here is the footer element...<span class="nt">&lt;/footer&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+
+            <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="nc">.clear_me</span> <span class="p">{</span><span class="nl">clear</span><span class="p">:</span><span class="nb">left</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+          <li>
+            <p>第二种</p>
+
+            <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/rubber_duck.jpg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>It's fun to float.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;footer&gt;</span> Here is the footer element...<span class="nt">&lt;/footer&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+
+            <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="c">/* 神奇的 clearfix 规则 */</span>
+  <span class="nc">.clearfix</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span><span class="s1">"."</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+    <span class="nl">visibility</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
+    <span class="c">/* 使用 clear:both 意味着 section 中新增的子元素会清除左、右浮动元素
+      (位于左、右浮动元素下方)
+    */</span>
+    <span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span> 
+  <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="定位-position">定位 position</h3>
+
+<p>position 属性有 4 个值:static、relative、absolute、fixed,默认值为 static。</p>
+
+<p>示例html：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nt">&lt;p&gt;</span>First Paragraph<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Second Paragraph<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"specialpara"</span><span class="nt">&gt;</span>Third Paragraph (with ID)<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Fourth Paragraph<span class="nt">&lt;/p&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="静态定位-position-static">静态定位 position: static</h4>
+
+<p>在静态定位的情况下,每个元素在处在常规文档流中。</p>
+
+<p><img src="position-sample-static.png" alt="" /></p>
+
+<h4 id="相对定位-position-relative">相对定位 position: relative</h4>
+
+<ul>
+  <li>相对的是它原来在文档流中的位置(或者默认位置)</li>
+  <li>接下来,可以使用 top、right、bottom 和 left 属性来改变它的位置</li>
+</ul>
+
+<p>相当于它把自己从原来的包含元素(body)中挣脱出来了，除了这个元素自己相对于原始位置挪动了一下之<br />
+外,页面没有发生任何变化。这个元素原来占据的空间没有动,其他元素也没动。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">p</span><span class="nf">#specialpara</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">relative</span><span class="p">;</span> <span class="nl">top</span><span class="p">:</span><span class="m">25px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">30px</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="position-sample-relative.png" alt="" /></p>
+
+<h4 id="绝对定位--positionabsolute">绝对定位  position:absolute</h4>
+
+<p>绝对定位会把元素彻底从文档流中拿出来。可以看到元素之前占据的空间被“回收了”。</p>
+
+<ul>
+  <li>绝对定位元素默认的定位上下文是 body。</li>
+  <li>绝对定位元素的任何祖先元素都可以成为它的定位上下文,只要你把相应祖先元素的 position 设定为 relative 即可。</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">p</span><span class="nf">#specialpara</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">absolute</span><span class="p">;</span> <span class="nl">top</span><span class="p">:</span><span class="m">25px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">30px</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="position-sample-absolute.png" alt="" /></p>
+
+<h4 id="固定定位-positionfixed">固定定位 position:fixed</h4>
+
+<p>完全移出文档流，固定定位元素的定位上下文是视口(浏览器窗口或手持设备的屏幕),因此它不会随页面滚动而移动。</p>
+
+<p>滚动页面才发现哟！</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">p</span><span class="nf">#specialpara</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">fixed</span><span class="p">;</span> <span class="nl">top</span><span class="p">:</span><span class="m">30px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">20px</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="定位上下文">定位上下文</h4>
+
+<blockquote>
+  <p>把元素的 position 属性设定为 relative、absolute 或 fixed 后,继而可以使用 top、<br />
+right、bottom 和 left 属性,相对于另一个元素移动该元素的位置。这里的“另一个元素”,就是该元素的 <strong>定位上下文</strong>。</p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"outer"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"inner"</span><span class="nt">&gt;</span>This is text...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">div</span><span class="nf">#outer</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">250px</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">50px</span> <span class="m">40px</span><span class="p">;</span> <span class="nl">border-top</span><span class="p">:</span><span class="m">3px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+<span class="nt">div</span><span class="nf">#inner</span> <span class="p">{</span><span class="nl">top</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span> <span class="nl">background</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>内外部 div 默认都是静态定位,它们之间不存在谁是谁的定位上下文这个问题。</p>
+
+<p><img src="position-context-ss01.png" alt="" /></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">div</span><span class="nf">#outer</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">250px</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">50px</span> <span class="m">40px</span><span class="p">;</span> <span class="nl">border-top</span><span class="p">:</span><span class="m">3px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+<span class="c">/* 添加 position:absolute */</span>
+<span class="nt">div</span><span class="nf">#inner</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">absolute</span><span class="p">;</span> <span class="nl">top</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span> <span class="nl">background</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>由于没有相对定位的祖先元素供其参照,内部 div 只能以默认的定位上下文 body 作为参照,相对于它定位。<br />
+此时,内部 div 完全无视其父元素(外部 div)的存在,top 和 left 属性会相对于 body 元素向下、向左偏移其<br />
+位置。</p>
+
+<p><img src="position-context-ss02.png" alt="" /></p>
+
+<p>把外部 div 的 position 属性设定为 relative</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">div</span><span class="nf">#outer</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">relative</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">250px</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span><span class="m">50px</span> <span class="m">40px</span><span class="p">;</span> <span class="nl">border-top</span><span class="p">:</span><span class="m">3px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;}</span>
+<span class="nt">div</span><span class="nf">#inner</span> <span class="p">{</span><span class="nl">position</span><span class="p">:</span><span class="nb">absolute</span><span class="p">;</span> <span class="nl">top</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span> <span class="nl">left</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span> <span class="nl">background</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>这样,绝对定位的内部 div 的定位上下文就变成了外部 div</p>
+
+<p><img src="position-context-ss03.png" alt="" /></p>
+
+<h3 id="显示属性-display">显示属性 display</h3>
+
+<p>大多数元素 display 属性的默认值不是 block,就是 inline。</p>
+
+<ul>
+  <li>块级元素,比如段落、标题、列表等,在浏览器中上下堆叠显示。</li>
+  <li>行内元素,比如 a、span 和 img,在浏览器中左右并排显示,只有前一行没有空间时才会显示到下一行。</li>
+</ul>
+
+<h4 id="displaynone">display:none</h4>
+
+<p>把元素的 display 设定为 none , 该元素及所有包含在其中的元素,都不会在页面中显示。它们原先占据的所有空间也都会被“回收”,就好像相关的标记根本不存在一样。与此相对的是 visibility属性,这个属性最常用的两个相对的值是 visible (默认值)和 hidden 。把元素的visibility 设定为 hidden ,元素会隐藏,但它占据的页面空间仍然“虚位以待”<br />
+。</p>
+
+<h3 id="背景">背景</h3>
+
+<p>背景支持为元素添加背景颜色和背景图片。</p>
+
+<p><img src="background-model.png" alt="" /></p>
+
+<h4 id="css背景属性">CSS背景属性</h4>
+
+<ul>
+  <li>background-color</li>
+  <li>background-image</li>
+  <li>background-repeat</li>
+  <li>background-position</li>
+  <li>background-size</li>
+  <li>background-attachment</li>
+  <li>background(简写属性)</li>
+  <li>background-clip、background-origin、background-break(目前尚未得到广泛支持)</li>
+</ul>
+
+<h4 id="背景颜色-background-color">背景颜色 background-color</h4>
+
+<p>background-color 是背景属性中最简单的,通过它可以设定元素的颜色。</p>
+
+<h4 id="背景图片-background-image">背景图片 background-image</h4>
+
+<p>后面例子要用到图片，如下图所示：</p>
+
+<p><img src="background-sample-pic.png" alt="" /></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nt">p</span> <span class="p">{</span>
+  <span class="err">...</span>
+  <span class="nl">background-image</span><span class="p">:</span><span class="sx">url(images/blue_circle.png)</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="background-default.png" alt="" /></p>
+
+<p>默认情况下背景图片会以元素左上角为起点,沿水平和垂直方向重复出<br />
+现,最终填满整个背景区域。</p>
+
+<p><code class="highlighter-rouge">background-image:url(图片路径/图片文件名)</code><br />
+图片地址两边不用加引号,当然加了也没问题。</p>
+
+<p>要改变默认的水平和垂直重复效果,可以修改 background-repeat 属性;要改变背景<br />
+图片的起点,可以修改 background-position 属性。</p>
+
+<h4 id="背景重复-background-repeat">背景重复 background-repeat</h4>
+
+<ul>
+  <li>控制背景重复方式的 background-repeat 属性有 4 个值。默认值就是 repeat</li>
+  <li>只在水平方向重复的 repeat-x</li>
+  <li>只在垂直方向上重复的 repeat-y</li>
+  <li>在任何方向上都不重复(或者说只让背景图片显示一次)的 no-repeat</li>
+</ul>
+
+<p><img src="background-repeat.png" alt="" /></p>
+
+<p>CSS3 还规定另外两个值(但尚未得到浏览器支持)</p>
+
+<ul>
+  <li>background-repeat:round:为确保图片不被剪切,通过调整图片大小来适应背景区域。</li>
+  <li>background-repeat:space,为确保图片不被剪切,通过在图片间添加空白来适应背景区域。</li>
+</ul>
+
+<h4 id="背景位置-background-position">背景位置 background-position</h4>
+
+<p>background-position 属性有 5 个关键字值,分别是 top、left、bottom、right 和 center,<br />
+这些关键字中的任意两个组合起来都可以作为该属性的值。比如,top right 表示把<br />
+图片放在元素的右上角位置,center center 把图片放在元素的中心位置。</p>
+
+<p>background-position 属性同时设定元素和图片的原点。原点决定了元<br />
+素和图片中某一点的水平和垂直坐标。默认情况下,background-position 的原点位<br />
+于左上角。换句话说,元素的左上角和图片的左上角是对齐的,随后图片向各个方<br />
+向重复,都是以左上角为起点。</p>
+
+<ul>
+  <li>设定背景位置时可以使用三种值:关键字、百分比、绝对或相对单位的数值。
+    <ul>
+      <li>可以使用两个值分别设定水平和垂直位置。</li>
+      <li>关键字指的顺序不重要,left bottom 和 bottom left 意思相同</li>
+      <li>使用数值(比如 40% 30%)时,第一个值表示水平位置,第二个值表示垂直位置。要是只设定一个值,则将其用来设定水平位置,而垂直位置会被设为 center。</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">/*center center 的简化写法*/</span>
+<span class="nt">p</span><span class="nf">#center</span> <span class="p">{</span><span class="nl">background-position</span><span class="p">:</span><span class="nb">center</span><span class="p">;}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>只给 background-position 设定一个关键字值,则另一个也会取相同的值(比如这里<br />
+就相当于写了 background-position:center cetner).</p>
+
+<p>比较修改前后的结果会发现,第二段中的背景图片是以段落的中心点为起点,然后<br />
+再向水平和垂直方向重复。</p>
+
+<p><img src="css-background-repeat.png" alt="" /></p>
+
+<h5 id="用百分比来设定位置">用百分比来设定位置</h5>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span><span class="m">150px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span><span class="m">250px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span><span class="m">2px</span> <span class="nb">solid</span> <span class="m">#aaa</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="m">20px</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span><span class="sx">url(images/turq_spiral_150.png)</span><span class="p">;</span>
+  <span class="nl">background-repeat</span><span class="p">:</span><span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-position</span><span class="p">:</span><span class="m">50%</span> <span class="m">50%</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="background-position-center.png" alt="" /></p>
+
+<h4 id="背景尺寸-background-size">背景尺寸 background-size</h4>
+
+<p>background-size 是 CSS3 规定的属性,但却得到了浏览器很好的支持。<br />
+这个属性用来控制背景图片的尺寸,可以给它设定的值及含义如下。</p>
+
+<ul>
+  <li>50%:缩放图片,使其填充背景区的一半。</li>
+  <li>100px 50px:把图片调整到 100 像素宽,50 像素高。</li>
+  <li>cover:拉大图片,使其完全填满背景区;保持宽高比。</li>
+  <li>contain:缩放图片,使其恰好适合背景区;保持宽高比。</li>
+</ul>
+
+<p><img src="background-size.png" alt="" /></p>
+
+<h4 id="背景粘附-background-attachment">背景粘附 background-attachment</h4>
+
+<p>background-attachment 属性控制滚动元素内的背景图片是否随元素滚动而移动。这<br />
+个属性的默认值是 scroll,即背景图片随元素移动。如果把它的值改为 fixed,那么<br />
+背景图片不会随元素滚动而移动。<br />
+background-attachment:fixed 最常用于给 body 元素中心位置添加淡色水印,让水印<br />
+不随页面滚动而移动。</p>
+
+<h4 id="background-clip-css3-新要检查浏览器兼容">background-clip （CSS3 新，要检查浏览器兼容）</h4>
+
+<p>控制背景绘制区域的范围,比如可以让背景颜色和背景图片只<br />
+出现在内容区,而不出现在内边距区域。默认情况下,背景绘制区域是扩展到边<br />
+框外边界的。</p>
+
+<h4 id="background-origin-css3-新要检查浏览器兼容">background-origin （CSS3 新，要检查浏览器兼容）</h4>
+
+<p>控制背景定位区域的原点,可以设定为元素盒子左上角以外<br />
+的位置。比如,可以设定以内容区左上角作为原点。</p>
+
+<h4 id="background-breakcss3-新要检查浏览器兼容">background-break（CSS3 新，要检查浏览器兼容）</h4>
+
+<p>控制分离元素(比如跨越多行的行内盒子)的显示效果。</p>
+
+<h4 id="多背景图片">多背景图片</h4>
+
+<p>先列出的图片显示在上方,或者说,更接近前景。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nt">p</span> <span class="p">{</span>
+  <span class="err">...</span> <span class="err">...</span>
+  <span class="nl">background</span><span class="p">:</span>
+    <span class="sx">url(images/turq_spiral.png)</span> <span class="m">30px</span> <span class="m">-10px</span> <span class="nb">no-repeat</span><span class="p">,</span>
+    <span class="sx">url(images/pink_spiral.png)</span> <span class="m">145px</span> <span class="m">0px</span> <span class="nb">no-repeat</span><span class="p">,</span>
+    <span class="sx">url(images/gray_spiral.png)</span> <span class="m">140px</span> <span class="m">-30px</span> <span class="nb">no-repeat</span><span class="p">,</span> <span class="m">#ffbd75</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="background-multiple.png" alt="" /></p>
+
+<h4 id="背景渐变">背景渐变</h4>
+
+<p>渐变是 CSS 帮我们生成的背景图片。添加渐变可以使用 background-image 属性,也<br />
+可以像后面例子中一样使用简写 background 属性。</p>
+
+<p>渐变分两种,一种线性渐变,一种放射性渐变。线性渐变从元素的一端延伸到另一<br />
+端,放射性渐变则从元素内一点向四周发散。</p>
+
+<h5 id="线性渐变">线性渐变</h5>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'gradient1'</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'gradient2'</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'gradient3'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span><span class="m">150px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+  <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="m">16px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/*例 1:默认为从上到下*/</span>
+<span class="nc">.gradient1</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">#e86a43</span><span class="p">,</span> <span class="m">#fff</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/*例 2:从左到右*/</span>
+<span class="nc">.gradient2</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="nb">left</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">,</span> <span class="m">#fff</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/*例 3:左上到右下*/</span>
+<span class="nc">.gradient3</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">-45deg</span><span class="p">,</span> <span class="m">#e86a43</span><span class="p">,</span> <span class="m">#fff</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="linear-gradient-3-samples.png" alt="" /></p>
+
+<h6 id="渐变点">渐变点</h6>
+
+<p>渐变点就是渐变方向上的点,可以在这些点上设定颜色和不透明度。</p>
+
+<p>通过设定下一个渐变点的颜色值,就可以控制渐变的效果。可以添加任意多个渐变点。</p>
+
+<p>渐变点的位置一般使用整个渐变宽度的百分比来表示。</p>
+
+<p>如果不是使用百分比或其他值声明渐变点的位置,则三种颜色会均匀分布于整个渐<br />
+变,其实际位置是 0%、50%和 100%。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c">/*例 1:50%处有一个渐变点*/</span>
+<span class="nc">.gradient1</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">#64d1dd</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">50%</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/*例 2:20%和 80%处有两个渐变点*/</span>
+<span class="nc">.gradient2</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">#e86a43</span> <span class="m">20%</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">50%</span><span class="p">,</span> <span class="m">#e86a43</span> <span class="m">80%</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/*例 3:25%、50%、75%处有三个渐变点*/</span>
+<span class="nc">.gradient3</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">#64d1dd</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">25%</span><span class="p">,</span> <span class="m">#64d1dd</span> <span class="m">50%</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">75%</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/*例 4:为同一个渐变点设定两种颜色可以得到突变效果*/</span>
+<span class="nc">.gradient4</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span><span class="n">linear-gradient</span><span class="p">(</span><span class="m">#e86a43</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">25%</span><span class="p">,</span> <span class="m">#64d1dd</span> <span class="m">25%</span><span class="p">,</span> <span class="m">#64d1dd</span> <span class="m">75%</span><span class="p">,</span> <span class="m">#fff</span> <span class="m">75%</span><span class="p">,</span> <span class="m">#e86a43</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="linear-gradiant-points.png" alt="" /></p>
+
+<h5 id="放射性渐变">放射性渐变</h5>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c">/* 这里虽然只声明了-webkit-前缀,但带有其他厂商前缀的属性也是必要的。*/</span>
+<span class="nc">.gradient1</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">-webkit-radial-gradient</span><span class="p">(</span><span class="m">#fff</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">,</span> <span class="m">#70aa25</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.gradient2</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">-webkit-radial-gradient</span><span class="p">(</span><span class="nb">circle</span><span class="p">,</span> <span class="m">#fff</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">,</span> <span class="m">#e86a43</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.gradient3</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">-webkit-radial-gradient</span><span class="p">(</span><span class="m">50px</span> <span class="m">30px</span><span class="p">,</span> <span class="nb">circle</span><span class="p">,</span> <span class="m">#fff</span><span class="p">,</span> <span class="m">#64d1dd</span><span class="p">,</span><span class="m">#4947ba</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="radial-gradient.png" alt="" /></p>
+
+<h2 id="字体和文本">字体和文本</h2>
+
+<h3 id="字体">字体</h3>
+
+<h4 id="字体来源">字体来源</h4>
+
+<ul>
+  <li>用户机器中安装的字体。</li>
+  <li>保存在第三方网站上的字体。最常见的是 Typekit 和 Google,可以使用 link 标签<br />
+把它们链接到你的页面上。</li>
+  <li>保存在你的 Web 服务器上的字体。这些字体可以使用 <code class="highlighter-rouge">@font-face</code> 规则随网页一起<br />
+发送给浏览器。</li>
+</ul>
+
+<h2 id="兼容性">兼容性</h2>
+
+<h3 id="老浏览器ie8支持html5的tag">老浏览器（&lt;=ie8）支持html5的tag</h3>
+
+<p>html5 引入了很多新的tag，例如，&lt;section&gt;, &lt;article&gt;, &lt;nav&gt; 等。</p>
+
+<p>在低于IE9的浏览器，不认识这些tag。</p>
+
+<p>解决方法是，在 &lt;head&gt; 中添加：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c">&lt;!--[if lt IE 9]&gt;
+&lt;script src="//html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="浏览器市场份额">浏览器市场份额</h3>
+
+<ul>
+  <li><a href="http://www.netmarketshare.com/browser-market-share.aspx">http://www.netmarketshare.com/browser-market-share.aspx</a></li>
+  <li><a href="http://gs.statcounter.com">http://gs.statcounter.com</a></li>
+</ul>
+
+<h3 id="doctype">doctype</h3>
+
+<h4 id="html-5">html 5</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="cp">&lt;!doctype html&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="html-401-transitional">HTML 4.01 Transitional</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="cp">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="xhtml-10-transitional">XHTML 1.0 Transitional</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/1999/xhtml"</span><span class="nt">&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="modernizr-用于检测用户浏览器兼容性-js库">Modernizr 用于检测用户浏览器兼容性 JS库</h3>
+
+<p>Modernizr 是一个 JavaScript 库,用于检测用户浏览器支持哪些 HTML5 和 CSS3 功能。<br />
+更多信息,请参考这个网址: <a href="http://modernizr.com">http://modernizr.com</a>。</p>
+
+<h3 id="厂商前缀-vps">厂商前缀 VPS</h3>
+
+<p>为鼓励浏览器厂商尽早采用 W3C 的 CSS3 推荐标准,于是就产生了</p>
+
+<p>VSP Vendor Specific Prefixes,(厂商前缀)的概念。</p>
+
+<p>有了这些 CSS 属性的前缀,厂商就可以尝试实现 W3C 涵盖新 CSS 属性的工作草案。在迅速实<br />
+现新属性的同时,还可以声明它们是过渡的、部分实现的,或者实验性的。总之,后果由使用<br />
+者自负。</p>
+
+<p>就拿 W3C 推荐的 transform 属性为例,标准语法是这样的:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">transform</span><span class="o">:</span> <span class="nt">skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>然而,由于这个属性还没有完全定案,为保证在大多数浏览器以及它们的实验性实现中能够使<br />
+用这个属性,应该针对想要支持的浏览器为该属性添加 VSP。每个浏览器只使用各自能理解的<br />
+属性声明。</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nt">-moz-transform</span><span class="nd">:skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>     <span class="c">/* Firefox */</span>
+<span class="nt">-webkit-transform</span><span class="nd">:skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>  <span class="c">/* Chrome 及 Safari */</span>
+<span class="nt">-ms-transform</span><span class="nd">:skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>      <span class="c">/* 微软 Internet Explorer */</span>
+<span class="nt">-o-transform</span><span class="nd">:skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>       <span class="c">/* Opera */</span>
+<span class="nt">transform</span><span class="nd">:skewX</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>          <span class="c">/* 最后是 W3C 标准属性 */</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>VSP 的开头是一个连字符,然后是前缀名,接着又是一个连字符,最后是 W3C 属性名。另外<br />
+要特别注意,在带前缀的属性声明之后还要声明 W3C 标准属性,以备将来有浏览器实现完整<br />
+的不带前缀的属性时派上用场。<br />
+这里的 Safari 和 Chrome 都使用相同的 <code class="highlighter-rouge">-webkit-</code> 前缀,<br />
+是因为<br />
+它们都使用 Webkit 渲染引擎。</p>
+
+<p>以下 CSS3 属性必须加 VPS:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>border-image</td>
+      <td>translate</td>
+    </tr>
+    <tr>
+      <td>linear-gradient</td>
+      <td>transition</td>
+    </tr>
+    <tr>
+      <td>radial-gradient</td>
+      <td>background*</td>
+    </tr>
+    <tr>
+      <td>transform</td>
+      <td>background-image*</td>
+    </tr>
+    <tr>
+      <td>transform-origin</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>* 针对背景图片或渐变</p>
+
+<p>有关 CSS3 和 VPS 的最新信息,可以参考这个网站: <a href="http://caniuse.com">http://caniuse.com</a>。<br />
+如果想实现自动添加 VPS,可以使用-prefix-free 腻子脚本(polyfill)</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#html" title="Pages tagged html" class="tag"><span class="term">html</span></a><a href="/tags#css" title="Pages tagged css" class="tag"><span class="term">css</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

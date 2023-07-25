@@ -1,0 +1,897 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>linux-windows双系统启动设置 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-windows双系统启动设置">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/linux-windows%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%AE%BE%E7%BD%AE/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/linux-windows%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%AE%BE%E7%BD%AE/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">linux-windows双系统启动设置</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-03-18T00:00:00+08:00">March 18, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://blog.csdn.net/Sebastien23/article/details/99691881">迁移win10的efi引导分区到系统固态硬盘</a></li>
+      <li><a href="https://weiku.co/article/309/">Windows 更换硬盘后通过 BCDBoot 命令修复 UEFI 启动引导</a></li>
+      <li><a href="https://www.chinafix.com/thread-967034-1-1.html">Windows 和 GPT 常见问题解答(uefi、GPT、ESP、MSR概念扫盲贴)</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/configure-uefigpt-based-hard-drive-partitions">microsoft.com - UEFI/GPT-based hard drive partitions</a></li>
+      <li><a href="https://wiki.archlinux.org/index.php/EFI_system_partition">archlinux-wiki - EFI system partition</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="在-windows-10-的基础上安装-linux-mint">在 Windows 10 的基础上安装 linux mint</h2>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://itsfoss.com/no-grub-windows-linux/">Fix Grub Not Showing For Windows 10 Linux Dual Boot</a></li>
+      <li><a href="https://www.tecmint.com/install-ubuntu-alongside-with-windows-dual-boot/">ow to Install Ubuntu Alongside With Windows 10 or 8 in Dual-Boot</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="安装前准备">安装前准备</h3>
+
+<ol>
+  <li>在BIOS中关闭Secure Boot
+    <ul>
+      <li>MSI B450 BIOS
+        <ol>
+          <li>开机，狂按DEL键，进入BIOS界面</li>
+          <li>点击BIOS右上角放大镜图标，搜索“Secure Boot”，设置为Disable</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="安装">安装</h3>
+
+<ol>
+  <li>创建UEFI的mint安装启动U盘</li>
+  <li>启动installer开始安装，下一步，直到选择安装类型（选择分区）</li>
+  <li>选择类型：Install mint alongside Windows 10
+    <ul>
+      <li>关于安装到哪一个分区？<br />
+点击下一步，installer自己选择分区，并弹出对话框，告诉你它选择了哪个分区。<br />
+很尴尬呀，并没有图形化界面让你自己选择哪个分区。<br />
+我的做法是，返回上一步，另外开gparted将ext4系统分区创建好，其他不想installer碰的分区，改成ntfs格式。</li>
+    </ul>
+  </li>
+  <li>下一步，直到安装好</li>
+  <li>重启，F11进入启动菜单，选择linux mint</li>
+</ol>
+
+<h3 id="安装后">安装后</h3>
+
+<ul>
+  <li>MSI B450 BIOS 设置默认使用ubuntu boot
+    <ol>
+      <li>开机，狂按DEL键，进入BIOS界面</li>
+      <li>进入菜单 Settings -&gt; Boot -&gt; UEFI Hard Disk Drive BBS Priorities</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="windows">Windows</h2>
+
+<h3 id="windows重装升级导致grub失效">windows重装、升级导致grub失效</h3>
+
+<ol>
+  <li>系统管理员身份运行 <code class="highlighter-rouge">cmd</code></li>
+  <li>执行 <code class="highlighter-rouge">bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi</code></li>
+  <li>如果不行，尝试： <code class="highlighter-rouge">bcdedit /deletevalue {bootmgr} path \EFI\ubuntu\grubx64.efi</code></li>
+</ol>
+
+<h3 id="恢复使用-windows-boot-manager">恢复使用 Windows boot manager</h3>
+
+<ol>
+  <li><code class="highlighter-rouge">bcdedit /set {bootmgr} path \EFI\Microsoft\Boot\bootmgfw.efi</code></li>
+</ol>
+
+<h3 id="迁移win10的efi引导分区到系统固态硬盘">迁移win10的efi引导分区到系统固态硬盘</h3>
+
+<ol>
+  <li>Windows安装U盘启动系统，按SHIFT+F10进入命令行。
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre> diskpart
+ list disk
+ select disk your-disk-no # Note: Select the disk where you want to add the EFI System partition
+ list partition
+
+ select partition your-partition-no # Note: Select the Windows OS partition or your data partition
+ shrink desired=100 # 从目前启动盘中挤出 100 M，这里单位是M，数值多少更具要迁移过来的那个EFI分区大小来确定
+ create partition efi size=100
+ format quick fs=fat32
+ assign letter=select
+
+ list partition
+ list volume # 记录下Windows系统盘此时的Volume，不一定是C哦，例如，这个命令输出列表里可能是：F
+ exit  # 推出 DiskPart..
+
+ bcdboot F:\Windows /s S:
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>拔掉U盘，重启系统</li>
+</ol>
+
+<p>现在SSD都是4k扇区，老版本ghost11.0.2 又有对齐问题，得用最新版本ghost32 11.5.1 ，勉强凑合。</p>
+
+<p>ghost 12 直接克隆，毫无问题。<br />
+至于UEFI启动修复很简单，就是修复一下BCD文件就OK了。比如新盘ESP挂载F:，系统挂载G:盘。然后到F:\EFI\Microsoft\Boot下面，修改设备<br />
+bcdedit /store BCD /set {bootmgr} device partition=F:<br />
+bcdedit /store BCD /set {memdiag} device partition=F:<br />
+bcdedit /store BCD /set {default} device partition=G:<br />
+bcdedit /store BCD /set {default} osdevice partition=G:<br />
+这些操作可以在UEFI/MBR系统上都能用，BCD对UEFI/MBR或者32/64位都没有太大区别。唯一差别就是一个是winload.exe一个是winload.efi，已经bootmgr多了个path到\EFI\Microsoft\Boot\bootmgfw.efi。所以MBR系统克隆到UEFI也可以用bcdedit修复一下，然后复制\Windows\Boot\EFI，Fonts，Resources重构一个ESP目录。</p>
+
+<p>问	Windows 默认装入了什么分区？<br />
+答	Windows 只公开基本数据分区。其他 FAT 文件系统分区也可以被装入，但是不只以编程的方式公开。只有基本数据分区分配了驱动器号和装入点。<br />
+装入了 ESP FAT 文件系统，但它不是公开的。这使运行在 Windows 上的程序能更新 ESP 的内容。使用 “mountvol /s” 为 ESP 分配一个驱动器号，以实现对分区的访问。访问 ESP 需要管理员权限。<br />
+虽然 MSR 以及从 MSR 创建的任何分区都具备可识别的文件系统，但它们都不是公开的。<br />
+Windows 不能识别任何特定于 OEM 的分区或与其他操作系统相关的分区。具备可识别文件系统的无法识别的分区可以当作 ESP 处理。它们将被装入，但不是公开的。与 MBR 磁盘不同，特定于 OEM 的分区和其他操作系统分区之间没有实际的区别，都是“无法识别的”。</p>
+
+<p>答	您可以使用下表中所列的工具访问不同类型的 GPT 磁盘分区。<br />
+工具	| Windows	| 固件<br />
+Diskpart.efi	|  磁盘分区工具		| 	ESP MSR 数据<br />
+Diskpart.exe 	| 磁盘分区工具	ESP MSR 数据		| <br />
+Diskmgmt.msc 	| 逻辑磁盘管理器	ESP 数据		| <br />
+Explorer.exe 	| 文件资源管理器	数据		| <br />
+您也可以使用 Microsoft Platform SDK API 开发属于自己的工具，在 GPT 磁盘分区的原语级别对其进行访问。<br />
+问	在 Windows 中如何管理 GPT 磁盘？</p>
+
+<ul>
+  <li>DiskGenius 的系统迁移工具<br />
+DiskGenius -&gt; 工具 -&gt; 系统迁移</li>
+</ul>
+
+<h3 id="bcdbootexe">BCDboot.exe</h3>
+
+<p>在 win8/10 系统中有一条 <code class="highlighter-rouge">BCDboot.exe</code> 命令，它是一种快速设置系统启动分区或修复系统启动环境的命令行工具。<code class="highlighter-rouge">CDboot.exe</code> 命令是通过从已安装的 Windows 系统文件夹中复制一小部分启动环境文件来设置/修复系统的。BCDboot 还会在系统分区上创建引导配置 BCD 文件，该文件存储了启动引导项，可让您选择引导已安装的 Windows。</p>
+
+<p>当系统无法启动时，用U盘或光盘启动 Windows PE 环境、或者使用 win8/10 的高级修复模式启动到命令符环境（推荐），然后运行BCDboot命令来修复损坏的系统。</p>
+
+<p>BCDboot 命令通常在 <code class="highlighter-rouge">%WINDIR%\System32</code> 文件夹内，它运行后从计算机上已有的 Windows 映像复制一套启动环境文件到启动分区（GPT）/目录(MBR)中。</p>
+
+<p>这些启动环境文件包括：从已安装的系统 <code class="highlighter-rouge">%WINDIR%\boot\efi</code> 文件夹和 <code class="highlighter-rouge">%WINDIR%\System32\boot</code> 文件夹复制到系统启动分区中。在UEFI+GPT环境下，BCDboot 将文件复制到固件所标识的默认系统启动分区（ESP）。另外，<code class="highlighter-rouge">BCDboot</code> 还使 <code class="highlighter-rouge">%WINDIR%\System32\Config\BCD-Template</code> 文件为模板，在系统启动分区上创建新的 BCD（启动菜单）文件，并初始化 BCD 启动环境文件。可以在 BCD-Template 文件中定义特定的 BCD 设置(需要BCB文件编辑器)。</p>
+
+<ul>
+  <li>在基于 BIOS 的系统上，系统分区是使用主引导记录 (MBR) 磁盘格式的磁盘上的活动分区。BCDboot 会在系统分区上创建 Boot 目录，并将所有需要的引导环境文件都复制到此目录中。</li>
+  <li>
+    <p>在基于 UEFI(统一可扩展固件接口) 的系统上，EFI 系统分区是使用 GUID 分区表 (GPT) 磁盘格式的磁盘上的系统启动分区（ESP）。BCDboot 会创建 <code class="highlighter-rouge">\Efi\Microsoft\Boot</code> 目录，并将所有需要的引导环境文件都复制到此目录中。</p>
+  </li>
+  <li>BCDboot 命令行格式
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>BCDBOOT source [/llocale] [/svolume-letter] [/v] [/m [{OS Loader GUID}]] 
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>各参数的具体含义：</p>
+    <ul>
+      <li>source ，例如，c:\windows 系统安装目录</li>
+      <li>/s S: 指定esp分区所在磁盘，例如，这里是S盘</li>
+      <li>/f uefi 指定启动方式为uefi，注意之间的空格一定要输入。</li>
+      <li>/l zh-cn 指定uefi启动界面语言为简体中文</li>
+    </ul>
+  </li>
+  <li>示例</li>
+</ul>
+
+<ol>
+  <li>BIOS+MBR 常用<br />
+ <code class="highlighter-rouge">bcdboot C:\Windows /l zh-cn</code><br />
+ 解释：从系统盘<code class="highlighter-rouge">C:\Windows</code>目录中复制启动文件，并创建BCD（中文）启动菜单，从而修复系统启动环境。</li>
+  <li>UEFI+GPT 常用<br />
+　　<code class="highlighter-rouge">bcdboot C:\Windows /s S: /f uefi /l zh-cn</code><br />
+　　解释：用DG等工具先将ESP分区装载为S盘，从系统盘C:\Windows目录中复制UEFI格式的启动文件到ESP分区中，修复系统。</li>
+</ol>
+
+<h2 id="ubuntu">Ubuntu</h2>
+
+<p><code class="highlighter-rouge">efibootmgr</code> 工具可以管理efi启动项</p>
+
+<h2 id="设置硬盘分区表格式gpt-还是-mbr">设置硬盘分区表格式（GPT 还是 MBR）</h2>
+
+<h3 id="使用-windows-的-diskpart">使用 Windows 的 diskpart</h3>
+
+<ol>
+  <li>以管理员权限运行 cmd， 执行 <code class="highlighter-rouge">diskpart</code> 进入工具命令行界面</li>
+  <li>改成GPT分区表
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> list volume
+ list disk
+ select disk your-disk-no
+ convert gpt
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="使用-diskgenius-分区工具">使用 DiskGenius 分区工具</h3>
+
+<ol>
+  <li>启动winpe，使用DiskGenius分区工具</li>
+  <li>在 DiskGenius 中选中磁盘</li>
+  <li>菜单“硬盘” 》转换分区表类型为：MBR格式 / GPT</li>
+  <li>重启，开始windows安装。</li>
+</ol>
+
+<h3 id="使用-fdisk">使用 fdisk</h3>
+
+<ul>
+  <li>执行 <code class="highlighter-rouge">fdisk -l</code>，
+    <ul>
+      <li>如果 磁盘信息显示 <code class="highlighter-rouge">Disklabel type: gpt</code> 则是 GPT 分区；</li>
+      <li>如果 磁盘信息显示 <code class="highlighter-rouge">Disklabel type: dos</code> 则是 MBR 分区；</li>
+    </ul>
+  </li>
+</ul>
+
+<p>进一步查是什么文件系统，使用：<code class="highlighter-rouge">minfo -i /dev/sdxY :: | grep 'disk type'</code></p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

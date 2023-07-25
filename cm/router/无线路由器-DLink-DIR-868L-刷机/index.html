@@ -1,0 +1,984 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>D-Link-Dir-686L 刷机 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="dd-wrt, openwrt, ac68u, merlin, 梅林">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D-Link-Dir-686L 刷机">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/router/%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8-DLink-DIR-868L-%E5%88%B7%E6%9C%BA/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/router/%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8-DLink-DIR-868L-%E5%88%B7%E6%9C%BA/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">D-Link-Dir-686L 刷机</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-04-12T00:00:00+08:00">April 12, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><strong>koolshare</strong></li>
+      <li><a href="https://koolshare.cn/thread-480-1-1.html">D-Link AC1750无线路由器DIR-868L开箱评测及试用报告</a></li>
+      <li><a href="https://koolshare.cn/thread-193388-1-1.html">DIR868L 2.4G WIFI异常修复图文教程 - 2021-3-12 </a></li>
+      <li><a href="https://koolshare.cn/thread-179591-1-1.html">Dlink Dir-868L刷ASUS固件384/386做AIMESH图文教程 - 2020-4-7</a></li>
+      <li><a href="http://firmware.koolshare.cn/Koolshare_RMerl_New_Gen_384/RT-AC68U/">Koolshare_RMerl_New_Gen_384 - RT-AC68U 固件 - 刷CFE之后的868L可以用</a></li>
+      <li><a href="http://firmware.koolshare.cn/Koolshare_RMerl_New_Gen_386/RT-AC68U/">Koolshare_RMerl_New_Gen_386 - RT-AC68U - 刷CFE之后的868L可以用</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><strong>恩山论坛</strong></li>
+      <li><a href="https://www.right.com.cn/forum/thread-876407-1-1.html">恩山论坛 - Dlink dir868L刷Aimesh成功</a></li>
+      <li><a href=""></a></li>
+      <li><a href="https://www.reddit.com/r/HomeNetworking/comments/i1m046/flashing_asus_ac66_on_dlink_868l_for_cheap/">Flashing asus ac66 on dlink 868L for cheap wireless ai mesh router</a></li>
+      <li><a href="http://blog.su61.com/2019/04/02/d-link-dir-868l-a1-shuadd-wrt-shuatomato-by-shibby-shuameilingujian/">D-Link DIR-868L A1 刷DD-WRT 刷Tomato by Shibby 刷梅林固件</a></li>
+      <li><a href="https://www.housestudy.net/post/93.html">好室研研 - 洋垃圾DIR-868L复活记</a></li>
+      <li><a href="https://deviwiki.com/wiki/D-Link_DIR-868L_rev_A1">deviwiki.com - D-Link DIR-868L rev A1</a></li>
+      <li><a href="http://files.dlink.com.au/products/DIR-868L/REV_B/">DLINK - DIR-868L - REV_B - 官方固件下载</a></li>
+      <li><a href="http://support.dlink.com.au/download/download.aspx?product=DIR-868L">DLINK - DIR-868L - REV_B - 网页</a></li>
+      <li><strong>西窗浪人</strong></li>
+      <li><a href="https://www.bigxd.com/2021/03/913.html">D-Link无线路由器DIR-868L梅林固件Spring 2021版本【已发布第2版，兼容两种软件中心】</a></li>
+      <li><a href="https://www.bigxd.com/2020/10/802.html">D-Link无线路由器DIR-868L梅林固件V2.9版本，CFE2.2版本</a></li>
+      <li><a href="https://www.bigxd.com/2020/07/765.html">D-Link无线路由器DIR-868L梅林固件V2.8版本，半年安全更新版</a></li>
+      <li><a href="https://www.bigxd.com/2020/03/733.html">D-Link无线路由器DIR-868L梅林固件V2.7版本，3月紧急更新版</a></li>
+      <li><a href="https://www.bigxd.com/2019/08/626.html">D-Link无线路由器DIR-868L梅林固件V2.5版本，修复AI-mesh功能，修复WAN指示灯初始状态</a></li>
+      <li><a href="https://www.bigxd.com/2019/08/617.html">D-Link无线路由器DIR-868L梅林固件V2.3版本,CFE版本V1.6发布，更新到最新384.13分支</a></li>
+      <li><a href="https://www.bigxd.com/2019/03/507.html">D-Link无线路由器DIR-868L原版CFE复刻版本下载，支持刷梅林</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>DD-WRT
+    <ul>
+      <li><a href="https://wiki.dd-wrt.com/wiki/index.php/D-Link_DIR-868L">dd-wrt wiki - D-Link DIR-868L</a></li>
+      <li><a href="ftp://ftp.dd-wrt.com/betas/2015/06-01-2015-r27147/dlink-dir868l-revb/">DD-Wrt固件下载地址 beta - DIR-868L - revb - r27147</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="mini-cfe进入方法">mini CFE进入方法：</h2>
+
+<p>电脑设置手动IP:</p>
+
+<p>IP地址为： 192.168.0.132<br />
+子网掩码： 255.255.255.0<br />
+网关： 192.168.0.1</p>
+
+<p>设置好手动IP后拔掉路由器电源，用牙签捅住底部RESET孔不放，再插上电源，期间牙签也捅住不放，默数十秒后松开牙签，浏览器访问192.168.0.1即是mini CFE的web界面</p>
+
+<ul>
+  <li><strong>恢复到原厂固件</strong></li>
+</ul>
+
+<ol>
+  <li>页面显示： D-Link Router Recovery Mode</li>
+  <li>点 Choose File 选择 <code class="highlighter-rouge">DIR868LB1_FW203B01.bin</code> 后，选择 upload 按钮</li>
+  <li>固件更新完成，868L自动重启完成后，浏览器停在 <code class="highlighter-rouge">192.168.0.1/info/Login.html</code> ，显示 Admin Password 设置页面</li>
+  <li>保险期间，恢复下出厂设置： Management -&gt; System Admin -&gt; Restore To Factory Default Settings</li>
+</ol>
+
+<h2 id="硬件规格">硬件规格</h2>
+
+<ul>
+  <li>
+    <p>D-Link DIR-868L A1<br />
+  Power: 12 VDC, 2.5 A<br />
+  CPU1: Broadcom BCM4708 (800 MHz, 2 cores)<br />
+  FLA1: 128 MiB (Spansion S34ML01G100TFI00)<br />
+  RAM1: 128 MiB (Micron MT47H64M16HR-25E:H)</p>
+
+    <p>ETH chip1: Broadcom BCM4708<br />
+  Switch: Broadcom BCM4708<br />
+  LAN speed: 1G<br />
+  LAN ports: 4<br />
+  WAN speed: 1G<br />
+  WAN ports: 1</p>
+  </li>
+</ul>
+
+<p>同类产品网件R6300V2比较一下：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>比较</td>
+      <td>DIR-868L</td>
+      <td>R6300 V2</td>
+    </tr>
+    <tr>
+      <td>SoC</td>
+      <td>BCM4708 800Mhz</td>
+      <td>BCM4708 800Mhz</td>
+    </tr>
+    <tr>
+      <td>Switch</td>
+      <td>in BCM4708</td>
+      <td>in BCM4708</td>
+    </tr>
+    <tr>
+      <td>LAN</td>
+      <td>1000Mbps*4</td>
+      <td>1000 Mbps*4</td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>128MB</td>
+      <td>256MB</td>
+    </tr>
+    <tr>
+      <td>Flash</td>
+      <td>128MB</td>
+      <td>128MB</td>
+    </tr>
+    <tr>
+      <td>2.4G</td>
+      <td>BCM4331</td>
+      <td>BCM4331</td>
+    </tr>
+    <tr>
+      <td>5G</td>
+      <td>BCM4360</td>
+      <td>BCM4360</td>
+    </tr>
+    <tr>
+      <td>Extend</td>
+      <td>USB3.0*1</td>
+      <td>USB3.0<em>1+USB2.0</em>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="d-link-dir-868l-b1-fw203">D-Link DIR-868L B1 FW:2.03</h2>
+
+<h3 id="原厂固件-b1-203-刷到-梅林固件384">原厂固件 B1 2.03 刷到 梅林固件384</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://koolshare.cn/thread-179591-1-1.html">Dlink Dir-868L刷ASUS固件384/386做AIMESH图文教程 - 2020-4-7</a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>刷机到dd-wrt
+    <ol>
+      <li>下载 dd-wrt 固件
+        <ol>
+          <li>访问 <a href="ftp://ftp.dd-wrt.com/betas/2015/06-01-2015-r27147/dlink-dir868l-revb/">ftp://ftp.dd-wrt.com/betas/2015/06-01-2015-r27147/dlink-dir868l-revb/</a>
+            <ul>
+              <li>r27147 是 rev.b 的第一个 dd-wrt 固件，后面的固件可能在 <code class="highlighter-rouge">mtd unlock /dev/mtd0</code> 失败，报错：
+                <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  mtd unlock /dev/mtd0
+  Unlocking /dev/mtd0 ...
+  Could not unlock MTD device: /dev/mtd0
+  /dev/mtd0: Not supported
+</pre></td></tr></tbody></table>
+</div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>下载 <code class="highlighter-rouge">factory-to-ddwrt.bin</code></li>
+        </ol>
+      </li>
+      <li>进入 D-Link DIR-868L 管理界面，浏览器访问 192.168.0.1</li>
+      <li>进入 Admin Upgrade 固件升级页面，点击 <code class="highlighter-rouge">Select File</code> 选择刚下载的 <code class="highlighter-rouge">factory-to-ddwrt.bin</code>，确认开始刷机</li>
+      <li>等待几分钟，刷机成功后，路由器自动重启完成，浏览器访问 <code class="highlighter-rouge">192.168.1.1</code> 进入 DD-wrt 管理页面</li>
+    </ol>
+  </li>
+  <li>打开 dd-wrt 的 ssh 访问
+    <ol>
+      <li>Services -&gt; Services Management -&gt; Secure Sehll</li>
+      <li>SSHd： 勾选 Enable</li>
+      <li>点击 Apply Settings</li>
+      <li><code class="highlighter-rouge">ssh root@192.168.1.1</code> ，输入密码，就可登陆。 默认密码是root / admin，但是如果之前刷过dd-wrt，很可能是原来的管理员帐号和密码。原因可能是这个dd-wrt版本自己创建个分区，之前刷回原厂，并没有影响到这个分区。
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> # cat /proc/mtd
+ dev:   size        erasesize     name
+ mtd0:  00200000    00010000      boot
+ mtd1:  00010000    00010000      nvram_cfe
+ mtd2:  00010000    00010000      nvram
+ mtd3:  02000000    00020000      linux
+ mtd4:  06000000    00020000      ddwrt
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <hr />
+  </li>
+  <li>备份CFE<br />
+ <code class="highlighter-rouge">dd</code> 备份cfe后，scp到电脑上
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> root@DD-WRT:^# dd if=/dev/mtd/0 of=/tmp/boot.bin
+ 4096+0 records in
+ 4096+0 records out
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <hr />
+  </li>
+  <li>生成CFE文件</li>
+  <li>用CFEEDIT打开下载到的<code class="highlighter-rouge">CFE_868L_melin384.bin</code>，修改MAC地址为你的地址：<br />
+ 路由器的MAC地址正常就是你背面标签的那个MAC地址，换过外壳之类的就另说了。
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> et0macaddr       --&gt; 替换成路由器的mac地址
+ 0:macaddr        --&gt; 替换成路由器的mac地址
+ 1:macaddr        --&gt; 替换成路由器mac地址+4
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+    <p>例如：</p>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> et0macaddr=E4:6F:13:F6:F3:7C
+ 0:macaddr=E4:6F:13:F6:F3:7C
+ 1:macaddr=E4:6F:13:F6:F3:80
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>修改完后的CFE另存为一个，这里以<code class="highlighter-rouge">CFE_868L_melin384_0000.bin</code>为例。</li>
+  <li><code class="highlighter-rouge">CFE_868L_melin384_0000.bin</code> 上传到路由器的root目录下。</li>
+  <li></li>
+  <li><code class="highlighter-rouge">ssh root@192.168.1.1</code> 登陆路由器，输入如下命令刷新CFE
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> # mtd unlock /dev/mtd0
+ Unlocking /dev/mtd0...
+ # mtd write -f CFE_868L_melin384_0000.bin /dev/mtd0
+ Writing from CFE_868L_melin384_0000.bin to /dev/mtd0...
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>CFE刷新后，输入reboot，同时马上按住reset，等到ttl=100，出现五次后，浏览器输入192.168.1.1（也可能是192.168.0.1）进入ASUS的CFE<br />
+  <img src="asus-miniweb.png" alt="" /></li>
+  <li>进入华硕CFE后，先点击restore default NVRAM values。<br />
+ 成功后，页面显示 : Command nvram erase completed. 点击Continue</li>
+  <li>然后上传RT-AC68U_384.14_0_koolshare.trx（你也可以上传AC66U B1的原厂固件）<br />
+ 上传要很久，不要动他！！！！等到上传完成后，会出现<code class="highlighter-rouge">Upload Completed. System is going to reboot.</code>。这个时候等着自动重启。有的人会碰到上传后出现浏览器跳转到找不到页面。<br />
+ 找不到页面的，换个浏览器，重新进CFE再上传一次。</li>
+  <li>等到TTL=64的时候，打开192.168.1.1.如果出现如下界面，显示<code class="highlighter-rouge">Welcome to RT-AC68U</code><br />
+ <img src="rt0ac66u_B1_刷机成功.png" alt="" /></li>
+  <li></li>
+  <li>
+    <hr />
+  </li>
+  <li>目前已知BUG如下：<br />
+ 1、端口顺序翻转。LAN1变成WAN口，这个跟之前的EA6700/6500V2一样的。<br />
+ 2、电源和INTERNET灯翻转。这个不确定是不是，反正两个灯都亮，但是电源灯是橙色的，INTERNET灯一直是绿色。<br />
+ 3、系统中显示的RAM还是256M，但是868L应该是128M，这个不确定如果使用超出128会不会有问题，大家慎重！！<br />
+ 4、原厂CFE备份出来用CFE编辑器打不开，这个可能是因为跟华硕的那个不一样。<br />
+ 5、2021.01.02，有坛友反馈2.4G网速非常慢，由于楼主不用这个频，所以没发现，后续我测试完会反馈结果。（已经解决）<br />
+ https://koolshare.cn/thread-193388-1-1.html</li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="已刷好-384-固件-更换-cfe">已刷好 384 固件 更换 CFE</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://koolshare.cn/thread-193388-1-1.html">DIR868L 2.4G WIFI异常修复图文教程 - 2021-3-12 </a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>用到的文件是里面的：mtd-write、CFE_868L_2.4Gfix_5GPRO.bin这两个文件<br />
+ 下载地址：<br />
+ 链接：https://pan.baidu.com/s/1UEDVB612krWTvzgEU6dMug<br />
+ 提取码：aw7b</li>
+  <li>使用CFE Editor 修改 <code class="highlighter-rouge">CFE_868L_2.4Gfix_5GPRO.bin</code><br />
+ 需要修改MAC地址为自己路由器的真实MAC,MAC地址前六位用9C:5C:8E，否则MESH会搜不到节点。
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> et0macaddr       --&gt; 替换成路由器的mac地址
+ 0:macaddr        --&gt; 替换成路由器的mac地址
+ 1:macaddr        --&gt; 替换成路由器mac地址+4
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>确认当前的系统版本，如果是386版本的，请降级到384版本。步骤可以参照最上面刷384的帖子。</li>
+  <li>打开路由器的SSH：系统管理-系统设置-服务-启用SSH，选择LAN&amp;WAN或者LAN only。</li>
+  <li>scp 上传mtd-write、CFE_868L_2.4Gfix_5GPRO.bin这两个文件到路由器</li>
+  <li>ssh连接到路由器上。然后先把原本的CFE做一下备份，并scp到电脑。命令如下：<br />
+ <code class="highlighter-rouge">dd if=/dev/mtd0 of=/tmp/home/root/cfe_bac.bin</code></li>
+  <li>刷入新的CFE，命令如下：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> chmod 755 mtd-write
+ ./mtd-write -i CFE_868L_2.4Gfix.bin -d boot
+ reboot
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>重启后再进CFE清理一次nvram，恢复初始化设置。</li>
+</ol>
+
+<h2 id="其他可能用到的技巧">其他可能用到的技巧</h2>
+
+<p><code class="highlighter-rouge">cat /proc/mtd</code> 显示目前的分区</p>
+
+<p>下载到 868L revB 对应的 mtd-write，可能可以使用<br />
+<code class="highlighter-rouge">chmod +x /tmp/mtd-write &amp;&amp; /tmp/mtd-write -i /tmp/cfe_dir-868l_v1.3.bin -d boot &amp;&amp; reboot</code></p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#dd-wrt" title="Pages tagged dd-wrt" class="tag"><span class="term">dd-wrt</span></a><a href="/tags#openwrt" title="Pages tagged openwrt" class="tag"><span class="term">openwrt</span></a><a href="/tags#ac68u" title="Pages tagged ac68u" class="tag"><span class="term">ac68u</span></a><a href="/tags#merlin" title="Pages tagged merlin" class="tag"><span class="term">merlin</span></a><a href="/tags#梅林" title="Pages tagged 梅林" class="tag"><span class="term">梅林</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

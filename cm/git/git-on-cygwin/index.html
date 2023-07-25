@@ -1,0 +1,881 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Windows下Git的安装与配置(Cygwin) &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, git, cygwin">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下Git的安装与配置(Cygwin)">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/git/git-on-cygwin/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/git/git-on-cygwin/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Windows下Git的安装与配置(Cygwin)</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2016-04-23T00:00:00+08:00">April 23, 2016</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <p>摘自：<a href="http://www.cnblogs.com/EasonWu/archive/2012/11/27/2791238.html">http://www.cnblogs.com/EasonWu/archive/2012/11/27/2791238.html</a></p>
+
+<h2 id="引子">引子</h2>
+
+<p>Git应该是目前最火热的源代码管理软件，虽然是从Linux中走出来的，但在Windows端的表现也是非常抢眼，大有取代SVN之势。 <br />
+但是刚开始用Git的时候，总感觉不是很顺手，没有SVN好用，在SVN的世界里最出名的客户端管理工具TortoiseSVN，让我们的开发工作变得异常舒适。虽然Tortoise公司也出了tortoisegit， 但因为刚开始对Git的工作原理不是很熟悉，再加上对Linux的白痴水平，结果就是各种不适应。最近接到公司内部一个小工具的开发任务，因为主要是我一 个人开发，可能会在家里进行测试，衡量在三，决定使用Git来管理，其实对于这种项目SVN是最适合的工具，但这次主要出于学习Git的出发点来考虑。这 篇文章说到底是一篇学习Window下Git开发环境搭建的笔记。</p>
+
+<h2 id="软件先行">软件先行</h2>
+
+<p>目前windows平台有两个模拟<em>nix like运行环境的工具：cygwin，msys；Git在cygwin，msys下都有相应的移植版本。现在WIndows下有非常多的Git用户，但Git为什么不出一个Windows Native版呢？虽然我没看过Git的源代码，但网络上有研究过的高人讲，Git里面使用了大量的</em>nix平台的native api，而这些API在Windows下是没有的，所以必须要cygwin、msys这样的一个蹭层来满足软件移植的要求。msysGit上目前Windows上用得非常多的一个基于msys平台的Git移植版本，但个人觉得Cygwin的命令行窗口的功能要比msys好很多，而且Cygwin 下很容易获得用到的开源工具。当然这个要仁者见仁了，总之你觉得那个好就用那一个。<br />
+这里主要介绍一下Cygwin下Git的安装与配置。</p>
+
+<h2 id="cygwin安装">Cygwin安装</h2>
+
+<p>Cygwin 的安装非常简单，先在其官方网站 http://www.cygwin.com/下载安装程序—一个只有几百KB的setup.exe文件，然后即可开始安装。</p>
+
+<p>(1) 安装过程中会让用户选择安装模式：通过网络安装、下载后安装或者通过本地软件包缓存（安装时自动在本地目录下建立的软件包缓存）安装。如果是第一次安装 Cygwin，因为本地尚没有软件包缓存，当然只能选择从网络安装，</p>
+
+<p>(2) 选择安装目录，默认为 C:\cygwin ，如下图所示。这个目录将作为 Cygwin shell 环境的根目录（根卷），Windows 的各个盘符将挂载在根卷的一个特殊目录之下。</p>
+
+<p>(3) 设置本地软件包缓存目录，默认为setup.exe 所处的目录,</p>
+
+<p>(4) 设置网络连接方式是否使用代理等，如图所示。默认会选择第一项：“直接网络连接”。如果一个团队有很多人要使用 Cygwin，架设一个能够提供软件包缓存的 HTTP 代理服务器会节省大量的网络带宽和大量的时间。</p>
+
+<p>(5) 选择一个 Cygwin 源，如图所示。如果在上一个步骤中选择使用 HTTP 代理服务器，就必须选择 HTTP 协议的 Cygwin 源。</p>
+
+<p>(6) 从所选的 Cygwin 源下载软件包索引文件，然后显示软件包管理器界面，我们要在这一步选择安装Git相关的软件包。默认安装的 Cygwin 没有安装 Git 软件包。如果在首次安装过程中忘记通过包管理器选择安装 Git 或其他相关软件包，可以在安装后再次运行 Cygwin 的安装程序 setup.exe 。当再次进入Cygwin 包管理器界面时，在搜索框中输入 git，这里我们需要安装下面几个软件，</p>
+
+<ul>
+  <li>git</li>
+  <li>git-completion： 提供 Git 命令的自动补齐功能。安装该软件包时会自动安装其所依赖的 bash-completion 软件包。</li>
+  <li>vim： Git 默认的编辑器。</li>
+  <li>openssh： SSH 客户端，为访问 SSH 协议的版本库提供支持。</li>
+</ul>
+
+<h2 id="cygwin-的配置和使用">Cygwin 的配置和使用</h2>
+
+<p>运行 Cygwin后会进入 shell 环境并见到熟悉的 Linux 提示符，可以通过执行 cygcheck 命令来查看 Cygwin 中安装的软件包的版本。例如，查看 Cygwin 软件包本身的版本：</p>
+
+<p>cygcheck -c cygwin</p>
+
+<p><img src="cygcheck_cygwin.png" alt="" /></p>
+
+<p>Cygwin 中访问 Windows 的各个磁盘目录。首先，我们在Cygwin中执行mount这个命令，</p>
+
+<p><img src="cygwin_mount.png" alt="" /></p>
+
+<p>也就是说，在 Cygwin 中以路径 /cygdrive/c/Windows来访问Windows 下的 C:\Windows 目录。</p>
+
+<h3 id="设置cygwin的home目录">设置Cygwin的Home目录</h3>
+
+<p>修改 Cygwin 启动的批处理文件（如：C:\cygwin\Cygwin.bat ），在批处理的开头添加如下的一行代码，就可以防止其他软件在 Windows 引入的 HOME 环境变量被带入到 Cygwin 中。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Set HOME=d:\cygwin\home //这个根据你自己的目录来设置
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="命令行补齐忽略文件名大小写">命令行补齐忽略文件名大小写</h3>
+
+<p>Windows 的文件系统忽略文件名的大小写，在 Cygwin 下最好对命令行补齐进行相关设置，以忽略大小写，这样使用起来更方便。编辑文件 ~/.inputrc ，在其中添加设置“set completion-ignore-case on”，或者取消已有的相关设置前面的井（#）号注释符。修改完毕后，再重新进入 Cygwin，这样就可以实现命令行补齐对文件名大小写的忽略。</p>
+
+<h2 id="git配置">Git配置</h2>
+
+<ul>
+  <li>由于在windows平台下，所以可以禁止Git对文件权限的跟踪</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config --system core.fileMode false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>解决Git命令输出中文文件名的显示问题</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config --system core.quotepath false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>Git命令输出中开启颜色显示</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config --system color.ui true
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>配置username和email</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>git config --global user.name "Jim"
+git config --global user.email Jim@gmail.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>通过命令来查看Git设置</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config -l
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可以得到如下的结果</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>user.name=Jim
+user.email=Jim@gmail.com
+color.ui=true
+core.filemode=false
+core.quotepath=false
+core.repositoryformatversion=0
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+credential.helper=cache --timeout=3600
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>配置alias命令别名</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>git config --system alias.st status
+git config --system alias.ci "commit -s"
+git config --system alias.co checkout
+git config --system alias.br branch
+git config --system alias.ll "log --pretty=fuller --stat --graph --decorate"
+git config --system alias.ls"log --pretty=oneline --graph --decorate"
+git config --system alias.ss "status -sb"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="git访问ssh-服务">Git访问SSH 服务</h2>
+
+<p>这里的SSH还是指Cygwin里面的SSH，也就是OpenSSH。这块其实可以参考一下GitHub上的帮助页面 <a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a></p>
+
+<h3 id="生成ssh密钥对">生成SSH密钥对</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh-keygen -t rsa -C "jim@gmail.com"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>你会看到如下的输出：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>Generating public/privatersa key pair.
+Enter fileinwhichto save the key (/home/eason.wu/.ssh/id_rsa):
+Created directory '/home/eason.wu/.ssh'.
+Enter passphrase (empty forno passphrase):
+Enter same passphrase again:
+Your identification has been saved in/home/eason.wu/.ssh/id_rsa.
+Your public key has been saved in/home/eason.wu/.ssh/id_rsa.pub.
+The key fingerprint is:
+58:7d:74:d9:d6:52:79:24:d7:18:e4:dd:bd:03:28:94 jim@gmail.com
+The key's randomart image is:
++--[ RSA 2048]----+
+|         .. ..=BB|
+|        .E ..o+=O|
+|        .......o=|
+|       o  ..  . .|
+|      . S      o |
+|                .|
+|                 |
+|                 |
+|                 |
++-----------------+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="连接github">连接GitHub</h3>
+
+<p>这部分可以参考 &lt;https://help.github.com/articles/generating-ssh-keys.</p>
+
+<h3 id="clone项目">Clone项目</h3>
+
+<h2 id="小结">小结</h2>
+
+<p>利用Git来进行源代码管理是一个长期学习的过程，对于Git的理解也必须在不断的使用中体会。 总之， 每天进步一点点。</p>
+
+<p>作者：坊间小毅<br />
+出处：http://www.cnblogs.com/EasonWu<br />
+本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#git" title="Pages tagged git" class="tag"><span class="term">git</span></a><a href="/tags#cygwin" title="Pages tagged cygwin" class="tag"><span class="term">cygwin</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

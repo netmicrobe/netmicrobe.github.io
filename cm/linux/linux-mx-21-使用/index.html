@@ -1,0 +1,982 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>MX Linux 21 使用，关联 debian, KDE, fcitx, anti-linux, im-config, pinyin, systemd, sysv, xmind8 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MX Linux 21 使用，关联 debian, KDE, fcitx, anti-linux, im-config, pinyin, systemd, sysv, xmind8">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/linux-mx-21-%E4%BD%BF%E7%94%A8/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/linux-mx-21-%E4%BD%BF%E7%94%A8/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">MX Linux 21 使用，关联 debian, KDE, fcitx, anti-linux, im-config, pinyin, systemd, sysv, xmind8</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-03-02T00:00:00+08:00">March 02, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>MX Linux 21（Wildflower） 基于 Debian 11（Bullseyes）</p>
+
+<h2 id="kde">KDE</h2>
+
+<h3 id="dolphin-文件管理单击改成双击">Dolphin 文件管理单击改成双击</h3>
+
+<p>Application Menu &gt; General Behavior &gt; Click behavior</p>
+
+<h2 id="初始化管理-sysv-和-systemd">初始化管理 SysV 和 Systemd</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ps -p 1 -o <span class="nv">comm</span><span class="o">=</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>命令返回 <code class="highlighter-rouge">init</code>，表明不是使用 <code class="highlighter-rouge">Systemd</code> 而是用的 <code class="highlighter-rouge">SysV</code></p>
+
+<p>MX 21 应该是用的 <code class="highlighter-rouge">SysV</code></p>
+
+<ul>
+  <li>查看所有service的自启动情况： <code class="highlighter-rouge">sudo sysv-rc-conf --list</code></li>
+  <li>ssh service的自启动情况： <code class="highlighter-rouge">sudo sysv-rc-conf --list ssh</code></li>
+</ul>
+
+<h2 id="包管理">包管理</h2>
+
+<h3 id="更换国内源">更换国内源</h3>
+
+<h4 id="阿里云mx源">阿里云mx源</h4>
+
+<ul>
+  <li>debian.list</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c"># Debian Stable.</span>
+deb http://mirrors.aliyun.com/debian bullseye main contrib non-free
+deb http://mirrors.aliyun.com/debian-security bullseye-security main contrib non-free
+<span class="c">#deb-src http://mirrors.aliyun.com/debian bullseye main contrib non-free </span>
+
+<span class="c">#bullseye backports</span>
+<span class="c">#deb http://mirrors.aliyun.com/debian bullseye-backports main contrib non-free</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>debian-stable-updates.list</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># Debian bullseye Updates</span>
+deb http://mirrors.aliyun.com/debian bullseye-updates main contrib non-free
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>mx.list</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c"># MX Community Main and Test Repos</span>
+deb https://mirrors.aliyun.com/mxlinux/mx/repo/ bullseye main non-free
+<span class="c">#deb https://mirrors.aliyun.com/mxlinux/mx/testrepo/ bullseye test</span>
+
+<span class="c">#ahs hardware stack repo</span>
+deb https://mirrors.aliyun.com/mxlinux/mx/repo/ bullseye ahs
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="自动更新程序-packagekitd">自动更新程序 packagekitd</h3>
+
+<ul>
+  <li><a href="https://linux-packages.com/debian/package/packagekit">packagekit on Debian 11 (Bullseye)</a></li>
+</ul>
+
+<p>默认 packagekit 已经安装了： <code class="highlighter-rouge">apt list --installed | grep packagekit</code></p>
+
+<p>默默后台运行，导致 apt 执行时候报错： <code class="highlighter-rouge">E: Could not get lock /var/lib/apt/lists/lock. It is held by process 2759 (packagekitd)</code></p>
+
+<p>所以，干脆删掉：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo apt remove packagekit
+sudo apt autoclean <span class="o">&amp;&amp;</span> sudo apt autoremove
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="软件">软件</h2>
+
+<h3 id="xmind8">xmind8</h3>
+
+<p>注意： fcitx5 不兼容xmind8，无法输入中文，要换成 fcitx4</p>
+
+<ol>
+  <li>到官网下载 <a href="https://www.xmind.net/download/xmind8">https://www.xmind.net/download/xmind8</a></li>
+  <li>解压 xmind-8-update9-linux.zip</li>
+  <li>安装 openjdk-8-jre<br />
+xmind8 必须在 jdk8 下运行，但MX21的包数据库已经没有<code class="highlighter-rouge">openjdk-8-jre</code>，要修改 <code class="highlighter-rouge">./setup.sh</code><br />
+将 <code class="highlighter-rouge">apt-get install openjdk-8-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0</code><br />
+改为 <code class="highlighter-rouge">apt-get install nvidia-openjdk-8-jre libgtk2.0-0 libwebkit2gtk-4.0-37 lame libc6 libglib2.0-0</code></li>
+  <li>运行解压后目录中 setup.sh ： <code class="highlighter-rouge">sudo ./setup.sh</code></li>
+  <li>
+    <p>配置java为默认 java8<br />
+ <code class="highlighter-rouge">nvidia-openjdk-8-jre</code> 的 java执行文件在 <code class="highlighter-rouge">/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java 0
+ sudo update-alternatives --config java
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>进入 <code class="highlighter-rouge">XMind_amd64/</code></li>
+  <li>运行 <code class="highlighter-rouge">./XMind_amd64/Xmind</code></li>
+</ol>
+
+<ul>
+  <li>在 Application Menu 中配置下启动菜单</li>
+</ul>
+
+<ol>
+  <li>系统左下角application图标，右键，选择 Edit Applications…</li>
+  <li>选 New Item</li>
+  <li>填写 Name，Command, Advanced/Work Path</li>
+  <li>点击左上角 Save</li>
+</ol>
+
+<p>会在 ~/.local/share/applications 目录下，生成 .desktop 文件。</p>
+
+<p>xmind.desktop 例子：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="o">[</span>Desktop Entry]
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Name</span><span class="o">=</span>xmind8
+<span class="nv">Comment</span><span class="o">=</span>mindmap tool
+<span class="nv">Exec</span><span class="o">=</span>/opt/xmind-8-update9-linux/XMind_amd64/XMind %F
+<span class="nv">Icon</span><span class="o">=</span>/opt/xmind-8-update9-linux/xmind.256.png
+<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">false
+</span>Path[<span class="nv">$e</span><span class="o">]=</span><span class="nv">$HOME</span>/tools/xmind-8-update9-linux/XMind_amd64
+<span class="nv">StartupNotify</span><span class="o">=</span><span class="nb">true
+</span><span class="nv">Terminal</span><span class="o">=</span>0
+<span class="nv">TerminalOptions</span><span class="o">=</span>
+X-KDE-SubstituteUID<span class="o">=</span><span class="nb">false
+</span>X-KDE-Username<span class="o">=</span>
+<span class="nv">Categories</span><span class="o">=</span>Office;Productivity;Development;X-XFCE;X-Xfce-Toplevel;
+<span class="nv">MimeType</span><span class="o">=</span>application/vnd.xmind.workbook;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>配置： 在文件管理中双击 *.xmind 文件，启动 xmind 打开该文件：</p>
+<ol>
+  <li>参考<br />
+ <a href="https://userbase.kde.org/System_Settings/File_Associations/en">https://userbase.kde.org/System_Settings/File_Associations/en</a></li>
+  <li>System Settings &gt; File Associations</li>
+  <li>添加 <code class="highlighter-rouge">xmind</code> 的关联，配置
+    <ol>
+      <li>Filename Patterns 添加 <code class="highlighter-rouge">*.xmind</code></li>
+      <li>Application Preference Order 添加 xmind 程序</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="中文支持">中文支持</h2>
+
+<h3 id="中文输入-fcitx">中文输入 fcitx</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://wiki.debian.org/I18n/Fcitx5">wiki.debian.org - I18n - Fcitx5</a></li>
+      <li><a href="https://www.cnblogs.com/Chorder/p/15152515.html">Debian 11 (Bullseye) 配置fcitx中文输入法</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>fcitx5 可以用但是发现如下问题：</p>
+<ol>
+  <li>gimp 保存图片，对话框输入文件名时，没法切换到中文输入。</li>
+  <li>xmind8 里面没法切换到 fcitx5 输入中文。</li>
+</ol>
+
+<p>改回fcitx4：</p>
+
+<ol>
+  <li>卸载 fcitx5，安装Fcitx4
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>sudo apt remove fcitx5<span class="k">*</span>
+sudo apt install fcitx fcitx-tools fcitx-config<span class="k">*</span> fcitx-frontend<span class="k">*</span> fcitx-module<span class="k">*</span> fcitx-ui-<span class="k">*</span> fcitx-pinyin fcitx-googlepinyin fcitx-sunpinyin
+<span class="c"># KDE桌面</span>
+sudo apt install kde-config-fcitx
+<span class="c"># 非KDE桌面，如果无法显示候选框，请卸载 fcitx-module-kimpanel</span>
+sudo apt remove fcitx-module-kimpanel
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>添加环境配置</p>
+
+    <p>在 home 目录下创建 <code class="highlighter-rouge">.xprofile</code></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> <span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span>@im<span class="o">=</span>fcitx
+ <span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+ <span class="nb">export </span><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>使用 <code class="highlighter-rouge">im-config</code> 设置input method 为 fcitx</li>
+  <li>
+    <p>添加 Fcitx 自启动</p>
+
+    <ol>
+      <li>程序菜单启动 <code class="highlighter-rouge">Autostart</code></li>
+      <li>点击 <code class="highlighter-rouge">Add...</code> -&gt; <code class="highlighter-rouge">Add Application...</code></li>
+      <li>搜索并添加 Fcitx</li>
+    </ol>
+  </li>
+  <li>注销</li>
+  <li>重新登陆后，启动fcitx设置，Input Method 选项页，点击 “+”</li>
+  <li>取消勾选：Only Show Current Language</li>
+  <li>搜索并添加 sunpinyin 或者 pinyin 或 googlepinyin</li>
+</ol>
+
+<h4 id="安装fcitx5">安装fcitx5</h4>
+
+<p>在Debian11(Bullseye)中，输入法已经默认升级到了fcitx5。</p>
+
+<ol>
+  <li>安装 fcitx5
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> apt install fcitx5 fcitx5-pinyin fcitx5-chinese-addons fcitx5-frontend-gtk3 fcitx5-frontend-qt5 fcitx5-module-xorg kde-config-fcitx5 im-config
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>注销</li>
+  <li>Application Menu 》Input Method (可能会看到2个Input Method,选 <code class="highlighter-rouge">im-config</code> 那个)<br />
+ 或者，命令行执行： <code class="highlighter-rouge">im-config</code>
+    <ol>
+      <li>显示当前配置的对话框，点击 OK</li>
+      <li>询问是否要更新配置的对话框，点击 YES</li>
+      <li>选择 <code class="highlighter-rouge">activate Flexible Input Method Framework v5(fcitx5)</code>，点击 OK</li>
+    </ol>
+  </li>
+  <li>Application Menu 》Fcitx 5 Configuration 》Add Input Method… 》 搜索 Pinyin 并添加
+    <ul>
+      <li>修改字体大小： Configure addons… 》Ui 》 Classic User Inteface 旁边的齿轮图标 》Font</li>
+      <li>更改候选字数目： Configure addons… 》Input Method 》Pinyin 旁边的齿轮图标 》Page Size 改成更多的数目</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="创建gnupg证书">创建GnuPG证书</h2>
+
+<ol>
+  <li>启动 KGpg &gt; Keys 菜单 &gt; Generate key Pairs…</li>
+  <li>输入 Name, 点击OK，一路Next，然后输入密码<br />
+ 过程中会提示，使用程序是： <code class="highlighter-rouge">/usr/bin/gpg2</code>，<br />
+ 配置文件保存在 <code class="highlighter-rouge">$HOME/.gnupg/gpg.conf</code></li>
+  <li>创建完成后，在KGpg界面右键菜单，设置为default key.</li>
+</ol>
+
+<h2 id="技巧-tips">技巧 tips</h2>
+
+<h3 id="kde-中-wifi-密码默认不会自动保存">KDE 中 wifi 密码默认不会自动保存</h3>
+
+<ul>
+  <li><a href="https://www.dedoimedo.com/computers/kde-wireless-reconnect.html">Wireless network does not auto-reconnect in KDE</a></li>
+</ul>
+
+<ol>
+  <li>Application Menu &gt; KDE Wallet（用来保存密码的）</li>
+  <li>勾选 Enable the KDE wallet subsystem，开启 KDE Wallet 功能</li>
+  <li>Automatic Wallet Selection &gt; New… &gt; 创建一个默认的Wallet，过程中会要选择 GPG 密钥</li>
+  <li>
+    <hr />
+  </li>
+  <li>Application Menu &gt; Connections &gt; 选中 目标 Wifi 连接 &gt; 先忘记，后重新输入密码连接wifi</li>
+  <li>进入 General configuration 标签页
+    <ol>
+      <li>勾选 connect automatically with priority</li>
+      <li>勾选 All Users may connect to this network</li>
+    </ol>
+  </li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

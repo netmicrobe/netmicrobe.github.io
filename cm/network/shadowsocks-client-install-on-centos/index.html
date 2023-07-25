@@ -1,0 +1,953 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>CentOS上安装 Shadowsocks 客户端 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="Shadowsocks, cnetos">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS上安装 Shadowsocks 客户端">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/network/shadowsocks-client-install-on-centos/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/network/shadowsocks-client-install-on-centos/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">CentOS上安装 Shadowsocks 客户端</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-07-11T00:00:00+08:00">July 11, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <hr />
+
+<ul>
+  <li>参考:
+    <ul>
+      <li><a href="http://shadowsocks.org/en/download/clients.html">http://shadowsocks.org/en/download/clients.html</a></li>
+      <li><a href="https://blog.csdn.net/wh211212/article/details/79165415">CentOS 7 安装使用Shadowsocks客户端</a></li>
+      <li><a href="http://blog.csdn.net/u012375924/article/details/78706910">http://blog.csdn.net/u012375924/article/details/78706910</a></li>
+      <li><a href="https://www.zybuluo.com/ncepuwanghui/note/954160">https://www.zybuluo.com/ncepuwanghui/note/954160</a></li>
+      <li><a href="https://brickyang.github.io/2017/01/14/CentOS-7-%E5%AE%89%E8%A3%85-Shadowsocks-%E5%AE%A2%E6%88%B7%E7%AB%AF/">CentOS 7 安装 shadowsocks 客户端</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="安装epel源">安装epel源</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>yum -y install epel-release
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="安装shadowsocks客户端">安装Shadowsocks客户端</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>yum install -y python python-pip
+pip install shadowsocks
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="o">[</span> root@ctos74x64: ~ <span class="o">]</span> <span class="c"># pip2.7 install shadowsocks</span>
+Collecting shadowsocks
+  Downloading https://files.pythonhosted.org/packages/02/1e/e3a5135255d06813aca6631da31768d44f63692480af3a1621818008eb4a/shadowsocks-2.8.2.tar.gz
+Building wheels <span class="k">for </span>collected packages: shadowsocks
+  Running setup.py bdist_wheel <span class="k">for </span>shadowsocks ... <span class="k">done
+  </span>Stored <span class="k">in </span>directory: /root/.cache/pip/wheels/5e/8d/b6/3e2243a7e116984b2c3597c122c29abcfeac77daa260079e88
+Successfully built shadowsocks
+Installing collected packages: shadowsocks
+Successfully installed shadowsocks-2.8.2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="配置shadowsocks连接">配置Shadowsocks连接</h3>
+
+<h4 id="新建配置文件默认不存在">新建配置文件、默认不存在</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>mkdir /etc/shadowsocks
+vi /etc/shadowsocks/shadowsocks.json
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="添加配置信息前提是需要有ss服务器的地址端口等信息">添加配置信息：前提是需要有ss服务器的地址、端口等信息</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nt">"server"</span><span class="p">:</span><span class="s2">"x.x.x.x"</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">Shadowsocks服务器地址</span><span class="w">
+    </span><span class="nt">"server_port"</span><span class="p">:</span><span class="mi">1035</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">Shadowsocks服务器端口</span><span class="w">
+    </span><span class="nt">"local_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">本地IP</span><span class="w">
+    </span><span class="nt">"local_port"</span><span class="p">:</span><span class="mi">1080</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">本地端口</span><span class="w">
+    </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"password"</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">Shadowsocks连接密码</span><span class="w">
+    </span><span class="nt">"timeout"</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">等待超时时间</span><span class="w">
+    </span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"aes-256-cfb"</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">加密方式</span><span class="w">
+    </span><span class="nt">"fast_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">true或false。开启fast_open以降低延迟，但要求Linux内核在3.7+</span><span class="w">
+    </span><span class="nt">"workers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="err">#工作线程数</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="配置自启动">配置自启动</h4>
+
+<p>新建启动脚本文件 <code class="highlighter-rouge">/etc/systemd/system/shadowsocks.service</code>，内容如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>[Unit]
+Description=Shadowsocks
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/local/bin/sslocal -c /etc/shadowsocks/shadowsocks.json
+[Install]
+WantedBy=multi-user.target
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="启动shadowsocks服务">启动Shadowsocks服务</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>systemctl <span class="nb">enable </span>shadowsocks.service
+systemctl start shadowsocks.service
+systemctl status shadowsocks.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="验证shadowsocks客户端服务是否正常运行">验证Shadowsocks客户端服务是否正常运行</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>Shadowsock客户端服务已正常运行，则结果如下：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x.x.x.x"</span><span class="w">       </span><span class="err">#你的Shadowsock服务器IP</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="安装配置privoxy">安装配置privoxy</h3>
+
+<h4 id="安装privoxy">安装privoxy</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>yum install privoxy -y
+systemctl <span class="nb">enable </span>privoxy
+systemctl start privoxy
+systemctl status privoxy
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="配置privoxy">配置privoxy</h4>
+
+<p>修改配置文件 /etc/privoxy/config</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>listen-address 127.0.0.1:8118 # 8118 是默认端口，不用改
+forward-socks5t / 127.0.0.1:1080 . #转发到本地端口，注意最后有个点
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="设置httphttps代理">设置http、https代理</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre># vi /etc/profile 在最后添加如下信息
+PROXY_HOST=127.0.0.1
+export all_proxy=http://$PROXY_HOST:8118
+export ftp_proxy=http://$PROXY_HOST:8118
+export http_proxy=http://$PROXY_HOST:8118
+export https_proxy=http://$PROXY_HOST:8118
+export no_proxy=localhost,172.16.0.0/16,192.168.0.0/16.,127.0.0.1,10.10.0.0/16
+
+# 重载环境变量
+source /etc/profile
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="测试代理">测试代理</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="o">[</span>root@aniu-k8s ~]# curl -I www.google.com 
+HTTP/1.1 200 OK
+Date: Fri, 26 Jan 2018 05:32:37 GMT
+Expires: -1
+Cache-Control: private, max-age<span class="o">=</span>0
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>ISO-8859-1
+P3P: <span class="nv">CP</span><span class="o">=</span><span class="s2">"This is not a P3P policy! See g.co/p3phelp for more info."</span>
+Server: gws
+X-XSS-Protection: 1; <span class="nv">mode</span><span class="o">=</span>block
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: <span class="nv">1P_JAR</span><span class="o">=</span>2018-01-26-05; <span class="nv">expires</span><span class="o">=</span>Sun, 25-Feb-2018 05:32:37 GMT; <span class="nv">path</span><span class="o">=</span>/; <span class="nv">domain</span><span class="o">=</span>.google.com
+Set-Cookie: <span class="nv">NID</span><span class="o">=</span><span class="nv">122</span><span class="o">=</span>PIiGck3gwvrrJSaiwkSKJ5UrfO4WtAO80T4yipOx4R4O0zcgOEdvsKRePWN1DFM66g8PPF4aouhY4JIs7tENdRm7H9hkq5xm4y1yNJ-sZzwVJCLY_OK37sfI5LnSBtb7; <span class="nv">expires</span><span class="o">=</span>Sat, 28-Jul-2018 05:32:37 GMT; <span class="nv">path</span><span class="o">=</span>/; <span class="nv">domain</span><span class="o">=</span>.google.com; HttpOnly
+Transfer-Encoding: chunked
+Accept-Ranges: none
+Vary: Accept-Encoding
+Proxy-Connection: keep-alive
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="取消使用代理">取消使用代理</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>while read var; do unset $var; done &lt; &lt;(env | grep -i proxy | awk -F= '{print $1}')
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="配置shell">配置shell</h3>
+
+<p>编辑 .bashrc</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="c"># git set / unset proxy</span>
+<span class="k">function </span>git-proxy<span class="o">()</span> <span class="o">{</span>
+  git config –-global http.proxy http://127.0.0.1:8118
+<span class="o">}</span>
+<span class="k">function </span>git-noproxy<span class="o">()</span> <span class="o">{</span>
+  git config --global --unset http.proxy
+<span class="o">}</span>
+
+<span class="k">function </span>ss-open<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">PROXY_HOST</span><span class="o">=</span>127.0.0.1
+  <span class="nb">export </span><span class="nv">all_proxy</span><span class="o">=</span>http://<span class="nv">$PROXY_HOST</span>:8118
+  <span class="nb">export </span><span class="nv">ftp_proxy</span><span class="o">=</span>http://<span class="nv">$PROXY_HOST</span>:8118
+  <span class="nb">export </span><span class="nv">http_proxy</span><span class="o">=</span>http://<span class="nv">$PROXY_HOST</span>:8118
+  <span class="nb">export </span><span class="nv">https_proxy</span><span class="o">=</span>http://<span class="nv">$PROXY_HOST</span>:8118
+  <span class="nb">export </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,172.16.0.0/16,192.168.0.0/16.,127.0.0.1,10.10.0.0/16
+<span class="o">}</span>
+
+<span class="k">function </span>ss-close<span class="o">()</span> <span class="o">{</span>
+  <span class="k">while </span><span class="nb">read </span>var; <span class="k">do </span><span class="nb">unset</span> <span class="nv">$var</span>; <span class="k">done</span> &lt; &lt;<span class="o">(</span>env | grep -i proxy | awk -F<span class="o">=</span> <span class="s1">'{print $1}'</span><span class="o">)</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="配置浏览器">配置浏览器</h3>
+
+<h4 id="firefox-配置">Firefox 配置</h4>
+
+<ol>
+  <li>Preference - Advanced - Network - Connection - Settings</li>
+  <li>Manual proxy configuration:
+    <ul>
+      <li>Http Proxy : 127.0.0.1</li>
+      <li>Port: 8118</li>
+    </ul>
+  </li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#Shadowsocks" title="Pages tagged Shadowsocks" class="tag"><span class="term">Shadowsocks</span></a><a href="/tags#cnetos" title="Pages tagged cnetos" class="tag"><span class="term">cnetos</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

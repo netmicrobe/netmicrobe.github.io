@@ -1,0 +1,1019 @@
+$ winetricks riched20 richtx32 corefonts cjkfonts
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Using winetricks 20210206-next - sha256sum: 57dc4ab2050e11b753115a9814b5ad8574d195d3a00774b483b89ed8894cb168 with wine-7.0 and WINEARCH=win64
+Executing w_do_call riched20
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_riched20 
+Executing mkdir -p /home/wi/.cache/winetricks/win2ksp4
+Executing cd /home/wi/.cache/winetricks/win2ksp4
+Downloading http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE to /home/wi/.cache/winetricks/win2ksp4
+--2022-03-31 21:29:34--  http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE
+Resolving x3270.bgp.nu (x3270.bgp.nu)... 147.28.0.53
+Connecting to x3270.bgp.nu (x3270.bgp.nu)|147.28.0.53|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 135477136 (129M) [application/octet-stream]
+Saving to: ‘W2KSP4_EN.EXE’
+
+W2KSP4_EN.EXE                   6%[==>                                             ]   8.10M  --.-KB/s    in 10m 36s 
+
+2022-03-31 21:40:12 (13.0 KB/s) - Read error at byte 8495662/135477136 (Connection timed out). Retrying.
+
+--2022-03-31 21:40:13--  (try: 2)  http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE
+Connecting to x3270.bgp.nu (x3270.bgp.nu)|147.28.0.53|:80... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 135477136 (129M), 126981474 (121M) remaining [application/octet-stream]
+Saving to: ‘W2KSP4_EN.EXE’
+
+W2KSP4_EN.EXE                   6%[+++                                             ]   8.29M  --.-KB/s    in 58s     
+
+2022-03-31 21:41:13 (3.39 KB/s) - Read error at byte 8698301/135477136 (Connection timed out). Retrying.
+
+--2022-03-31 21:41:15--  (try: 3)  http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE
+Connecting to x3270.bgp.nu (x3270.bgp.nu)|147.28.0.53|:80... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 135477136 (129M), 126778835 (121M) remaining [application/octet-stream]
+Saving to: ‘W2KSP4_EN.EXE’
+
+W2KSP4_EN.EXE                   6%[+++                                             ]   8.44M  --.-KB/s    in 41s     
+
+2022-03-31 21:41:59 (3.70 KB/s) - Read error at byte 8851980/135477136 (Connection timed out). Giving up.
+
+------------------------------------------------------
+warning: Checksum for /home/wi/.cache/winetricks/win2ksp4/W2KSP4_EN.EXE did not match, retrying download
+------------------------------------------------------
+Executing cd /home/wi/.cache/winetricks/win2ksp4
+Downloading https://web.archive.org/web/2000/http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE to /home/wi/.cache/winetricks/win2ksp4
+--2022-03-31 21:42:01--  https://web.archive.org/web/2000/http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE
+Resolving web.archive.org (web.archive.org)... 207.241.237.3
+Connecting to web.archive.org (web.archive.org)|207.241.237.3|:443... connected.
+HTTP request sent, awaiting response... 302 FOUND
+Location: https://web.archive.org/web/20180719184830/http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE [following]
+--2022-03-31 21:42:05--  https://web.archive.org/web/20180719184830/http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE
+Reusing existing connection to web.archive.org:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 135477136 (129M) [application/octet-stream]
+Saving to: ‘W2KSP4_EN.EXE’
+
+W2KSP4_EN.EXE                 100%[===============================================>] 129.20M   385KB/s    in 4m 18s  
+
+2022-03-31 21:46:24 (514 KB/s) - ‘W2KSP4_EN.EXE’ saved [135477136/135477136]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp -L -F i386/riched20.dl_ /home/wi/.cache/winetricks/win2ksp4/W2KSP4_EN.EXE
+Executing cabextract -q --directory=/home/wi/.wine/dosdevices/c:/windows/syswow64 /home/wi/.wine/dosdevices/c:/windows/temp/i386/riched20.dl_
+Using native,builtin override for following DLLs: riched20
+Executing wine regedit C:\windows\Temp\override-dll.reg
+Executing wine64 regedit C:\windows\Temp\override-dll.reg
+Executing w_do_call msls31
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_msls31 
+Executing mkdir -p /home/wi/.cache/winetricks/msls31
+Executing cd /home/wi/.cache/winetricks/msls31
+Downloading https://web.archive.org/web/20160710055851if_/http://download.microsoft.com/download/WindowsInstaller/Install/2.0/NT45/EN-US/InstMsiW.exe to /home/wi/.cache/winetricks/msls31
+--2022-03-31 21:46:32--  https://web.archive.org/web/20160710055851if_/http://download.microsoft.com/download/WindowsInstaller/Install/2.0/NT45/EN-US/InstMsiW.exe
+Resolving web.archive.org (web.archive.org)... 207.241.237.3
+Connecting to web.archive.org (web.archive.org)|207.241.237.3|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1822848 (1.7M) [application/octet-stream]
+Saving to: ‘InstMsiW.exe’
+
+InstMsiW.exe                  100%[===============================================>]   1.74M   360KB/s    in 4.9s    
+
+2022-03-31 21:46:48 (360 KB/s) - ‘InstMsiW.exe’ saved [1822848/1822848]
+
+Executing cd /home/wi
+Executing cabextract -q --directory=/home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/msls31/InstMsiW.exe
+Executing cp -f /home/wi/.wine/dosdevices/c:/windows/temp/msls31.dll /home/wi/.wine/dosdevices/c:/windows/syswow64/msls31.dll
+Executing w_do_call richtx32
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_richtx32 
+Executing mkdir -p /home/wi/.cache/winetricks/vb6sp6
+Executing cd /home/wi/.cache/winetricks/vb6sp6
+Downloading https://download.microsoft.com/download/5/6/3/5635D6A9-885E-4C80-A2E7-8A7F4488FBF1/VB60SP6-KB2708437-x86-ENU.msi to /home/wi/.cache/winetricks/vb6sp6
+--2022-03-31 21:46:53--  https://download.microsoft.com/download/5/6/3/5635D6A9-885E-4C80-A2E7-8A7F4488FBF1/VB60SP6-KB2708437-x86-ENU.msi
+Resolving download.microsoft.com (download.microsoft.com)... 106.225.245.188, 106.225.245.187, 106.225.245.183, ...
+Connecting to download.microsoft.com (download.microsoft.com)|106.225.245.188|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10277376 (9.8M) [application/octet-stream]
+Saving to: ‘VB60SP6-KB2708437-x86-ENU.msi’
+
+VB60SP6-KB2708437-x86-ENU.msi 100%[===============================================>]   9.80M  9.17MB/s    in 1.1s    
+
+2022-03-31 21:46:54 (9.17 MB/s) - ‘VB60SP6-KB2708437-x86-ENU.msi’ saved [10277376/10277376]
+
+Executing cd /home/wi
+Executing 7z x /home/wi/.cache/winetricks/vb6sp6/VB60SP6-KB2708437-x86-ENU.msi -o/home/wi/.wine/dosdevices/c:/windows/syswow64 richtx32.ocx
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,2 CPUs Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz (40661),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 10277376 bytes (10037 KiB)          
+
+Extracting archive: /home/wi/.cache/winetricks/vb6sp6/VB60SP6-KB2708437-x86-ENU.msi
+--           
+Path = /home/wi/.cache/winetricks/vb6sp6/VB60SP6-KB2708437-x86-ENU.msi
+Type = Compound
+Physical Size = 10277376
+Extension = msi
+Cluster Size = 512
+Sector Size = 64
+----
+Path = product.cab
+Size = 9540902
+Packed Size = 9541120
+--
+Path = product.cab
+Type = Cab
+Physical Size = 9540902
+Method = MSZip
+Blocks = 1
+Volumes = 1
+Volume Index = 0
+ID = 0
+
+Everything is Ok
+
+Files: 105
+Size:       14993769
+Compressed: 10277376
+Executing wine regsvr32 richtx32.ocx
+regsvr32: Successfully registered DLL 'richtx32.ocx'
+Executing w_do_call corefonts
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_corefonts 
+Executing w_do_call andale
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_andale 
+Executing mkdir -p /home/wi/.cache/winetricks/corefonts
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/andale32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:47:02--  https://mirrors.kernel.org/gentoo/distfiles/andale32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 149.20.37.36
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|149.20.37.36|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 198384 (194K) [application/octet-stream]
+Saving to: ‘andale32.exe’
+
+andale32.exe                  100%[===============================================>] 193.73K  20.4KB/s    in 9.5s    
+
+2022-03-31 21:47:12 (20.4 KB/s) - ‘andale32.exe’ saved [198384/198384]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/andale32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_90ad6a9f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f6204652_2238.reg
+Executing w_do_call arial
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_arial 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/arial32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:47:19--  https://mirrors.kernel.org/gentoo/distfiles/arial32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 149.20.37.36
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|149.20.37.36|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 554208 (541K) [application/octet-stream]
+Saving to: ‘arial32.exe’
+
+arial32.exe                   100%[===============================================>] 541.22K  29.8KB/s    in 21s     
+
+2022-03-31 21:47:42 (25.5 KB/s) - ‘arial32.exe’ saved [554208/554208]
+
+Executing cd /home/wi
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:47:42--  https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 149.20.37.36
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|149.20.37.36|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 168176 (164K) [application/octet-stream]
+Saving to: ‘arialb32.exe’
+
+arialb32.exe                  100%[===============================================>] 164.23K  73.7KB/s    in 2.2s    
+
+2022-03-31 21:47:45 (73.7 KB/s) - ‘arialb32.exe’ saved [168176/168176]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/arial32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_304f5183_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_964415d4_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_1f616c49_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_16f0ad00_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_afb17c0c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_4cd1fddd_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_dae52f18_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f89c822c_2238.reg
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/arialb32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_66d0267b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_8067e78b_2238.reg
+Executing w_do_call comicsans
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_comicsans 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/comic32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:48:05--  https://mirrors.kernel.org/gentoo/distfiles/comic32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 246008 (240K) [application/octet-stream]
+Saving to: ‘comic32.exe’
+
+comic32.exe                   100%[===============================================>] 240.24K  26.3KB/s    in 9.1s    
+
+2022-03-31 21:48:15 (26.3 KB/s) - ‘comic32.exe’ saved [246008/246008]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/comic32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_b59fdb6f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_487ea6dc_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_39bed46a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_1a737988_2238.reg
+Executing w_do_call courier
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_courier 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/courie32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:48:24--  https://mirrors.kernel.org/gentoo/distfiles/courie32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 646368 (631K) [application/octet-stream]
+Saving to: ‘courie32.exe’
+
+courie32.exe                  100%[===============================================>] 631.22K  10.4KB/s    in 76s     
+
+2022-03-31 21:49:42 (8.31 KB/s) - ‘courie32.exe’ saved [646368/646368]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/courie32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_7c2c4123_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_891b54d0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_18981059_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d5235b9d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ca9299dd_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_54cc9ff7_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_2add04a3_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_323957ce_2238.reg
+Executing w_do_call georgia
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_georgia 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:49:54--  https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 392440 (383K) [application/octet-stream]
+Saving to: ‘georgi32.exe’
+
+georgi32.exe                  100%[===============================================>] 383.24K  14.9KB/s    in 24s     
+
+2022-03-31 21:50:19 (16.0 KB/s) - ‘georgi32.exe’ saved [392440/392440]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/georgi32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_7c0d8b91_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_537b121d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d2a59526_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_5996c7ae_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_4c1b3afe_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d73b8d5d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_7ad937dd_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d7f60a67_2238.reg
+Executing w_do_call impact
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_impact 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/impact32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:50:31--  https://mirrors.kernel.org/gentoo/distfiles/impact32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 173288 (169K) [application/octet-stream]
+Saving to: ‘impact32.exe’
+
+impact32.exe                  100%[===============================================>] 169.23K  53.3KB/s    in 3.2s    
+
+2022-03-31 21:50:35 (53.3 KB/s) - ‘impact32.exe’ saved [173288/173288]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/impact32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_85408d52_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_83bd4a0f_2238.reg
+Executing w_do_call times
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_times 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/times32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:50:42--  https://mirrors.kernel.org/gentoo/distfiles/times32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 661728 (646K) [application/octet-stream]
+Saving to: ‘times32.exe’
+
+times32.exe                   100%[===============================================>] 646.22K  16.5KB/s    in 71s     
+
+2022-03-31 21:51:54 (9.04 KB/s) - ‘times32.exe’ saved [661728/661728]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/times32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_c7df04fe_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_882d004f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_a7b0a685_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9523176f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d6a6cd95_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_54e8fd8d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_e1819b6c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_12e799de_2238.reg
+Executing w_do_call trebuchet
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_trebuchet 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:52:07--  https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 357200 (349K) [application/octet-stream]
+Saving to: ‘trebuc32.exe’
+
+trebuc32.exe                  100%[===============================================>] 348.83K  16.1KB/s    in 18s     
+
+2022-03-31 21:52:27 (19.1 KB/s) - ‘trebuc32.exe’ saved [357200/357200]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/trebuc32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_8000236b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_66ed7d3c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_e03e6b06_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_4defd6cc_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9d24ff53_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9539cec7_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_c0ce2062_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_0d13f97a_2238.reg
+Executing w_do_call verdana
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_verdana 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:52:38--  https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 198.145.21.9
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|198.145.21.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 351992 (344K) [application/octet-stream]
+Saving to: ‘verdan32.exe’
+
+verdan32.exe                  100%[===============================================>] 343.74K  12.9KB/s    in 20s     
+
+2022-03-31 21:53:00 (16.9 KB/s) - ‘verdan32.exe’ saved [351992/351992]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/verdan32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_1ae856a5_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_3b8c6ecc_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9a3fa42a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_dd6ee781_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_55447381_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_35f4f98b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_fa2a389b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_a88367ad_2238.reg
+Executing w_do_call webdings
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_webdings 
+Executing cd /home/wi/.cache/winetricks/corefonts
+Downloading https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe to /home/wi/.cache/winetricks/corefonts
+--2022-03-31 21:53:12--  https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe
+Resolving mirrors.kernel.org (mirrors.kernel.org)... 149.20.37.36
+Connecting to mirrors.kernel.org (mirrors.kernel.org)|149.20.37.36|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 185072 (181K) [application/octet-stream]
+Saving to: ‘webdin32.exe’
+
+webdin32.exe                  100%[===============================================>] 180.73K  39.8KB/s    in 4.5s    
+
+2022-03-31 21:53:18 (39.8 KB/s) - ‘webdin32.exe’ saved [185072/185072]
+
+Executing cd /home/wi
+Executing cabextract -q -d /home/wi/.wine/dosdevices/c:/windows/temp /home/wi/.cache/winetricks/corefonts/webdin32.exe
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_405b24a4_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_70fc14d8_2238.reg
+Executing w_do_call cjkfonts
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_cjkfonts 
+Executing w_do_call fakechinese
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_fakechinese 
+Executing w_do_call sourcehansans
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_sourcehansans 
+Executing mkdir -p /home/wi/.cache/winetricks/sourcehansans
+Executing cd /home/wi/.cache/winetricks/sourcehansans
+Downloading https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip to /home/wi/.cache/winetricks/sourcehansans
+--2022-03-31 21:53:30--  https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip
+Resolving github.com (github.com)... 52.192.72.89
+Connecting to github.com (github.com)|52.192.72.89|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/21733716/3cbd8900-a84b-11eb-9f73-b0dc503ecaaa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220331%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220331T135343Z&X-Amz-Expires=300&X-Amz-Signature=1d9340678f48028d5eed91f58d02ee304d095be536f2140430dbc65bf8d06d55&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=21733716&response-content-disposition=attachment%3B%20filename%3DSourceHanSans.ttc.zip&response-content-type=application%2Foctet-stream [following]
+--2022-03-31 21:53:43--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/21733716/3cbd8900-a84b-11eb-9f73-b0dc503ecaaa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220331%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220331T135343Z&X-Amz-Expires=300&X-Amz-Signature=1d9340678f48028d5eed91f58d02ee304d095be536f2140430dbc65bf8d06d55&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=21733716&response-content-disposition=attachment%3B%20filename%3DSourceHanSans.ttc.zip&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 95184312 (91M) [application/octet-stream]
+Saving to: ‘SourceHanSans.ttc.zip’
+
+SourceHanSans.ttc.zip         100%[===============================================>]  90.77M  2.16MB/s    in 39s     
+
+2022-03-31 21:54:25 (2.35 MB/s) - ‘SourceHanSans.ttc.zip’ saved [95184312/95184312]
+
+Executing cd /home/wi
+Executing mv /home/wi/.wine/dosdevices/c:/windows/temp/SourceHanSans.ttc /home/wi/.wine/dosdevices/c:/windows/temp/sourcehansans_.ttc
+Executing mv /home/wi/.wine/dosdevices/c:/windows/temp/sourcehansans_.ttc /home/wi/.wine/dosdevices/c:/windows/temp/sourcehansans.ttc
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_dcc5c91b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_05a7de27_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_e3762f6b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_efcaa8c6_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_33443835_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ece1d1c9_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_184109d9_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_55a1ae0f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f9d74f71_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f5b708f9_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_fc50645c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_8e1a8cde_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_730767c0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_abf3dec8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_7a263cfb_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_52d1ef5f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_a03226bf_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d31f7501_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d76edf93_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ec92f203_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_1f64b5eb_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_0c939e1a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f9d2acd2_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_399be3fa_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_973c30b3_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ecd4171b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_6e7a927e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_e6d897e2_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_79a22041_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_d60b1aad_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f6769e35_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_6a8d2633_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_dc63116d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ba8097a8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_08feda67_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9917c936_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_467af5b8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_61014e0e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_57ac5bc0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_c152b060_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_a3ea6410_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_7c4eb484_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_6da0d96e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_9500d955_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_4d24e73d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f9a32a3d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_26d25f94_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_ac4ea746_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_53bf512e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_f02c1430_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_52420c83_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_753b83f7_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_3c4880a8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_924075c6_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_93816820_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_6e6bd82a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_a50fea3f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_7d4a0d56_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_4f0c29c2_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_f0a6a0c7_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_4610791e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_7bf408a9_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_3177e37a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_b0fba99f_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_12c0590d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_d0acb42b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_6b1e2247_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_a476d85b_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_117ffe47_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_833d8860_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_55bbbc63_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_d59c6a7d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_50763d4e_2238.reg
+Executing w_do_call fakejapanese
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_fakejapanese 
+Executing w_do_call sourcehansans
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+sourcehansans already installed, skipping
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_a618b508_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_74b026ae_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_8658edf0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_ee3e904c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_e04548bd_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_6679ad0c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_2364262a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_f2a2c84a_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_0b38d401_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_62b15dd0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_7a9db68e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_86e48cdb_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_7c128405_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_f8fa99ae_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_b8bff3d7_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_69ffea68_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_783095d8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_507f6951_2238.reg
+Executing w_do_call fakekorean
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_fakekorean 
+Executing w_do_call sourcehansans
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+sourcehansans already installed, skipping
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_cb132002_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_c4c42df4_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_45ac20d1_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_e551b16e_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_9b370ecd_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_9d072056_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_a30b874d_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_cf573f83_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_79d5898c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_6e1142a5_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_64a11c9c_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_0f34a366_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_7bc7a0d0_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_9335c7d8_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_2b9a53c6_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_698305e4_2238.reg
+Executing w_do_call unifont
+Executing mkdir -p /home/wi
+------------------------------------------------------
+warning: You are using a 64-bit WINEPREFIX. Note that many verbs only install 32-bit versions of packages. If you encounter problems, please retest in a clean 32-bit WINEPREFIX before reporting a bug.
+------------------------------------------------------
+Executing load_unifont 
+Executing mkdir -p /home/wi/.cache/winetricks/unifont
+Executing cd /home/wi/.cache/winetricks/unifont
+Downloading https://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.ttf to /home/wi/.cache/winetricks/unifont
+--2022-03-31 21:56:48--  https://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.ttf
+Resolving unifoundry.com (unifoundry.com)... 107.180.4.157
+Connecting to unifoundry.com (unifoundry.com)|107.180.4.157|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12279760 (12M) [font/ttf]
+Saving to: ‘unifont-13.0.06.ttf’
+unifont-13.0.06.ttf           100%[===============================================>]  11.71M  15.7KB/s    in 14m 37s 
+
+2022-03-31 22:11:27 (13.7 KB/s) - ‘unifont-13.0.06.ttf’ saved [12279760/12279760]
+
+Executing cd /home/wi
+Executing cp /home/wi/.cache/winetricks/unifont/unifont-13.0.06.ttf /home/wi/.wine/dosdevices/c:/windows/temp/unifont.ttf
+------------------------------------------------------
+warning: Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=/home/wi/.wine terminate
+------------------------------------------------------
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_88a6da48_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font.reg
+Executing wine64 regedit C:\windows\Temp\_register-font.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font.reg /tmp/winetricks.B7jMcx0F/_reg_a97c7e83_2238.reg
+Executing wine regedit C:\windows\Temp\_register-font-replacements.reg
+Executing wine64 regedit C:\windows\Temp\_register-font-replacements.reg
+Executing cp /home/wi/.wine/dosdevices/c:/windows/temp/_register-font-replacements.reg /tmp/winetricks.B7jMcx0F/_reg_1e77dcfa_2238.reg

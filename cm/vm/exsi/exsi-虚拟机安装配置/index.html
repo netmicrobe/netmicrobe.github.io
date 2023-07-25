@@ -1,0 +1,1021 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>exsi-虚拟机安装配置 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="vmware, exsi">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="exsi-虚拟机安装配置">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/vm/exsi/exsi-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/vm/exsi/exsi-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">exsi-虚拟机安装配置</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-09-01T00:00:00+08:00">September 01, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://blog.csdn.net/JENREY/article/details/83750891">csdn.net - jenrey - ESXI 6.5安装详细步骤</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="安装配置exsi-67">安装配置EXSI 6.7</h2>
+
+<h3 id="安装exsi-67">安装EXSI 6.7</h3>
+
+<ol>
+  <li>下载EXSI6.7（据说update2 比update1 好很多。）</li>
+  <li>制作安装U盘
+    <ul>
+      <li>使用rufus将iso（如，VMware-VMvisor-Installer-6.7.0.update02-13006603.x86_64.iso）刷进u盘。
+        <ol>
+          <li>启动 rufus 3.11.1678</li>
+          <li>选择U盘（谨慎，别选错）</li>
+          <li>选择exsi 的 iso 文件。 如果出现提示ISO使用过时menu.c32版本，要选择【是】来让rufus下载缺少的文件。</li>
+          <li>分区类型：MBR</li>
+          <li>目标系统类型：BIOS或UEFI</li>
+          <li>文件系统：FAT32（默认）</li>
+          <li>点击“开始”制作启动U盘</li>
+        </ol>
+      </li>
+      <li>使用utltriso，以USB-HDD+的方式可能没用，可能iso文件的启动方式太老，不适合某些BIOS。</li>
+    </ul>
+  </li>
+  <li>安装
+    <ol>
+      <li>插入U盘启动电脑，启动菜单，选择第一个：<code class="highlighter-rouge">ESXi-...</code>启动</li>
+      <li>按屏幕提示安装，选择安装的硬盘、设置ESXI登陆密码、……完成后重启电脑。</li>
+    </ol>
+  </li>
+  <li>配置ESXI （显示器连Esxi的机器操作）<br />
+ F2登陆进入配置界面<br />
+ Configure Managment Network 》 Network Adapter 选择网卡/网口<br />
+ IPv4 Configuration &gt; Set static IPv4 Address &gt; 填写静态的局域网IP
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> 示例：
+ IPv4 Address : 192.168.1.252 Exsi管理地址
+ Subnet Mask: 255.255.0.0
+ Default Gateway: 192.168.1.1  主路由地址
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>重启 Restart Management Network</li>
+  <li>启动浏览器访问Exsi的管理地址（如上例：192.168.1.252)就可以进入EXSI管理页面了。</li>
+  <li>输入License： Host 》Manage 》Licensing</li>
+</ol>
+
+<h4 id="安装过程中出现no-network-adopters提示">安装过程中，出现“No Network Adopters”提示</h4>
+
+<p>是因为下载的ios文件中没有嵌入网卡驱动的原因。如果出现这种情况可以参考 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fblog.whsir.com%2Fpost-3377.html">这篇文章</a>。</p>
+
+<h3 id="exsi65-上配置-ros--lede">Exsi6.5 上配置 ros + lede</h3>
+
+<ol>
+  <li>远程登陆到EXSI管理界面</li>
+  <li>配置 》硬件 》存储器 》添加存储器，添加后可以访问本地硬盘</li>
+  <li>双击 对应硬盘的存储器 》数据存储浏览器，可以浏览硬盘内容、上传、下载文件</li>
+  <li>配置 》网络<br />
+ 添加wan口： 添加网络。。。 》虚拟机 》创建vSphere标准交换机 》选择没用的网口 》网络标签：wan<br />
+ 添加lan口： 添加网络。。。 》虚拟机 》创建vSphere标准交换机 》选择没用的网口 》网络标签：lan</li>
+  <li>导入ovf虚拟机 - ros<br />
+ 菜单 文件 》部署ovf模板 》选中文件系统ros的ovf模板</li>
+  <li>选中新建的ros虚拟机，右键菜单 》 编辑设置<br />
+ 内存：512M，ros最高2G内存<br />
+ CPU：2（1个核心-2线程）<br />
+ 显卡：显存：16M以上</li>
+  <li>给ros虚拟机添加网卡
+    <ol>
+      <li>选中新建的ros虚拟机，右键菜单 》 编辑设置 》添加。。。》以太网适配器</li>
+      <li>网络连接： 网络标签：lan</li>
+      <li>同上述步骤，添加wan虚拟网卡、管理网卡</li>
+    </ol>
+  </li>
+  <li>
+    <hr />
+  </li>
+  <li>同 上述步骤导入ovf虚拟机 - lede<br />
+ 给lede虚拟机添加网卡：删除所有网卡，创建lan虚拟网卡<br />
+ 设置lede的IP地址</li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="exsi-67-配置">Exsi 6.7 配置</h3>
+
+<ol>
+  <li>wan 设置（给ROS独占）</li>
+  <li>网络 》虚拟交换机 》添加标准虚拟交换机<br />
+ vSwitch: wan<br />
+ 上行链路： 选择目标网卡<br />
+ 安全：<br />
+     混杂模式： 接受<br />
+     MAC地址更改： 接受<br />
+     伪传输： 接受</li>
+  <li>网络 》端口组 》添加端口组<br />
+ 名称：wan<br />
+ VLAN ID： 0<br />
+ 虚拟交换机： wan</li>
+  <li>lan 设置（所有虚拟机共用）</li>
+  <li>网络 》端口组 》VM Network 实际是 lan 口，可以修改名称为 lan<br />
+ 在上游虚拟交换机，打开混杂模式。 网络 》虚拟交换机 》vSwitch0 》安全 》混杂模式：接受</li>
+  <li>
+    <hr />
+  </li>
+  <li>创建虚拟机 ros</li>
+  <li>虚拟机 》新建/注册虚拟机
+    <ul>
+      <li>如果是ova/vof导入，可能出现缺少磁盘镜像错误，忽略报错；直到任务栏，显示上载磁盘完成，才能继续操作。</li>
+    </ul>
+  </li>
+  <li>设置ros虚拟机网卡<br />
+ 适配器：lan<br />
+ 适配器类型：VMXNET3, （如果不能用可以尝试E1000）</li>
+  <li>启动ros，winbox连接，Interface List &gt; 双击当前Interface，将当前网卡的名称改为 lan，好辨认。关闭ros。</li>
+  <li>进入ros虚拟机设置，添加网卡 wan</li>
+  <li>
+    <hr />
+  </li>
+  <li>创建虚拟机op1（旁路由1号）</li>
+  <li>存储 》 数据存储 》数据存储浏览器 》上传固件</li>
+  <li>虚拟机 》新建/注册虚拟机 进行创建</li>
+  <li>网络适配器 选择 lan</li>
+  <li>
+    <hr />
+  </li>
+  <li>同上述方法，创建虚拟机op2</li>
+  <li>
+    <hr />
+  </li>
+  <li>设置 ros 地址为 192.168.1.233<br />
+ 修改方法：WinBox &gt; IP &gt; Address<br />
+ Address: 192.168.1.233/24<br />
+ Network: 192.168.1.0</li>
+  <li>设置 op1 科学上网 地址为 192.168.1.231 <br />
+ 修改方法：<code class="highlighter-rouge">vim /etc/config/network</code> 修改 interface lan 的 IP<br />
+ 登陆op1管理网页，lan设置 IPv4 网关为： 192.168.1.233</li>
+  <li>设置 op2 地址为 192.168.1.232<br />
+ 登陆op2管理网页，lan设置 IPv4 网关为： 192.168.1.231</li>
+  <li>上网终端的网关，改为 192.168.1.232</li>
+  <li></li>
+  <li>创建虚拟机<br />
+Deployment options
+    <ul>
+      <li>Network mapping: NAT(VM Network)</li>
+      <li>Disk provisioning: Openwrt需要磁盘不大，可以选Thick<br />
+ Thin  # 精简配置就是无论磁盘分配多大，实际占用存储大小是现在使用的大小，即用多少算多少。<br />
+ Thick # 在创建时为虚拟磁盘分配所需的空间。并将物理设备上保</li>
+      <li></li>
+    </ul>
+  </li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h2 id="备份">备份</h2>
+
+<p>尝试将virtualbox5到处的ova/ovf，无论是 ovf 1.0或2.0 格式都<strong>无法</strong>导入Exsi。</p>
+
+<h3 id="exsi-67-网页控制台导出小于100m的虚拟机">EXSi 6.7 网页控制台导出小于100M的虚拟机</h3>
+
+<p>选中虚拟机 》右键菜单，选择导出， 但是只能导出 <strong>小于100M的虚拟机</strong></p>
+
+<h3 id="ovftool-备份">OVFTool 备份</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.vediotalk.com/archives/4297">Vedio Talk - ESXI中阶教程 如何备份虚拟机ova模版，一次配置一劳永逸</a></li>
+      <li><a href="https://www.virtuallyghetto.com/2012/05/how-to-deploy-ovfova-in-esxi-shell.html">William Lam - How to Deploy an OVF/OVA in the ESXi Shell</a></li>
+      <li><a href="https://4sysops.com/archives/copy-vmware-vms-between-esxi-hosts-using-the-ovf-tool/">Copy VMware VMs between ESXi hosts using the OVF Tool</a></li>
+      <li><a href="https://kb.vmware.com/s/article/1038709">vmware.com - OVFtool command syntax to export and deploy packages</a></li>
+      <li><a href="https://vdc-download.vmware.com/vmwb-repository/dcr-public/bb505ca7-88b5-4b11-aff4-f59125ab27bc/f3d05149-23e9-4ac2-8f99-0c851a8a5231/ovftool-430-userguide.pdf">OVF Tool User’s Guide v4.3</a></li>
+      <li><a href="https://vdc-download.vmware.com/vmwb-repository/dcr-public/4f19cf95-19aa-4b28-bc8a-2d1bc80a122c/5aecb578-98dc-4e10-9c18-d118cacd4fa1/ovftool-440-userguide.pdf">OVF Tool User’s Guide v4.4 update1</a></li>
+      <li><a href="https://vmware.github.io/vic-product/assets/files/html/1.5/vic_vsphere_admin/deploy_vic_appliance.html">Download the vSphere Integrated Containers Installer</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>OVFTool能突破100M的限制</p>
+
+<ul>
+  <li>
+    <p>获取OVFTool的方法：</p>
+
+    <ol>
+      <li>已经带有OVFTool的软件：
+        <ul>
+          <li>Mac - VMware Fusion</li>
+          <li>Windows - VMware Workstation</li>
+        </ul>
+      </li>
+      <li>去官网下载</li>
+    </ol>
+
+    <p>官网下载地址： <a href="https://my.vmware.com/cn/web/vmware/details?downloadGroup=OVFTOOL430U2&amp;productId=758">https://my.vmware.com/cn/web/vmware/details?downloadGroup=OVFTOOL430U2&amp;productId=758</a></p>
+  </li>
+  <li>
+    <p>ovftool 备份</p>
+    <ol>
+      <li>设置到环境变量，mac上是<code class="highlighter-rouge">~/.bash_profile</code></li>
+      <li>导出虚拟机，<code class="highlighter-rouge">ovftool vi://root:@10.10.10.254/LEDE /Users/vee/Desktop/ledeova/lede.ova</code></li>
+    </ol>
+    <ul>
+      <li>格式：<code class="highlighter-rouge">ovftool vi://root:@ESXI的IP地址/虚拟机的名称  /存放位置/自定一个名称.ova</code>
+        <ol>
+          <li>注意事项：</li>
+        </ol>
+      </li>
+      <li>如果你的虚拟机配置了直通网卡，或者添加其他PCI设备，需要移除后再备份，不然就会出现如下报错信息： Unknown device: ‘PCI device 0’</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="ovftool-syntax">ovftool syntax</h4>
+
+<ul>
+  <li>The ovftool export syntax</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ovftool.exe –noSSLVerify vi://ip_of_esxi_host where the machine resides/name of source_machine “D:\ovf_export_name.ovf”
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>The ovftool deploy syntax</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ovftool -ds=DestinationDatastore -n=DestinationVMName OVF.ovf vi://username:password@vCenter2/Datacenter2/host/Cluster2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The ovftool 1-step export and deploy syntax</p>
+
+<ul>
+  <li>ESXi 4.x:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ovftool -ds=DestinationDatastore -n=DestinationVMName vi://username:password@vCenter1/Datacenter1/vm/SourceVM vi://username:password@vCenter2/Datacenter2/host/Cluster2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>ESXi 5.x:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ovftool --net: "source_network_name"="destination_network_name" -ds="destination_datastore" -n="destination_virtual_machine_name" "vi://domain\username@source_vcenter_fqdn/source_datacenter_name/virtual_machine_name/virtual_machine_folder/virtual_machine" "vi://domain\username@destination_vcenter_fqdn/host/cluster_name"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>ESXi 6.X</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ovftool.exe --X:logLevel=trivia --X:logToConsole --datastore=datastorename "&lt;path file of ovf&gt;" "vi://administrator:Password@&lt;vc fqdn ip or vc&gt;Datacenter/host/Cluster/&lt;Host IP or FQDN&gt;"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Note: <code class="highlighter-rouge">--X:logLevel=trivia --X:logToConsole</code> : Enables trivia logging and display on the command prompt</p>
+
+<h4 id="manjaro-安装-ovftool">manjaro 安装 ovftool</h4>
+
+<ol>
+  <li>运行 <code class="highlighter-rouge">yay -S vmware-ovftool</code> ，执行会报如下错误：</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>  -&gt; Downloading VMware-ovftool-4.4.1-16812187-lin.x86_64.bundle...
+curl: (3) URL using bad/illegal format or missing URL
+==&gt; ERROR: Failure while downloading file://VMware-ovftool-4.4.1-16812187-lin.x86_64.bundle
+    Aborting...
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ol>
+  <li>
+    <p>去 <code class="highlighter-rouge">/home/wi/.cache/yay/vmware-ovftool</code> 下查看 <code class="highlighter-rouge">PKGBUILD</code> 文件，里面有bundle下载地址，例如：<br />
+ <a href="https://my.vmware.com/group/vmware/downloads/get-download?downloadGroup=OVFTOOL441">VMware-ovftool-4.4.1-16812187-lin.x86_64.bundle</a></p>
+
+    <p>将下载好的文件放到 <code class="highlighter-rouge">/home/wi/.cache/yay/vmware-ovftool/</code></p>
+  </li>
+  <li>
+    <p>再次执行 <code class="highlighter-rouge">yay -S vmware-ovftool</code></p>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre>[wi@manj963 openwrt.esir]$ ovftool -ds=datastore1 -n=op-esir-spp-32 openwrt-esir-spp.ova vi://192.168.3.2
+Opening OVA source: openwrt-esir-spp.ova
+Enter login information for target vi://192.168.3.2/
+Username: root
+Password: ********
+Opening VI target: vi://root@192.168.3.2:443/
+Error: No network mapping specified. OVF networks:   NAT. Target networks:   VM Network  vnet1  vnet2  vnet3  vnet4  vnet5
+Completed with errors
+[wi@manj963 openwrt.esir]$ ovftool -ds=datastore1 -n=op-esir-spp-32 openwrt-esir-spp.ova vi://192.168.3.2
+Opening OVA source: openwrt-esir-spp.ova
+Enter login information for target vi://192.168.3.2/
+Username: root
+Password: ********
+Opening VI target: vi://root@192.168.3.2:443/
+Error: Create import spec failed. Please verify importSpec
+Error: HTTP error response: Service Unavailable
+Completed with errors
+[wi@manj963 openwrt.esir]$ ovftool -ds=datastore1 -n=op-esir-spp-32 openwrt-esir-spp.ovf vi://192.168.3.2
+Opening OVF source: openwrt-esir-spp.ovf
+Enter login information for target vi://192.168.3.2/
+Username: root
+Password: ********
+Opening VI target: vi://root@192.168.3.2:443/
+Error: Create import spec failed. Please verify importSpec
+Error: HTTP error response: Service Unavailable
+Warning:
+ - No manifest file found.
+ - Wrong file size specified in OVF descriptor for 'openwrt-esir-spp-disk001.vmdk' (specified: -1, actual 129761280).
+Completed with errors
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#vmware" title="Pages tagged vmware" class="tag"><span class="term">vmware</span></a><a href="/tags#exsi" title="Pages tagged exsi" class="tag"><span class="term">exsi</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

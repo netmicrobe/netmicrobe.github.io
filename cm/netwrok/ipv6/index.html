@@ -1,0 +1,1034 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>IPv6（测试/testing） &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="icanhazip">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv6（测试/testing）">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/netwrok/ipv6/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/netwrok/ipv6/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">IPv6（测试/testing）</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-07-02T00:00:00+08:00">July 02, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://wiki.ubuntu.com/IPv6">Ubuntu Wiki - IPv6</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ipv6-基础">IPv6 基础</h2>
+
+<ul>
+  <li>IPv6优点
+    <ul>
+      <li>128 bit address space, with a design goal of supporting 240 subnets organizing 250 hosts.</li>
+      <li>Each computer can have its own globally routable address.</li>
+      <li>Smaller routing tables.</li>
+      <li></li>
+      <li></li>
+    </ul>
+  </li>
+</ul>
+
+<p>1️⃣ IPv6的历史、设计理念2️⃣ IPv6的地址格式、分类、前缀计算，以及与IPv4的对比3️⃣ IP地址、网关路由的配置与查看4️⃣ 服务端实践，尝试给自己的网站增加IPv65️⃣ 客户端实践，让自己的PC访问IPv6互联网6️⃣ 应用层实践，自己写一对C/S程序，能同时支持IPv4与IPv67️⃣ IPv6通讯原理，抓包分析每个包，熟悉ND、DHCPv6等8️⃣ IPv4与IPv6的互访、过渡9️⃣ IPv6安全🔟 具体领域的IPv6，例如移动IPv6</p>
+
+<h3 id="ipv6地址书写规则">IPv6地址书写规则</h3>
+
+<ul>
+  <li>The full form is represented as 8 hexquad parcels of 16 bits each written in lower case hexadecimal, separated by colons (:). For example 2001:0db8:382b:23c1:aa49:4592:4efe:9982.</li>
+  <li>the longest and first run of all zero hexquads is abbreviated as a double colon (“::”).Since :: is variable length, it can only be used once per address.
+    <ul>
+      <li>例如， <code class="highlighter-rouge">fe80::1</code> 等于 <code class="highlighter-rouge">fe80:0000:0000:0000:0000:0000:0000:0001</code></li>
+    </ul>
+  </li>
+  <li>Leading “0”s are also omitted, up to three per hexquad.
+    <ul>
+      <li>例如， <code class="highlighter-rouge">2001:db8:b:23c1:49:4592:efe:9982</code> 等于 <code class="highlighter-rouge">2001:0db8:000b:23c1:0049:4592:0efe:9982</code></li>
+    </ul>
+  </li>
+  <li>第三种写法，是最后32位写IPv4的格式
+    <ul>
+      <li>例如， <code class="highlighter-rouge">2002::10.0.0.1</code> = <code class="highlighter-rouge">2002::a00:1</code> = <code class="highlighter-rouge">2002:0000:0000:0000:0000:0000:0a00:0001</code></li>
+    </ul>
+  </li>
+  <li>in IPv6 we always use CIDR notation to specify the number of bits at the start of the mask that are 1
+    <ul>
+      <li>For example, the address range <code class="highlighter-rouge">fe80::/10</code> includes all addresses that are the same as the address fe80:: in the first 10 bits, i.e. all beginning with the bit pattern <code class="highlighter-rouge">1111 1110 10</code>.</li>
+    </ul>
+  </li>
+  <li>a network prefix of length 128 specifies an individual address.</li>
+</ul>
+
+<h2 id="ipv6-通道">IPv6 通道</h2>
+
+<h3 id="miredo">miredo</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.remlab.net/miredo/">Miredo: Teredo IPv6 tunneling for Linux and BSD</a></li>
+      <li><a href="https://www.jianshu.com/p/dfcc24c74a75">在Mac上安装Miredo访问ipv6网络</a></li>
+      <li><a href="http://waelalghool.blogspot.com/2018/03/teredo-ipv6-tunneling-over-ipv4-traffic.html">Teredo, IPV6-tunneling over IPV4-traffic</a></li>
+      <li><a href="https://www.cnblogs.com/sink_cup/archive/2011/04/12/ipv6_dns_aaaa_ping_wget_apache_virtualhost.html">IPv6 Apache 域名DNS AAAA配置</a></li>
+      <li><a href="https://github.com/XX-net/XX-Net/issues/7244">ubuntu 通过miredo实现ipv6</a></li>
+      <li><a href="https://www.cnblogs.com/hsdchenliyang/p/7929228.html">ubuntu开启ipv6</a></li>
+      <li><a href="https://askubuntu.com/a/9225">使用 local proxy Squid ，或，aiccu</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li><strong>总结</strong></li>
+</ul>
+
+<p>miredo总是优先使用IPv4，很难强制使用IPv6，特别是域名解析的时候，修改 <code class="highlighter-rouge">/etc/gai.conf</code> 也没用，只能找到域名的IP，自己添加到 <code class="highlighter-rouge">/etc/hosts</code> 中。</p>
+
+<p>使用 local proxy Squid ，或，aiccu 据说可以解决问题，尚未试验过。</p>
+
+<h4 id="ubuntu-上安装">ubuntu 上安装</h4>
+
+<ol>
+  <li><code class="highlighter-rouge">sudo apt install miredo</code></li>
+  <li>安装完成， <code class="highlighter-rouge">ip addr</code> 就可以看到名称为 <code class="highlighter-rouge">teredo</code> 的虚拟网卡，IPv6地址以<code class="highlighter-rouge">2001:0:</code>开头。</li>
+  <li>查看服务是否正常： <code class="highlighter-rouge">systemctl status miredo.service</code></li>
+  <li>浏览器访问网站 <a href="https://test-ipv6.com/">https://test-ipv6.com/</a>，查看IPv6的支持情况。</li>
+</ol>
+
+<h4 id="关闭-miredo-服务">关闭 miredo 服务</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>systemctl disable miredo.service
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="无法使用时可能的解决方法">无法使用时，可能的解决方法：</h4>
+
+<ul>
+  <li>防火墙问题
+    <ul>
+      <li>以root权限打开ufw的配置文件: “/etc/default/ufw”，找到”IPV6=no”这一行，将其改为”IPV6=yes”。</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="miredo-服务器配置">miredo 服务器配置</h4>
+
+<p>miredo 配置文件 <code class="highlighter-rouge">/etc/miredo.conf</code> 可以设置 miredo 服务器。</p>
+
+<p>备选的Server：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>teredo.ipv6.microsoft.com
+teredo.trex.fi
+teredo.remlab.net
+teredo2.remlab.net
+debian-miredo.progsoc.org
+teredo.ginzado.ne.jp
+teredo.iks-jena.de
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="ipv6域名解析">IPv6域名解析</h4>
+
+<p>默认还是使用IPv4的域名解析，可以通过改 <code class="highlighter-rouge">/etc/hosts</code> 的本地dns来直接解析成IPv6地址。</p>
+
+<p>以 <code class="highlighter-rouge">http://icanhazip.com/</code> 为例：</p>
+
+<ol>
+  <li>查找指定域名的IPv6地址
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre> $ nslookup icanhazip.com
+ Server:		127.0.0.53
+ Address:	127.0.0.53#53
+
+ Non-authoritative answer:
+ Name:	icanhazip.com
+ Address: 104.20.17.242
+ Name:	icanhazip.com
+ Address: 104.20.16.242
+ Name:	icanhazip.com
+ Address: 2606:4700:10::6814:11f2
+ Name:	icanhazip.com
+ Address: 2606:4700:10::6814:10f2
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>编辑 <code class="highlighter-rouge">/etc/hosts</code> 添加：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> 2606:4700:10::6814:10f2 icanhazip.com
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>检查是否成功
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> $ curl icanhazip.com
+ 2001:0:53aa:64c:817:259a:25a1:93c1
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="测试">测试</h2>
+
+<h3 id="nslookup-查看-ipv6-地址">nslookup 查看 IPv6 地址</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>$ nslookup
+&gt; set querytype=aaaa
+&gt; ipv6.google.com
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 指定dns服务器查询name
+nslookup somewhere.com some.dns.server
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="是否可以访问ipv6网站">是否可以访问ipv6网站</h3>
+
+<ul>
+  <li>命令行中检查
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>curl icanhazip.com
+# 或
+curl ipv6.icanhazip.com
+  
+# 查看v4地址，如果是双栈
+curl ipv4.icanhazip.com
+  
+# 制定网络适配器查看
+curl ipv4.icanhazip.com --interface wlp39s0f3
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>浏览器访问
+    <ul>
+      <li><a href="http://ipv6.jmu.edu.cn/">http://ipv6.jmu.edu.cn/</a>  福建集美大学</li>
+      <li><a href="https://test-ipv6.com/">https://test-ipv6.com/</a></li>
+      <li><a href="https://ipv6-test.com/">https://ipv6-test.com/</a></li>
+      <li><a href="http://ipv6.sjtu.edu.cn">http://ipv6.sjtu.edu.cn</a>  上海交通大学</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="浏览器中如何使用ipv6网址而不是域名">浏览器中如何使用ipv6网址（而不是域名）</h3>
+
+<ul>
+  <li>REF
+    <ul>
+      <li><a href="https://superuser.com/a/367788">https://superuser.com/a/367788</a></li>
+      <li><a href="http://www.ietf.org/rfc/rfc2732.txt">http://www.ietf.org/rfc/rfc2732.txt</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>http://[1080:0:0:0:8:800:200C:417A]/index.html
+
+http://[1080:0:0:0:8:800:200C:417A]:8888/index.html
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="手机设置从ipv6访问网站">手机设置从ipv6访问网站</h3>
+
+<p>支持ipv6的手机，打开数据网络并修改APN协议为IPv6</p>
+
+<ol>
+  <li>打开设置》移动网络》接入点（APN）》点击打开设置》移动网络》接入点（APN）》点击”中国电信互联网CTNET”进入修改接入点页面</li>
+  <li>将IP Version选择IPV6，然后保存</li>
+</ol>
+
+<p>小米MIUI 9的设置路径:</p>
+<ol>
+  <li>双卡和移动网络 》中国电信 》接入点名称（APN）》中国电信（China Telecomm）GPRS</li>
+  <li>APN协议 和 APN 漫游协议，从 <code class="highlighter-rouge">IPv4/IPv6</code> 改为 <code class="highlighter-rouge">IPv6</code></li>
+</ol>
+
+<h3 id="手机作为ipv6热点供电脑使用">手机作为IPv6热点，供电脑使用</h3>
+
+<ol>
+  <li>将手机设为热点，电脑连接手机热点，这样，电脑也可以直接将接入IPv6网络。
+    <ul>
+      <li>firefox 优先选择了IPv4的以太网卡</li>
+      <li>curl， chromium 优先选择了 IPv6 的无线网卡</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="ipv6-dns-服务器">IPv6 DNS 服务器</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://dns.icoa.cn/ipv6/">https://dns.icoa.cn/ipv6/</a></li>
+    </ul>
+  </li>
+  <li><strong>国外</strong></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre># Google Public IPv6 DNS
+2001:4860:4860::8888
+2001:4860:4860::8844
+
+# Cloudflare IPv6 DNS
+2606:4700:4700::1111
+2606:4700:4700::1001
+
+# OpenDNS
+2620:0:ccc::2
+2620:0:ccd::2
+
+# Quad9 IPv6 DNS
+# IBM 发起的 Quad9 提供的公共免费 IPv6 DNS.
+2620:fe::fe
+2620:fe::9
+
+# Neustar UltraDNS IPv6
+# Neustar UltraDNS 是美国信息服务公司 Neustar 提供的公共免费 DNS 服务.
+# 第 1 组
+2610:a1:1018::1
+2610:a1:1019::1
+# 第 2 组
+2610:a1:1018::5
+2610:a1:1019::1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><strong>国内</strong></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre># 百度 IPv6 DNS
+2400:da00::6666
+
+# 中国电信 IPv6 DNS 
+# 如果用中国电信的宽带应该会自动分配这两个IP
+240e:4c:4008::1
+240e:4c:4808::1
+
+# 下一代互联网北京研究中心
+# Yeti DNS Project 注册的 IPv6 DNS 服务器
+240C::6666
+240C::6644
+
+# CNNIC IPv6 DNS 服务器ns
+2001:dc7:1000::1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#icanhazip" title="Pages tagged icanhazip" class="tag"><span class="term">icanhazip</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

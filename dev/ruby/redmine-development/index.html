@@ -1,0 +1,1245 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Redmine 开发 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="redmine, rails">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redmine 开发">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/ruby/redmine-development/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/ruby/redmine-development/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Redmine 开发</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-07-31T08:55:18+08:00">July 31, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="打印日志">打印日志</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="n">logger</span><span class="p">.</span><span class="nf">debug</span> <span class="s2">"xxx"</span>
+<span class="n">logger</span><span class="p">.</span><span class="nf">info</span> <span class="s2">"xxx"</span>
+<span class="n">logger</span><span class="p">.</span><span class="nf">error</span> <span class="s2">"xxx"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>在 helper 中直接使用 <code class="highlighter-rouge">logger</code> 报错 <code class="highlighter-rouge">undefined local variable or method </code>logger’ `
+    <ul>
+      <li>参考
+        <ul>
+          <li><a href="https://stackoverflow.com/a/7919034">https://stackoverflow.com/a/7919034</a></li>
+        </ul>
+      </li>
+      <li>解决：
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">info</span> <span class="s2">"..."</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="issue-相关">issue 相关</h2>
+
+<h3 id="代码中创建issue">代码中创建issue</h3>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.redmine.org/boards/2/topics/17257">https://www.redmine.org/boards/2/topics/17257</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="n">project</span> <span class="o">=</span> <span class="no">Project</span><span class="p">.</span><span class="nf">find_by_identifier</span><span class="p">(</span><span class="s2">"myproject"</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find_by_mail</span><span class="p">(</span><span class="s2">"user@server.com"</span><span class="p">)</span>
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="nf">trackers</span><span class="p">.</span><span class="nf">find_by_name</span><span class="p">(</span><span class="s2">"Bug"</span><span class="p">)</span>
+<span class="n">category</span> <span class="o">=</span> <span class="n">project</span><span class="p">.</span><span class="nf">issue_categories</span><span class="p">.</span><span class="nf">find_by_name</span><span class="p">(</span><span class="s2">"some"</span><span class="p">)</span>
+<span class="n">priority</span> <span class="o">=</span> <span class="no">IssuePriority</span><span class="p">.</span><span class="nf">find_by_name</span><span class="p">(</span><span class="s2">"Urgent"</span><span class="p">)</span>
+<span class="n">status</span> <span class="o">=</span> <span class="no">IssueStatus</span><span class="p">.</span><span class="nf">find_by_name</span><span class="p">(</span><span class="s2">"New"</span><span class="p">)</span>
+<span class="n">issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+  <span class="ss">:author</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span>
+  <span class="ss">:project</span> <span class="o">=&gt;</span> <span class="n">project</span><span class="p">,</span>
+  <span class="ss">:tracker</span> <span class="o">=&gt;</span> <span class="n">tracker</span><span class="p">,</span>
+  <span class="ss">:category</span> <span class="o">=&gt;</span> <span class="n">category</span><span class="p">,</span>
+  <span class="ss">:priority</span> <span class="o">=&gt;</span> <span class="n">priority</span><span class="p">,</span>
+  <span class="ss">:assigned_to</span> <span class="o">=&gt;</span> <span class="n">user</span>
+<span class="p">)</span>
+<span class="n">issue</span><span class="p">.</span><span class="nf">subject</span> <span class="o">=</span> <span class="s2">"Night build has failed"</span> 
+<span class="n">issue</span><span class="p">.</span><span class="nf">description</span> <span class="o">=</span> <span class="s2">"Issue body"</span> 
+<span class="n">issue</span><span class="p">.</span><span class="nf">save</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="访问issue的-自定义属性的值--custom_field-value">访问issue的 自定义属性的值 / custom_field value</h3>
+
+<p>可以在 models/issue.rb 里面添加一个方法：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">get_custom_field_value_by_name</span><span class="p">(</span><span class="n">cvname</span><span class="p">)</span>
+  <span class="n">cfv</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">custom_field_values</span><span class="p">.</span><span class="nf">detect</span><span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="n">c</span><span class="p">.</span><span class="nf">custom_field</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="n">cvname</span> <span class="p">}</span>
+  <span class="n">cfv</span><span class="p">.</span><span class="nf">value</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="控制创建-issue-时那些tracker-可选">控制创建 issue 时，那些tracker 可选</h3>
+
+<p><code class="highlighter-rouge">helpers/issues_helper.rb</code> 中 <code class="highlighter-rouge">def trackers_options_for_select(issue)</code></p>
+
+<h2 id="custom-field-自定义属性">custom field 自定义属性</h2>
+
+<h3 id="给自定义属性添加更多的约束">给自定义属性添加更多的约束</h3>
+
+<p>在 <code class="highlighter-rouge">models/custom_field.rb</code> 中的<code class="highlighter-rouge">def validate_custom_value(custom_value)</code>添加</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">validate_custom_value</span><span class="p">(</span><span class="n">custom_value</span><span class="p">)</span>
+  <span class="c1"># ... ...</span>
+  <span class="c1"># 假设自定义属性名字是 userGameId ，必须是唯一的</span>
+  <span class="n">issue</span> <span class="o">=</span> <span class="n">custom_value</span><span class="p">.</span><span class="nf">customized</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">issue</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Issue</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s1">'userGameId'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">issue</span><span class="p">.</span><span class="nf">project</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s1">'target-project-name'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">issue</span><span class="p">.</span><span class="nf">tracker</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s1">'target-tracker-name'</span><span class="p">)</span>
+
+    <span class="n">cv_exists</span> <span class="o">=</span> <span class="no">CustomValue</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">:custom_field_id</span> <span class="o">=&gt;</span> <span class="n">custom_value</span><span class="p">.</span><span class="nf">custom_field</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cv_exists</span><span class="p">.</span><span class="nf">present?</span>
+      <span class="n">errs</span> <span class="o">&lt;&lt;</span> <span class="s2">"userGameId -- </span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="s2"> 已存在。"</span>
+    <span class="k">end</span>
+    
+  <span class="k">end</span>
+  <span class="c1"># ... ...</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="依据自定义属性值查找issue">依据自定义属性值查找Issue</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">the_custom_field</span> <span class="o">=</span> <span class="no">IssueCustomField</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"traker-name"</span><span class="p">)</span>
+<span class="n">cc_exists</span> <span class="o">=</span> <span class="no">Issue</span>
+  <span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="s2">"INNER JOIN custom_values cv1 ON `cv1`.`customized_id` = issues.id and `cv1`.`customized_type` = 'Issue'"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"cv1.custom_field_id = </span><span class="si">#{</span><span class="n">the_custom_field</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2"> and cv1.value = '</span><span class="si">#{</span><span class="n">cc_issue</span><span class="p">.</span><span class="nf">get_custom_field_value_by_name</span><span class="p">(</span><span class="s1">'traker-name'</span><span class="p">)</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">take</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="添加新的查询过滤器到redmine的issue查询界面">添加新的查询过滤器到Redmine的issue查询界面</h2>
+
+<h3 id="在页面上能显示过滤器">在页面上能显示过滤器</h3>
+
+<ol>
+  <li>
+    <p>app/models/issue_query.rb 添加 需要的过滤器</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre> <span class="k">def</span> <span class="nf">initialize_available_filters</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+      
+   <span class="c1"># 添加 需要的过滤器</span>
+   <span class="n">add_available_filter</span> <span class="s2">"xc_tag_id"</span><span class="p">,</span>
+     <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:list</span><span class="p">,</span> <span class="ss">:label</span> <span class="o">=&gt;</span> <span class="ss">:label_xc_tags_title</span><span class="p">,</span> <span class="ss">:values</span> <span class="o">=&gt;</span> <span class="no">XcTag</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">collect</span><span class="p">{</span><span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="p">[</span><span class="n">s</span><span class="p">.</span><span class="nf">tagname</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="nf">id</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span> <span class="p">}</span>
+
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>app/helpers/queries_helper.rb 放到一个独立的组中</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre> <span class="k">def</span> <span class="nf">filters_options_for_select</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+   <span class="n">ungrouped</span> <span class="o">=</span> <span class="p">[]</span>
+   <span class="n">grouped</span> <span class="o">=</span> <span class="p">{}</span>
+   <span class="n">query</span><span class="p">.</span><span class="nf">available_filters</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">field</span><span class="p">,</span> <span class="n">field_options</span><span class="o">|</span>
+     <span class="k">if</span> <span class="p">[</span><span class="ss">:tree</span><span class="p">,</span> <span class="ss">:relation</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">field_options</span><span class="p">[</span><span class="ss">:type</span><span class="p">])</span> 
+       <span class="n">group</span> <span class="o">=</span> <span class="ss">:label_relations</span>
+     <span class="k">elsif</span> <span class="n">field</span> <span class="o">=~</span> <span class="sr">/^(.+)\./</span>
+       <span class="c1"># association filters</span>
+       <span class="n">group</span> <span class="o">=</span> <span class="s2">"field_</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="s2">"</span>
+     <span class="k">elsif</span> <span class="sx">%w(member_of_group assigned_to_role)</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+       <span class="n">group</span> <span class="o">=</span> <span class="ss">:field_assigned_to</span>
+     <span class="k">elsif</span> <span class="sx">%w(xc_tag_id)</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+       <span class="n">group</span> <span class="o">=</span> <span class="ss">:label_xc_filters_group</span> <span class="c1"># 自定义的过滤器放到一个独立的组中</span>
+     <span class="k">elsif</span> <span class="n">field_options</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:date_past</span> <span class="o">||</span> <span class="n">field_options</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:date</span>
+       <span class="n">group</span> <span class="o">=</span> <span class="ss">:label_date</span>
+     <span class="k">end</span>
+     <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+   <span class="k">end</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="过滤器真正起作用">过滤器真正起作用</h3>
+
+<ol>
+  <li>
+    <p>在 app/models/issue_query.rb 中添加搜索条件<br />
+ 可以参考所有 sql_for_#{field}_field<br />
+ 本例中的 #{field} 是 xc_tag_id，之前 add_available_filter 的时候指定的</p>
+
+    <p>Redmine 会自动寻找 sql_for_#{field}_field 模式的函数，<br />
+ 参考 <code class="highlighter-rouge">app/models/query.rb</code> 中的 <code class="highlighter-rouge">Query#statement</code></p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> <span class="k">def</span> <span class="nf">sql_for_xc_tag_id_field</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+   <span class="n">db_table</span> <span class="o">=</span> <span class="no">Issue</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">association</span><span class="p">(</span><span class="ss">:xc_tags</span><span class="p">).</span><span class="nf">options</span><span class="p">[</span><span class="ss">:join_table</span><span class="p">]</span>
+   <span class="s2">"</span><span class="si">#{</span><span class="n">db_table</span><span class="si">}</span><span class="s2">.xc_tag_id </span><span class="si">#{</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">'='</span> <span class="p">?</span> <span class="s1">'IN'</span> <span class="p">:</span> <span class="s1">'NOT IN'</span> <span class="si">}</span><span class="s2"> ( </span><span class="si">#{</span><span class="n">value</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span><span class="si">}</span><span class="s2"> ) "</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>如果涉及join联合查询，还要在 issue_query.rb 中join对应的relationship<br />
+ 例如：</p>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre> <span class="c1"># app/models/issue.rb</span>
+    
+ <span class="no">Class</span> <span class="no">Issue</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+      
+   <span class="c1"># issue的标签，可以有多个</span>
+   <span class="n">has_and_belongs_to_many</span> <span class="ss">:xc_tags</span><span class="p">,</span> <span class="ss">:join_table</span> <span class="o">=&gt;</span> <span class="ss">:xc_tags_issues</span>
+      
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre></td><td class="code"><pre> <span class="c1"># app/models/issue_query.rb</span>
+ <span class="k">def</span> <span class="nf">base_scope</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+   <span class="n">jointo</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">filters</span><span class="p">[</span><span class="s1">'xc_tag_id'</span><span class="p">]</span>
+     <span class="n">jointo</span> <span class="o">&lt;&lt;</span> <span class="ss">:xc_tags</span><span class="p">;</span>   <span class="c1"># join 过滤条件对于的relation</span>
+   <span class="k">end</span>
+   <span class="no">Issue</span><span class="p">.</span><span class="nf">visible</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="n">jointo</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+ <span class="k">end</span>
+
+ <span class="k">def</span> <span class="nf">issues</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{})</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+   <span class="n">jointo</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">filters</span><span class="p">[</span><span class="s1">'xc_tag_id'</span><span class="p">]</span>
+     <span class="n">jointo</span> <span class="o">&lt;&lt;</span> <span class="ss">:xc_tags</span>   <span class="c1"># join 过滤条件对于的relation</span>
+   <span class="k">end</span>
+     <span class="n">scope</span> <span class="o">=</span> <span class="no">Issue</span><span class="p">.</span><span class="nf">visible</span><span class="p">.</span>
+       <span class="nf">joins</span><span class="p">(</span><span class="n">jointo</span><span class="p">).</span>
+       <span class="nf">where</span><span class="p">(</span><span class="n">statement</span><span class="p">).</span>
+       <span class="nf">includes</span><span class="p">(([</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:include</span><span class="p">]</span> <span class="o">||</span> <span class="p">[])).</span><span class="nf">uniq</span><span class="p">).</span>
+       <span class="nf">where</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:conditions</span><span class="p">]).</span>
+       <span class="nf">order</span><span class="p">(</span><span class="n">order_option</span><span class="p">).</span>
+       <span class="nf">joins</span><span class="p">(</span><span class="n">joins_for_order_statement</span><span class="p">(</span><span class="n">order_option</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">','</span><span class="p">))).</span>
+       <span class="nf">limit</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:limit</span><span class="p">]).</span>
+       <span class="nf">offset</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:offset</span><span class="p">])</span>
+   <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+ <span class="k">end</span>
+
+ <span class="k">def</span> <span class="nf">issue_ids</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{})</span>
+   <span class="n">order_option</span> <span class="o">=</span> <span class="p">[</span><span class="n">group_by_sort_order</span><span class="p">,</span> <span class="n">options</span><span class="p">[</span><span class="ss">:order</span><span class="p">]].</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:blank?</span><span class="p">)</span>
+
+   <span class="n">jointo</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">filters</span><span class="p">[</span><span class="s1">'xc_tag_id'</span><span class="p">]</span>
+     <span class="n">jointo</span> <span class="o">&lt;&lt;</span> <span class="ss">:xc_tags</span>   <span class="c1"># join 过滤条件对于的relation</span>
+   <span class="k">end</span>
+   <span class="no">Issue</span><span class="p">.</span><span class="nf">visible</span><span class="p">.</span>
+     <span class="nf">joins</span><span class="p">(</span><span class="n">jointo</span><span class="p">).</span>
+     <span class="nf">where</span><span class="p">(</span><span class="n">statement</span><span class="p">).</span>
+     <span class="nf">includes</span><span class="p">(([</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:include</span><span class="p">]</span> <span class="o">||</span> <span class="p">[])).</span><span class="nf">uniq</span><span class="p">).</span>
+     <span class="nf">references</span><span class="p">(([</span><span class="ss">:status</span><span class="p">,</span> <span class="ss">:project</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:include</span><span class="p">]</span> <span class="o">||</span> <span class="p">[])).</span><span class="nf">uniq</span><span class="p">).</span>
+     <span class="nf">where</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:conditions</span><span class="p">]).</span>
+     <span class="nf">order</span><span class="p">(</span><span class="n">order_option</span><span class="p">).</span>
+     <span class="nf">joins</span><span class="p">(</span><span class="n">joins_for_order_statement</span><span class="p">(</span><span class="n">order_option</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">','</span><span class="p">))).</span>
+     <span class="nf">limit</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:limit</span><span class="p">]).</span>
+     <span class="nf">offset</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:offset</span><span class="p">]).</span>
+     <span class="nf">pluck</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+ <span class="k">rescue</span> <span class="o">::</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">StatementInvalid</span> <span class="o">=&gt;</span> <span class="n">e</span>
+   <span class="k">raise</span> <span class="no">StatementInvalid</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="p">)</span>
+ <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="redmine中使用ajax">Redmine中使用ajax</h2>
+
+<h3 id="view-代码">view 代码</h3>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"xc_tags"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">cboxid</span> <span class="cp">%&gt;</span><span class="s">"</span> <span class="na">id=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">cboxid</span> <span class="cp">%&gt;</span><span class="s">"</span> 
+ <span class="na">onchange=</span><span class="s">"tagIssue('</span><span class="cp">&lt;%=</span> <span class="n">escape_javascript</span> <span class="n">tagissue_xc_tag_path</span><span class="p">(</span> <span class="p">{</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">tag</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="ss">:issue_id</span> <span class="o">=&gt;</span> <span class="vi">@issue</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="s1">'js'</span><span class="p">}</span> <span class="p">)</span><span class="cp">%&gt;</span><span class="s">', this); return false;"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="c1">// 一般放在独立的js文件中</span>
+<span class="kd">function</span> <span class="nx">tagIssue</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s1">'get'</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="目标-contorller">目标 contorller</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre>  <span class="c1"># /xc_tag/1/tagissue/:issue_id</span>
+  <span class="k">def</span> <span class="nf">tagissue</span>
+    <span class="k">begin</span>
+      <span class="vi">@issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:issue_id</span><span class="p">])</span>
+    <span class="k">rescue</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">RecordNotFound</span>
+      <span class="c1">#render plain: "no such issue", status: 404</span>
+      <span class="n">head</span> <span class="ss">:no_content</span>
+      <span class="k">return</span>
+    <span class="k">end</span>
+    
+    <span class="k">if</span> <span class="vi">@xc_tag</span><span class="p">.</span><span class="nf">issues</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="vi">@issue</span><span class="p">)</span>
+      <span class="c1"># take off the tag</span>
+      <span class="vi">@xc_tag</span><span class="p">.</span><span class="nf">issues</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="vi">@issue</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="c1"># put the tag on</span>
+      <span class="vi">@xc_tag</span><span class="p">.</span><span class="nf">issues</span> <span class="o">&lt;&lt;</span> <span class="vi">@issue</span>
+    <span class="k">end</span>
+    
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="目标js">目标js</h4>
+
+<ul>
+  <li>views\xc_tags\tagissue.js.erb</li>
+</ul>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>alert("<span class="cp">&lt;%=</span> <span class="vi">@xc_tag</span><span class="p">.</span><span class="nf">tagname</span> <span class="cp">%&gt;</span>");
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="添加新设置到redmine管理界面">添加新设置到Redmine管理界面</h2>
+
+<p>修改 lib/redmine.rb</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="no">Redmine</span><span class="o">::</span><span class="no">MenuManager</span><span class="p">.</span><span class="nf">map</span> <span class="ss">:admin_menu</span> <span class="k">do</span> <span class="o">|</span><span class="n">menu</span><span class="o">|</span>
+  <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+  <span class="n">menu</span><span class="p">.</span><span class="nf">push</span> <span class="ss">:info</span><span class="p">,</span> <span class="p">{</span><span class="ss">:controller</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'info'</span><span class="p">},</span> <span class="ss">:caption</span> <span class="o">=&gt;</span> <span class="ss">:label_information_plural</span><span class="p">,</span> <span class="ss">:last</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+  
+  <span class="c1"># 添加新的连接到系统管理菜单</span>
+  <span class="n">menu</span><span class="p">.</span><span class="nf">push</span> <span class="ss">:your_new_feature</span><span class="p">,</span> <span class="p">{</span><span class="ss">:controller</span> <span class="o">=&gt;</span> <span class="s1">'your_new_feature'</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">},</span> <span class="ss">:caption</span> <span class="o">=&gt;</span> <span class="s1">'新的功能设置'</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>效果如下：
+    <ul>
+      <li><img src="settings.png" alt="" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="备注journal的访问控制">备注（journal）的访问控制</h2>
+
+<h3 id="issue详情页上的备注可见控制">issue详情页上的备注可见控制</h3>
+
+<p>修改 <code class="highlighter-rouge">app/controllers/issues_controller.rb</code> 的 show action</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>  <span class="k">def</span> <span class="nf">show</span>
+    <span class="vi">@journals</span> <span class="o">=</span> <span class="vi">@issue</span><span class="p">.</span><span class="nf">journals</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:details</span><span class="p">).</span>
+                    <span class="nf">references</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:details</span><span class="p">).</span>
+                    <span class="nf">reorder</span><span class="p">(</span><span class="ss">:created_on</span><span class="p">,</span> <span class="ss">:id</span><span class="p">).</span><span class="nf">to_a</span>
+    <span class="vi">@journals</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="p">{</span><span class="o">|</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="o">|</span> <span class="n">j</span><span class="p">.</span><span class="nf">indice</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span>
+    
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+    
+    <span class="c1"># 自定义备注tag的现实规则，目前tag过的备注，都是只给QA组看</span>
+    <span class="vi">@journals</span><span class="p">.</span><span class="nf">reject!</span> <span class="p">{</span><span class="o">|</span><span class="n">j</span><span class="o">|</span> <span class="n">j</span><span class="p">.</span><span class="nf">xc_jtags</span><span class="p">.</span><span class="nf">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">}</span> <span class="k">unless</span> <span class="no">User</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">is_qa_member?</span>
+
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">.</span><span class="p">.</span><span class="nf">.</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="限制备注更新时邮件发送">限制备注更新时，邮件发送</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="c1"># app/models/journal.rb</span>
+
+  <span class="c1"># 这个 journal 是否只能QA可见</span>
+  <span class="k">def</span> <span class="nf">visible_only_qa</span>
+    <span class="n">xc_jtags</span><span class="p">.</span><span class="nf">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1"># 是否使用了自定义tag（目前自定义tag都是为QA的）</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">each_notification</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">users</span><span class="p">.</span><span class="nf">any?</span>
+    
+      <span class="c1"># QA 备注，不发邮件给其他人</span>
+      <span class="k">if</span> <span class="n">visible_only_qa</span>
+        <span class="n">users</span><span class="p">.</span><span class="nf">select!</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:is_qa_member?</span><span class="p">)</span>
+      <span class="k">end</span>
+      
+      <span class="n">users_by_details_visibility</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="nf">group_by</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+        <span class="n">visible_details</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+      <span class="k">end</span>
+      <span class="n">users_by_details_visibility</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">visible_details</span><span class="p">,</span> <span class="n">users</span><span class="o">|</span>
+        <span class="k">if</span> <span class="n">notes?</span> <span class="o">||</span> <span class="n">visible_details</span><span class="p">.</span><span class="nf">any?</span>
+          <span class="k">yield</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#redmine" title="Pages tagged redmine" class="tag"><span class="term">redmine</span></a><a href="/tags#rails" title="Pages tagged rails" class="tag"><span class="term">rails</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

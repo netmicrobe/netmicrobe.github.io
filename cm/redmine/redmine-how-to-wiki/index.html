@@ -1,0 +1,880 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>How to wiki in redmine &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, redmine, textile">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to wiki in redmine">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/redmine/redmine-how-to-wiki/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/redmine/redmine-how-to-wiki/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">How to wiki in redmine</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2015-03-25T00:00:00+08:00">March 25, 2015</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <hr />
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="http://www.redmine.org/projects/redmine/wiki/RedmineWikis">http://www.redmine.org/projects/redmine/wiki/RedmineWikis</a></li>
+      <li><a href="https://redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile">Redmine Guide » User Guide » Textile formatting</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="页面管理">页面管理</h2>
+
+<h3 id="创建新的页面">创建新的页面</h3>
+
+<p>在某个现有页面加一个指向新页面的link，例如，<code class="highlighter-rouge">[[MyNewWikiPage]]</code></p>
+
+<p>保存该页面，在页面上点击该link，就会自动创建一个名为 <em>MyNewWikiPage</em> 的新页面。</p>
+
+<h3 id="页面右边索引">页面右边索引</h3>
+
+<p>wiki右边索引可以显示常用的链接，在wiki中以名为“Sidebar”的页面存在。</p>
+
+<p>如果不存在，用创建新页面的方式，创建即可。</p>
+
+<h3 id="制定页面父子关系">制定页面父子关系</h3>
+
+<p>建立父子关系好处：</p>
+
+<ul>
+  <li>自动创建目录时，目录中能看出层级关系</li>
+  <li>在页面上面有面包屑导航，可以看出层级关系</li>
+</ul>
+
+<p>如何做</p>
+
+<p>页面的编辑操作命令中，链接“重命名/重定向”可以完成层级关系指定。</p>
+
+<h3 id="自动创建目录">自动创建目录</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>&gt; {{toc}} =&gt; left aligned toc
+
+&gt; {{&gt;toc}} =&gt; right aligned toc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>注意：<code class="highlighter-rouge"><span class="p">{</span><span class="err">{&gt;toc</span><span class="p">}</span><span class="err">}</span></code> 前后必须都是空行。</li>
+</ul>
+
+<h2 id="编辑页面">编辑页面</h2>
+
+<h3 id="插入缩写">插入缩写</h3>
+
+<p>例如：JPL(Jean-Philippe Lang)</p>
+
+<p>效果：显示“JPL”，鼠标悬停显示“Jean-Philippe Lang”</p>
+
+<h3 id="插入链接">插入链接</h3>
+
+<h4 id="链接到所在redmine的issue">链接到所在redmine的issue</h4>
+
+<p>在issue号前加<code class="highlighter-rouge">#</code>，例如，<code class="highlighter-rouge">#124</code>，<code class="highlighter-rouge">#124</code>前后最好加<strong>空格</strong>，一边系统能区分出来</p>
+
+<h4 id="链接到所在redmine的issue的某个comment">链接到所在redmine的issue的某个comment</h4>
+
+<p>例如，<code class="highlighter-rouge">#124-6</code> 或者 <code class="highlighter-rouge">#124!#note-6</code></p>
+
+<h4 id="链接到wiki页面">链接到wiki页面</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[[Guide]] 链接到名为Guide的页面
+
+[[Guide\|User manual]] 链接到名为Guide的页面，但是在页面上显示User manual
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="插入图片">插入图片</h3>
+
+<h4 id="上传图片">上传图片</h4>
+
+<p>在当前也上传图片，如，截图.png</p>
+
+<h4 id="插入图片-1">插入图片</h4>
+
+<p>在2个感叹号之间，插入图片名称，即可在所在位置插入图片，如，<code class="highlighter-rouge">!截图.png!</code></p>
+
+<h4 id="缩放图片">缩放图片</h4>
+
+<p>如，<code class="highlighter-rouge">!{width:50%}截图.png!</code></p>
+
+<h3 id="连续插入多个空行">连续插入多个空行</h3>
+
+<p>直接回车多次，会被压缩成一个。</p>
+
+<p>在2个<code class="highlighter-rouge">&amp;nbsp;</code>之间回车多次即可。</p>
+
+<h3 id="调整字体颜色">调整字体颜色</h3>
+
+<p>例子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>p{color:red}.
+%{color:red} inline text%   %号和其他文字接触的地方要有空格
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="背景颜色">背景颜色</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>%{background:red}本次测试目的、内容和方法%
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="宏">宏</h2>
+
+<p>可以在页面中加入宏命令，wiki显示是动态生成所在位置内容。</p>
+
+<p>调用宏的格式，由2个大括号将宏名称括起来：<code class="highlighter-rouge"><span class="p">{</span><span class="err">{宏名称</span><span class="p">}</span><span class="err">}</span></code></p>
+<ul>
+  <li>hello_world
+    <ul>
+      <li>测试宏，显示Sample macro</li>
+    </ul>
+  </li>
+  <li>macro_list
+    <ul>
+      <li>显示左右可用的宏。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="include">include</h3>
+
+<ul>
+  <li>
+    <p>包含本项目的另外一个 wiki page 进当前wiki页面. Example:</p>
+
+    <pre>
+{{include(Foo)}}
+</pre>
+  </li>
+  <li>
+    <p>将特定project 的 wiki 页面包含进当前wiki页面：</p>
+    <pre>
+{{include(projectname:Foo)}}
+</pre>
+  </li>
+</ul>
+
+<h2 id="表格">表格</h2>
+
+<p>横跨多个单元格，示例：<code class="highlighter-rouge">\|\3=. 单元格内容</code></p>
+
+<p>竖跨多个单元格，示例：<code class="highlighter-rouge">\|/2=.单元格内容</code></p>
+
+<h2 id="技巧">技巧</h2>
+
+<h3 id="收起内容">收起内容</h3>
+
+<pre>
+{{collapse(View Details...)
+&gt;&lt;pre&gt;&lt;code&gt;
+GET /api/v2/egame/log.json HTTP/1.1
+req_log: app_key=8888007&amp;channel_id=10310029&amp;imsi=%24EG01%7E9Joj2M2GiTr9arr2TeJ6VQ%3D%3D&amp;msisdn=&amp;user_id=&amp;version=704&amp;network=wifi&amp;meid=A1000032DF0224&amp;model=unknown&amp;terminal_id=363&amp;screen_px=540*960&amp;api_level=16&amp;brand=unknown&amp;prev_page=MP&amp;curr_page=CH-702&amp;duration=36073&amp;event_key=&amp;event_value=&amp;
+param: access_token=c7753bb6dafdb4d166936da8fcc40e2b
+Host: open.play.cn
+&lt;/code&gt;&lt;/pre&gt;
+}}
+</pre>
+
+<h3 id="解决pre无法强制换行的问题">解决pre无法强制换行的问题</h3>
+
+<p>修改theme的CSS文件中div.wiki pre配置。</p>
+
+<h4 id="方法一-直接在默认theme的applicationcss中修改">方法一： 直接在默认theme的application.css中修改</h4>
+
+<p>文件位置：apps\redmine\htdocs\public\stylesheets\application.css</p>
+
+<p>找到div.wiki pre 配置块，添加强制换行的CSS属性</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="nt">div</span><span class="nc">.wiki</span> <span class="nt">pre</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">1em</span> <span class="m">1em</span> <span class="m">1em</span> <span class="m">1.6em</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fafafa</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#e2e2e2</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span><span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">overflow-x</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+              <span class="nl">white-space</span><span class="p">:</span> <span class="n">pre-wrap</span><span class="p">;</span>
+        <span class="nl">white-space</span><span class="p">:</span> <span class="n">-moz-pre-wrap</span><span class="p">;</span>
+        <span class="nl">white-space</span><span class="p">:</span> <span class="n">-pre-wrap</span><span class="p">;</span>
+        <span class="nl">white-space</span><span class="p">:</span> <span class="n">-o-pre-wrap</span><span class="p">;</span>
+        <span class="nl">word-wrap</span><span class="p">:</span> <span class="n">break-word</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="方法二-创建一个自定义的theme修改它的applicationcss">方法二： 创建一个自定义的theme，修改它的application.css</h4>
+
+<p>将public\stylesheets\application.css拷贝到public\themes\default-wi\stylesheets\application.css</p>
+
+<p>按照方法一进行修改。</p>
+
+<p>在redmine管理界面，设置 -》 显示，选择新建的theme（如，default-wi）。</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#redmine" title="Pages tagged redmine" class="tag"><span class="term">redmine</span></a><a href="/tags#textile" title="Pages tagged textile" class="tag"><span class="term">textile</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

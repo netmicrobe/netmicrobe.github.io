@@ -1,0 +1,1836 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>JavaScript Coding Patterns & Design Patterns &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="javascript">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Coding Patterns & Design Patterns">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/web/javascript-coding-pattern-design-pattern/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/web/javascript-coding-pattern-design-pattern/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">JavaScript Coding Patterns & Design Patterns</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-09-08T00:00:00+08:00">September 08, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="coding-patterns">Coding patterns</h2>
+
+<ul>
+  <li>Separating behavior</li>
+  <li>Namespaces</li>
+  <li>Init-time branching</li>
+  <li>Lazy definition</li>
+  <li>Configuration objects</li>
+  <li>Private variables and methods</li>
+  <li>Privileged methods</li>
+  <li>Private functions as public methods</li>
+  <li>Immediate functions</li>
+  <li>Chaining</li>
+  <li>JSON</li>
+</ul>
+
+<h3 id="separating-behavior--低耦合">Separating behavior ， 低耦合</h3>
+
+<p>HTML 有三部分组成： Content (HTML) , Presentation (CSS) , Behavior (JavaScript)</p>
+
+<h4 id="content-html">Content (HTML)</h4>
+
+<p>展示样式相关的，交给 CSS展示层，意味着要注意如下几点。</p>
+
+<ul>
+  <li>The style attribute of HTML tags should not be used, if possible.</li>
+  <li>Presentational HTML tags such as <code class="highlighter-rouge">&lt;font&gt;</code> should not be used at all.</li>
+  <li>Tags should be used for their semantic meaning, not because of how<br />
+browsers render them by default. For instance, developers sometimes use a<br />
+<code class="highlighter-rouge">&lt;div&gt;</code> tag where a <code class="highlighter-rouge">&lt;p&gt;</code> would be more appropriate. It’s also favorable to use<br />
+<code class="highlighter-rouge">&lt;strong&gt;</code> and <code class="highlighter-rouge">&lt;em&gt;</code> instead of <code class="highlighter-rouge">&lt;b&gt;</code> and <code class="highlighter-rouge">&lt;i&gt;</code> as the latter describe the visual<br />
+presentation rather than the meaning.</li>
+</ul>
+
+<h4 id="presentation-css">Presentation (CSS)</h4>
+
+<p>A good approach to keep presentation out of the content is to reset, or nullify all<br />
+browser defaults. For example, using <code class="highlighter-rouge">reset.css</code> from the Yahoo! UI library.</p>
+
+<h4 id="behavior-javascript">Behavior (JavaScript)</h4>
+
+<p>Behavior should be kept separate from both the content and the presentation.</p>
+
+<p>Not using any inline attributes such as <code class="highlighter-rouge">onclick</code>, <code class="highlighter-rouge">onmouseover</code>, and so on. Instead, you can use the <code class="highlighter-rouge">addEventListener/attachEvent</code> methods</p>
+
+<ul>
+  <li>Minimize the number of <code class="highlighter-rouge">&lt;script&gt;</code> tags</li>
+  <li>Avoid inline event handlers</li>
+  <li>Do not use CSS expressions</li>
+  <li>Dynamically add markup that has no purpose if JavaScript is disabled<br />
+by the user</li>
+  <li>Towards the end of your content when you are ready to close the <code class="highlighter-rouge">&lt;body&gt;</code> tag,<br />
+insert a single external.js file</li>
+</ul>
+
+<h4 id="示例">示例</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"myform"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"server.php"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+      <span class="nt">&lt;legend&gt;</span>Search<span class="nt">&lt;/legend&gt;</span>
+      <span class="nt">&lt;input</span>
+        <span class="na">name=</span><span class="s">"search"</span>
+        <span class="na">id=</span><span class="s">"search"</span>
+        <span class="na">type=</span><span class="s">"text"</span>
+      <span class="nt">/&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"behaviors.js"</span><span class="nt">&gt;&lt;/script&gt;</span> <span class="c">&lt;!-- js 在 body 最后载入 --&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cm">/* -- behaviors.js -- */</span>
+
+<span class="c1">// init</span>
+<span class="nx">myevent</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s1">'myform'</span><span class="p">,</span> <span class="s1">'submit'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// no need to propagate further</span>
+  <span class="nx">e</span> <span class="o">=</span> <span class="nx">myevent</span><span class="p">.</span><span class="nx">getEvent</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="nx">myevent</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="c1">// validate</span>
+  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'search'</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// too bad, field is empty</span>
+    <span class="nx">myevent</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="c1">// prevent the form submission</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Please enter a search string'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="asynchronous-javascript-loading">Asynchronous JavaScript loading</h4>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">&lt;script src="..."&gt;</code> 放在 body 末尾的原因：<br />
+  The reason is that JavaScript blocks the DOM construction of the page<br />
+  and in some browsers even the downloads of the other components that follow. By<br />
+  moving the scripts to the bottom of the page you ensure the script</p>
+  </li>
+  <li>
+    <p>defer<br />
+  HTML5 提供了另外一种方法，防止 script 阻塞 page 加载： <code class="highlighter-rouge">defer</code><br />
+  老浏览器不支持这个方法。</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"behaviors.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>inline JavaScript to load the external JavaScript file<br />
+  You can have this script loader snippet at the top of your document so that the download has an early start:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  ...
+  <span class="nt">&lt;head&gt;</span>
+  (function () {
+  var s = document.createElement('script');
+  s.src = 'behaviors.js';
+  document.getElementsByTagName('head')[0].appendChild(s);
+  }());
+  <span class="nt">&lt;/head&gt;</span>
+  ...
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="namespaces">Namespaces</h3>
+
+<p>The idea is simple, you create only one global object and all<br />
+your other variables and functions become properties of that object.</p>
+
+<h4 id="an-object-as-a-namespace">An Object as a namespace</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="c1">// global namespace</span>
+<span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="nx">MYAPP</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="c1">// sub-object</span>
+<span class="c1">// Adding the methods to the event utility is still the same:</span>
+<span class="c1">// object together with the method declarations</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">addListener</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// .. do the thing</span>
+  <span class="p">},</span>
+  <span class="na">removeListener</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="p">},</span>
+  <span class="na">getEvent</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="p">}</span>
+  <span class="c1">// ... other methods or properties</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="namespaced-constructors">Namespaced constructors</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Element</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">properties</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">type</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">properties</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">tmp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">properties</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">tmp</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Text</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span>
+<span class="p">};</span>
+
+
+<span class="c1">// 使用刚定义的 constructors</span>
+
+<span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Element</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span>
+  <span class="p">{</span><span class="na">href</span><span class="p">:</span> <span class="s1">'http://phpied.com'</span><span class="p">,</span> <span class="na">target</span><span class="p">:</span> <span class="s1">'_blank'</span><span class="p">});</span>
+<span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Text</span><span class="p">(</span><span class="s1">'click me'</span><span class="p">);</span>
+<span class="nx">link</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="a-namespace-method">A namespace() method</h4>
+
+<p>如何定义 namespace() ：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">namespace</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">MYAPP</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">current</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]])</span> <span class="p">{</span>
+      <span class="nx">current</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="p">}</span>
+  <span class="nx">current</span> <span class="o">=</span> <span class="nx">current</span><span class="p">[</span><span class="nx">parts</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>使用  namespace() ：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nx">MYAPP</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="s1">'dom.style'</span><span class="p">);</span>
+
+<span class="c1">// 上述用法，等价且简洁于：</span>
+
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="init-time-branching">Init-time branching</h3>
+
+<p>这个模式，可以用来解决兼容性问题。每次执行才检查兼容性，代码不容易管理，也降低执行效率。</p>
+
+<p>需要在脚本开始时候，就初始化好适合当前浏览器的代码。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">addListener</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="na">removeListener</span><span class="p">:</span> <span class="kc">null</span>
+<span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">removeListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// IE</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">removeListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">detachEvent</span><span class="p">(</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// older browsers</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">[</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">removeListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">[</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="lazy-definition">Lazy definition</h3>
+
+<p>类似 init-time branching ， 不同在于，定义行为不是在初始化都做完，而是方式在实际调用的时候。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">myevent</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">addListener</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">myevent</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">myevent</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">myevent</span><span class="p">.</span><span class="nx">addListener</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">el</span><span class="p">[</span><span class="s1">'on'</span> <span class="o">+</span> <span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+    <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">myevent</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">fn</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="configuration-object">Configuration object</h3>
+
+<p>This pattern is convenient when you have a function or method that accepts a lot<br />
+of optional parameters.</p>
+
+<p>一个function超过3个参数，使用起来很不方便，因为要记住参数的顺序。</p>
+
+<p>Instead of having many parameters, you can use one parameter and make it an object. The properties of the object are the actual parameters.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">FancyButton</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">conf</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">type</span> <span class="o">||</span> <span class="s1">'submit'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">font</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">font</span> <span class="o">||</span> <span class="s1">'Verdana'</span><span class="p">;</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="c1">// 使用起来倍儿方便！</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">font</span><span class="p">:</span> <span class="s1">'Arial, Verdana, sans-serif'</span><span class="p">,</span>
+  <span class="na">color</span><span class="p">:</span> <span class="s1">'white'</span>
+<span class="p">};</span>
+<span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">FancyButton</span><span class="p">(</span><span class="s1">'puuush'</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
+
+<span class="c1">// 另外一种用法</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
+  <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">FancyButton</span><span class="p">(</span><span class="s1">'dude'</span><span class="p">,</span> <span class="p">{</span><span class="na">color</span><span class="p">:</span> <span class="s1">'red'</span><span class="p">})</span>
+<span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="private-properties-and-methods">Private properties and methods</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="cm">/*
+In this implementation, styles is a private property and setStyle() is a private
+method. The constructor uses them internally (and they can access anything inside
+the constructor), but they are not available to code outside of the function.
+*/</span>
+
+<span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">FancyButton</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">conf</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">font</span><span class="p">:</span> <span class="s1">'Verdana'</span><span class="p">,</span>
+    <span class="na">border</span><span class="p">:</span> <span class="s1">'1px solid black'</span><span class="p">,</span>
+    <span class="na">color</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">,</span>
+    <span class="na">background</span><span class="p">:</span> <span class="s1">'grey'</span>
+  <span class="p">};</span>
+  <span class="kd">function</span> <span class="nx">setStyles</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">styles</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">styles</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">b</span><span class="p">.</span><span class="nx">style</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">||</span> <span class="nx">styles</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">conf</span> <span class="o">=</span> <span class="nx">conf</span> <span class="o">||</span> <span class="p">{};</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'input'</span><span class="p">);</span>
+  <span class="nx">b</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">type</span> <span class="o">||</span> <span class="s1">'submit'</span><span class="p">;</span>
+  <span class="nx">b</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">text</span><span class="p">;</span>
+  <span class="nx">setStyles</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="privileged-methods">Privileged methods</h3>
+
+<p>通过 Privileged methods 可以访问私有方法&amp;属性，过程中可以施加些控制。</p>
+
+<h3 id="private-functions-as-public-methods">Private functions as public methods</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="c1">// define _setStyle() and _getStyle() as private functions, but then assign</span>
+<span class="c1">// them to the public setStyle() and getStyle()</span>
+
+<span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">_setStyle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setStyle'</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="kd">var</span> <span class="nx">_getStyle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">prop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'getStyle'</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">setStyle</span><span class="p">:</span> <span class="nx">_setStyle</span><span class="p">,</span>
+    <span class="na">getStyle</span><span class="p">:</span> <span class="nx">_getStyle</span><span class="p">,</span>
+    <span class="na">yetAnother</span><span class="p">:</span> <span class="nx">_setStyle</span>
+  <span class="p">};</span>
+<span class="p">}());</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="immediate-functions">Immediate functions</h3>
+
+<p>Another pattern that helps you keep the global namespace clean is to wrap your<br />
+code in an anonymous function and execute that function immediately.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="c1">// code goes here...</span>
+<span class="p">}());</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// initialization code...</span>
+  <span class="kd">function</span> <span class="nx">_private</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">getStyle</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">prop</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'getStyle'</span><span class="p">);</span>
+      <span class="nx">_private</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="na">setStyle</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setStyle'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}());</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="modules">Modules</h3>
+
+<p>The module pattern includes:</p>
+
+<ul>
+  <li>Namespaces to reduce naming conflicts among modules</li>
+  <li>An immediate function to provide a private scope and initialization</li>
+  <li>Private properties and methods</li>
+  <li>Returning an object that has the public API of the module as follows:</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="nx">namespace</span><span class="p">(</span><span class="s1">'MYAPP.module.amazing'</span><span class="p">);</span>
+
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">amazing</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// short names for dependencies</span>
+  <span class="kd">var</span> <span class="nx">another</span> <span class="o">=</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">another</span><span class="p">;</span>
+  
+  <span class="c1">// local/private variables</span>
+  <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">;</span>
+  
+  <span class="c1">// private functions</span>
+  <span class="kd">function</span> <span class="nx">hidden</span><span class="p">()</span> <span class="p">{}</span>
+  
+  <span class="c1">// public API</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">hi</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s2">"hello"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}());</span>
+
+<span class="c1">// using the following module:</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">amazing</span><span class="p">.</span><span class="nx">hi</span><span class="p">();</span> <span class="c1">// "hello"</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="chaining">Chaining</h3>
+
+<p>Chaining is a pattern that allows you to invoke multiple methods on one line as if<br />
+the methods are the links in a chain.</p>
+
+<p>You invoke the next method on the result of the previous without the use<br />
+of an intermediate variable.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
+  <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Element</span><span class="p">(</span><span class="s1">'span'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="s1">'Verdana'</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="json">JSON</h3>
+
+<p>JSON is not technically a coding pattern, but you can say that using JSON is a<br />
+good pattern.</p>
+
+<p>You can convert this string of data into a working JavaScript object by simply using eval():</p>
+
+<p>返回 JSON</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+</span><span class="err">'name':</span><span class="w"> </span><span class="err">'Stoyan',</span><span class="w">
+</span><span class="err">'family':</span><span class="w"> </span><span class="err">'Stefanov',</span><span class="w">
+</span><span class="err">'books':</span><span class="w"> </span><span class="err">['OOJS',</span><span class="w"> </span><span class="err">'JSPatterns',</span><span class="w"> </span><span class="err">'JS4PHP']</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">'('</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span> <span class="o">+</span> <span class="s1">')'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// "Stoyan"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">books</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// "JS4PHP"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>或者，</p>
+
+<h4 id="使用-jsonparse">使用 <code class="highlighter-rouge">JSON.parse</code></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="stringify">stringify()</h4>
+
+<p>json 对象转换为 String。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">hello</span><span class="p">:</span> <span class="s2">"you"</span><span class="p">});</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="design-patterns">Design Patterns</h2>
+
+<h3 id="singleton">Singleton</h3>
+
+<ul>
+  <li>
+    <p>Global variable<br />
+  这种方法，缺点是，全局变量可能被不小心篡改。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>  <span class="kd">function</span> <span class="nx">Logger</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">global_log</span> <span class="o">===</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">global_log</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">global_log</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// true，单例</span>
+
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>Property of the Constructor</p>
+
+    <p>This approach certainly solves the global namespace issue because no global<br />
+  variables are created.</p>
+
+    <p>The only drawback is that the property of the <code class="highlighter-rouge">Logger</code> constructor is publicly visible, so it can be overwritten at any time.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="kd">function</span> <span class="nx">Logger</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">Logger</span><span class="p">.</span><span class="nx">single_instance</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Logger</span><span class="p">.</span><span class="nx">single_instance</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">Logger</span><span class="p">.</span><span class="nx">single_instance</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>In a private property</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">global_log</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Logger</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">logger</span><span class="p">){</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">logger</span> <span class="o">===</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+      <span class="nx">logger</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">logger</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}(</span><span class="nx">global_log</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="factory">Factory</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">MYAPP</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Text</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">where</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">txt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="nx">where</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">txt</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Link</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">where</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
+    <span class="nx">where</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Image</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">where</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">im</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">);</span>
+    <span class="nx">im</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+    <span class="nx">where</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">im</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// Using the three different constructors is exactly the same, </span>
+<span class="c1">// pass the url and call the insert() method:</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://www.phpied.com/images/covers/oojs.jpg'</span><span class="p">;</span>
+
+<span class="c1">// 未使用工厂方法</span>
+
+<span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nx">o</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Text</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nx">o</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">Link</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nx">o</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+<span class="c1">// 定义&amp;使用 工厂方法</span>
+
+<span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">factory</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">[</span><span class="nx">type</span><span class="p">](</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">MYAPP</span><span class="p">.</span><span class="nx">dom</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"Image"</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+<span class="nx">image</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="decorator">Decorator</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">tree</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">decorate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Make sure the tree won\'t fall'</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">tree</span><span class="p">.</span><span class="nx">getDecorator</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">deco</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">tree</span><span class="p">[</span><span class="nx">deco</span><span class="p">].</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">tree</span><span class="p">[</span><span class="nx">deco</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">// let's create decorators</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">RedBalls</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">decorate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">RedBalls</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">decorate</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Put on some red balls'</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">tree</span><span class="p">.</span><span class="nx">BlueBalls</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">decorate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">BlueBalls</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">decorate</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Add blue balls'</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">tree</span><span class="p">.</span><span class="nx">Angel</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">decorate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">Angel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">decorate</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'An angel on the top'</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// let's add all of the decorators to the base object:</span>
+
+<span class="nx">tree</span> <span class="o">=</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">getDecorator</span><span class="p">(</span><span class="s1">'BlueBalls'</span><span class="p">);</span>
+<span class="nx">tree</span> <span class="o">=</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">getDecorator</span><span class="p">(</span><span class="s1">'Angel'</span><span class="p">);</span>
+<span class="nx">tree</span> <span class="o">=</span> <span class="nx">tree</span><span class="p">.</span><span class="nx">getDecorator</span><span class="p">(</span><span class="s1">'RedBalls'</span><span class="p">);</span>
+
+<span class="c1">// Finally, running the decorate() method:</span>
+<span class="nx">tree</span><span class="p">.</span><span class="nx">decorate</span><span class="p">();</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="observer">Observer</h3>
+
+<h4 id="an-example-implementation-of-the-push-model">an example implementation of the push model.</h4>
+
+<ul>
+  <li>An array of subscribers that are just callback functions</li>
+  <li><code class="highlighter-rouge">addSubscriber()</code> and <code class="highlighter-rouge">removeSubscriber()</code> methods that add to, and<br />
+remove from, the subscribers collection</li>
+  <li>A <code class="highlighter-rouge">publish()</code> method that takes data and calls all subscribers, passing the<br />
+data to them</li>
+  <li>A <code class="highlighter-rouge">make()</code> method that takes any object and turns it into a publisher by<br />
+adding all of the methods mentioned previously to it</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre></td><td class="code"><pre><span class="c1">// Here's the observer mix-in object, which contains all the subscription-related</span>
+<span class="c1">// methods and can be used to turn any object into a publisher:</span>
+<span class="kd">var</span> <span class="nx">observer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">addSubscriber</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">callback</span> <span class="o">===</span> <span class="s2">"function"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">removeSubscriber</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">publish</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'function'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">[</span><span class="nx">i</span><span class="p">](</span><span class="nx">what</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">make</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// turns an object into a publisher</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">o</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="nx">o</span><span class="p">.</span><span class="nx">subscribers</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="c1">// Now, let's create some publishers. </span>
+<span class="c1">// Here's a blogger object which calls publish() every time a new blog posting is ready:</span>
+<span class="kd">var</span> <span class="nx">blogger</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">writeBlogPost</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">'Today is '</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">observer</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="nx">blogger</span><span class="p">);</span>
+
+<span class="c1">// 添加 Subscribers</span>
+<span class="kd">var</span> <span class="nx">jack</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">read</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I just read that "</span> <span class="o">+</span> <span class="nx">what</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">jill</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">gossip</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"You didn't hear it from me, but "</span> <span class="o">+</span> <span class="nx">what</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">blogger</span><span class="p">.</span><span class="nx">addSubscriber</span><span class="p">(</span><span class="nx">jack</span><span class="p">.</span><span class="nx">read</span><span class="p">);</span>
+<span class="nx">blogger</span><span class="p">.</span><span class="nx">addSubscriber</span><span class="p">(</span><span class="nx">jill</span><span class="p">.</span><span class="nx">gossip</span><span class="p">);</span>
+
+<span class="c1">// What happens now when the blogger writes a new post? </span>
+<span class="c1">// The result is that jack and jill get notified</span>
+
+<span class="nx">blogger</span><span class="p">.</span><span class="nx">writeBlogPost</span><span class="p">();</span>
+
+<span class="c1">// jill may decide to cancel her subscription. </span>
+<span class="nx">blogger</span><span class="p">.</span><span class="nx">removeSubscriber</span><span class="p">(</span><span class="nx">jill</span><span class="p">.</span><span class="nx">gossip</span><span class="p">);</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#javascript" title="Pages tagged javascript" class="tag"><span class="term">javascript</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,817 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>网件 R7000 刷 Koolshare 论坛的384以上梅林固件 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="gfw, shadowsocks, koolshare, merlin, 梅林, netgear">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网件 R7000 刷 Koolshare 论坛的384以上梅林固件">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/router/netgear-r7000%E5%88%B7koolshare-merlin-384%E4%BB%A5%E4%B8%8A%E5%9B%BA%E4%BB%B6/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/router/netgear-r7000%E5%88%B7koolshare-merlin-384%E4%BB%A5%E4%B8%8A%E5%9B%BA%E4%BB%B6/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">网件 R7000 刷 Koolshare 论坛的384以上梅林固件</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-05-01T00:00:00+08:00">May 01, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://koolshare.cn/thread-193018-1-1.html">R7000刷AC68U_386.1_0成功</a></li>
+      <li><a href="https://koolshare.cn/thread-193031-1-1.html">R7000刷带软件中心和AIMESH的386固件图文教程</a></li>
+      <li><a href="https://koolshare.cn/thread-194858-1-1.html">R7000_386.2_4 固件</a></li>
+      <li><a href="https://koolshare.cn/thread-192540-1-1.html">【2021-02-14】Netgear R7000路由器的Asuswrt-ASUS固件更新R7000_386.1_2</a></li>
+      <li><a href="http://firmware.koolshare.cn/Koolshare_RMerl_New_Gen_384/RT-AC68U/">Koolshare_RMerl_New_Gen_384 - RT-AC68U 固件 - 刷CFE之后的R7000可以用</a></li>
+      <li><a href="http://firmware.koolshare.cn/Koolshare_RMerl_New_Gen_386/RT-AC68U/">Koolshare_RMerl_New_Gen_386 - RT-AC68U - 刷CFE之后的R7000可以用</a></li>
+      <li><a href="https://www.asus.com.cn/Networking-IoT-Servers/WiFi-Routers/ASUS-WiFi-Routers/RTAC68U/HelpDesk_BIOS/">华硕官网-RT AC68U 固件下载</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<ul>
+  <li>修改了CFE后，进入miniweb界面刷机界面，可以上传koolshare的固件，也可以上传华硕AC68U的官方固件。</li>
+  <li>手上2台 R7000 很难组AiMesh。用比较新的固件（试过 386.2, 386.1, 384.18） 都不能组网成功。
+    <ul>
+      <li>有时候能进入一种类似mesh，类似ap 的模式。节点作为一个客户端连上主路由，也能上网，登陆主路由的管理页面；但是 主路由提示添加mesh节点失败，mesh管理界面看不到。网速就百兆左右。</li>
+      <li>主 384.13_1 Node 384.10_2 ，只发现这个组合可以组AiMesh，但是Node经常容易断流。网速就百兆左右。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="刷-梅林-384386-固件">刷 梅林 384、386 固件</h2>
+
+<p>384的好处是，支持AiMesh。R7000作为主路由可能和刷的固件版本有关系。</p>
+
+<h3 id="版本和bug">版本和Bug</h3>
+
+<p>2021.3.8  BUG反馈：USB2.0无法使用！！！USB3.0正常<br />
+2021.3.17 更新CFE_R7000_386_27DB.bin，更新内容如下：<br />
+                 * 2.4G和5G发射功率均提升为27db<br />
+                 * 解决双红叉问题。<br />
+2021.05.05 386系统下，无法使用mtd-write刷CFE，必须回384或者380；<br />
+                   但是前几天爬文的时候发现，有个网友说可以用dd命令，我尝试了两台机器，一台是DIR868L一台R6700，<br />
+                   均成功刷进，步骤就是上传新的CFE到/tmp目录，然后输入<br />
+                   dd if=/tmp/CFE_new of=/dev/mtd0      接着输入nvram erase       然后reboot就行。<br />
+                   注意：刷CFE有风险，dd命令是不做验证的，你的CFE不管对错，都会被刷进去！！！<br />
+                   所以个人建议最好还是回384刷CFE比较保险。</p>
+
+<h3 id="相关工具">相关工具</h3>
+
+<p>链接： <a href="https://pan.baidu.com/s/1gRgljocNi1A6QO71X_dgeg">https://pan.baidu.com/s/1gRgljocNi1A6QO71X_dgeg</a><br />
+提取码： dy94</p>
+
+<h3 id="刷机步骤">刷机步骤</h3>
+
+<ol>
+  <li>将R7000先刷成梅林 380 版本，成功后，开启ssh服务</li>
+  <li>备份当前CFE<br />
+ ssh登陆后执行 <code class="highlighter-rouge">dd if=/dev/mtd0 of=/tmp/boot.bin</code>，将boot.bin 备份到本地。</li>
+  <li>修改CFE中的Mac地址</li>
+  <li>
+    <p>用CFEEDIT这个软件打开CFE_R7000_386.bin，需要修改里面的MAC地址和机器型号信息，如下：</p>
+
+    <p>注意：这里不要修改这三个MAC地址的前6位，不然会导致AIMESH搜索不到节点！！！！！！</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> et0macaddr       --&gt; 后六位替换成路由器的mac地址
+ 0:macaddr        --&gt; 后六位替换成路由器的mac地址
+ 1:macaddr        --&gt; 后六位替换成路由器mac地址+4
+ 修改完后的CFE另存为一个，这里以CFE_R7000_386_0000.bin为例。
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>SCP把mtd-write和CFE_R7000_386_0000.bin上传到路由器的/tmp目录下。</li>
+  <li>刷入新的CFE。
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> cd /tmp
+ chmod 755 mtd-write
+ ./mtd-write -i CFE_R7000_386_0000.bin -d boot
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>刷入成功后，输入reboot，回车，</li>
+  <li>要先naram恢复一下：关机后，长按<code class="highlighter-rouge">wps</code>键，按住WPS看到电源灯闪烁是刷CFE成功的重要标志；</li>
+  <li>等待一会重启，然后再关机，长按reset，重启，直到TTL=100出现5次。<br />
+  这里需要注意下，有可能是192.168.50.1通也有可能是192.168.1.1通，这里假设是192.168.50.1通。</li>
+  <li>打开web浏览器，输入192.168.50.1，会弹出miniweb界面，这个时候基本就成功了。如果没出现，不用紧张，关闭电源，按住reset，通电，重新来一次，TTL=100五次以后松开，就可以进入了。<br />
+ <img src="miniweb-ui.png" alt="" /></li>
+  <li>先点 <code class="highlighter-rouge">restore default NVRAM values</code>，然后上传RT-AC68U_386.2_2_koolshare.trx，静静等着上传完成的提示。<br />
+ <img src="upload-complete.png" alt="" /></li>
+  <li>等路由器自动重启完成后，进入，检查下AIMESH和软件中心，都正常的话就成功了，以后也可以直接正常升级AC68U的固件。</li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="aimesh-组网实例说明">AiMesh 组网实例说明</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://post.smzdm.com/p/750009/">smzdm.com - 家庭网络改造！AC86U+R7000组AiMesh及使用记录</a></li>
+      <li><a href="https://www.chiphell.com/thread-2233320-1-1.html">chiphell – AC86U+R7000组AiMesh的疑惑</a></li>
+      <li><a href="https://blog.csdn.net/weixin_35701002/article/details/114974090">aimesh node重启_华硕 RT-AC86U 和 网件 R7000 组 AiMesh 成功</a></li>
+      <li><a href="https://koolshare.cn/thread-179161-1-1.html">koolshare - R7000成功做Aimesh主路由</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>AiMesh 搜索节点很慢（一轮估计5分钟），搜索到了，组网也慢，5分钟后告诉组网失败，更是常见。。。</p>
+
+<h4 id="实例一-两台r7000一台作为主路由一台作为-aimesh-node">实例一： 两台R7000，一台作为主路由，一台作为 AiMesh Node</h4>
+
+<ul>
+  <li><strong>补充</strong> 2021-10-29<br />
+主 384.13_1 Node 384.10_2 经常容易断流。<br />
+在管理页面将主路由升级到 386.1 依然没有改善。aimesh 界面现实 node节点通过无线连接弱。<br />
+在管理页面中升级不了，选择上传的文件之后，就没反应了，看到固件升级界面。<br />
+尝试用命令刷机，koolshare的固件有问题：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>scp RT-AC68U_384.17_0_koolshare.trx root@192.168.1.163:/tmp/home/root/
+mtd-write2 RT-AC68U_384.17_0_koolshare.trx linux
+报错： Bad trx header
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>主路由 R7000 固件版（E4:6F:13:XX:XX:XX 伪装 DLINK）： 384.13_1（组网成功后，在 Adminstrator &gt; Fireware Upgrade 升级到 386.1，运行正常）</li>
+  <li>Node R7000 固件版（E4:F4:C6:XX:XX:XX 伪装 ASUS）： 384.10_2
+    <ol>
+      <li>升级完成，在  Adminstrator &gt; System 勾选 Format JFFS partition at next boot: yes</li>
+      <li>开启 aimesh （老的384版本需要这样）
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> nvram set amas_force=1
+ nvram commit
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>重启</li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li><strong>增加组网成功率</strong><br />
+ 主路由search node节点的时候，可以将主路由的一个LAN口和Node的WAN口，用网线连接，增加组网成功率，之后，网线可以拔掉，使用wifi。</li>
+  <li><strong>不是任意的固件版本都可以达成组网</strong><br />
+ 2台 R7000 都是用比较新的固件（试过 386.2, 386.1, 384.18） 都不能组网成功。<br />
+ 能搜索到，但是无法加入。</li>
+  <li>可以在组网之后，升级固件<br />
+ 在 Adminstrator &gt; Fireware Upgrade 的管理页面，可以分别升级 主路由 &amp; Node<br />
+ 目前就试了，将主路由 384.13_1 升级到 384.17</li>
+</ol>
+
+<h4 id="实例二-一台r6300v23861作为主路由一台r700038413_1作为-aimesh-node">实例二： 一台R6300v2（386.1）作为主路由，一台R7000（384.13_1）作为 AiMesh Node</h4>
+
+<p>R7000 刷高版本不太容易作为主路由，组网成功，但是作为节点，组网成功。</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#gfw" title="Pages tagged gfw" class="tag"><span class="term">gfw</span></a><a href="/tags#shadowsocks" title="Pages tagged shadowsocks" class="tag"><span class="term">shadowsocks</span></a><a href="/tags#koolshare" title="Pages tagged koolshare" class="tag"><span class="term">koolshare</span></a><a href="/tags#merlin" title="Pages tagged merlin" class="tag"><span class="term">merlin</span></a><a href="/tags#梅林" title="Pages tagged 梅林" class="tag"><span class="term">梅林</span></a><a href="/tags#netgear" title="Pages tagged netgear" class="tag"><span class="term">netgear</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

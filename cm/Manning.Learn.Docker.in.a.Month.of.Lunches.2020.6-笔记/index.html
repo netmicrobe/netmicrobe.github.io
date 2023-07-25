@@ -1,0 +1,1975 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Manning.Learn.Docker.in.a.Month.of.Lunches.2020.6-笔记，关联 docker-compose &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manning.Learn.Docker.in.a.Month.of.Lunches.2020.6-笔记，关联 docker-compose">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/Manning.Learn.Docker.in.a.Month.of.Lunches.2020.6-%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/Manning.Learn.Docker.in.a.Month.of.Lunches.2020.6-%E7%AC%94%E8%AE%B0/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Manning.Learn.Docker.in.a.Month.of.Lunches.2020.6-笔记，关联 docker-compose</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-07-19T00:00:00+08:00">July 19, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.docker.com/">Docker official site</a></li>
+      <li><a href="https://wiki.archlinux.org/title/docker">wiki.archlinux - Docker</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="例子">例子</h2>
+
+<p>https://github.com/microservices-demo</p>
+
+<p>It’s a great sample application if you want to see how microservices are actually implemented. Each component owns its own data and exposes it through an API.</p>
+
+<h2 id="serverless-framework">serverless framework</h2>
+
+<p>If you’re running in the datacenter, you can host your own platform in Docker using <code class="highlighter-rouge">Nuclio</code>, <code class="highlighter-rouge">OpenFaaS</code>, or <code class="highlighter-rouge">Fn Project</code>, which are all popular open source serverless frameworks.</p>
+
+<h2 id="安装">安装</h2>
+
+<ul>
+  <li>Docker Desktop
+    <ul>
+      <li>Docker Desktop 下载地址： <a href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a></li>
+      <li>macOS Sierra 10.12 及以上版本；</li>
+      <li>Windows 10 及以上</li>
+    </ul>
+  </li>
+  <li>Docker Toolbox
+    <ul>
+      <li>不能安装 Docker Desktop 的旧版 Windows 和 MacOS。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="linux-安装">Linux 安装</h3>
+
+<p>Docker 安装脚本 : <a href="https://get.docker.com/">https://get.docker.com/</a><br />
+Docker Engine : <a href="https://docs.docker.com/engine/install/">https://docs.docker.com/engine/install/</a><br />
+Docker Compose : <a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+
+<ul>
+  <li>arch linux / manjaro</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo pacman -S docker docker-compose
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>ubuntu</li>
+</ul>
+
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+
+<h2 id="图形化管理后台">图形化管理后台</h2>
+
+<ul>
+  <li>Portainer ： Open source</li>
+  <li>UCP(Universal Control Plane) : commercial</li>
+</ul>
+
+<h2 id="配置">配置</h2>
+
+<h3 id="查看-docker-版本">查看 docker 版本</h3>
+
+<p><code class="highlighter-rouge">docker version</code> 可以查看 docker Engine Client &amp; Server 的版本信息。</p>
+
+<p>如果看不到 Docker Engine Server，看下service 状态并启动</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>systemctl status docker.service
+sudo systemctl start docker.service
+sudo docker version
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">docker-compose version</code> 可以看到 docker compose 版本信息。</p>
+
+<h2 id="container-管理">container 管理</h2>
+
+<ul>
+  <li>容器中的app process 运行，容器运行； app process 退出，容器也退出。</li>
+  <li>停止的容器，不会自动被删除，只能用户自己手动删除。</li>
+</ul>
+
+<h3 id="启动容器">启动容器</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># 启动执行目标命令，执行完退出</span>
+docker container run diamol/ch02-hello-diamol
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># 通过命令行访问 container</span>
+<span class="c"># 执行 `exit` 退出交互命令行，同时 container 也停止。</span>
+docker container run --interactive --tty diamol/base
+<span class="c"># 或</span>
+docker container run -it diamol/base
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># --detach : 命令执行完，container 以 service 方式运行，不退出。</span>
+<span class="c"># --publish : 端口映射，宿主机的8088 映射 container 的 80 端口</span>
+docker container run --detach --publish 8088:80 diamol/ch02-hello-diamol-web
+<span class="c"># 或</span>
+docker container run -d -p 8088:80 diamol/ch02-hello-diamol-web
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="带参数启动">带参数启动</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>docker container run --env <span class="nv">TARGET</span><span class="o">=</span>google.com diamol/ch03-web-ping
+<span class="c"># 或</span>
+docker container run -e <span class="nv">TARGET</span><span class="o">=</span>docker.com -e <span class="nv">INTERVAL</span><span class="o">=</span>5000 web-ping
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="在-container-中执行命令">在 container 中执行命令</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>docker container <span class="nb">exec</span> &lt;container-id&gt;  ls /usr/local/apache2/htdocs
+<span class="c"># 或 windows 下用 dir 代替 ls</span>
+docker container <span class="nb">exec</span> &lt;container-id&gt; cmd /s /c dir C:<span class="se">\u</span>sr<span class="se">\l</span>ocal<span class="se">\a</span>pache2<span class="se">\h</span>tdocs
+index.html
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="向-container-中拷贝本地文件">向 container 中拷贝本地文件</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker container cp index.html &lt;container-id&gt;:/usr/local/apache2/htdocs/index.html
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="停止的容器">停止的容器</h3>
+
+<p><code class="highlighter-rouge">docker container stop &lt;container-id&gt;</code></p>
+
+<h3 id="删除容器">删除容器</h3>
+
+<p><code class="highlighter-rouge">docker container rm &lt;container-id&gt;</code></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># 删除所有容器</span>
+docker container rm --force <span class="k">$(</span>docker container ls --all --quiet<span class="k">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="状态查看-docker-ps-或-docker-container-ls">状态查看 docker ps 或 docker container ls</h3>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://docs.docker.com/engine/reference/commandline/ps/">docs.docker.com - docker ps</a></li>
+      <li><a href="https://manpages.ubuntu.com/manpages/bionic/man1/docker-container-ls.1.html">Ubuntu Manpage: docker-container-ls - List containers</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">docker ps</code> 等价于 <code class="highlighter-rouge">docker container ls</code></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="c"># 当前正在运行的container</span>
+docker ps
+<span class="c"># or</span>
+docker container ls
+
+<span class="c"># 所有的container ，无论是否正在运行</span>
+docker ps -a
+docker container ls -a
+docker container ls --all
+
+<span class="c"># -q 参数，表示只打印id</span>
+docker ps -q
+
+<span class="c"># 所有停止运行的container</span>
+docker ps --filter <span class="s2">"status=exited"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>the container ID is the same as the hostname inside the container.</li>
+</ul>
+
+<h3 id="容器的详细情况-docker-container-inspect">容器的详细情况 docker container inspect</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker container inspect &lt;container-id&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="容器运行的进程-docker-container-top">容器运行的进程 docker container top</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker container top &lt;container-id&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="容器执行的日志-docker-container-logs">容器执行的日志 docker container logs</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker container logs &lt;container-id&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="docker-container-stats">docker container stats</h3>
+
+<p>显示 container 当前占用的 CPU、内存、网络等统计信息。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker container stats &lt;container-id&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="image-镜像管理">image 镜像管理</h2>
+
+<h3 id="镜像库服务器">镜像库服务器</h3>
+
+<p>镜像库服务器，称为，registries</p>
+
+<p>Docker Hub 是公用镜像库， 地址是 https://hub.docker.com/</p>
+
+<h3 id="从-docker-hub-下载-image">从 Docker Hub 下载 image</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker image pull diamol/ch03-web-ping
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="image-大小">image 大小</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>docker image ls -f <span class="nv">reference</span><span class="o">=</span>diamol/golang -f <span class="nv">reference</span><span class="o">=</span>image-gallery
+
+<span class="c"># output</span>
+REPOSITORY    TAG    IMAGE ID    CREATED    SIZE
+image-gallery    latest    b41869f5d153    20 minutes ago    25.3MB
+diamol/golang    latest    ad57f5c226fc    2 hours ago    774MB
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="使用-dockerfile-创建-image">使用 Dockerfile 创建 image</h3>
+
+<h4 id="简单的例子">简单的例子</h4>
+
+<ul>
+  <li>Dockerfile</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>FROM diamol/node
+ENV TARGET="blog.sixeyed.com"
+ENV METHOD="HEAD"
+ENV INTERVAL="3000"
+WORKDIR /web-ping
+COPY app.js .
+CMD ["node", "/web-ping/app.js"]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">WORKDIR</code>，创建这个目录，并作为工作目录。<br />
+<code class="highlighter-rouge">COPY</code> ， 将本地文件或文件夹，拷贝到image文件系统中。</p>
+
+<ul>
+  <li>目录结构</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>web-ping
+├── app.js
+├── Dockerfile
+└── README.md
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>build image</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nb">cd</span> /some-path/web-ping
+
+<span class="c"># --tag 参数指定 image 的 name</span>
+<span class="c"># 最后一个参数，说明build 的 local 目录，点表示当前目录</span>
+docker image build --tag web-ping .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>build好的image，被存放在 local image cache</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># 在本地 image缓存中，查看w字母开头的image</span>
+docker image ls <span class="s1">'w*'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><strong>注意</strong> docker 使用 image layer 来复用底层 image，Every Dockerfile instruction results in an image layer，所以 Dockerfile 中语句的顺序，应该注意，将经常更新改动的部分，放在最后。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>FROM diamol/node
+
+CMD ["node", "/web-ping/app.js"]
+
+ENV TARGET="blog.sixeyed.com" \
+    METHOD="HEAD" \
+    INTERVAL="3000"
+
+WORKDIR /web-ping
+COPY app.js .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker image build -t web-ping:v2 .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="multi-stage-dockerfile">Multi-stage Dockerfile</h4>
+
+<p>例子：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>FROM diamol/base AS build-stage
+RUN <span class="nb">echo</span> <span class="s1">'Building...'</span> &gt; /build.txt
+FROM diamol/base AS <span class="nb">test</span>-stage
+COPY --from<span class="o">=</span>build-stage /build.txt /build.txt
+RUN <span class="nb">echo</span> <span class="s1">'Testing...'</span> &gt;&gt; /build.txt
+FROM diamol/base
+COPY --from<span class="o">=</span><span class="nb">test</span>-stage /build.txt /build.txt
+CMD cat /build.txt
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>上例有3个stage： build-stage, test-stage, and the final unnamed stage</p>
+
+<p>实际最后的image，还是 final stage 生成。</p>
+
+<p>每个stage 独立运行，但是可以从前一个stage 拷贝文件。</p>
+
+<p>任何一个 stage fails， build fails。</p>
+
+<h4 id="编译-java-app-的-dockerfile-例子">编译 java app 的 Dockerfile 例子</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>FROM diamol/maven AS builder
+WORKDIR /usr/src/iotd
+COPY pom.xml .
+RUN mvn -B dependency:go-offline
+COPY . .
+RUN mvn package
+
+<span class="c"># app</span>
+FROM diamol/openjdk
+WORKDIR /app
+COPY --from<span class="o">=</span>builder /usr/src/iotd/target/iotd-service-0.1.0.jar .
+EXPOSE 80
+ENTRYPOINT <span class="o">[</span><span class="s2">"java"</span>, <span class="s2">"-jar"</span>, <span class="s2">"/app/iotd-service-0.1.0.jar"</span><span class="o">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="不需要编译的app-dockerfile-例子以-nodejs-为例">不需要编译的app Dockerfile 例子，以 Nodejs 为例</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>FROM diamol/node AS builder
+WORKDIR /src
+COPY src/package.json .
+RUN npm install
+<span class="c"># app</span>
+FROM diamol/node
+EXPOSE 80
+CMD <span class="o">[</span><span class="s2">"node"</span>, <span class="s2">"server.js"</span><span class="o">]</span>
+WORKDIR /app
+COPY --from<span class="o">=</span>builder /src/node_modules/ /app/node_modules/
+COPY src/ .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="golang-的-dockerfile-例子">Golang 的 Dockerfile 例子</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>FROM diamol/golang AS builder
+COPY main.go .
+RUN go build -o /server
+<span class="c"># app</span>
+FROM diamol/base
+ENV <span class="nv">IMAGE_API_URL</span><span class="o">=</span><span class="s2">"http://iotd/image"</span> <span class="se">\</span>
+<span class="nv">ACCESS_API_URL</span><span class="o">=</span><span class="s2">"http://accesslog/access-log"</span>
+CMD <span class="o">[</span><span class="s2">"/web/server"</span><span class="o">]</span>
+WORKDIR web
+COPY index.html .
+COPY --from<span class="o">=</span>builder /server .
+RUN chmod +x server
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">diamol/golang</code> 有700多M，只是在编译的时候需要，不需要放在最终的image中。满足最小运行条件的 <code class="highlighter-rouge">diamol/base</code> 其实很小，只有20+M。</p>
+
+<h4 id="执行命令的指令-runcmdentrypoint">执行命令的指令： RUN、CMD、ENTRYPOINT</h4>
+
+<ul>
+  <li>refer
+    <ul>
+      <li><a href="https://zhuanlan.zhihu.com/p/47453169">docker精简入门（五）run&amp;cmd&amp;enterpoint区别</a></li>
+      <li><a href="https://zhuanlan.zhihu.com/p/429803911">IT奶爸 - docker run 和 CMD的区别</a></li>
+    </ul>
+  </li>
+  <li>RUN 指令
+    <ul>
+      <li>RUN 执行命令并创建新的镜像层，RUN 经常用于安装软件包。</li>
+    </ul>
+  </li>
+  <li>CMD命令
+    <ul>
+      <li>CMD 指令允许用户指定容器的 <strong>默认执行的命令</strong> 。</li>
+      <li>此命令会在容器启动且 docker run 没有指定其他命令时运行。</li>
+      <li>如果 docker run 指定了其他命令，CMD 指定的默认命令将被忽略。</li>
+      <li>如果 Dockerfile 中有多个 CMD 指令，只有最后一个 CMD 有效</li>
+    </ul>
+  </li>
+  <li>
+    <p>CMD 有三种格式：</p>
+
+    <ul>
+      <li>Exec 格式：<code class="highlighter-rouge">CMD ["executable","param1","param2"]</code><br />
+这是 CMD 的推荐格式。</li>
+      <li><code class="highlighter-rouge">CMD ["param1","param2"]</code> 为 ENTRYPOINT 提供额外的参数，此时 ENTRYPOINT 必须使用 * * Exec 格式。</li>
+      <li>Shell 格式：<code class="highlighter-rouge">CMD command param1 param2</code></li>
+    </ul>
+  </li>
+  <li>ENTRYPOINT
+    <ul>
+      <li>与CMD类似，但 ENTRYPOINT 不会被忽略，<strong>一定会被执行</strong>，即使运行 docker run 时指定了其他命令。</li>
+    </ul>
+  </li>
+  <li>
+    <p>ENTRYPOINT 有两种格式：</p>
+
+    <ul>
+      <li>Exec 格式：<code class="highlighter-rouge">ENTRYPOINT ["executable", "param1", "param2"]</code> 这是 ENTRYPOINT 的推荐格式。<br />
+Exec 格式用于设置要执行的命令及其参数，同时可通过 CMD 提供额外的参数。<br />
+ENTRYPOINT 中的参数始终会被使用，而 CMD 的额外参数可以在容器启动时动态替换掉。</li>
+      <li>Shell 格式：<code class="highlighter-rouge">ENTRYPOINT command param1 param2</code><br />
+Shell 格式会忽略任何 CMD 或 docker run 提供的参数。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="镜像库--sharing-images--docker-hub-and-other-registries">镜像库 / sharing images / Docker Hub and other registries</h2>
+
+<p>镜像名称，aka. image reference</p>
+
+<p>例子： docker.io/diamol/golang:latest</p>
+
+<ul>
+  <li><code class="highlighter-rouge">docker.io</code> 镜像库的domain，默认是 docker hub的域名<code class="highlighter-rouge">docker.io</code></li>
+  <li><code class="highlighter-rouge">diamol</code> 镜像作者或组织</li>
+  <li><code class="highlighter-rouge">golang</code> 镜像名称</li>
+  <li><code class="highlighter-rouge">latest</code> 镜像的tag，用来作为版本或变体标识，默认是 latest</li>
+</ul>
+
+<h3 id="push-image">push image</h3>
+
+<p>先要设置 docker id ，即docker.com 上的用户名，而非email。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># using PowerShell on Windows</span>
+<span class="nv">$dockerId</span><span class="o">=</span><span class="s2">"&lt;your-docker-id-goes-here&gt;"</span>
+
+<span class="c"># using Bash on Linux or Mac</span>
+<span class="nb">export </span><span class="nv">dockerId</span><span class="o">=</span><span class="s2">"&lt;your-docker-id-goes-here&gt;"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>login docker.com</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker login --username <span class="nv">$dockerId</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>为已存在的 image 创建reference，并tag</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>docker image tag image-gallery <span class="nv">$dockerId</span>/image-gallery:v1
+
+<span class="c"># List the image-gallery image references:</span>
+docker image ls --filter <span class="nv">reference</span><span class="o">=</span>image-gallery --filter
+<span class="nv">reference</span><span class="o">=</span><span class="s1">'*/image-gallery'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>自此，（1）使用了docker login 完成登陆；（2）有一个在 docker id 名下的 image</p>
+
+<p>push 到 docker hub 上去：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker image push <span class="nv">$dockerId</span>/image-gallery:v1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="给镜像打-tag">给镜像打 tag</h3>
+
+<p>一种用法是以3位版本号，如 <code class="highlighter-rouge">[major].[minor].[patch]</code>，给镜像打 tag 。</p>
+
+<p>例如：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>docker image tag image-gallery registry.local:5000/gallery/ui:latest
+docker image tag image-gallery registry.local:5000/gallery/ui:2
+docker image tag image-gallery registry.local:5000/gallery/ui:2.1
+docker image tag image-gallery registry.local:5000/gallery/ui:2.1.106
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="其他开源-docker-registries">其他开源 docker registries</h3>
+
+<ul>
+  <li>Docker 轻量级的 registry server<br />
+https://github.com/distribution/distribution<br />
+没有web ui 管理界面，支持 pull 和 push</li>
+  <li>VMWare 的 Harbor</li>
+  <li>CNCF Harbor Project</li>
+  <li>Sonatype Nexus Repository OSS<br />
+https://www.sonatype.com/products/repository-oss-vs-pro-features</li>
+</ul>
+
+<h3 id="搭建自己的镜像库">搭建自己的镜像库</h3>
+
+<p>docker image 默认之允许 https 连接，自己的registry一般都是http，所以要设置docker运行http。</p>
+
+<p>方法（1） Docker Desktop 上的设置方法：</p>
+
+<ol>
+  <li>任务栏上的鲸鱼icon，右键菜单 &gt; Settings 或 Preferences</li>
+  <li>Daemon 标签页，在 insecure registries 列表中添加允许http的地址，例如，registry.local:5000</li>
+  <li>重启 Docker Engine</li>
+</ol>
+
+<p>方法（2）直接修改 daemon.json</p>
+
+<p>daemon.json 位置：</p>
+<ul>
+  <li>Windows : C:\ProgramData\docker\config</li>
+  <li>Linux : /etc/docker</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nt">"insecure-registries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"registry.local:5000"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>然后重启Docker Engine。</p>
+
+<p>重启后，可以用 <code class="highlighter-rouge">docker info</code> 查看配置效果。</p>
+
+<h2 id="网络管理">网络管理</h2>
+
+<h3 id="dns">DNS</h3>
+
+<p>Docker has its own DNS service built in.</p>
+
+<p>container 先使用 Docker 自建的DNS 查询域名，查不到，再开始外部的 DNS lookup。</p>
+
+<p>可以在container 中执行 <code class="highlighter-rouge">nslookup container-name</code> 查看对应的docker内网IP。</p>
+
+<p>对于有个多个IP关联的 container， Docker DNS 会每次变动下IP列表的顺序，做一个简单的负载均衡。</p>
+
+<h3 id="创建-nat-网络">创建 NAT 网络</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># network-name ，默认创建的叫 nat</span>
+docker network create &lt;network-name&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>启动容器时，<code class="highlighter-rouge">--network</code> 指定接入的网络。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>docker container run --name iotd -d -p 800:80 --network nat image-of-
+the-day
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="存储--docker-volumes--mount">存储 / docker volumes &amp; mount</h2>
+
+<h3 id="container-默认文件系统">container 默认文件系统</h3>
+
+<p>从docker 容器和本地电脑，相互拷贝文件：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># docker to local</span>
+docker container cp docker-name:/some/path/somefile somefile
+
+<span class="c"># local to docker</span>
+docker container cp somefile docker-name:/some/path/somefile
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>每个容器都有自己的文件系统，在容器中以单独磁盘形式出现，如，<code class="highlighter-rouge">/dev/sda1</code> 或 <code class="highlighter-rouge">C:\</code></p>
+
+<p>The writable layer is unique to each container.</p>
+
+<p>The container writable layer is created by Docker when the container is started, and it’s deleted by Docker when the container is removed.</p>
+
+<p>Stopping a container doesn’t automatically remove the writable layer.</p>
+
+<h3 id="docker-volumes">Docker volumes</h3>
+
+<p>A docker volume is a unit of storage, exists independently of containers, and has it’s own life cycle.</p>
+
+<p>Docker Volumnes can be attached to containers.</p>
+
+<p>2种创建volume的方法：</p>
+<ol>
+  <li>使用 <code class="highlighter-rouge">docker volume create</code> 命令</li>
+  <li>在 dockerfile 中使用语法 <code class="highlighter-rouge">VOLUME &lt;target-directory&gt;</code></li>
+</ol>
+
+<h4 id="例子dockerfile-创建volume">例子，dockerfile 创建volume</h4>
+
+<p>运行容器的时候，自动生成一个volume，挂载到容器的 <code class="highlighter-rouge">/data</code> 目录</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>FROM diamol/dotnet-aspnet
+WORKDIR /app
+ENTRYPOINT ["dotnet", "ToDoList.dll"]
+VOLUME /data
+COPY --from=builder /out/ .
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="c"># 运行容器todo1，同时自动创建volume挂载到 /data</span>
+docker container run --name todo1 -d -p 8010:80 diamol/ch06-todo-list
+
+<span class="c"># 列出 todo1 容器的volume</span>
+docker container inspect --format <span class="s1">'\{\{.Mounts\}\}'</span> todo1
+
+<span class="c"># 列出所有 volume</span>
+docker volume ls
+
+<span class="c"># 其他容器共用volume</span>
+docker container run --name todo3 -d --volumes-from todo1 diamol/ch06-todo-list
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="docker-volume-create-创建一个volume在容器之间使用">docker volume create 创建一个volume，在容器之间使用</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="c"># 容器中 volume 的挂载点</span>
+target <span class="o">=</span> <span class="s2">"data"</span>       <span class="c"># for linux containers</span>
+<span class="nv">$target</span> <span class="o">=</span> <span class="s2">"c:</span><span class="se">\d</span><span class="s2">ata"</span>   <span class="c"># for Windows containers</span>
+
+<span class="c"># create a named volume</span>
+docker volune create todo-list
+
+<span class="c"># v1 app ，使用 todo-list volume</span>
+docker container run -d -p 8011:80 -v todo-list:<span class="nv">$target</span> --name todo-v1 diamol/ch06-todo-list
+
+<span class="c"># 删除 v1 app container</span>
+docker container rm -f todo-v1
+
+<span class="c"># v2 app ，接着使用 todo-list volume</span>
+docker container run -d -p 8011:80 -v todo-list:<span class="nv">$target</span> --name todo-v2 diamol/ch06-todo-list:v2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">-v</code> <code class="highlighter-rouge">--volume</code> 参数指定的volume 目标目录会覆盖镜像原有的目录。 作为镜像作者，写dockerfile时候可以使用 VOLUME 命令指定下默认的volume，以防用户运行容器时，没有使用volume参数。</p>
+
+<h3 id="bind-mounts">bind mounts</h3>
+
+<p>A bind mount makes a directory on the host available as a path on a container. 通过这个方法，host 和 container 可以直接相互访问文件。</p>
+
+<p>示例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>$source="$(pwd)\database".ToLower(); $target="c:\data"     # Windows
+source="$(pwd)/database" &amp;&amp; target='/data'                 # Linux
+
+mkdir ./database
+
+docker container run --mount type=bind,source=$source,target=$target -d -p 8012:80 diamol/ch06-todo-list
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>只读方式mount，加<code class="highlighter-rouge">readonly</code>：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="nb">cd</span> ./ch06/exercises/todo-list
+
+<span class="c"># save the source path as a variable:</span>
+<span class="nv">$source</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="se">\c</span><span class="s2">onfig"</span>.ToLower<span class="o">()</span>; <span class="nv">$target</span><span class="o">=</span><span class="s2">"c:</span><span class="se">\a</span><span class="s2">pp</span><span class="se">\c</span><span class="s2">onfig"</span>   <span class="c"># Windows</span>
+<span class="nb">source</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/config"</span> <span class="o">&amp;&amp;</span> <span class="nv">target</span><span class="o">=</span><span class="s1">'/app/config'</span>            <span class="c"># Linux</span>
+
+<span class="c"># run the container using the mount:</span>
+docker container run --name todo-configured -d -p 8013:80 --mount <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span><span class="nv">$source</span>,target<span class="o">=</span><span class="nv">$target</span>,readonly diamol/ch06-todo-list
+
+<span class="c"># check the application:</span>
+curl http://localhost:8013
+
+<span class="c"># and the container logs:</span>
+docker container logs todo-configured
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>局限性：</p>
+<ul>
+  <li>Linux可以针对单个文件mount，Windows不可以。</li>
+  <li>mount的如果是分布式文件系统，而这个文件系统不支持某些文件操作，app可能崩溃。<br />
+  例如，Postgres数据库使用了 Azure Files。Azure Files支持正常读写，但是不支持创建hard link，Postgres数据尝试创建file link，结果就崩溃了。</li>
+</ul>
+
+<h2 id="docker-compose">Docker Compose</h2>
+
+<p>Docker Compose 用来将隶属于一个app的多个容器，协同部署。</p>
+
+<p>Docker Compose file <code class="highlighter-rouge">docker-compose.yml</code> 使用 YAML语法，用来指导 compose 工具部署容器。</p>
+
+<h3 id="docker-compose-up-的简单例子">docker-compose up 的简单例子</h3>
+
+<p>例子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>version: '3.7'
+
+services:
+  todo-web:
+    image: diamol/ch06-todo-list
+    ports:
+      - "8020:80"
+    networks:
+      - app-net
+networks:
+  app-net:
+    external:
+      name: nat
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">version</code> 表明 compose file format 的版本<br />
+<code class="highlighter-rouge">external</code> 表明使用外部已经创建好的网络，而不用compose重新创建。</p>
+
+<p>运行：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>docker network create nat
+docker-compose up --detach
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">docker-compose</code> 命令会在当前目录下读取 <code class="highlighter-rouge">docker-compose.yml</code></p>
+
+<p>例子</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>accesslog:
+  image: diamol/ch04-access-log
+iotd:
+  image: diamol/ch04-image-of-the-day
+  ports:
+    - "80"
+image-gallery:
+  image: diamol/ch04-image-gallery
+  ports:
+    - "8010:80"
+  depends_on:
+    - accesslog
+    - iotd
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="docker-compose-viz">docker-compose-viz</h3>
+
+<p>docker-compose-viz 工具可以根据当前目录的 docker-compose.yml 生成一个组件依赖关系图。</p>
+
+<p>https://github.com/pmsipilot/docker-compose-viz</p>
+
+<h3 id="docker-compose-常用命令">docker-compose 常用命令</h3>
+
+<p><code class="highlighter-rouge">docker-compose</code> 不带任何参数，会显示帮助，列出可用子命令列表。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># 重复启动一个镜像的多个容器，下例启动3个</span>
+docker-compose up -d --scale service-name<span class="o">=</span>3
+
+<span class="c"># 查看最后一个service的log</span>
+docker-compose logs --tail<span class="o">=</span>1 iotd
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c"># 停止container，但是不从文件系统删除container</span>
+docker-compose stop
+
+<span class="c"># 将停止的container重新启动</span>
+docker-compose start
+
+<span class="c"># 停止，并且删除之前创建的container</span>
+docker-compose down
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="override-files-继承和覆盖配置">override files 继承和覆盖配置</h3>
+
+<ul>
+  <li>docker-compose.yml<br />
+The core Compose file, specifies services and settings that apply in every environment.</li>
+  <li>docker-compose-dev.yml<br />
+The dev override file adds some specific settings for development.</li>
+  <li>docker-compose-test.yml<br />
+The test override file adds some specific settings for testing.</li>
+</ul>
+
+<h4 id="简单的例子-1">简单的例子，</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c"># from docker-compose.yml - the core app specification:</span>
+services:
+  todo-web:
+    image: diamol/ch06-todo-list
+    ports:
+      - 80
+    environment:
+      - Database:Provider<span class="o">=</span>Sqlite
+    networks:
+      - app-net
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c"># and from docker-compose-v2.yml - the version override file:</span>
+services:
+  todo-web:
+    image: diamol/ch06-todo-list:v2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">config</code> 命令不实际部署app，只是校验下配置。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker-compose -f ./todo-list/docker-compose.yml -f ./todo-list/docker-compose-v2.yml config
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="一个展示override策略的例子">一个展示override策略的例子</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="c"># remove any existing containers</span>
+docker container rm -f <span class="k">$(</span>docker container ls -aq<span class="k">)</span>
+
+<span class="c"># run the app in dev configuration:</span>
+docker-compose -f ./numbers/docker-compose.yml -f ./numbers/docker-compose-dev.yml -p numbers-dev up -d
+
+<span class="c"># and the test setup:</span>
+docker-compose -f ./numbers/docker-compose.yml -f ./numbers/docker-compose-test.yml -p numbers-test up -d
+
+<span class="c"># and UAT(User Acceptance test):</span>
+docker-compose -f ./numbers/docker-compose.yml -f ./numbers/docker-compose-uat.yml -p numbers-uat up -d
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>关闭app</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c"># this would work if we'd used the default docker-compose.yml file:</span>
+docker-compose down
+
+<span class="c"># this would work if we'd used override files without a project name:</span>
+docker-compose -f ./numbers/docker-compose.yml -f ./numbers/docker-compose-test.yml down
+
+<span class="c"># but we specified a project name, so we need to include that too:</span>
+docker-compose -f ./numbers/docker-compose.yml -f ./numbers/docker-compose-test.yml -p numbers-test down
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="注入自定义参数">注入自定义参数</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>services:
+  todo-web:
+    image: diamol/ch06-todo-list
+    ports:
+      - <span class="s2">"</span><span class="k">${</span><span class="nv">TODO_WEB_PORT</span><span class="k">}</span><span class="s2">:80"</span>
+    environment:
+      - Database:Provider<span class="o">=</span>Sqlite
+    env_file:
+      - ./config/logging.debug.env
+    secrets:
+      - <span class="nb">source</span>: todo-db-connection
+        target: /app/config/secrets.json
+
+secrets:
+  todo-db-connection:
+    file: ./config/empty.json
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p>secrets 参数注入</p>
+
+    <p>docker-compose 将会将 <code class="highlighter-rouge">source</code> 即 <code class="highlighter-rouge">./config/empty.json</code> 拷贝到容器的 <code class="highlighter-rouge">target</code> 即 <code class="highlighter-rouge">/app/config/secrets.json</code></p>
+  </li>
+  <li>
+    <p>环境变量注入方式，可以用 <code class="highlighter-rouge">environment</code> 直接在 yml 中配置，也可以 <code class="highlighter-rouge">env_file</code> 指定参数配置文件，文件中每一行就是一个 <code class="highlighter-rouge">KEY=VALUE</code> 的参数配置。</p>
+  </li>
+  <li>
+    <p>host 环境变量</p>
+
+    <p>例如，上例中<code class="highlighter-rouge">${TODO_WEB_PORT}</code> ， docker-compose 可以从同目录的 <code class="highlighter-rouge">.env</code> 文件中读取，当然也可以从系统变量中读取。</p>
+
+    <p><code class="highlighter-rouge">.env</code> 文件的例子：</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c"># container configuration - ports to publish:</span>
+<span class="nv">TODO_WEB_PORT</span><span class="o">=</span>8877
+<span class="nv">TODO_DB_PORT</span><span class="o">=</span>5432
+  
+<span class="c"># compose configuration - files and project name:</span>
+<span class="nv">COMPOSE_PATH_SEPARATOR</span><span class="o">=</span>;
+<span class="nv">COMPOSE_FILE</span><span class="o">=</span>docker-compose.yml;docker-compose-test.yml
+<span class="nv">COMPOSE_PROJECT_NAME</span><span class="o">=</span>todo_ch10
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h4 id="yml配置文件预定义属性减少重复和冗余">yml配置文件，预定义属性减少重复和冗余</h4>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="s">-labels</span><span class="pi">:</span> <span class="nl">&amp;logging</span>
+  <span class="s">logging</span><span class="pi">:</span>  
+    <span class="s">options</span><span class="pi">:</span>
+      <span class="s">max-size</span><span class="pi">:</span> <span class="s1">'</span><span class="s">100m'</span>
+      <span class="s">max-file</span><span class="pi">:</span> <span class="s1">'</span><span class="s">10'</span>
+
+<span class="s">x-labels</span><span class="pi">:</span> <span class="nl">&amp;labels</span>
+  <span class="s">app-name</span><span class="pi">:</span> <span class="s">image-gallery</span>
+
+<span class="s">services</span><span class="pi">:</span>
+  <span class="s">accesslog</span><span class="pi">:</span>
+    <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*logging</span>
+    <span class="s">labels</span><span class="pi">:</span>
+      <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*labels</span>
+
+  <span class="s">iotd</span><span class="pi">:</span>
+    <span class="s">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">8080:80</span>
+    <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*logging</span>
+    <span class="s">labels</span><span class="pi">:</span>
+      <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*labels</span>
+      <span class="s">public</span><span class="pi">:</span> <span class="s">api</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="性能监测">性能监测</h2>
+
+<h3 id="prometheus">Prometheus</h3>
+
+<p>An open source project to do containerized monitoring.<br />
+It runs in a Docker container, and collects metrics data from the applications and the Docker Engines.<br />
+It stores all data with the timestamp when it was collected.</p>
+
+<p>需要手动在Docker Engine 的设置中开启 <code class="highlighter-rouge">Prometheus metrics</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="s2">"metrics-addr"</span> : <span class="s2">"0.0.0.0:9323"</span>,
+<span class="s2">"experimental"</span>: <span class="nb">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>以上设置，开启 监控功能，设置metrics数据的获取端口在 9323。</p>
+
+<p>访问 <code class="highlighter-rouge">http:/ /localhost:9323/metrics</code> 查看当前监控信息，都是key-value列表，不是图表，看起来挺乱，这就是 Prometheus 的原始数据格式。</p>
+
+<p>启动 Prometheus 的时候，告知 host 的 IP。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c"># load your machine's IP address into a variable - on Windows:</span>
+<span class="nv">$hostIP</span> <span class="o">=</span> <span class="k">$(</span>Get-NetIPConfiguration | Where-Object <span class="o">{</span><span class="nv">$_</span>.IPv4DefaultGateway -ne <span class="nv">$null</span> <span class="o">}</span><span class="k">)</span>.IPv4Address.IPAddress
+
+<span class="c"># on Linux:</span>
+<span class="nv">hostIP</span><span class="o">=</span><span class="k">$(</span>ip route get 1 | awk <span class="s1">'{print $NF;exit}'</span><span class="k">)</span>
+<span class="c"># and on Mac:</span>
+<span class="nv">hostIP</span><span class="o">=</span><span class="k">$(</span>ifconfig en0 | grep -e <span class="s1">'inet\s'</span> | awk <span class="s1">'{print $2}'</span><span class="k">)</span>
+
+<span class="c"># pass your IP address as an environment variable for the container:</span>
+docker container run -e <span class="nv">DOCKER_HOST</span><span class="o">=</span><span class="nv">$hostIP</span> -d -p 9090:9090 diamol/prometheus:2.13.1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>访问 <code class="highlighter-rouge">http://localhost:9090</code> 就可以看到 Prometheus 的 Web UI 界面了。</p>
+
+<h2 id="集群">集群</h2>
+
+<ul>
+  <li>Docker Swarm</li>
+  <li>Kubernetes</li>
+</ul>
+
+<h2 id="技巧">技巧</h2>
+
+<h3 id="docker-清除容器和镜像">docker 清除容器和镜像</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>docker container rm -f <span class="k">$(</span>docker container ls -aq<span class="k">)</span>
+
+docker image rm -f <span class="k">$(</span>docker image ls -f <span class="nv">reference</span><span class="o">=</span><span class="s1">'diamol/*'</span> -q<span class="k">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="docker-使用的磁盘空间">docker 使用的磁盘空间</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>docker system df
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,1037 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>PHP 升级到 5.6.28，导致 PHP LDAP ADMIN 不可用 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="openldap, php, phpldapadmin">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 升级到 5.6.28，导致 PHP LDAP ADMIN 不可用">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/ldap/phpldapadmin-compatible-with-php-5.6/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/ldap/phpldapadmin-compatible-with-php-5.6/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">PHP 升级到 5.6.28，导致 PHP LDAP ADMIN 不可用</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-05-02T00:00:00+08:00">May 02, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <p>修改 phpldapadmin 源码，问题解决。</p>
+
+<figure class="highlight"><pre><code class="language-diff" data-lang="diff"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre></td><td class="code"><pre><span class="gh">diff --git a/config/config.php b/config/config.php
+index 4f64ccb..5447e3f 100755
+</span><span class="gd">--- a/config/config.php
+</span><span class="gi">+++ b/config/config.php
+</span><span class="gu">@@ -379,7 +379,7 @@ $servers-&gt;setValue('login','bind_pass','Homei$3fe');
+</span>
+ /* Default password hashing algorithm. One of md5, ssha, sha, md5crpyt, smd5,
+    blowfish, crypt or leave blank for now default algorithm. */
+<span class="gd">-// $servers-&gt;setValue('appearance','password_hash','md5');
+</span><span class="gi">+// $servers-&gt;setValue('appearance','password_hash_pla','md5');
+</span>
+ /* If you specified 'cookie' or 'session' as the auth_type above, you can
+    optionally specify here an attribute to use when logging in. If you enter
+<span class="gu">@@ -546,7 +546,7 @@ $servers-&gt;setValue('sasl','authz_id_regex','/^uid=([^,]+)(.+)/i');
+</span> $servers-&gt;setValue('sasl','authz_id_replacement','$1');
+ $servers-&gt;setValue('sasl','props',null);
+
+<span class="gd">-$servers-&gt;setValue('appearance','password_hash','md5');
+</span><span class="gi">+$servers-&gt;setValue('appearance','password_hash_pla','md5');
+</span> $servers-&gt;setValue('login','attr','dn');
+ $servers-&gt;setValue('login','fallback_dn',false);
+ $servers-&gt;setValue('login','class',null);
+<span class="gh">diff --git a/config/config.php.example b/config/config.php.example
+index 5b6fdb8..f2cea59 100755
+</span><span class="gd">--- a/config/config.php.example
+</span><span class="gi">+++ b/config/config.php.example
+</span><span class="gu">@@ -379,7 +379,7 @@ $servers-&gt;setValue('server','name','My LDAP Server');
+</span>
+ /* Default password hashing algorithm. One of md5, ssha, sha, md5crpyt, smd5,
+    blowfish, crypt or leave blank for now default algorithm. */
+<span class="gd">-// $servers-&gt;setValue('appearance','password_hash','md5');
+</span><span class="gi">+// $servers-&gt;setValue('appearance','password_hash_pla','md5');
+</span>
+ /* If you specified 'cookie' or 'session' as the auth_type above, you can
+    optionally specify here an attribute to use when logging in. If you enter
+<span class="gu">@@ -546,7 +546,7 @@ $servers-&gt;setValue('sasl','authz_id_regex','/^uid=([^,]+)(.+)/i');
+</span> $servers-&gt;setValue('sasl','authz_id_replacement','$1');
+ $servers-&gt;setValue('sasl','props',null);
+
+<span class="gd">-$servers-&gt;setValue('appearance','password_hash','md5');
+</span><span class="gi">+$servers-&gt;setValue('appearance','password_hash_pla','md5');
+</span> $servers-&gt;setValue('login','attr','dn');
+ $servers-&gt;setValue('login','fallback_dn',false);
+ $servers-&gt;setValue('login','class',null);
+<span class="gh">diff --git a/lib/PageRender.php b/lib/PageRender.php
+index 7d86a54..0858108 100755
+</span><span class="gd">--- a/lib/PageRender.php
+</span><span class="gi">+++ b/lib/PageRender.php
+</span><span class="gu">@@ -287,7 +287,7 @@ class PageRender extends Visitor {
+</span>                                                break;
+
+                                        default:
+<span class="gd">-                                               $vals[$i] = password_hash($passwordvalue,$enc);
+</span><span class="gi">+                                               $vals[$i] = password_hash_pla($passwordvalue,$enc);
+</span>                                }
+
+                                $vals = array_unique($vals);
+<span class="gu">@@ -957,7 +957,7 @@ class PageRender extends Visitor {
+</span>                if (trim($val))
+                        $enc_type = get_enc_type($val);
+                else
+<span class="gd">-                       $enc_type = $server-&gt;getValue('appearance','password_hash');
+</span><span class="gi">+                       $enc_type = $server-&gt;getValue('appearance','password_hash_pla');
+</span>
+                $obfuscate_password = obfuscate_password_display($enc_type);
+
+<span class="gu">@@ -982,7 +982,7 @@ class PageRender extends Visitor {
+</span>                if (trim($val))
+                        $enc_type = get_enc_type($val);
+                else
+<span class="gd">-                       $enc_type = $server-&gt;getValue('appearance','password_hash');
+</span><span class="gi">+                       $enc_type = $server-&gt;getValue('appearance','password_hash_pla');
+</span>
+                echo '&lt;table cellspacing="0" cellpadding="0"&gt;&lt;tr&gt;&lt;td valign="top"&gt;';
+
+<span class="gh">diff --git a/lib/TemplateRender.php b/lib/TemplateRender.php
+index f761b86..0a74913 100755
+</span><span class="gd">--- a/lib/TemplateRender.php
+</span><span class="gi">+++ b/lib/TemplateRender.php
+</span><span class="gu">@@ -2466,7 +2466,7 @@ function deleteAttribute(attrName,friendlyName,i)
+</span>                if ($val = $attribute-&gt;getValue($i))
+                        $default = get_enc_type($val);
+                else
+<span class="gd">-                       $default = $this-&gt;getServer()-&gt;getValue('appearance','password_hash');
+</span><span class="gi">+                       $default = $this-&gt;getServer()-&gt;getValue('appearance','password_hash_pla');
+</span>
+                if (! $attribute-&gt;getPostValue())
+                        printf('&lt;input type="hidden" name="post_value[%s][]" value="%s" /&gt;',$attribute-&gt;getName(),$i);
+<span class="gh">diff --git a/lib/ds_ldap.php b/lib/ds_ldap.php
+index c346660..38efae5 100755
+</span><span class="gd">--- a/lib/ds_ldap.php
+</span><span class="gi">+++ b/lib/ds_ldap.php
+</span><span class="gu">@@ -1117,12 +1117,20 @@ class ldap extends DS {
+</span>                if (is_array($dn)) {
+                        $a = array();
+                        foreach ($dn as $key =&gt; $rdn)
+<span class="gd">-                               $a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
+</span><span class="gi">+                               // The /e modifier is deprecated, use preg_replace_callback instead
++                               // $a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
++                               $a[$key] = preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',function ($m){
++                                       ''.chr(hexdec('\\1')).'';
++                               }
+</span>
+                        return $a;
+
+                }
+<span class="gd">-                       return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
+</span><span class="gi">+                       // The /e modifier is deprecated, use preg_replace_callback instead
++                       // return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
++                       return preg_replace('/\\\([0-9A-Fa-f]{2})/',function ($m){
++                               "''.chr(hexdec('\\1')).''";
++                       }
+</span>        }
+
+        public function getRootDSE($method=null) {
+<span class="gh">diff --git a/lib/ds_ldap_pla.php b/lib/ds_ldap_pla.php
+index 7ece393..c63d26f 100755
+</span><span class="gd">--- a/lib/ds_ldap_pla.php
+</span><span class="gi">+++ b/lib/ds_ldap_pla.php
+</span><span class="gu">@@ -16,7 +16,7 @@ class ldap_pla extends ldap {
+</span>        function __construct($index) {
+                parent::__construct($index);
+
+<span class="gd">-               $this-&gt;default-&gt;appearance['password_hash'] = array(
+</span><span class="gi">+               $this-&gt;default-&gt;appearance['password_hash_pla'] = array(
+</span>                        'desc'=&gt;'Default HASH to use for passwords',
+                        'default'=&gt;'md5');
+
+<span class="gh">diff --git a/lib/functions.php b/lib/functions.php
+index 56d8bf3..e218312 100755
+</span><span class="gd">--- a/lib/functions.php
+</span><span class="gi">+++ b/lib/functions.php
+</span><span class="gu">@@ -2127,7 +2127,7 @@ function password_types() {
+</span>  *        crypt, ext_des, md5crypt, blowfish, md5, sha, smd5, ssha, sha512, or clear.
+  * @return string The hashed password.
+  */
+<span class="gd">-function password_hash($password_clear,$enc_type) {
+</span><span class="gi">+function password_hash_pla($password_clear,$enc_type) {
+</span>        if (DEBUG_ENABLED &amp;&amp; (($fargs=func_get_args())||$fargs='NOARGS'))
+                debug_log('Entered (%%)',1,0,__FILE__,__LINE__,__METHOD__,$fargs);
+
+<span class="gu">@@ -2318,7 +2318,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+</span>
+                # SHA crypted passwords
+                case 'sha':
+<span class="gd">-                       if (strcasecmp(password_hash($plainpassword,'sha'),'{SHA}'.$cryptedpassword) == 0)
+</span><span class="gi">+                       if (strcasecmp(password_hash_pla($plainpassword,'sha'),'{SHA}'.$cryptedpassword) == 0)
+</span>                                return true;
+                        else
+                                return false;
+<span class="gu">@@ -2327,7 +2327,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+</span>
+                # MD5 crypted passwords
+                case 'md5':
+<span class="gd">-                       if( strcasecmp(password_hash($plainpassword,'md5'),'{MD5}'.$cryptedpassword) == 0)
+</span><span class="gi">+                       if( strcasecmp(password_hash_pla($plainpassword,'md5'),'{MD5}'.$cryptedpassword) == 0)
+</span>                                return true;
+                        else
+                                return false;
+<span class="gu">@@ -2392,7 +2392,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+</span>
+                # SHA512 crypted passwords
+                case 'sha512':
+<span class="gd">-                       if (strcasecmp(password_hash($plainpassword,'sha512'),'{SHA512}'.$cryptedpassword) == 0)
+</span><span class="gi">+                       if (strcasecmp(password_hash_pla($plainpassword,'sha512'),'{SHA512}'.$cryptedpassword) == 0)
+</span>                                return true;
+                        else
+:
+                                return false;
+<span class="gu">@@ -2565,12 +2565,20 @@ function dn_unescape($dn) {
+</span>                $a = array();
+
+                foreach ($dn as $key =&gt; $rdn)
+<span class="gd">-                       $a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
+</span><span class="gi">+                       // The /e modifier is deprecated, use preg_replace_callback instead
++                       // $a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
++                       $a[$key] = preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',function ($m){
++                               "''.chr(hexdec('\\1')).''";
++                       }
+</span>
+                return $a;
+
+        }
+<span class="gd">-               return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
+</span><span class="gi">+               // The /e modifier is deprecated, use preg_replace_callback instead
++               // return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
++               return preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',function ($m){
++                       "''.chr(hexdec('\\1')).''";
++               }
+</span>        }
+ }<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#openldap" title="Pages tagged openldap" class="tag"><span class="term">openldap</span></a><a href="/tags#php" title="Pages tagged php" class="tag"><span class="term">php</span></a><a href="/tags#phpldapadmin" title="Pages tagged phpldapadmin" class="tag"><span class="term">phpldapadmin</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,1134 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>CSS flexbox 布局 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="flex, css">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS flexbox 布局">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/css/css-flexbox-layout/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/css/css-flexbox-layout/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">CSS flexbox 布局</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-08-16T00:00:00+08:00">August 16, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <hr />
+
+<ul>
+  <li>REFER TO
+    <ul>
+      <li><a href="https://github.com/sawmac/css_mm_4e">CSS : The Missing Manual 4th Edition 代码</a></li>
+      <li><a href="https://drafts.csswg.org/css-flexbox/">W3C - CSS Flexible Box Layout Module Level 1</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>Flexbox</strong>, short for <em>flexible box</em>, adds another layout mode called <em>flex layout</em>.</p>
+
+<ul>
+  <li>支持
+    <ul>
+      <li>Internet Explorer 11 and up</li>
+      <li>Chrome, Safari, Opera, and Firefox</li>
+    </ul>
+  </li>
+  <li>支持，但是要加 vendor prefix
+    <ul>
+      <li>Safari</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="flexbox-basics">Flexbox Basics</h2>
+
+<p>On the surface, flexbox is pretty simple. There are only two components you need<br />
+to make it work:</p>
+
+<ol>
+  <li>
+    <p>The Flex container.<br />
+ Any HTML element can be a flex container, but usually you’ll use a &lt;div&gt; or some<br />
+ other structural HTML tag. The tag you use for the flex container will contain<br />
+ children and other tags that make up the second part of the flexbox model.</p>
+  </li>
+  <li>
+    <p>Flex items.</p>
+    <ul>
+      <li>Every direct child of the container element is automatically turned into a <em>flex item</em>.</li>
+      <li>the child tags 可以是任务tag，也可以不是同一种类型的 type.</li>
+      <li>只有children tags 可以成为 flex items，grandchildren tags 不行。</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="例子">例子</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div&gt;</span>A flex item<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>Another flex item<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>A third flex item<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Unfortunately, at the time of this writing, Safari requires a vendor prefix for this<br />
+property, so to make the above CSS work in all current browsers including Safari,<br />
+you would write:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">-webkit-flex</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<iframe class="embeded-iframe" src="20230725171355251.html"></iframe>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c">/* make the divs inside the container the same width and fill up the
+container by simply giving those divs a flex property with a value of 1
+*/</span>
+<span class="nc">.container</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">-webkit-flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<iframe class="embeded-iframe" src="20230725171355251.html"></iframe>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c">/* This nth-of-type selector simply selects every div starting at the second
+one
+1n+2 表示从第二个开始，除1余数为0
+*/</span>
+<span class="nc">.container</span> <span class="nt">div</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="nt">1n</span><span class="o">+</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<iframe class="embeded-iframe" src="20230725171355252.html"></iframe>
+
+<h2 id="flex-container-properties">Flex Container Properties</h2>
+
+<h3 id="display-属性值-flex">display 属性值 flex</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">display</span><span class="o">:</span> <span class="nt">-webkit-flex</span>
+<span class="nt">display</span><span class="o">:</span> <span class="nt">flex</span><span class="o">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="flex-flow">Flex-Flow</h3>
+
+<p>Flex items 缺省情况下，水平排列，且一直不换行。</p>
+
+<p>flex-flow property 控制 flex items 垂直或者水平排序，是否可以换行。</p>
+
+<ul>
+  <li>Flex-flow requires two values, separated by a space.
+    <ul>
+      <li>The first is the direction, there are four possible settings:
+        <ul>
+          <li><strong>row</strong> is the normal setting. It displays flex items side by side, with the first item in the HTML source code being the left-most item, and the last item in the HTML source on the right.</li>
+          <li><strong>row-reverse</strong> also displays the flex items side by side, but reverses their order on screen. In other words, the last item to appear in the HTML source appears on the leftmost side of the container, and the first item in the HTML source appears at the right side of the container.</li>
+          <li><strong>column</strong> displays the flex items as stacked blocks one on top of the other. 和div标签的默认效果一样。在respective 布局的时候，比较方便，手机屏幕使用column方式，电脑屏幕使用row方式。</li>
+          <li><strong>column-reverse</strong> 和 <strong>column</strong> 类似，除了 flex items 堆叠的方向是从下而上的。</li>
+        </ul>
+      </li>
+      <li>the second is whether the item can wrap. There are three possible values:
+        <ul>
+          <li><strong>nowrap</strong> 默认行为，就是不换行，不管窗口有多小，就是全部挤到里面。</li>
+          <li><strong>wrap</strong> lets items that don’t fit inside the container’s width drop down to a new<br />
+row (or over to a new column) as pictured in the top image in Figure 17-4. In<br />
+order for flex items to wrap onto new rows (or columns), you’ll also need to set<br />
+some values on the flex items.</li>
+          <li><strong>wrap-reverse</strong> is like the wrap option, but wraps items in a reverse order.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="flex-direction--flex-wrap">flex-direction , flex-wrap</h4>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">flex-flow</span><span class="o">:</span> <span class="nt">row</span> <span class="nt">wrap</span><span class="o">;</span>
+
+<span class="c">/* 等价于 */</span>
+
+<span class="nt">flex-direction</span><span class="o">:</span> <span class="nt">row</span><span class="o">;</span>
+<span class="nt">flex-wrap</span><span class="o">:</span> <span class="nt">wrap</span><span class="o">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="justify-content">Justify-content</h3>
+
+<ul>
+  <li>The <code class="highlighter-rouge">justify-content</code> property determines where a browser should place the flex items within the row.</li>
+  <li>This property only works if the flex items have set widths and if the total width of the items is less than the flex container.</li>
+  <li>If you’re using <code class="highlighter-rouge">flex widths</code> for flex items, the justify-content property has no effect at all.</li>
+</ul>
+
+<p>There are five possible values for this property:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">flex-start</code> aligns items to the left of the row. Confusingly, if you choose the <code class="highlighter-rouge">row-reverse</code> direction, the flex-start option aligns all items to the left.</li>
+  <li><code class="highlighter-rouge">flex-end</code> aligns items to the right side of the row, unless of course you set the <code class="highlighter-rouge">row-reverse</code> direction, in which case it aligns items to the left.</li>
+  <li><code class="highlighter-rouge">center</code> centers the flex items in the middle of the container</li>
+  <li><code class="highlighter-rouge">space-between</code> evenly spaces out the flex items, dividing the space between them equally while aligning the leftmost item to the left and the rightmost item to the right. This is a great option for displaying a series of buttons that fill the entire width of a container.</li>
+  <li><code class="highlighter-rouge">space-around</code> evenly distributes the leftover space within the container around all the items adding space to the left- and rightmost items as well</li>
+</ul>
+
+<p>参见如下示例，示例代码演示的是第五行 <code class="highlighter-rouge">space-around</code></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">-webkit-flex</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">-webkit-justify-content</span><span class="p">:</span> <span class="n">space-around</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="n">space-around</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.container</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<iframe class="embeded-iframe" src="20230725171355252.html"></iframe>
+
+<h3 id="align-items">Align-items</h3>
+
+<ul>
+  <li>The <code class="highlighter-rouge">lign-items</code> property determines how flex items of different heights are vertically placed within a flex container.</li>
+  <li>
+    <p>By default, flex items stretch to fit the container, so are all equal heights</p>
+  </li>
+  <li>可能的值：
+    <ul>
+      <li><code class="highlighter-rouge">flex-start</code> aligns the tops of all flex items to the top of the container</li>
+      <li><code class="highlighter-rouge">flex-end</code> aligns the bottoms of all flex items to the bottom of the container</li>
+      <li><code class="highlighter-rouge">center</code> aligns the vertical centers of all flex items to the vertical center of the container</li>
+      <li><code class="highlighter-rouge">baseline</code> aligns the baseline of the first element within each flex</li>
+      <li><code class="highlighter-rouge">stretch</code> is the normal behavior of flex items. It stretches each item in the con-<br />
+tainer to the same height</li>
+    </ul>
+  </li>
+  <li>代码示例
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">-webkit-flex</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">-webkit-align-items</span><span class="p">:</span> <span class="n">flex-end</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="n">flex-end</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<iframe class="embeded-iframe" src="20230725171355252.html"></iframe>
+
+<ul>
+  <li>baseline 的补充说明，对齐的是第一行的baseline，如下图
+    <ul>
+      <li><img src="align-items-baseline.png" alt="" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="align-content">Align-content</h3>
+
+<ul>
+  <li>The <code class="highlighter-rouge">align-content</code> property dictates how a browser places flex items that span over multiple lines.</li>
+  <li>2 个条件满足时，这个属性才有效：
+    <ol>
+      <li>the flex container must have wrap turned on</li>
+      <li>the flex container must be taller than the rows of flex items</li>
+    </ol>
+  </li>
+  <li>可能的值：
+    <ul>
+      <li><code class="highlighter-rouge">flex-start</code> places the rows of flex items at the top of the flex container</li>
+      <li><code class="highlighter-rouge">flex-end</code> places the flex item rows at the bottom of the container</li>
+      <li><code class="highlighter-rouge">center</code> aligns the vertical center of all rows to the vertical center of the container</li>
+      <li><code class="highlighter-rouge">space-between</code> evenly distributes extra vertical space between the rows, placing the top row at the top of the container and the bottom row at the bottom of the container</li>
+      <li><code class="highlighter-rouge">space-around</code> evenly distributes space on the top and bottom of all rows. This adds space above the top row and below the bottom row</li>
+      <li><code class="highlighter-rouge">stretch</code> is the normal behavior of rows of flex items. It stretches each item within a row to match the height of the other items in the row.</li>
+    </ul>
+  </li>
+  <li>代码示例，make sure that the flex-flow property  includes the wrap option
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">-webkit-flex</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">-webkit-flex-flow</span><span class="p">:</span> <span class="n">row</span> <span class="n">wrap</span><span class="p">;</span>
+  <span class="nl">flex-flow</span><span class="p">:</span> <span class="n">row</span> <span class="n">wrap</span><span class="p">;</span>
+  <span class="nl">-webkit-align-content</span><span class="p">:</span> <span class="n">space-between</span><span class="p">;</span>
+  <span class="nl">align-content</span><span class="p">:</span> <span class="n">space-between</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h2 id="flex-item-properties">Flex Item Properties</h2>
+
+<h3 id="the-order-property">The Order Property</h3>
+
+<ul>
+  <li>
+    <p>The order property lets you assign a numeric value to a flex item which dictates where within the row (or column) this item should appear.</p>
+  </li>
+  <li>
+    <p>示例代码</p>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>  <span class="nc">.order-1</span> <span class="p">{</span>
+    <span class="nl">order</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+    <span class="nl">-webkit-order</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.order-2</span> <span class="p">{</span>
+    <span class="nl">order</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
+    <span class="nl">-webkit-order</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.order-3</span> <span class="p">{</span>
+    <span class="nl">order</span><span class="p">:</span> <span class="m">3</span><span class="p">;</span>
+    <span class="nl">-webkit-order</span><span class="p">:</span> <span class="m">3</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.order-4</span> <span class="p">{</span>
+    <span class="nl">order</span><span class="p">:</span> <span class="m">4</span><span class="p">;</span>
+    <span class="nl">-webkit-order</span><span class="p">:</span> <span class="m">4</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>  <span class="nt">&lt;div&gt;</span>使用order属性变换顺序<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-basic-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-4"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-3"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-1"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-2"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<iframe class="embeded-iframe" src="20230725171355252.html"></iframe>
+
+<h4 id="order--1"><code class="highlighter-rouge">order: -1;</code></h4>
+
+<p>However, sometimes you might want to just move one column to the far left or far<br />
+right of a row. In that case, you can simply set the order on that particular item, but<br />
+not on any others</p>
+
+<p>Using <code class="highlighter-rouge">-1</code> moves the item to the left side of the flex container, before all of the other<br />
+rows. Conversely, you could move that same sidebar to the far right by setting its<br />
+order number to <code class="highlighter-rouge">1</code>, while leaving the other elements’ order properties unset.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nc">.sidebar1</span> <span class="p">{</span>
+  <span class="nl">-webkit-order</span><span class="p">:</span> <span class="m">-1</span><span class="p">;</span>
+  <span class="nl">order</span><span class="p">:</span> <span class="m">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="align-self">Align-self</h3>
+
+<ul>
+  <li>The align-self property works just like the align-items property used for flex<br />
+containers. 不同的是，<code class="highlighter-rouge">align-self</code> applies to just the individual flex item.</li>
+  <li>You apply the property to an item (not the container) and it overrides any value for the align-items property.</li>
+  <li>You apply the property to an item (not the container) and it overrides any value for the align-items property.</li>
+</ul>
+
+<p><img src="align-self.png" alt="" /></p>
+
+<h3 id="flex-属性">Flex 属性</h3>
+
+<p>This property is the key to controlling the width of flex items; it lets you easily create columns that “flex,” or change width to match the size of their container, even when the size is unknown or dynamic.</p>
+
+<ul>
+  <li>it’s really a shorthand property that combines three other flex properties.
+    <ol>
+      <li><code class="highlighter-rouge">flex-grow</code> , 是个数字， indicates the relative width of that flex item. 表明item在container中所占宽或长的<strong>比重</strong>。</li>
+      <li><code class="highlighter-rouge">flex-shrink</code>, 2nd value， 也是个数字.
+        <ul>
+          <li>这个属性起作用要满足2个条件：
+            <ul>
+              <li>当容器总宽小于items宽的总和的时候，</li>
+              <li>且容器的<code class="highlighter-rouge">flex-flow</code>属性包含<code class="highlighter-rouge">nowrap</code>的时候，</li>
+            </ul>
+          </li>
+          <li>与 <code class="highlighter-rouge">flex-grow</code> 相反，数值越大，压缩越大，item越小。</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">flex-basis</code> property, which sets a base width for a flex item.
+        <ul>
+          <li>You can use an absolute value like 100px or 5em, or a percentage value like 50%.</li>
+          <li>a kind of minimum width for a flex item.</li>
+          <li>The real value of the flex-basis property comes into play when you set a flex container to allow wrapping</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">flex</span><span class="o">:</span> <span class="nt">1</span> <span class="nt">1</span> <span class="nt">400px</span><span class="o">;</span>
+
+<span class="c">/* 等价于 */</span>
+<span class="nt">flex-grow</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">flex-shrink</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">flex-basis</span><span class="o">:</span> <span class="nt">400px</span><span class="o">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="flex-属性默认值">flex 属性默认值</h4>
+
+<p>If you don’t set the flex property on flex items within a flex container, browsers provide a default setting, which is the equivalent of: <code class="highlighter-rouge">flex: 0 1 auto;</code></p>
+
+<p>With this setting, the width of each flex item is automatically determined by the content inside it. A flex item with a lot of text and pictures will be a lot wider than an item with just two words.</p>
+
+<p>When you leave out the <code class="highlighter-rouge">flex-shrink</code> and <code class="highlighter-rouge">flex-basis</code> values—for example, <code class="highlighter-rouge">flex: 1;</code>—the browser assigns a default value of 1 to <code class="highlighter-rouge">flex-shrink</code>, but sets the default value of <code class="highlighter-rouge">flex-basis</code> to 0%.</p>
+
+<p>By setting the <code class="highlighter-rouge">flex-basis</code> to 0%, the width of each flex item is completely dictated by the <code class="highlighter-rouge">flex-grow property</code>: In other words, the amount of content inside each flex item has no effect on how wide the various items are.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nt">flex</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span> 
+
+<span class="c">/* is the equivalent of */</span>
+
+<span class="nt">flex-grow</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">flex-shrink</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">flex-basis</span><span class="o">:</span> <span class="nt">0</span><span class="o">%;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#flex" title="Pages tagged flex" class="tag"><span class="term">flex</span></a><a href="/tags#css" title="Pages tagged css" class="tag"><span class="term">css</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

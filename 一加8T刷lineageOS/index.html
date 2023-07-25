@@ -1,0 +1,982 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>一加8T刷lineageOS，关联 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一加8T刷lineageOS，关联">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/%E4%B8%80%E5%8A%A08T%E5%88%B7lineageOS/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/%E4%B8%80%E5%8A%A08T%E5%88%B7lineageOS/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">一加8T刷lineageOS，关联</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2023-03-17T00:00:00+08:00">March 17, 2023</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://wiki.lineageos.org/devices/kebab/install">lineageos.org - Install LineageOS on kebab</a></li>
+      <li><a href="https://wiki.lineageos.org/devices/kebab/build">lineageos.org - Build for kebab</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="从-oxygenos-kb2005_11_c33-刷到-lineageos-20--android-13">从 OxygenOS KB2005_11_C.33 刷到 lineageOS 20 / Android 13</h3>
+
+<ol>
+  <li>起点<br />
+ 型号： KB2005<br />
+ 版本号： OxygenOS KB2005_11_C.33<br />
+ Android: 12<br />
+ 基带版本： Q_V1_p14,Q_V1_P14<br />
+ 内核版本：  4.19.157-perf+<br />
+ 硬件版本：  KB2005_11</li>
+  <li>确认DDR类型（是DDR4或DDR5）
+    <ol>
+      <li>方法一： <code class="highlighter-rouge">adb shell getprop ro.boot.ddr_type</code> 或 <code class="highlighter-rouge">adb shell cat /proc/devinfo/ddr_type</code>
+        <ul>
+          <li>On OOS 11 you can find the phone’s DDR type using getprop ro.boot.ddr_type. A result of 0 means DDR4 and 1 means DDR5.</li>
+          <li>On OOS 12 root之后，使用 <code class="highlighter-rouge">adb shell cat /proc/devinfo/ddr_type</code>
+            <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  cat /proc/devinfo/ddr_type
+  Device version:         DDR5
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>方法二： <br />
+ 参考： <a href="https://forum.xda-developers.com/t/ddr-type.4453647/post-86982049">https://forum.xda-developers.com/t/ddr-type.4453647/post-86982049</a>
+        <ol>
+          <li>拨号<code class="highlighter-rouge">*#800#</code> 打开 feedback app，选择 Other -&gt; Other general</li>
+          <li>按下开始搜集，提示是否重启时，选择继续（不重启）</li>
+          <li>将sdcard上的日至拷贝出来<br />
+ <code class="highlighter-rouge">adb pull /sdcard/Android/data/com.oplus.logkit/files/Log/&lt;这个文件夹根据手机中实际情况&gt;@other/recovery_log .</code></li>
+          <li>搜索ddr5 或 ddr4<br />
+ <code class="highlighter-rouge">find . -type f | xargs grep --color -i 'ddr5\|ddr4'</code></li>
+          <li>出现如下字样估计是 ddr4
+            <ul>
+              <li><code class="highlighter-rouge">ddr_type is: Device version: DDR4</code></li>
+              <li><code class="highlighter-rouge">ddr5 is false</code></li>
+              <li><code class="highlighter-rouge">the ddr type of dev is ddr4</code></li>
+              <li><code class="highlighter-rouge">is_ddr5 is 0 , partition name xbl_config_lp5 , target path /dev/null</code></li>
+              <li><code class="highlighter-rouge">is_ddr5 is 0 , partition name xbl_lp5 , target path /dev/null</code></li>
+              <li><code class="highlighter-rouge">is_ddr5 is 0 , partition name xbl_config , target path /dev/block/bootdevice/by-name/xbl_config_b</code></li>
+              <li><code class="highlighter-rouge">is_ddr5 is 0 , partition name xbl , target path /dev/block/bootdevice/by-name/xbl_b</code></li>
+              <li><code class="highlighter-rouge">Current system is non ddr5 and current partition is xbl_lp5, skip hash verification</code></li>
+              <li><code class="highlighter-rouge">Current system is non ddr5 and current partition is xbl_config_lp5, skip hash verification</code></li>
+              <li><code class="highlighter-rouge">update_attempter_android.cc(355)] ddr_type is: Device version: DDR4</code></li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>==================================================================</li>
+  <li>确保使用 Android 13 Firmware
+    <ol>
+      <li>升级 firmware，参考： <a href="https://wiki.lineageos.org/devices/kebab/fw_update">Update firmware on kebab</a></li>
+    </ol>
+  </li>
+  <li>获取最新OTA升级包
+    <ul>
+      <li>从 <a href="https://t.me/OnePlusOTA">https://t.me/OnePlusOTA</a> tg群中获取</li>
+      <li>Google Play 下载 <a href="https://play.google.com/store/apps/details?id=com.arjanvlek.oxygenupdater&amp;pli=1">Oxygen Updater</a>
+        <ol>
+          <li>安装到 Oneplus 8T 上，下载最新OTA升级包。</li>
+          <li>下载好的升级包，就在 /sdcard/ 下面。</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>使用 <a href="https://github.com/ssut/payload-dumper-go">payload-dumper-go</a> 提取OTA升级包中的文件。<br />
+ 参考： <a href="https://forum.xda-developers.com/t/guide-how-to-extract-img-boot-img-etc-from-payload-bin-using-payload-dumper-go.4468781/">How to extract img(boot.img, etc…) from payload.bin using payload-dumper-go</a>
+    <ol>
+      <li>从下载的OTA升级包（zip包）中解压出： payload.bin</li>
+      <li>将 payload.bin 拷贝到 payload-dumper-go.exe 同目录</li>
+      <li>执行： <code class="highlighter-rouge">payload-dumper-go.exe payload.bin</code>，会在目录上新建个目录，存放提取出来的img文件</li>
+    </ol>
+  </li>
+  <li>进入 LineageOS recovery， “Advanced” -&gt; “Enable ADB”</li>
+  <li>Recovery -&gt; “Advanced” -&gt; “Enter fastboot”</li>
+  <li>电脑端使用命令刷img
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre> fastboot flash --slot<span class="o">=</span>all abl abl.img
+ fastboot flash --slot<span class="o">=</span>all aop aop.img
+ fastboot flash --slot<span class="o">=</span>all bluetooth bluetooth.img
+ fastboot flash --slot<span class="o">=</span>all cmnlib64 cmnlib64.img
+ fastboot flash --slot<span class="o">=</span>all cmnlib cmnlib.img
+ fastboot flash --slot<span class="o">=</span>all devcfg devcfg.img
+ fastboot flash --slot<span class="o">=</span>all dsp dsp.img
+ fastboot flash --slot<span class="o">=</span>all featenabler featenabler.img
+ fastboot flash --slot<span class="o">=</span>all hyp hyp.img
+ fastboot flash --slot<span class="o">=</span>all imagefv imagefv.img
+ fastboot flash --slot<span class="o">=</span>all keymaster keymaster.img
+ fastboot flash --slot<span class="o">=</span>all logo logo.img
+ fastboot flash --slot<span class="o">=</span>all mdm_oem_stanvbk mdm_oem_stanvbk.img
+ fastboot flash --slot<span class="o">=</span>all modem modem.img
+ fastboot flash --slot<span class="o">=</span>all multiimgoem multiimgoem.img
+ fastboot flash --slot<span class="o">=</span>all qupfw qupfw.img
+ fastboot flash --slot<span class="o">=</span>all spunvm spunvm.img
+ fastboot flash --slot<span class="o">=</span>all storsec storsec.img
+ fastboot flash --slot<span class="o">=</span>all tz tz.img
+ fastboot flash --slot<span class="o">=</span>all uefisecapp uefisecapp.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>根据DDR类型，输入正确的 XBL 文件<br />
+ For DDR type 0 (DDR4):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> fastboot flash --slot<span class="o">=</span>all xbl_config xbl_config.img
+ fastboot flash --slot<span class="o">=</span>all xbl xbl.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+    <p>For DDR type 1 (DDR5):</p>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> fastboot flash --slot<span class="o">=</span>all xbl_config xbl_config_lp5.img
+ fastboot flash --slot<span class="o">=</span>all xbl xbl_lp5.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>==================================================================</li>
+  <li>解锁<br />
+ 注意：解锁后所有数据丢失，系统重置！！
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> <span class="c"># 重启进入bootloader, 执行如下命令，</span>
+ <span class="c"># 或者 关闭手机，同时按下 音量上 + 音量下 + 电源键</span>
+ adb reboot bootloader
+    
+ fastboot devices
+ fastboot oem device-info
+ fastboot oem unlock
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>==================================================================</li>
+  <li>刷recovery之前，刷人 dtbo.img 、 vbmeta.img
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>  fastboot flash dtbo &lt;dtbo&gt;.img
+  fastboot flash vbmeta &lt;vbmeta&gt;.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>刷入 recovery
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  fastboot flash recovery &lt;recovery_filename&gt;.img
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>进入 recovery<br />
+  执行 <code class="highlighter-rouge">fastboot reboot recovery</code>，或者关机后，同时按下 <code class="highlighter-rouge">Volume Down</code> + <code class="highlighter-rouge">Power</code></li>
+  <li>确保firmware分区一致性，防止变砖
+    <ol>
+      <li>下载 <a href="https://mirrorbits.lineageos.org/tools/copy-partitions-20220613-signed.zip">copy-partitions-20220613-signed.zip</a><br />
+ MD5 sum : 79f2f860830f023b7030c29bfbea7737<br />
+ SHA-256 sum : 92f03b54dc029e9ca2d68858c14b649974838d73fdb006f9a07a503f2eddd2cd.</li>
+      <li>刷入 <code class="highlighter-rouge">copy-partitions-20220613-signed.zip</code>
+        <ol>
+          <li>On the device, select “Apply Update”, then “Apply from ADB” to begin sideload.</li>
+          <li>On the host machine, sideload the package using: <code class="highlighter-rouge">adb sideload copy-partitions-20220613-signed.zip</code></li>
+        </ol>
+      </li>
+      <li>重启到recovery： tapping “Advanced”, then “Reboot to recovery”</li>
+    </ol>
+  </li>
+  <li>==================================================================</li>
+  <li>刷入 LineageOS 20</li>
+  <li>Recovery 中恢复下出厂设置： <code class="highlighter-rouge">Factory Reset</code> -&gt; <code class="highlighter-rouge">Format data / factory reset</code></li>
+  <li>返回 main menu</li>
+  <li>Sideload the LineageOS .zip package
+    <ol>
+      <li>On the device, select “Apply Update”, then “Apply from ADB” to begin sideload.</li>
+      <li>On the host machine, sideload the package using: <code class="highlighter-rouge">adb sideload filename.zip</code><br />
+ 正常会显示 <code class="highlighter-rouge">Total xfer: 1.00x</code>，<br />
+ 但是，停在 47% 显示<code class="highlighter-rouge">adb: failed to read command: Success</code>.<br />
+ 或者，显示<code class="highlighter-rouge">adb: failed to read command: No error</code> or <code class="highlighter-rouge">adb: failed to read command: Undefined error: 0</code>，<br />
+ 都是正常的。</li>
+    </ol>
+  </li>
+  <li>刷 Google Apps</li>
+  <li>重启进入 Recovery</li>
+  <li>Sideload the MindTheGapps.zip package
+    <ol>
+      <li>On the device, select “Apply Update”, then “Apply from ADB” to begin sideload.</li>
+      <li>On the host machine, sideload the package using: <code class="highlighter-rouge">adb sideload MindTheGapps-13.0.0-arm64-20221025_100653.zip</code><br />
+ 显示 <code class="highlighter-rouge">Signature verification failed</code> 是正常的，因为GApps没有使用lineageos官方签名，选择 YES 继续就行。<br />
+ 有时候会输入失败，Recovery 中恢复下出厂设后，再试试。</li>
+    </ol>
+  </li>
+  <li>MindTheGapps 刷入成功，屏幕显示 <code class="highlighter-rouge">Install completed with status 0</code>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre> MindTheGapps installer
+ ****************************
+ Extracting files
+ Mounting partitions
+ /mnt/system mounted
+ /product mounted
+ /system_ext mounted
+ Generating addon.d file
+ Preparing files for copying
+ Copying files
+ Cleaning up files
+ Unmounting partitions
+ Done!
+
+ Install completed with status 0
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>重启进入 LineageOS 系统，第一次启动大约 15分钟左右，特别长时间进入不了系统，估计就什么地方有问题了。</p>
+  </li>
+  <li>==================================================================</li>
+  <li>安装其他App</li>
+  <li>lineageOS 和 MindTheGapps 都比较简练，还有些必须的app要安装下<br />
+ MindTheGapps 只包含了必要Google Apps 框架和 Play Store</li>
+  <li>配置Google账号</li>
+  <li>进入 Play Store 安装中文输入法： GBoard</li>
+  <li></li>
+</ol>
+
+<h2 id="实例">实例</h2>
+
+<h3 id="lineage-200-20230302-nightly-kebab-signedzip">lineage-20.0-20230302-nightly-kebab-signed.zip</h3>
+
+<ul>
+  <li>lineage-20.0-20230302-nightly-kebab-signed.zip<br />
+  版本号： lineage_kebab-userdebug 13 TQ1A.230205.002 3a48ea0afd<br />
+  LineageOS 版本： 20-20230302-NIGHTLY-kebab<br />
+  Android: 13</li>
+  <li>MindTheGapps-13.0.0-arm64-20221025_100653.zip<br />
+  Play Store: 版本 30.4.17-21 [0] [PR] 445549118<br />
+  Google: 版本 13.21.16.26.arm64</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>$ md5sum *
+e68c6e125b69509257c942d60179f99c  boot.img
+79f2f860830f023b7030c29bfbea7737  copy-partitions-20220613-signed.zip
+1165f6c5b2147e398150745422259ec7  dtbo.img
+ec9b154cbf41b1aebd9f4c01bc2a88d7  lineage-20.0-20230302-nightly-kebab-signed.zip
+d4b2b6dd8e5426cf7d4d9bd6ffe18e6b  recovery.img
+3abd2db7de98b1d1439afc50144fd70e  super_empty.img
+74d986bd809da327af26068604930c4c  vbmeta.img
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>问题
+    <ul>
+      <li>屏幕自动调光，时灵时不灵，动不动就亮度最大</li>
+      <li>待机时间有下降</li>
+      <li>摄像机录像，有时候点录制，图标已经显示录制，实际没有录。</li>
+    </ul>
+  </li>
+  <li>优点
+    <ul>
+      <li>系统性能高，响应速度快</li>
+      <li>Phone App 可录音</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="lineage-200-20230330-nightly-kebab-signedzip">lineage-20.0-20230330-nightly-kebab-signed.zip</h3>
+
+<p>版本号： lineage_kebab-userdebug 13 TQ2A.230305.008.C1 3ca88dfc77<br />
+LineageOS 版本： 20-20230330-NIGHTLY-kebab<br />
+Android: 13</p>
+
+<p>Play Store: 版本 35.0.15-21 [0] [PR] 519197268<br />
+Phone Call： com.android.dialer： 版本 23.0<br />
+Camera： org.lineageos.aperture ： 版本 13</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,2110 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>manjaro 入门使用 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="manjaro, xfce4, vivaldi, google-chrome, arch-linux, aur, yay, pacman, exfat, ntfs, fcitx, virtualbox">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manjaro 入门使用">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/manjaro-startup/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/manjaro-startup/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">manjaro 入门使用</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-03-26T00:00:00+08:00">March 26, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://wenqixiang.com/manjaro-guide/">Manjaro 上手使用简明教程</a></li>
+      <li><a href="https://juejin.im/post/5d4e8deef265da03f77e58b0">Manjaro 安装体验小结 - Michael翔lv-2</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="lxde">LXDE</h2>
+
+<h3 id="屏幕分辨率设置">屏幕分辨率设置</h3>
+
+<p>Application menu -&gt; Preferences -&gt; Monitor Settings</p>
+
+<h2 id="grub">Grub</h2>
+
+<h3 id="菜单停留时间设置">菜单停留时间设置</h3>
+
+<ol>
+  <li><code class="highlighter-rouge">sudo vim /etc/default/grub</code><br />
+  <code class="highlighter-rouge">GRUB_TIMEOUT=需要的秒数</code></li>
+  <li><code class="highlighter-rouge">sudo update-grub</code></li>
+</ol>
+
+<h2 id="系统时间设置">系统时间设置</h2>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://dev.to/musale/adjusting-arch-linux-time-to-local-time-3ki1">Adjusting Arch Linux time to local time </a></li>
+      <li><a href="https://www.maketecheasier.com/sync-linux-time-with-ntp-server/">How to Sync Linux Time with NTP Server</a></li>
+      <li><a href="https://paquier.xyz/manuals/archlinux/installation-2/system-settings/">ArchLinux - System settings</a></li>
+      <li><a href="https://wiki.archlinux.org/index.php/System_time">System time - ArchLinux Wiki</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li><strong>NTP</strong>: Network Time Protocol</li>
+</ul>
+
+<h3 id="hardware-clock"><strong>Hardware clock</strong></h3>
+
+<p>The hardware clock (a.k.a. the Real Time Clock (<code class="highlighter-rouge">RTC</code>) or <code class="highlighter-rouge">CMOS clock)</code> stores the values of: Year, Month, Day, Hour, Minute, and Seconds. <br />
+Only 2016, or later, UEFI firmware has the ability to store the timezone, and whether DST is used.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># Read hardware clock
+sudo hwclock --show
+
+# Set hardware clock from system clock
+hwclock --systohc
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="system-clock"><strong>System clock</strong></h3>
+
+<p>The system clock (a.k.a. the software clock) keeps track of: time, time zone, and DST if applicable. <br />
+It is calculated by the Linux kernel as the number of seconds since midnight January 1st 1970, UTC. <br />
+The initial value of the system clock is calculated from the hardware clock, dependent on the contents of <code class="highlighter-rouge">/etc/adjtime</code>. <br />
+After boot-up has completed, the system clock runs independently of the hardware clock. <br />
+The Linux kernel keeps track of the system clock by counting timer interrupts.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre># To check the current system clock time (presented both in local time and UTC) as well as the RTC (hardware clock):
+timedatectl
+
+# To set the local time of the system clock directly:
+timedatectl set-time "yyyy-MM-dd hh:mm:ss"
+timedatectl set-time "2014-05-26 11:13:54"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The hardware clock can be queried and set with the <code class="highlighter-rouge">timedatectl</code> command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre># To change the hardware clock time standard to localtime, use:
+timedatectl set-local-rtc 1
+
+# 检查下设置效果
+timedatectl | grep local
+
+# To revert to the hardware clock being in UTC, type:
+timedatectl set-local-rtc 0
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>设置时区</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>timedatectl set-timezone Asia/Shanghai
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 激活 NTP Service
+timedatectl set-ntp true
+
+# 查看当前时间设置
+timedatectl status
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="如果是windows多系统启动将-windows-的-hardware-clock-设置也统一为-utc">如果是Windows多系统启动，将 Windows 的 hardware clock 设置也统一为 UTC</h3>
+
+<p>创建 <code class="highlighter-rouge">some.reg</code> 文件，内容如下：</p>
+
+<p>如果是32位的Windows，Replace <code class="highlighter-rouge">qword</code> with <code class="highlighter-rouge">dword</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
+     "RealTimeIsUniversal"=qword:00000001
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>保存后双击执行。</p>
+
+<h2 id="pacman">pacman</h2>
+
+<h3 id="更换为中国国内源">更换为中国国内源</h3>
+
+<ol>
+  <li>
+    <p>设置源<br />
+ 列出国内源，按速度排序，我这边只能看到 sjtu 的源，就只能选这个，确认了。设置在 <code class="highlighter-rouge">/etc/pacman.d/mirrorlist</code> 中生效。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo pacman-mirrors -i -c China -m rank
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>如果不想使用上海交通大学sjtu的源，其他源头地址如下，直接在<code class="highlighter-rouge">/etc/pacman.d/mirrorlist</code> 修改就好：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>   1.275 China          : https://mirrors.ustc.edu.cn/manjaro/
+   0.245 China          : https://mirrors.tuna.tsinghua.edu.cn/manjaro/
+   0.059 China          : https://mirrors.sjtug.sjtu.edu.cn/manjaro/
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>例如，</p>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> Server = https://mirrors.tuna.tsinghua.edu.cn/manjaro/stable/$repo/$arch
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>更新软件包数据库<br />
+ 更换上新的国内源之后，可以刷新一下缓存，输入</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> # -S: Sync packages
+ # -yy: refresh package database, force refresh even if local database appears up-to-date
+ sudo pacman -Syy
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="使用aur-arch-用户仓库-archlinux-user-repository">使用AUR （Arch 用户仓库) ArchLinux User Repository</h3>
+
+<ul>
+  <li>AUR 官网：  <a href="https://aur.archlinux.org/">https://aur.archlinux.org/</a></li>
+  <li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/AUR/">清华大学开源软件镜像站 - AUR 镜像使用帮助</a></li>
+  <li><a href="https://wiki.archlinux.org/index.php/unofficial_user_repositories">Unofficial user repositories</a></li>
+</ul>
+
+<h4 id="安装-yay">安装 yay</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>sudo pacman -S yay
+
+# 配置 yay 的 aur 源为清华源 AUR 镜像，修改的配置文件位于 ~/.config/yay/config.json
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>yay: /usr/lib/libc.so.6: version `GLIBC_2.32’ not found (required by yay)<br />
+sudo pacman -S glibc</p>
+
+<h4 id="配置yay">配置yay</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre># 配置 yay 的 aur 源为清华源 AUR 镜像，修改的配置文件位于 ~/.config/yay/config.json
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+
+
+yay --aururl "https://aur.archlinux.org" --save
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可以通过2个方式查看 yay 当前配置：</p>
+<ul>
+  <li><code class="highlighter-rouge">cat ~/.config/yay/config.json</code></li>
+  <li>
+    <p><code class="highlighter-rouge">yay -P -g</code></p>
+  </li>
+  <li>
+    <p>使用 yay 按照 ARU 包</p>
+
+    <p>yay 安装命令不需要加 sudo。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>yay -S package # 从 AUR 安装软件包
+yay -Rns package # 删除包
+yay -Syu # 升级所有已安装的包
+yay -Ps # 打印系统统计信息
+yay -Qi package # 检查安装的版本
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>不使用 AUR 助手安装 AUR 软件包
+    <ol>
+      <li>在 <a href="https://aur.archlinux.org/">AUR 页面</a>上找到要安装的软件包后</li>
+      <li>确认“许可证”、“流行程度”、“最新更新”、“依赖项”等，作为额外的质量控制步骤。</li>
+      <li>安装
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> git clone [package URL]
+ cd [package name]
+ makepkg -si
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="直接下载安装包">直接下载安装包</h3>
+
+<ul>
+  <li><a href="https://wiki.archlinux.org/index.php/Arch_Linux_Archive">Arch Linux Archive</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href="https://archive.archlinux.org/packages">https://archive.archlinux.org/packages</a></li>
+  <li><a href="https://archive.org/download/archlinux_pkg_linux-headers">https://archive.org/download/archlinux_pkg_linux-headers</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 例如：
+sudo pacman -U https://archive.org/download/archlinux_pkg_linux-headers
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="pacman-常用设置">pacman 常用设置</h3>
+
+<ul>
+  <li>显示颜色<br />
+在<code class="highlighter-rouge">/etc/pacman.conf</code> 中开放Color设置：将 <code class="highlighter-rouge">#Color</code> 改为 <code class="highlighter-rouge">Color</code></li>
+</ul>
+
+<h3 id="pcaman-常用命令">pcaman 常用命令</h3>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">pacman (简体中文) - arch wiki</a></li>
+      <li><a href="https://www.jianshu.com/p/ea651cdc5530">Pacman常用命令</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></td><td class="code"><pre># 更新系统
+# 在 Archlinux 中，使用一条命令即可对整个系统进行更新：
+pacman -Syyu
+
+# 安装包
+➔ pacman -S 包名：例如，执行 pacman -S firefox 将安装 Firefox。你也可以同时安装多个包，只需以空格分隔包名即可。
+➔ pacman -Si 精确包名：查询后现实对应包的详细信息。
+➔ pacman -Sy 包名：与上面命令不同的是，该命令将在同步包数据库后再执行安装。
+➔ pacman -Sv 包名：在显示一些操作信息后执行安装。
+➔ pacman -U：安装本地包，其扩展名为 pkg.tar.gz。
+➔ pacman -U http://www.example.com/repo/example.pkg.tar.xz 安装一个远程包（不在 pacman 配置的源里面）
+
+# 删除包
+➔ pacman -R 包名：该命令将只删除包，保留其全部已经安装的依赖关系
+➔ pacman -Rs 包名：在删除包的同时，删除其所有没有被其他已安装软件包使用的依赖关系
+➔ pacman -Rsc 包名：在删除包的同时，删除所有依赖这个软件包的程序
+➔ pacman -Rd 包名：在删除包时不检查依赖。
+
+# 搜索包
+➔ pacman -Ss 关键字：在仓库中搜索含关键字的包。
+➔ pacman -Qs 关键字： 搜索已安装的包。关键字可以是正则表达式。
+➔ pacman -Qi 包名：查看有关包的详尽信息。
+➔ pacman -Ql 包名：列出该包的文件。
+# List packages by regex with custom output format
+expac -s "%-30n %v" regex
+# 搜索包信息
+yay -Ss font | grep -i -B 1 adobe
+
+
+# 搜索文件
+# To query the database to know which remote package a file belongs to:
+$ pacman -F /path/to/file_name
+# To retrieve a list of the files installed by a remote package:
+$ pacman -Fl package_name
+# To retrieve a list of the files installed by a package:
+$ pacman -Ql package_name
+
+
+# 其他用法
+➔ pacman -Sw 包名：只下载包，不安装。
+➔ pacman -Sc：清理未安装的包文件，包文件位于 /var/cache/pacman/pkg/ 目录。
+➔ pacman -Scc：清理所有的缓存文件。
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 批量安装搜索到的包
+pacman -Ssq &lt;regex&gt; | sudo pacman -S -
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="pacman-其他相关工具">pacman 其他相关工具</h3>
+
+<h4 id="pacgraph">pacgraph</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo pacman -S pacgraph
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># Print summary to console, does not draw a graph.
+pacgraph -c | less
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="如何安装-deb-包">如何安装 deb 包</h2>
+
+<ul>
+  <li><a href="https://www.maketecheasier.com/install-deb-package-in-arch-linux/">How to Install Deb Package in Arch Linux</a></li>
+  <li><a href="https://github.com/helixarch/debtap">helixarch/debtap - github</a></li>
+  <li><a href=""></a></li>
+  <li>
+    <p><a href=""></a></p>
+  </li>
+  <li>
+    <p>使用 debtap 工具</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo yay -S debtap
+debtap packagetoconvert.deb
+debtap -U *
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>手动安装 deb 包</p>
+
+    <ol>
+      <li>解压 deb 包</li>
+      <li><code class="highlighter-rouge">cd</code> into the extracted Deb folder</li>
+      <li>按照包里目录结构，向系统目录拷贝，例如：
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> cd ~/Downloads/google-chrome-stable_current_amd64/etc
+ sudo mv * /etc/
+ cd ~/Downloads/google-chrome-stable_current_amd64/opt
+ sudo mv * /opt/
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="系统基础功能">系统基础功能</h2>
+
+<h3 id="常用快捷键">常用快捷键</h3>
+
+<p>配置快捷键位置： Settings -&gt; Keyboard -&gt; Applications Shorcuts</p>
+
+<ul>
+  <li>terminal 打开快捷键：Ctrl + Alt + t<br />
+默认是： <code class="highlighter-rouge">xfce4-terminal --drop-down</code></li>
+</ul>
+
+<h3 id="xfce4-terminal">xfce4-terminal</h3>
+
+<ul>
+  <li>关闭：拷贝信息到命令行时，弹出安全提醒对话框<br />
+xfce4-terminal Edit 菜单 -&gt; Preferences… -&gt; General 选项卡 -&gt; 勾掉 Show unsafe paste dialog</li>
+</ul>
+
+<h3 id="xfce-panel">xfce panel</h3>
+
+<ul>
+  <li>添加“Show Desktop”按钮<br />
+右键系统状态栏 -&gt; Panel -&gt; Add New Items… -&gt; 搜索 Desktop ，添加 <code class="highlighter-rouge">Show Desktop</code></li>
+</ul>
+
+<h3 id="windows-manager">Windows Manager</h3>
+
+<p>设置窗口摆放位置的快捷键</p>
+
+<p>Windows Manager &gt; Keyboard &gt; 设置各种 <code class="highlighter-rouge">Tile windows to xxx</code></p>
+
+<h3 id="kernel">kernel</h3>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://wiki.manjaro.org/index.php/Manjaro_Kernels">Manjaro Kernels</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>GUI Tool: <code class="highlighter-rouge">Manjaro Settings Manager</code> -&gt; kernel</li>
+  <li>Terminal Commands: <code class="highlighter-rouge">mhwd-kernel</code></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 当前使用的kernel
+mhwd-kernel -li
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="exfat">exfat</h3>
+
+<ul>
+  <li>使用 arter97/exfat-linux<br />
+<a href="https://github.com/arter97/exfat-linux">https://github.com/arter97/exfat-linux</a></li>
+  <li>aur 上和exfat相关的包<br />
+<a href="https://aur.archlinux.org/packages/?O=0&amp;K=exfat">https://aur.archlinux.org/packages/?O=0&amp;K=exfat</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo pacman -Rs exfat-utils
+sudo pacman -S linux-headers
+yay -S exfat-linux-dkms
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="bashrc">.bashrc</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre># some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+	    . ~/.bash_aliases
+fi
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="msi-rgb-微星主板灯光控制">msi-rgb 微星主板灯光控制</h3>
+
+<p>源码网站： <a href="https://github.com/nagisa/msi-rgb">https://github.com/nagisa/msi-rgb</a><br />
+用 rust 语言开发。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>yay -S msi-rgb
+
+# shut down led on motherboard
+sudo msi-rgb 00000000 ffffffff 00000000 -x
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="显卡驱动">显卡驱动</h3>
+
+<ul>
+  <li><a href="https://wiki.manjaro.org/Configure_Graphics_Cards">Configure Graphics Cards - wiki.manjaro.org</a></li>
+</ul>
+
+<h2 id="xfce4-桌面">xfce4 桌面</h2>
+
+<ul>
+  <li><a href="http://www.keyxl.com/aaac887/409/Xfce-Window-Manager-keyboard-shortcuts.htm">Xfce 4 Window Manager Keyboard Shortcuts</a></li>
+</ul>
+
+<h2 id="常用软件">常用软件</h2>
+
+<h3 id="基础开发工具">基础开发工具</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>$ sudo pacman -S base-devel
+
+:: There are 24 members in group base-devel:
+:: Repository core
+   1) autoconf  2) automake  3) binutils  4) bison  5) fakeroot  6) file
+   7) findutils  8) flex  9) gawk  10) gcc  11) gettext  12) grep  13) groff
+   14) gzip  15) libtool  16) m4  17) make  18) pacman  19) patch  20) pkgconf
+   21) sed  22) sudo  23) texinfo  24) which
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="网络工具">网络工具</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
+sudo pacman -S net-tools dnsutils inetutils iproute2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="浏览器">浏览器</h3>
+
+<h4 id="firefox">firefox</h4>
+
+<ul>
+  <li>
+    <p>开机后第一次启动很慢</p>
+
+    <ul>
+      <li>参考：
+        <ul>
+          <li><a href="https://www.linuxquestions.org/questions/linux-general-1/firefox-takes-long-to-start-4175579278/#post5543712">https://www.linuxquestions.org/questions/linux-general-1/firefox-takes-long-to-start-4175579278/#post5543712</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li><code class="highlighter-rouge">about:config</code></li>
+  <li>network.dns.disableIPv6: true</li>
+</ol>
+
+<h4 id="vivaldi">vivaldi</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>yay -S vivaldi
+# 编译了好长时间，cpu 100% 吃满
+yay -S vivaldi-ffmpeg-codecs
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="google-chrome">google chrome</h4>
+
+<p>可以直接从 aur 安装，更新，都是一个命令 <code class="highlighter-rouge">yay -S google-chrome</code></p>
+
+<p>也可以从aur下载源码编译安装：</p>
+
+<ol>
+  <li>从 <a href="https://aur.archlinux.org/packages/google-chrome/">https://aur.archlinux.org/packages/google-chrome/</a> 上查看git地址</li>
+  <li>编译安装
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> git clone https://aur.archlinux.org/google-chrome.git
+ cd google-chrome
+ makepkg -si
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<ul>
+  <li>How to enable logging
+    <ul>
+      <li><a href="https://www.chromium.org/for-testers/enable-logging">How to enable logging - The Chromium Projects</a></li>
+      <li><a href="https://support.google.com/chrome/a/answer/6271282?hl=en">Chrome Browser debug logs - Goolge Chrome Support</a></li>
+    </ul>
+
+    <p>To enable logging, launch Chrome with these command line flags:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>google-chrome-stable --enable-logging=stderr --v=1                 # Output will be printed to standard error (eg. printed in the console)
+google-chrome-stable --enable-logging=stderr --v=1 &gt; log.txt 2&gt;&amp;1  # Capture stderr and stdout to a log file
+google-chrome-stable --enable-logging=stderr --v=1 2&gt;&amp;1 | tee log.txt
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>启动很慢
+    <ul>
+      <li>方法1 <a href="#close-google-chrome-hardware-acceleration">关闭硬件加速</a></li>
+      <li>方法2 硬件加速使用Vulkan
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 安装Vulkan
+sudo pacman -S amdvlk
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+
+        <p>进入chrome，<code class="highlighter-rouge">chrome://flags</code> 查找 Vulkan，选择 <strong>Enable</strong> <strong>Use vulkan as the graphics backend. – Linux, Android</strong></p>
+
+        <p>重启系统，启动chrome速度就快啦，还可以  <code class="highlighter-rouge">chrome://gpu</code> 查看下相关设置：<code class="highlighter-rouge">Vulkan: Enabled</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>关闭硬件加速<br />
+<a name="close-google-chrome-hardware-acceleration"></a><br />
+Settings -&gt; System -&gt; Use hardware acceleration when available</li>
+</ul>
+
+<h3 id="压缩软件">压缩软件</h3>
+
+<h4 id="rar">rar</h4>
+
+<ul>
+  <li><a href="https://aur.archlinux.org/packages/rar/">AUR - Package Details: rar</a></li>
+  <li><a href="https://wiki.archlinux.org/index.php/Rar">Arch Wiki - rar</a></li>
+</ul>
+
+<p><code class="highlighter-rouge">rar</code> 是在 AUR 库里面，执行 <code class="highlighter-rouge">yay -S rar</code> 安装，同时应为冲突，卸载系统自带的 <code class="highlighter-rouge">unrar</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo pacman -Rs unrar
+yay -Si rar
+yay -S rar
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre># 典型压缩命令
+# -r 	recurse subdirectories (includes all dirs/files under the parent directory).
+# -rr10 	adds recovery records to the archive. This way up to 10% of the compressed archive can become corrupt or unusable, and it will be able to recover the data through parity. 
+
+$ rar a -r -rr10 /media/data/darkhorse-backup.rar /home/darkhorse
+
+# Mixed-mode archives
+# -m5 	Use the highest level of compression (m0 = store ... m3 = default ... m5 = maximal level of compression.
+# -msjpg;mp3;tar 	ignore the compression option and store all .jpg and .mp3 and .tar files. 
+
+$ rar a -r -rr10 -s -m5 -msjpg;mp3;tar /media/data/darkhorse-backup.rar /home/darkhorse
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="安装百度网盘">安装百度网盘</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>yay -S baidunetdisk-bin
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以从deb包转化后安装。</p>
+
+<h4 id="安装百度网盘deb包">安装百度网盘deb包</h4>
+
+<ul>
+  <li><a href="https://www.teaper.dev/2019/06/24/baidunetdiskarchlinux/">ArchLinux安装最新百度网盘客户端</a></li>
+  <li><a href="https://www.moec.top/archives/599">Archlinux安装百度网盘</a></li>
+  <li><a href="http://blog.lujun9972.win/blog/2019/07/23/%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8Clinux%E7%89%88%E7%99%BE%E5%BA%A6%E4%BA%91%E7%9B%98%E5%AE%A2%E6%88%B7%E7%AB%AF/index.html">在容器中运行Linux版百度云盘客户端</a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<ol>
+  <li>下载官网的 baidunetdisk_linux_2.0.1.deb 安装包到本地</li>
+  <li>deb 包转换成 ArchLinux 包需要借助 Debtap,所以需要先安装一下
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> yay -S debtap
+ # 同步 pkgfile 和 debtap 数据源
+ sudo debtap -u
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>转换包
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> debtap baidunetdisk_linux_*.deb
+
+ Enter Packager name: #输入包名字
+ Enter package license (you can enter multiple licenses comma separated): #输入许可证，随便写（大写字母+数字组合），反正是自己用
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>安装<br />
+ 转换成功之后，就可以看到本地多了 baidunetdisk-2.0.1-1-x86_64.pkg.tar.xz 包，使用 pacman 将其安装<br />
+ <code class="highlighter-rouge">sudo pacman -U baidunetdisk-* .pkg.tar.xz</code></li>
+</ol>
+
+<h2 id="中文环境">中文环境</h2>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://wiki.archlinux.org/index.php/Localization/Chinese">Localization/Chinese - archlinux wiki</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="chinese-input-method--中文输入法">Chinese Input Method . 中文输入法</h3>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://echoyun.com/2017/10/02/installing-fcitx-chinese-ime-arch-linux/">Installing fcitx (a Chinese IME) on Arch Linux</a></li>
+      <li><a href="https://wiki.archlinux.org/index.php/Fcitx">Fcitx - ArchLinux Wiki</a></li>
+      <li><a href="https://blog.csdn.net/sinat_33528967/article/details/97611020">archlinux中fcitx安装配置与常见问题</a></li>
+      <li><a href="https://medium.com/@slmeng/how-to-install-chinese-fonts-and-input-method-in-arch-linux-18b68d2817e7">How to install Chinese fonts and input method in Arch Linux</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="fcitx">fcitx</h4>
+
+<ol>
+  <li>安装fcitx
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> sudo pacman -S fcitx fcitx-sunpinyin fcitx-configtool
+ # 如果是 KDE，还要安装 fcitx-qt5
+ sudo pacman -S fcitx-qt5
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts fcitx kcm-fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5 fcitx-ui-light fcitx-table-other
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>在 home 目录下创建 <code class="highlighter-rouge">.xprofile</code>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> # .xprofile or .xinitrc
+ export GTK_IM_MODULE=fcitx
+ export QT_IM_MODULE=fcitx
+ export XMODIFIERS=@im=fcitx
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>注销</li>
+  <li>重新登陆后，启动fcitx设置，Input Method 选项页，点击 “+”</li>
+  <li>取消勾选：Only Show Current Language</li>
+  <li>搜索并添加 sunpinyin</li>
+</ol>
+
+<h3 id="安装中文字体">安装中文字体</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>sudo pacman -S wqy-zenhei
+sudo pacman -S wqy-bitmapfont
+sudo pacman -S wqy-microhei
+sudo pacman -S adobe-source-han-sans-cn-fonts
+sudo pacman -S adobe-source-han-serif-cn-fonts
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="virutalbox-安装配置">VirutalBox 安装配置</h2>
+
+<ul>
+  <li><a href="https://archive.org/download/archlinux_pkg_virtualbox">virtualbox 的历史包</a></li>
+</ul>
+
+<h3 id="install-through-command-line">install through command line</h3>
+
+<h4 id="安装最新的virtualbox-6">安装最新的Virtualbox 6</h4>
+
+<ul>
+  <li>最新的virtualbox 6.1 和 virtualbox 5 同时使用有问题，来回安装guest工具</li>
+  <li>不如直接去装 virtualbox 5.2.x（2020年Oracle停止维护）</li>
+  <li>还有bug，
+    <ul>
+      <li>比如，从锁屏唤醒，键盘没用，鼠标可以。解决方面，在host系统中使用下键盘，在回到virtualbox guest系统就可以使用键盘了。</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>To list what kernels is installed use mhwd
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> $ mhwd-kernel -li
+ Currently running: 5.6.11-1-MANJARO (linux56)
+ The following kernels are installed in your system:
+    * linux56
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>install the kernel modules for your installed kernels, here is <strong>linux56</strong>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> sudo pacman -Syu virtualbox linux56-virtualbox-host-modules
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h4 id="安装virtualbox-52x">安装Virtualbox 5.2.x</h4>
+
+<ul>
+  <li><a href="https://aur.archlinux.org/packages/virtualbox-bin-5/">Package Details: virtualbox-bin-5</a></li>
+  <li><a href="https://aur.archlinux.org/packages/virtualbox-ext-oracle-5/">virtualbox-ext-oracle-5</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre># 卸载 virtualbox 6
+sudo pacman -Rs virtualbox
+sudo pacman -Rs linux56-virtualbox-host-modules
+
+# 5.2.44 在 kernel 5.8 用不起来，得用 kernel 5.7 
+# Manjaro Settings Manager \&gt; Kernel 安装 5.7
+sudo pacman -S linux57-headers
+
+# 重启系统，选择 5.7 kernel
+
+# 安装 AUR 里面的virtualbox 5
+yay -S virtualbox-bin-5
+yay -S virtualbox-ext-oracle-5
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="删除-kernel-58">删除 kernel 5.8</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>sudo pacman -Rcsnu linux-latest
+# 如果还有其他安装的模块，可用 sudo pacman -Rcsnu linux-latest linux-latest-nvidia-440xx linux-latest-virtualbox-host-modules linux-latest-bbswitch
+sudo pacman -R linux58-headers
+sudo mhwd-kernel -r linux58
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>图形界面操作位置： Manjaro Settings Manager &gt; Kernel ，似乎没啥用，不报错也不起效果。</p>
+
+<h5 id="无法启动-52x报错kernel-drvier-not-installedrc-1908">无法启动 5.2.x，报错：kernel drvier not installed(rc=-1908)</h5>
+
+<ul>
+  <li>
+    <p>错误提示<br />
+The VirtualBox Linux kernel driver is either not loaded or not setup correctly.<br />
+Please try setting it up again by executing<br />
+<code class="highlighter-rouge">/sbin/vboxconfig</code><br />
+as root.</p>
+  </li>
+  <li>
+    <p>解决：</p>
+  </li>
+</ul>
+
+<p>re-install virtualbox: <code class="highlighter-rouge">yay -S virtualbox-bin-5</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>$ sudo /opt/VirtualBox/vboxdrv.sh setup
+
+vboxdrv.sh: Stopping VirtualBox services.
+vboxdrv.sh: Starting VirtualBox services.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>$ lsmod | grep vbox
+vboxpci                28672  0
+vboxnetadp             28672  0
+vboxnetflt             32768  0
+vboxdrv               516096  4 vboxpci,vboxnetadp,vboxnetflt
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>$ mhwd-kernel -li
+Currently running: 5.7.19-2-MANJARO (linux57)
+The following kernels are installed in your system:
+   * linux57
+   * linux58
+   * linux56-rt
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="install-through-pamac-manager-gui">install through pamac-manager GUI</h3>
+
+<ol>
+  <li><code class="highlighter-rouge">Super</code> + R 运行 <code class="highlighter-rouge">pamac-manager</code>  打开软件管理器<br />
+ 或者， Application Menu -&gt; Preferences -&gt; Add\/Remove Software</li>
+  <li>搜索 virtualbox ，安装 VirtualBox</li>
+  <li>安装过程中，被询问使用什么provider，使用当前内核版本对应的provider</li>
+  <li>重启电脑</li>
+  <li>安装extension
+    <ol>
+      <li>到Oracle官网下载对应版本的extension</li>
+      <li>执行 <code class="highlighter-rouge">sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.26.vbox-extpack</code></li>
+      <li>重启电脑</li>
+      <li><code class="highlighter-rouge">VBoxManage list extpacks</code> 查看安装结果</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="文件系统">文件系统</h2>
+
+<h3 id="自动挂载fs">自动挂载fs</h3>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://wiki.archlinux.org/index.php/Fstab_\(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87\)">ArchWiki - fstab (简体中文)</a></li>
+      <li><a href="https://wiki.archlinux.org/index.php/NTFS-3G_\(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87\)">ArchWiki - NTFS-3G (简体中文)</a></li>
+      <li><a href="https://community.linuxmint.com/tutorial/view/1513">https://community.linuxmint.com/tutorial/view/1513</a></li>
+      <li><a href="https://blog.csdn.net/baimaozi/article/details/3134267">CSDN - Archlinux下实现NTFS分区自动挂载</a></li>
+      <li><a href="https://topher1kenobe.com/exfat-with-arch-linux/">ExFAT with Arch Linux</a></li>
+    </ul>
+  </li>
+  <li>挂载ext4
+    <ol>
+      <li>注意提前挂载点：<code class="highlighter-rouge">sudo mkdir /your-mount-point</code></li>
+      <li>编辑 <code class="highlighter-rouge">/etc/fstab</code>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre> # &lt;file system&gt;   &lt;dir&gt;		&lt;type&gt;    &lt;options&gt;             &lt;dump&gt;  &lt;pass&gt;
+ # /dev/sda1
+ UUID=通过“lsblk -f”和“fdisk -l”来获得  /your-mount-point   ext4    defaults,noatime 0 0  
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>ext4 系统自带owner、gid、uid信息，创建filesystem的时候就存在，fstab文件中指定 uid、gid、fmask、dmask，都是没有用的，会导致系统启动失败。</li>
+    </ol>
+  </li>
+  <li>挂载ntfs
+    <ol>
+      <li>注意提前挂载点：
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo mkdir /mnt/windows
+ sudo chown your-account:your-group /mnt/windows
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>编辑 <code class="highlighter-rouge">/etc/fstab</code>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> # &lt;file system&gt;   &lt;dir&gt;		&lt;type&gt;    &lt;options&gt;             &lt;dump&gt;  &lt;pass&gt;
+ /dev/NTFS-partition  /mnt/windows  ntfs-3g   defaults,noatime,uid=username,gid=users,umask=0022,locale=zh_CN.utf8    0 0
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>挂载exfat
+    <ol>
+      <li>注意提前挂载点：
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo mkdir /Volumes/your-exfat-partition
+ sudo chown your-account:your-group /Volumes/your-exfat-partition
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>编辑 <code class="highlighter-rouge">/etc/fstab</code>，此处使用的是：  <code class="highlighter-rouge">aur/exfat-linux-dkms</code>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> # &lt;file system&gt;   &lt;dir&gt;		&lt;type&gt;    &lt;options&gt;             &lt;dump&gt;  &lt;pass&gt;
+ UUID=通过“lsblk -f”和“fdisk -l”来获得             /Volumes/your-exfat-partition   exfat    rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,iocharset=utf8,errors=remount-ro  0  0
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="ntfs-支持">NTFS 支持</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>pacman -S ntfs-3g
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>一般随系统安装好了。</p>
+
+<h2 id="其他软件">其他软件</h2>
+
+<h3 id="开发工具">开发工具</h3>
+
+<h4 id="开发字体">开发字体</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>yay -S ttf-source-sans-pro-ibx ttf-source-code-pro-ibx ttf-adobe-source-fonts
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="editor">Editor</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>yay -S sublime-text
+# 启动
+subl
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="diff工具">diff工具</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>sudo pacman -S meld
+# or
+sudo pacman -S kdiff3-qt
+# or beyond compare
+yay -S bcompare
+# or sublimerge  好用是好用，要80刀一个license
+yay -S sublime-merge
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="mysql">mysql</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 这个 heidisql 版本是 wine 环境下运行的
+yay -S heidisql
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># An attempt to port a very useful GUI database client HeidiSQL to C++/Qt
+yay -S meowsql-git
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>$ cat /usr/share/applications/meowsql.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=meowsql
+Comment=mysql tool
+Exec=/usr/bin/meow-sql
+Terminal=false
+Categories=Development;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="java">Java</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c"># 安装java 8</span>
+sudo pacman -S jdk8-openjdk
+
+<span class="c"># 切换 java 各个版本</span>
+archlinux-java status
+sudo archlinux-java <span class="nb">set </span>java-8-openjdk
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="android">Android</h3>
+
+<h4 id="android-studio">Android Studio</h4>
+
+<p>安装</p>
+
+<ol>
+  <li>下载tar.gz ： <a href="https://developer.android.com/studio">https://developer.android.com/studio</a><br />
+ 例如： android-studio-ide-183.5522156-linux.tar.gz</li>
+  <li>解压到目标文件夹 <br />
+ 例如：<code class="highlighter-rouge">/opt/android/android-studio</code></li>
+  <li>创建sdk目录，注意，不要是android-studio 的子目录<br />
+ 例如：<code class="highlighter-rouge">/opt/android/android-sdk</code></li>
+  <li>命令行启动： <code class="highlighter-rouge"><span class="p">{</span><span class="err">installation</span><span class="w"> </span><span class="err">home</span><span class="p">}</span><span class="err">/bin/studio.sh</span></code></li>
+</ol>
+
+<h5 id="配置成-desktop-application">配置成 desktop application</h5>
+
+<ul>
+  <li>xfce 下配置</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>$ cat /usr/share/applications/android-studio.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=android-studio
+Comment=android IDE
+Icon=/opt/android/android-studio/bin/studio.png
+Exec=/opt/android/android-studio/bin/studio.sh
+Path=/opt/android/android-studio/bin
+Terminal=false
+Categories=Productivity;Development;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>KDE 下配置</li>
+</ul>
+
+<ol>
+  <li>执行 <code class="highlighter-rouge">kmenuedit &amp;</code> &gt; 右键选择 Development 类别 &gt; New Item…</li>
+  <li>输入 Command: <code class="highlighter-rouge">/opt/android/android-studio/bin/studio.sh</code></li>
+  <li>选择图标： <br />
+ <code class="highlighter-rouge">/opt/android/android-studio/bin/studio.svg</code> 或 <code class="highlighter-rouge">/usr/share/icons/breath2/apps/48/android-studio.svg</code></li>
+  <li>Save</li>
+</ol>
+
+<h3 id="电子书工具">电子书工具</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># 打开 chm
+sudo pacman -S kchmviewer
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre># 打开epub
+sudo pacman -S calibre
+# 或
+sudo pacman -S fbreader
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="其他">其他</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre></td><td class="code"><pre># deepin 系的软件
+sudo pacman -S deepin-picker # 深度取色器
+sudo pacman -S deepin-screen-recorder # 录屏软件，可以录制 Gif 或者 MP4 格式
+sudo pacman -S deepin-screenshot # 深度截图
+sudo pacman -S deepin-system-monitor # 系统状态监控
+yay -s deepin-wine-wechat
+yay -S deepin-wine-tim
+yay -S deepin-wine-baidupan
+yay -S deepin.com.thunderspeed
+
+# 开发软件
+sudo pacman -S jdk8-openjdk
+sudo pacman -S make
+sudo pacman -S cmake
+sudo pacman -S clang
+sudo pacman -S nodejs
+sudo pacman -S npm
+sudo pacman -S goland
+sudo pacman -S vim
+sudo pacman -S maven
+sudo pacman -S pycharm-professional # Python IDE
+sudo pacman -S intellij-idea-ultimate-edition # JAVA IDE
+sudo pacman -S goland # Go IDE
+sudo pacman -S visual-studio-code-bin # vscode
+sudo pacman -S qtcreator # 一款QT开发软件
+sudo pacman -S postman-bin
+sudo pacman -S insomnia # REST模拟工具
+sudo pacman -S gitkraken # GIT管理工具
+sudo pacman -S wireshark-qt # 抓包
+sudo pacman -S zeal
+sudo pacman -S gitkraken # Git 管理工具
+
+# 办公软件
+sudo pacman -S google-chrome
+sudo pacman -S foxitreader # pdf 阅读
+sudo pacman -S bookworm # 电子书阅读
+sudo pacman -S unrar unzip p7zip
+sudo pacman -S goldendict # 翻译、取词
+sudo pacman -S wps-office
+yay -S typora # markdown 编辑
+yay -S electron-ssr # 缺少我需要的加密算法
+yay -S xmind
+
+# 设计
+sudo pacman -S pencil # 免费开源界面原型图绘制工具
+
+# 娱乐软件
+sudo pacman -S netease-cloud-music
+
+# 下载软件
+sudo pacman -S aria2
+sudo pacman -S filezilla  # FTP/SFTP
+
+# 图形
+sudo pacman -S gimp # 修图
+
+# 系统工具
+sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/
+yay -S copyq #  剪贴板工具，类似 Windows 上的 Ditto
+
+# 终端
+sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A 'Arch Linux'
+sudo pacman -S htop
+sudo pacman -S bat
+sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒
+sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat
+yay -S tldr
+yay -S tig # 命令行下的 git 历史查看工具
+yay -S tree
+yay -S ncdu # 命令行下的磁盘分析器，支持Vim操作
+yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇效
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#manjaro" title="Pages tagged manjaro" class="tag"><span class="term">manjaro</span></a><a href="/tags#xfce4" title="Pages tagged xfce4" class="tag"><span class="term">xfce4</span></a><a href="/tags#vivaldi" title="Pages tagged vivaldi" class="tag"><span class="term">vivaldi</span></a><a href="/tags#google-chrome" title="Pages tagged google-chrome" class="tag"><span class="term">google-chrome</span></a><a href="/tags#arch-linux" title="Pages tagged arch-linux" class="tag"><span class="term">arch-linux</span></a><a href="/tags#aur" title="Pages tagged aur" class="tag"><span class="term">aur</span></a><a href="/tags#yay" title="Pages tagged yay" class="tag"><span class="term">yay</span></a><a href="/tags#pacman" title="Pages tagged pacman" class="tag"><span class="term">pacman</span></a><a href="/tags#exfat" title="Pages tagged exfat" class="tag"><span class="term">exfat</span></a><a href="/tags#ntfs" title="Pages tagged ntfs" class="tag"><span class="term">ntfs</span></a><a href="/tags#fcitx" title="Pages tagged fcitx" class="tag"><span class="term">fcitx</span></a><a href="/tags#virtualbox" title="Pages tagged virtualbox" class="tag"><span class="term">virtualbox</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

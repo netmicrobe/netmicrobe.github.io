@@ -1,0 +1,998 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Windows上使用XAMPP &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, xampp, windows, apache, msyql">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows上使用XAMPP">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/xampp/xampp-on-windows/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/xampp/xampp-on-windows/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Windows上使用XAMPP</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2015-03-07T00:00:00+08:00">March 07, 2015</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="安装">安装</h2>
+
+<p>安装php运行环境（Windows）<br />
+在Windows2003上执行php.exe需要“Microsoft C++ 2008 runtime package”。<br />
+Microsoft Visual C++ 2008 Redistributable Package (x64)<br />
+<a href="http://www.microsoft.com/en-us/download/details.aspx?id=5582">http://www.microsoft.com/en-us/download/details.aspx?id=5582</a></p>
+
+<p>解压xampp面安装包，执行setup_xampp.bat</p>
+
+<h3 id="portable-版本">portable 版本</h3>
+
+<ol>
+  <li>全文搜索配置文件中路径，改成相对路径<br />
+ 执行完 setup_xampp.bat ，还是要改配置文件中的路径，改的是错误的绝对路径。改成什么可以对照下 php.ini 中 <code class="highlighter-rouge">extension_dir</code> 。</li>
+</ol>
+
+<h2 id="配置php">配置php</h2>
+
+<p>将php的执行路径配置进 PATH</p>
+
+<h4 id="不能找到-extension-的问题">不能找到 extension 的问题</h4>
+
+<ul>
+  <li>现象</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>PHP Warning:  PHP Startup: Unable to load dynamic library '\xampp\php\ext\php_bz2.dll' - 找不到指定的模块。
+ in Unknown on line 0
+
+Warning: PHP Startup: Unable to load dynamic library '\xampp\php\ext\php_bz2.dll' - 找不到指定的模块。
+ in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library '\xampp\php\ext\php_curl.dll' - 找不到指定的模块。
+ in Unknown on line 0
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>解决</li>
+</ul>
+
+<p>编辑 php.ini 中 <code class="highlighter-rouge">extension_dir</code></p>
+
+<h2 id="作为service运行">作为Service运行</h2>
+
+<p>Windows Server 2003上，如果rdp的session注销，启动的apache、mysql等服务器就会随之关闭。</p>
+
+<h3 id="apache在windows后台执行">Apache在Windows后台执行</h3>
+
+<p>将httpd作为一个Service来执行。<br />
+使用xampp/apache/apache_installservice.bat 来安装服务。<br />
+使用xampp/apache/apache_uninstallservice.bat 来安装服务。<br />
+或者，执行命令，<br />
+安装Service：<br />
+    xampp\apache\bin\httpd -k install -n “XAMPP-Apache2.4”<br />
+卸载Service<br />
+    xampp\apache\bin\httpd -k uninstall -n “XAMPP-Apache2.4”<br />
+启动Service：<br />
+       net start “XAMPP-Apache2.4”<br />
+停止Service：<br />
+    net stop “XAMPP-Apache2.4”</p>
+
+<h3 id="mysql在windows后台执行">Mysql在Windows后台执行</h3>
+
+<p>安装Service：（xampp-mysql为自己设定的service name）</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>bin\mysqld --install "xampp-mysql" --defaults-file="C:\server\xampp-win32-1.8.1-VC9\xampp\mysql\bin\my.ini"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>卸载Service</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>    bin\mysqld.exe --remove xampp-mysql
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="filezilla在windows后台执行">Filezilla在Windows后台执行</h3>
+
+<p>安装Service</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>FileZillaFTP\FileZillaServer.exe /servicename xampp-filezilla
+FileZillaFTP\FileZillaServer.exe /servicedisplayname xampp-filezilla
+FileZillaFTP\FileZillaServer.exe install
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>或者</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>insert/update the following lines into FileZilla Server.xml and then run with /install:
+        &lt;Item name="Service name" type="string"&gt;newname&lt;/Item&gt;
+        &lt;Item name="Service display name" type="string"&gt;newdisplayname&lt;/Item&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://wiki.filezilla-project.org/Command-line_arguments_%28Server%29">https://wiki.filezilla-project.org/Command-line_arguments_%28Server%29</a></li>
+      <li><a href="https://forum.filezilla-project.org/viewtopic.php?f=6&amp;t=16015">https://forum.filezilla-project.org/viewtopic.php?f=6&amp;t=16015</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="tomcat在windows后台执行">Tomcat在Windows后台执行</h3>
+
+<p>安装Service可以利用 tomcat\tomcat_service_install.bat 脚本。<br />
+卸载Service 的脚本在相同目录下也能找到tomcat_service_uninstall.bat。</p>
+
+<p>但是，发现这2个bat依赖注册表中的jdk安装信息。我在Windows 2003上安装JDK1.6-i586的版本后，注册表（KeyName=HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Development Kit）没有数据，囧！！</p>
+
+<p>看了下脚本，采用手动设置环境变量，并调用bin\service.bat的方式。</p>
+
+<p>方法如下：</p>
+
+<p>设置环境变量</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>set JAVA_HOME=C:\server\Java\jdk1.6.0_30
+set JRE_HOME=%JAVA_HOME%
+set CATALINA_HOME=C:\server\xampp-win32-1.8.1-VC9\xampp\tomcat
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>安装Service<br />
+.\bin\service.bat install Tomcat7</p>
+
+<p>卸载Service<br />
+.\bin\service.bat uninstall Tomcat7</p>
+
+<h4 id="如何修改安装service的名称">如何修改安装Service的名称</h4>
+
+<p>修改 bin\service.bat 中的PR_DISPLAYNAME和PR_DESCRIPTION，这两个才是在Windows“服务”列表中看到的显示。</p>
+
+<h2 id="安全设置">安全设置</h2>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li>tutorial on xampp site
+        <ul>
+          <li><a href="http://www.apachefriends.org/en/xampp-windows.html#1221">http://www.apachefriends.org/en/xampp-windows.html#1221</a></li>
+        </ul>
+      </li>
+      <li>Securing MySQL: step-by-step
+        <ul>
+          <li><a href="http://www.symantec.com/connect/articles/securing-mysql-step-step">http://www.symantec.com/connect/articles/securing-mysql-step-step</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>如何确认没有安全问题：<br />
+http://localhost/security/</p>
+
+<h2 id="apache-http-server">Apache Http Server</h2>
+
+<h3 id="修改http端口80">修改http端口（80）</h3>
+
+<p>设置步骤</p>
+<ol>
+  <li>修改apache/conf/httpd.conf，并保存。<br />
+  找到Listen 80<br />
+  修改为Listen &lt;new-port&gt;</li>
+  <li>重启httpd</li>
+</ol>
+
+<ul>
+  <li>注意：<br />
+XAMPP 1.7.4 and XAMPP 1.7.7 启动apache的时候，在control pane里边显示有误，不管端口改成什么，都显示：<br />
+Apache started [Port 80]</li>
+</ul>
+
+<h3 id="修改ssl端口443">修改SSL端口（443）</h3>
+
+<p>修改apache/conf/extra/httpd-ssl.conf并保存。<br />
+找到 Listen 443<br />
+修改为Listen &lt;new-port&gt;</p>
+
+<h2 id="mysql">MySQL</h2>
+
+<h3 id="删除所有无关的数据库用户">删除所有无关的数据库用户</h3>
+
+<p>查看所有用户<br />
+SELECT Host, User, Password FROM mysql.user;</p>
+
+<p>删除所有记录，除了root@localhost<br />
+DELETE FROM mysql.user WHERE NOT (Host = ‘localhost’ AND User = ‘root’);</p>
+
+<h3 id="设置root密码">设置root密码</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>mysql&gt; UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+mysql&gt; FLUSH PRIVILEGES;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="修改mysqld的端口">修改mysqld的端口</h3>
+
+<p>在mysql/bin/my.ini中设置mysql的端口<br />
+找到服务器的配置区域 [mysqld]<br />
+将默认值“port=3306”改成需要的端口，重启mysqld即可。</p>
+
+<p>之后客户端登录就要指定服务器端口：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mysql -u root --port=7306 -p
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="xampp集成的管理工具xamppsecuritylicensesphpmyadminwebalizerserver-statusserver-info">xampp集成的管理工具（xampp|security|licenses|phpmyadmin|webalizer|server-status|server-info）</h2>
+
+<p>可以通过 localhost/xampp 、localhost/security 等地址访问，在httpd设置目录映射。</p>
+
+<h3 id="限制只能在localhost访问">限制只能在localhost访问</h3>
+
+<p>在conf/extra/httpd-xampp.conf中配置。</p>
+
+<p>xampp1.8.1开始httpd-xampp.conf文件末尾已经有访问控制的设置，基本可用，不放心的话设置成，只容许localhost即可：<br />
+Allow from ::1 127.0.0.1</p>
+
+<p>默认的设置代码如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>#
+# New XAMPP security concept
+#
+&lt;LocationMatch "^/(?i:(?:xampp|security|licenses|phpmyadmin|webalizer|server-status|server-info))"&gt;
+    Order deny,allow
+    Deny from all
+    Allow from ::1 127.0.0.0/8 \
+        fc00::/7 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 \
+        fe80::/10 169.254.0.0/16
+ 
+    ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+&lt;/LocationMatch&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="限制用户名和密码访问">限制用户名和密码访问</h3>
+
+<p>进入http://localhost/security/xamppsecurity.php<br />
+在“XAMPP DIRECTORY PROTECTION (.htaccess)” 区域填写用户名和密码，点击“Make safe the XAMPP directory”</p>
+
+<p>生成的密码文件将被保存在：<br />
+\xampp\security\xampp.users</p>
+
+<p>同时会在xampp对应的几个目录下面的.htaccess中加入相关配置，类似：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>AuthName "xampp user"
+AuthType Basic
+AuthUserFile "C:\server\xampp-win32-1.8.1-VC9\xampp\security\xampp.users"
+require valid-user
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="关闭phpmyadmin">关闭phpMyAdmin</h3>
+
+<p>在httpd.conf中删除对应的配置项，类似：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>Alias /phpmyadmin "C:/server/xampp-win32-1.8.1-VC9/xampp/phpMyAdmin/"
+&lt;Directory "C:/server/xampp-win32-1.8.1-VC9/xampp/phpMyAdmin"&gt;
+       AllowOverride AuthConfig
+       Require all granted
+&lt;/Directory&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>删除xampp/phpMyAdmin目录。</p>
+
+<h2 id="filezilla-ftp-server">FileZilla FTP Server</h2>
+
+<p>保证不存在匿名用户。</p>
+
+<h2 id="mercury">Mercury</h2>
+
+<p>保证不存在匿名用户。</p>
+
+<h2 id="技巧">技巧</h2>
+
+<h3 id="如何查看apache启动失败的详细信息">如何查看apache启动失败的详细信息</h3>
+
+<p>直接使用命令行启动apache</p>
+
+<h3 id="vmware-8--的shared功能与ssl端口冲突">VMWare 8  的Shared功能与SSL端口冲突</h3>
+
+<p>VMWare8的Shared VM功能用到SSL的443端口，和apache冲突。<br />
+关闭Shared VM功能解决此问题：<br />
+Preference  »  Shared VMs  »  Disable Sharing</p>
+
+<h3 id="xampp-177在windows7下无法启动service">xampp 1.7.7在windows7下无法启动Service</h3>
+
+<p>权限问题，直接运行xampp-control-panel 2.5无法注册Service成功。<br />
+使用“xampp-control-3-beta.exe”来启动FTP吧！</p>
+
+<h3 id="php打开扩展组件">php打开扩展组件</h3>
+
+<ol>
+  <li>看下 xampp\php\ext 下面有没有对应的 dll，例如，<code class="highlighter-rouge">php_sockets.dll</code></li>
+  <li>有的话，在 php.ini 设置，例如，<code class="highlighter-rouge">extension=php_sockets.dll</code></li>
+</ol>
+
+<h2 id="常见问题">常见问题</h2>
+
+<h3 id="unable-to-load-dynamic-library-xamppphpextphp_bz2dll">Unable to load dynamic library ‘\xampp\php\ext\php_bz2.dll’</h3>
+
+<p>php.ini <br />
+<code class="highlighter-rouge">extension_dir = "\xampp\php\ext"</code><br />
+改成 <code class="highlighter-rouge">extension_dir = "c:\where-is-xampp\php\ext"</code></p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#xampp" title="Pages tagged xampp" class="tag"><span class="term">xampp</span></a><a href="/tags#windows" title="Pages tagged windows" class="tag"><span class="term">windows</span></a><a href="/tags#apache" title="Pages tagged apache" class="tag"><span class="term">apache</span></a><a href="/tags#msyql" title="Pages tagged msyql" class="tag"><span class="term">msyql</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

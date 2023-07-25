@@ -1,0 +1,1407 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>linux kvm 虚拟化 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="kvm, qemu, cloud, libvirt">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux kvm 虚拟化">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/linux-kvm/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/linux-kvm/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">linux kvm 虚拟化</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-01-07T00:00:00+08:00">January 07, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://www.jianshu.com/p/045c75437e2b">厨师老六 - 云计算基础-管理KVM宿主服务器</a></li>
+      <li><a href="https://octetz.com/docs/2020/2020-05-06-linux-hypervisor-setup/">octetz.com - Linux Hypervisor Setup (libvirt/qemu/kvm)</a></li>
+      <li><a href="https://wiki.archlinux.org/title/QEMU_\(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87\)">Arch linux - wiki - QEMU</a></li>
+      <li>《深度实践KVM：核心技术、运维管理、性能优化和项目实施》</li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="qemu-kvm">qemu 、KVM</h2>
+
+<p>QEMU的缺点是因为是纯软件模拟，所有非常慢。QEMU 1.0的时候有一个QEMU和KVM结合的分支。KVM只是一个内核的模块，没有用户空间的管理工具，KVM的虚拟机可以借助QEMU的管理工具来管理。QEMU也可以借助KVM来加速，提升虚拟机的性能。QEMU-KVM的分支版本发布了3个正式的版本1.1、1.2、1.3，随后和QEMU的主版本合并，也就是说现在的QEMU版本默认支持KVM，QEMU和KVM已经紧密地结合起来了。</p>
+
+<p>KVM的最后一个自己的版本是KVM 83，随后和内核版本一起发布，和内核版本号保持一致，所以要使用KVM的最新版本，就要使用最新的内核。</p>
+
+<h2 id="libvirt">Libvirt</h2>
+
+<p>Libvirt是一套开源的虚拟化的管理工具，主要由3部分组成：</p>
+
+<p>·一套API的lib库，支持主流的编程语言，包括C、Python、Ruby等。</p>
+
+<p>·Libvirtd服务。</p>
+
+<p>·命令行工具virsh。</p>
+
+<p>Libvirt的设计目标是通过相同的方式管理不同的虚拟化引擎，比如KVM、Xen、HyperV、VMware ESX等。但是目前实际上多数场景使用Libvirt的是KVM，而Xen、HyperV、VMware ESX都有各自的管理工具。</p>
+
+<p>Libvirt可以实现对虚拟机的管理，比如虚拟机的创建、启动、关闭、暂停、恢复、迁移、销毁，以及虚拟机网卡、硬盘、CPU、内存等多种设备的热添加。</p>
+
+<p>Libvirt还支持远程的宿主机管理，只要在宿主机上启动Libvirtd服务并做好配置，就可以通过Libvirt进行虚拟机的配置。通道可以是以下方式：</p>
+
+<p>·SSH。</p>
+
+<p>·TCP。</p>
+
+<p>·基于TCP的TLS。</p>
+
+<p>Libvirt将虚拟机的管理分为以下几个方面：</p>
+
+<p>第一，存储池资源管理，支持本地文件系统目录、裸设备、lvm、nfs、iscsi等方式。在虚拟机磁盘格式上支持qcow2、vmdk、raw等格式。</p>
+
+<p>第二，网络资源管理，支持Linux桥、VLAN、多网卡绑定管理，比较新的版本还支持Open vSwitch。Libvirt还支持nat和路由方式的网络，Libvirt可以通过防火墙让虚拟机通过宿主机建立网络通道，和外部的网络进行通信。</p>
+
+<h2 id="开启cpu-虚拟化技术">开启CPU 虚拟化技术</h2>
+
+<p>在BIOS中开启CPU虚拟化技术，intel 的相关名称是 vmx, vt-x, vt-d， AMD 的相关名称是 SVM。</p>
+
+<p><code class="highlighter-rouge">egrep '(vmx|svm)' /proc/cpuinfo</code> 有输出内容，说明CPU支持虚拟化。</p>
+
+<h2 id="宿主机环境配置">宿主机环境配置</h2>
+
+<h3 id="centos-66">centos 6.6</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="o">[</span>root@localhost ~]# rpm -qa|grep -E <span class="s1">'qemu|libvirt|virt'</span> 
+
+libvirt-client-0.10.2-29.el6.x86_64 
+<span class="c">#Libvirt的客户端，最重要的功能之一就是就在宿主机关机时可以通知虚拟机也关机，</span>
+<span class="c">#使虚拟机系统正常关机，而不是被强制关机，造成数据丢失</span>
+
+gpxe-roms-qemu-0.9.7-6.10.el6.noarch <span class="c">#虚拟机iPXE的启动固件，支持虚拟机从网络启动</span>
+
+libvirt-python-0.10.2-29.el6.x86_64   <span class="c">#libvirt为Python提供的API</span>
+python-virtinst-0.600.0-18.el6.noarch  <span class="c">#一套Python的虚拟机安装工具</span>
+
+qemu-KVM-0.12.1.2-2.415.el6.x86_64 <span class="c">#KVM在用户空间运行的程序</span>
+
+Virt-manager-0.9.0-19.el6.x86_64  <span class="c">#基于 Libvirt 的图像化虚拟机管理软件</span>
+
+libvirt-0.10.2-29.el6.x86_64   <span class="c">#用于管理虚拟机，它提供了一套虚拟机操作API</span>
+virt-viewer-0.5.6-8.el6.x86_64  <span class="c">#显示虚拟机的控制台console</span>
+virt-top-1.0.4-3.15.el6.x86_64  <span class="c">#类似于top命令，查看虚拟机的资源使用情况</span>
+virt-what-1.11-1.2.el6.x86_64  <span class="c">#在虚拟机内部执行，查看虚拟机运行的虚拟化平台</span>
+
+qemu-img-0.12.1.2-2.415.el6.x86_64  <span class="c">#用于操作虚拟机硬盘镜像的创建、查看和格式转化</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="centos-7">centos 7</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="o">[</span>root@KVM-host-CentOS7 ~]# rpm -qa | grep -E <span class="s1">'qemu-img|libvirt-[0-9]|virt-install'</span>
+qemu-img-1.5.3-60.el7_0.10.x86_64
+virt-install-0.10.0-20.el7.noarch
+libvirt-1.1.1-29.el7_0.3.x86_64
+
+<span class="o">[</span>root@KVM-host-CentOS7 ~]# lsmod |grep KVM  <span class="c">#查看KVM模块是否载入</span>
+KVM_intel 138567  6 
+KVM 441119  1 KVM_intel
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Libvirt还包含了很多工具的库，可以使用<code class="highlighter-rouge">yum install libvirt*</code>命令安装。</p>
+
+<p>Libvirt及guestfish相关的工具在平时的运维过程中经常会用到，建议使用<code class="highlighter-rouge">yum install libguest* libvirt*</code>命令安装。</p>
+
+<h2 id="入门-安装环境创建第一个虚拟机">入门： 安装环境、创建第一个虚拟机</h2>
+
+<ol>
+  <li>BIOS 开启 CPU 的虚拟化支持。</li>
+  <li>
+    <p>安装 qemu、libvirt和其他需要的组件</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre> pacman -Sy --needed \
+   qemu \
+   dhclient \
+   openbsd-netcat \
+   virt-viewer \
+   libvirt \
+   dnsmasq \
+   dmidecode \
+   ebtables \
+   virt-install \
+   virt-manager \
+   bridge-utils
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>调整执行权限</p>
+
+    <p>方便 libvirt 的工具 default to <code class="highlighter-rouge">qemu:///system</code> ，否则缺省使用 <code class="highlighter-rouge">qemu:///session</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo cp -rv /etc/libvirt/libvirt.conf ~/.config/libvirt/ &amp;&amp;\
+ sudo chown ${YOURUSER}:${YOURGROUP} ~/.config/libvirt/libvirt.conf
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> usermod -a -G polkit,wheel your-user-name
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>edit <code class="highlighter-rouge">/etc/polkit-1/rules.d/50-libvirt.rules</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre> /* Allow users in wheel group to manage the libvirt
+ daemon without authentication */
+ polkit.addRule(function(action, subject) {
+     if (action.id == "org.libvirt.unix.manage" &amp;&amp;
+         subject.isInGroup("wheel")) {
+             return polkit.Result.YES;
+     }
+ });
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>修改完，注销重新登陆， 或者重启 libvirtd</p>
+  </li>
+  <li>
+    <p>配置、启动 libvirtd</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> sudo systemctl start libvirtd
+ sudo systemctl enable libvirtd
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>libvirt keeps its files at <code class="highlighter-rouge">/var/lib/libvirt/</code></p>
+
+    <p><code class="highlighter-rouge">images</code>目录是 VM磁盘镜像 的默认存放目录。</p>
+  </li>
+  <li>
+    <p>创建一个虚拟机</p>
+
+    <ul>
+      <li>使用 <code class="highlighter-rouge">virt-manager</code> 图形界面创建
+        <ol>
+          <li>启动 <code class="highlighter-rouge">virt-manager</code> 出现GUI的管理界面。</li>
+          <li>点击 <code class="highlighter-rouge">Create a new virtual machine</code></li>
+          <li>选择 <code class="highlighter-rouge">Local install media</code> ，添加新的 Storage Pool 到 存放iso的地方，选中需要的系统安装iso文件</li>
+          <li>设置系统的名称、CPU、内存、磁盘、网络（可以先选择 NAT）</li>
+          <li>点击 完成 后， virt-viewer 会弹出来现实安装进度。</li>
+        </ol>
+      </li>
+      <li>
+        <p>使用 <code class="highlighter-rouge">virt-install</code> 安装</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  virt-install \
+    --name ubuntu1804 \
+    --ram 2048 \
+    --disk path=/var/lib/libvirt/images/u19.qcow2,size=8 \
+    --vcpus 2 \
+    --os-type linux \
+    --os-variant generic \
+    --console pty,target_type=serial \
+    --cdrom /var/lib/libvirt/isos/ubuntu-18.04.4-live-server-amd64.iso
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="入门第一台虚拟机安装">入门：第一台虚拟机安装</h2>
+
+<h3 id="使用-virt-manager-图形化管理工具">使用 Virt-Manager 图形化管理工具</h3>
+
+<ol>
+  <li>
+    <p>安装 virt-manager</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> # CentOS 6.5
+ yum groupinstall -y "Desktop" "Desktop Platform" "Desktop Platform Development" "Fonts" "General Purpose Desktop" "Graphical Administration Tools" "Graphics Creation Tools" "Input Methods" "X Windows System" "Chinese Support[zh]" "Internet Browser"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>安装 VNC 连接宿主机图形界面</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> yum install -y tigervnc tigervnc-server
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p><code class="highlighter-rouge">vim /etc/sysconfig/vncservers</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> VNCSERVERS="1:root"
+ VNCSERVERARGS[2]="-geometry 800x600 -nolisten tcp -localhost"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>使用 <code class="highlighter-rouge">vncpasswd</code> 设置登陆密码</p>
+
+    <p>启动 vnc server： <code class="highlighter-rouge">service vncserver restart</code></p>
+
+    <p>配置完成后，使用 VNC Viewer登陆宿主机图形界面，例如， <code class="highlighter-rouge">192.168.106.221:5901</code></p>
+
+    <p>如果出现 VNC Viewer的闪退，可以修改网络速度设置试试，Options… 中取消勾选 <code class="highlighter-rouge">Adapt to network speed(recommended)</code>，滑块到 <code class="highlighter-rouge">Best quality</code></p>
+  </li>
+  <li>
+    <p>启动 Virt-Manager</p>
+
+    <p>CentOS 图形界面 &gt; Applications 菜单 &gt; System Tools &gt; Virtual Machine Manager</p>
+  </li>
+</ol>
+
+<h3 id="使用-virt-install-命令">使用 <code class="highlighter-rouge">virt-install</code> 命令</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>virt-install --name<span class="o">=</span>testvm --ram<span class="o">=</span>2048 --vCPUs<span class="o">=</span>4 --os-type<span class="o">=</span>Windows --hvm --cdrom<span class="o">=</span>/root/w2003cnent.iso  --file<span class="o">=</span>/root/SDG100.img --file-size<span class="o">=</span>10 --bridge<span class="o">=</span>br0 --vnc --vncport<span class="o">=</span>5920
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">--name</code>：设置虚拟机名称。<br />
+<code class="highlighter-rouge">--ram</code>：配置虚拟机内存，单位是MB。<br />
+<code class="highlighter-rouge">--vCPUs</code>：配置CPU个数。<br />
+<code class="highlighter-rouge">--hvm</code>：配置使用全虚拟化。<br />
+<code class="highlighter-rouge">--os-type</code>：指定操作系统类型，如Linux、Windows。<br />
+<code class="highlighter-rouge">--cdrom</code>：使用cdrom安装系统，指定ISO位置。<br />
+<code class="highlighter-rouge">--bridge</code>：配置桥接的网卡。<br />
+<code class="highlighter-rouge">--vnc</code>：打开VNC支持。<br />
+<code class="highlighter-rouge">--vncport</code>：配置VNC端口。</p>
+
+<h3 id="windows-虚拟机安装">Windows 虚拟机安装</h3>
+
+<h4 id="qcow2-格式的磁盘">qcow2 格式的磁盘</h4>
+
+<p>Virt-Manager默认创建的磁盘格式是 RAW 格式，如果需要使用 qcow2 格式的磁盘，必须使用 <code class="highlighter-rouge">qemu-img create</code> 手工先创建一个 qcow2 格式的磁盘镜像。</p>
+
+<p><code class="highlighter-rouge">qemu-img create Windows-test.qcow2 -f qcow2 50G</code></p>
+
+<p>然后在 Virt-Manager 上指定 qcow2 格式。</p>
+
+<p>在使用 <code class="highlighter-rouge">virt-install</code> 命令，磁盘镜像格式为 qcow2 时，在 <code class="highlighter-rouge">virt-install</code> 命令中要特别指明磁盘格式，否则会出现镜像复制之后虚拟机系统不能启动的现象。</p>
+
+<h4 id="光驱自动消失问题">光驱自动消失问题</h4>
+
+<p>KVM新创建虚拟机，第一次挂载的光驱，重启后自动消失。这是一个功能，专门针对Linux系统，但是Windows系统安装的时候需要多次重启，需要在 Virt-Manager 手动挂载一下 Windows 系统ISO镜像。</p>
+
+<p>也可以修改虚拟机的xml配置文件：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;disk</span> <span class="na">type=</span><span class="s">'file'</span> <span class="na">device=</span><span class="s">'cdrom'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;driver</span> <span class="na">name=</span><span class="s">'qemu'</span> <span class="na">type=</span><span class="s">'raw'</span> <span class="na">cache=</span><span class="s">'none'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">file=</span><span class="s">'/home/CentOS-7.0-1406-x86_64-DVD.iso'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;target</span> <span class="na">dev=</span><span class="s">'hdb'</span> <span class="na">bus=</span><span class="s">'ide'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;readonly/&gt;</span>
+<span class="nt">&lt;/disk&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="鼠标不同步问题">鼠标不同步问题</h4>
+
+<p>Windows在KVM上会出现鼠标不同步问题，Virt-Manager手动添加USB指针设备，或者修改xml文件：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'tablet'</span> <span class="na">bus=</span><span class="s">'usb'</span><span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果添加两次USB设备，Windows系统虚拟机启动会蓝屏。</p>
+
+<h3 id="linux-虚拟机安装">Linux 虚拟机安装</h3>
+
+<p>除了会碰到Windows系统安装的 qcow2 磁盘格式问题、鼠标不同步问题，Linux虚拟机的安全还可以使用<code class="highlighter-rouge">直接指定内核文件路径</code>，然后直接加载的方式。</p>
+
+<p>Options… &gt; Boot Options &gt; 填写 Direct kernel Boot</p>
+
+<h2 id="cpu-管理">CPU 管理</h2>
+
+<p>多CPU共同工作主要有3种架构，分别是SMP、MPP、NUMA架构。SMP、MPP、NUMA都是为了解决多CPU共同工作的问题。</p>
+
+<p><code class="highlighter-rouge">SMP</code>即多个CPU通过一个总线访问存储器，因此SMP系统有时也被称为一致内存访问（UMA）结构体系。SMP的缺点是扩展性有限，因为在存储器接口达到饱和的时候，增加处理器并不能获得更高的性能，因此SMP方式支持的CPU个数有限。</p>
+
+<p><code class="highlighter-rouge">MPP</code>模式则是一种分布式存储器模式，能够将更多的处理器纳入一个系统的存储器。MPP可以近似理解成一个SMP的横向扩展集群。MPP一般要依靠软件实现。</p>
+
+<p><code class="highlighter-rouge">NUMA</code>模式则是每个处理器有自己的存储器，每个处理器也可以访问别的处理器的存储器。<code class="highlighter-rouge">NUMA-Q</code>是IBM最早将NUMA技术应用到i386上的商业方案，可以支持更多的X86 CPU一起工作。</p>
+
+<h3 id="kvm-虚拟机-numa-调优">KVM 虚拟机 NUMA 调优</h3>
+
+<p>因为NUMA架构每个处理器都可以访问自己和别的处理器的存储器，访问自己的存储器要比访问别的存储器快很多，速度相差10~100倍，所以NUMA调优的目标就是让处理器尽量访问自己的存储器，以提高处理速度。</p>
+
+<h4 id="宿主机的numa信息查看与配置">宿主机的NUMA信息查看与配置</h4>
+
+<p>通过 <code class="highlighter-rouge">numactl--hardware</code> 命令可以看到当前CPU硬件的情况</p>
+
+<p>使用 <code class="highlighter-rouge">numastat</code> 命令可以查看每个节点的内存统计。</p>
+
+<p>numastat命令使用-c参数可以查看相关进程的NUMA内存使用情况。例如，<code class="highlighter-rouge">numastat -c qemu-kvm</code></p>
+
+<p>Linux系统默认是自动NUMA平衡策略。如果要关闭Linux系统的自动平衡，可以使用如下命令：</p>
+
+<p><code class="highlighter-rouge">echo 0 &gt; /proc/sys/kernel/numa_balancing</code></p>
+
+<p>如果要开启自动NUMA平衡策略，可以使用如下命令：</p>
+
+<p><code class="highlighter-rouge">echo 1 &gt; /proc/sys/kernel/numa_balancing</code></p>
+
+<h4 id="虚拟机numa信息查看与配置">虚拟机NUMA信息查看与配置</h4>
+
+<p>使用<code class="highlighter-rouge">virsh numatune</code>命令可以查看或者修改虚拟机的NUMA配置。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>virsh <span class="c"># numatune 4</span>
+numa_mode      : strict
+numa_nodeset   : 0-1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>NUMA工作方式可以是<code class="highlighter-rouge">strict</code>指定CPU，或者<code class="highlighter-rouge">auto</code>使用系统的numad服务。</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;numatune&gt;</span>
+        <span class="nt">&lt;memory</span> <span class="na">mode=</span><span class="s">'strict'</span> <span class="na">placement=</span><span class="s">'auto'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/numatune&gt;</span>
+<span class="nt">&lt;numatune&gt;</span>
+        <span class="nt">&lt;memory</span> <span class="na">mode=</span><span class="s">'strict'</span> <span class="na">nodeset=</span><span class="s">'0,2-3'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/numatune&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可以使用numatune命令配置虚拟机的NUMA。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>virsh numatune rhel7 --nodeset '0，2-3'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>vpcu的设置如下：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nt">&lt;vcpu</span> <span class="na">placement=</span><span class="s">'auto'</span><span class="nt">&gt;</span>8<span class="nt">&lt;/vcpu&gt;</span>
+<span class="nt">&lt;vcpu</span> <span class="na">placement=</span><span class="s">'static'</span> <span class="na">cpuset=</span><span class="s">'0-10,5'</span><span class="nt">&gt;</span>8<span class="nt">&lt;/vcpu&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">&lt;vcpu&gt;</code>和<code class="highlighter-rouge">&lt;numatune&gt;</code>需要保持一致，<code class="highlighter-rouge">&lt;numatune&gt;</code>配置的是物理CPU，<code class="highlighter-rouge">&lt;vcpu&gt;</code>配置的是CPU的核，包括超线程产生的核。<code class="highlighter-rouge">&lt;numatune&gt;</code>使用static模式，<code class="highlighter-rouge">&lt;nodeset&gt;</code>也必须是。</p>
+
+<p>可以设置一个虚拟机给32个虚拟CPU，但是一开始只能使用8个，然后根据系统压力，热添加CPU给虚拟机。</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;vcpu</span> <span class="na">placement=</span><span class="s">'auto'</span> <span class="na">current=</span><span class="s">'8'</span><span class="nt">&gt;</span>32<span class="nt">&lt;/vcpu&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以给每个虚拟机CPU指定具体的物理机CPU pinning策略。</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;cputune&gt;</span>
+        <span class="nt">&lt;vcpupin</span> <span class="na">vcpu=</span><span class="s">"0"</span> <span class="na">cpuset=</span><span class="s">"1-4,2"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;vcpupin</span> <span class="na">vcpu=</span><span class="s">"1"</span> <span class="na">cpuset=</span><span class="s">"0,1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;vcpupin</span> <span class="na">vcpu=</span><span class="s">"2"</span> <span class="na">cpuset=</span><span class="s">"2,3"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;vcpupin</span> <span class="na">vcpu=</span><span class="s">"3"</span> <span class="na">cpuset=</span><span class="s">"0,4"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/cputune&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>也可以使用<code class="highlighter-rouge">emulatorpin</code>的方式。emulatorpin标签可以指定一个特定的物理CPU范围，比如一个物理CPU内部所有的核，使虚拟机使用的CPU和存储器都在一个物理机CPU内部，xml文件如下：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">&lt;cputune&gt;</span>
+        <span class="nt">&lt;emulatorpin</span> <span class="na">cpuset=</span><span class="s">"1-3"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/cputune&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可以在线调整：<code class="highlighter-rouge">virsh emulatorpin CentOS7 1-3</code></p>
+
+<p>1~3的核都在一个物理CPU内部。也可以设置虚拟机对NUMA资源的使用。</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="nt">&lt;cpu&gt;</span>
+        ...
+    <span class="nt">&lt;numa&gt;</span>
+      <span class="nt">&lt;cell</span> <span class="na">cpus=</span><span class="s">'0-3'</span> <span class="na">memory=</span><span class="s">'512000'</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cell</span> <span class="na">cpus=</span><span class="s">'4-7'</span> <span class="na">memory=</span><span class="s">'512000'</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/numa&gt;</span>
+    ...
+<span class="nt">&lt;/cpu&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>标签项意义如下。</p>
+
+<p><code class="highlighter-rouge">cell</code>：numa的cell或者numa节点。<br />
+<code class="highlighter-rouge">cpus</code>：一个物理CPU可以使用的CPU范围。<br />
+<code class="highlighter-rouge">memory</code>：可以使用的内存大小，单位为KB。</p>
+
+<h4 id="虚拟机numa和内存ksm">虚拟机NUMA和内存KSM</h4>
+
+<p>KSM技术可以合并相同的内存页，即使是不同的NUMA节点，如果需要关闭跨NUMA节点的内存合并，设置<code class="highlighter-rouge">/sys/kernel/mm/ksm/merge_across_nodes</code>参数为0。或者可以关闭特定虚拟机的KSM内存合并，在虚拟机的xml配置文件中添加以下内容就可以：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nt">&lt;memoryBacking&gt;</span>
+        <span class="nt">&lt;nosharepages/&gt;</span>
+<span class="nt">&lt;/memoryBacking&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="cpu绑定操作方法">CPU绑定操作方法</h3>
+
+<p>CPU绑定是一项非常神奇的技术，最神奇的地方就是可以在线配置，并且立即生效，可以解决生产环境CPU利用率严重不平均的问题。</p>
+
+<ul>
+  <li>CPU信息查看</li>
+</ul>
+
+<p>使用 <code class="highlighter-rouge">virsh vcpuinfo</code> 命令查看虚拟机VCPU和物理CPU的对应关系。</p>
+
+<ul>
+  <li>CPU绑定技术的原理</li>
+</ul>
+
+<p>CPU绑定实际上是Libvirt通过CGroup来实现的，通过CGroup直接去绑定KVM虚拟机进程也可以。通过CGroup不仅可以做CPU绑定，还可以限制虚拟机磁盘、网络的资源控制</p>
+
+<ul>
+  <li>CPU绑定技术适用于以下场景：</li>
+</ul>
+
+<p>系统的CPU压力比较大。<br />
+多核CPU压力不平衡，可以通过cpu pinning技术人工进行调配。</p>
+
+<h3 id="cpu-热添加和应用">CPU 热添加和应用</h3>
+
+<p>CPU热添加是CentOS 7的一个新特性，Linux系统要求宿主机和虚拟机都是CentOS 7，Windows虚拟机系统要求是Windows Server 2008数据中心版或者Windows Server 2012标准版和数据中心版。</p>
+
+<h4 id="linux系统的cpu热添加">Linux系统的CPU热添加</h4>
+
+<p>添加CPU（下例原来有个4个VCPU）：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>virsh setvcpus CentOS7 5 --live
+<span class="c"># 在虚拟机中激活第5个CPU</span>
+<span class="nb">echo </span>1 &gt; /sys/devices/system/cpu/cpu4/online
+
+<span class="c"># 查看虚拟机CPU</span>
+cat /proc/interrupts | less
+cat /proc/cpuinfo
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="虚拟机管理-克隆备份恢复">虚拟机管理： 克隆、备份、恢复</h2>
+
+<h3 id="查看所有虚拟机">查看所有虚拟机</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>virsh list --all
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="clone-a-vm">Clone a VM</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>virt-clone <span class="se">\</span>
+  --original ubuntu18.04 <span class="se">\</span>
+  --name cloned-ubuntu <span class="se">\</span>
+  --file /var/lib/libvirt/images/cu.qcow2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="虚拟机的block-device-信息">虚拟机的block device 信息</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>virsh domblklist vm-name
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="查看虚拟机信息">查看虚拟机信息</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>virsh dominfo vm-name
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="cdrom-操作">cdrom 操作</h3>
+
+<p>Eject : <code class="highlighter-rouge">virsh change-media $VMName --path sda --eject --live</code><br />
+Insert : <code class="highlighter-rouge">virsh change-media $VMName --path sda --source $ISO --insert --live</code></p>
+
+<h2 id="其他知识">其他知识</h2>
+
+<ul>
+  <li><a href="https://blog.csdn.net/weixin_45774557/article/details/118574379">qemu基本架构</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<p>在QEMU中<code class="highlighter-rouge">hypervisor: QEMU TCG</code>，Tiny Code Generator（TCG）将源处理器机器代码转换为虚拟机运行所需的机器代码块。</p>
+
+<p>。在Tiny Code Generator（TCG）中，这些已经翻译的代码块放在转换缓存中，并通过跳转指令将源处理器的指令集（ISA）和目标处理器的指令集（ISA）链接在一起。</p>
+
+<p><code class="highlighter-rouge">TCG</code> and <code class="highlighter-rouge">KVM</code> are entirely separate modes of operation for QEMU.</p>
+
+<p>If you’re using KVM (via -enable-kvm on the command line) then all guest instructions are either natively executed by the host CPU or (for a few instructions mostly doing I/O to emulated devices) emulated inside the host kernel</p>
+
+<p>If you use QEMU in TCG mode (the default) then we are a pure emulator in userspace and make no use of the host CPU’s hypervisor functionality. qemu-user-mode is always TCG emulation, and never KVM.</p>
+
+<ul>
+  <li>安装<br />
+安装 qemu，(或 qemu-headless，一个没有GUI的版本）并根据需要安装下面的可选软件包：</li>
+</ul>
+
+<p>qemu-arch-extra - 额外架构支持<br />
+qemu-block-gluster - Glusterfs block 支持<br />
+qemu-block-iscsi - iSCSI block 支持<br />
+qemu-block-rbd - RBD block 支持<br />
+samba - SMB/CIFS 服务器支持</p>
+
+<p>非官方的AUR包 <code class="highlighter-rouge">qemu-user-static</code> AUR 为所有QEMU支持的架构提供了一个带用户模式和静态链接模式的变种。它的预编译版本在这个包中: qemu-user-static-binAUR。 它的QEMU命令依照 qemu-target_architecture-static的规则命名, 例如, qemu-x86_64-static 代表目标架构为intel 64位CPU。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo pacman -S qemu qemu-arch-extra qemu-block-gluster qemu-block-iscsi qemu-block-rbd
+sudo pacman -S samba
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>qemu 包提供了 x86_64 架构的模拟器， 可以进行全系统模拟 (<code class="highlighter-rouge">qemu-system-x86_64</code>)。 <code class="highlighter-rouge">qemu-arch-extra</code> 包提供了 x86_64 用户模式的模拟 (<code class="highlighter-rouge">qemu-x86_64</code>)。</p>
+
+<ul>
+  <li><strong>全系统模拟模式 (full-system emulation)</strong></li>
+</ul>
+
+<p>在该模式下, QEMU将会模拟一个完整的系统，包含一个或多个处理器以及各种外围设备。这种模式更加贴近真实的系统，且这种模式不要求被模拟的客户机系统是Linux，但它的速度较慢。</p>
+
+<p>QEMU中启用full-system模式的命令依照如下规则进行命名 qemu-system-目标机器架构, 例如 qemu-system-x86_64 用于模拟64位intel架构CPU, qemu-system-i386 模拟32位intel架构CPU, qemu-system-arm 模拟ARM架构(32 位), qemu-system-aarch64 模拟ARM架构(64位), 等等。<br />
+如果模拟的CPU架构与宿主机的CPU架构相同, 那么即使在此模式下，QEMU仍有可能使用hypervisor(例如KVM or Xen)的技术对模拟机进行加速。</p>
+
+<ul>
+  <li><strong>用户模式(Usermode emulation)</strong></li>
+</ul>
+
+<p>在此模式下, QEMU能够利用宿主机的系统资源来调用为其他架构编译的Linux可执行文件</p>
+
+<p>与其他的虚拟化程序如 VirtualBox 和 VMware 不同, QEMU不提供管理虚拟机的GUI（运行虚拟机时出现的窗口除外），也不提供创建具有已保存设置的持久虚拟机的方法。除非您已创建自定义脚本以启动虚拟机，否则必须在每次启动时在命令行上指定运行虚拟机的所有参数。</p>
+
+<ul>
+  <li>
+    <p>硬盘镜像</p>
+
+    <ul>
+      <li>raw镜像<br />
+和客户机器上看到的内容一模一样，并且将始终使用主机上的来宾硬盘驱动器的全部容量。此方法提供的I / O开销最小，但可能会浪费大量空间，因为guest虚拟机上未使用的空间无法在主机上使用。</li>
+      <li>qcow2 格式<br />
+仅当客户系统实际写入内容的时候，才会分配镜像空间。对客户机器来说，硬盘大小表现为完整大小，即使它可能仅占用主机系统上的非常小的空间。此映像格式还支持QEMU快照功能</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c"># 创建 raw 镜像文件，4G大小</span>
+<span class="c"># 用 dd 或 fallocate 也可以创建一个 raw 镜像。</span>
+qemu-img create -f raw image_file 4G
+
+<span class="c"># 创建 qcow2 镜像文件，4G大小</span>
+qemu-img create -f qcow2 image_file 4G
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>创建上层镜像</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>qemu-img create -o backing_file=img1.raw,backing_fmt=raw -f qcow2 img1.cow
+
+qemu-system-i386 img1.cow
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>调整镜像大小</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c"># 适用于 raw 和 qcow2</span>
+<span class="c"># 在磁盘映像扩容后，必须使用虚拟机内部系统的分区工具对该镜像进行分区并格式化后才能真正开始使用新空间。 </span>
+<span class="c"># 在收缩磁盘映像时，必须首先使用虚拟机内部系统的分区工具减少分该分区的大小，然后相应地收缩磁盘映像，否则收缩磁盘映像将导致数据丢失！</span>
+qemu-img resize disk_image +10G
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>安装操作系统</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>qemu-system-x86_64 -cdrom iso文件路径 -boot order=d -m 4G -drive file=镜像文件路径,format=raw
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>可以用 <code class="highlighter-rouge">-boot menu=on</code> 代替 <code class="highlighter-rouge">-boot order=d</code> 启动boot菜单方便调试。</p>
+
+<p>执行出错： <code class="highlighter-rouge">end Kernel panci - not syncing: System is deadlocked on memory</code><br />
+默认情况下仅分配给虚拟机128MB的内存， 分配的内存大小可以通过 <code class="highlighter-rouge">-m</code> 调整， 比如 -m 512M 或 -m 2G</p>
+
+<p>运行虚拟化的系统</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>qemu-system-i386 options disk_image
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">Ctrl+Alt+g</code> 可以是否鼠标捕获。</p>
+
+<p>启用 KVM</p>
+
+<ol>
+  <li>BIOS 开启 CPU 的虚拟化支持。</li>
+  <li><code class="highlighter-rouge">qemu-system-x86_64</code> 命令加上 <code class="highlighter-rouge">-enable-kvm</code> 后，虚拟机的运行速度就正常，qemu tcg 模式下速度很慢。</li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#kvm" title="Pages tagged kvm" class="tag"><span class="term">kvm</span></a><a href="/tags#qemu" title="Pages tagged qemu" class="tag"><span class="term">qemu</span></a><a href="/tags#cloud" title="Pages tagged cloud" class="tag"><span class="term">cloud</span></a><a href="/tags#libvirt" title="Pages tagged libvirt" class="tag"><span class="term">libvirt</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

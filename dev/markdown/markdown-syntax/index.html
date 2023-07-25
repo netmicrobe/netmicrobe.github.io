@@ -1,0 +1,1161 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>markdown 语法基础 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="markdown, document">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown 语法基础">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/markdown/markdown-syntax/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/markdown/markdown-syntax/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">markdown 语法基础</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-06-22T00:00:00+08:00">June 22, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <p>参考：</p>
+<ul>
+  <li><a href="https://www.jianshu.com/p/b03a8d7b1719">Markdown 语法整理大集合2017</a></li>
+  <li><a href="https://daringfireball.net/projects/markdown/">Daring Fireball - Markdown Official Site</a></li>
+  <li><a href="https://about.gitlab.com/2016/07/19/markdown-kramdown-tips-and-tricks/">Gitlab - Markdown Kramdown Tips &amp; Tricks</a></li>
+  <li><a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版)</a></li>
+  <li><a href="https://kramdown.gettalong.org/syntax.html">kramdown Syntax</a></li>
+  <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">github - adam-p/markdown-here - Markdown Cheatsheet</a></li>
+</ul>
+
+<h3 id="链接">链接</h3>
+
+<p>2中链接方法： inline 和 reference.</p>
+
+<h4 id="inline">inline</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/) has no title attribute.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="reference-style">Reference-style</h4>
+
+<ul>
+  <li>例子
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>This is [an example][id] reference-style link.
+
+也可以加一个空格
+This is [an example] [id] reference-style link.
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>文档的任意地方在定义下引用名指向的实际链接</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[id]: http://example.com/  "Optional Title Here"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>另一个例子</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        "Google"
+  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+  [msn]:    http://search.msn.com/    "MSN Search"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>省略引用名时，链接文本即引用名</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[Google][]
+
+[Google]: http://google.com/
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>引用名可以包含空格</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>Visit [Daring Fireball][] for more information.
+[Daring Fireball]: http://daringfireball.net/
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>引用名的title支持多种界定符号：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[foo]: http://example.com/  "Optional Title Here"
+[foo]: http://example.com/  'Optional Title Here'
+[foo]: http://example.com/  (Optional Title Here)
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>链接也可以用尖括号括起来</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[id]: &lt;http://example.com/&gt;  "Optional Title Here"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>title 属性可以写到下一行，只要在属性之前添加空格或制表符，url很长的时候，这样写会清楚些。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[id]: http://example.com/longish/path/to/resource/here
+    "Optional Title Here"
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="字体格式">字体格式</h3>
+
+<h4 id="粗体">粗体</h4>
+
+<p>&lt;b&gt;html粗体标记&lt;/b&gt;   <mark>效果：</mark> <b>html粗体标记</b>.</p>
+
+<p><span>**bold text**</span>   <mark>效果：</mark>  <strong>bold text</strong></p>
+
+<h4 id="斜体">斜体</h4>
+
+<p>&lt;i&gt;html斜体标记&lt;/i&gt;    <mark>效果：</mark> <i>html斜体标记</i>.</p>
+
+<p><span>*italic text*</span>    <mark>效果：</mark> <em>italic text</em></p>
+
+<p><span>_斜体_</span>    <mark>效果：</mark> <em>斜体</em></p>
+
+<h4 id="下划线">下划线</h4>
+
+<p>&lt;u&gt;Underlining content&lt;/u&gt;    <mark>效果：</mark> <u>Underlining content</u></p>
+
+<h4 id="sub">&lt;sub&gt;</h4>
+
+<p>This text <sub>lays low</sub> and chills a bit.</p>
+
+<h4 id="sup">&lt;sup&gt;</h4>
+
+<p>This text <sup>gets high</sup> above the clouds.</p>
+
+<h4 id="mark">&lt;mark&gt;</h4>
+
+<p>Let’s <mark>mark this hint</mark> to give you a clue.</p>
+
+<h3 id="排版">排版</h3>
+
+<h4 id="列表">列表</h4>
+
+<h5 id="ol-有序列表">&lt;ol&gt; 有序列表</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>1. Ordered List
+2. Second List Item
+3. Third List Item
+    4. Second Level First Item
+    4. Second Level Second Item
+    4. Second Level Third Item
+        5. And a third level First Item
+        5. And a third level Second Item
+        5. And a third level Third Item
+4. Fourth List Item
+5. Fifth List Item
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<ol>
+  <li>Ordered List</li>
+  <li>Second List Item</li>
+  <li>Third List Item
+    <ol>
+      <li>Second Level First Item</li>
+      <li>Second Level Second Item</li>
+      <li>Second Level Third Item
+        <ol>
+          <li>And a third level First Item</li>
+          <li>And a third level Second Item</li>
+          <li>And a third level Third Item</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Fourth List Item</li>
+  <li>Fifth List Item</li>
+</ol>
+
+<h6 id="跨段落的有序列表">跨段落的有序列表</h6>
+
+<ul>
+  <li>参考： <a href="http://idratherbewriting.com/documentation-theme-jekyll/mydoc_lists.html#key-principle-to-remember-with-lists">http://idratherbewriting.com/documentation-theme-jekyll/mydoc_lists.html#key-principle-to-remember-with-lists</a></li>
+</ul>
+
+<p>关键是要用“空格”对其，序号是1-9的时候，用2个空格，序号到10及以上的时候，用一个空格。如下例。</p>
+
+<p>注意，这个只对 kramdown-flavored Markdown ，其他 markdown 风格不一定有用。</p>
+
+<p><img src="liningup.png" alt="" /></p>
+
+<h5 id="ul-无序列表">&lt;ul&gt; 无序列表</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>- Unordered List
+- Second List Item
+- Third List Item
+    + Second Level First Item
+    + Second Level Second Item
+    + Second Level Third Item
+        * And a third level First Item
+        * And a third level Second Item
+        * And a third level Third Item
+- Fourth List Item
+- Fifth List Item
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<ul>
+  <li>Unordered List</li>
+  <li>Second List Item</li>
+  <li>Third List Item
+    <ul>
+      <li>Second Level First Item</li>
+      <li>Second Level Second Item</li>
+      <li>Second Level Third Item
+        <ul>
+          <li>And a third level First Item</li>
+          <li>And a third level Second Item</li>
+          <li>And a third level Third Item</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fourth List Item</li>
+  <li>Fifth List Item</li>
+</ul>
+
+<h4 id="脚注">脚注</h4>
+
+<p>创建一个页面内跳转的连接，点击跳转到脚注说明的地方。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>If you need footnotes for your posts, articles and entries, the Kramdown-Parser [^1] got you covered. How to use footnotes? Read this footnote. [^2]
+
+... ...
+
+[^1]: Find out more about Kramdown on &lt;http://kramdown.gettalong.org/&gt;
+[^2]: Kramdown has an excellent documentation of all its features. Check out, on how to [footnotes](http://kramdown.gettalong.org/syntax.html#footnotes).
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="dl-definition-lists">&lt;dl&gt; Definition Lists</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>Definition List
+:   Bacon ipsum dolor sit amet spare ribs brisket ribeye, andouille sirloin bresaola frankfurter corned beef capicola bacon. Salami beef ribs sirloin, short loin hamburger shoulder t-bone.
+
+Beef ribs jowl swine porchetta
+:   Sirloin tenderloin swine frankfurter pork loin pork capicola ham hock strip steak ribeye beef ribs. Hamburger t-bone ribeye ham prosciutto bresaola.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<dl>
+  <dt>Definition List</dt>
+  <dd>Bacon ipsum dolor sit amet spare ribs brisket ribeye, andouille sirloin bresaola frankfurter corned beef capicola bacon. Salami beef ribs sirloin, short loin hamburger shoulder t-bone.</dd>
+  <dt>Beef ribs jowl swine porchetta</dt>
+  <dd>Sirloin tenderloin swine frankfurter pork loin pork capicola ham hock strip steak ribeye beef ribs. Hamburger t-bone ribeye ham prosciutto bresaola.</dd>
+</dl>
+
+<h4 id="blockquote-quotation">&lt;blockquote&gt; Quotation</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>&lt;blockquote&gt;Everything happens for a reason. (Britney Spears)&lt;/blockquote&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<blockquote>Everything happens for a reason. (Britney Spears)</blockquote>
+
+<h4 id="blockquote-and-cite--together">&lt;blockquote&gt; and &lt;cite&gt;  together</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>&gt; Age is an issue of mind over matter. If you don't mind, it doesn't matter.
+&lt;cite&gt;Mark Twain&lt;/cite&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<blockquote>
+  <p>Age is an issue of mind over matter. If you don’t mind, it doesn’t matter.<br />
+<cite>Mark Twain</cite></p>
+</blockquote>
+
+<h3 id="突出显示">突出显示</h3>
+
+<h4 id="dfn">&lt;dfn&gt;</h4>
+
+<p>The &lt;dfn&gt; tag is a phrase tag. It defines a <dfn>definition term</dfn>.</p>
+
+<h4 id="abbr">&lt;abbr&gt;</h4>
+
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+
+<h4 id="kbd">&lt;kbd&gt;</h4>
+
+<p>Copycats enjoy pressing <kbd>CMD</kbd> + <kbd>c</kbd> and <kbd>CMD</kbd> + <kbd>v</kbd>.</p>
+
+<h3 id="代码高亮">代码高亮</h3>
+
+<h4 id="code">&lt;code&gt;</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Some &lt;code&gt;code: lucida console&lt;/code&gt; displayed.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<p>Some <code>code: lucida console</code> displayed.</p>
+
+<h4 id="尖角符号-">尖角符号 `</h4>
+
+<p>键盘上数字1左边的键，ESC下面的那个键</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Some `code: lucida console` displayed.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><mark>效果：</mark></p>
+
+<p>Some <code class="highlighter-rouge">code: lucida console</code> displayed.</p>
+
+<h4 id="波浪号-">波浪号 ~</h4>
+
+<p>整段代码用3个波浪号括起来</p>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">~~~
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Code Blocks<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+~~~</code></pre></figure>
+
+<p><mark>效果：</mark></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Code Blocks<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="表格">表格</h3>
+
+<p>直接使用html语法</p>
+
+<h3 id="添加css-classid及其他html属性">添加css class、ID及其他html属性</h3>
+
+<h4 id="示例添加css-classid">示例：添加css class、ID</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="gu">#### A blue heading</span>
+{: .blue #blue-h}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>生成</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"blue"</span> <span class="na">id=</span><span class="s">"blue-h"</span><span class="nt">&gt;</span>A blue heading<span class="nt">&lt;/h4&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="添加任意属性">添加任意属性</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>#### A simple example
+{: #custom-id style="margin-top:0"}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[CLICK ME][identifier]{: #custom-id onclick="myJsFunc();"}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="使用-kramdown-的-markdown-语法生成目录">使用 kramdown 的 markdown 语法生成目录</h3>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://about.gitlab.com/2016/07/19/markdown-kramdown-tips-and-tricks/#table-of-contents-toc">https://about.gitlab.com/2016/07/19/markdown-kramdown-tips-and-tricks/#table-of-contents-toc</a></li>
+      <li><a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">http://www.seanbuscay.com/blog/jekyll-toc-markdown/</a></li>
+      <li><a href="https://github.com/gettalong/kramdown">https://github.com/gettalong/kramdown</a></li>
+      <li><a href="https://www.zfanw.com/blog/jekyll-table-of-content.html">https://www.zfanw.com/blog/jekyll-table-of-content.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre>无序列表的目录
+
+* TOC
+{:toc}
+
+有序列表的目录
+
+1. TOC
+{:toc}
+
+带样式的目录
+
+&lt;div class="panel radius" markdown="1"&gt;
+**Table of Contents**
+{: #toc }
+*  TOC
+{:toc}
+&lt;/div&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#markdown" title="Pages tagged markdown" class="tag"><span class="term">markdown</span></a><a href="/tags#document" title="Pages tagged document" class="tag"><span class="term">document</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

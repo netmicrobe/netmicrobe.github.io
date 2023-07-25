@@ -1,0 +1,928 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>obsidian 使用，关联，笔记, 日志，logreq, notion &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="obsidian 使用，关联，笔记, 日志，logreq, notion">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/obsidian-%E4%BD%BF%E7%94%A8/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/obsidian-%E4%BD%BF%E7%94%A8/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">obsidian 使用，关联，笔记, 日志，logreq, notion</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2023-06-30T00:00:00+08:00">June 30, 2023</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://obsidian.md/">obsidian 官网</a></li>
+      <li><a href="https://help.obsidian.md/Home">obsidian 官方帮助文档</a></li>
+      <li><a href="https://www.apkmirror.com/apk/dynalist-inc/obsidian/">obsidian apk 下载 - appmirror</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="快速入门">快速入门</h2>
+
+<ol>
+  <li>
+    <p>下载 obsidian<br />
+ 官网下载地址： <a href="https://obsidian.md/download">https://obsidian.md/download</a></p>
+  </li>
+  <li>安装好之后打开 Obsidian，会弹出对话框，询问使用哪个库（Vault），或者打开哪个库。
+    <ul>
+      <li>库，实际就是存放之后笔记的目录。可以选择一个创建好的文件夹，也可以在这个对话框这里创建，实际也就是创建个文件夹，并悄悄放了个隐藏的配置文件夹（<code class="highlighter-rouge">.obsidian</code>）。</li>
+      <li><strong>注意</strong> 使用英文、中文，也是在这个界面选择的，似乎 语言 也是 vault 的一个属性。</li>
+    </ul>
+  </li>
+  <li>打开库，就进入 Obsidian 主界面了。</li>
+  <li>左边导航区，上面一排按钮
+    <ul>
+      <li>纸和笔图标，创建一个新的 markdown 文件。</li>
+      <li>文件夹（带加号），创建一个新的目录。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="我喜欢的基本配置">我喜欢的基本配置</h2>
+
+<ul>
+  <li>视图，左边 source mode，右边是预览</li>
+</ul>
+
+<p>设置 source mode : Settings &gt; Editor &gt; Default editing mode : source mode<br />
+右边预览： 按住 Ctrl， 点击文档右上角的书本展开的图标，就会水平方向打开预览视图。</p>
+
+<h2 id="使用-git-在各个终端之间同步">使用 git 在各个终端之间同步</h2>
+
+<h3 id="android">Android</h3>
+
+<ul>
+  <li>使用 termux + git</li>
+</ul>
+
+<ol>
+  <li>在 termux 上安装 git
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> pkg install git git-lfs
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>配置 git config</li>
+  <li>初始lfs 功能： <code class="highlighter-rouge">git lfs install</code> ， 配置项目根目录下的 <code class="highlighter-rouge">.gitattributes</code></li>
+  <li>配置 <code class="highlighter-rouge">.gitignore</code></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h2 id="插件列表">插件列表：</h2>
+
+<ul>
+  <li>核心插件基本都打开，例如，Templates、Diary Notes 等等</li>
+  <li><code class="highlighter-rouge">Custom Attachment Location</code> by RainCat1998<br />
+  可惜，这个插件不支持 Android。</li>
+  <li><code class="highlighter-rouge">Advanced Tables</code> - Tony Grosinger - 方便的表格编辑功能</li>
+  <li><code class="highlighter-rouge">Checklist</code> - delashum - 跨文件整合todo<br />
+  符合特定tag 的 checklsit item 会被该插件搜集 ，默认tag是 <code class="highlighter-rouge">#todo</code><br />
+  例如， <code class="highlighter-rouge">- [ ] something need todo  #todo</code></li>
+  <li><code class="highlighter-rouge">Tag Wrangler</code> - PJ Edy<br />
+  tag 的 树形视图，在右侧的视图窗口中的井字形图标进入。</li>
+  <li><code class="highlighter-rouge">Kanban</code> - mgmeyers<br />
+  提供一种基于 markdown 语法的看板。<br />
+  创建看板文件的方法：
+    <ul>
+      <li>右键文件夹，选择 New kanban board</li>
+      <li>Ctrl + P， 搜索 kankan，选择 <code class="highlighter-rouge">Kanban: Create new board</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">Advanced Slides</code> by MSzturc<br />
+  基于 markdown 的 幻灯片工具。</li>
+  <li><code class="highlighter-rouge">Excalidraw</code> by Zsolt Viczian<br />
+  手绘风格的白板工具，可以画 流程图、柱状图等。</li>
+  <li><code class="highlighter-rouge">Obsidian Git</code> - Vinzent</li>
+  <li><code class="highlighter-rouge">Templater</code> by SilentVoid<br />
+  高级的模板插件</li>
+  <li><code class="highlighter-rouge">Dataview</code> by Michael Brenan</li>
+  <li></li>
+  <li></li>
+</ul>
+
+<h2 id="常用方法和技巧">常用方法和技巧</h2>
+
+<h3 id="添加-todo">添加 todo</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>- [ ] todo的内容
+- [x] 已经完成的todo，会在文字上展示删除线
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="添加图片">添加图片</h3>
+
+<p>直接将图片<strong>粘帖</strong>到文章中。</p>
+
+<p>obsidian 会自动生成一个图片文件，默认位置，是在 库的根目录下面。</p>
+
+<p>修改生成图片的位置：</p>
+
+<ol>
+  <li>Settings &gt; Files &amp; Links &gt; Default location of new attachments</li>
+  <li>有四种选项：
+    <ul>
+      <li>Vault folder</li>
+      <li>In folder specified below</li>
+      <li>Same folder as current file</li>
+      <li>In subfolder under current folder</li>
+    </ul>
+  </li>
+</ol>
+
+<p>可惜，不能自动创建个文章同名文件夹，并放进去。</p>
+
+<p>可以自己手动创建一个文件夹，将图片放进去，添加图片链接： <code class="highlighter-rouge">![[image-path-link]]</code></p>
+
+<p>也可以，使用插件 <a href="https://github.com/RainCat1998/obsidian-custom-attachment-location">Custom attachment location</a></p>
+
+<p>达到需要效果，按照如下配置 Custom attachment location 插件：</p>
+
+<ul>
+  <li>Location for New Attachments: <code class="highlighter-rouge">./${filename}</code></li>
+  <li>Pasted Image Name : <code class="highlighter-rouge">image-${date}</code></li>
+  <li>Date Format: <code class="highlighter-rouge">YYYYMMDDHHmmssSSS</code></li>
+  <li>Automatically rename attachment folder: 勾选</li>
+  <li>Automatically rename attachment files: 如果文件名中设置了 <code class="highlighter-rouge">${filename}</code> 就勾选。</li>
+</ul>
+
+<h3 id="日记">日记</h3>
+
+<p>插件：</p>
+<ul>
+  <li>core plugins:
+    <ul>
+      <li>Diary notes</li>
+    </ul>
+  </li>
+  <li>community plugins:
+    <ul>
+      <li>Calendar</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Diary notes 的设置</p>
+
+<p>Dateformat: <code class="highlighter-rouge">YYYY-MM/YYYY-MM-DD</code>   这样方便组织日记，每个月会自动创建个文件夹，将当月日记放进去。</p>
+
+<p>简单的日记模板：<br />
+标题： diary-template<br />
+内容：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>\{\{date: dddd\}\} 
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Calendar的功能在于：</p>
+<ol>
+  <li>显示个当月的日历，在窗口右边，在其上点击某个日期，创建当日日记。</li>
+  <li>可以显示第几周，点击周序号，创建周记。</li>
+</ol>
+
+<p>注意： Android版本上并不能显示 Calendar插件</p>
+
+<h2 id="插件">插件</h2>
+
+<ol>
+  <li>开启第三方/社区插件<br />
+ 左下角设置图标 》 进入设置 》 Community Plugins &gt; Turns on community plugins</li>
+  <li>开启后，同样位置 》 Community plugins &gt; Browse 开始浏览和安装插件。</li>
+</ol>
+
+<ul>
+  <li>手动安装插件
+    <ol>
+      <li>在库的配置文件夹（<code class="highlighter-rouge">.obsidian</code>）中，创建文件夹 <code class="highlighter-rouge">plugins</code></li>
+      <li>将插件拷贝到 plugins 目录</li>
+      <li>重启 Obsidian</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="核心插件---模板">核心插件 - 模板</h3>
+
+<p>开启/关闭插件： Settings &gt; Core plugins &gt; Templates</p>
+
+<ul>
+  <li>设置模板</li>
+</ul>
+
+<ol>
+  <li>创建一个放模板的文件夹，例如： _templates</li>
+  <li>回到 obsidian 中，在 _templates 文件夹下创建一个模板文件<br />
+ 文件的标题，就是以后引用这个模板的名称。<br />
+ 内容可以写成：
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="p"> ---</span>
+ aliases: 
+ tags: 
+ date: 
+<span class="p"> ---
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>在设置中设置模板<br />
+ Settings &gt; Templates</p>
+
+    <ul>
+      <li>Templates folder location: 填写存放模板的目录，例如， _templates</li>
+      <li>Date format: 保持默认（YYYY-MM-DD）</li>
+      <li>Time format: 保持默认（HH:mm）</li>
+    </ul>
+  </li>
+  <li>创建一个新的笔记，引用模板有如下几种方法：
+    <ul>
+      <li>左边，侧边导航条上有个 insert template 按钮</li>
+      <li>Ctrl + p , 调出命令面板，输入 template，搜到 insert template 命令</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="核心插件---日记">核心插件 - 日记</h3>
+
+<p>开启/关闭插件： Settings &gt; Core plugins &gt; Diary notes</p>
+
+<ol>
+  <li>创建一个用来放 diary 的目录</li>
+  <li>创建一个 diary 的模板</li>
+  <li>Settings &gt; Diary notes
+    <ul>
+      <li>Date format： 日记标题的日期格式，默认 YYYY-MM-DD</li>
+      <li>New file location: 日记存放的目录</li>
+      <li>Template file location: 日记模板</li>
+      <li>Open daily note on startup: 每次打开这个库，就自动创建个日记</li>
+    </ul>
+  </li>
+  <li>开始写日记<br />
+ 左边，侧边导航条上有个 open today’s daily note 按钮<br />
+ 点击之，就会根据模板，创建个今天的日记底稿，直接可以开始写今天日记了。</li>
+</ol>
+
+<h3 id="core-plugins---canvas">core plugins - Canvas</h3>
+
+<p>将挑选出来的卡片笔记，以卡片图形化的形式，展现到画布上。</p>
+
+<ul>
+  <li>页面左侧边icon - Create a new Canvas</li>
+  <li>可以将日志文章拖拽到canvas上，每个文章以卡片的形式展示在画布上</li>
+  <li>可以拖拽卡片，给卡片调整不同背景色</li>
+  <li>卡片之间可以连线，并在连线上输入文字，阐明关联的含义</li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

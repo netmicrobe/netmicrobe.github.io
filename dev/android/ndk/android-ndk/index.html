@@ -1,0 +1,1314 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>android ndk 开发 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="android, jni">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android ndk 开发">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/android/ndk/android-ndk/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/android/ndk/android-ndk/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">android ndk 开发</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-01-03T00:00:00+08:00">January 03, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li><a href="https://developer.android.com/ndk/guides/index.html">Getting Started with the NDK</a></li>
+  <li><a href="https://developer.android.com/studio/projects/add-native-code.html">Add C and C++ Code to Your Project</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<p>Using <code class="highlighter-rouge">Android Studio 2.2 and higher</code>, you can use the NDK to compile C and C++ code into a native library and package it into your APK using Gradle.</p>
+
+<p>Java code can then call functions in your native library through the Java Native Interface (JNI) framework.</p>
+
+<p>Android Studio’s default build tool to compile native libraries is <code class="highlighter-rouge">CMake</code>. Android Studio also supports <code class="highlighter-rouge">ndk-build</code> due to the large number of existing projects that use the build toolkit.</p>
+
+<h2 id="下载-ndk--tools">下载 NDK &amp; tools</h2>
+
+<ul>
+  <li>要下载的组件
+    <ul>
+      <li>The Android Native Development Kit (NDK): a set of tools that allows you to use C and C++ code with Android.</li>
+      <li>CMake: an external build tool that works alongside Gradle to build your native library. You do not need this component if you only plan to use ndk-build.</li>
+      <li>LLDB: the debugger Android Studio uses to debug native code.</li>
+    </ul>
+  </li>
+  <li>下载步骤
+    <ol>
+      <li>From an open project, select Tools &gt; Android &gt; SDK Manager from the main menu.</li>
+      <li>Click the SDK Tools tab.</li>
+      <li>Check the boxes next to LLDB, CMake, and NDK, as shown in figure 1.</li>
+      <li>Click Apply, and then click OK in the next dialog.</li>
+      <li>When the installation is complete, click Finish, and then click OK.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="ndk-install_2-2_2x.png" alt="" /></p>
+
+<h2 id="add-c-and-c-code-to-your-project">Add C and C++ Code to Your Project</h2>
+
+<p>You can add C and C++ code to your Android project by placing the code into a <code class="highlighter-rouge">cpp</code> directory in your project module.</p>
+
+<h3 id="create-a-new-project-with-cc-support">Create a New Project with C/C++ Support</h3>
+
+<ol>
+  <li>创建项目的向导页，选中 <code class="highlighter-rouge">Include C++ Support</code> checkbox.</li>
+  <li>Click Next.</li>
+  <li>与不包含Natvie 代码的项目一样，配置，点几个下一步，一直到 <strong>“Customize C++ Support”</strong> 页面</li>
+  <li><strong>“Customize C++ Support”</strong> 页面的配置选项:
+    <ul>
+      <li><code class="highlighter-rouge">C++ Standard</code>: use the drop-down list to select which standardization of C++ you want to use. Selecting Toolchain Default uses the default CMake setting.</li>
+      <li><code class="highlighter-rouge">Exceptions Support</code>: check this box if you want to enable support for C++ exception handling. If enabled, Android Studio adds the -fexceptions flag to cppFlags in your module-level build.gradle file, which Gradle passes to CMake.</li>
+      <li><code class="highlighter-rouge">Runtime Type Information Support</code>: check this box if you want support for RTTI. If enabled, Android Studio adds the -frtti flag to cppFlags in your module-level build.gradle file, which Gradle passes to CMake.</li>
+    </ul>
+  </li>
+  <li>Click Finish.</li>
+</ol>
+
+<ul>
+  <li>完成效果：<br />
+<img src="cpp-project-view_2-2_2x.png" alt="" />
+    <ol>
+      <li>Android Studio creates a sample C++ source file, <code class="highlighter-rouge">native-lib.cpp</code>, and places it in the <code class="highlighter-rouge">src/main/cpp/</code> directory of your app module.</li>
+      <li>The <strong>External Build Files</strong> group 存放 build scripts for CMake or ndk-build. 新建项目时，Android Studio 默认创建一个 a CMake build script, <code class="highlighter-rouge">CMakeLists.txt</code>, 放在app根目录.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="add-native-code-to-an-existing-project">add native code to an existing project</h3>
+
+<ol>
+  <li>如无 <code class="highlighter-rouge">cpp/</code> 目录，创建之。创建目录 <code class="highlighter-rouge">app/src/main/cpp</code></li>
+  <li>Right-click on the cpp/ directory and select New &gt; C/C++ Source File.</li>
+  <li>Enter a name for your source file, such as native-lib.</li>
+  <li>From the <strong>Type</strong> drop-down menu, select the file extension for your source file, such as .cpp.</li>
+  <li>If you also want to create a header file, check the Create an associated header checkbox.</li>
+  <li>Click OK.</li>
+</ol>
+
+<p>添加了 C/C++ 源码，还要 <a href="#config-cmake">配置下CMake</a>，将新代码加到 native library。</p>
+
+<h3 id="从-ndkcompile-迁移到-ndk-build">从 ndkCompile 迁移到 ndk-build</h3>
+
+<ol>
+  <li>Compile your project with ndkCompile at least once by selecting <code class="highlighter-rouge">Build &gt; Make Project</code>. This generates the <code class="highlighter-rouge">Android.mk</code> file for you.</li>
+  <li>Locate the auto-generated <code class="highlighter-rouge">Android.mk</code> file by navigating to project-root/module-root/build/intermediates/ndk/debug/Android.mk.</li>
+  <li>Relocate the <code class="highlighter-rouge">Android.mk</code> file to some other directory, such as the same directory as your module-level build.gradle file. This makes sure that Gradle doesn’t delete the script file when running the clean task.</li>
+  <li>Open the <code class="highlighter-rouge">Android.mk</code> file and edit any paths in the script such that they are relative to the current location of the script file.</li>
+  <li>Link Gradle to the Android.mk file .</li>
+  <li>Disable ndkCompile by opening the <code class="highlighter-rouge">build.properties</code> file and removing the following line:
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> // Remove this line
+ android.useDeprecatedNdk = true
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>Apply your changes by clicking <strong>Sync Project</strong> <img src="toolbar-sync-gradle.png" alt="" />  in the toolbar.</li>
+</ol>
+
+<h3 id="配置cmake">配置CMake</h3>
+
+<p><a name="config-cmake"></a></p>
+
+<p>A CMake build script is a plain text file that you must name <code class="highlighter-rouge">CMakeLists.txt</code> and includes commands CMake uses to build your C/C++ libraries. 如果项目没有这个文件，却包含C/C++代码，要手动创建<code class="highlighter-rouge">CMakeLists.txt</code>。</p>
+
+<h4 id="创建-cmakeliststxt">创建 CMakeLists.txt</h4>
+
+<ol>
+  <li>Open the Project pane from the left side of the IDE and select the Project view from the drop-down menu.</li>
+  <li>Right-click on the root directory of your-module and select ·New &gt; File·.</li>
+  <li>Enter “CMakeLists.txt” as the filename and click OK.</li>
+  <li>编辑 “CMakeLists.txt”
+    <ul>
+      <li>添加 cmake_minimum_required() and add_library()</li>
+    </ul>
+
+    <div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre> <span class="c1"># Sets the minimum version of CMake required to build your native library.</span>
+ <span class="c1"># This ensures that a certain set of CMake features is available to</span>
+ <span class="c1"># your build.</span>
+
+ <span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 3.4.1<span class="p">)</span>
+
+ <span class="c1"># Specifies a library name, specifies whether the library is STATIC or</span>
+ <span class="c1"># SHARED, and provides relative paths to the source code. You can</span>
+ <span class="c1"># define multiple libraries by adding multiple add_library() commands,</span>
+ <span class="c1"># and CMake builds them for you. When you build your app, Gradle</span>
+ <span class="c1"># automatically packages shared libraries with your APK.</span>
+
+ <span class="nb">add_library</span><span class="p">(</span> <span class="c1"># Specifies the name of the library.</span>
+              native-lib
+
+              <span class="c1"># Sets the library as a shared library.</span>
+              SHARED
+
+              <span class="c1"># Provides a relative path to your source file(s).</span>
+              src/main/cpp/native-lib.cpp <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <ul>
+      <li>Android Studio also shows associated header files in the Project view after you sync your project. 为使 CMake 在编译时找到头文件，使用 <code class="highlighter-rouge">include_directories()</code> 命令指定 headers 路径:</li>
+    </ul>
+
+    <div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> <span class="nb">add_library</span><span class="p">(</span>...<span class="p">)</span>
+
+ <span class="c1"># Specifies a path to native header files.</span>
+ <span class="nb">include_directories</span><span class="p">(</span>src/main/cpp/include/<span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h4 id="add-ndk-apis">Add NDK APIs</h4>
+
+<p>The Android NDK provides a set of native APIs and libraries that you may find useful. You can use any of these APIs by including <a href="https://developer.android.com/ndk/guides/stable_apis.html">the NDK libraries</a> in your project’s CMakeLists.txt script file.</p>
+
+<p>Prebuilt NDK libraries already exist on the Android platform, so you don’t need to build them or package them into your APK. you only need to provide CMake with the name of the library you want to use and link it against your own native library.</p>
+
+<p>Add the find_library() command to your CMake build script to locate an NDK library and store its path as a variable.</p>
+
+<p>The following sample locates the Android-specific log support library and stores its path in log-lib:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>find_library( # Defines the name of the path variable that stores the
+              # location of the NDK library.
+              log-lib
+
+              # Specifies the name of the NDK library that
+              # CMake needs to locate.
+              log )
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>In order for your native library to call functions in the log library, you need to link the libraries using the target_link_libraries() command in your CMake build script:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="nb">find_library</span><span class="p">(</span>...<span class="p">)</span>
+
+<span class="c1"># Links your native library against one or more other native libraries.</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span> <span class="c1"># Specifies the target library.</span>
+                       native-lib
+
+                       <span class="c1"># Links the log library to the target library.</span>
+                       <span class="si">${</span><span class="nv">log-lib</span><span class="si">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 id="the-ndk-also-includes-some-libraries-as-source-code-that-you-need-to-build-and-link-to-your-native-library">The NDK also includes some libraries as source code that you need to build and link to your native library.</h5>
+
+<p>You can compile the source code into a native library by using the add_library() command in your CMake build script. To provide a path to your local NDK library, you can use the <code class="highlighter-rouge">ANDROID_NDK</code> path variable, which Android Studio automatically defines for you.</p>
+
+<p>The following command tells CMake to build android_native_app_glue.c, which manages NativeActivity lifecycle events and touch input, into a static library and links it to native-lib:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nb">add_library</span><span class="p">(</span> app-glue
+             STATIC
+             <span class="si">${</span><span class="nv">ANDROID_NDK</span><span class="si">}</span>/sources/android/native_app_glue/android_native_app_glue.c <span class="p">)</span>
+
+<span class="c1"># You need to link static libraries against your shared native library.</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span> native-lib app-glue <span class="si">${</span><span class="nv">log-lib</span><span class="si">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="add-other-prebuilt-libraries">Add other prebuilt libraries</h4>
+
+<p>Adding a prebuilt library is similar to specifying another native library for CMake to build. However, because the library is already built, you need to use the <code class="highlighter-rouge">IMPORTED</code> flag to tell CMake that you only want to import the library into your project:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="nb">add_library</span><span class="p">(</span> imported-lib
+             SHARED
+             IMPORTED <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>You then need to specify the path to the library using the set_target_properties() command as shown below.</p>
+
+<p>Some libraries provide separate packages for specific CPU architectures, or <a href="https://developer.android.com/ndk/guides/abis.html">Application Binary Interfaces (ABI)</a>, and organize them into separate directories. This approach helps libraries take advantage of certain CPU architectures while allowing you to use only the versions of the library you want. To add multiple ABI versions of a library to your CMake build script, without having to write multiple commands for each version of the library, you can use the <code class="highlighter-rouge">ANDROID_ABI</code> path variable. This variable uses a list of the default <a href="https://developer.android.com/ndk/guides/abis.html#sa">ABIs that the NDK supports</a>, or a filtered list of ABIs you <a href="https://developer.android.com/studio/projects/gradle-external-native-builds.html#specify-abi">manually configure Gradle</a> to use. For example:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nb">add_library</span><span class="p">(</span>...<span class="p">)</span>
+<span class="nb">set_target_properties</span><span class="p">(</span> <span class="c1"># Specifies the target library.</span>
+                       imported-lib
+
+                       <span class="c1"># Specifies the parameter you want to define.</span>
+                       PROPERTIES IMPORTED_LOCATION
+
+                       <span class="c1"># Provides the path to the library you want to import.</span>
+                       imported-lib/src/<span class="si">${</span><span class="nv">ANDROID_ABI</span><span class="si">}</span>/libimported-lib.so <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>For CMake to locate your header files during compile time, you need to use the include_directories() command and include the path to your header files:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nb">include_directories</span><span class="p">(</span> imported-lib/include/ <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To link the prebuilt library to your own native library, add it to the target_link_libraries() command in your CMake build script:</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nb">target_link_libraries</span><span class="p">(</span> native-lib imported-lib app-glue <span class="si">${</span><span class="nv">log-lib</span><span class="si">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To package the prebuilt library into your APK, you need to <a href="https://developer.android.com/studio/projects/gradle-external-native-builds.html#configure-gradle">manually configure Gradle</a> with the sourceSets block to include the path to your .so file. After building your APK, you can verify which libraries Gradle packages into your APK by using the <a href="https://developer.android.com/studio/build/apk-analyzer.html">APK Analyzer</a>.</p>
+
+<h4 id="include-other-cmake-projects">Include other CMake projects</h4>
+
+<p>If you want to build multiple CMake projects and include their outputs in your Android project, you can use one CMakeLists.txt file as the top-level CMake build script (which is the one you <a href="https://developer.android.com/studio/projects/gradle-external-native-builds.html">link to Gradle</a>) and add additional CMake projects as dependencies of that build script. The following top-level CMake build script uses the add_subdirectory() command to specify another CMakeLists.txt file as a build dependency and then links against its output just as it would with any other prebuilt library.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td class="code"><pre><span class="c1"># Sets lib_src_DIR to the path of the target CMake project.</span>
+<span class="nb">set</span><span class="p">(</span> lib_src_DIR ../gmath <span class="p">)</span>
+
+<span class="c1"># Sets lib_build_DIR to the path of the desired output directory.</span>
+<span class="nb">set</span><span class="p">(</span> lib_build_DIR ../gmath/outputs <span class="p">)</span>
+<span class="nb">file</span><span class="p">(</span>MAKE_DIRECTORY <span class="si">${</span><span class="nv">lib_build_DIR</span><span class="si">}</span><span class="p">)</span>
+
+<span class="c1"># Adds the CMakeLists.txt file located in the specified directory</span>
+<span class="c1"># as a build dependency.</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span> <span class="c1"># Specifies the directory of the CMakeLists.txt file.</span>
+                  <span class="si">${</span><span class="nv">lib_src_DIR</span><span class="si">}</span>
+
+                  <span class="c1"># Specifies the directory for the build outputs.</span>
+                  <span class="si">${</span><span class="nv">lib_build_DIR</span><span class="si">}</span> <span class="p">)</span>
+
+<span class="c1"># Adds the output of the additional CMake build as a prebuilt static</span>
+<span class="c1"># library and names it lib_gmath.</span>
+<span class="nb">add_library</span><span class="p">(</span> lib_gmath STATIC IMPORTED <span class="p">)</span>
+<span class="nb">set_target_properties</span><span class="p">(</span> lib_gmath PROPERTIES IMPORTED_LOCATION
+                       <span class="si">${</span><span class="nv">lib_build_DIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ANDROID_ABI</span><span class="si">}</span>/lib_gmath.a <span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span> <span class="si">${</span><span class="nv">lib_src_DIR</span><span class="si">}</span>/include <span class="p">)</span>
+
+<span class="c1"># Links the top-level CMake build output against lib_gmath.</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span> native-lib ... lib_gmath <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="so-文件名约定">.so 文件名约定</h4>
+
+<p>The convention CMake uses to name the file of your library is as follows:</p>
+
+<p>lib<code class="highlighter-rouge">library-name.so</code></p>
+
+<p>For example, if you specify “native-lib” as the name of your shared library in the build script, CMake creates a file named libnative-lib.so. However, when loading this library in your Java or Kotlin code, use the name you specified in the CMake build script:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>static {
+    System.loadLibrary("native-lib");
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="link-gradle-to-your-native-library">Link Gradle to Your Native Library</h2>
+
+<p>To include your native library project as a Gradle build dependency, you need to provide Gradle with the path to your CMake or ndk-build script file.</p>
+
+<blockquote>
+  <p>Note: When making changes to the Gradle configuration, make sure to apply your changes by clicking Sync Project <img src="toolbar-sync-gradle.png" alt="" /> in the toolbar.<br />
+when making changes to your CMake or ndk-build script file after you have already linked it to Gradle, you should sync Android Studio with your changes by selecting <code class="highlighter-rouge">Build &gt; Refresh Linked C++ Projects</code> from the menu bar.</p>
+</blockquote>
+
+<h3 id="在-android-studio-ui-中配置">在 Android Studio UI 中配置</h3>
+
+<p>You can link Gradle to an external CMake or ndk-build project using the Android Studio UI:</p>
+
+<ol>
+  <li>Open the <strong>Project pane</strong> from the left side of the IDE and select the <strong>Android</strong> view.</li>
+  <li>Right-click on the module you would like to link to your native library, such as the app module, and select <strong>Link C++ Project with Gradle</strong> from the menu.</li>
+  <li>From the drop-down menu, select either <strong>CMake</strong> or <strong>ndk-build</strong>.
+    <ol>
+      <li>If you select CMake, Project Path 填 CMakeLists.txt script file for your external CMake project.</li>
+      <li>If you select ndk-build, Project Path 填 Android.mk script file for your external ndk-build project. Android Studio also includes the Application.mk file if it is located in the same directory as your Android.mk file.</li>
+    </ol>
+  </li>
+</ol>
+
+<p><img src="link-cpp-project_2-2_2x.png" alt="" /></p>
+
+<h3 id="手动配置">手动配置</h3>
+
+<p>add the externalNativeBuild block to your module-level build.gradle file and configure it with either the cmake or ndkBuild block:</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="n">android</span> <span class="o">{</span>
+  <span class="o">...</span>
+  <span class="n">defaultConfig</span> <span class="o">{...}</span>
+  <span class="n">buildTypes</span> <span class="o">{...}</span>
+
+  <span class="c1">// Encapsulates your external native build configurations.</span>
+  <span class="n">externalNativeBuild</span> <span class="o">{</span>
+
+    <span class="c1">// Encapsulates your CMake build configurations.</span>
+    <span class="n">cmake</span> <span class="o">{</span>
+
+      <span class="c1">// Provides a relative path to your CMake build script.</span>
+      <span class="n">path</span> <span class="s2">"CMakeLists.txt"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<blockquote>
+  <p>Note: If you want to link Gradle to an existing ndk-build project, use the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.NdkBuildOptions.html">ndkBuild block</a> instead of the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.CmakeOptions.html">cmake block</a>, and provide a relative path to your Android.mk file. Gradle also includes the Application.mk file if it is located in the same directory as your Android.mk file.</p>
+</blockquote>
+
+<h4 id="specify-optional-configurations">Specify optional configurations</h4>
+
+<p>specify optional arguments and flags for CMake or ndk-build by configuring another externalNativeBuild block within the defaultConfig block of your module-level build.gradle file. Similar to other properties in the defaultConfig block, you can override these properties for each product flavor in your build configuration.</p>
+
+<p>if your CMake or ndk-build project defines multiple native libraries and executables, you can use the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ExternalNativeCmakeOptions.html#com.android.build.gradle.internal.dsl.ExternalNativeCmakeOptions:targets">targets property</a> to build and package only a subset of those artifacts for a given product flavor. The following code sample describes some of the properties you can configure:</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre></td><td class="code"><pre><span class="n">android</span> <span class="o">{</span>
+  <span class="o">...</span>
+  <span class="n">defaultConfig</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="c1">// This block is different from the one you use to link Gradle</span>
+    <span class="c1">// to your CMake or ndk-build script.</span>
+    <span class="n">externalNativeBuild</span> <span class="o">{</span>
+
+      <span class="c1">// For ndk-build, instead use the ndkBuild block.</span>
+      <span class="n">cmake</span> <span class="o">{</span>
+
+        <span class="c1">// Passes optional arguments to CMake.</span>
+        <span class="n">arguments</span> <span class="s2">"-DANDROID_ARM_NEON=TRUE"</span><span class="o">,</span> <span class="s2">"-DANDROID_TOOLCHAIN=clang"</span>
+
+        <span class="c1">// Sets a flag to enable format macro constants for the C compiler.</span>
+        <span class="n">cFlags</span> <span class="s2">"-D__STDC_FORMAT_MACROS"</span>
+
+        <span class="c1">// Sets optional flags for the C++ compiler.</span>
+        <span class="n">cppFlags</span> <span class="s2">"-fexceptions"</span><span class="o">,</span> <span class="s2">"-frtti"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="n">buildTypes</span> <span class="o">{...}</span>
+
+  <span class="n">productFlavors</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">demo</span> <span class="o">{</span>
+      <span class="o">...</span>
+      <span class="n">externalNativeBuild</span> <span class="o">{</span>
+        <span class="n">cmake</span> <span class="o">{</span>
+          <span class="o">...</span>
+          <span class="c1">// Specifies which native libraries or executables to build and package</span>
+          <span class="c1">// for this product flavor. The following tells Gradle to build only the</span>
+          <span class="c1">// "native-lib-demo" and "my-executible-demo" outputs from the linked</span>
+          <span class="c1">// CMake project. If you don't configure this property, Gradle builds all</span>
+          <span class="c1">// executables and shared object libraries that you define in your CMake</span>
+          <span class="c1">// (or ndk-build) project. However, by default, Gradle packages only the</span>
+          <span class="c1">// shared libraries in your APK.</span>
+          <span class="n">targets</span> <span class="s2">"native-lib-demo"</span><span class="o">,</span>
+                  <span class="c1">// You need to specify this executable and its sources in your CMakeLists.txt</span>
+                  <span class="c1">// using the add_executable() command. However, building executables from your</span>
+                  <span class="c1">// native sources is optional, and building native libraries to package into</span>
+                  <span class="c1">// your APK satisfies most project requirements.</span>
+                  <span class="s2">"my-executible-demo"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">paid</span> <span class="o">{</span>
+      <span class="o">...</span>
+      <span class="n">externalNativeBuild</span> <span class="o">{</span>
+        <span class="n">cmake</span> <span class="o">{</span>
+          <span class="o">...</span>
+          <span class="n">targets</span> <span class="s2">"native-lib-paid"</span><span class="o">,</span>
+                  <span class="s2">"my-executible-paid"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="c1">// Use this block to link Gradle to your CMake or ndk-build script.</span>
+  <span class="n">externalNativeBuild</span> <span class="o">{</span>
+    <span class="n">cmake</span> <span class="o">{...}</span>
+    <span class="c1">// or ndkBuild {...}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>To learn more about configuring product flavors and build variants, go to <a href="https://developer.android.com/studio/build/build-variants.html">Configure Build Variants</a>. For a list of variables you can configure for CMake with the arguments property, see <a href="https://developer.android.com/ndk/guides/cmake.html#variables">Using CMake Variables</a>.</p>
+
+<h4 id="include-prebuilt-native-libraries">Include prebuilt native libraries</h4>
+
+<p>If you want Gradle to package prebuilt native libraries with your APK, <a href="https://developer.android.com/studio/build/build-variants.html#configure-sourcesets">modify the default source set configuration</a> to include the directory of your prebuilt .so files, as shown below. Keep in mind, you don’t need to do this to include artifacts of CMake build scripts that you link to Gradle.</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="n">android</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="k">sourceSets</span> <span class="o">{</span>
+        <span class="n">main</span> <span class="o">{</span>
+            <span class="n">jniLibs</span><span class="o">.</span><span class="na">srcDirs</span> <span class="s1">'imported-lib/src/'</span><span class="o">,</span> <span class="s1">'more-imported-libs/src/'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="specify-abis">Specify ABIs</h4>
+
+<p>By default, Gradle builds your native library into separate .so files for the <a href="https://developer.android.com/ndk/guides/abis.html#sa">ABIs the NDK supports</a> and packages them all into your APK. If you want Gradle to build and package only certain ABI configurations of your native libraries, you can specify them with the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.NdkOptions.html">ndk.abiFilters</a> flag in your module-level build.gradle file, as shown below:</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="n">android</span> <span class="o">{</span>
+  <span class="o">...</span>
+  <span class="n">defaultConfig</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">externalNativeBuild</span> <span class="o">{</span>
+      <span class="n">cmake</span> <span class="o">{...}</span>
+      <span class="c1">// or ndkBuild {...}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Similar to other properties in the defaultConfig block,</span>
+    <span class="c1">// you can configure the ndk block for each product flavor</span>
+    <span class="c1">// in your build configuration.</span>
+    <span class="n">ndk</span> <span class="o">{</span>
+      <span class="c1">// Specifies the ABI configurations of your native</span>
+      <span class="c1">// libraries Gradle should build and package with your APK.</span>
+      <span class="n">abiFilters</span> <span class="s1">'x86'</span><span class="o">,</span> <span class="s1">'x86_64'</span><span class="o">,</span> <span class="s1">'armeabi'</span><span class="o">,</span> <span class="s1">'armeabi-v7a'</span><span class="o">,</span>
+                   <span class="s1">'arm64-v8a'</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="n">buildTypes</span> <span class="o">{...}</span>
+  <span class="n">externalNativeBuild</span> <span class="o">{...}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>In most cases, you only need to specify abiFilters in the ndk block, as shown above, because it tells Gradle to both build and package those versions of your native libraries. However, if you want to control what Gradle should build, independently of what you want it to package into your APK, configure another abiFilters flag in the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ExternalNativeCmakeOptions.html#com.android.build.gradle.internal.dsl.ExternalNativeCmakeOptions:abiFilters">defaultConfig.externalNativeBuild.cmake block</a> (or <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ExternalNativeNdkBuildOptions.html#com.android.build.gradle.internal.dsl.ExternalNativeNdkBuildOptions:abiFilters">defaultConfig.externalNativeBuild.ndkBuild block</a>). Gradle builds those ABI configurations but only packages the ones you specify in the <a href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.NdkOptions.html">defaultConfig.ndk block</a>.</p>
+
+<p>To further reduce the size of your APK, consider <a href="https://developer.android.com/studio/build/configure-apk-splits.html#configure-abi-split">configuring multiple APKs based on ABI</a>—instead of creating one large APK with the all versions of your native libraries, Gradle creates a separate APK for each ABI you want to support and only packages the files each ABI needs. If you configure multiple APKs per ABI without specifying the abiFilters flag as shown in the code sample above, Gradle builds all supported ABI versions of your native libraries, but only packages those you specify in your multiple APK configuration. To avoid building versions of your native libraries that you don’t want, provide the same list of ABIs for both the abiFilters flag and your per-ABI multiple APK configuration.</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a><a href="/tags#jni" title="Pages tagged jni" class="tag"><span class="term">jni</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

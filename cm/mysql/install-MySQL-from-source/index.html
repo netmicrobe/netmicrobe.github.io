@@ -1,0 +1,1275 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>从源码安装MySQL &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, mysql">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从源码安装MySQL">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/mysql/install-MySQL-from-source/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/mysql/install-MySQL-from-source/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">从源码安装MySQL</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2016-11-22T00:00:00+08:00">November 22, 2016</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="http://dev.mysql.com/doc/refman/5.7/en/multiple-servers.html">Running Multiple MySQL Instances on One Machine</a></li>
+      <li><a href="http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/">A Quick Guide to Using the MySQL Yum Repository</a></li>
+      <li><a href="https://dev.mysql.com/doc/refman/5.5/en/source-installation.html">Installing MySQL from Source - MySQL 5.5</a></li>
+      <li><a href="http://dev.mysql.com/doc/refman/5.7/en/problems-with-mysql-sock.html">Installing MySQL from Source - MySQL 5.7</a></li>
+      <li><a href="https://dev.mysql.com/doc/internals/en/storage-engine-options.html">with-plugins 编译参数说明</a></li>
+      <li><a href="https://nacko.net/running-multiple-mysql-instances-on-centos-6-rhel-6/">Running Multiple MySQL Instances on CentOS 6 / RHEL 6</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="从源代码安装">从源代码安装</h2>
+
+<h3 id="官方文档的安装过程">官方文档的安装过程</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="c"># Preconfiguration setup</span>
+<span class="gp">shell&gt; </span>groupadd mysql
+<span class="gp">shell&gt; </span>useradd -g mysql mysql
+
+<span class="c"># Beginning of source-build specific instructions</span>
+<span class="gp">shell&gt; </span>tar zxvf mysql-VERSION.tar.gz
+<span class="gp">shell&gt; </span><span class="nb">cd </span>mysql-VERSION
+<span class="gp">shell&gt; </span>./configure --prefix<span class="o">=</span>/usr/local/mysql
+<span class="gp">shell&gt; </span>make
+<span class="gp">shell&gt; </span>make install
+
+<span class="c"># End of source-build specific instructions</span>
+<span class="c"># Postinstallation setup</span>
+<span class="gp">shell&gt; </span><span class="nb">cd</span> /usr/local/mysql
+<span class="gp">shell&gt; </span>chown -R mysql .
+<span class="gp">shell&gt; </span>chgrp -R mysql .
+<span class="gp">shell&gt; </span>bin/mysql_install_db --user<span class="o">=</span>mysql
+<span class="gp">shell&gt; </span>chown -R root .
+<span class="gp">shell&gt; </span>chown -R mysql var
+
+<span class="c"># Next command is optional</span>
+<span class="gp">shell&gt; </span>cp support-files/my-medium.cnf /etc/my.cnf
+<span class="gp">shell&gt; </span>bin/mysqld_safe --user<span class="o">=</span>mysql &amp;
+
+<span class="c"># Next command is optional</span>
+<span class="gp">shell&gt; </span>cp support-files/mysql.server /etc/init.d/mysql.server
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="mysql-5555-从源代码安装过程">mysql 5.5.55 从源代码安装过程</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td class="code"><pre>
+# Preconfiguration setup
+shell&gt; groupadd mysql
+shell&gt; useradd -r -g mysql -s /bin/false mysql
+
+# Beginning of source-build specific instructions
+shell&gt; tar zxvf mysql-VERSION.tar.gz
+shell&gt; cd mysql-VERSION
+
+shell&gt; cmake . -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DMYSQL_DATADIR=/opt/mysql-5.5.55/data/ \
+-DCMAKE_INSTALL_PREFIX=/opt/mysql-5.5.55 -DINSTALL_LAYOUT=STANDALONE -DENABLED_PROFILING=ON \
+-DMYSQL_MAINTAINER_MODE=OFF -DWITH_DEBUG=OFF \
+-DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DENABLED_LOCAL_INFILE=TRUE -DWITH_ZLIB=bundled \
+-DWITH_EXTRA_CHARSETS=all
+
+shell&gt; make
+shell&gt; make install
+
+# End of source-build specific instructions
+# Postinstallation setup
+shell&gt; cd /opt/mysql-5.5.55
+shell&gt; chown -R mysql .
+shell&gt; chgrp -R mysql .
+shell&gt; scripts/mysql_install_db --user=mysql
+shell&gt; chown -R root .
+shell&gt; chown -R mysql data
+
+# Next command is optional
+shell&gt; cp support-files/my-medium.cnf /etc/my.cnf
+shell&gt; bin/mysqld_safe --user=mysql &amp;
+
+# Next command is optional
+shell&gt; cp support-files/mysql.server /etc/init.d/mysql.server
+
+# use service
+shell&gt; service mysql.server status 或 start 或 stop
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="mysql-5718-从源代码安装过程">mysql 5.7.18 从源代码安装过程</h4>
+
+<ul>
+  <li>这个例子使用的是带 boost 的版本， <strong>mysql-boost-5.7.18.tar.gz</strong></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre></td><td class="code"><pre><span class="c"># Preconfiguration setup</span>
+<span class="gp">shell&gt; </span>groupadd mysql
+<span class="gp">shell&gt; </span>useradd -r -g mysql -s /bin/false mysql
+
+<span class="c"># Beginning of source-build specific instructions</span>
+<span class="gp">shell&gt; </span>tar zxvf mysql-VERSION.tar.gz
+<span class="gp">shell&gt; </span><span class="nb">cd </span>mysql-VERSION
+
+<span class="gp">shell&gt; </span>cmake . -DWITH_ARCHIVE_STORAGE_ENGINE<span class="o">=</span>1 -DWITH_FEDERATED_STORAGE_ENGINE<span class="o">=</span>1 <span class="se">\</span>
+-DWITH_BLACKHOLE_STORAGE_ENGINE<span class="o">=</span>1 -DMYSQL_DATADIR<span class="o">=</span>/opt/mysql/mysql-5.7.18/data/ <span class="se">\</span>
+-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/opt/mysql/mysql-5.7.18 -DINSTALL_LAYOUT<span class="o">=</span>STANDALONE -DENABLED_PROFILING<span class="o">=</span>ON <span class="se">\</span>
+-DMYSQL_MAINTAINER_MODE<span class="o">=</span>OFF -DWITH_DEBUG<span class="o">=</span>OFF <span class="se">\</span>
+-DDEFAULT_CHARSET<span class="o">=</span>utf8 -DDEFAULT_COLLATION<span class="o">=</span>utf8_general_ci -DENABLED_LOCAL_INFILE<span class="o">=</span>TRUE -DWITH_ZLIB<span class="o">=</span>bundled <span class="se">\</span>
+-DWITH_BOOST<span class="o">=</span>boost/boost_1_59_0/ <span class="se">\</span>
+-DWITH_EXTRA_CHARSETS<span class="o">=</span>all
+
+<span class="gp">shell&gt; </span>make
+<span class="gp">shell&gt; </span>make install
+
+<span class="c"># End of source-build specific instructions</span>
+<span class="c"># Postinstallation setup</span>
+<span class="gp">shell&gt; </span><span class="nb">cd</span> /opt/mysql/mysql-5.7.18
+<span class="gp">shell&gt; </span>chown -R mysql .
+<span class="gp">shell&gt; </span>chgrp -R mysql .
+<span class="gp">shell&gt; </span>vim /etc/my.cnf
+
+<span class="o">[</span>mysqld]
+<span class="nv">datadir</span><span class="o">=</span>/var/lib/mysql
+<span class="nv">socket</span><span class="o">=</span>/var/lib/mysql/mysql.sock
+<span class="nv">user</span><span class="o">=</span>mysql
+<span class="c"># Disabling symbolic-links is recommended to prevent assorted security risks</span>
+symbolic-links<span class="o">=</span>0
+
+<span class="o">[</span>mysqld_safe]
+log-error<span class="o">=</span>/var/log/mysqld.log
+pid-file<span class="o">=</span>/var/run/mysqld/mysqld.pid
+
+<span class="gp">shell&gt; </span>./bin/mysql_install_db --defaults-file<span class="o">=</span>/etc/my.cnf --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/var/lib/mysql 
+
+<span class="gp">shell&gt; </span>chown -R mysql data
+
+<span class="c"># Next command is optional</span>
+<span class="gp">shell&gt; </span>cp support-files/my-medium.cnf /etc/my.cnf
+<span class="gp">shell&gt; </span>bin/mysqld_safe --user<span class="o">=</span>mysql &amp;
+
+<span class="c"># Next command is optional</span>
+<span class="gp">shell&gt; </span>cp support-files/mysql.server /etc/init.d/mysql.server
+
+<span class="c"># use service</span>
+<span class="gp">shell&gt; </span>service mysql.server status 或 start 或 stop
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="在-centos-68-上编辑的实际配置">在 CentOS 6.8 上编辑的实际配置</h3>
+
+<h4 id="configure-在-centos-68-上执行的例子">./configure 在 centos 6.8 上执行的例子</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-O3"</span> <span class="nv">CXX</span><span class="o">=</span>gcc <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">"-O3 -felide-constructors </span><span class="se">\</span><span class="s2">
+       -fno-exceptions -fno-rtti"</span> ./configure <span class="se">\</span>
+       --prefix<span class="o">=</span>/usr/local/mysql-5.1.72 --localstatedir<span class="o">=</span>/var/lib/mysql-5.1.72 --enable-assembler <span class="se">\</span>
+       --with-mysqld-ldflags<span class="o">=</span>-all-static <span class="se">\</span>
+       --without-man --without-docs --without-debug <span class="se">\</span>
+       --with-mysqld-user<span class="o">=</span>mysql <span class="se">\</span>
+       --with-charset<span class="o">=</span>utf8 --with-collation<span class="o">=</span>utf8_general_ci <span class="se">\</span>
+       --with-extra-charsets<span class="o">=</span>binary,ascii,latin1,latin2,latin5,latin7,gb2312,gbk,big5 <span class="se">\</span>
+       --with-plugins<span class="o">=</span>csv,myisam,myisammrg,heap,innobase,archive,blackhole <span class="se">\</span>
+       --enable-local-infile --with-low-memory --without-geometry
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="安装后无法启动">安装后，无法启动</h4>
+
+<ul>
+  <li>
+    <p>没有初始化数据文件夹，会报错：</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="o">[</span> root@127: /usr/local/mysql-5.1.72 <span class="o">]</span> <span class="nv">$ </span>./bin/mysqld_safe --defaults-file<span class="o">=</span>/etc/my-5.1.72.cnf 
+161123 16:47:01 mysqld_safe Logging to <span class="s1">'/var/log/mysqld-5.1.72.log'</span>.
+161123 16:47:01 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql-5.1.72
+161123 16:47:02 mysqld_safe mysqld from pid file /var/run/mysqld-5.1.72/mysqld.pid ended
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>初始化数据文件夹</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>mkdir /var/run/mysqld-5.1.72
+chown --reference /var/run/mysqld /var/run/mysqld-5.1.72
+chmod --reference /var/run/mysqld /var/run/mysqld-5.1.72
+mysql_install_db --datadir=/var/lib/mysql-5.1.72 --defaults-file=/etc/my-5.1.72.cnf --user=mysql
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h4 id="安装后配置-mycnf">安装后，配置 my.cnf</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>$ cat /etc/my-5.1.72.cnf 
+
+[mysqld]
+datadir=/var/lib/mysql-5.1.72
+socket=/var/lib/mysql-5.1.72/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+port=3336
+
+[mysqld_safe]
+log-error=/var/log/mysqld-5.1.72.log
+pid-file=/var/run/mysqld-5.1.72/mysqld.pid
+
+
+lower_case_table_names=0
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="启动">启动</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>[ root@127: ] $ /usr/local/mysql-5.1.72/bin/mysqld_safe --defaults-file=/etc/my-5.1.72.cnf 
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="连接数据库">连接数据库</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mysql -u root --port=3336 -p --socket=/var/lib/mysql-5.1.72/mysql.sock
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="修改密码">修改密码</h4>
+
+<p>如果access denied ，无法登陆，尝试修改下密码</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>/usr/local/mysql-5.1.72/bin/mysqladmin --defaults-file=/etc/my-5.1.72.cnf --socket=/var/lib/mysql-5.1.72/mysql.sock -u root password 'your-pass'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="关闭服务器查看服务器状态">关闭服务器、查看服务器状态</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>/usr/local/mysql-5.1.72/bin/mysqladmin --defaults-file=/etc/my-5.1.72.cnf --socket=/var/lib/mysql-5.1.72/mysql.sock -u root -p status
+/usr/local/mysql-5.1.72/bin/mysqladmin --defaults-file=/etc/my-5.1.72.cnf --socket=/var/lib/mysql-5.1.72/mysql.sock -u root -p shutdown
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="使用-yum-安装的mysql文件分布">使用 yum 安装的mysql文件分布</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre>[ root@127: /usr/local ] $ rpm -ql mysql.x86_64
+/usr/bin/msql2mysql
+/usr/bin/my_print_defaults
+/usr/bin/mysql
+/usr/bin/mysql_config
+/usr/bin/mysql_find_rows
+/usr/bin/mysql_waitpid
+/usr/bin/mysqlaccess
+/usr/bin/mysqladmin
+/usr/bin/mysqlbinlog
+/usr/bin/mysqlcheck
+/usr/bin/mysqldump
+/usr/bin/mysqlimport
+/usr/bin/mysqlshow
+/usr/bin/mysqlslap
+/usr/lib64/mysql/mysql_config
+/usr/lib64/mysql/mysqlbug
+/usr/share/doc/mysql-5.1.73
+/usr/share/doc/mysql-5.1.73/COPYING
+/usr/share/doc/mysql-5.1.73/README
+/usr/share/doc/mysql-5.1.73/README.mysql-docs
+/usr/share/doc/mysql-5.1.73/README.mysql-license
+/usr/share/man/man1/my_print_defaults.1.gz
+/usr/share/man/man1/mysql.1.gz
+/usr/share/man/man1/mysql_config.1.gz
+/usr/share/man/man1/mysql_find_rows.1.gz
+/usr/share/man/man1/mysql_waitpid.1.gz
+/usr/share/man/man1/mysqlaccess.1.gz
+/usr/share/man/man1/mysqladmin.1.gz
+/usr/share/man/man1/mysqldump.1.gz
+/usr/share/man/man1/mysqlshow.1.gz
+/usr/share/man/man1/mysqlslap.1.gz
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="trouble-shooting">Trouble Shooting</h2>
+
+<h3 id="运行-configure-时报错-cannot-remove-libtoolt-no-such-file-or-directory-error">运行 configure 时，报错 cannot remove ‘libtoolT’: No such file or directory error</h3>
+
+<ul>
+  <li>参考<br />
+<a href="http://oldhammade.net/blog/2013/04/30/mysql-the-libtoolt-error-on-x86-64.html">http://oldhammade.net/blog/2013/04/30/mysql-the-libtoolt-error-on-x86-64.html</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>[mysql-x.x.x]# libtoolize --force
+Using `AC_PROG_RANLIB' is rendered obsolete by `AC_PROG_LIBTOOL'
+You should update your `aclocal.m4' by running aclocal.
+[mysql-x.x.x]# aclocal
+[mysql-x.x.x]# cp BUILD/compile-pentium64 ./compile
+[mysql-x.x.x]# autoreconf
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="redmine-报错">redmine 报错</h3>
+
+<ul>
+  <li>
+    <p>错误日志</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre>Started GET "/redmine/issues/4492" for 127.0.0.1 at 2016-11-24 19:27:56 +0800
+
+Mysql2::Error (Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)):
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `connect'
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `initialize'
+  activerecord (3.2.16) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `new'
+  activerecord (3.2.16) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `mysql2_connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:315:in `new_connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:325:in `checkout_new_connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:247:in `block (2 levels) in checkout'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:242:in `loop'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:242:in `block in checkout'
+  /usr/local/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:239:in `checkout'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:102:in `block in connection'
+  /usr/local/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:101:in `connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_pool.rb:410:in `retrieve_connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_specification.rb:171:in `retrieve_connection'
+  activerecord (3.2.16) lib/active_record/connection_adapters/abstract/connection_specification.rb:145:in `connection'
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>解决方法</p>
+
+    <ul>
+      <li>参考：&lt;http://stackoverflow.com/a/6412218</li>
+    </ul>
+
+    <p>修改 redmine-home/config/database.yml ，添加 socket 配置。</p>
+
+    <p><code class="highlighter-rouge">
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  username: redmine
+  password: "your-pass"
+  encoding: utf8
+  socket: /var/lib/mysql-5.1.72/mysql.sock
+</code>&gt;</p>
+  </li>
+</ul>
+
+<h3 id="php-报错-error-message-2002---cant-connect-to-local-mysql-server-through-socket">php 报错 ，Error Message: 2002 - Can’t connect to local MySQL server through socket</h3>
+
+<ul>
+  <li>
+    <p>报错</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>Connect to database testlink on Host localhost fails 
+DBMS Error Message: 2002 - Can't connect to local MySQL server through socket '/var/lib/mysql-5.1.72/mysql.sock' (13)
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>﻿Connect Error(2002) Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>yii framework 报错
+
+CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>解决方法</p>
+
+    <p>将连接配置中 host 由 localhost 该为 127.0.0.1 可解决。</p>
+
+    <p>但是如何让php-mysql的模块，不使用默认 socket ‘/var/lib/mysql/mysql.sock’ 没找到啊～～</p>
+
+    <p>配置了 php.ini 中 mysql.default_socket=/where/socket/file，没用！！</p>
+  </li>
+</ul>
+
+<h3 id="php-报错在-mysql-57">php 报错，在 mysql 5.7</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>Thu Nov 24 21:05:49 2016] [notice] Apache/2.2.15 (Unix) DAV/2 PHP/5.3.3 mod_ssl/2.2.15 OpenSSL/1.0.1e-fips SVN/1.8.13 configured -- resuming normal operations
+[Thu Nov 24 21:05:57 2016] [error] [client 192.168.247.231] PHP Fatal error:  Call to undefined function mysql_connect() in /opt/server/testlink/testlink.1.9.5/testlink
+/testlink-1.9.5/third_party/adodb/drivers/adodb-mysql.inc.php on line 364
+[Thu Nov 24 21:06:03 2016] [error] [client 192.168.247.231] PHP Fatal error:  Call to undefined function mysql_connect() in /opt/server/testlink/testlink.1.9.5/testlink
+/testlink-1.9.5/third_party/adodb/drivers/adodb-mysql.inc.php on line 364, referer: http://192.168.251.72/testlink/
+[Thu Nov 24 21:06:09 2016] [error] [client 192.168.247.231] PHP Fatal error:  Call to undefined function mysql_connect() in /opt/server/testlink/testlink.1.9.5/testlink
+/testlink-1.9.5/third_party/adodb/drivers/adodb-mysql.inc.php on line 364, referer: http://192.168.251.72/testlink/
+[Thu Nov 24 21:07:00 2016] [error] [client 192.168.247.231] PHP Fatal error:  Call to undefined function mysql_connect() in /opt/server/testlink/testlink.1.9.5/testlink
+/testlink-1.9.5/third_party/adodb/drivers/adodb-mysql.inc.php on line 364
+[Thu Nov 24 21:07:02 2016] [error] [client 192.168.247.231] PHP Fatal error:  Call to undefined function mysql_connect() in /opt/server/testlink/testlink.1.9.5/testlink
+/testlink-1.9.5/third_party/adodb/drivers/adodb-mysql.inc.php on line 364
+[Thu Nov 24 21:09:32 2016] [error] [client 192.168.247.231] Directory index forbidden by Options directive: /opt/server/wiphone/wiphone/php_source/
+[Thu Nov 24 21:09:37 2016] [error] [client 192.168.247.231] Directory index forbidden by Options directive: /opt/server/wiphone/wiphone/php_source/
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#mysql" title="Pages tagged mysql" class="tag"><span class="term">mysql</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,947 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>华为手机解锁、root &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="adb, fastboot, bootloader, root, unlock">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为手机解锁、root">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/android/Huawei-phone-unlock-root/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/android/Huawei-phone-unlock-root/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">华为手机解锁、root</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-04-17T00:00:00+08:00">April 17, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://tektab.com/2015/10/31/android-bootloaderfastboot-mode-and-recovery-mode-explained/">https://tektab.com/2015/10/31/android-bootloaderfastboot-mode-and-recovery-mode-explained/</a></li>
+      <li><a href="https://club.huawei.com/thread-14889191-1-1.html">自己动手，制作内置root权限的ramdisk.img(boot.img)</a></li>
+      <li><a href="https://forum.xda-developers.com/honor-view-10/development">XDA - Honor View 10 ROMs, Kernels, Recoveries, &amp; Other Development</a></li>
+      <li><a href="http://www.huaweirom.com/honorv10/">华为刷机网 - 荣耀V10</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="解锁地址">解锁地址</h2>
+
+<ul>
+  <li><a href="https://www.emui.com/plugin.php?id=unlock&amp;mod=unlock&amp;action=apply">https://www.emui.com/plugin.php?id=unlock&amp;mod=unlock&amp;action=apply</a></li>
+  <li><a href="http://www.emui.com/plugin.php?id=unlock">http://www.emui.com/plugin.php?id=unlock</a></li>
+  <li><a href="https://www.emui.com/cn/plugin/unlock/index">https://www.emui.com/cn/plugin/unlock/index</a></li>
+</ul>
+
+<p>华为 2018-05-24公告：对所有2018年5月24日后新上市产品停止解锁码服务，已经上市产品自公告发布之日起60天后停止解锁码服务。</p>
+
+<h2 id="解锁">解锁</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="http://www.114shouji.com/view-385-1.html">http://www.114shouji.com/view-385-1.html</a></li>
+      <li><a href="http://www.shuaji.com/jiaocheng/5658.htm">http://www.shuaji.com/jiaocheng/5658.htm</a></li>
+    </ul>
+  </li>
+  <li>测试通过
+    <ul>
+      <li>畅享6s</li>
+      <li>荣耀V10</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>获取解锁码</p>
+
+    <ol>
+      <li>用华为账号在新手机登录使用华为云服务14天，才可以申请解锁码。</li>
+      <li>登录 <a href="http://www.emui.com/plugin.php?id=unlock">http://www.emui.com/plugin.php?id=unlock</a> 获取解锁码</li>
+    </ol>
+  </li>
+  <li>
+    <p>打开开发者模式</p>
+  </li>
+  <li>
+    <p>进入 fastboot 模式</p>
+
+    <p>方法1：关机状态下，同进按下：音量减键和开机键，进入fastboot刷机模式，用数据线连接电脑。<br />
+ 方法2：</p>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> adb reboot bootloader
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>手机重启后进入 fastboot 模式</p>
+  </li>
+  <li>
+    <p>检查fastboot模式下是否能识别手机，<code class="highlighter-rouge">fastboot devices</code></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> C:\Users\jack&gt;fastboot devices
+ DWH9X19320S05914        fastboot
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p>如果无法列出连接的设备，很可能驱动没有。可以先安装下华为的手机助手 HiSuite。</p>
+  </li>
+  <li>
+    <p>解锁</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> fastboot oem unlock &lt;解锁码&gt;
+    
+ ... 手机上显示确认界面，使用音量键选择 YES ,电源键确认，解锁成功后，开始低级格式化。
+    
+ (bootloader)  Unlock success , the device will reboot and factory reset
+ OKAY [ 62.000s]
+ finished. total time: 62.003s
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <p><span style="color:red">
+ 注意：解锁完成后，华为直接进行 <strong>低级格式化，数据全没</strong>。
+ </span></p>
+
+    <p><img src="changxiang6s.png" alt="" /><br />
+ <img src="rongyao_v10.png" alt="" /></p>
+  </li>
+  <li>
+    <p>打开开发者模式</p>
+  </li>
+  <li>
+    <p>检查解锁是否成功。</p>
+
+    <p><code class="highlighter-rouge">adb reboot bootloader</code> ，重启后界面上Android机器人下面显示“PHONE Unlocked”<br />
+ <code class="highlighter-rouge">fastboot oem get-bootinfo</code> ，显示 <code class="highlighter-rouge">(bootloader)  Lock state is unlock</code></p>
+  </li>
+</ol>
+
+<h2 id="畅享6s-root-未成功待续">畅享6s ROOT （未成功，待续）</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="http://www.shuajizhijia.net/news/18413.html">华为畅享6S刷recovery教程 畅享6S第三方recovery下载</a></li>
+      <li><a href="http://www.shuajizhijia.net/news/18410.html">华为畅享6S root教程 华为畅享6S获取root权限的方法</a></li>
+      <li><a href="http://www.supersu.com/">SuperSu</a></li>
+      <li><a href="http://www.twrprecovery.com/">TWRP Recovery</a></li>
+      <li><a href="https://www.howtogeek.com/115297/how-to-root-your-android-why-you-might-want-to/">https://www.howtogeek.com/115297/how-to-root-your-android-why-you-might-want-to/</a></li>
+      <li><a href="https://www.squto.com/supersu-zip-download-install-guide/">https://www.squto.com/supersu-zip-download-install-guide/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>前提：手机已解锁</p>
+</blockquote>
+
+<ol>
+  <li>刷入第三方 Recovery（此处使用TWRP，其他recovery还有：CWM）
+    <ol>
+      <li>下载recovery工具包 <code class="highlighter-rouge">TWRP-recovery-new.img</code> <strong>20.9 MB (21,972,992 字节)</strong><br />
+ <a href="https://pan.baidu.com/s/1bQkBvS">https://pan.baidu.com/s/1bQkBvS</a></li>
+      <li>进入 fastboot 模式： <code class="highlighter-rouge">adb reboot bootloader</code></li>
+      <li>检查手机是否连接正常：<code class="highlighter-rouge">fastboot devices</code><br />
+ 没有显示设备，检查驱动是否安装正确。</li>
+      <li>安装TWRP Recovery： <code class="highlighter-rouge">fastboot flash recovery TWRP-recovery-new.img</code>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre> fastboot flash recovery TWRP-recovery-new.img
+
+ target reported max download size of 532676608 bytes
+ sending 'recovery' (21458 KB)...
+ OKAY [ 0.735s ]
+ writing 'recovery'...
+ OKAY [ 0.655s ]
+ finished. total time: 1.396s
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>重启 <code class="highlighter-rouge">fastboot reboot</code></li>
+    </ol>
+  </li>
+  <li>刷入 su 工具包（未成功）
+    <ul>
+      <li>SuperSu （未成功）
+        <ul>
+          <li>Root-SuperSU-v2.71.zip
+            <ol>
+              <li>拷贝 SuperSu 的zip包</li>
+              <li>进入 recovery 模式： <code class="highlighter-rouge">adb reboot recovery</code></li>
+              <li>进入 TWRP 界面，选择“安装”，浏览文件系统，选择 zip 文件</li>
+              <li>安装完成，重启手机。</li>
+              <li>【失败】手机无法启动，一直停留在华为菊花启动屏幕。</li>
+            </ol>
+          </li>
+          <li>SuperSU-v2.79-201612051815.zip
+            <ol>
+              <li>
+                <p>【失败】启动后，执行 <code class="highlighter-rouge">adb shell su</code>，提示 not found<br />
+ 刷SuperSu root包时，疑似有错误：</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> *******************
+ Boot image patcher
+ *******************
+ - Finding boot image
+ --- Boot image: /dev/block/mmcblk0p30
+ - Extracting ramdisk
+ --- Failure, aborting
+</pre></td></tr></tbody></table>
+</div>
+                </div>
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>KingRoot （未成功）
+        <ol>
+          <li>进入 TWRP 界面，选择“安装” 》 “刷入Image”</li>
+          <li>选择之前拷贝到手机根目录的 boot.img 文件</li>
+          <li>选择要刷入镜像的分区：Boot</li>
+          <li>滑动确认刷入</li>
+          <li>刷入成功，返回到文件选择界面，点击 “安装zip包”</li>
+          <li>选择之前拷贝到手机根目录的 kingroot.zip 文件</li>
+          <li>滑动确认刷入</li>
+          <li>
+            <p>【失败】刷完重启，su 命令执行很长时间后，返回：”Connection to ui timed out”<br />
+ 刷boot.img包时，疑似有错误：</p>
+
+            <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>   *******************
+   Boot image patcher
+   *******************
+   - Finding boot image
+   --- Boot image: /dev/block/mmcblk0p30
+   - Extracting ramdisk
+   --- Failure, aborting
+</pre></td></tr></tbody></table>
+</div>
+            </div>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>虽然2种boot包都失败，但是系统的root状态已经从UNROOT 变为 ROOT</p>
+
+        <p>进入 fastboot 模式查看是否是root状态</p>
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>adb reboot bootloader
+fastboot oem get-bootinfo
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+
+        <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Root State: ROOT   # 原来是 UNROOT
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="畅享6s-刷机">畅享6s 刷机</h2>
+
+<p>同时按下【音量上】【开机键】，启动进入 TWRP</p>
+
+<ul>
+  <li>用 TWRP recovery 刷入如下的zip包就好了。
+    <ul>
+      <li><a href="http://cn.ui.vmall.com/thread-12692073-1-1.html">EMUI4.1 B163卡刷包，root +xposed</a></li>
+      <li><a href="http://cn.club.vmall.com/thread-12927426-1-1.html">EMUI4.1 B164卡刷包，root +xposed</a></li>
+      <li><a href="http://club.huawei.com/thread-13777410-1-2.html">EMUI4.1 B180卡刷包，root +xposed</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="荣耀v10-root">荣耀V10 Root</h2>
+
+<ul>
+  <li>
+    <p><a href="https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445">official Magisk Release / Announcement</a></p>
+  </li>
+  <li><a href="https://dl.twrp.me/berkeley/">TWRP for berkeley</a></li>
+  <li>
+    <p><a href="https://dl.twrp.me/berkeley/twrp-3.2.1-1-berkeley.img.html">Download twrp-3.2.1-1-berkeley.img</a></p>
+  </li>
+  <li><a href="http://pro-teammt.ru/firmware-database/?firmware_model=BKL-AL20&amp;firmware_page=0">荣耀V10 官方 update.zip 下载</a></li>
+  <li>
+    <p><a href="https://forum.xda-developers.com/showthread.php?t=2433454">Huawei Update Extractor</a></p>
+  </li>
+  <li>
+    <p><a href="http://update.hicloud.com:8180/TDS/data/files/p3/s15/G2029/g1642/v126587/f1/full/update.zip">BKL-AL20C00B160 (8.0.0.160) FullOTA-MF update.zip</a></p>
+  </li>
+  <li><a href="https://github.com/cofface/android_bootimg">Andorid unpack/repack boot/rececovery.img for windows</a></li>
+</ul>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="手动进入-recovery-模式">手动进入 recovery 模式</h3>
+
+<p>先把手机关机，然后手机在关机的状态下按住手机的<br />
+“音量上键” + “电源键” 不放，过一会手机即可进入recovery的界面：</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#adb" title="Pages tagged adb" class="tag"><span class="term">adb</span></a><a href="/tags#fastboot" title="Pages tagged fastboot" class="tag"><span class="term">fastboot</span></a><a href="/tags#bootloader" title="Pages tagged bootloader" class="tag"><span class="term">bootloader</span></a><a href="/tags#root" title="Pages tagged root" class="tag"><span class="term">root</span></a><a href="/tags#unlock" title="Pages tagged unlock" class="tag"><span class="term">unlock</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

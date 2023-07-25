@@ -1,0 +1,1316 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Go 使用入门 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="go, go-lang">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go 使用入门">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/go/go-language/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/go/go-language/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Go 使用入门</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-05-17T00:00:00+08:00">May 17, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li><a href="https://golang.org/doc/code.html">How to Write Go Code</a></li>
+  <li><a href="https://golangbot.com/">golangbot.com</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<h2 id="hello-world">Hello World</h2>
+
+<ul>
+  <li>文件 main.go</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+</span><span class="c">// this is a comment</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Hello, World"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>main.go 放到 workspace <code class="highlighter-rouge">$GOPATH</code> 目录下的 src/golang-book/chapter1/</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nb">cd </span>src/golang-book/chapter1
+go run main.go
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="hello-library">Hello Library</h3>
+
+<ol>
+  <li>
+    <p>创建package路径 (如，github.com/user/stringutil)</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> $ mkdir -p $GOPATH/src/github.com/user/stringutil
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>create a file named reverse.go in that directory</p>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="x"> </span><span class="c">// Package stringutil contains utility functions for working with strings.</span><span class="x">
+ </span><span class="k">package</span><span class="x"> </span><span class="n">stringutil</span><span class="x">
+
+ </span><span class="c">// Reverse returns its argument string reversed rune-wise left to right.</span><span class="x">
+ </span><span class="k">func</span><span class="x"> </span><span class="n">Reverse</span><span class="p">(</span><span class="n">s</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="p">{</span><span class="x">
+   </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="p">[]</span><span class="kt">rune</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="x">
+   </span><span class="k">for</span><span class="x"> </span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="n">j</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="m">0</span><span class="p">,</span><span class="x"> </span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">-</span><span class="m">1</span><span class="p">;</span><span class="x"> </span><span class="n">i</span><span class="x"> </span><span class="o">&lt;</span><span class="x"> </span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">;</span><span class="x"> </span><span class="n">i</span><span class="p">,</span><span class="x"> </span><span class="n">j</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">i</span><span class="o">+</span><span class="m">1</span><span class="p">,</span><span class="x"> </span><span class="n">j</span><span class="o">-</span><span class="m">1</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="x"> </span><span class="n">r</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">r</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="x"> </span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="x">
+   </span><span class="p">}</span><span class="x">
+   </span><span class="k">return</span><span class="x"> </span><span class="kt">string</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="x">
+ </span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>编译</p>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="x"> </span><span class="err">$</span><span class="x"> </span><span class="k">go</span><span class="x"> </span><span class="n">build</span><span class="x"> </span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">stringutil</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>引用package</p>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="x"> </span><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+ </span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+   </span><span class="s">"fmt"</span><span class="x">
+
+   </span><span class="s">"github.com/user/stringutil"</span><span class="x">
+ </span><span class="p">)</span><span class="x">
+
+ </span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+   </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">stringutil</span><span class="o">.</span><span class="n">Reverse</span><span class="p">(</span><span class="s">"!oG ,olleH"</span><span class="p">))</span><span class="x">
+ </span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="x"> </span><span class="err">$</span><span class="x"> </span><span class="k">go</span><span class="x"> </span><span class="n">install</span><span class="x"> </span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">netmicrobe</span><span class="o">/</span><span class="n">hello</span><span class="x">
+ </span><span class="err">$</span><span class="x"> </span><span class="n">hello</span><span class="x">
+ </span><span class="n">Hello</span><span class="p">,</span><span class="x"> </span><span class="n">Go</span><span class="o">!</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="go的简单介绍">Go的简单介绍</h2>
+
+<ul>
+  <li>机器上所有的Go代码，通常都放到一个workspace目录（即 <code class="highlighter-rouge">$GOPATH</code>）下面。</li>
+  <li>
+    <p>workspace目录可以有很多版本库，每个版本库可以有很多package。</p>
+  </li>
+  <li>package
+    <ul>
+      <li>package 的路径下存放Go源代码文件，每个源码文件第一行必须是 <code class="highlighter-rouge">package your-package-name</code></li>
+      <li>package 路径决定<code class="highlighter-rouge">import</code>路径。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="workspace">workspace</h3>
+
+<p>A workspace is a directory hierarchy with two directories at its root:</p>
+
+<ul>
+  <li>src contains Go source files
+    <ul>
+      <li>The src subdirectory typically contains multiple version control repositories (such as for Git or Mercurial) that track the development of one or more source packages.</li>
+    </ul>
+  </li>
+  <li>bin contains executable commands.
+    <ul>
+      <li>The go tool builds and installs binaries to the bin directory.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>一个workspace目录结构的例子：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre>bin/
+    hello                          # command executable
+    outyet                         # command executable
+src/
+    github.com/golang/example/
+        .git/                      # Git repository metadata
+        hello/
+            hello.go               # command source
+        outyet/
+            main.go                # command source
+            main_test.go           # test source
+        stringutil/
+            reverse.go             # package source
+            reverse_test.go        # test source
+    golang.org/x/image/
+        .git/                      # Git repository metadata
+        bmp/
+            reader.go              # package source
+            writer.go              # package source
+          ... (many more repositories and packages omitted) ...
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>The tree above shows a workspace containing two repositories (example and image).</li>
+  <li>The example repository contains two commands (hello and outyet) and one library (stringutil).
+    <ul>
+      <li>Commands and libraries 是另外一种类型的package。</li>
+    </ul>
+  </li>
+  <li>
+    <p>The image repository contains the bmp package and several others.</p>
+  </li>
+  <li><strong>Note</strong> that symbolic links should not be used to link files or directories into your workspace.</li>
+</ul>
+
+<h4 id="the-gopath-environment-variable">The GOPATH environment variable</h4>
+
+<ul>
+  <li>The GOPATH environment variable specifies the location of your workspace.</li>
+  <li>It defaults to a directory named go inside your home directory, so <code class="highlighter-rouge">$HOME/go</code> on Unix, and <code class="highlighter-rouge">%USERPROFILE%\go</code> (usually C:\Users\YourName\go) on Windows.</li>
+  <li><strong>Note</strong> that GOPATH must not be the same path as your Go installation.</li>
+  <li>The command <code class="highlighter-rouge">go env GOPATH</code> prints the effective current GOPATH</li>
+  <li>为了调测方便，一般将 <code class="highlighter-rouge">$GOPATH/bin</code> 设置到系统 <code class="highlighter-rouge">$PATH</code>
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ export PATH=$PATH:$(go env GOPATH)/bin
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<p>如何自定义 GOPATH ，参考： <a href="https://golang.org/wiki/SettingGOPATH">set the GOPATH environment variable</a></p>
+
+<h3 id="package">Package</h3>
+
+<ul>
+  <li>The first statement in a Go source file must be <code class="highlighter-rouge">package name</code></li>
+  <li>Executable commands must always use <code class="highlighter-rouge">package main</code>.</li>
+</ul>
+
+<h3 id="import">import</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>import (
+  "log" // Go Built-in package
+  "fmt"
+  _ "package-not-used-but-wanna-load" // 没用到，但是想初始化（调用包中各文件的init）进来的package，在前头写个下划线
+)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>An <strong>import path</strong> is a string that uniquely identifies a package.</li>
+  <li>The packages from the standard library are given short import paths such as “fmt” and “net/http”.</li>
+  <li>A package’s import path corresponds to its location inside a workspace or in a remote repository</li>
+  <li>package name 避免重复的方法：
+    <ul>
+      <li>if you have a GitHub account at github.com/user, that should be your base path. <code class="highlighter-rouge">$ mkdir -p $GOPATH/src/github.com/user</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="testing">Testing</h3>
+
+<ul>
+  <li>Go has a lightweight test framework composed of the <code class="highlighter-rouge">go test</code> command and the <code class="highlighter-rouge">testing</code> package.</li>
+  <li>创建测试代码文件，文件名以 <code class="highlighter-rouge">_test.go</code> 结尾，包含<code class="highlighter-rouge">func TestXXX (t *testing.T)</code> 函数.</li>
+  <li>
+    <p>The test framework runs each such function; if the function calls a failure function such as <code class="highlighter-rouge">t.Error</code> or <code class="highlighter-rouge">t.Fail</code>, the test is considered to have failed.</p>
+  </li>
+  <li>例子： Add a test to the stringutil package
+    <ol>
+      <li>creating the file <code class="highlighter-rouge">$GOPATH/src/github.com/user/stringutil/reverse_test.go</code>
+        <div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="x"> </span><span class="k">package</span><span class="x"> </span><span class="n">stringutil</span><span class="x">
+
+ </span><span class="k">import</span><span class="x"> </span><span class="s">"testing"</span><span class="x">
+
+ </span><span class="k">func</span><span class="x"> </span><span class="n">TestReverse</span><span class="p">(</span><span class="n">t</span><span class="x"> </span><span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+   </span><span class="n">cases</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="p">[]</span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">in</span><span class="p">,</span><span class="x"> </span><span class="n">want</span><span class="x"> </span><span class="kt">string</span><span class="x">
+   </span><span class="p">}{</span><span class="x">
+     </span><span class="p">{</span><span class="s">"Hello, world"</span><span class="p">,</span><span class="x"> </span><span class="s">"dlrow ,olleH"</span><span class="p">},</span><span class="x">
+     </span><span class="p">{</span><span class="s">"Hello, 世界"</span><span class="p">,</span><span class="x"> </span><span class="s">"界世 ,olleH"</span><span class="p">},</span><span class="x">
+     </span><span class="p">{</span><span class="s">""</span><span class="p">,</span><span class="x"> </span><span class="s">""</span><span class="p">},</span><span class="x">
+   </span><span class="p">}</span><span class="x">
+   </span><span class="k">for</span><span class="x"> </span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">cases</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">got</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">Reverse</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">in</span><span class="p">)</span><span class="x">
+     </span><span class="k">if</span><span class="x"> </span><span class="n">got</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">want</span><span class="x"> </span><span class="p">{</span><span class="x">
+       </span><span class="n">t</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"Reverse(%q) == %q, want %q"</span><span class="p">,</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">in</span><span class="p">,</span><span class="x"> </span><span class="n">got</span><span class="p">,</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">want</span><span class="p">)</span><span class="x">
+     </span><span class="p">}</span><span class="x">
+   </span><span class="p">}</span><span class="x">
+ </span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+      <li>run the test with go test: <code class="highlighter-rouge">go test github.com/user/stringutil</code><br />
+ 或者
+        <div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> <span class="nb">cd </span>github.com/user/stringutil
+ go <span class="nb">test</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="go-tool">Go tool</h2>
+
+<h3 id="go-help-帮助">go help 帮助</h3>
+
+<p><code class="highlighter-rouge">go help subcommand-name</code></p>
+
+<p>例如，</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>go help importpath
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="go-install">go install</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>$ go install github.com/user/hello
+
+# 等同于
+
+$ cd $GOPATH/src/github.com/user/hello
+$ go install
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>This command builds the hello command, producing an executable binary. It then installs that binary to the workspace’s bin directory as hello (or, under Windows, hello.exe).</li>
+</ul>
+
+<h3 id="go-get">go get</h3>
+
+<p>If you include the repository URL in the package’s import path, go get will fetch, build, and install it automatically:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="gp">$ </span>go get github.com/golang/example/hello
+<span class="gp">$ </span><span class="nv">$GOPATH</span>/bin/hello
+Hello, Go examples!
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>If the specified package is not present in a workspace, go get will place it inside the first workspace specified by GOPATH.</li>
+  <li>If the package does already exist, go get skips the remote fetch and behaves the same as go install.</li>
+</ul>
+
+<h3 id="go-clean">go clean</h3>
+
+<ul>
+  <li>windows上的build cache在： <code class="highlighter-rouge">C:\Users\your-name\AppData\Local\go-build</code></li>
+  <li>清理 local build cache ： <code class="highlighter-rouge">go clean -cache</code></li>
+</ul>
+
+<h2 id="go-语言特性">Go 语言特性</h2>
+
+<h3 id="nil">nil</h3>
+
+<h3 id="变量">变量</h3>
+
+<p>In Go, all variables are initialized to their zero value.</p>
+
+<ul>
+  <li>For numeric types, that value is 0;</li>
+  <li>for strings it’s an empty string;</li>
+  <li>for Booleans it’s false;</li>
+  <li>for pointers, the zero value is nil.</li>
+</ul>
+
+<p>When it comes to reference types, there are underlying data structures that are initialized to their zero values.</p>
+
+<h3 id="函数">函数</h3>
+
+<h4 id="函数定义">函数定义</h4>
+
+<p>注意，参数名在前，类型在后</p>
+
+<p>func FUNCTION-NAME(PARAMETER1 type-name, …)</p>
+
+<h3 id="集合">集合</h3>
+
+<h4 id="slice">slice</h4>
+
+<p>相当于动态数组</p>
+
+<h4 id="map">map</h4>
+
+<h4 id="range">range</h4>
+
+<p>The keyword <strong>range</strong> can be used with arrays, strings, slices, maps, and channels.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>for _, item := range items {
+...
+}
+或者，
+for index, item := range items {
+...
+}
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="异常处理">异常处理</h3>
+
+<ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://blog.golang.org/defer-panic-and-recover">https://blog.golang.org/defer-panic-and-recover</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="defer">defer</h4>
+
+<p>在函数中添加多个 延迟（defer）语句，当函数执行到最后时，这些defer语句会按照逆序执行，最后该函数返回。</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="k">func</span><span class="x"> </span><span class="n">ReadWrite</span><span class="p">()</span><span class="x"> </span><span class="kt">bool</span><span class="x"> </span><span class="p">{</span><span class="x"> 
+  </span><span class="n">file</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s">"file"</span><span class="p">)</span><span class="x"> 
+  </span><span class="k">defer</span><span class="x"> </span><span class="n">file</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x"> 
+  
+  </span><span class="k">if</span><span class="x"> </span><span class="n">failureX</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="k">return</span><span class="x"> </span><span class="no">false</span><span class="x"> </span><span class="p">}</span><span class="x"> 
+  </span><span class="k">if</span><span class="x"> </span><span class="n">failureY</span><span class="x"> </span><span class="p">{</span><span class="x"> </span><span class="k">return</span><span class="x"> </span><span class="no">false</span><span class="x"> </span><span class="p">}</span><span class="x"> 
+  
+  </span><span class="k">return</span><span class="x"> </span><span class="no">true</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="panic">panic</h4>
+
+<ul>
+  <li><strong>Panic</strong> is a built-in function that stops the ordinary flow of control and begins panicking.</li>
+  <li>When the function F calls panic, execution of F stops, any deferred functions in F are executed normally, and then F returns to its caller.</li>
+  <li>The process continues up the stack until all functions in the current goroutine have returned, at which point the program <strong>crashes</strong>.</li>
+  <li>Panic can also be caused by runtime errors, such as out-of-bounds array accesses.</li>
+</ul>
+
+<h4 id="recover">recover</h4>
+
+<ul>
+  <li><strong>Recover</strong> is a built-in function that regains control of a panicking goroutine.</li>
+  <li>Recover is only useful inside <strong>deferred functions</strong>.</li>
+</ul>
+
+<h4 id="例子">例子</h4>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">f</span><span class="p">()</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Returned normally from f."</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">f</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">defer</span><span class="x"> </span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="k">if</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">recover</span><span class="p">();</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+            </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Recovered in f"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="p">)</span><span class="x">
+        </span><span class="p">}</span><span class="x">
+    </span><span class="p">}()</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Calling g."</span><span class="p">)</span><span class="x">
+    </span><span class="n">g</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Returned normally from g."</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">g</span><span class="p">(</span><span class="n">i</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">i</span><span class="x"> </span><span class="o">&gt;</span><span class="x"> </span><span class="m">3</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Panicking!"</span><span class="p">)</span><span class="x">
+        </span><span class="nb">panic</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="x"> </span><span class="n">i</span><span class="p">))</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">defer</span><span class="x"> </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Defer in g"</span><span class="p">,</span><span class="x"> </span><span class="n">i</span><span class="p">)</span><span class="x">
+    </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Printing in g"</span><span class="p">,</span><span class="x"> </span><span class="n">i</span><span class="p">)</span><span class="x">
+    </span><span class="n">g</span><span class="p">(</span><span class="n">i</span><span class="x"> </span><span class="o">+</span><span class="x"> </span><span class="m">1</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>执行结果如下</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>Calling g.
+Printing in g 0
+Printing in g 1
+Printing in g 2
+Printing in g 3
+Panicking!
+Defer in g 3
+Defer in g 2
+Defer in g 1
+Defer in g 0
+Recovered in f 4
+Returned normally from f.
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果删除函数f()中的defer语句，将会是如下结果：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>Calling g.
+Printing in g 0
+Printing in g 1
+Printing in g 2
+Printing in g 3
+Panicking!
+Defer in g 3
+Defer in g 2
+Defer in g 1
+Defer in g 0
+panic: 4
+ 
+panic PC=0x2a9cd8
+[stack trace omitted]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="帮助文档">帮助文档</h2>
+
+<h3 id="查看-fmt-包-println-函数的帮助">查看 fmt 包 Println 函数的帮助</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>godoc fmt Println
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="godoc">godoc</h3>
+
+<h4 id="本地运行文档服务器">本地运行文档服务器：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>godoc -http=:6060
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>If you open your webbrowser and navigate to http://localhost:6060, you’ll see a web page with documentation for both the Go standard libraries and any Go source that lives in your GOPATH.</p>
+
+<h2 id="使用习惯技巧">使用习惯&amp;技巧</h2>
+
+<h3 id="函数返回结果和错误">函数返回结果和错误</h3>
+
+<p>例如，</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">// Open the file.</span><span class="x">
+</span><span class="n">file</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">os</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">dataFile</span><span class="p">)</span><span class="x">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="集合--获取返回-item-和-exists">集合 [] 获取返回 item 和 exists</h3>
+
+<p>例如，</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>matcher, exists := matchers[feed.Type]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="blank-identifier-_">BLANK IDENTIFIER (_)</h3>
+
+<p>The _ (underscore character) is known as the blank identifier and has many uses within Go. It’s used when you want to throw away the assignment of a value, including the assignment of an import to its package name, or ignore return values from a function when you’re only interested in the others.</p>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#go" title="Pages tagged go" class="tag"><span class="term">go</span></a><a href="/tags#go-lang" title="Pages tagged go-lang" class="tag"><span class="term">go-lang</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,973 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Ubuntu安装gitea，关联git,scm,gitlab &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安装gitea，关联git,scm,gitlab">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/git/Ubuntu%E5%AE%89%E8%A3%85gitea/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/git/Ubuntu%E5%AE%89%E8%A3%85gitea/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Ubuntu安装gitea，关联git,scm,gitlab</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-04-14T00:00:00+08:00">April 14, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://github.com/go-gitea/gitea">https://github.com/go-gitea/gitea</a></li>
+      <li><a href="https://docs.gitea.io/zh-cn/database-prep/">docs.gitea.io / Database Preparation</a></li>
+      <li><a href="https://docs.gitea.io/zh-cn/install-from-binary/">docs.gitea.io / 从二进制安装 </a></li>
+      <li><a href="https://blog.csdn.net/u014038143/article/details/106789620">使用gitea通过码云完整克隆github源码库到本地备份</a></li>
+      <li><a href="https://docs.gitea.io/en-us/config-cheat-sheet">docs.gitea.io / config-cheat-sheet</a></li>
+      <li><a href="https://github.com/go-gitea/gitea/blob/main/custom/conf/app.example.ini">https://github.com/go-gitea/gitea/blob/main/custom/conf/app.example.ini</a></li>
+      <li><a href="https://blog.68hub.com/posts/install-gitea-note/">blog.68hub.com - Gitea 安装手册</a></li>
+      <li><a href="https://docs.gitea.io/en-us/logging-configuration">docs.gitea.io / logging-configuration</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>创建git用户
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre> sudo adduser --system --shell /bin/bash --gecos <span class="s1">'Git Version Control'</span> --group --disabled-password --home /home/git git
+
+ <span class="c"># 或，如果挂载群晖的nfs共享</span>
+ <span class="c"># 使用 1024 uid 对应群晖 admin 的uid</span>
+ sudo adduser --system -u 1024 --shell /bin/bash --gecos <span class="s1">'the same uid as ds918 admin'</span> --group --disabled-password --home /home/synology-admin synology-admin
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>准备数据库
+    <ol>
+      <li>mysql
+        <div class="language-sql highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> <span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">'gitea'</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">'gitea'</span><span class="p">;</span>
+ <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">giteadb</span> <span class="n">CHARACTER</span> <span class="k">SET</span> <span class="s1">'utf8mb4'</span> <span class="k">COLLATE</span> <span class="s1">'utf8mb4_unicode_ci'</span><span class="p">;</span>
+ <span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">giteadb</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">'gitea'</span><span class="p">;</span>
+ <span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>从二进制安装，下载： <a href="https://github.com/go-gitea/gitea/releases">https://github.com/go-gitea/gitea/releases</a>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre> wget -O gitea https://dl.gitea.io/gitea/1.16.5/gitea-1.16.5-linux-amd64
+ chmod +x gitea
+
+ <span class="c"># 命令行运行测试下，会在 3000 端口启动</span>
+ ./gitea web
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>访问 http://server-ip:3000 后，第一个页面进行初始化，配置被存储在 <code class="highlighter-rouge">./custom/conf/app.ini</code>
+    <ol>
+      <li>填写数据库配置信息：帐号、密码、数据库名称</li>
+      <li>Repository Root Path 、 LFS Root Path</li>
+      <li>服务端口、管理帐号等</li>
+    </ol>
+  </li>
+  <li>配置开机自启动
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre> <span class="nb">cd</span> ~
+ wget https://raw.githubusercontent.com/go-gitea/gitea/main/contrib/systemd/gitea.service
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>根据本地的参数，修改 gitea.service</p>
+
+    <p><code class="highlighter-rouge">vim gitea.service</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></td><td class="code"><pre> <span class="o">[</span>Unit]
+ <span class="nv">Description</span><span class="o">=</span>Gitea <span class="o">(</span>Git with a cup of tea<span class="o">)</span>
+ <span class="nv">After</span><span class="o">=</span>syslog.target
+ <span class="nv">After</span><span class="o">=</span>network.target
+
+ <span class="nv">Wants</span><span class="o">=</span>mysql.service
+ <span class="nv">After</span><span class="o">=</span>mysql.service
+
+ <span class="o">[</span>Service]
+ <span class="c"># Modify these two values and uncomment them if you have</span>
+ <span class="c"># repos with lots of files and get an HTTP error 500 because</span>
+ <span class="c"># of that</span>
+ <span class="c">###</span>
+ <span class="c">#LimitMEMLOCK=infinity</span>
+ <span class="c">#LimitNOFILE=65535</span>
+ <span class="nv">RestartSec</span><span class="o">=</span>2s
+ <span class="nv">Type</span><span class="o">=</span>simple
+ <span class="nv">User</span><span class="o">=</span>git
+ <span class="nv">Group</span><span class="o">=</span>git
+ <span class="nv">WorkingDirectory</span><span class="o">=</span>/opt/gitea/gitea-1.16.5-linux-amd64
+ <span class="c"># If using Unix socket: tells systemd to create the /run/gitea folder, which will contain the gitea.sock file</span>
+ <span class="c"># (manually creating /run/gitea doesn't work, because it would not persist across reboots)</span>
+ <span class="c">#RuntimeDirectory=gitea</span>
+ <span class="nv">ExecStart</span><span class="o">=</span>/opt/gitea/gitea-1.16.5-linux-amd64/gitea web --config /opt/gitea/gitea-1.16.5-linux-amd64/custom/conf/app.ini
+ <span class="nv">Restart</span><span class="o">=</span>always
+ <span class="nv">Environment</span><span class="o">=</span><span class="nv">USER</span><span class="o">=</span>git <span class="nv">HOME</span><span class="o">=</span>/home/git <span class="nv">GITEA_WORK_DIR</span><span class="o">=</span>/opt/gitea/gitea-1.16.5-linux-amd64
+ <span class="c"># If you install Git to directory prefix other than default PATH (which happens</span>
+ <span class="c"># for example if you install other versions of Git side-to-side with</span>
+ <span class="c"># distribution version), uncomment below line and add that prefix to PATH</span>
+ <span class="c"># Don't forget to place git-lfs binary on the PATH below if you want to enable</span>
+ <span class="c"># Git LFS support</span>
+ <span class="c">#Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin</span>
+ <span class="c"># If you want to bind Gitea to a port below 1024, uncomment</span>
+ <span class="c"># the two values below, or use socket activation to pass Gitea its ports as above</span>
+ <span class="c">###</span>
+ <span class="c">#CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span>
+ <span class="c">#AmbientCapabilities=CAP_NET_BIND_SERVICE</span>
+ <span class="c">###</span>
+
+ <span class="o">[</span>Install]
+ <span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>安装service并设置自启动
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre> sudo mv gitea.service /etc/systemd/system/
+
+ sudo systemctl enable gitea.service
+ sudo systemctl start gitea.service
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="其他设置">其他设置</h2>
+
+<h3 id="日志保存文件">日志保存文件</h3>
+
+<p>编辑 <code class="highlighter-rouge">custom/conf/app.ini</code>，默认 日志 是 console MODE</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>[log]
+MODE      = file
+LEVEL     = info
+ROOT_PATH = /opt/gitea/data/log
+LOG_ROTATE = true
+DAILY_ROTATE = true
+MAX_DAYS = 30
+MAX_SIZE_SHIFT = 28
+COMPRESS = true
+COMPRESSION_LEVEL = -1
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="关闭注册">关闭注册</h3>
+
+<p>编辑 <code class="highlighter-rouge">custom/conf/app.ini</code>， <code class="highlighter-rouge">[service]</code> - <code class="highlighter-rouge">DISABLE_REGISTRATION</code> 设置为 true</p>
+
+<h3 id="lfs-支持">LFS 支持</h3>
+
+<ul>
+  <li><a href="https://docs.gitea.io/en-us/git-lfs-setup/">https://docs.gitea.io/en-us/git-lfs-setup/</a></li>
+  <li><a href="https://docs.gitea.io/en-us/config-cheat-sheet/#lfs-lfs">https://docs.gitea.io/en-us/config-cheat-sheet/#lfs-lfs</a></li>
+</ul>
+
+<ol>
+  <li>修改 <code class="highlighter-rouge">app.ini</code><br />
+~~~<br />
+[server]<br />
+; Enables git-lfs support. true or false, default is false.<br />
+LFS_START_SERVER = true</li>
+</ol>
+
+<p>[lfs]<br />
+STORAGE_TYPE = local<br />
+; Where your lfs files reside, default is data/lfs.<br />
+PATH = /home/gitea/data/lfs</p>
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>
+`[server]` - `LFS_CONTENT_PATH`: %(APP_DATA_PATH)/lfs: Default LFS content path. (if it is on local storage.) DEPRECATED use settings in `[lfs]`.
+
+`[lfs]` - `PATH`: ./data/lfs: Where to store LFS files, only available when STORAGE_TYPE is local. If not set it fall back to deprecated `LFS_CONTENT_PATH` value in `[server]` section.
+
+1. 重启 `sudo systemctl restart gitea.service`
+1. 
+1. 
+1. 
+1. 
+
+
+## 问题
+
+### 创建repo时候报错： exit status 128 - fatal: unsafe repository, directory is owned by someone else
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+<p>2022/04/17 07:45:52 …ers/web/repo/repo.go:190:handleCreateError() [E] CreatePost: initRepository: openRepository: exit status 128 - fatal: unsafe repository (‘/mnt/nfs-folder/gitea/data/gitea-repositories/your-name/new-repo.git’ is owned by someone else)</p>
+
+<p>To add an exception for this directory, call:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>git config --global --add safe.directory /github/workspace ~~~
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>据说为了解决 CVE-2022-24765 这个安全问题，04-12 之后git进行了安全升级导致的。</p>
+
+<p>目前无解，只能一个一个的用 safe.directory 添加，这样gitea无法在nfs挂载的目录上使用。除非挂载目录的uid和运行gitea的UID是一致的。</p>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://github.com/actions/checkout/issues/760">fatal: unsafe repository (REPO is owned by someone else) with ubuntu 20.04 container #760</a></li>
+      <li><a href="https://stackoverflow.com/questions/71849415/i-cannot-add-the-parent-directory-to-safe-directory-in-git">I cannot add the parent directory to <em>safe.directory</em> in Git</a></li>
+      <li><a href="https://zenn.dev/1060ki/articles/322b72dbd6ce42">About some reviewdogs failing with <code class="highlighter-rouge">exit status 128</code></a></li>
+      <li><a href="https://www.datree.io/resources/git-error-fatal-not-a-git-repository">Git error - Fatal: Not a git repository</a></li>
+      <li><a href="https://superuser.com/questions/1716223/fatal-unsafe-repository-on-mounted-volume">fatal: unsafe repository on mounted volume</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="报错">报错：</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>Remote "home" does not support the Git LFS locking API. Consider disabling it with:
+  $ git config lfs.https://192.168.1.88/myname/drug_instruction.git/info/lfs.locksverify false
+batch response: Post "http://192.168.1.88:12300/myname/drug_instruction.git/info/lfs/objects/batch": dial tcp 192.168.1.88:12300: connect: connection refused
+error: failed to push some refs to 'ssh://192.168.1.88:57112/myname/drug_instruction.git'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>$ git push -u home master
+Remote "home" does not support the Git LFS locking API. Consider disabling it with:
+  $ git config lfs.https://121.199.165.36/speedio/drug_instruction.git/info/lfs.locksverify false
+batch request: Gitea: Invalid repo name: exit status 1                                       
+error: failed to push some refs to 'ssh://121.199.165.36:57112/speedio/drug_instruction.git'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

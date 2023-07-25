@@ -1,0 +1,1904 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>ruby meta-programming / 元编程 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="ruby, meta-programing">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ruby meta-programming / 元编程">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/ruby/ruby-meta-programing/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/ruby/ruby-meta-programing/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">ruby meta-programming / 元编程</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2017-10-26T00:00:00+08:00">October 26, 2017</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="module">Module</h2>
+
+<h3 id="moduleconstants--moduleconstants">Module#constants &amp; Module.constants</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="no">Y</span> <span class="o">=</span> <span class="s1">'a root-level constant'</span>
+
+<span class="k">module</span> <span class="nn">M</span>
+  <span class="no">Y</span> <span class="o">=</span> <span class="s1">'a constant in M'</span>
+  <span class="no">Y</span>    <span class="c1"># =&gt; "a constant in M"</span>
+  <span class="o">::</span><span class="no">Y</span>  <span class="c1"># =&gt; "a root-level constant"</span>
+
+  <span class="k">class</span> <span class="nc">C</span>
+    <span class="nc">X</span> <span class="o">=</span> <span class="s1">'a constant'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">M</span><span class="o">::</span><span class="no">C</span><span class="o">::</span><span class="no">X</span> <span class="c1"># =&gt; "a constant"</span>
+
+
+<span class="no">M</span><span class="p">.</span><span class="nf">constants</span>                          <span class="c1"># =&gt; [:C, :Y]</span>
+<span class="no">Module</span><span class="p">.</span><span class="nf">constants</span><span class="p">.</span><span class="nf">include?</span> <span class="ss">:Object</span>    <span class="c1"># =&gt; true</span>
+<span class="no">Module</span><span class="p">.</span><span class="nf">constants</span><span class="p">.</span><span class="nf">include?</span> <span class="ss">:Module</span>    <span class="c1"># =&gt; true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="modulenesting">Module#nesting</h3>
+
+<p>if you need the current path, check out Module.nesting:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">M</span>
+  <span class="k">class</span> <span class="nc">C</span>
+    <span class="k">module</span> <span class="nn">M2</span>
+      <span class="no">Module</span><span class="p">.</span><span class="nf">nesting</span>    <span class="c1"># =&gt; [M::C::M2, M::C, M]</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="moduleconst_missing">Module#const_missing</h3>
+
+<p>When you reference a constant that doesn’t exist, Ruby passes the name of<br />
+the constant to <code class="highlighter-rouge">const_missing</code> as a symbol.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="c1"># Class names are just constants, so</span>
+<span class="c1">#   a reference to an unknown Rake class such as </span>
+<span class="c1">#   Task was routed to Module#const_missing.</span>
+<span class="c1">#</span>
+<span class="c1"># gems/rake-0.9.2.2/lib/rake/ext/module.rb</span>
+<span class="k">class</span> <span class="nc">Module</span>
+  <span class="k">def</span> <span class="nf">const_missing</span><span class="p">(</span><span class="n">const_name</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">const_name</span>
+    <span class="k">when</span> <span class="ss">:Task</span>
+      <span class="no">Rake</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">const_warning</span><span class="p">(</span><span class="n">const_name</span><span class="p">)</span>
+      <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span>
+    <span class="k">when</span> <span class="ss">:FileTask</span>
+      <span class="no">Rake</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">const_warning</span><span class="p">(</span><span class="n">const_name</span><span class="p">)</span>
+      <span class="no">Rake</span><span class="o">::</span><span class="no">FileTask</span>
+    <span class="k">when</span> <span class="ss">:FileCreationTask</span>
+      <span class="c1"># ...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="class">Class</h2>
+
+<h3 id="classes-themselves-are-nothing-but-objects">classes themselves are nothing but objects.</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="s2">"hello"</span><span class="p">.</span><span class="nf">class</span>    <span class="c1"># =&gt; String</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">class</span>     <span class="c1"># =&gt; Class</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>the methods of a class are the instance methods of Class.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># The "false" argument here means: ignore inherited methods</span>
+<span class="no">Class</span><span class="p">.</span><span class="nf">instance_methods</span><span class="p">(</span><span class="kp">false</span><span class="p">)</span>   <span class="c1"># =&gt; [:allocate, :new, :superclass]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-names-are-nothing-but-constants">class names are nothing but constants</h3>
+
+<p>Any reference that begins with an uppercase letter, including the names of<br />
+classes and modules, is a constant.</p>
+
+<h3 id="classsuperclass">Class#superclass</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="no">Array</span><span class="p">.</span><span class="nf">superclass</span>          <span class="c1"># =&gt; Object</span>
+<span class="no">Object</span><span class="p">.</span><span class="nf">superclass</span>         <span class="c1"># =&gt; BasicObject</span>
+<span class="no">BasicObject</span><span class="p">.</span><span class="nf">superclass</span>    <span class="c1"># =&gt; nil</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="the-superclass-of-class-is-module">The superclass of Class is Module</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">Class</span><span class="p">.</span><span class="nf">superclass</span>    <span class="c1"># =&gt; Module</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-关系-vs-继承关系">class 关系 vs 继承关系</h3>
+
+<p><img src="classes-are-just-objects.png" alt="" /></p>
+
+<h3 id="已有的class可以打开重新定义open-class">已有的Class，可以打开，重新定义；Open Class</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">String</span>
+  <span class="k">def</span> <span class="nf">to_alphanumeric</span>
+    <span class="nb">gsub</span><span class="p">(</span><span class="sr">/[^\w\s]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 style="color: red" id="注意打开类后定义新方法与已有的方法同名老方法被覆盖-这种事被称为-monkeypatch">注意：打开类后，定义新方法，与已有的方法同名，老方法被覆盖！ 这种事，被称为 <em>Monkeypatch</em></h4>
+
+<h3 id="refine--可控的-monkeypatch">refine , 可控的 MonkeyPatch</h3>
+
+<p>从 Ruby 2 开始，支持 Refinement 方式，在有限范围内覆盖类的同名方法。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">StringExtensions</span>
+  <span class="n">refine</span> <span class="no">String</span> <span class="k">do</span>
+    <span class="k">def</span> <span class="nf">reverse</span>
+      <span class="s2">"esrever"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">StringStuff</span>
+  <span class="n">using</span> <span class="no">StringExtensions</span>
+  <span class="s2">"my_string"</span><span class="p">.</span><span class="nf">reverse</span> <span class="c1"># =&gt; "esrever"</span>
+<span class="k">end</span>
+
+<span class="s2">"my_string"</span><span class="p">.</span><span class="nf">reverse</span> <span class="c1"># =&gt; "gnirts_ym"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 style="color: red" id="谨慎使用refine其作为实验功能加入-ruby-2后面可能还有调整">谨慎使用refine，其作为实验功能加入 Ruby 2，后面可能还有调整。</h4>
+
+<h4 id="refine-不太合常规的用法">refine 不太合常规的用法</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="k">def</span> <span class="nf">my_method</span>
+    <span class="s2">"original my_method()"</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">another_method</span>
+    <span class="n">my_method</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">MyClassRefinement</span>
+  <span class="n">refine</span> <span class="no">MyClass</span> <span class="k">do</span>
+    <span class="k">def</span> <span class="nf">my_method</span>
+      <span class="s2">"refined my_method()"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">using</span> <span class="no">MyClassRefinement</span>
+<span class="no">MyClass</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">my_method</span> <span class="c1"># =&gt; "refined my_method()"</span>
+<span class="no">MyClass</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">another_method</span> <span class="c1"># =&gt; "original my_method()"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-定义内部可以直接写代码执行">Class 定义内部，可以直接写代码执行</h3>
+
+<blockquote>
+  <p>何时执行不知道，加载Class定义的时候？</p>
+</blockquote>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="nb">puts</span> <span class="s1">'Hello!'</span>
+<span class="k">end</span>
+<span class="err">⇒</span> <span class="no">Hello</span><span class="o">!</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-定义有返回值和函数一样是最后一个语句的返回值">Class 定义，有返回值，和函数一样，是最后一个语句的返回值</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">result</span> <span class="o">=</span> <span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="nb">self</span>
+<span class="k">end</span>
+
+<span class="n">result</span> <span class="c1"># =&gt; MyClass</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="self-在-class-定义中指代类本身">self 在 Class 定义中，指代类本身</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="nb">self</span>  <span class="c1"># =&gt; MyClass</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class_eval-不知道类名时打开类">class_eval() ；不知道类名时，打开类</h3>
+
+<p><code class="highlighter-rouge">Module#class_eval()</code> 或 <code class="highlighter-rouge">module_eval( )</code> evaluates a block in the context of an existing class.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">add_method_to</span><span class="p">(</span><span class="n">a_class</span><span class="p">)</span>
+  <span class="n">a_class</span><span class="p">.</span><span class="nf">class_eval</span> <span class="k">do</span>
+    <span class="k">def</span> <span class="nf">m</span><span class="p">;</span> <span class="s1">'Hello!'</span> <span class="p">;</span> <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">add_method_to</span> <span class="no">String</span>
+<span class="s2">"abc"</span><span class="p">.</span><span class="nf">m</span>
+<span class="c1"># =&gt; "Hello!"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="object对象相关-meta">Object（对象）相关 meta</h2>
+
+<p>What’s an object? It’s a bunch of instance variables, plus a link to a class.</p>
+
+<h3 id="objectclass-返回所属class-的-meta类">object.class 返回所属Class 的 meta类</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="k">def</span> <span class="nf">my_method</span>
+    <span class="vi">@v</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">class</span>    <span class="c1"># =&gt; MyClass</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="objectinstance_variables-列出所有对象属性">object.instance_variables 列出所有对象属性</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1"># 在类定义中出现过的属性，不会在对象创建时，就被分配。</span>
+<span class="c1"># 运行到属性出现的地方，该对象才会有该属性。</span>
+<span class="c1"># 同一个类的对象，属性列表未必会完全相同。</span>
+<span class="c1">#</span>
+<span class="c1"># 例如，下面例子，不执行 my_method ，@v 不会被分配</span>
+<span class="c1">#</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">instance_variables</span>    <span class="c1"># =&gt; []</span>
+
+<span class="n">obj</span><span class="p">.</span><span class="nf">my_method</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">instance_variables</span>    <span class="c1"># =&gt; [:@v]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="objectmethods-实例方法instance_methods">object.methods ，实例方法，instance_methods</h3>
+
+<p>The methods of an object are also the instance methods of its class.</p>
+
+<h4 id="实例方法不同于类方法">实例方法不同于类方法</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="no">String</span><span class="p">.</span><span class="nf">instance_methods</span> <span class="o">==</span> <span class="s2">"abc"</span><span class="p">.</span><span class="nf">methods</span>  <span class="c1"># =&gt; true</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">methods</span> <span class="o">==</span> <span class="s2">"abc"</span><span class="p">.</span><span class="nf">methods</span>           <span class="c1"># =&gt; false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="methods-会返回很多方法可以用如下方法来查找">methods 会返回很多方法，可以用如下方法来查找。</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">obj</span><span class="p">.</span><span class="nf">methods</span><span class="p">.</span><span class="nf">grep</span><span class="p">(</span><span class="sr">/my/</span><span class="p">)</span>    <span class="c1"># =&gt; [:my_method]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><img src="iv-in-obj-methods-in-class.png" alt="" /></p>
+
+<h3 id="instance_variable_set">instance_variable_set</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">obj3</span><span class="p">.</span><span class="nf">instance_variable_set</span><span class="p">(</span><span class="s2">"@x"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="self">self</h2>
+
+<p>Every line of Ruby code is executed inside an object, the so-called <em>current object</em>.</p>
+
+<p>The <em>current object</em> is also known as <strong>self</strong>, because you can access it with the <code class="highlighter-rouge">self</code> keyword.</p>
+
+<ul>
+  <li>Only one object can take the role of self at a given time, but no object holds<br />
+that role for a long time.</li>
+  <li>when you call a method, the receiver becomes self.</li>
+</ul>
+
+<p>###　在对象外面的 self ， The Top Level</p>
+
+<p>什么的 <strong>main</strong> 对象，又Ruby 解释器创建，被称为 <strong>top-level context</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="nb">self</span>         <span class="c1"># =&gt; main</span>
+<span class="nb">self</span><span class="p">.</span><span class="nf">class</span>   <span class="c1"># =&gt; Object</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="class-definitions-and-self">Class Definitions and self</h3>
+
+<p>类定义中的 self ， 是类对象本身。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="nb">self</span>         <span class="c1"># =&gt; MyClass</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="oop">OOP</h2>
+
+<h3 id="receiver">receiver</h3>
+
+<p>The <strong>receiver</strong> is the object that you call a method on.</p>
+
+<h3 id="ancestors-chain">ancestors chain</h3>
+
+<p>ancestors 包含 Module，而非 ，如下例：Kernel 是 Module，而非 Class</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">MySubclass</span><span class="p">.</span><span class="nf">ancestors</span> <span class="c1"># =&gt; [MySubclass, MyClass, Object, Kernel, BasicObject]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">M1</span>
+  <span class="k">def</span> <span class="nf">my_method</span>
+    <span class="s1">'M1#my_method()'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">C</span>
+  <span class="kp">include</span> <span class="no">M1</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">D</span> <span class="o">&lt;</span> <span class="no">C</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="no">D</span><span class="p">.</span><span class="nf">ancestors</span> <span class="c1"># =&gt; [D, C, M1, Object, Kernel, BasicObject]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="include--prepend">include &amp; prepend</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">C2</span>
+  <span class="n">prepend</span> <span class="no">M2</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">D2</span> <span class="o">&lt;</span> <span class="no">C2</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="c1"># 不同于 include 将 包含进来的Module 放在自己和父类直接；</span>
+<span class="c1"># prepend 将 包含进来的Module 放在自己和子类之间。</span>
+<span class="no">D2</span><span class="p">.</span><span class="nf">ancestors</span> <span class="c1"># =&gt; [D2, M2, C2, Object, Kernel, BasicObject]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="重复include--multiple-inclusions">重复include / Multiple inclusions</h3>
+
+<p>if that module is already in the chain, Ruby silently ignores the second inclusion.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">M1</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">module</span> <span class="nn">M2</span>
+  <span class="kp">include</span> <span class="no">M1</span>
+<span class="k">end</span>
+<span class="k">module</span> <span class="nn">M3</span>
+  <span class="n">prepend</span> <span class="no">M1</span>
+  <span class="kp">include</span> <span class="no">M2</span>
+<span class="k">end</span>
+
+<span class="c1"># M3 prepends M1 and then includes M2. </span>
+<span class="c1"># When M2 also includes M1, that include has no effect,</span>
+<span class="c1"># because M1 is already in the chain of ancestors. </span>
+
+<span class="no">M3</span><span class="p">.</span><span class="nf">ancestors</span> <span class="c1"># =&gt; [M1, M3, M2]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="method">method</h2>
+
+<p>When you call a method, Ruby does two things:</p>
+
+<ol>
+  <li>It finds the method. This is a process called <strong>method lookup</strong>.
+    <ul>
+      <li><strong>method lookup</strong> : to find a method, Ruby goes in the receiver’s class, and from there it climbs the ancestors chain until it finds the method.</li>
+    </ul>
+  </li>
+  <li>It executes the method. To do that, Ruby needs something called <strong>self</strong>.</li>
+</ol>
+
+<h3 id="send--dynamically-calling-methods"><code class="highlighter-rouge">send</code> , Dynamically calling methods</h3>
+
+<p>with <code class="highlighter-rouge">send</code> , the name of the method that you want to call becomes just a regular<br />
+argument. You can wait literally until the very last moment to decide which<br />
+method to call, while the code is running.</p>
+
+<p>This technique is called <strong>Dynamic Dispatch</strong> .</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c1"># gems/pry-0.9.12.2/lib/pry/pry_instance.rb</span>
+<span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{})</span>
+  <span class="n">defaults</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span> <span class="ss">:input</span><span class="p">,</span> <span class="ss">:output</span><span class="p">,</span> <span class="ss">:commands</span><span class="p">,</span> <span class="ss">:print</span><span class="p">,</span> <span class="ss">:quiet</span><span class="p">,</span>
+                 <span class="ss">:exception_handler</span><span class="p">,</span> <span class="ss">:hooks</span><span class="p">,</span> <span class="ss">:custom_completions</span><span class="p">,</span>
+                 <span class="ss">:prompt</span><span class="p">,</span> <span class="ss">:memory_size</span><span class="p">,</span> <span class="ss">:extra_sticky_locals</span> <span class="p">]</span>
+  <span class="n">attributes</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">attribute</span><span class="o">|</span>
+    <span class="n">defaults</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="no">Pry</span><span class="p">.</span><span class="nf">send</span> <span class="n">attribute</span>
+  <span class="k">end</span>
+  <span class="c1"># ...</span>
+  <span class="n">defaults</span><span class="p">.</span><span class="nf">merge!</span><span class="p">(</span><span class="n">options</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+    <span class="nb">send</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">="</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="nb">respond_to?</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">="</span><span class="p">)</span>
+  <span class="k">end</span>
+  
+  <span class="kp">true</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="send-可以调用任何-method包括私有method要保持封装性使用-send_public"><code class="highlighter-rouge">send</code> 可以调用任何 method，包括私有method。要保持封装性，使用 <code class="highlighter-rouge">send_public</code></h4>
+
+<h3 id="define_method-defining-methods-dynamically"><code class="highlighter-rouge">define_method</code>, Defining Methods Dynamically</h3>
+
+<p><code class="highlighter-rouge">Module#define_method</code> 用来动态定义method。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="n">define_method</span> <span class="ss">:my_method</span> <span class="k">do</span> <span class="o">|</span><span class="n">my_arg</span><span class="o">|</span>
+    <span class="n">my_arg</span> <span class="o">*</span> <span class="mi">3</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">my_method</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; 6</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Computer</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">computer_id</span><span class="p">,</span> <span class="n">data_source</span><span class="p">)</span>
+    <span class="vi">@id</span> <span class="o">=</span> <span class="n">computer_id</span>
+    <span class="vi">@data_source</span> <span class="o">=</span> <span class="n">data_source</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define_component</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">define_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">info</span> <span class="o">=</span> <span class="vi">@data_source</span><span class="p">.</span><span class="nf">send</span> <span class="s2">"get_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_info"</span><span class="p">,</span> <span class="vi">@id</span>
+      <span class="n">price</span> <span class="o">=</span> <span class="vi">@data_source</span><span class="p">.</span><span class="nf">send</span> <span class="s2">"get_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_price"</span><span class="p">,</span> <span class="vi">@id</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">info</span><span class="si">}</span><span class="s2"> ($</span><span class="si">#{</span><span class="n">price</span><span class="si">}</span><span class="s2">)"</span>
+      <span class="k">return</span> <span class="s2">"* </span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+      <span class="n">result</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="n">define_component</span> <span class="ss">:mouse</span>
+  <span class="n">define_component</span> <span class="ss">:cpu</span>
+  <span class="n">define_component</span> <span class="ss">:keyboard</span>
+<span class="k">end</span>
+
+<span class="c1"># 进化</span>
+<span class="k">class</span> <span class="nc">Computer</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">computer_id</span><span class="p">,</span> <span class="n">data_source</span><span class="p">)</span>
+    <span class="vi">@id</span> <span class="o">=</span> <span class="n">computer_id</span>
+    <span class="vi">@data_source</span> <span class="o">=</span> <span class="n">data_source</span>
+<span class="err">➤</span>   <span class="n">data_source</span><span class="p">.</span><span class="nf">methods</span><span class="p">.</span><span class="nf">grep</span><span class="p">(</span><span class="sr">/^get_(.*)_info$/</span><span class="p">)</span> <span class="p">{</span> <span class="no">Computer</span><span class="p">.</span><span class="nf">define_component</span> <span class="vg">$1</span> <span class="p">}</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define_component</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">define_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="k">do</span>
+    <span class="c1"># ...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="basicobjectmethod_missing-无此方法时的处理"><code class="highlighter-rouge">BasicObject#method_missing</code> 无此方法时的处理</h3>
+
+<p>ruby 没有编译器，运行时才会知道对象的 method 是否存在。</p>
+
+<p>调用的 method 不存在时，会继续调用 <code class="highlighter-rouge">BasicObject.method_missing</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Lawyer</span><span class="p">;</span> <span class="k">end</span>
+<span class="n">nick</span> <span class="o">=</span> <span class="no">Lawyer</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">nick</span><span class="p">.</span><span class="nf">talk_simple</span>
+<span class="err">➤</span> <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`talk_simple' for #&lt;Lawyer:0x007f801aa81938&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">nick</span><span class="p">.</span><span class="nf">send</span> <span class="ss">:method_missing</span><span class="p">,</span> <span class="ss">:my_method</span>
+<span class="err">➤</span> <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`my_method' for #&lt;Lawyer:0x007f801b0f4978&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="overriding-method_missing">Overriding method_missing</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Lawyer</span>
+  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"You called: </span><span class="si">#{</span><span class="nb">method</span><span class="si">}</span><span class="s2">(</span><span class="si">#{</span><span class="n">args</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+    <span class="nb">puts</span> <span class="s2">"(You also passed it a block)"</span> <span class="k">if</span> <span class="nb">block_given?</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">bob</span> <span class="o">=</span> <span class="no">Lawyer</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">bob</span><span class="p">.</span><span class="nf">talk_simple</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">)</span> <span class="k">do</span>
+<span class="c1"># a block</span>
+<span class="k">end</span>
+
+<span class="err">➤</span> <span class="no">You</span> <span class="ss">called: </span><span class="n">talk_simple</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">(</span><span class="no">You</span> <span class="n">also</span> <span class="n">passed</span> <span class="n">it</span> <span class="n">a</span> <span class="n">block</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="ghost-methods-幽灵方法">Ghost Methods ，幽灵方法</h4>
+
+<blockquote>
+  <p>From the caller’s side, a message that’s processed by method_missing looks like<br />
+a regular call—but on the receiver’s side, it has no corresponding method.<br />
+This trick is called a <strong>Ghost Method</strong>.</p>
+</blockquote>
+
+<h5 id="the-hashie-example">The Hashie Example</h5>
+
+<p>就像Ruby变量一样， Hashie::Mash（包含在Hashie gem） 对象属性不存在，依然可以赋值。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nb">require</span> <span class="s1">'hashie'</span>
+<span class="n">icecream</span> <span class="o">=</span> <span class="no">Hashie</span><span class="o">::</span><span class="no">Mash</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">icecream</span><span class="p">.</span><span class="nf">flavor</span> <span class="o">=</span> <span class="s2">"strawberry"</span>
+<span class="n">icecream</span><span class="p">.</span><span class="nf">flavor</span> <span class="c1"># =&gt; "strawberry"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>关键在 Hashie::Mash.method_missing 的实现。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="c1"># gems/hashie-1.2.0/lib/hashie/mash.rb</span>
+<span class="k">module</span> <span class="nn">Hashie</span>
+  <span class="k">class</span> <span class="nc">Mash</span> <span class="o">&lt;</span> <span class="no">Hashie</span><span class="o">::</span><span class="no">Hash</span>
+    <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="nf">[</span><span class="p">](</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span> <span class="k">if</span> <span class="n">key?</span><span class="p">(</span><span class="n">method_name</span><span class="p">)</span>
+      <span class="n">match</span> <span class="o">=</span> <span class="n">method_name</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/(.*?)([?=!]?)$/</span><span class="p">)</span>
+      <span class="k">case</span> <span class="n">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+      <span class="k">when</span> <span class="s2">"="</span>
+        <span class="nb">self</span><span class="p">[</span><span class="n">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">first</span>
+        <span class="c1"># ...</span>
+      <span class="k">else</span>
+        <span class="n">default</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">blk</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="c1"># ...</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="dynamic-proxies">Dynamic Proxies</h4>
+
+<h5 id="ghee的例子">Ghee的例子</h5>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="c1"># gems/ghee-0.9.8/lib/ghee/resource_proxy.rb</span>
+<span class="k">class</span> <span class="nc">Ghee</span>
+  <span class="k">class</span> <span class="nc">ResourceProxy</span>
+    <span class="c1"># ...</span>
+    <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+      <span class="n">subject</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="k">def</span> <span class="nf">subject</span>
+      <span class="vi">@subject</span> <span class="o">||=</span> <span class="n">connection</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">path_prefix</span><span class="p">){</span><span class="o">|</span><span class="n">req</span><span class="o">|</span> <span class="n">req</span><span class="p">.</span><span class="nf">params</span><span class="p">.</span><span class="nf">merge!</span><span class="n">params</span> <span class="p">}.</span><span class="nf">body</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># gems/ghee-0.9.8/lib/ghee/api/gists.rb</span>
+<span class="k">class</span> <span class="nc">Ghee</span>
+  <span class="k">module</span> <span class="nn">API</span>
+    <span class="k">module</span> <span class="nn">Gists</span>
+      <span class="k">class</span> <span class="nc">Proxy</span> <span class="o">&lt;</span> <span class="o">::</span><span class="no">Ghee</span><span class="o">::</span><span class="no">ResourceProxy</span>
+        <span class="k">def</span> <span class="nf">star</span>
+          <span class="n">connection</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path_prefix</span><span class="si">}</span><span class="s2">/star"</span><span class="p">).</span><span class="nf">status</span> <span class="o">==</span> <span class="mi">204</span>
+        <span class="k">end</span>
+        <span class="c1"># ...</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="nb">require</span> <span class="s2">"ghee"</span>
+<span class="n">gh</span> <span class="o">=</span> <span class="no">Ghee</span><span class="p">.</span><span class="nf">basic_auth</span><span class="p">(</span><span class="s2">"usr"</span><span class="p">,</span> <span class="s2">"pwd"</span><span class="p">)</span> <span class="c1"># Your GitHub username and password</span>
+<span class="n">all_gists</span> <span class="o">=</span> <span class="n">gh</span><span class="p">.</span><span class="nf">users</span><span class="p">(</span><span class="s2">"nusco"</span><span class="p">).</span><span class="nf">gists</span>
+<span class="n">a_gist</span> <span class="o">=</span> <span class="n">all_gists</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># url, description 都是 Ghost Methods</span>
+<span class="n">a_gist</span><span class="p">.</span><span class="nf">url</span> <span class="c1"># =&gt; "https://api.github.com/gists/535077"</span>
+<span class="n">a_gist</span><span class="p">.</span><span class="nf">description</span> <span class="c1"># =&gt; "Spell: Dynamic Proxy"</span>
+
+<span class="n">a_gist</span><span class="p">.</span><span class="nf">star</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="refactoring-the-computer-class">Refactoring the Computer Class</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Computer</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">computer_id</span><span class="p">,</span> <span class="n">data_source</span><span class="p">)</span>
+    <span class="vi">@id</span> <span class="o">=</span> <span class="n">computer_id</span>
+    <span class="vi">@data_source</span> <span class="o">=</span> <span class="n">data_source</span>
+  <span class="k">end</span>
+<span class="err">➤</span> <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+<span class="err">➤</span>   <span class="c1"># If it doesn’t have one, the call falls back to BasicObject#method_missing</span>
+<span class="err">➤</span>   <span class="k">super</span> <span class="k">if</span> <span class="o">!</span><span class="vi">@data_source</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="s2">"get_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_info"</span><span class="p">)</span>
+<span class="err">➤</span>   <span class="n">info</span> <span class="o">=</span> <span class="vi">@data_source</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">"get_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_info"</span><span class="p">,</span> <span class="vi">@id</span><span class="p">)</span>
+<span class="err">➤</span>   <span class="n">price</span> <span class="o">=</span> <span class="vi">@data_source</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">"get_</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_price"</span><span class="p">,</span> <span class="vi">@id</span><span class="p">)</span>
+<span class="err">➤</span>   <span class="n">result</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">info</span><span class="si">}</span><span class="s2"> ($</span><span class="si">#{</span><span class="n">price</span><span class="si">}</span><span class="s2">)"</span>
+<span class="err">➤</span>   <span class="k">return</span> <span class="s2">"* </span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+<span class="err">➤</span>   <span class="n">result</span>
+<span class="err">➤</span> <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="respond_to_missing">respond_to_missing?</h4>
+
+<p>如果对 Ghost method 调用 respond_to? ，会返回false， 人家可不管幽灵，除非你重写了 respond_to_missing? 方法。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Computer</span>
+  <span class="c1"># ...</span>
+<span class="err">➤</span> <span class="k">def</span> <span class="nf">respond_to_missing?</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="n">include_private</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+<span class="err">➤</span>   <span class="c1"># In this case, super is the default Object#respond_to_missing?</span>
+<span class="err">➤</span>   <span class="c1"># which always returns false.</span>
+<span class="err">➤</span>   <span class="vi">@data_source</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="s2">"get_</span><span class="si">#{</span><span class="nb">method</span><span class="si">}</span><span class="s2">_info"</span><span class="p">)</span> <span class="o">||</span> <span class="k">super</span>
+<span class="err">➤</span> <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h5 style="color:red" id="所以注意如果重写-method_missing别忘了也重写-respond_to_missing">所以注意：如果重写 <code class="highlighter-rouge">method_missing</code>，别忘了也重写 <code class="highlighter-rouge">respond_to_missing?</code></h5>
+
+<h3 id="blank-slate">Blank Slate</h3>
+
+<p>you might want to remove most methods from the class,<br />
+preventing such name clashes from ever happening again. A skinny class<br />
+Spell: Blank Slate with a minimal number of methods is called a <strong>Blank Slate</strong>.</p>
+
+<p><u>Inheriting from BasicObject</u> is the quicker way to define a Blank Slate in Ruby.</p>
+
+<h4 id="removing-methods--moduleundef_method-or-moduleremove_method">Removing Methods , <code class="highlighter-rouge">Module#undef_method</code> or <code class="highlighter-rouge">Module#remove_method</code></h4>
+
+<p>You can remove a method from a class by using either <code class="highlighter-rouge">Module#undef_method</code> or<br />
+<code class="highlighter-rouge">Module#remove_method</code>.</p>
+
+<p><code class="highlighter-rouge">undef_method</code> removes any method, including the inherited ones.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="c1"># keeps instance_eval and all the “reserved methods”,</span>
+<span class="c1">#     -- methods that are used internally by Ruby</span>
+
+<span class="c1"># gems/builder-3.2.2/lib/blankslate.rb</span>
+<span class="k">class</span> <span class="nc">BlankSlate</span>
+<span class="c1"># Hide the method named +name+ in the BlankSlate class. Don't</span>
+<span class="c1"># hide +instance_eval+ or any method beginning with "__".</span>
+<span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">hide</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+<span class="c1"># ...</span>
+<span class="k">if</span> <span class="nb">instance_methods</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="nb">name</span><span class="p">.</span><span class="nf">_blankslate_as_name</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+<span class="nb">name</span> <span class="o">!~</span> <span class="sr">/^(__|instance_eval$)/</span>
+<span class="n">undef_method</span> <span class="nb">name</span>
+<span class="k">end</span>
+<span class="k">end</span>
+<span class="c1"># ...</span>
+<span class="nb">instance_methods</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">hide</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="block">Block</h2>
+
+<h3 id="定义一个类似c的-using-关键字">定义一个类似C#的 using 关键字</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">Kernel</span>
+  <span class="k">def</span> <span class="nf">using</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">begin</span>
+      <span class="k">yield</span>
+    <span class="k">ensure</span>
+      <span class="n">resource</span><span class="p">.</span><span class="nf">dispose</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Resource</span>
+  <span class="k">def</span> <span class="nf">dispose</span>
+    <span class="vi">@disposed</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">disposed?</span>
+    <span class="vi">@disposed</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># testing</span>
+<span class="k">def</span> <span class="nf">test_disposes_of_resources</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="no">Resource</span><span class="p">.</span><span class="nf">new</span>
+  <span class="n">using</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="n">assert</span> <span class="n">r</span><span class="p">.</span><span class="nf">disposed?</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="flattening-the-scope">Flattening the Scope</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="n">my_var</span> <span class="o">=</span> <span class="s2">"Success"</span>
+
+<span class="no">MyClass</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+  <span class="s2">"</span><span class="si">#{</span><span class="n">my_var</span><span class="si">}</span><span class="s2"> in the class definition"</span>
+  
+  <span class="n">define_method</span> <span class="ss">:my_method</span> <span class="k">do</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="n">my_var</span><span class="si">}</span><span class="s2"> in the method"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="sharing-the-scope">Sharing the Scope</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">define_methods</span>
+  <span class="n">shared</span> <span class="o">=</span> <span class="mi">0</span>
+  
+  <span class="no">Kernel</span><span class="p">.</span><span class="nf">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:counter</span> <span class="k">do</span>
+    <span class="n">shared</span>
+  <span class="k">end</span>
+  <span class="no">Kernel</span><span class="p">.</span><span class="nf">send</span> <span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:inc</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+    <span class="n">shared</span> <span class="o">+=</span> <span class="n">x</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">define_methods</span>
+<span class="n">counter</span> <span class="c1"># =&gt; 0</span>
+<span class="n">inc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">counter</span> <span class="c1"># =&gt; 4</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="instance_eval">instance_eval()</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyClass</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@v</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">instance_eval</span> <span class="k">do</span>
+  <span class="nb">self</span> <span class="c1"># =&gt; #&lt;MyClass:0x3340dc @v=1&gt;</span>
+  <span class="vi">@v</span> <span class="c1"># =&gt; 1</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="instance_exec">instance_exec</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">C</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@x</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">D</span>
+  <span class="k">def</span> <span class="nf">twisted_method</span>
+    <span class="vi">@y</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="no">C</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">instance_eval</span> <span class="p">{</span> <span class="s2">"@x: </span><span class="si">#{</span><span class="vi">@x</span><span class="si">}</span><span class="s2">, @y: </span><span class="si">#{</span><span class="vi">@y</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="no">D</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">twisted_method</span> <span class="c1"># =&gt; "@x: 1, @y: "</span>
+
+<span class="k">class</span> <span class="nc">D2</span>
+  <span class="k">def</span> <span class="nf">twisted_method</span>
+    <span class="vi">@y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="err">➤</span>   <span class="no">C</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">instance_exec</span><span class="p">(</span><span class="vi">@y</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">y</span><span class="o">|</span> <span class="s2">"@x: </span><span class="si">#{</span><span class="vi">@x</span><span class="si">}</span><span class="s2">, @y: </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="no">D2</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">twisted_method</span> <span class="c1"># =&gt; "@x: 1, @y: 2"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="unbound-methods-将方法从一个类撕下来贴到另一个类上">Unbound Methods ，将方法从一个类撕下来，贴到另一个类上</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="c1"># 撕下来</span>
+<span class="k">module</span> <span class="nn">MyModule</span>
+  <span class="k">def</span> <span class="nf">my_method</span>
+    <span class="mi">42</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">unbound</span> <span class="o">=</span> <span class="no">MyModule</span><span class="p">.</span><span class="nf">instance_method</span><span class="p">(</span><span class="ss">:my_method</span><span class="p">)</span>
+<span class="n">unbound</span><span class="p">.</span><span class="nf">class</span>   <span class="c1"># =&gt; UnboundMethod</span>
+
+<span class="c1"># 贴上去</span>
+<span class="c1"># 1. UnboundMethod#bind</span>
+<span class="c1"># 2. define_method</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">class_eval</span> <span class="k">do</span>
+  <span class="n">define_method</span> <span class="ss">:another_method</span><span class="p">,</span> <span class="n">unbound</span>
+<span class="k">end</span>
+
+<span class="s2">"abc"</span><span class="p">.</span><span class="nf">another_method</span>    <span class="c1"># =&gt; 42</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="library">library</h2>
+
+<p>You use load to execute code, and you use require to import libraries.</p>
+
+<p>require tries only once to load each file, while load executes the file again every time you call it.</p>
+
+<h3 id="the-kernel-module">The Kernel Module</h3>
+
+<p>class Object includes Kernel, so Kernel gets into every object’s<br />
+ancestors chain.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># 每个对象都有 print* 方法</span>
+<span class="no">Kernel</span><span class="p">.</span><span class="nf">private_instance_methods</span><span class="p">.</span><span class="nf">grep</span><span class="p">(</span><span class="sr">/^pri/</span><span class="p">)</span> <span class="c1"># =&gt; [:printf, :print]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#ruby" title="Pages tagged ruby" class="tag"><span class="term">ruby</span></a><a href="/tags#meta-programing" title="Pages tagged meta-programing" class="tag"><span class="term">meta-programing</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

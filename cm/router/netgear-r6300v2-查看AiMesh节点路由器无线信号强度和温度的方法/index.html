@@ -1,0 +1,1263 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>netgear-r6300v2-查看AiMesh节点路由器无线信号强度和温度的方法 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="koolshare, merlin, 梅林, netgear">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="netgear-r6300v2-查看AiMesh节点路由器无线信号强度和温度的方法">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/router/netgear-r6300v2-%E6%9F%A5%E7%9C%8BAiMesh%E8%8A%82%E7%82%B9%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%A0%E7%BA%BF%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E5%92%8C%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/router/netgear-r6300v2-%E6%9F%A5%E7%9C%8BAiMesh%E8%8A%82%E7%82%B9%E8%B7%AF%E7%94%B1%E5%99%A8%E6%97%A0%E7%BA%BF%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E5%92%8C%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">netgear-r6300v2-查看AiMesh节点路由器无线信号强度和温度的方法</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-03-01T00:00:00+08:00">March 01, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://koolshare.cn/thread-182286-1-1.html">coolshine - arm384梅林改版固件 - R6300v2重获新生！</a></li>
+      <li><a href="https://koolshare.cn/thread-190950-22-1.html">R6300v2 386测试固件，V大版，无无软件中心</a></li>
+      <li><a href="https://koolshare.cn/forum.php?mod=viewthread&amp;tid=192754&amp;highlight=r6300v2">求解R7000和R6300V2组mesh问题</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>AiMesh 节点，也是有局域网IP的，可以在AiMesh router管理界面看到。</p>
+
+<p>通过AiMesh 节点IP，也是能登录节点的管理页面的，可以设置打开 ssh，然后 ssh 登录。</p>
+
+<p>查看 AiMesh 节点路由器无线信号强度和温度的方法：<br />
+用 AiMesh 主路由器的用户名和密码 SSH 进 AiMesh 节点地址，执行如下命令：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre># 2.4GHz 无线信号强度：
+wl -i $( nvram get wl0_ifname ) txpwr_target_max
+
+# 5GHz 无线信号强度：
+wl -i $( nvram get wl1_ifname ) txpwr_target_max
+
+# CPU 温度:
+cat /proc/dmu/temperature
+
+# 2.4GHz 网卡温度：
+wl -i $( nvram get wl0_ifname ) phy_tempsense | awk '{print $1 / 2 + 20}'
+
+# 5GHz 网卡温度：
+wl -i $( nvram get wl1_ifname ) phy_tempsense | awk '{print $1 / 2 + 20}'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>将 <code class="highlighter-rouge">lz_asuswrt_status.sh</code> 上传至 AiMesh 节点路由器，权限设为0755，在文件所在目录内执行 ./lz_asuswrt_status.sh 命令即可一键获取上述信息。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278</pre></td><td class="code"><pre><span class="c">#!/bin/sh</span>
+<span class="c"># lz_asuswrt_status.sh v1.1.1</span>
+<span class="c"># By LZ 妙妙呜 (larsonzhang@gmail.com)</span>
+
+<span class="nv">LZ_VERSION</span><span class="o">=</span>v1.1.1
+
+<span class="c">## 路由器WIFI无线网络操作wl指令名称</span>
+<span class="nv">WL</span><span class="o">=</span>wl
+
+<span class="c">## 路由器WIFI无线网络操作wl指令可执行文件路径</span>
+<span class="nv">WL_PATH</span><span class="o">=</span>/usr/sbin
+
+<span class="nb">echo
+echo</span> <span class="k">$(</span>date<span class="k">)</span> <span class="o">[</span><span class="nv">$$</span><span class="o">]</span>
+<span class="nb">echo
+echo </span>LZ <span class="nv">$LZ_VERSION</span> script commands start......
+<span class="nb">echo </span>By LZ <span class="se">\(</span>larsonzhang@gmail.com<span class="se">\)</span>
+<span class="nb">echo
+
+</span><span class="nv">Route_Model</span><span class="o">=</span><span class="k">$(</span> nvram get productid 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">Hardware_Type</span><span class="o">=</span><span class="k">$(</span> uname -m 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">Host_Name</span><span class="o">=</span><span class="k">$(</span> uname -n 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">Kernel_Name</span><span class="o">=</span><span class="k">$(</span> uname 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">Kernel_Release</span><span class="o">=</span><span class="k">$(</span> uname -r 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">Kernel_Version</span><span class="o">=</span><span class="k">$(</span> uname -v 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">OS_Name</span><span class="o">=</span><span class="k">$(</span> uname -o 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Route_Model</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Route_Model</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Hardware_Type</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Hardware_Type</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Host_Name</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Host_Name</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Kernel_Name</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Kernel_Name</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Kernel_Release</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Kernel_Release</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Kernel_Version</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Kernel_Version</span><span class="o">=</span>unknown
+<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$OS_Name</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">OS_Name</span><span class="o">=</span>unknown
+<span class="nb">echo</span> -e Route Model<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Route_Model</span><span class="s2">"</span>
+<span class="nb">echo</span> -e Hardware Type<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Hardware_Type</span><span class="s2">"</span>
+<span class="nb">echo</span> -e Host Name<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Host_Name</span><span class="s2">"</span>
+<span class="nb">echo</span> -e Kernel Name<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Kernel_Name</span><span class="s2">"</span>
+<span class="nb">echo</span> -e Kernel Release<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Kernel_Release</span><span class="s2">"</span>
+<span class="nb">echo</span> -e Kernel Version<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Kernel_Version</span><span class="s2">"</span>
+<span class="nb">echo</span> -e OS Name<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$OS_Name</span><span class="s2">"</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">$(</span> uname -o 2&gt; /dev/null | sed -n 1p <span class="k">)</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"Merlin-Koolshare"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo </span>Firmware Version: <span class="s2">"</span><span class="k">$(</span> nvram get extendno 2&gt; /dev/null | cut -d <span class="s2">"X"</span> -f2 | cut -d <span class="s2">"-"</span> -f1 | cut -d <span class="s2">"_"</span> -f1 | sed -n 1p <span class="k">)</span><span class="s2">"</span>
+<span class="k">else
+	</span><span class="nv">firmware_version</span><span class="o">=</span><span class="k">$(</span> nvram get firmver 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+		<span class="nv">firmware_buildno</span><span class="o">=</span><span class="k">$(</span> nvram get buildno 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+		<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$firmware_buildno</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+			<span class="nv">firmware_webs_state_info</span><span class="o">=</span><span class="k">$(</span> nvram get webs_state_info 2&gt; /dev/null | sed <span class="s1">'s/^[^_]*[_]/&amp;LZZL/'</span> | sed <span class="s1">'s/[_]LZZL/\./'</span> | sed -n 1p <span class="k">)</span>
+			<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$firmware_webs_state_info</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+				</span><span class="nv">firmware_webs_state_info_beta</span><span class="o">=</span><span class="k">$(</span> nvram get webs_state_info_beta 2&gt; /dev/null | sed <span class="s1">'s/^[^_]*[_]/&amp;LZZL/'</span> | sed <span class="s1">'s/[_]LZZL/\./'</span> | sed -n 1p <span class="k">)</span>
+				<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$firmware_webs_state_info_beta</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+					</span><span class="nv">firmware_version</span><span class="o">=</span><span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">.</span><span class="nv">$firmware_buildno</span><span class="s2">"</span>
+				<span class="k">else
+					</span><span class="nv">firmware_version</span><span class="o">=</span><span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">.</span><span class="nv">$firmware_webs_state_info_beta</span><span class="s2">"</span>
+				<span class="k">fi
+			else
+				</span><span class="nv">firmware_version</span><span class="o">=</span><span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">.</span><span class="nv">$firmware_webs_state_info</span><span class="s2">"</span>
+			<span class="k">fi</span>
+			<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">firmware_version</span><span class="o">=</span>unknown
+			<span class="nb">echo </span>Firmware Version: <span class="s2">"</span><span class="nv">$firmware_version</span><span class="s2">"</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="k">fi
+
+</span><span class="nv">Firmware_Build</span><span class="o">=</span><span class="k">$(</span> nvram get buildinfo 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$Firmware_Build</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> -e Firmware Build<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Firmware_Build</span><span class="s2">"</span>
+
+<span class="nv">Bootloader_CFE</span><span class="o">=</span><span class="k">$(</span> nvram get bl_version 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$Bootloader_CFE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> -e Bootloader <span class="se">\(</span>CFE<span class="se">\)</span>: <span class="s2">"</span><span class="nv">$Bootloader_CFE</span><span class="s2">"</span>
+
+<span class="nv">route_local_info</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> ifconfig br0 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$route_local_info</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">Route_Status</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $2}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nv">Route_Encap</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $3}'</span> | awk -F <span class="s2">":"</span> <span class="s1">'{print $2}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nv">Route_HWaddr</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $5}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nv">Route_IP_Addr</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $7}'</span> | awk -F <span class="s2">":"</span> <span class="s1">'{print $2}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nv">Local_Bcast_Addr</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $8}'</span> | awk -F <span class="s2">":"</span> <span class="s1">'{print $2}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nv">Local_Net_Mask</span><span class="o">=</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$route_local_info</span> | awk -F <span class="s2">" "</span> <span class="s1">'{print $9}'</span> | awk -F <span class="s2">":"</span> <span class="s1">'{print $2}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="nb">echo</span>
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Route_Status</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Route_Status</span><span class="o">=</span>unknown
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Route_Encap</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Route_Encap</span><span class="o">=</span>unknown
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Route_HWaddr</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Route_HWaddr</span><span class="o">=</span>unknown
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Route_IP_Addr</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Route_IP_Addr</span><span class="o">=</span>unknown
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Local_Bcast_Addr</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Local_Bcast_Addr</span><span class="o">=</span>unknown
+	<span class="o">[</span> -z <span class="s2">"</span><span class="nv">$Local_Net_Mask</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">Local_Net_Mask</span><span class="o">=</span>unknown
+	<span class="nb">echo</span> -e Route Status<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Route_Status</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e Route Encap<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Route_Encap</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e Route HWaddr<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Route_HWaddr</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e Route IP Addr<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Route_IP_Addr</span><span class="s2">"</span>
+	<span class="nb">echo </span>Local Bcast Addr: <span class="s2">"</span><span class="nv">$Local_Bcast_Addr</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e Local Net Mask<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$Local_Net_Mask</span><span class="s2">"</span>
+<span class="k">fi
+
+</span><span class="nb">echo
+</span>cat /proc/cpuinfo 2&gt; /dev/null
+
+<span class="nv">CPU_frequency</span><span class="o">=</span><span class="k">$(</span> nvram get clkfreq 2&gt; /dev/null | sed -n 1p | awk -F <span class="s1">','</span> <span class="s1">'{print $1}'</span> <span class="k">)</span>
+<span class="nv">Memory_frequency</span><span class="o">=</span><span class="k">$(</span> nvram get clkfreq 2&gt; /dev/null | sed -n 1p | awk -F <span class="s1">','</span> <span class="s1">'{print $2}'</span> <span class="k">)</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$CPU_frequency</span><span class="s2">"</span> -a -n <span class="s2">"</span><span class="nv">$Memory_frequency</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">CPU_frequency</span><span class="o">=</span><span class="s2">"</span><span class="nv">$CPU_frequency</span><span class="s2"> MHz"</span>
+	<span class="nv">Memory_frequency</span><span class="o">=</span><span class="s2">"</span><span class="nv">$Memory_frequency</span><span class="s2"> MHz"</span>
+	<span class="nb">echo
+	echo</span> -e CPU frequency<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$CPU_frequency</span><span class="s2">"</span>
+	<span class="nb">echo </span>Memory frequency: <span class="s2">"</span><span class="nv">$Memory_frequency</span><span class="s2">"</span>
+<span class="k">fi
+
+</span><span class="nb">echo
+</span><span class="nv">CPU_temperature</span><span class="o">=</span><span class="k">$(</span> cat /proc/dmu/temperature 2&gt; /dev/null | sed -e <span class="s1">'s/.C$/°C/g'</span> | sed -e <span class="s1">'/^$/d'</span> | sed -n 1p <span class="k">)</span>
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$CPU_temperature</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">CPU_temperature</span><span class="o">=</span><span class="k">$(</span> cat /sys/class/thermal/thermal_zone0/temp 2&gt; /dev/null | awk <span class="s1">'{print $1 / 1000}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$CPU_temperature</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">CPU_temperature</span><span class="o">=</span><span class="s2">"</span><span class="nv">$CPU_temperature</span><span class="s2">"</span>°C <span class="o">||</span> <span class="nv">CPU_temperature</span><span class="o">=</span>unknown
+	<span class="nb">echo</span> -e CPU temperature<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$CPU_temperature</span><span class="s2">"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$CPU_temperature</span><span class="s2">"</span>
+<span class="k">fi
+
+if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="k">$(</span> which <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">WL</span><span class="o">=</span><span class="k">${</span><span class="nv">WL_PATH</span><span class="k">}</span>/<span class="k">${</span><span class="nv">WL</span><span class="k">}</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">"</span><span class="k">$(</span> which <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="k">${</span><span class="nv">WL_PATH</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">WL</span><span class="k">}</span><span class="s2">"</span> -a <span class="s2">"</span><span class="k">${</span><span class="nv">WL_PATH</span><span class="k">}</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"/usr/sbin"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">WL</span><span class="o">=</span><span class="k">${</span><span class="nv">WL_PATH</span><span class="k">}</span>/<span class="k">${</span><span class="nv">WL</span><span class="k">}</span>
+<span class="k">fi
+
+</span><span class="nv">interface_2g</span><span class="o">=</span><span class="k">$(</span> nvram get wl0_ifname 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">interface_5g1</span><span class="o">=</span><span class="k">$(</span> nvram get wl1_ifname 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+<span class="nv">interface_5g2</span><span class="o">=</span><span class="k">$(</span> nvram get wl2_ifname 2&gt; /dev/null | sed -n 1p <span class="k">)</span>
+
+<span class="nv">interface_2g_temperature</span><span class="o">=</span> ; <span class="nv">interface_5g1_temperature</span><span class="o">=</span> ; <span class="nv">interface_5g2_temperature</span><span class="o">=</span> ;
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_2g</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">interface_2g_temperature</span><span class="o">=</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_2g</span> phy_tempsense 2&gt; /dev/null | awk <span class="s1">'{print $1 / 2 + 20}'</span> | sed -n 1p <span class="k">)</span>
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_2g_temperature</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">interface_2g_temperature</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_2g_temperature</span><span class="s2">"</span>°C <span class="o">||</span> <span class="nv">interface_2g_temperature</span><span class="o">=</span><span class="s2">"offline or unknown"</span>
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">interface_5g1_temperature</span><span class="o">=</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g1</span> phy_tempsense 2&gt; /dev/null | awk <span class="s1">'{print $1 / 2 + 20}'</span> | sed -n 1p <span class="k">)</span>
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g1_temperature</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">interface_5g1_temperature</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_5g1_temperature</span><span class="s2">"</span>°C <span class="o">||</span> <span class="nv">interface_5g1_temperature</span><span class="o">=</span><span class="s2">"offline or unknown"</span>
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g2</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+	<span class="nv">interface_5g2_temperature</span><span class="o">=</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g2</span> phy_tempsense 2&gt; /dev/null | awk <span class="s1">'{print $1 / 2 + 20}'</span> | sed -n 1p <span class="k">)</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g2_temperature</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">interface_5g2_temperature</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_5g2_temperature</span><span class="s2">"</span>°C <span class="o">||</span> <span class="nv">interface_5g2_temperature</span><span class="o">=</span><span class="s2">"offline or unknown"</span>
+<span class="o">}</span>
+
+<span class="nv">wl_txpwr_2g</span><span class="o">=</span><span class="s2">"offline or unknown"</span> ; <span class="nv">wl_txpwr_5g1</span><span class="o">=</span><span class="s2">"</span><span class="nv">$wl_txpwr_2g</span><span class="s2">"</span> ; <span class="nv">wl_txpwr_5g2</span><span class="o">=</span><span class="s2">"</span><span class="nv">$wl_txpwr_2g</span><span class="s2">"</span> ;
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_2g</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+	<span class="nv">interface_2g_power</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_2g</span> txpwr_target_max 2&gt; /dev/null | awk <span class="s1">'{print $NF}'</span> | sed -n 1p <span class="k">)</span><span class="s2">"</span>
+	<span class="nv">interface_2g_power_max</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_2g</span> txpwr1 2&gt; /dev/null | sed -n 1p | awk <span class="s1">'{print $5,$7}'</span> | sed -e <span class="s1">'s/\(^.*\)[ ]\(.*$\)/\t( \1 dBm \/ \2 mW )/g'</span> <span class="k">)</span><span class="s2">"</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_2g_power</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">wl_txpwr_2g</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_2g_power</span><span class="s2"> dBm / </span><span class="k">$(</span> awk -v <span class="nv">x</span><span class="o">=</span><span class="nv">$interface_2g_power</span> <span class="s1">'BEGIN {printf "%.2f\n", 10^(x/10)}'</span> <span class="k">)</span><span class="s2"> mW</span><span class="nv">$interface_2g_power_max</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+	<span class="nv">interface_5g1_power</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g1</span> txpwr_target_max 2&gt; /dev/null | awk <span class="s1">'{print $NF}'</span> | sed -n 1p <span class="k">)</span><span class="s2">"</span>
+	<span class="nv">interface_5g1_power_max</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g1</span> txpwr1 2&gt; /dev/null | sed -n 1p | awk <span class="s1">'{print $5,$7}'</span> | sed -e <span class="s1">'s/\(^.*\)[ ]\(.*$\)/\t( \1 dBm \/ \2 mW )/g'</span> <span class="k">)</span><span class="s2">"</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g1_power</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">wl_txpwr_5g1</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_5g1_power</span><span class="s2"> dBm / </span><span class="k">$(</span> awk -v <span class="nv">x</span><span class="o">=</span><span class="nv">$interface_5g1_power</span> <span class="s1">'BEGIN {printf "%.2f\n", 10^(x/10)}'</span> <span class="k">)</span><span class="s2"> mW</span><span class="nv">$interface_5g1_power_max</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g2</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+	<span class="nv">interface_5g2_power</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g2</span> txpwr_target_max 2&gt; /dev/null | awk <span class="s1">'{print $NF}'</span> | sed -n 1p <span class="k">)</span><span class="s2">"</span>
+	<span class="nv">interface_5g2_power_max</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span> <span class="k">${</span><span class="nv">WL</span><span class="k">}</span> -i <span class="nv">$interface_5g2</span> txpwr1 2&gt; /dev/null | sed -n 1p | awk <span class="s1">'{print $5,$7}'</span> | sed -e <span class="s1">'s/\(^.*\)[ ]\(.*$\)/\t( \1 dBm \/ \2 mW )/g'</span> <span class="k">)</span><span class="s2">"</span>
+	<span class="o">[</span> -n <span class="s2">"</span><span class="nv">$interface_5g2_power</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">wl_txpwr_5g2</span><span class="o">=</span><span class="s2">"</span><span class="nv">$interface_5g2_power</span><span class="s2"> dBm / </span><span class="k">$(</span> awk -v <span class="nv">x</span><span class="o">=</span><span class="nv">$interface_5g2_power</span> <span class="s1">'BEGIN {printf "%.2f\n", 10^(x/10)}'</span> <span class="k">)</span><span class="s2"> mW</span><span class="nv">$interface_5g2_power_max</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$interface_5g2</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo</span> -e 2.4 GHz<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$interface_2g_temperature</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e 5 GHz<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$interface_5g1_temperature</span><span class="s2">"</span>
+	<span class="nb">echo
+	echo </span>2.4 GHz Tx Power: <span class="s2">"</span><span class="nv">$wl_txpwr_2g</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e 5 GHz Tx Power<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$wl_txpwr_5g1</span><span class="s2">"</span>
+<span class="k">else
+	</span><span class="nb">echo</span> -e 2.4 GHz<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$interface_2g_temperature</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e 5 GHz-1<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$interface_5g1_temperature</span><span class="s2">"</span>
+	<span class="nb">echo</span> -e 5 GHz-2<span class="se">\\</span>t<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$interface_5g2_temperature</span><span class="s2">"</span>
+	<span class="nb">echo
+	echo </span>2.4 GHz Tx Power: <span class="s2">"</span><span class="nv">$wl_txpwr_2g</span><span class="s2">"</span>
+	<span class="nb">echo </span>5 GHz-1 Tx Power: <span class="s2">"</span><span class="nv">$wl_txpwr_5g1</span><span class="s2">"</span>
+	<span class="nb">echo </span>5 GHz-2 Tx Power: <span class="s2">"</span><span class="nv">$wl_txpwr_5g2</span><span class="s2">"</span>
+<span class="k">fi
+
+if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> which ethctl 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">eth_x_set</span><span class="o">=</span><span class="k">$(</span> ifconfig 2&gt; /dev/null | grep -E <span class="s1">'eth[0-9]{1,10}'</span> | awk <span class="s1">'{print $1}'</span> | sort -n <span class="k">)</span>
+	<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$eth_x_set</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+		</span><span class="nv">x</span><span class="o">=</span>0
+		<span class="k">until</span> <span class="o">[</span> -z <span class="s2">"</span><span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$eth_x_set</span> | grep -o eth<span class="nv">$x</span> | sed -n 1p <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>
+		<span class="k">do
+			</span><span class="nv">ethx_info</span><span class="o">=</span><span class="k">$(</span> ethctl eth<span class="nv">$x</span> media-type 2&gt; /dev/null <span class="k">)</span>
+			<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$ethx_info</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+				</span><span class="nb">echo
+				echo </span>Ethernet Port <span class="nv">$x</span> Status:
+				<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$ethx_info</span><span class="s2">"</span>
+			<span class="k">fi
+			</span><span class="nb">let </span>x++
+		<span class="k">done
+	fi
+elif</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> which robocfg 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo
+	</span>robocfg show 2&gt; /dev/null
+<span class="k">fi
+
+</span>nvram show 1&gt; /dev/null 2&gt; /tmp/lz_nvram.size
+<span class="k">if</span> <span class="o">[</span> -f /tmp/lz_nvram.size <span class="o">]</span>; <span class="k">then
+	</span><span class="nv">NVRAM_usage</span><span class="o">=</span><span class="k">$(</span> cat /tmp/lz_nvram.size 2&gt; /dev/null <span class="se">\</span>
+				| grep -Eio <span class="s1">'size: [0-9]{1,10} bytes \([0-9]{1,10} left\)'</span> <span class="se">\</span>
+				| sed -e <span class="s1">'s/^.*[ ]\([0-9]\{1,10\}\)[ ].*[ ](\([0-9]\{1,10\}\).*$/\1 \2/g'</span> <span class="se">\</span>
+				| awk <span class="s1">'{print $1, $1 + $2}'</span> <span class="se">\</span>
+				| sed -e <span class="s1">'s/\(^[0-9]\{1,10\}\) \([0-9]\{1,10\}\)/\1 \/ \2 bytes/g'</span> <span class="se">\</span>
+				| sed -n 1p <span class="k">)</span>
+	<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$NVRAM_usage</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+		</span><span class="nb">echo
+		echo</span> -e NVRAM usage<span class="se">\\</span>t: <span class="s2">"</span><span class="nv">$NVRAM_usage</span><span class="s2">"</span>
+	<span class="k">fi
+	</span>rm /tmp/lz_nvram.size &gt; /dev/null 2&gt;&amp;1
+<span class="k">fi</span>
+
+<span class="sh">&lt;&lt;EOF
+NVRAM_usage=$( nvram show 2&gt;&amp;1 \
+			| grep -Eio 'size: [0-9]{1,10} bytes \([0-9]{1,10} left\)' \
+			| sed -e 's/^.*[ ]\([0-9]\{1,10\}\)[ ].*[ ](\([0-9]\{1,10\}\).*$/\1 \2/g' \
+			| awk '{print $1, $1 + $2}' \
+			| sed -e 's/\(^[0-9]\{1,10\}\) \([0-9]\{1,10\}\)/\1 \/ \2 bytes/g' \
+			| sed -n 1p )
+if [ -n "$NVRAM_usage" ]; then
+	echo
+	echo -e NVRAM usage\\t: "$NVRAM_usage"
+fi
+EOF
+
+</span><span class="nb">echo
+</span>free 2&gt; /dev/null
+
+<span class="nb">echo
+</span><span class="nv">NAND_bad_block</span><span class="o">=</span><span class="k">$(</span> dmesg 2&gt; /dev/null | grep nand_read_bbt | grep <span class="s2">"bad block"</span> <span class="k">)</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$NAND_bad_block</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$NAND_bad_block</span><span class="s2">"</span>
+	<span class="nb">echo </span>Number of NAND bad blocks: <span class="s2">"</span><span class="k">$(</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$NAND_bad_block</span><span class="s2">"</span> | grep -c <span class="s1">'^.*$'</span> <span class="k">)</span><span class="s2">"</span>
+<span class="k">else
+	</span><span class="nb">echo </span>No bad blocks found <span class="k">in </span>NAND.
+<span class="k">fi
+
+</span><span class="nb">echo
+</span>cat /proc/mtd 2&gt; /dev/null
+<span class="nb">echo
+</span>cat /proc/partitions 2&gt; /dev/null
+<span class="nb">echo
+</span>df -hT 2&gt; /dev/null
+<span class="nb">echo
+</span>brctl show 2&gt; /dev/null
+<span class="nb">echo
+</span>cat /proc/net/vlan/config 2&gt; /dev/null
+
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> which bcmmcastctl 2&gt; /dev/null <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo
+	</span>bcmmcastctl show 2&gt; /dev/null
+<span class="k">else
+	if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> ps 2&gt; /dev/null | grep igmpproxy | grep -v grep | sed -n 1p <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+		</span><span class="nb">echo
+		</span>ps 2&gt; /dev/null | grep igmpproxy | grep -v grep
+		cat <span class="s2">"</span><span class="k">$(</span> ps 2&gt; /dev/null | grep igmpproxy | grep -v grep | sed -n 1p | awk <span class="s1">'{print $6}'</span> <span class="k">)</span><span class="s2">"</span> 2&gt; /dev/null
+	<span class="k">fi
+fi
+
+if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> ps 2&gt; /dev/null | grep udpxy | grep -v grep | sed -n 1p <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo
+	</span>ps 2&gt; /dev/null | grep udpxy | grep -v grep
+<span class="k">fi
+
+</span><span class="nb">echo
+</span>ip route show 2&gt; /dev/null
+
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span> ip route show 2&gt; /dev/null | grep nexthop | sed -n 1p <span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+	</span><span class="nb">echo
+	</span>ip route show table 100 2&gt; /dev/null
+	<span class="nb">echo
+	</span>ip route show table 200 2&gt; /dev/null
+<span class="k">fi
+
+</span><span class="nb">echo
+echo </span>LZ <span class="nv">$LZ_VERSION</span> script commands executed!
+<span class="nb">echo
+echo</span> <span class="k">$(</span>date<span class="k">)</span> <span class="o">[</span><span class="nv">$$</span><span class="o">]</span>
+<span class="nb">echo</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#koolshare" title="Pages tagged koolshare" class="tag"><span class="term">koolshare</span></a><a href="/tags#merlin" title="Pages tagged merlin" class="tag"><span class="term">merlin</span></a><a href="/tags#梅林" title="Pages tagged 梅林" class="tag"><span class="term">梅林</span></a><a href="/tags#netgear" title="Pages tagged netgear" class="tag"><span class="term">netgear</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

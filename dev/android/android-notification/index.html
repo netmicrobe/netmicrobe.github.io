@@ -1,0 +1,1004 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>android notification 系统通知 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="android">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android notification 系统通知">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/android/android-notification/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/android/android-notification/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">android notification 系统通知</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-02-08T00:00:00+08:00">February 08, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>refer
+    <ul>
+      <li><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html">https://developer.android.com/guide/topics/ui/notifiers/notifications.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="notification-channels">notification channels</h2>
+
+<ul>
+  <li>Android 8.0 (API level 26)开始，要显示通知，必须实现 1或更多的 notification channel。</li>
+  <li>create an instance of <a href="https://developer.android.com/reference/android/app/NotificationChannel.html">NotificationChannel</a> for each distinct type of notification you need to send.</li>
+  <li>All notifications posted to the same notification channel have the same behavior.
+    <ul>
+      <li>Importance</li>
+      <li>Sound</li>
+      <li>Lights</li>
+      <li>Vibration</li>
+      <li>Show on lockscreen</li>
+      <li>Override do not disturb</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="creating-a-notification-channel">Creating a notification channel</h3>
+
+<p>创建步骤：</p>
+
+<ol>
+  <li><strong>Construct</strong> a notification channel object
+    <ul>
+      <li>with an ID that’s unique within your package.</li>
+    </ul>
+  </li>
+  <li><strong>Configure</strong> the notification channel object
+    <ul>
+      <li>with any desired initial settings, such as an alert sound, as well as an optional description visible to the user.</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> the notification channel object to the notification manager.</li>
+</ol>
+
+<ul>
+  <li>注意：
+    <ul>
+      <li>一般在 app 启动时创建，之后用同样ID再创建没有任何效果（已经被提交给系统的notification manager了）</li>
+      <li>批量创建channel使用 <a href="https://developer.android.com/reference/android/app/NotificationManager.html#createNotificationChannels(java.util.List&lt;android.app.NotificationChannel&gt;)">createNotificationChannels()</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="n">NotificationManager</span> <span class="n">mNotificationManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="n">NotificationManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">NOTIFICATION_SERVICE</span><span class="o">);</span>
+<span class="c1">// The id of the channel.</span>
+<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="s">"my_channel_01"</span><span class="o">;</span>
+<span class="c1">// The user-visible name of the channel.</span>
+<span class="n">CharSequence</span> <span class="n">name</span> <span class="o">=</span> <span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">channel_name</span><span class="o">);</span>
+<span class="c1">// The user-visible description of the channel.</span>
+<span class="n">String</span> <span class="n">description</span> <span class="o">=</span> <span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">channel_description</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">importance</span> <span class="o">=</span> <span class="n">NotificationManager</span><span class="o">.</span><span class="na">IMPORTANCE_HIGH</span><span class="o">;</span>
+<span class="n">NotificationChannel</span> <span class="n">mChannel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NotificationChannel</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">importance</span><span class="o">);</span>
+<span class="c1">// Configure the notification channel.</span>
+<span class="n">mChannel</span><span class="o">.</span><span class="na">setDescription</span><span class="o">(</span><span class="n">description</span><span class="o">);</span>
+<span class="n">mChannel</span><span class="o">.</span><span class="na">enableLights</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="c1">// Sets the notification light color for notifications posted to this</span>
+<span class="c1">// channel, if the device supports this feature.</span>
+<span class="n">mChannel</span><span class="o">.</span><span class="na">setLightColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+<span class="n">mChannel</span><span class="o">.</span><span class="na">enableVibration</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">mChannel</span><span class="o">.</span><span class="na">setVibrationPattern</span><span class="o">(</span><span class="k">new</span> <span class="kt">long</span><span class="o">[]{</span><span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">,</span> <span class="mi">400</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">400</span><span class="o">});</span>
+<span class="n">mNotificationManager</span><span class="o">.</span><span class="na">createNotificationChannel</span><span class="o">(</span><span class="n">mChannel</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="creating-a-notification-channel-group">Creating a notification channel group</h3>
+
+<ul>
+  <li><strong>Notification channel</strong> groups allow you to manage multiple notification channels with identical names within a single app.</li>
+  <li>Each notification channel group requires an ID that must be unique within your package, as well as a user-visible name.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c1">// The id of the group.</span>
+<span class="n">String</span> <span class="n">group</span> <span class="o">=</span> <span class="s">"my_group_01"</span><span class="o">;</span>
+<span class="c1">// The user-visible name of the group.</span>
+<span class="n">CharSequence</span> <span class="n">name</span> <span class="o">=</span> <span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">group_name</span><span class="o">);</span>
+<span class="n">NotificationManager</span> <span class="n">mNotificationManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="n">NotificationManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">NOTIFICATION_SERVICE</span><span class="o">);</span>
+<span class="n">mNotificationManager</span><span class="o">.</span><span class="na">createNotificationChannelGroup</span><span class="o">(</span><span class="k">new</span> <span class="n">NotificationChannelGroup</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">name</span><span class="o">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>After you’ve created a new group, you can call setGroup() to associate a new channel with the group.</p>
+
+<h3 id="reading-notification-channel-settings">Reading notification channel settings</h3>
+
+<p>Users can modify the settings for notification channels, including behaviors such as vibration and alert sound.</p>
+
+<p>to discover the settings a user has applied to a notification channel:</p>
+
+<ul>
+  <li><a href="https://developer.android.com/reference/android/app/NotificationManager.html#getNotificationChannel(java.lang.String)">NotificationChannel getNotificationChannel (String channelId)</a>
+    <ul>
+      <li>To retrieve a single notification channel</li>
+    </ul>
+  </li>
+  <li><a href="https://developer.android.com/reference/android/app/NotificationManager.html#getNotificationChannels()">List&lt;NotificationChannel&gt; getNotificationChannels ()</a>
+    <ul>
+      <li>Returns all notification channels belonging to the calling package</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="updating-notification-channel-settings">Updating notification channel settings</h3>
+
+<p>After you create a notification channel, the user is in charge of its settings and behavior.</p>
+
+<p>You can call createNotificationChannel() and then submit the notification channel again to the notification manager to rename an existing notification channel, or update its description.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c1">// redirect a user to the settings for a notification channel</span>
+<span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">ACTION_CHANNEL_NOTIFICATION_SETTINGS</span><span class="o">);</span>
+<span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">EXTRA_CHANNEL_ID</span><span class="o">,</span> <span class="n">mChannel</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+<span class="n">intent</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">EXTRA_APP_PACKAGE</span><span class="o">,</span> <span class="n">getPackageName</span><span class="o">());</span>
+<span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="deleting-a-notification-channel">Deleting a notification channel</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">NotificationManager</span> <span class="n">mNotificationManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="n">NotificationManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">NOTIFICATION_SERVICE</span><span class="o">);</span>
+<span class="c1">// The id of the channel.</span>
+<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="s">"my_channel_01"</span><span class="o">;</span>
+<span class="n">mNotificationManager</span><span class="o">.</span><span class="na">deleteNotificationChannel</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="creating-a-notification">Creating a notification</h2>
+
+<ul>
+  <li>You specify the UI information and actions for a notification in a <code class="highlighter-rouge">NotificationCompat.Builder</code> object.</li>
+  <li>To create the notification itself, you call <code class="highlighter-rouge">NotificationCompat.Builder.build()</code>, which returns a Notification object containing your specifications.</li>
+  <li>To issue the notification, you pass the Notification object to the system by calling NotificationManager.notify().</li>
+</ul>
+
+<h3 id="通知必备的信息">通知必备的信息</h3>
+
+<p>A <code class="highlighter-rouge">Notification</code> object must contain the following:</p>
+
+<ul>
+  <li>A small icon, set by setSmallIcon().</li>
+  <li>A title, set by setContentTitle().</li>
+  <li>Detail text, set by setContentText().</li>
+  <li>On Android 8.0 (API level 26) and higher, a valid notification channel ID, set by setChannelId() or provided in the NotificationCompat.Builder constructor when creating a channel.</li>
+</ul>
+
+<h3 id="notification-actions">Notification actions</h3>
+
+<p>An action allows users to go directly from the notification to an Activity in your app</p>
+
+<p>Inside a Notification, the action itself is defined by a <code class="highlighter-rouge">PendingIntent</code> containing an Intent that starts an Activity in your app.</p>
+
+<p>if you want to start Activity when the user clicks the notification text in the notification drawer, you add the PendingIntent by calling setContentIntent().</p>
+
+<p>In Android 4.1 and later, you can start an Activity from an action button.</p>
+
+<p>You can also start an Activity when the user dismisses a notification.</p>
+
+<h3 id="notification-priority-and-importance">Notification priority and importance</h3>
+
+<p>To set a notification’s priority, call <code class="highlighter-rouge">NotificationCompat.Builder.setPriority()</code> and pass in one of the NotificationCompat priority constants.</p>
+
+<p>There are five priority levels, ranging from <code class="highlighter-rouge">PRIORITY_MIN (-2)</code> to <code class="highlighter-rouge">PRIORITY_MAX (2)</code>; if not set, the priority defaults to <code class="highlighter-rouge">PRIORITY_DEFAULT (0)</code>.</p>
+
+<h3 id="creating-a-simple-notification">Creating a simple notification</h3>
+
+<p>Android 8.0 (API level 26) and higher requires that you post notifications to a notification channel.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre><span class="c1">// The id of the channel.</span>
+<span class="n">String</span> <span class="n">CHANNEL_ID</span> <span class="o">=</span> <span class="s">"my_channel_01"</span><span class="o">;</span>
+<span class="n">NotificationCompat</span><span class="o">.</span><span class="na">Builder</span> <span class="n">mBuilder</span> <span class="o">=</span>
+        <span class="k">new</span> <span class="n">NotificationCompat</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">CHANNEL_ID</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">setSmallIcon</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">notification_icon</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">setContentTitle</span><span class="o">(</span><span class="s">"My notification"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">setContentText</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">);</span>
+<span class="c1">// Creates an explicit intent for an Activity in your app</span>
+<span class="n">Intent</span> <span class="n">resultIntent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">ResultActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="c1">// The stack builder object will contain an artificial back stack for the</span>
+<span class="c1">// started Activity.</span>
+<span class="c1">// This ensures that navigating backward from the Activity leads out of</span>
+<span class="c1">// your app to the Home screen.</span>
+<span class="n">TaskStackBuilder</span> <span class="n">stackBuilder</span> <span class="o">=</span> <span class="n">TaskStackBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="c1">// Adds the back stack for the Intent (but not the Intent itself)</span>
+<span class="n">stackBuilder</span><span class="o">.</span><span class="na">addParentStack</span><span class="o">(</span><span class="n">ResultActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="c1">// Adds the Intent that starts the Activity to the top of the stack</span>
+<span class="n">stackBuilder</span><span class="o">.</span><span class="na">addNextIntent</span><span class="o">(</span><span class="n">resultIntent</span><span class="o">);</span>
+<span class="n">PendingIntent</span> <span class="n">resultPendingIntent</span> <span class="o">=</span>
+        <span class="n">stackBuilder</span><span class="o">.</span><span class="na">getPendingIntent</span><span class="o">(</span>
+            <span class="mi">0</span><span class="o">,</span>
+            <span class="n">PendingIntent</span><span class="o">.</span><span class="na">FLAG_UPDATE_CURRENT</span>
+        <span class="o">);</span>
+<span class="n">mBuilder</span><span class="o">.</span><span class="na">setContentIntent</span><span class="o">(</span><span class="n">resultPendingIntent</span><span class="o">);</span>
+<span class="n">NotificationManager</span> <span class="n">mNotificationManager</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">NotificationManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">NOTIFICATION_SERVICE</span><span class="o">);</span>
+
+<span class="c1">// mNotificationId is a unique integer your app uses to identify the</span>
+<span class="c1">// notification. For example, to cancel the notification, you can pass its ID</span>
+<span class="c1">// number to NotificationManager.cancel().</span>
+<span class="n">mNotificationManager</span><span class="o">.</span><span class="na">notify</span><span class="o">(</span><span class="n">mNotificationId</span><span class="o">,</span> <span class="n">mBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">());</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="managing-notifications">Managing notifications</h2>
+
+<p>When you need to issue a notification multiple times for the same type of event, you should avoid making a completely new notification. Instead, you should consider updating a previous notification, either by changing some of its values or by adding to it, or both.</p>
+
+<h3 id="updating-notifications">Updating notifications</h3>
+
+<p>创建一个 <code class="highlighter-rouge">Notification</code>，复用之前用于 <code class="highlighter-rouge">NotificationManager.notify()</code> 的 notification-id，<br />
+再次调用 <code class="highlighter-rouge">NotificationManager.notify()</code> 即可。<br />
+如果通知尚存，会更新其信息；如果已被清除，会出现个新通知。</p>
+
+<ul>
+  <li>注意
+    <ol>
+      <li>如果通知太过频繁，系统会丢弃掉一些通知。</li>
+      <li>You can optionally call setOnlyAlertOnce() to only turn on a notification sound, vibration, and ticker if the notification is not already showing.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="n">mNotificationManager</span> <span class="o">=</span>
+        <span class="o">(</span><span class="n">NotificationManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">NOTIFICATION_SERVICE</span><span class="o">);</span>
+<span class="c1">// Sets an ID for the notification, so it can be updated</span>
+<span class="kt">int</span> <span class="n">notifyID</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="n">mNotifyBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NotificationCompat</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">CHANNEL_ID</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setContentTitle</span><span class="o">(</span><span class="s">"New Message"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setContentText</span><span class="o">(</span><span class="s">"You've received new messages."</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setSmallIcon</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">ic_notify_status</span><span class="o">);</span>
+<span class="n">numMessages</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="c1">// Start of a loop that processes data and then notifies the user</span>
+<span class="o">...</span>
+    <span class="n">mNotifyBuilder</span><span class="o">.</span><span class="na">setContentText</span><span class="o">(</span><span class="n">currentText</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setNumber</span><span class="o">(++</span><span class="n">numMessages</span><span class="o">);</span>
+    <span class="c1">// Because the ID remains unchanged, the existing notification is</span>
+    <span class="c1">// updated.</span>
+    <span class="n">mNotificationManager</span><span class="o">.</span><span class="na">notify</span><span class="o">(</span>
+            <span class="n">notifyID</span><span class="o">,</span>
+            <span class="n">mNotifyBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">());</span>
+<span class="o">...</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="removing-notifications">Removing notifications</h3>
+
+<p>如下任一情况发生，通知消失：</p>
+
+<ul>
+  <li>The user dismisses the notification either individually or by using “Clear All” (if the notification can be cleared).</li>
+  <li>The user clicks the notification, and you called <code class="highlighter-rouge">NotificationCompat.Builder.setAutoCancel()</code> when you created the notification.</li>
+  <li>You call <code class="highlighter-rouge">NotificationManager.cancel()</code> for a specific notification ID. This method also deletes ongoing notifications.</li>
+  <li>You call <code class="highlighter-rouge">NotificationManager.cancelAll()</code>, which removes all of the notifications you previously issued.</li>
+  <li>If you set a timeout when creating a notification using <code class="highlighter-rouge">NotificationCompat.Builder.setTimeoutAfter()</code>, the system cancels the notification after the specified duration elapses. If required, you can cancel a notification before the specified timeout duration elapses.</li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

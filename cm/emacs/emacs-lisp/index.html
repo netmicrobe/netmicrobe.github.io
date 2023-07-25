@@ -1,0 +1,1087 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>emacs 中使用LISP &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="lisp, elisp">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="emacs 中使用LISP">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/emacs/emacs-lisp/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/emacs/emacs-lisp/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">emacs 中使用LISP</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2019-01-15T00:00:00+08:00">January 15, 2019</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="elisp-基础">Elisp 基础</h2>
+
+<ul>
+  <li><a href="https://learnxinyminutes.com/docs/zh-cn/elisp-cn/">X分钟速成elisp</a></li>
+  <li><a href="http://icodeit.org/2013/06/common-lisp-basic/">Common Lisp 里的一些基本概念</a></li>
+</ul>
+
+<dl>
+  <dt><code class="highlighter-rouge">C-j</code></dt>
+  <dd>计算当前光标到行首之间函数式结果，插入正文内容，结果内容最多只显示2行，后面用省略号，What！！<br />
+使用 <code class="highlighter-rouge">C-0 C-j</code> 能把结果内容显示全。<br />
+<code class="highlighter-rouge">eval-expression-print-level</code> and <code class="highlighter-rouge">eval-expression-print-length</code> 用来控制内容显示的长度。</dd>
+  <dt><code class="highlighter-rouge">C-x C-e</code></dt>
+  <dd>计算当前光标到行首之间函数式结果，显示在mini-buffer里。</dd>
+</dl>
+
+<p>Emacs Lisp 是一个函数式的语言。</p>
+
+<h3 id="scratch-buffer"><code class="highlighter-rouge">*scratch*</code> buffer</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">C-x 方向键</code> 切换到 <code class="highlighter-rouge">*scratch*</code> buffer ， 可以在其中测试 elisp 语句。</li>
+  <li>这个buffer是 <em>lisp-interaction-mode</em>。</li>
+  <li>光标移动到函数式后，按下 <code class="highlighter-rouge">C-j</code> 或者 <code class="highlighter-rouge">C-x C-e</code>，就可以执行函数式计算。</li>
+</ul>
+
+<h3 id="基本写法如何测试">基本写法，如何测试</h3>
+
+<pre><code class="language-lisp">(+ 3 (+ 1 2))
+;;           ^ 光标放到这里
+;; 按下`C-j' 就会输出 6
+;; `C-j' 会在buffer中插入当前运算的结果
+;; 而`C-xC-e' 则会在emacs最底部显示结果，也就是被称作"minibuffer"的区域
+;; 为了避免把我们的buffer填满无用的结果，我们以后会一直用`C-x C-e'
+</code></pre>
+
+<h3 id="变量">变量</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">setq</code> 设置当前缓冲区（Buffer）中的变量值</li>
+  <li><code class="highlighter-rouge">setq-default</code> 设 置的为全局的变量的值</li>
+</ul>
+
+<pre><code class="language-lisp">;; `setq' 可以将一个值赋给一个变量
+(setq my-name "Bastien")
+;; `C-x C-e' 输出 "Bastien" (在 mini-buffer 中显示)
+
+;; 定义变量
+(setq name "username")
+(message name) ; -&gt; "username"
+</code></pre>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>;; 设置光标样式
+(setq-default cursor-type 'bar)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="quote-单引号">quote 单引号</h3>
+
+<ul>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Quoting.html">https://www.gnu.org/software/emacs/manual/html_node/elisp/Quoting.html</a></li>
+  <li><a href="http://stackoverflow.com/questions/134887/when-to-use-quote-in-lisp">http://stackoverflow.com/questions/134887/when-to-use-quote-in-lisp</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>;; 下面两行的效果完全相同的
+(quote foo)
+'foo
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>quote 的意思是不要执行后面的内容，返回它原本的内容</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>(print '(+ 1 1)) ;; -&gt; (+ 1 1)
+(print (+ 1 1))  ;; -&gt; 2
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="列表">列表</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre>;; 我们将一些名字存到列表中：
+(setq list-of-names '("Sarah" "Chloe" "Mathilde"))
+
+;; 用 `car'来取得第一个名字：
+(car list-of-names)
+
+;; 用 `cdr'取得剩下的名字:
+(cdr list-of-names)
+
+;; 用 `push'把名字添加到列表的开头:
+(push "Stephanie" list-of-names)
+
+;; 注意: `car' 和 `cdr' 并不修改列表本身, 但是 `push' 却会对列表本身进行操作.
+;; 这个区别是很重要的: 有些函数没有任何副作用（比如`car'）
+;; 但还有一些却是有的 (比如 `push').
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="循环">循环</h3>
+
+<p><a href="http://www.gnu.org/software/emacs/manual/html_mono/cl.html#Loop-Facility">http://www.gnu.org/software/emacs/manual/html_mono/cl.html#Loop-Facility</a></p>
+
+<p><code class="highlighter-rouge">loop for ... in</code> 来自 cl 即 Common Lisp 扩展。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>;; cl - Common Lisp Extension
+(require 'cl)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>for , in, collect 均为 cl-loop 中的 保留关键字。下面是一些简单的 cl-loop 的使用示例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>;; 遍历每一个缓冲区（Buffer）
+(cl-loop for buf in (buffer-list)
+  collect (buffer-file-name buf))
+
+;; 寻找 729 的平方根（设置最大为 100 为了防止无限循环）
+(cl-loop for x from 1 to 100
+  for y = (* x x)
+  until (&gt;= y 729)
+  finally return (list x (= y 729)))
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="mapcar">mapcar</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>;; 我们来对`list-of-names'列表中的每一个元素都使用hello函数:
+(mapcar 'hello list-of-names)
+
+;; 将 `greeting' 改进，使的我们能够对`list-of-names'中的所有名字执行:
+(defun greeting ()
+    (switch-to-buffer-other-window "*test*")
+    (erase-buffer)
+    (mapcar 'hello list-of-names)
+    (other-window 1))
+
+(greeting)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="while-循环">while 循环</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre>(defun replace-hello-by-bonjour ()
+    (switch-to-buffer-other-window "*test*")
+    (goto-char (point-min))
+    (while (search-forward "Hello")
+      (replace-match "Bonjour"))
+    (other-window 1))
+
+;; (goto-char (point-min)) 将光标移到buffer的开始
+;; (search-forward "Hello") 查找字符串"Hello"
+;; (while x y) 当x返回某个值时执行y这个s式
+;; 当x返回`nil' (空), 退出循环
+
+
+(replace-hello-by-bonjour)
+
+;; 你会看到所有在*test* buffer中出现的"Hello"字样都被换成了"Bonjour"
+
+;; 你也会得到以下错误提示: "Search failed: Hello".
+;;
+;; 如果要避免这个错误, 你需要告诉 `search-forward' 这个命令是否在
+;; buffer的某个地方停止查找, 并且在什么都没找到时是否应该不给出错误提示
+
+;; (search-forward "Hello" nil t) 可以达到这个要求:
+
+;; `nil' 参数的意思是 : 查找并不限于某个范围内
+;; `t' 参数的意思是: 当什么都没找到时，不给出错误提示
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="defun">defun</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>;; 你可以把s式嵌入函数中
+(defun hello () (insert "Hello, I am " my-name))
+;; `C-xC-e' 输出 hello
+
+;; 现在执行这个函数
+(hello)
+;; `C-xC-e' 输出 Hello, I am Bastien
+
+;; 带参数的函数定义
+(defun hello (name) (insert "Hello " name))
+;; `C-xC-e' 输出 hello
+(hello "you")
+;; `C-xC-e' 输出 "Hello you"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="progn">progn</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>;; 你可以用 `progn'命令将s式结合起来:
+(progn
+  (switch-to-buffer-other-window "*test*")
+  (hello "you"))
+;; `C-xC-e' 此时屏幕分为两个窗口，并且在*test* buffer中显示"Hello you"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="let">let</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre>;; 你可以用 `let' 将一个值和一个局部变量绑定:
+(let ((local-name "you"))
+  (switch-to-buffer-other-window "*test*")
+  (erase-buffer)
+  (hello local-name)
+  (other-window 1))
+
+;; 我们再用`let'新建另一个函数:
+(defun greeting (name)
+  (let ((your-name "Bastien"))
+    (insert (format "Hello %s!\n\nI am %s."
+                    name       ; the argument of the function
+                    your-name  ; the let-bound variable "Bastien"
+                    ))))
+
+;; 之后执行:
+(greeting "you")
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="交互命令-read-from-minibuffer">交互命令 read-from-minibuffer</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>;; 有些函数可以和用户交互:
+(read-from-minibuffer "Enter your name: ")
+
+;; 这个函数会返回在执行时用户输入的信息
+
+;; 现在我们让`greeting'函数显示你的名字:
+(defun greeting (from-name)
+  (let ((your-name (read-from-minibuffer "Enter your name: ")))
+    (insert (format "Hello!\n\nI am %s and you are %s."
+                    from-name ; the argument of the function
+                    your-name ; the let-bound var, entered at prompt
+                    ))))
+
+(greeting "Bastien")
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="lisp-操作-emacs">lisp 操作 emacs</h3>
+
+<h4 id="switch-to-buffer-other-window">switch-to-buffer-other-window</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>;; 下面我们在新的窗口中新建一个名为 "*test*" 的buffer:
+
+(switch-to-buffer-other-window "*test*")
+;; `C-xC-e' 这时屏幕上会显示两个窗口，而光标此时位于*test* buffer内
+
+;; 用鼠标单击上面的buffer就会使光标移回。
+;; 或者你可以使用 `C-xo' 使得光标跳到另一个窗口中
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="goto-char-point-min-将光标移到buffer的开始">(goto-char (point-min)) 将光标移到buffer的开始</h4>
+
+<h4 id="search-forward-hello-查找字符串hello">(search-forward “Hello”) 查找字符串”Hello”</h4>
+
+<h4 id="global-set-key-设置快捷键">global-set-key 设置快捷键</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>;; 设置快捷键
+(global-set-key (kbd "&lt;f1&gt;") 'func-name)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="其他lisp语法">其他lisp语法</h3>
+
+<h4 id="insert">insert</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>;; `insert' 会在光标处插入字符串:
+(insert "Hello!")
+;; `C-xC-e' 输出 "Hello!"
+
+(insert "Hello" " world!")
+;; `C-xC-e' 输出 "Hello world!"
+
+;; 你也可以用变量名来代替字符串
+(insert "Hello, I am " my-name)
+;; `C-xC-e' 输出 "Hello, I am Bastien"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="format">format</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>;; 格式化字符串的方法：
+(format "Hello %s!\n" "visitor")
+
+(defun hello (name)
+  (insert (format "Hello %s!\n" name)))
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#lisp" title="Pages tagged lisp" class="tag"><span class="term">lisp</span></a><a href="/tags#elisp" title="Pages tagged elisp" class="tag"><span class="term">elisp</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

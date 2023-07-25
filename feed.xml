@@ -1,0 +1,3404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">wi's Tech Blog</title>
+<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2023-07-25T17:13:45+08:00</updated>
+<id>/</id>
+<author>
+  <name>wi</name>
+  <uri>/</uri>
+  <email>njnu_wy@126.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[银行活动]]></title>
+ <link rel="alternate" type="text/html" href="/%E9%93%B6%E8%A1%8C%E6%B4%BB%E5%8A%A8/" />
+  <id>/银行活动</id>
+  <published>2040-12-11T00:00:00+08:00</published>
+  <updated>2040-12-11T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;宁波&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;信用卡，明天上午 9 点 ，蛋黄派》出行旅游》中石化300-27券&lt;br /&gt;
+信用卡，每天消费满 17，抽奖&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;光大&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;信用卡，每天消费满 18，抽奖&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;工行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;周四-周六，每天10点，工行app》冬日购物节》立减金&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;农行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;每月 100-10 电费券， 农行app》广告banner，红包多多拿不停》缴费无忧，电亮未来&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;交行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;信用卡，每周五5折，买单吧app&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;建行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;每月，0.99-7.99购买16微信立减金，建行app&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;南京银行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;微信单笔大于5元，可领2元立减金&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/%E9%93%B6%E8%A1%8C%E6%B4%BB%E5%8A%A8/&quot;&gt;银行活动&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on December 11, 2040.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[显卡天梯表]]></title>
+ <link rel="alternate" type="text/html" href="/%E6%98%BE%E5%8D%A1%E5%A4%A9%E6%A2%AF%E8%A1%A8/" />
+  <id>/显卡天梯表</id>
+  <published>2040-12-11T00:00:00+08:00</published>
+  <updated>2040-12-11T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 4090&lt;/td&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;24G GDDR6X&lt;/td&gt;
+      &lt;td&gt;450W&lt;/td&gt;
+      &lt;td&gt;2235MHz / 2520 MHz&lt;/td&gt;
+      &lt;td&gt;21 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 4080&lt;/td&gt;
+      &lt;td&gt;77.8&lt;/td&gt;
+      &lt;td&gt;16G&lt;/td&gt;
+      &lt;td&gt;320W&lt;/td&gt;
+      &lt;td&gt;2205MHz / 2505 MHz&lt;/td&gt;
+      &lt;td&gt;22.4 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3090 Ti&lt;/td&gt;
+      &lt;td&gt;69.2&lt;/td&gt;
+      &lt;td&gt;24G&lt;/td&gt;
+      &lt;td&gt;450W&lt;/td&gt;
+      &lt;td&gt;1560MHz / 1860 MHz&lt;/td&gt;
+      &lt;td&gt;21 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 4070 Ti&lt;/td&gt;
+      &lt;td&gt;65.3&lt;/td&gt;
+      &lt;td&gt;12G&lt;/td&gt;
+      &lt;td&gt;285W&lt;/td&gt;
+      &lt;td&gt;2310MHz / 2610 MHz&lt;/td&gt;
+      &lt;td&gt;21 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3090&lt;/td&gt;
+      &lt;td&gt;63.4&lt;/td&gt;
+      &lt;td&gt;24G&lt;/td&gt;
+      &lt;td&gt;350W&lt;/td&gt;
+      &lt;td&gt;1395MHz / 1695 MHz&lt;/td&gt;
+      &lt;td&gt;19.5 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3080 Ti&lt;/td&gt;
+      &lt;td&gt;62.3&lt;/td&gt;
+      &lt;td&gt;12G&lt;/td&gt;
+      &lt;td&gt;350W&lt;/td&gt;
+      &lt;td&gt;1365MHz / 1665 MHz&lt;/td&gt;
+      &lt;td&gt;19 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3080 12GB&lt;/td&gt;
+      &lt;td&gt;57.7&lt;/td&gt;
+      &lt;td&gt;12G&lt;/td&gt;
+      &lt;td&gt;350W&lt;/td&gt;
+      &lt;td&gt;1260MHz / 1710 MHz&lt;/td&gt;
+      &lt;td&gt;19 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 4070&lt;/td&gt;
+      &lt;td&gt;56&lt;/td&gt;
+      &lt;td&gt;12G&lt;/td&gt;
+      &lt;td&gt;200W&lt;/td&gt;
+      &lt;td&gt;1920 MHz/ 2475 MHz&lt;/td&gt;
+      &lt;td&gt;21 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3080&lt;/td&gt;
+      &lt;td&gt;55.6&lt;/td&gt;
+      &lt;td&gt;10G&lt;/td&gt;
+      &lt;td&gt;320W&lt;/td&gt;
+      &lt;td&gt;1440 MHz/ 1710 MHz&lt;/td&gt;
+      &lt;td&gt;19 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3070 Ti&lt;/td&gt;
+      &lt;td&gt;46.1&lt;/td&gt;
+      &lt;td&gt;8G&lt;/td&gt;
+      &lt;td&gt;280W&lt;/td&gt;
+      &lt;td&gt;1575 MHz/ 1770 MHz&lt;/td&gt;
+      &lt;td&gt;19 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3070&lt;/td&gt;
+      &lt;td&gt;43.2&lt;/td&gt;
+      &lt;td&gt;8G&lt;/td&gt;
+      &lt;td&gt;280W&lt;/td&gt;
+      &lt;td&gt;1500 MHz/ 1725 MHz&lt;/td&gt;
+      &lt;td&gt;14 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 4060 Ti&lt;/td&gt;
+      &lt;td&gt;41.8&lt;/td&gt;
+      &lt;td&gt;8G&lt;/td&gt;
+      &lt;td&gt;150W&lt;/td&gt;
+      &lt;td&gt;2310 MHz/ 2535 MHz&lt;/td&gt;
+      &lt;td&gt;18 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2080 Ti&lt;/td&gt;
+      &lt;td&gt;40.4&lt;/td&gt;
+      &lt;td&gt;11G&lt;/td&gt;
+      &lt;td&gt;260W&lt;/td&gt;
+      &lt;td&gt;1350 MHz/ 1635 MHz&lt;/td&gt;
+      &lt;td&gt;14 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3060 Ti&lt;/td&gt;
+      &lt;td&gt;37.4&lt;/td&gt;
+      &lt;td&gt;8G&lt;/td&gt;
+      &lt;td&gt;200W&lt;/td&gt;
+      &lt;td&gt;1410 MHz/ 1665 MHz&lt;/td&gt;
+      &lt;td&gt;14 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2080 Super&lt;/td&gt;
+      &lt;td&gt;36.2&lt;/td&gt;
+      &lt;td&gt;8G&lt;/td&gt;
+      &lt;td&gt;250W&lt;/td&gt;
+      &lt;td&gt;1650 MHz/ 1815 MHz&lt;/td&gt;
+      &lt;td&gt;15.5 Gbps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2080&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2070 Super&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1080 Ti&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3060&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2070&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2060 Super&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1080&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 2060&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1070 Ti&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTX 3050&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1660 Ti&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1070&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1660 Super&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GTX 1660&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/%E6%98%BE%E5%8D%A1%E5%A4%A9%E6%A2%AF%E8%A1%A8/&quot;&gt;显卡天梯表&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on December 11, 2040.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[技术博客收藏夹_A姐分享]]></title>
+ <link rel="alternate" type="text/html" href="/blog/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%94%B6%E8%97%8F%E5%A4%B9_A%E5%A7%90%E5%88%86%E4%BA%AB/" />
+  <id>/blog/技术博客收藏夹_A姐分享</id>
+  <published>2030-12-11T00:00:00+08:00</published>
+  <updated>2030-12-11T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ahhhhfs.com/&quot;&gt;A姐分享&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;============================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;阿里云盘tv版&quot;&gt;阿里云盘TV版&lt;/h3&gt;
+
+&lt;p&gt;下载 蓝奏云盘：https://abskoop.lanzouj.com/b02pftzuh 密码:bp1d&lt;/p&gt;
+
+&lt;p&gt;阿里云盘TV下载页：https://aliyunpantv.gitlab.io/&lt;/p&gt;
+
+&lt;h3 id=&quot;pixelme是一款免费的在线照片转像素图工具&quot;&gt;PixelMe是一款免费的在线照片转像素图工具&lt;/h3&gt;
+
+&lt;p&gt;PixelMe是一款免费的在线照片转像素图工具，能够在线像素化图像，将照片转换为像素艺术，这种工具一般应用在社交头像中，相当于一个像素头像生成器，完全通过后台ai人工智能技术，只需把照上传即可轻松在线生成像素化头像了，包含四种尺寸像素的风格128×128、64×64、48×48、32×32。&lt;/p&gt;
+
+&lt;p&gt;https://pixel-me.tokyo/&lt;/p&gt;
+
+&lt;h3 id=&quot;tabler-icons-免费开源图标库&quot;&gt;tabler-icons 免费开源图标库&lt;/h3&gt;
+
+&lt;p&gt;https://tabler-icons.io/&lt;/p&gt;
+
+&lt;h3 id=&quot;成都杭州深圳重庆-招聘防坑手册&quot;&gt;成都、杭州、深圳、重庆 招聘防坑手册&lt;/h3&gt;
+
+&lt;p&gt;地址：https://docs.qq.com/sheet/DSk9xeXpVSHJicHJy?tab=BB08J2&lt;/p&gt;
+
+&lt;p&gt;一个在线腾讯文档，主要是收录了一些成都、杭州、深圳、重庆 招聘防坑手册，清楚了记录了各大网友的经历，有截图有说明，非常详细，每个人都可以填写，不过需要提交申请，避免恶意修改，A姐看了一下，成都的公司比较多，当然这种数据也只是仅供参考，只是部分为网友所遇到的情况，也不一定就是真的，所以大家请客观对待，理性分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;mega-网盘code-with-mosh-各种编程语言学习材料&quot;&gt;mega 网盘，Code with Mosh 各种编程语言学习材料&lt;/h3&gt;
+
+&lt;p&gt;https://mega.nz/folder/dbwmwS6b#p9nGMhSXETZBAEYGoKty8Q&lt;/p&gt;
+
+&lt;p&gt;Code with Mosh是一个外国的网站，主要提供一些各种编程语言的课程，不过好像是付费的，不过是英文，需要一点英语技巧，需要的可以前往下载，课程存在MEGA网盘里面，课程挺多的，按语言分好类了，国内网络不好的同学自行解决哈。&lt;/p&gt;
+
+&lt;h3 id=&quot;35套设计剪辑视频教程集合&quot;&gt;35套设计剪辑视频教程集合&lt;/h3&gt;
+
+&lt;p&gt;一些设计剪辑视频教程集合，存在百度网盘的，35个左右的教程，各种各样，看了一下主要是设计类的、CAD、视频剪辑、ps、AE、会声会影、LR等等教程，好像还有什么全家桶软件来着，自己翻翻，来源于网络，失效不补哈。&lt;/p&gt;
+
+&lt;p&gt;01【Adobe全家桶】https://pan.baidu.com/s/1Qieuo9XmmF-R315ipGjOgQ?pwd=2022 &lt;br /&gt;
+02【8号站全部软件打包】https://pan.baidu.com/s/1aK8tZmsfnveAv9Q76YXSWQ?pwd=2022 &lt;br /&gt;
+03【CAD】https://pan.baidu.com/s/1_1_0mYV7lIjSXinFaWSGXg?pwd=2022 &lt;br /&gt;
+04【C4D】https://pan.baidu.com/s/1VC1sKgTpN9bn22xPKq9Q8w?pwd=2022 &lt;br /&gt;
+05【CDR】https://pan.baidu.com/s/1UVjeY3Au8PriZqIsyRTz7g?pwd=2022 &lt;br /&gt;
+06【Office】https://pan.baidu.com/s/1WQF7vPg9T4Ao2ivUulyDxQ?pwd=2022 &lt;br /&gt;
+07【3DS MAX】https://pan.baidu.com/s/19OO12BeDnVioPf2Y7PoN3A?pwd=2022 &lt;br /&gt;
+08【草图大师】https://pan.baidu.com/s/1Q3XQavkeIbf7ImI3QYloPA?pwd=2022 &lt;br /&gt;
+09【会声会影】https://pan.baidu.com/s/1HBrWL6vW37RldxIGShRQxA?pwd=2022 &lt;br /&gt;
+10【SAI 2】https://pan.baidu.com/s/1SpBgXZm7ZKu-AHBaVbTeqA?pwd=2022 &lt;br /&gt;
+11【万兴PDF】https://pan.baidu.com/s/12wRbg0LVenFGzycL2hbvYw?pwd=2022 &lt;br /&gt;
+12【福昕PDF】https://pan.baidu.com/s/1V2fGP5k-5UrAgK3r4MpRtQ?pwd=2022 &lt;br /&gt;
+13【迅捷PDF】https://pan.baidu.com/s/1Y43WhHFTLMw9zduTbFlAAQ?pwd=2022 &lt;br /&gt;
+14【Topaz中文全家桶】https://pan.baidu.com/s/1QV2YNTdhS9BhZDzFh547FA?pwd=2022 &lt;br /&gt;
+15【SW】https://pan.baidu.com/s/1qElr4_Q8XbK7UzDwcoGo8g?pwd=2022 &lt;br /&gt;
+16【IDM】https://pan.baidu.com/s/15LQv5ZpS_05BZ2TNnSVg-A?pwd=2022 &lt;br /&gt;
+17【智能抠图神器】https://pan.baidu.com/s/13PGqy5A5MZbfMESpVyyaQg?pwd=2022 &lt;br /&gt;
+18【100T游戏资源】https://pan.baidu.com/s/1T-tfZ86eV8JwDkPgugJd-w?pwd=2022 &lt;br /&gt;
+19【小说漫画APP 安卓版41款】https://www.rishiqing.com/share/doc/320fcc7b21994990b80abd0b9bb6a130 &lt;br /&gt;
+01【PS 教程】https://pan.baidu.com/s/1lh1-H1PyFC3rIDuAmEEgJg?pwd=2022 &lt;br /&gt;
+02【CDR 教程】https://pan.baidu.com/s/1OGJFwZfEPnjLu4ab9Zypxg?pwd=2022 &lt;br /&gt;
+03【AE 教程】https://pan.baidu.com/s/166nwMr1uDio-VEaBSJw-lQ?pwd=2022 &lt;br /&gt;
+04【会声会影 教程】https://pan.baidu.com/s/1mxXBFnEfUp1opHNmDXYyEg?pwd=2022 &lt;br /&gt;
+05【Office 教程】https://pan.baidu.com/s/1w7MMABpAuIVSygvC1SVIrQ?pwd=2022 &lt;br /&gt;
+06【C4D 教程】https://pan.baidu.com/s/1CYKWadu13J5AuF8DOgz-iw?pwd=2022 &lt;br /&gt;
+07【SketchUp 教程】https://pan.baidu.com/s/1nO4h3LhdZgYdRb3GczxX4g?pwd=2022 &lt;br /&gt;
+08【lumion 教程】https://pan.baidu.com/s/18LdzlV-e3DnlebdRTqcZiw?pwd=2022 &lt;br /&gt;
+09【Project 教程】https://pan.baidu.com/s/1ZsxZS2O4lYpimNDqr-Ih3Q?pwd=2022 &lt;br /&gt;
+10【Premiere 教程】https://pan.baidu.com/s/1dcYJVNxhSvMCSNhrg4QcJw?pwd=2022 &lt;br /&gt;
+12【lumion 教程】https://pan.baidu.com/s/14ECqxCllE6NHA5jPLnhTLg?pwd=2022 &lt;br /&gt;
+13【SketchUp 教程】https://pan.baidu.com/s/1QsFZixP-ao3NJRdaFZurvg?pwd=2022 &lt;br /&gt;
+14【VEGAS Pro 教程】https://pan.baidu.com/s/1BxYtvlsHSmXffroa7wgcHQ?pwd=2022 &lt;br /&gt;
+15【CAD 教程】https://pan.baidu.com/s/1PB-BQ5tfqXAICl0Ww3WaWQ?pwd=2022 &lt;br /&gt;
+16【LR 教程】https://pan.baidu.com/s/181pKmxEAQpb6zdCnd0rhWg?pwd=2022 &lt;br /&gt;
+17【摄影 教程】https://pan.baidu.com/s/1HxnrUnplbZn8otG-ei9gOQ?pwd=2022&lt;/p&gt;
+
+&lt;h3 id=&quot;交易电子书大集合英文版的存放在mega网盘按需下载哈来源于网络失效不补哈&quot;&gt;交易电子书大集合，英文版的，存放在MEGA网盘，按需下载哈，来源于网络，失效不补哈。&lt;/h3&gt;
+
+&lt;p&gt;MEGA网盘：https://mega.nz/folder/AbdkHb7J#-Tj-5vath8x3IyHLkPo4Eg&lt;/p&gt;
+
+&lt;p&gt;资源目录&lt;/p&gt;
+
+&lt;p&gt;Candlestick Trading Collection CFA 2018 Day Trading Collection Financial Mahafement Collection Futures and Forex Collection Hedge Fund Collection Long Term Investing Collection Margin Trading Collection Master Traders Collection Misc. Charts Options Trading Collection Short Selling Collection Stop Orders Collection Swing Trading Collection Technical Analysis Collection Trading Bull and Bear Market Collection Volatility and VlX Collection Wall Street Collection&lt;/p&gt;
+
+&lt;h3 id=&quot;治愈系音效素材200gb&quot;&gt;治愈系音效素材200GB+&lt;/h3&gt;
+
+&lt;p&gt;https://pan.baidu.com/s/1gdS0QrCgj-BiTiWCpknNXQ?pwd=52pj&amp;amp;pwd=52pj&lt;/p&gt;
+
+&lt;p&gt;网友某宝购买的音效素材200GB+，主要是一些治愈系、唯美的音乐、背景音、白噪音等等&lt;/p&gt;
+
+&lt;h3 id=&quot;马士兵mca精英1班课程&quot;&gt;马士兵MCA精英1班课程&lt;/h3&gt;
+
+&lt;p&gt;https://www.aliyundrive.com/s/74BFjfhkucg&lt;br /&gt;
+提取码：17jf&lt;/p&gt;
+
+&lt;h3 id=&quot;掘金小册前端小册后端小册&quot;&gt;掘金小册（前端小册+后端小册）&lt;/h3&gt;
+
+&lt;p&gt;https://www.aliyundrive.com/s/Ey3c3Jk9ZCa&lt;br /&gt;
+提取码：5hs5&lt;/p&gt;
+
+&lt;h3 id=&quot;迪士尼动画电影集合82部带字幕&quot;&gt;迪士尼动画电影集合，82部带字幕&lt;/h3&gt;
+
+&lt;p&gt;资源下载 阿里云盘：https://www.aliyundrive.com/s/xL9XA73khn5&lt;/p&gt;
+
+&lt;p&gt;迪士尼动画电影集合，82部带字幕，来源于网络，失效不补哈。 资源目录 小姐与流浪汉2.Lady.And.The.Tramp.ll.Scamp’s.Adventure.2001.Bluray.1080p.x265.1Obit.3Audios.MNHD-FRDS 四眼天鸡.Chicken.Little.2005.BluRay:1080p.x265.10bit.3Audios.MNHD-FRDS 恐龙.Dinosaur.200o.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS 12.3.仙履奇缘3.Cinderella.3.2007.1080p.Bluray.x265.10bit.4Audios.MNHD-FRDS 11.伊老师与小蟾蜍大历险.The,Aaventures.oflchabod.and.Mr. 1949.BluRay.1080p.x265.1Qbit.MNHD-FRDS 黑神锅传奇.The.Black.Cauldron.1985.WEB-DL. 1080p.x265.1Obit.MNHD-FRDS 9.米奇与魔豆.Fun.and.Fancy.Free.1947.BluRay.1080p.x265.1Obit.MNHD-FRDS 花木兰.Mula.1998.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 12.仙履奇缘.Cinderella.1950.BluRay.1080p.x265.10bit.4Audios.MNHD-FRDS 小熊维尼历险记.The.Many.Adventures.of.winnie.the.Pooh.1977.Bluray.1080p.x265.10bit.3Audios.MNHD-FRDS 冰雪奇缘.Frozen.2013.BluRay.1080p.x265.1Obit.4Audio.MNHD-FRDS 亚特兰蒂斯：失落的帝国.Atlantis.The. Lost.Empire.2001.BIuRay:1080p.x265.10bit.4Audios.MNHID-FRDS 小美人鱼.TheiLittle.Mermaid.1989.BiuRay.1080p.x265.10bit.4Audios.MNHD-FRDS 小鹿斑比2.Bambi.2.2006.Bluray.1080p.x265.10bit.2Audios.MNHD-FRDS 小飞庆2.Peter.Pan.2.2002.Blufay.1080p.x265.1Obit.3Audios.MNHD-FRDS 幻想苗2000.Fantasia200o.1999.BluRay.1080p.x265.10bit.4Audios.MNHD-FRDS 小鹿斑比.Bambi.1942.BluRay.1080p.x265.10bit.4Audios.MNHD-FRDS 小美人鱼3.The.Little.Mermaid.3,2008.BluRay.1080p.×265.10bit.4Audios.MNHD-FRDS 拜见罗宾逊一家.Meet.The.Robinsons.2007.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 森林王子.The.Jungle.Book.1967.Bluray.1080p.×265.10bit.3Audios.MNHD-FRDS 星银岛.Treasure.Planet.2002.Bluray. 1080p.×265.1Obit.4Audios.MNHD-FRDS 星际宝贝2.Lilo.&amp;amp;.Stitch.2.2005.Bluray.1080p.x265.1Obit.2Audios.MNHD-FRDS 旋律时光.Melody.Time.1948.DVDrip.198Op.upscale.x265.1Obit.MNHD-FRDS 小熊维尼：春天的百亩森林.winnie.the.Pooh: Springtime with.Roo.2004.BluRay.1080p.x265.10bt.MNHD-FRDS 狮子王2：辛巴的菜耀.The.Lion.King.2.Simba’s.Pride.1998.BluRay.1080p.x265.10bit.4Audios.MNHD-FRDS 小飞象.Bumbo.1941.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 海洋奇缘.Moana.2016.Bluray.1080p.x265.10bit.4Audios.MNHD-FRDS 爱丽丝梦游仙境.Alice.in.Wonderland.1951.Bluray.1080p.x265.10bit.4Audios./NHD-FRDS 泰山2.Tarzan.ll.2005.108Op.WEB-DL.x265.10bit.3Audis.MNHD-FRDS 罗宾汉.Robin.Hood.1973.Bluray.1080p.x265.10bit.3Audios.MNHD-FRDS 花木兰2.Mulan.2.2004.BluRgy.1080p.x265.10bit.3Audios.MNHD-FRDS 睡美人.Sleeping.Beauty.1959.Bluray.1080p.x265.10bit.4Audios.MNHD-FRDS 白雪公主与七个小矮人.Snow.White.and.the.Seven.Dwarfs.1937.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 美女与野兽.Beauty.and.the.Beast.1991.BluRay.1080p.×265.10bit.4Audios.MNHD-FRDS 阿拉丁.Aladdin.1992.BluRay.1080p.×265.10bit.4Audios.MNHD-FRDS 魔发奇缘.Tangled.2010.Bluray: 1080p.x265.10bit.4Audios.MNHD-FRDS 6.致候吾友.Saludos.Amilgos.1942.BluRay.1080p.x265.10bit MNHID-FRDS 钟楼怪人.The.Hunchback.of.Notre.Dame.1996.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 狮子王.The.Lion.King.1994.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 公主和青蛙,The. Princess.and.the.Frog.2009.BluRay.1080p.x265.10bit.4Aucios.MNHD-FRDS 101思狗.One.Hundred.and.One. Dalmatiang.1961. Blurav:1080p.x265.10bit.4 Audios.MNHD-FRI’S 亚特兰蒂斯2：神秘的水晶.Atlantis.ll.Milo’s.Return.2003.BluRay.10°%p.x265.10bit.2Audios.MNHD-FRDS 变身国王2：高刚外传.Kronk’s.New.Groove.2005.BluRay. 1080p.x265.1Oit.2Audios.MNHD-FRDS 8.为我谱上乐章.Make.Mine.Music.1946.HDTV.1080p.x265.1Obit.MNHD-FRDS 小熊维尼：新年新希望.Winnie.the.Pooh.A.Very.Merry.Pooh.Year.2002.Bluray.1080p.x265.10bit.2Audios.MNHD-FRDS 妙妙探.The.Great.Mouse.Detective.1986.Bluray.108Op.x265.10bit.4Audios.MNHD-FRDS 小姐与流浪汉.Lady.And.The.Tramp.1955.Bluray.1080p.x265.1Obit.3Audios.MNHD-FRDS 大力士. Herciles.1997.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 变身国王.The.Emperor’s.New.Groove.2000.BluRay.1080p.x265.1Obit.4Audios.MNHD-FRDS 无敌破坏王2.Ralph.Breaks.the.lInternet.2018.Bluray.1080p.x265.10bit,4Audios.MNHD-FRDS 小熊维尼.Winnte.the.Pooh.2011.BluRay. 1080p.x265.1obit.2Audio.MNHD-FRDS 救难小英雄.The.Rescuers.1977.Bluray.1080.x265.10bit.3Audios.MNHD-FRDS 木偶奇遇记.Pinocchio.1940.BIuRay.1080p.x265.10bit.4Audios.MNHD-FRD: 救难小英雄.The. Rescuers.Down.Under.1990.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 无敌破坏王.Wreck-lt.Ralph2012.Bluray.1080p.x265.1Obit.4Audios.MNHD-FRDS 狐狸与猎狗2.The.Fox.and.the.Hound.2006.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 泰山.Tarzan.1999.BluRay.1080p.x265.10bit.5Audios.MNHD-FRDS 星际宝贝.Lilo.&amp;amp;.Stitch..2002.Bluray.1080p.x265.1Obit.4Audos.MNHD-FRDS 熊的传说2.Brother.Bear.2006.BluRay.1080p.x265.10bit.2Audios.MNHD-FRDS 狮子王3.The Lion.King.3.2004.BluRay.1080p.x265. 10bit.4Audios.MNHD-FRDS 钟楼怪人2.The.Hunchback.of.Notre.Dame.2.2002.BluRay.1080P×265.10bit.3Audios.MHD-FRDS 美女与野曾2：贝尔的心愿Beauty.and.the Beast.The Enchantea.christmas.1997,BILRav/ 1080o.x265. 106it.4AuGios. MNHD-FRDS 疯狂动物城.Zootopia.2016.CHN.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS 101忠狗2.Ome. Hundred.and.One .Dalmatians.2. Patchrs.London Adventure.2003.Blurav.1080p.x265. 10bit.3Audios.NIN-D-FRDS 石中剑.The.Sword.In.The.Stone.1963.Bluray.1080p.x265.1Obit.AAudios.MNHD-FRDS 7.三骑士.The.Three.Cabaleros.1944.BluRay.1080p. ×265.10bit.MNHD-FRDS 小飞侠.Peter.Pan.1953.Bluray.1080p.x265.10bit.4Audlios.MNHD-FRDS 奥丽华历险记.Oliver.&amp;amp;.Company.1988.Bluray.1080p.x265.10bit.MNHD-FRDS 12.2.仙履奇缘2.Cinderella.2.2002.1080p.Bluray.x265.10bit.4Audios.MNHD-FRDS 森林王子2.The.Jungle.Book.2003.Bluray. 1080p.x265.10bit. 3AudioS.MNHD-FRDS 幻想曲.Fantasia.1940.Bluray.1080p.v265.10bit.2Audios.MNHD-FRDS 小美人鱼2.The.Little.Mermaid.2.2000.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 母牛总动员.Home.on.the.Range.2004.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 超能陆战队.Big.Hero.6.2014.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS 熊的传说.Brother.Bear.2003.BluRay.1080p×265.10bit.3Audios.MNHD-FRDS 狐狸与猎狗.The.Fox.and.the.Hound.1981.BluRay.1080p.x265.10bit.4Audios.MNHD-FRDS 猫儿历险记.The.AristoCats.1970.Bluray.1080p.x265.10bit.4Audios.MNHD-FRDS 阿拉丁：贾方复仇记.Aladdin：The.Return.of.Jafar.19%4.BluRay.1080p.x265.10bit.3Audios.MNHD-FRDS 闪电狗.Bolt.2008.BluRay.1080Px265.1Obit.4Audios.MNHD-FRDS 阿拉丁与大盗之王.Aladdin.and.the.King.of.Thieves.1996.BluRay.1080p.x265.10bit.MNHD-FRDS 风中奇缘.Pocahontas.1995.BluRay.1080p.x265.1Obit.3Audios.MNHD-FRDS 风中奇缘2.Pocahontas.2.1998.BluRay.108Op.x265.1Obit.3Audios.MNHD-FRDS&lt;/p&gt;
+
+&lt;h3 id=&quot;古典文学类书籍&quot;&gt;古典文学类书籍&lt;/h3&gt;
+
+&lt;p&gt;文件大部分是pdf的，阿里云盘下载，资源来源于网络，失效不补哈。&lt;/p&gt;
+
+&lt;p&gt;资源下载 &lt;br /&gt;
+中国古典文学基本丛书（中华书局 ）： https://www.aliyundrive.com/s/TJXHqTY8c9K 中国古典文学丛书(上海古籍 ）： https://www.aliyundrive.com/s/wLC4Smn57Cc 中国古典名著译注丛书（中华书局 ）： https://www.aliyundrive.com/s/6z4jpxTGLaW 中国历代名著全译丛书(贵州人民）： https://www.aliyundrive.com/s/QUVteWZHQzq&lt;/p&gt;
+
+&lt;h3 id=&quot;经典香港电影合集修复未删减版本一共230gb夸克网盘下载&quot;&gt;经典香港电影合集（修复未删减版本），一共230GB，夸克网盘下载&lt;/h3&gt;
+
+&lt;p&gt;夸克网盘：https://pan.quark.cn/s/a6054221ea04&lt;/p&gt;
+
+&lt;p&gt;，资源来源网络，失效不补哈。&lt;/p&gt;
+
+&lt;p&gt;资源部分目录&lt;/p&gt;
+
+&lt;p&gt;1991香港奇案系列电影 龙拳精武指(完整版）.1976.DVDRip.1AC3.HKFACT.mkv 女子跆拳群英会.1975.DVDRip.AC3.HKFACT.mkv XGYHCCK(可選片段).1988.VCD&amp;amp;VHSRip.AC3.HKFACT.mkv 灵幻家族.1991.TVRip.2AAC.HKFACT.mkv 入魔.1994.LDRip.2AC3.HKFACT.mkv 神勇雙響炮.1984.DVDRip.2AC3.HKFACT.mkv 新边缘人：1994.LDRip.2AC3.HKFACT.mkv 聖戰風雲.1990.BDRip.4AC3.HKFACT.mkv 鬼打鬼之灵幻天师.1992.DVDRip.2AC3.HKFACT.mkv 賭俠2之上海灘賭聖.1991.DVDRip.3AC3.HKFAC 现代豪侠传(完整版）.1993.DVDRip.2AC3.HKFACT.mkv 魔胎(露点版）.1983.DVDRip.2AC3.HKFACT.mky 逃學威龍.1991.DVDRip.4AC3.HKFACT.mky 武当二十八奇.1980.VHSRip.1AC3.HKFACT.mkv 龙之争霸.1989.LDRip.2AC3.HKFACT.mkv&lt;/p&gt;
+
+&lt;h3 id=&quot;sssinstagram是一个免费的instagram下载器保存和下载-instagram-视频和照片的工具支持下载-instagram-照片视频故事igtvreels等等&quot;&gt;sssInstagram是一个免费的Instagram下载器，保存和下载 Instagram 视频和照片的工具，支持下载 Instagram 照片、视频、故事、IGTV、REELS等等&lt;/h3&gt;
+
+&lt;p&gt;A姐试了一下使用这款instagram下载器，你可以无限制地进行高质量instagram视频下载和instagram图片下载，可以下载包含多个混合媒体文件的视频、照片、故事和专辑帖子等等，使用无需注册登录，复制帖子链接即可进行下载，免费使用无限制。类似的下载工具A姐发过很多了，找一款喜欢的就好了哈。&lt;/p&gt;
+
+&lt;p&gt;Instagram下载器地址 sssInstagram：https://sssinstagram.com/zh&lt;/p&gt;
+
+&lt;h3 id=&quot;10tb书库限时分享已经分好类涉及的范围比较广按需保存来源网络失效不补哈&quot;&gt;10TB书库限时分享，已经分好类，涉及的范围比较广，按需保存，来源网络失效不补哈。&lt;/h3&gt;
+
+&lt;p&gt;资源下载 阿里云盘：https://www.aliyundrive.com/s/pKiSEWJzsaQ&lt;/p&gt;
+
+&lt;p&gt;资源目录&lt;/p&gt;
+
+&lt;p&gt;02-【按合集分】 03- 【杂志类合集】 04-电子书精选 3000本中外名著书籍 《中国好味道》家常菜厨艺提升大全教程 《华东师范大学图书馆藏稀见丛书汇刊》（全40册） 《读者》1981-2021合集珍藏 【世界顶级畅销书530本 (doc ppt) 】 -MoHou 【中国家氏族谱总目录】 【中国寺由站址主典】旅行时，可以去拜一拜 【改变makemoney总维100本】内部（1) 中华再造善本 中华文明史（全四卷） 中国书法全集 中国十大传世名画超清图 中国历代帝王传记 中国古代兵书集锦-txt版-20本 中国地图 中国抗日战争史料丛刊（全1037册） 中国文化合集（套装共36本） 中外经典名著1000部 五千年演义 亚马逊付费排行榜前100本 人力资源-薪酬管理-书籍合集 低幼到小学绘本1088本 典籍：墨菲定律、读心术、九型人格、狼道、人性的弱点、羊皮卷 古今中外名著大台集 各类电子书 国家图书馆家谱古籍库(13013册-共373G) 心理学 心理学书籍343本（部分格式无法分享） 投资类书籍 掌阅精品出版书籍（3600册） 毛笔 硬笔书法大成：书写技巧及字帖 清华大学出版社2237册免费正版图书(PDF格式） 生活保健知识.几十套． 经典5400套高品质书籍 罗辑思维推荐书籍1-5季 考研电子书（高清无水印） 计算机黑皮书（191本） 超级镇店之宝-中信重磅新书合集（套装共10册） 野外求生手册&lt;/p&gt;
+
+&lt;h3 id=&quot;弱电工程方案报价等资料集合存放在百度网盘&quot;&gt;弱电工程方案报价等资料集合，存放在百度网盘&lt;/h3&gt;
+
+&lt;p&gt;资源目录&lt;/p&gt;
+
+&lt;p&gt;方案1链接: https://pan.baidu.com/s/1NxtQ9BRKUoULrbLKNQ7QSg 提取码: 44j7 方案与报价2：链接:https://pan.baidu.com/s/1E9IeV28Q-JSZ1BCSBq8Nwg 提取码:b4pf 方案与报价:链接:https://pan.baidu.com/s/18xZKEWM1Y-5MB4iI0yMjqQ 提取码:ujz6 各省额政策与综合布线详解ppt，链接: https://pan.baidu.com/s/1I6RbX0VSO1P478bEnM4m3g 提取码: xa2j 交换机与路由器配置视频: 链接：链接：https://pan.baidu.com/s/1AqDs44OY1FRb3-cvmi0qUw 提取码：41hw 弱电各系统施工报价清单：链接：https://pan.baidu.com/s/1MvhnLaT8SN6G6n4f87s_Ow 提取码：ijns 通信451定额及各类招投标书案例：链接: https://pan.baidu.com/s/1_gly9AA8nAeCtXlo7-uSpw 提取码: 8g86 ppt方案：链接：https://pan.baidu.com/s/1Dv6PdpVDdR09D47j8kMztw 提取码：bxj2 经典监控报价8份 链接: https://pan.baidu.com/s/1c8F1JfCa7JbcjZ3OE1krTg 提取码: hv46 建筑智能化定额与可视对讲报价： https://pan.baidu.com/s/16WvEeN8jUS_yTVjL_Fxu7g 提取码: 9spw 智能化施工报价，各系统维护报价、定额报价：更新: https://pan.baidu.com/s/1nLtGsiKE_VRQ0nVS-IPFkw 提取码: rngc 弱电常用施工方案及施工组织方案，经典 ppt汇合、5g安装手册链接：https://pan.baidu.com/s/1aEq8QdUWx0bAHxqBs8o_gg 提取码：cz3d 指导手册 链接：https://pan.baidu.com/s/1zoJIvbFkfVtD1__jEIRu4Q 提取码：vdl0 施工报价链接：https://pan.baidu.com/s/1mwZgS-mcREDpoxg8szglrA 提取码：n0cx 方案及报价智能化方案、道闸报价、室外管网施工报价，5G基站定额报价： 链接：https://pan.baidu.com/s/1gA7xfDO3vEtpIPgQ5ey7Gg 提取码：igg9 最新六大项目链接：https://pan.baidu.com/s/1CvTfy_U5-B1_MAlXewmRYA 提取码：pikd 项目精品报价案例链接：https://pan.baidu.com/s/1omvg4XzXpN-0EYPeMHM8cQ 提取码：9bhc 弱电各类表格下载：https://pan.baidu.com/s/1JKgWmjqTbaPUAwaQC6NJ_g 提取码：ehdx 定额报价：链接：https://pan.baidu.com/s/1SSODc3W9x4tQSuYceWucBQ 提取码：d454 弱电系统验收表格60份：链接：https://pan.baidu.com/s/1dXm0yFCRBaeZCb8M-aizAg 提取码：t48c 2022.1月17日更新 链接：https://pan.baidu.com/s/1tUqSoAyCZoKfE3uUcQaRKw 提取码：isxa 技术知识链接：https://pan.baidu.com/s/1rgQ-MnJK47hsoOPwUoIiOw?pwd=8udv 提取码：8udv&lt;/p&gt;
+
+&lt;h3 id=&quot;珍藏整理20t电影大全阿里云盘下载有分类可按照分类查看资源来源于网络失效不补哈&quot;&gt;珍藏整理20T电影大全，阿里云盘下载，有分类，可按照分类查看，资源来源于网络，失效不补哈。&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;资源目录 1750部 在线观看电影系列 12022欧美日韩最新电影集 地区分类 怀旧电影&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;知名老戏骨电影专辑 鬼吹灯电影系列 世上的偷拐抢骗扒手13部电影（中文字幕） 人人影视电影合集 欧美电影80部1080p 漫威24部全普通话国语配音版1080p 豆瓣一周电影口碑榜 300G&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;阿里云盘：https://www.aliyundrive.com/s/2GRVZ5BAbjE&lt;/p&gt;
+
+&lt;h3 id=&quot;一些android-黑客应用程序集合mega网盘下载国内用户需要自备网络课程来源于网络失效不补哈&quot;&gt;一些Android 黑客应用程序集合，mega网盘下载，国内用户需要自备网络，课程来源于网络失效不补哈。&lt;/h3&gt;
+
+&lt;p&gt;https://mega.nz/folder/mERTGIgT#wDELxCy096qCIDA-xx5h1g&lt;/p&gt;
+
+&lt;p&gt;GitHub页面：https://github.com/thehackingsage/hackdroid&lt;/p&gt;
+
+&lt;p&gt;用于 android 的渗透测试和安全相关应用程序的集合。这些应用程序分为不同的类别，因此你可以轻松地从任何类别下载任何应用程序，并将它们用于渗透测试和道德黑客攻击。 Android 应用程序：20 多个类别中的 250 多个应用程序，例如 wifi、hid、MITM、嗅探等。 操作系统/平台：黑客操作系统（ROM）和安卓平台。 资源目录 – Anonymity – App Store – Call &amp;amp; SmS – CryptoCurrency – Cryptography – DDoS – Forensics – HID Attack – Learning – MITM – Networking – Pentesting – People &amp;amp; File Search – Remote Access – Router – Scripting – Security – Sniffing – Spy Camera – System Apps – Terminal – Web – Whatsapp – Wireless&lt;/p&gt;
+
+&lt;h3 id=&quot;4000直播源和直播软件-含福利直播源&quot;&gt;4000+直播源和直播软件 含福利直播源&lt;/h3&gt;
+
+&lt;p&gt;一些直播源分享，已经检测过可用的直播源数量为1000+，剩余的3000+可用自行检测，附带检测软件和直播软件，可以在分享文件里面找。 资源目录 (1)、PC端直播源播放软件 PotPlayer-电脑端直播源播放 检测直播源是否有效的软件 (2)、手机端直播源播放软件 播放器OPlayer_5.00.25.rar IPTV Pro 6.1.0.rar (3）、直播源文件 福利直播源 （少儿不宜） 未检测直播源3000个，可自行检测 已检测直播源1000+&lt;/p&gt;
+
+&lt;p&gt;阿里云盘：https://www.aliyundrive.com/s/c5ht2DBy4mg&lt;/p&gt;
+
+&lt;h3 id=&quot;国外黑客教程资料工具软件集合&quot;&gt;国外黑客教程资料工具软件集合&lt;/h3&gt;
+
+&lt;p&gt;Mega网盘：https://mega.nz/folder/1cgAAKTQ#TsXutcd8w6GKFVfAJ_owaQ&lt;/p&gt;
+
+&lt;p&gt;一些国外黑客教程资料工具软件集合，存放在Mega网盘，英文版的，来源于网络，失效不补哈。 资源部分目录 Arar_renat1231 Bat To Exe Converter v1.5 Calimocho DarkHorse Trojan Virus Maker DELmEs Batch HICHKAS virus maker IconChangerv3.8 Indie Virus Maker JPSVM3 Matrix Virus Maker 5.1 mmvc10 NVM .4 {BETA] necro Nirat 6 Poison Virus Maker razorVirus Builder realhackings ResHacker Setup Security hack Security Hack Setup SonicBat TeraBit Virus Maker Themida THs Batch Virus Maker V2.0 TVM2.8SE Ultimate Virus Builder VBS Virus Maker 3.0 Virus Maker V.3.3 Virus Mercurio 3.2 Virus-Maker-2012 Virus-O-Matic&lt;/p&gt;
+
+&lt;h3 id=&quot;26tb-夸克网盘资源整理&quot;&gt;26TB 夸克网盘资源整理&lt;/h3&gt;
+
+&lt;p&gt;资源下载 夸克网盘：https://pan.quark.cn/s/11b67e0e1feb&lt;/p&gt;
+
+&lt;p&gt;全网收集精心整理26TB夸克网盘资源，全部免费分享，最新影视、小学课程、初中课程、高中课程、大学课程、考研课程、软件等等，应有尽有，目前已更新10TB，持续更新中…&lt;/p&gt;
+
+&lt;p&gt;资源部分目录&lt;/p&gt;
+
+&lt;p&gt;北京人艺话剧 知己.mp4 浮士德.Faust.1994.D5.MinisD-Birgey.mkv 建筑大师.The.Master.Builder.2006.D5.MinisD-Birgey.mkv 厕所.2004.D5.MinisD-Birgey.mkv 人物.林兆华.mkv 棋人.1996.D5.MinisD-Birgey.mkv 推销员之死.mp4 哈姆莱特The.Tragedy.of.Hamlet.1990.D5.MinisD-Birgey.mkv 10-【新概念英语】 学英语那点事 赖世雄语法逻辑图存档 {新东方】 初中.新概念英语视频精讲2册【192课时，田静 孙剑】 【9452】剑桥少儿英语三级考前辅导班（冲刺满盾）【11讲杨雅静】 剑桥少儿英语预备级 9454(1-11)g剑桥一级满盾冲刺 新东方】高中.新概念英语视频精讲3册【120课时，薛冰史学冬】 3377 剑桥少儿英语自然拼音三级 [6497-58]新概念英语第一册【杨雅静】 10209 朗文国际英语教程Side by Side(第一册） 8022 PET冲刺系列—轻松搞定 PET口语25分【10讲+讲义 褚连一】 [16591] 【斐然柴语】新概念英语三册【60讲】 [8860-10]PET全真题满分冲刺【褚连一/-D10讲全] [19121] 【飞飞讲英语】新概念英语三册L1-L60 09-【电子书专题】（后续更新） 教育体育摄影类(8.4GB).zip 250本豆瓣年度评价最高书籍.zip 08-【初中学而思全套】 20-【初中专题录播赠送】 16- 【初三全套】 15- 【初二全套】 初一全套 7七年级2020暑假秋季2021寒假春季课程 7初一全套 07-【高中学而思全套】 高一旧旧录播课程各种版本． 2019年暑假高一1 2020年春季高一 2019秋季高一1 2020年寒假高一 高一旧直播 06-【破解软件专题】（持续更新中~） 阅读3.0（附书源） PikPak网盘（不限敏感资源，内附会员码） office全套 Lively Wallpaper WinDynamicDesktop 阿里云盘TV_Y1.1.0 大神修复稳定TV版.exe 安卓壁纸 v5.15.10 解锁精简版.exe PDF编辑器 v9.1.1456 解锁专业版.exe xMind思维导图 v1.9.3 解锁高级订阅版.exe 安卓清理君 v3.2.⑥ 解锁高级版.exe MX Player_v1.45.2 去限制完整专业版.exe CAD看图王v4.12.2 解锁VIP版.exe 比特舟Pro磁力搜索器 v1.0.6.exe 超级ITV直播 V5.0.2 解锁免登录TV版.exe 超越影视TV_v2.县解锁免登录TV版.exe 8K影视之光 V0.8.4 已激活TV版.就xe 最美证华照 v4.5.93 解锁内购版.exe 05-【23考研专题】 考神附体 19-【复试课程资料汇总】 13- 【2023统考专业课】 12- 【2023考研政治】 考研真题干货 2022考研复试课程资料2 11- 【2023考研英语】 10- 【2023考研数学】 09- 【2023管理类联考MPAcc】 04-【小学学而思全套】 六年级全套 二年级全套 三年级全套 一年级全套 四年级全套 五年级全套 小学专题旧录播 03-【幼儿专题】 幼儿大班已更新完的直播 幼升小旧录播 2020幼儿 02-【学前教辅汇总】 学前识字童谣版 幼儿园大班教案1862套 幼儿园中班教案1760套 幼儿园小班教案1395套 幼儿多元互动整合课程 幼儿规范描红 幼儿园大班语言FLASH课件15个 幼小街接学前测试卷 幼儿多元能力创新课程 学前四五快读全彩图故事集 幼小衔接阶梯数学 幼儿彩色描红 幼小街接春雨幼教整合教材 幼小衔接巧鹦鹉培优课程 幼小街接晨阳早教测试卷 幼儿园大班拼音FLASH课件21个 幼小衔接摩比爱数学 01-【影视专题】（持续更新中~） 01——豆瓣TOP250 权力的游戏 西部世界 星际迷航：皮卡德 第二季(2022） 亡命救护车(2022) 郎朗 黑袍纠察队 怪奇物语 LOVE DEATH ROBOT 史前星球.2022 瞬息全宇宙.2022 鹰眼.2021 斯巴达克斯 风骚律师第六季（2022) 月光骑土.第一季.官方中英双字.Moon.Knight.2022.HD1080P.X264. 蜘蛛侠：英雄无归&lt;/p&gt;
+
+&lt;h3 id=&quot;编程课程合集&quot;&gt;编程课程合集&lt;/h3&gt;
+
+&lt;p&gt;千集Java速成（北韩硕士主讲） 链接: https://pan.baidu.com/s/1eVzDANMI8yV1BiGeCpLLCA 提取码: p39r   破解JavaScript高级玩法-299元 链接: https://pan.baidu.com/s/16QCJZd-jKahuplLf7NwkbA 提取码: 9xcs   Coderwhy Vue3+TypeScript完整版 链接: https://pan.baidu.com/s/1AOh_kSmeb5r26fKT1cjRWg 提取码: 0ras   网络可编程性及自动化 专题课 链接: https://pan.baidu.com/s/16TqDCBskocBnaWsrMXZCog 提取码: c535   NET Core项目实战：开发英语听力精听网站，DDD、微服务、前后端分离、领域驱动设计 链接: https://pan.baidu.com/s/1Xr1JVSIQ7GwHvGiFftZugQ 提取码: 022s   Net Core 2022视频教程 （NET 6教程 ） 链接: https://pan.baidu.com/s/1SLcigDxXgr25elffoOLZfQ 提取码: 4n82   尚硅谷Webpack5从入门到原理 链接: https://pan.baidu.com/s/10PSuAEoQEOW10_hVnaYC3A 提取码: 5ymu   大牛带你Android系列课程合集 链接: https://pan.baidu.com/s/1RMCsn_8FvoeehCCObsiOpA 提取码: 71lf   千锋前端课程 链接: https://pan.baidu.com/s/1JjtUbs5Tu4TBMYSPU-ikuQ 提取码: c8k0   黑马程序员Java课程重磅升级V12.5（资料+笔记+视频）完整 链接: https://pan.baidu.com/s/1x4nkY7a9OTVR-fhADLAi8A 提取码: o0km   Unicorn高级逆向与反混淆课程 链接: https://pan.baidu.com/s/1oKzcWgUEWSGT90Fgrh2tKQ 提取码: 8e9f   Android音视频BAT企业开发工程师 链接: https://pan.baidu.com/s/12Aqo8TryvyFJd5Ey49D_XQ 提取码: 7wc1   SpringBoot+Uniapp实战 短视频APP项目【资料+完结+笔记】 链接: https://pan.baidu.com/s/1rdxrbVsEjWaNumzv2oiPEQ 提取码: w8ev   物联网基础入门课程 链接: https://pan.baidu.com/s/1zIrWRFbPWR50_Qi1XK5Q4Q 提取码: 45vh   Python高级技术 破解反爬课程 链接: https://pan.baidu.com/s/12msS24I7bTBZtK7e4wy93w 提取码: spv8&lt;/p&gt;
+
+&lt;h3 id=&quot;每天学一点法律知识法律技能&quot;&gt;每天学一点法律知识、法律技能&lt;/h3&gt;
+
+&lt;p&gt;阿里云盘：https://www.aliyundrive.com/s/bcMZ3RYq8R7&lt;/p&gt;
+
+&lt;h3 id=&quot;民法典讲解课&quot;&gt;民法典讲解课&lt;/h3&gt;
+
+&lt;p&gt;https://www.aliyundrive.com/s/YPjXshQ3E8s&lt;/p&gt;
+
+&lt;h3 id=&quot;罗翔讲刑法视频合集&quot;&gt;罗翔讲刑法视频合集&lt;/h3&gt;
+
+&lt;p&gt;阿里云盘：https://www.aliyundrive.com/s/YZJmfVpjMNo&lt;/p&gt;
+
+&lt;h3 id=&quot;高中小幼学生顶级机构课程大全资源来源于网络按需保存失效哦不补哈&quot;&gt;高中小幼学生顶级机构课程大全，资源来源于网络，按需保存，失效哦不补哈。&lt;/h3&gt;
+
+&lt;p&gt;阿里云盘：https://www.aliyundrive.com/s/G2P1Hyj6oxM&lt;/p&gt;
+
+&lt;p&gt;资源目录&lt;/p&gt;
+
+&lt;p&gt;01、《小学全套）2019年 【327.66G】 小学寒假班2019 小学暑假班2019 小学秋季班2019 02、 《小学全套》2020年 【95.5G】 01 【2020-寒】一年级双优英语直播日标S+班 (刘曦蔓）完结 91 【2020-寒】一年级大语文直播班（新松）完结 01 [2020-寒】一年级数学目标S班（王宝金）完结 02 【2020-寒】二年级双优英语直播目标S班（吕平）完结 02 【2020-寒】二年级大语文直播班 (杨惠涵） 完结 02 【2020-寒】二年级数学目标S班 (史乐）完结 03 【2020-寒】三年级双优英语直播目标S班（王欣）完结 03 【2020-寒】三年级大语文直播班 (杨惠涵） 完结 03 【2020-寒】三年级数学目标S班（史乐）完结 04【2020-寒】四年级双优英语直播目标SS班（褚连一）完结 04【2020-寒】四年级大语文直播班（达吾力江）完结 04【2020-寒】四年级数学目标S班（史乐）完结 05 【2020-寒】 五年级双优英语直播目标SS班（詹瑞瑞） 完结 05 【2020-寒】五年级大语文直播班（达吾力江）完结 05【2020-寒】五年级数学目标A+班 (张新刚）完结 06 [2020-寒】六年级双优英语直播目标A+班 （闫功瑾） 完结 06 【2020-寒】六年级大语文直播班（达吾力江）完结 06 【2020-寒】六年级数学目标A+班（一鸣）完结 2020寒【直播课】一年级英语 双优英语直播目标S+班与 2020寒【直播课】四年级英语双优英语直播目标A+班陈阳 03、《小学全套》我21年 【423.26G】 A、 【2021-寒】大班语文、数学寒假培训班（阅读A+在线-刘易丹、曹佳倩） B、 【2021-寒】一年级语文、数学寒假培训班（勤思在线-何俞霖、潘晓琳） C. 【2021-寒】二年级语文、数学寒假培训班（勤思在线-何俞霖、徐铭颖） D、 【2021-寒】三年级语文、数学寒假培训班（勤思在线-王睿、罗玉清） E、 【2021-寒】 四年级语文、数学寒假培训班 （勤思在线-王睿、陈照） F、 【2021-寒】五年级语文、数学寒假培训班 （勤思在线-李士超、薛侠） G. 【2021-寒】 六年级语文、数学寒假培训班 （勤思在线-李士超、薛春燕） H、 [2021-春】大班语文、数学春季培训班（七大能力A+阅读A+在线-曹佳. 1、 【2021-春】 一年级语文、数学春季培训班（勤思在线-何俞霖、潘晓琳） J、 【2021-春】 三年级语文、数学春季培训班 （勤思在线-王睿、罗玉清） K、 【2021-春】四年级语文、数学春季培训班（勤思在线-王睿、陈照） L、 【2021-春】五年级语文、数学春季培训班（勤思在线-李士超、薛侠） M、 【2021-暑】一年级、二年级语文、数学暑假培训班 N 【2021-暑】三年级、四年级语文、数学暑假培训班 O、 [2021-暑】五年级、六年级语文、数学暑假培训班 04、 《初中全套》2019-2020年 【553.5G】 (1) 2019.初一 【117.3G】 (2) 2019.初二 【102.6G） (3) 2019.初三 【117.3G） (4) 初中2019年暑假 【100G】 (5) 初中20年寒假 【117.3G】 05、《高中全套》2019 【427.8G】 (1） 高一课程 【147.20G】 (2) 高二课程【143.20G】 (3) 高三课程 【110.90G】 (4) 高中2020年寒假 【26.60G) 06、《高中全套》2020 【214.86】 (1 )【2020暑】高中暑假班 (2) 【2020寒】高中寒假班 (3 )【2020秋】高中秋季班 07、《高中英语》专区 【32G】 13219—-10讲10课时学完英语必修5半年卡（人教版） 13221—-11讲11课时学完英语选修6（人教版）顾斐 198328顾斐20分钟搞定短文改错 11808]斐然英语突破高考必背词汇3500（下）（1) [13211110课肘学完英语必修1半年卡（人教版）顾斐 [13211110课时学完英语必修1半年卡（人教版）顾斐（1） 【10192】 斐然英语之高一秋季上学期综合模块精讲【11讲】 【10626】斐然英语突破高考必背词汇3500（上）【6讲】 【11329】【斐然英语】2013学年高一下学期英语半年卡（必修3+必修4） 【13616】刘飞飞讲英语35次一站式学完高中3500词汇 高一英语必修1234+考试体系上下（外研版） 高一英语必修1234+考试体系上下（外研版） （1） 08、春季培优2021年 【23.54】 春一年级培优数学 春一年级培优语文 春三年级培优数学 春三年级培优语文 春二年级培优数学 春二年级培优语文 春五年级培优数学 春五年级培优语文 春四年级培优数学 春四年级培优语文 春大班培优数学 春大班培优语文 09、幼小衔接计算课 学而思幼升小计算街接课 【231.99M) 10、小学生作文【2G】 小学写作技巧宝典班 第10讲佳作分享 第1讲让语言变生动 第2讲学会描写 （一） 第3讲学会描写 （二） 第4讲让文章有内容可写 第5讲把内容写具体 第6讲不写流水账 第7讲抒发真情实感 第8讲让文章更精彩 第9讲我来当回小医生 经典教育文章分享 经典教育文章分享&lt;/p&gt;
+
+&lt;p&gt;本文来自：A姐分享，原文地址： https://www.ahhhhfs.com/21603/&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/blog/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%94%B6%E8%97%8F%E5%A4%B9_A%E5%A7%90%E5%88%86%E4%BA%AB/&quot;&gt;技术博客收藏夹_A姐分享&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on December 11, 2030.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[让android不扫描文件夹下的图片等媒体文件，关联，]]></title>
+ <link rel="alternate" type="text/html" href="/%E8%AE%A9android%E4%B8%8D%E6%89%AB%E6%8F%8F%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%9B%BE%E7%89%87%E7%AD%89%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6/" />
+  <id>/让android不扫描文件夹下的图片等媒体文件</id>
+  <published>2023-07-20T00:00:00+08:00</published>
+  <updated>2023-07-20T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://kennystechtalk.blogspot.com/2013/08/nomedia-is-recursive-on-android-devices.html&quot;&gt;.nomedia is recursive on Android devices&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在文件夹下面创建一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;.nomedia&lt;/code&gt; 的空文件，就能让 Android 系统不扫描，该文件夹及所有文件夹下的，图片等媒体文件。&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/%E8%AE%A9android%E4%B8%8D%E6%89%AB%E6%8F%8F%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%9B%BE%E7%89%87%E7%AD%89%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6/&quot;&gt;让android不扫描文件夹下的图片等媒体文件，关联，&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 20, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[linux-mx-21-安装最新版本的git-lfs，关联，]]></title>
+ <link rel="alternate" type="text/html" href="/linux-mx-21-%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84git-lfs/" />
+  <id>/linux-mx-21-安装最新版本的git-lfs</id>
+  <published>2023-07-18T00:00:00+08:00</published>
+  <updated>2023-07-18T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md&quot;&gt;Installing on Linux using packagecloud&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/git-lfs/git-lfs&quot;&gt;github 官网&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md&quot;&gt;git lfs 官网的安装指南&lt;/a&gt; 提供一个脚本安装的方法，但是没有说怎么从源码安装。&lt;/p&gt;
+
+&lt;p&gt;这个脚本的下载地址：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;apt/deb repositories: https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh&lt;/li&gt;
+  &lt;li&gt;yum/rpm repositories: https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;脚本的主要是，安装 packagecloud.io 上的 gpgkey，配置安装源，然后通过 apt 安装。&lt;/p&gt;
+
+&lt;p&gt;虽然支持 debian ，但是没支持 mx21（基于 debian/bullseye），所有还是要手动安装下。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 直接进入root操作&lt;/span&gt;
+sudo -i
+
+&lt;span class=&quot;c&quot;&gt;# 安装 debian-archive-keyring，apt-transport-https&lt;/span&gt;
+apt-get install -y debian-archive-keyring apt-transport-https
+
+&lt;span class=&quot;c&quot;&gt;# 配置安装源&lt;/span&gt;
+curl -sSf &lt;span class=&quot;s2&quot;&gt;&quot;https://packagecloud.io/install/repositories/github/git-lfs/config_file.list?os=debian&amp;amp;dist=bullseye&amp;amp;source=script&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;/etc/apt/sources.list.d/github_git-lfs.list&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 导入 packagecloud gpg key&lt;/span&gt;
+mkdir -p /etc/apt/keyrings
+curl -fsSL &lt;span class=&quot;s2&quot;&gt;&quot;https://packagecloud.io/github/git-lfs/gpgkey&quot;&lt;/span&gt; | gpg --dearmor &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;/etc/apt/keyrings/github_git-lfs-archive-keyring.gpg&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 安装最新版的 git-lfs&lt;/span&gt;
+apt-get update
+apt search git-lfs
+apt install git-lfs
+git lfs --version
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;补充说明&quot;&gt;补充说明&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git-lfs_3.3.0_amd64.deb&lt;/code&gt; 下载是装不了，以来的库版本高于当前mx上的版本。&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/linux-mx-21-%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84git-lfs/&quot;&gt;linux-mx-21-安装最新版本的git-lfs，关联，&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 18, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[obsidian-css美化，关联，]]></title>
+ <link rel="alternate" type="text/html" href="/obsidian-css%E7%BE%8E%E5%8C%96/" />
+  <id>/obsidian-css美化</id>
+  <published>2023-07-12T00:00:00+08:00</published>
+  <updated>2023-07-12T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://beingpax.medium.com/27-awesome-css-snippets-for-customizing-obsidian-9d64114f3284&quot;&gt;27 Awesome CSS Snippets For Customizing Obsidian&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/chetachiezikeuzor/Obsidian-Snippets/tree/main&quot;&gt;github.com - chetachiezikeuzor/Obsidian-Snippets&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/Dmytro-Shulha/obsidian-css-snippets/tree/master/Snippets&quot;&gt;github.com - Dmytro-Shulha/obsidian-css-snippets&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://help.obsidian.md/Extending+Obsidian/CSS+snippets#:~:text=To%20add%20a%20CSS%20snippet,file%20that%20contains%20your%20snippet.&quot;&gt;Obsidian Help - CSS snippets&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.obsidian.md/Reference/CSS+variables/About+styling&quot;&gt;Obsidian Docs - About styling&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.obsidian.md/Themes/App+themes/Build+a+theme&quot;&gt;Obsidian Docs - Build a theme&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.obsidian.md/Reference/CSS+variables/CSS+variables&quot;&gt;Obsidian Docs -CSS variables&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/obsidian-css%E7%BE%8E%E5%8C%96/&quot;&gt;obsidian-css美化，关联，&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 12, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[obsidian 作为 dashboard，关联， 任务管理]]></title>
+ <link rel="alternate" type="text/html" href="/obsidian-as-dashboard/" />
+  <id>/obsidian-as-dashboard</id>
+  <published>2023-07-10T00:00:00+08:00</published>
+  <updated>2023-07-10T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/TfTHacker/DashboardPlusPlus&quot;&gt;github - TfHacker/DashboardPlusPlus&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;相关的插件&quot;&gt;相关的插件&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tasks&lt;/li&gt;
+  &lt;li&gt;Reminder&lt;/li&gt;
+  &lt;li&gt;Calendar&lt;/li&gt;
+  &lt;li&gt;Templater&lt;/li&gt;
+  &lt;li&gt;QuickAdd&lt;/li&gt;
+  &lt;li&gt;Kanban&lt;/li&gt;
+  &lt;li&gt;Min3ditorHotkeys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;使用-tfhackerdashboardplusplus-的-css-模板&quot;&gt;使用 TfHacker/DashboardPlusPlus 的 CSS 模板&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;进入 &lt;a href=&quot;https://github.com/TfTHacker/DashboardPlusPlus&quot;&gt;github - TfHacker/DashboardPlusPlus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;下载 DashboardPlusPlus/.obsidian/snippets/dashboard.css&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; Appearance &amp;gt; CSS snippets&lt;/li&gt;
+  &lt;li&gt;点击该项配置旁边的文件夹，打开CSS文件要存放的文件夹，&lt;code class=&quot;highlighter-rouge&quot;&gt;your-vault-dir/.obsidian/snippets&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;将刚下载的 dashboard.css 拷贝到这个文件夹&lt;/li&gt;
+  &lt;li&gt;点击该配置项目的刷新后，启用 dashboard css&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;创建一个文档 dashboard.md 或 home.md 等等都行
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; ---
+ cssclass: dashboard
+ ---
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;task-插件&quot;&gt;task 插件&lt;/h2&gt;
+
+&lt;p&gt;task 比 dataview 针对任务相关的功能更多，更完善些。&lt;/p&gt;
+
+&lt;p&gt;而 dataview的可编程度更高。&lt;/p&gt;
+
+&lt;p&gt;%%%%&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;```task
+not done
+due before {{date:YYYY-MM-DD}}
+```
+
+```task
+## 未完成的任务
+not done
+due before today
+```
+
+```task
+path include 020-Daily
+path does not include 010-Templates
+not done
+no due date
+```
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;%%%%&lt;/p&gt;
+
+&lt;h2 id=&quot;dataview-过滤todo&quot;&gt;dataview 过滤todo&lt;/h2&gt;
+&lt;p&gt;%%%%&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;Tasks due to today
+
+```dataviewjs
+dv.taskList(dv.pages().file.tasks
+  .where(t =&amp;gt; !t.completed)
+  .where(t =&amp;gt; t.text.includes(&quot;{{}date:YYYY-MM-DD}&quot;)))
+```
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;%%%%&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;```dataview
+task where !completed
+```
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;reminder&quot;&gt;Reminder&lt;/h2&gt;
+
+&lt;p&gt;在 todo 项目中输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;(@&lt;/code&gt; 就会弹出日期选择的菜单，写成类似 &lt;code class=&quot;highlighter-rouge&quot;&gt;(@2022-02-02 12:22)&lt;/code&gt; 就可以设置具体时间了。&lt;/p&gt;
+
+&lt;p&gt;与Android 的日历app互动，选中&lt;code class=&quot;highlighter-rouge&quot;&gt;(@时间)&lt;/code&gt; 的文字，会自动弹出浮动菜单，选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;排定时间&lt;/code&gt;，就会跳转到日历app，自动选好时间。可惜，todo的内容不会自动填写进去。&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/obsidian-as-dashboard/&quot;&gt;obsidian 作为 dashboard，关联， 任务管理&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 10, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[obsidian 使用，关联，git，termux]]></title>
+ <link rel="alternate" type="text/html" href="/obsidian-%E4%BD%BF%E7%94%A8git%E5%9C%A8%E5%90%84%E4%B8%AA%E7%BB%88%E7%AB%AF%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5/" />
+  <id>/obsidian-使用git在各个终端之间同步</id>
+  <published>2023-07-07T00:00:00+08:00</published>
+  <updated>2023-07-07T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://obsidian.md/&quot;&gt;obsidian 官网&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://help.obsidian.md/Home&quot;&gt;obsidian 官方帮助文档&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.apkmirror.com/apk/dynalist-inc/obsidian/&quot;&gt;obsidian apk 下载 - appmirror&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;同步方案-git--termux&quot;&gt;同步方案 git + termux&lt;/h2&gt;
+
+&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用 termux + git&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在 termux 上安装 git
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; pkg install git git-lfs
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;配置
+    &lt;ol&gt;
+      &lt;li&gt;配置 git config&lt;/li&gt;
+      &lt;li&gt;初始lfs 功能： &lt;code class=&quot;highlighter-rouge&quot;&gt;git lfs install&lt;/code&gt; ， 配置项目根目录下的 &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitattributes&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;配置 &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;创建 README.md，至少说下需要哪些第三方插件&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;clone
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; termux-setup-storage
+ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/storage/shared
+ mkdir my-ob-dir
+ &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;my-ob-dir
+ git clone ssh://username@hostname:port/xxx/xxx.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;push&lt;br /&gt;
+ 项目放在 sdcard 分区才能被 obsidian app 发现并打开，而 Android 上 sdcard 分区上的文件都不可执行， 所以， &lt;code class=&quot;highlighter-rouge&quot;&gt;.git/hooks&lt;/code&gt; 下的脚本，&lt;strong&gt;没法设置可执行&lt;/strong&gt;，所以只能 push 后， 手动使用 git lfs push
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; git push origin master
+ git lfs push --all origin
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;git lfs push 时候可能提示 &lt;code class=&quot;highlighter-rouge&quot;&gt;Locking support detected on remote&lt;/code&gt;，按照提示 enable 一下就好了，例如： &lt;code class=&quot;highlighter-rouge&quot;&gt;git config lfs.https://host/xxx/xxx.git/info/lfs.locksverify true&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;关于-android-上的-git-客户端选择&quot;&gt;关于 Android 上的 git 客户端选择&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;关于不用 Obsidian Git 插件&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;参考：&lt;/p&gt;
+
+        &lt;p&gt;简单说明了下，使用 Obsidian Git 插件的用法。说的都不是很详细。&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://lucaf.eu/2023/01/02/obsidian-git.html&quot;&gt;Obsidian versioning with git and GitHub&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;看插件说明，在 Android/iOS等移动端上用的 &lt;a href=&quot;https://isomorphic-git.org/&quot;&gt;isomorphic-git&lt;/a&gt; ，是个纯 javascript 的git 实现, 有很多限制：&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;不支持 SSH 认证&lt;/li&gt;
+      &lt;li&gt;repo 大小有限制&lt;/li&gt;
+      &lt;li&gt;不支持 rebase&lt;/li&gt;
+      &lt;li&gt;不支持 submodules&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;以上不支持，只能是个残废的 git，何况我还要使用 LFS，所以先不用这个插件了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;关于不用 mgit ， 作者使用的 jgit，目前也不支持 LFS&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;综上&lt;/strong&gt;， git 客户端选用的 termux 的 git 命令行。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/obsidian-%E4%BD%BF%E7%94%A8git%E5%9C%A8%E5%90%84%E4%B8%AA%E7%BB%88%E7%AB%AF%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5/&quot;&gt;obsidian 使用，关联，git，termux&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 07, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[常用gitignore，关联，git]]></title>
+ <link rel="alternate" type="text/html" href="/%E5%B8%B8%E7%94%A8-gitignore/" />
+  <id>/常用-gitignore</id>
+  <published>2023-07-06T00:00:00+08:00</published>
+  <updated>2023-07-06T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/github/gitignore&quot;&gt;A collection of .gitignore templates&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;backup&quot;&gt;backup&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;压缩文件&quot;&gt;压缩文件&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# It's better to unpack these files and commit the raw source because
+# git has its own built in compression methods.
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.gzip
+*.tgz
+*.bzip
+*.bzip2
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.xar
+
+# Packing-only formats
+*.iso
+*.tar
+
+# Package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp
+*.txz
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;os&quot;&gt;OS&lt;/h2&gt;
+
+&lt;h3 id=&quot;linux&quot;&gt;linux&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;windows&quot;&gt;Windows&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;macos&quot;&gt;MacOS&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;office&quot;&gt;Office&lt;/h2&gt;
+
+&lt;h3 id=&quot;libreoffice&quot;&gt;LibreOffice&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# LibreOffice locks
+.~lock.*#
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;microsoft-office&quot;&gt;Microsoft Office&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Word Auto Backup File
+Backup of *.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;editor&quot;&gt;Editor&lt;/h2&gt;
+
+&lt;h3 id=&quot;kate&quot;&gt;Kate&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Swap Files #
+.*.kate-swp
+.swp.*
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;sublime&quot;&gt;Sublime&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Cache files for Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# Workspace files are user-specific
+*.sublime-workspace
+
+# Project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using Sublime Text
+# *.sublime-project
+
+# SFTP configuration file
+sftp-config.json
+sftp-config-alt*.json
+
+# Package control specific files
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+Package Control.merged-ca-bundle
+Package Control.user-ca-bundle
+oscrypto-ca-bundle.crt
+bh_unicode_properties.cache
+
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;vim&quot;&gt;VIM&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;jekyll&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;_site
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+codekit-config.json
+node_modules
+Gemfile.lock
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ignore folders generated by Bundler
+.bundle/
+vendor/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;obsidian&quot;&gt;obsidian&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;.obsidian/*
+!.obsidian/app.json
+!.obsidian/appearance.json
+!.obsidian/config
+!.obsidian/community-plugins.json
+!.obsidian/core-plugins.json
+!.obsidian/graph.json
+!.obsidian/hotkeys.json
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;cmake&quot;&gt;CMake&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps 
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;programing&quot;&gt;Programing&lt;/h2&gt;
+
+&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;c&quot;&gt;C++&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;c-1&quot;&gt;C&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;python&quot;&gt;Python&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/%E5%B8%B8%E7%94%A8-gitignore/&quot;&gt;常用gitignore，关联，git&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on July 06, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[obsidian 使用，关联，笔记, 日志，logreq, notion]]></title>
+ <link rel="alternate" type="text/html" href="/obsidian-%E4%BD%BF%E7%94%A8/" />
+  <id>/obsidian-使用</id>
+  <published>2023-06-30T00:00:00+08:00</published>
+  <updated>2023-06-30T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://obsidian.md/&quot;&gt;obsidian 官网&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://help.obsidian.md/Home&quot;&gt;obsidian 官方帮助文档&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.apkmirror.com/apk/dynalist-inc/obsidian/&quot;&gt;obsidian apk 下载 - appmirror&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;快速入门&quot;&gt;快速入门&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;下载 obsidian&lt;br /&gt;
+ 官网下载地址： &lt;a href=&quot;https://obsidian.md/download&quot;&gt;https://obsidian.md/download&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;安装好之后打开 Obsidian，会弹出对话框，询问使用哪个库（Vault），或者打开哪个库。
+    &lt;ul&gt;
+      &lt;li&gt;库，实际就是存放之后笔记的目录。可以选择一个创建好的文件夹，也可以在这个对话框这里创建，实际也就是创建个文件夹，并悄悄放了个隐藏的配置文件夹（&lt;code class=&quot;highlighter-rouge&quot;&gt;.obsidian&lt;/code&gt;）。&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt; 使用英文、中文，也是在这个界面选择的，似乎 语言 也是 vault 的一个属性。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;打开库，就进入 Obsidian 主界面了。&lt;/li&gt;
+  &lt;li&gt;左边导航区，上面一排按钮
+    &lt;ul&gt;
+      &lt;li&gt;纸和笔图标，创建一个新的 markdown 文件。&lt;/li&gt;
+      &lt;li&gt;文件夹（带加号），创建一个新的目录。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;我喜欢的基本配置&quot;&gt;我喜欢的基本配置&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;视图，左边 source mode，右边是预览&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;设置 source mode : Settings &amp;gt; Editor &amp;gt; Default editing mode : source mode&lt;br /&gt;
+右边预览： 按住 Ctrl， 点击文档右上角的书本展开的图标，就会水平方向打开预览视图。&lt;/p&gt;
+
+&lt;h2 id=&quot;使用-git-在各个终端之间同步&quot;&gt;使用 git 在各个终端之间同步&lt;/h2&gt;
+
+&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用 termux + git&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在 termux 上安装 git
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; pkg install git git-lfs
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;配置 git config&lt;/li&gt;
+  &lt;li&gt;初始lfs 功能： &lt;code class=&quot;highlighter-rouge&quot;&gt;git lfs install&lt;/code&gt; ， 配置项目根目录下的 &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitattributes&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;配置 &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;插件列表&quot;&gt;插件列表：&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;核心插件基本都打开，例如，Templates、Diary Notes 等等&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Custom Attachment Location&lt;/code&gt; by RainCat1998&lt;br /&gt;
+  可惜，这个插件不支持 Android。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Advanced Tables&lt;/code&gt; - Tony Grosinger - 方便的表格编辑功能&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Checklist&lt;/code&gt; - delashum - 跨文件整合todo&lt;br /&gt;
+  符合特定tag 的 checklsit item 会被该插件搜集 ，默认tag是 &lt;code class=&quot;highlighter-rouge&quot;&gt;#todo&lt;/code&gt;&lt;br /&gt;
+  例如， &lt;code class=&quot;highlighter-rouge&quot;&gt;- [ ] something need todo  #todo&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Tag Wrangler&lt;/code&gt; - PJ Edy&lt;br /&gt;
+  tag 的 树形视图，在右侧的视图窗口中的井字形图标进入。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Kanban&lt;/code&gt; - mgmeyers&lt;br /&gt;
+  提供一种基于 markdown 语法的看板。&lt;br /&gt;
+  创建看板文件的方法：
+    &lt;ul&gt;
+      &lt;li&gt;右键文件夹，选择 New kanban board&lt;/li&gt;
+      &lt;li&gt;Ctrl + P， 搜索 kankan，选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;Kanban: Create new board&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Advanced Slides&lt;/code&gt; by MSzturc&lt;br /&gt;
+  基于 markdown 的 幻灯片工具。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Excalidraw&lt;/code&gt; by Zsolt Viczian&lt;br /&gt;
+  手绘风格的白板工具，可以画 流程图、柱状图等。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Obsidian Git&lt;/code&gt; - Vinzent&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Templater&lt;/code&gt; by SilentVoid&lt;br /&gt;
+  高级的模板插件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dataview&lt;/code&gt; by Michael Brenan&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;常用方法和技巧&quot;&gt;常用方法和技巧&lt;/h2&gt;
+
+&lt;h3 id=&quot;添加-todo&quot;&gt;添加 todo&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;- [ ] todo的内容
+- [x] 已经完成的todo，会在文字上展示删除线
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;添加图片&quot;&gt;添加图片&lt;/h3&gt;
+
+&lt;p&gt;直接将图片&lt;strong&gt;粘帖&lt;/strong&gt;到文章中。&lt;/p&gt;
+
+&lt;p&gt;obsidian 会自动生成一个图片文件，默认位置，是在 库的根目录下面。&lt;/p&gt;
+
+&lt;p&gt;修改生成图片的位置：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Settings &amp;gt; Files &amp;amp; Links &amp;gt; Default location of new attachments&lt;/li&gt;
+  &lt;li&gt;有四种选项：
+    &lt;ul&gt;
+      &lt;li&gt;Vault folder&lt;/li&gt;
+      &lt;li&gt;In folder specified below&lt;/li&gt;
+      &lt;li&gt;Same folder as current file&lt;/li&gt;
+      &lt;li&gt;In subfolder under current folder&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可惜，不能自动创建个文章同名文件夹，并放进去。&lt;/p&gt;
+
+&lt;p&gt;可以自己手动创建一个文件夹，将图片放进去，添加图片链接： &lt;code class=&quot;highlighter-rouge&quot;&gt;![[image-path-link]]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;也可以，使用插件 &lt;a href=&quot;https://github.com/RainCat1998/obsidian-custom-attachment-location&quot;&gt;Custom attachment location&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;达到需要效果，按照如下配置 Custom attachment location 插件：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Location for New Attachments: &lt;code class=&quot;highlighter-rouge&quot;&gt;./${filename}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Pasted Image Name : &lt;code class=&quot;highlighter-rouge&quot;&gt;image-${date}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Date Format: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYYMMDDHHmmssSSS&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Automatically rename attachment folder: 勾选&lt;/li&gt;
+  &lt;li&gt;Automatically rename attachment files: 如果文件名中设置了 &lt;code class=&quot;highlighter-rouge&quot;&gt;${filename}&lt;/code&gt; 就勾选。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;日记&quot;&gt;日记&lt;/h3&gt;
+
+&lt;p&gt;插件：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;core plugins:
+    &lt;ul&gt;
+      &lt;li&gt;Diary notes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;community plugins:
+    &lt;ul&gt;
+      &lt;li&gt;Calendar&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Diary notes 的设置&lt;/p&gt;
+
+&lt;p&gt;Dateformat: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM/YYYY-MM-DD&lt;/code&gt;   这样方便组织日记，每个月会自动创建个文件夹，将当月日记放进去。&lt;/p&gt;
+
+&lt;p&gt;简单的日记模板：&lt;br /&gt;
+标题： diary-template&lt;br /&gt;
+内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;\{\{date: dddd\}\} 
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Calendar的功能在于：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;显示个当月的日历，在窗口右边，在其上点击某个日期，创建当日日记。&lt;/li&gt;
+  &lt;li&gt;可以显示第几周，点击周序号，创建周记。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;注意： Android版本上并不能显示 Calendar插件&lt;/p&gt;
+
+&lt;h2 id=&quot;插件&quot;&gt;插件&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;开启第三方/社区插件&lt;br /&gt;
+ 左下角设置图标 》 进入设置 》 Community Plugins &amp;gt; Turns on community plugins&lt;/li&gt;
+  &lt;li&gt;开启后，同样位置 》 Community plugins &amp;gt; Browse 开始浏览和安装插件。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;手动安装插件
+    &lt;ol&gt;
+      &lt;li&gt;在库的配置文件夹（&lt;code class=&quot;highlighter-rouge&quot;&gt;.obsidian&lt;/code&gt;）中，创建文件夹 &lt;code class=&quot;highlighter-rouge&quot;&gt;plugins&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;将插件拷贝到 plugins 目录&lt;/li&gt;
+      &lt;li&gt;重启 Obsidian&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;核心插件---模板&quot;&gt;核心插件 - 模板&lt;/h3&gt;
+
+&lt;p&gt;开启/关闭插件： Settings &amp;gt; Core plugins &amp;gt; Templates&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;设置模板&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;创建一个放模板的文件夹，例如： _templates&lt;/li&gt;
+  &lt;li&gt;回到 obsidian 中，在 _templates 文件夹下创建一个模板文件&lt;br /&gt;
+ 文件的标题，就是以后引用这个模板的名称。&lt;br /&gt;
+ 内容可以写成：
+    &lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt; ---&lt;/span&gt;
+ aliases: 
+ tags: 
+ date: 
+&lt;span class=&quot;p&quot;&gt; ---
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在设置中设置模板&lt;br /&gt;
+ Settings &amp;gt; Templates&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Templates folder location: 填写存放模板的目录，例如， _templates&lt;/li&gt;
+      &lt;li&gt;Date format: 保持默认（YYYY-MM-DD）&lt;/li&gt;
+      &lt;li&gt;Time format: 保持默认（HH:mm）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;创建一个新的笔记，引用模板有如下几种方法：
+    &lt;ul&gt;
+      &lt;li&gt;左边，侧边导航条上有个 insert template 按钮&lt;/li&gt;
+      &lt;li&gt;Ctrl + p , 调出命令面板，输入 template，搜到 insert template 命令&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;核心插件---日记&quot;&gt;核心插件 - 日记&lt;/h3&gt;
+
+&lt;p&gt;开启/关闭插件： Settings &amp;gt; Core plugins &amp;gt; Diary notes&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;创建一个用来放 diary 的目录&lt;/li&gt;
+  &lt;li&gt;创建一个 diary 的模板&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; Diary notes
+    &lt;ul&gt;
+      &lt;li&gt;Date format： 日记标题的日期格式，默认 YYYY-MM-DD&lt;/li&gt;
+      &lt;li&gt;New file location: 日记存放的目录&lt;/li&gt;
+      &lt;li&gt;Template file location: 日记模板&lt;/li&gt;
+      &lt;li&gt;Open daily note on startup: 每次打开这个库，就自动创建个日记&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;开始写日记&lt;br /&gt;
+ 左边，侧边导航条上有个 open today’s daily note 按钮&lt;br /&gt;
+ 点击之，就会根据模板，创建个今天的日记底稿，直接可以开始写今天日记了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;core-plugins---canvas&quot;&gt;core plugins - Canvas&lt;/h3&gt;
+
+&lt;p&gt;将挑选出来的卡片笔记，以卡片图形化的形式，展现到画布上。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;页面左侧边icon - Create a new Canvas&lt;/li&gt;
+  &lt;li&gt;可以将日志文章拖拽到canvas上，每个文章以卡片的形式展示在画布上&lt;/li&gt;
+  &lt;li&gt;可以拖拽卡片，给卡片调整不同背景色&lt;/li&gt;
+  &lt;li&gt;卡片之间可以连线，并在连线上输入文字，阐明关联的含义&lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/obsidian-%E4%BD%BF%E7%94%A8/&quot;&gt;obsidian 使用，关联，笔记, 日志，logreq, notion&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 30, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[alist 使用，关联，网盘、下载、aliyun、百度云、夸克、aria2]]></title>
+ <link rel="alternate" type="text/html" href="/alist-%E4%BD%BF%E7%94%A8/" />
+  <id>/alist-使用</id>
+  <published>2023-06-30T00:00:00+08:00</published>
+  <updated>2023-06-30T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://alist-doc.nn.ci/docs/intro&quot;&gt;Alist 官网文档&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/alist-org/alist&quot;&gt;github - Alist 3.0&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/alist-org/web-v2&quot;&gt;github - Alist 3.0&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;安装---使用-docker&quot;&gt;安装 - 使用 Docker&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;初始密码请查看日志输出：&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; docker logs alist
+ &lt;span class=&quot;c&quot;&gt;# 或者&lt;/span&gt;
+ docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; -it alist ./alist -password
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;稳定版​&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; docker run -d --restart&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;always -v /etc/alist:/opt/alist/data -p 5244:5244 --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alist&quot;&lt;/span&gt; xhofe/alist:latest
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;相关的设置保存在宿主机的 &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/alist/data&lt;/code&gt; 中，升级 docker 的 alist 后，原来的设置还是保留的。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;连接执行中 alist 容器： &lt;code class=&quot;highlighter-rouge&quot;&gt;docker exec -it alist /bin/bash&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;更新 docker 到 lastest&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; docker container rm alist
+ docker pull xhofe/alist:latest
+ docker run -d --restart&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;always -v /etc/alist:/opt/alist/data -p 5244:5244 --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alist&quot;&lt;/span&gt; xhofe/alist:latest
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/alist-%E4%BD%BF%E7%94%A8/&quot;&gt;alist 使用，关联，网盘、下载、aliyun、百度云、夸克、aria2&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 30, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[udev rules 编写，关联，device，linux，systemd]]></title>
+ <link rel="alternate" type="text/html" href="/udev-rules-%E7%BC%96%E5%86%99/" />
+  <id>/udev-rules-编写</id>
+  <published>2023-06-26T00:00:00+08:00</published>
+  <updated>2023-06-26T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/linux/shell-run-script-usb-plugged&quot;&gt;How to Execute a Shell Script When a USB Device Is Plugged&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/65891/how-to-execute-a-shellscript-when-i-plug-in-a-usb-device&quot;&gt;How to execute a shellscript when I plug-in a USB-device&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://opensource.com/article/18/11/udev&quot;&gt;An introduction to Udev: The Linux subsystem for managing device events&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.clearpathrobotics.com/assets/guides/kinetic/ros/Udev%20Rules.html&quot;&gt;UDEV RULES&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.thegeekdiary.com/beginners-guide-to-udev-in-linux/&quot;&gt;Beginners Guide to Udev in Linux&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.debian.org/udev&quot;&gt;Debian Wiki - udev - Linux dynamic device management&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/title/udev&quot;&gt;ArchLinux Wiki - udev&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hello-rules&quot;&gt;hello rules&lt;/h2&gt;
+
+&lt;p&gt;以USB键盘为例：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; 查看当前插入USB设备，可以看到厂商和产品代码&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;lsusb
+ Bus 001 Device 004: ID 8087:0aa7 Intel Corp. Wireless-AC 3168 Bluetooth
+ Bus 001 Device 005: ID 046d:c52f Logitech, Inc. Unifying Receiver
+ Bus 001 Device 002: ID 05ac:024f Apple, Inc. Aluminium Keyboard &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ANSI&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;其中，&lt;code class=&quot;highlighter-rouge&quot;&gt;Bus 001 Device 002:&lt;/code&gt; 就是一个键盘，厂家编码 &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{idVendor}&lt;/code&gt; 是 &lt;code class=&quot;highlighter-rouge&quot;&gt;05ac&lt;/code&gt;，产品编码 &lt;code class=&quot;highlighter-rouge&quot;&gt;ATTRS{idProduct}&lt;/code&gt; 是 &lt;code class=&quot;highlighter-rouge&quot;&gt;024f&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建rules文件&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo vim /etc/udev/rules.d/10-keyboard.rules&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; ATTRS{idVendor}==&quot;152d&quot;, ATTRS{idProduct}==&quot;2329&quot;, RUN+=&quot;/tmp/test.sh&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建对应的rule触发时，执行的脚本&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo vim /tmp/test.sh&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;这个脚本主要打印些设备信息，要加什么功能，可以自己添加，注意不要加耗时任务。&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;#! /bin/sh&lt;/span&gt;
+
+ env &amp;gt;&amp;gt;/tmp/test.log
+ file &lt;span class=&quot;s2&quot;&gt;&quot;/sys&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DEVPATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt;&amp;gt; /tmp/test.log
+
+ &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ACTION&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; add -a -d &lt;span class=&quot;s2&quot;&gt;&quot;/sys&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DEVPATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;add &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DEVPATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt;&amp;gt; /tmp/test.log
+ &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重载rules ： &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo udevadm control --reload-rules&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在命令窗口开启监视： &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo udevadm monitor&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;可以在命令开头加上 unbuffer ： &lt;code class=&quot;highlighter-rouge&quot;&gt;unbuffer udevadm monitor&lt;/code&gt; ，这样的话，就不用到4K的缓冲慢了，才输入到命令行窗口。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;手动触发，来测试 rules 和 脚本 ： &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo udevadm trigger&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;debug&quot;&gt;debug&lt;/h2&gt;
+
+&lt;h3 id=&quot;查看日志&quot;&gt;查看日志&lt;/h3&gt;
+
+&lt;p&gt;修改日志级别： &lt;code class=&quot;highlighter-rouge&quot;&gt;udevadm control --log-priority=info&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后在 system log（&lt;code class=&quot;highlighter-rouge&quot;&gt;journalctl -f&lt;/code&gt;） 或者 kernel log（&lt;code class=&quot;highlighter-rouge&quot;&gt;dmesg&lt;/code&gt;）中看到所有日志。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果要永久修改 log 级别 ：&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/udev/udev.conf&lt;/code&gt; 保存了日志级别，默认是 error&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  vi /etc/udev/udev.conf
+  &lt;span class=&quot;c&quot;&gt;# edit the log level as described in &quot;man udev.conf&quot;&lt;/span&gt;
+  systemctl restart systemd-udevd
+  journalctl -f
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;查看-device-的信息&quot;&gt;查看 device 的信息&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;udevadm monitor&lt;br /&gt;
+  udev有变动，就会输出到命令行窗口。 ctrl + c 退出。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;udevadm info&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;知道设备名称，查询设备相关信息： &lt;code class=&quot;highlighter-rouge&quot;&gt;udevadm info --name /dev/sda1 --query all&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;知道设备path，查看设备所有相关属性： &lt;code class=&quot;highlighter-rouge&quot;&gt;udevadm info --attribute-walk --path=/devices/pci0000:00/0000:00:01.2/0000:02:00.0/0000:03:05.0/0000:05:00.0/usb1/1-3/1-3:1.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;： 根据 /devcies/xxx 开头的path，在文件系统会 &lt;strong&gt;找不到文件&lt;/strong&gt;，实际应该在 &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys&lt;/code&gt; 目录下找 &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/devices/xxxx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/udev-rules-%E7%BC%96%E5%86%99/&quot;&gt;udev rules 编写，关联，device，linux，systemd&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 26, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[nuphy-air75-使用，关联，机械键盘、矮轴]]></title>
+ <link rel="alternate" type="text/html" href="/nuphy-air75-%E4%BD%BF%E7%94%A8/" />
+  <id>/nuphy-air75-使用</id>
+  <published>2023-06-23T00:00:00+08:00</published>
+  <updated>2023-06-23T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;选什么轴体&quot;&gt;选什么轴体&lt;/h3&gt;
+
+&lt;p&gt;听大家的没错，选 矮茶轴 吧。&lt;/p&gt;
+
+&lt;p&gt;红轴，由于一按到底，不像茶轴有段落确认的感觉，往往不卸力，键帽触底的声音反而很大，哒哒的麻将音。&lt;/p&gt;
+
+&lt;p&gt;反而茶轴，声音没那么大，有点闷。&lt;/p&gt;
+
+&lt;p&gt;另外，体验了 红龙TL84, 高特的矮红轴，夹杂弹簧音，有些松散，就是没有佳达隆的那么纯粹。&lt;/p&gt;
+
+&lt;h3 id=&quot;linux下有线模式下f1-f12怎么都用不起来&quot;&gt;Linux下，有线模式下F1-F12怎么都用不起来&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/MechanicalKeyboards/comments/tgjvp2/nuphy_air75_on_linux_issues_with_fn/&quot;&gt;Nuphy Air75 on Linux - Issues with FN&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Windows 下无此问题。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;解决方法：&lt;/p&gt;
+
+    &lt;p&gt;直接修改 fnmode 的文件内容为 0 后， F1-F12 都可以用了。方法如下：&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;#Enable FN keys&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n 0 | sudo tee /sys/module/hid_apple/parameters/fnmode 
+
+ &lt;span class=&quot;c&quot;&gt;#Disable/Return to default&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n 1 | sudo tee /sys/module/hid_apple/parameters/fnmode
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如何还不行，修改后重启键盘，尝试 &lt;code class=&quot;highlighter-rouge&quot;&gt;Fn + TAB + f&lt;/code&gt; 切换fn模式（键盘右侧模式灯会有反应）试试&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当时以上方法，&lt;strong&gt;重启后会失效&lt;/strong&gt;，永久有效的方法。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;永久有效的方法一： udev rules 侦测键盘的连接，然后自动 fnmode 设置为 0
+    &lt;ul&gt;
+      &lt;li&gt;这个方法，我在 Linux MX 21.2.1 上测试有效。&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;创建udev rules 文件&lt;br /&gt;
+ 例如： &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/udev/rules.d/10-keyboard-air75.rules&lt;/code&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; # rules to enable FN keys for air75 keyboard
+ SUBSYSTEM==&quot;hid&quot;, ENV{HID_ID}==&quot;0003:000005AC:0000024F&quot;, ENV{HID_NAME}==&quot;BY Tech Air75&quot;, ENV{DRIVER}==&quot;apple&quot;, RUN+=&quot;/bin/sh /home/your-name/bin/air75-fnmode-for-udev.sh&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;创建执行文件
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; touch ~/bin/air75-fnmode-for-udev.sh
+ chmod a+x ~/bin/air75-fnmode-for-udev.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin/air75-fnmode-for-udev.sh&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;0 &amp;gt; /sys/module/hid_apple/parameters/fnmode
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;使 rule 生效的话，执行如下命令 或 重启系统
+        &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;# reload rules&lt;/span&gt;
+ udevadm control --reload-rules
+ &lt;span class=&quot;c&quot;&gt;# trigger devices rules by change action&lt;/span&gt;
+ udevadm trigger
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;永久有效的方法一：
+    &lt;ul&gt;
+      &lt;li&gt;reddit 论坛上提到的方法，我在 MX 21 上没有效果。&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'options hid_apple fnmode=0'&lt;/span&gt; | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+ sudo tee -a /etc/modprobe.d/hid_apple.conf
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;关于文件系统中找到-air75&quot;&gt;关于文件系统中找到 air75&lt;/h3&gt;
+
+&lt;p&gt;注意关注包含 hid（human input device） 关键字的设备。&lt;/p&gt;
+
+&lt;p&gt;可以在 &lt;code class=&quot;highlighter-rouge&quot;&gt;ls /dev/input/by-id/usb*&lt;/code&gt; 找到usb设备&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ls /dev/input/by-id/usb&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+/dev/input/by-id/usb-BY_Tech_Air75-event-kbd
+/dev/input/by-id/usb-BY_Tech_Air75-if01-event-mouse
+/dev/input/by-id/usb-BY_Tech_Air75-if01-mouse
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后，用 &lt;code class=&quot;highlighter-rouge&quot;&gt;udevadm info --name&lt;/code&gt; 查看&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;udevadm info --name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/input/by-id/usb-BY_Tech_Air75-event-kbd
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;关注&lt;/strong&gt; 输出信息中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;DEVPATH&lt;/code&gt; ，找到对应的设备路径，类似 &lt;code class=&quot;highlighter-rouge&quot;&gt;/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-5/1-5:1.0/0003:05AC:024F.0001&lt;/code&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;1-5:1.0&lt;/code&gt; 和 末尾的 0001 不确定，每次启动后也不一定一样。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;： 根据 /devcies/xxx 开头的path，在文件系统会 &lt;strong&gt;找不到文件&lt;/strong&gt;，实际应该在 &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys&lt;/code&gt; 目录下找 &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/devices/xxxx&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;udevadm info --path&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-5/1-5:1.0/0003:05AC:024F.0001&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# P: /devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-5/1-5:1.0/0003:05AC:024F.0001&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# L: 0&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: DEVPATH=/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-5/1-5:1.0/0003:05AC:024F.0001&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: DRIVER=apple&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: HID_ID=0003:000005AC:0000024F&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: HID_NAME=BY Tech Air75&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: HID_PHYS=usb-0000:03:00.0-5/input0&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: HID_UNIQ=&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: MODALIAS=hid:b0003g0000v000005ACp0000024F&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# E: SUBSYSTEM=hid&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/nuphy-air75-%E4%BD%BF%E7%94%A8/&quot;&gt;nuphy-air75-使用，关联，机械键盘、矮轴&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 23, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[linux-bash-使用-while-loop，关联，script, shell，循环]]></title>
+ <link rel="alternate" type="text/html" href="/linux-bash-%E4%BD%BF%E7%94%A8-while-loop/" />
+  <id>/linux-bash-使用-while-loop</id>
+  <published>2023-06-16T00:00:00+08:00</published>
+  <updated>2023-06-16T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/bash-scripting-while-loop/&quot;&gt;Bash Scripting – While Loop&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The syntax of a while loop in BASH is something like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; condition &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# statements&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# commands&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;应用技巧&quot;&gt;应用/技巧&lt;/h2&gt;
+
+&lt;p&gt;每秒钟打印一次CPU的当前频率：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;while true ; do (sleep 1) &amp;amp;&amp;amp; (lscpu | grep --color 'CPU MHz'); done
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;每秒钟打印一次CPU的当前频率、温度：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; ; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;sleep 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;lscpu | grep --color &lt;span class=&quot;s1&quot;&gt;'CPU MHz'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;sensors | grep Tctl&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/linux-bash-%E4%BD%BF%E7%94%A8-while-loop/&quot;&gt;linux-bash-使用-while-loop，关联，script, shell，循环&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 16, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[linux-bash-使用-forloop，关联，script, shell]]></title>
+ <link rel="alternate" type="text/html" href="/linux-bash-%E4%BD%BF%E7%94%A8-forloop/" />
+  <id>/linux-bash-使用-forloop</id>
+  <published>2023-06-08T00:00:00+08:00</published>
+  <updated>2023-06-08T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/linux/nohup-for-loop&quot;&gt;Using nohup With a for Loop&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nohup-和-forloop-配合使用&quot;&gt;nohup 和 forloop 配合使用&lt;/h3&gt;
+
+&lt;p&gt;nohup 直接跟 for 语句会报错，使用 bash -c 来解决。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;nohup bash -c &lt;span class=&quot;s1&quot;&gt;'for i in /home/*; do echo &quot;$i&quot;; done'&lt;/span&gt; &amp;gt; output.log &amp;amp;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/linux-bash-%E4%BD%BF%E7%94%A8-forloop/&quot;&gt;linux-bash-使用-forloop，关联，script, shell&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on June 08, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[switch-大气层游戏安装，关联，]]></title>
+ <link rel="alternate" type="text/html" href="/switch-%E5%A4%A7%E6%B0%94%E5%B1%82%E6%B8%B8%E6%88%8F%E5%AE%89%E8%A3%85/" />
+  <id>/switch-大气层游戏安装</id>
+  <published>2023-05-12T00:00:00+08:00</published>
+  <updated>2023-05-12T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/c7850fe057b2&quot;&gt;简书 - 草珊瑚_6557 - switch大气层游戏安装步骤&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/aa627885a68c&quot;&gt;简书 - 2022-02-13 最新大气层安装游戏教程&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://crazyns.com/?p=1962&quot;&gt;游戏安装包在机子里如何安装？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.91atm.com/60606.html&quot;&gt;Switch大气层破解版安装游戏&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;长按switch电源键关机&lt;br /&gt;
+选择电源选项，关闭电源&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;拔出内存卡&lt;br /&gt;
+内存卡在支架后面&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;内存卡放入读卡器连接电脑&lt;br /&gt;
+最好是3.0读卡器&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;把游戏安装包copy到内存卡根目录&lt;br /&gt;
+一般是游戏主体文件，补丁，dlc。&lt;br /&gt;
+文件格式都是nsp格式。&lt;br /&gt;
+通常主体文件最大，名字一般命名为gamedir。&lt;br /&gt;
+补丁命名通常带update。&lt;br /&gt;
+dlc命名就随意了，可能带v0。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;插入破解器开机激活switch&lt;br /&gt;
+启动成功后，破解器拔出。&lt;br /&gt;
+注意破解器的电量。&lt;br /&gt;
+开机是先按住音量+键，然后再按一下power键。&lt;br /&gt;
+参考：https://v.youku.com/v_show/id_XNTE1NDc1MzgzNg==.html?spm=a2h0c.8166622.PhoneSokuUgc_1.dtitle&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;点击相册或者头像1进入破解管理页面安装游戏&lt;br /&gt;
+进入goldleaf的browse sd card选择nsp文件进行安装，安装顺序为主体，补丁，dlc。&lt;br /&gt;
+安装的地方选择sd卡。&lt;br /&gt;
+因为sd卡，所以安装速度有点慢，需耐心等待。&lt;br /&gt;
+因为有安装文件，又有安装完成后的数据，所以你要预留双倍空间来安装。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装完之后回到主界面就能看到游戏。&lt;br /&gt;
+安装完之后可以把安装文件给删除了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;卸载游戏&lt;br /&gt;
+进入数据管理去卸载。&lt;br /&gt;
+千万别在游戏运行中，进入游戏进程管理界面删除。&lt;br /&gt;
+我的荒野之息就这么没了。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/switch-%E5%A4%A7%E6%B0%94%E5%B1%82%E6%B8%B8%E6%88%8F%E5%AE%89%E8%A3%85/&quot;&gt;switch-大气层游戏安装，关联，&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on May 12, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[linux-history命令，关联，]]></title>
+ <link rel="alternate" type="text/html" href="/linux-history%E5%91%BD%E4%BB%A4/" />
+  <id>/linux-history命令</id>
+  <published>2023-04-27T00:00:00+08:00</published>
+  <updated>2023-04-27T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://linuxhint.com/delete-history-linux/&quot;&gt;Delete history without a trace in Linux&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/49214/how-to-remove-a-single-line-from-history&quot;&gt;stackexchange.com - How to remove a single line from history?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;清除history&quot;&gt;清除history&lt;/h2&gt;
+
+&lt;p&gt;不记录之后的命令到history： &lt;code class=&quot;highlighter-rouge&quot;&gt;set +o history&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;删除第n条命令&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; -d n
+&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; -w
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;清除所有history&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; -c
+&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; -w
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/linux-history%E5%91%BD%E4%BB%A4/&quot;&gt;linux-history命令，关联，&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on April 27, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[kde-添加app-launcher，关联，application, gui, xmind]]></title>
+ <link rel="alternate" type="text/html" href="/kde-%E6%B7%BB%E5%8A%A0app-launcher/" />
+  <id>/kde-添加app-launcher</id>
+  <published>2023-04-16T00:00:00+08:00</published>
+  <updated>2023-04-16T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/a/1291041&quot;&gt;Add a menu item to KDE Launcher (KDE &amp;gt;= 5.19 at least)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;系统左下角application图标，右键，选择 Edit Applications…&lt;/li&gt;
+  &lt;li&gt;选 New Item&lt;/li&gt;
+  &lt;li&gt;填写 Name，Command, Advanced/Work Path&lt;/li&gt;
+  &lt;li&gt;点击左上角 Save&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;会在 ~/.local/share/applications 目录下，生成 .desktop 文件。&lt;/p&gt;
+
+&lt;p&gt;xmind.desktop 例子：&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Desktop Entry]
+&lt;span class=&quot;nv&quot;&gt;Comment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;Exec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/xmind-8-update9-linux/XMind_amd64/XMind %F
+&lt;span class=&quot;nv&quot;&gt;Icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/xmind-8-update9-linux/xmind.256.png
+&lt;span class=&quot;nv&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xmind8
+&lt;span class=&quot;nv&quot;&gt;NoDisplay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;Path[&lt;span class=&quot;nv&quot;&gt;$e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/tools/xmind-8-update9-linux/XMind_amd64
+&lt;span class=&quot;nv&quot;&gt;StartupNotify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Terminal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;nv&quot;&gt;TerminalOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Application
+X-KDE-SubstituteUID&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;X-KDE-Username&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/kde-%E6%B7%BB%E5%8A%A0app-launcher/&quot;&gt;kde-添加app-launcher，关联，application, gui, xmind&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on April 16, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Windows 10 不能访问Samba共享 "因为你组织的安全策略阻止未经身份验证的来宾访问"]]></title>
+ <link rel="alternate" type="text/html" href="/windows-10-%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8samba,%E6%8F%90%E7%A4%BA%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E9%98%BB%E6%AD%A2/" />
+  <id>/windows-10-无法使用samba,提示安全策略阻止</id>
+  <published>2023-04-08T00:00:00+08:00</published>
+  <updated>2023-04-08T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/be7dc5875923&quot;&gt;Windows 10 不能访问Samba共享 “因为你组织的安全策略阻止未经身份验证的来宾访问”&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://links.jianshu.com/go?to=%255Bhttps%3A%2F%2Fsupport.microsoft.com%2Fen-us%2Fhelp%2F4046019%2Fguest-access-in-smb2-disabled-by-default-in-windows-10-and-windows-ser%255D%28https%3A%2F%2Fsupport.microsoft.com%2Fen-us%2Fhelp%2F4046019%2Fguest-access-in-smb2-disabled-by-default-in-windows-10-and-windows-ser%29&quot;&gt;Guest access in SMB2 disabled by default in Windows&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/questions/1117030/how-do-i-configure-samba-so-that-windows-10-doesn-t-complain-about-insecure-gues&quot;&gt;How do I configure Samba so that Windows 10 doesn’t complain about insecure guest logons?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;错误提示：&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  你不能访问此共享文件夹，因为你组织的安全策略阻止未经身份验证的来宾访问
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  You can't access this shared folder because your organization's security policies block unauthenticated guest access. These policies help protect your PC from unsafe or malicious devices on the network.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;原因&lt;/p&gt;
+
+    &lt;p&gt;因为Window10 更新安全策略，默认禁止访问无密码的Samba共享&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;解决方法（1） 在samba服务器端改变设置&lt;/p&gt;
+
+    &lt;p&gt;在Samba中增加用户名密码配置, 并在配置文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;smb.conf&lt;/code&gt; 中移除或注释 &lt;code class=&quot;highlighter-rouge&quot;&gt;map to guest = bad user&lt;/code&gt; 或 设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;map to guest = never&lt;/code&gt; 也行。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;解决方法（2） 修改Windows安全策略&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;运行 &lt;code class=&quot;highlighter-rouge&quot;&gt;gpedit.msc&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;计算机配置-管理模板-网络-Lanman工作站&lt;/li&gt;
+      &lt;li&gt;找到并双击“启用不安全的来宾登录”，选择“已启用”后，点击确定即可&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/windows-10-%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8samba,%E6%8F%90%E7%A4%BA%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E9%98%BB%E6%AD%A2/&quot;&gt;Windows 10 不能访问Samba共享 &quot;因为你组织的安全策略阻止未经身份验证的来宾访问&quot;&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on April 08, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[debian-11-安装配置-vncserver，关联 Bulleyes, ubuntu, linux, samba, smb, nmbd, 网络共享]]></title>
+ <link rel="alternate" type="text/html" href="/debian-11-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-vncserver/" />
+  <id>/debian-11-安装配置-vncserver</id>
+  <published>2023-04-08T00:00:00+08:00</published>
+  <updated>2023-04-08T00:00:00+08:00</updated>
+  <author>
+    <name>wi</name>
+    <uri></uri>
+    <email>njnu_wy@126.com</email>
+  </author>
+  <content type="html">
+    &lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;debian-11-上安装vnc-server&quot;&gt;Debian 11 上安装VNC Server&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参考
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://atetux.com/how-to-install-tigervnc-on-debian-11&quot;&gt;How To Install TigerVNC on Debian 11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.howtoforge.com/how-to-install-vnc-server-on-debian-11/&quot;&gt;How to Install VNC Server on Debian 11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://itnixpro.com/install-and-configure-vnc-server-on-debian-11/&quot;&gt;Install and Configure VNC server on Debian 11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://linuxize.com/post/how-to-install-and-configure-vnc-on-debian-9/&quot;&gt;How to Install and Configure VNC on Debian 9&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-debian-10&quot;&gt;How to Install and Configure VNC on Debian 10&lt;/a&gt;&lt;br /&gt;
+  digitalocean的文档就是很清晰。&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.server-world.info/en/note?os=Debian_11&amp;amp;p=desktop&amp;amp;f=6&quot;&gt;Desktop Environment : Configure VNC Server&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://idroot.us/install-vnc-server-debian-11/&quot;&gt;How To Install VNC Server on Debian 11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://computingforgeeks.com/install-and-configure-tigervnc-vnc-server-on-debian/&quot;&gt;Install and Configure TigerVNC VNC Server on Debian 11/10&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://computingforgeeks.com/how-to-configure-samba-share-on-debian/&quot;&gt;How To Configure Samba Share on Debian 11 / Debian 10&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/a/611494&quot;&gt;Configuring TigerVNC systemd process on Ubuntu 18.04&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;# Install XFCE 4&lt;/span&gt;
+ sudo apt install xfce4 xfce4-goodies dbus-x11 -y
+
+ &lt;span class=&quot;c&quot;&gt;# Install TigerVNC Server&lt;/span&gt;
+ sudo apt install tigervnc-standalone-server -y
+
+ &lt;span class=&quot;c&quot;&gt;# VNC 配置密码&lt;/span&gt;
+ vncpasswd
+
+ &lt;span class=&quot;c&quot;&gt;# 首次启动、关闭，以生成 xstartup 配置文件&lt;/span&gt;
+ vncserver
+ vncserver -kill :1
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;配置 ~/.vnc/xstartup&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;unset &lt;/span&gt;SESSION_MANAGER
+ &lt;span class=&quot;nb&quot;&gt;unset &lt;/span&gt;DBUS_SESSION_BUS_ADDRESS
+ &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; /bin/sh /etc/xdg/xfce4/xinitrc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;启动 vncserver&lt;/p&gt;
+
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;c&quot;&gt;# 命令行启动&lt;/span&gt;
+ vncserver -localhost no
+
+ &lt;span class=&quot;c&quot;&gt;# 检查开启的端口是否有 vnc 5901&lt;/span&gt;
+ ss -tunlp | grep vnc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;vnc 客户端访问 ip:5901 来连接&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt; # tigervnc viewer
+ sudo apt install tigervnc-viewer -y
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;配置VNC service&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/vncserver@.service&lt;/code&gt;&lt;br /&gt;
+~~~sh&lt;br /&gt;
+[Unit]&lt;br /&gt;
+Description=Start TightVNC server at startup&lt;br /&gt;
+After=syslog.target network.target&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[Service]&lt;br /&gt;
+Type=forking&lt;br /&gt;
+User=your-name&lt;br /&gt;
+Group=your-name&lt;br /&gt;
+WorkingDirectory=/home/your-name&lt;/p&gt;
+
+&lt;p&gt;PIDFile=/home/your-name/.vnc/%H:%i.pid&lt;br /&gt;
+ExecStartPre=-/usr/bin/vncserver -kill :%i &amp;gt; /dev/null 2&amp;gt;&amp;amp;1&lt;br /&gt;
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1440x960 :%i -localhost no&lt;br /&gt;
+ExecStop=/usr/bin/vncserver -kill :%i&lt;/p&gt;
+
+&lt;p&gt;[Install]&lt;br /&gt;
+WantedBy=multi-user.target&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;
+启动 5901 端口上桌面： `sudo systemctl start vncserver@1.service`
+
+
+以上配置的 service 无法运行，直接使用 vncserver 命令可以正常启动。
+
+此时，可以修改成如下service 文件：
+
+* `/etc/systemd/system/vncserver@.service`
+~~~sh
+[Unit]
+Description=Start TightVNC server at startup
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/your-name
+RemainAfterExit=yes
+SuccessExitStatus=0
+
+PIDFile=/home/your-name/.vnc/%H:%i.pid
+ExecStartPre=-/bin/su -l your-name -c &quot;/usr/bin/vncserver -kill :%i &amp;gt;&amp;gt; /dev/null&quot;
+ExecStart=/bin/su -l your-name -c &quot;/usr/bin/vncserver -depth 16 -geometry 1440x960 :%i -localhost no&quot;
+ExecStop=/bin/su -l your-name -c &quot;/usr/bin/vncserver -kill :%i&quot;
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/debian-11-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-vncserver/&quot;&gt;debian-11-安装配置-vncserver，关联 Bulleyes, ubuntu, linux, samba, smb, nmbd, 网络共享&lt;/a&gt; was originally published by wi at &lt;a href=&quot;&quot;&gt;wi's Tech Blog&lt;/a&gt; on April 08, 2023.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>

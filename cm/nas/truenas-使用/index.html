@@ -1,0 +1,910 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>truenas-使用 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="truenas-使用">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/nas/truenas-%E4%BD%BF%E7%94%A8/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/nas/truenas-%E4%BD%BF%E7%94%A8/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">truenas-使用</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-03-14T00:00:00+08:00">March 14, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.truenas.com/">truenas官网</a></li>
+      <li><a href="https://download.freenas.org/12.0/STABLE/">Truenas Core 12 Stable 下载</a></li>
+      <li><a href="https://download.freenas.org/">Truenas Core 历史版本下载</a></li>
+      <li><a href="https://download.truenas.com/">TrueNAS-SCALE-版本下载</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Truenas 消耗内存大，至少需要8G内存。官方建议存储空间每 1T 需要 1G 内存。</p>
+
+<p>Truenas-core 来自 freenas ，基于 FreeBSD，比较稳定。</p>
+
+<p>Truenas-scale 基于 Linux，支持docker，2022年目前处于第一个稳定版。</p>
+
+<h2 id="truenas-core">Truenas Core</h2>
+
+<h3 id="安装">安装</h3>
+
+<p>磁盘空间大于8G，内存至少8G，支持amd64的CPU（除非特别特别老的CPU不支持）</p>
+
+<ol>
+  <li>
+    <hr />
+  </li>
+  <li>Install</li>
+  <li>
+    <hr />
+  </li>
+  <li>iso 启动</li>
+  <li>选择 Install / Upgrade</li>
+  <li>选择需要安装到的系统盘</li>
+  <li>设置 root password</li>
+  <li>选择启动方式 Legacy Boot 或者 UEFI</li>
+  <li>创建 swap 分区</li>
+  <li>执行安装。。。</li>
+  <li>安装完成后，重启。</li>
+  <li>
+    <hr />
+  </li>
+  <li>intial boot</li>
+  <li>
+    <hr />
+  </li>
+  <li>第一次启动时间比较长，启动完成后，就会到 <code class="highlighter-rouge">console setup</code> 命令行菜单</li>
+  <li>通过浏览器访问管理界面，IP地址在 <code class="highlighter-rouge">console setup</code> 的界面可以看到。</li>
+</ol>
+
+<h3 id="设置static-ip-address">设置static ip address</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">console setup</code> 命令行菜单设置</li>
+</ul>
+
+<ol>
+  <li>选择<code class="highlighter-rouge">1. Configure Network Interface</code></li>
+  <li>选择 interface / 网卡</li>
+  <li>询问： Delete interface(y/n)，选择 <code class="highlighter-rouge">n</code>，当然不能把网卡删除了。。。</li>
+  <li>询问： Remove the current settings of this interface?(y/n)，选择 <code class="highlighter-rouge">n</code></li>
+  <li>询问： Configure interface for DHCP?(y/n)，选择 <code class="highlighter-rouge">n</code></li>
+  <li>询问： Configure IPv4?(y/n)，选择 <code class="highlighter-rouge">y</code></li>
+  <li>输入 unique interface name</li>
+  <li>输入 IPv4 Address</li>
+  <li>输入 IPv4 Netmask</li>
+  <li>询问： Configure IPv6?(y/n)，选择 <code class="highlighter-rouge">n</code></li>
+  <li>询问： Configure failover settings?(y/n)，选择 <code class="highlighter-rouge">n</code></li>
+  <li>network 自动重启</li>
+</ol>
+
+<p>补充说明： 也可以从web管理界面的shell进入菜单，执行 <code class="highlighter-rouge">/etc/netcli</code></p>
+
+<ul>
+  <li>web管理界面设置</li>
+</ul>
+
+<ol>
+  <li>Network &gt; interfaces &gt; 需要修改的interface，条目最右边的下拉三角 &gt; Edit</li>
+  <li>取消勾选 DHCP</li>
+  <li>IP Address 输入 要设置的 static IP</li>
+  <li>点击 Apply 完成设置</li>
+  <li>修改好后， <code class="highlighter-rouge">Network / Interface</code> 页面上点击 <code class="highlighter-rouge">TEST CHANGES</code><br />
+ Test network interface changes for <strong>60</strong> seconds.<br />
+ 表示 60 内，访问新的IP地址，否则IP会还原。</li>
+  <li>在浏览器上输入新的IP，访问web管理页面，弹出界面，确认IP修改。</li>
+</ol>
+
+<h3 id="修改时区">修改时区</h3>
+
+<p>web管理界面 &gt; System &gt; General &gt; Timezone &gt; 设置 Asia/Shanghai &gt; Save</p>
+
+<h3 id="网络修改">网络修改</h3>
+
+<ol>
+  <li>Network &gt; Global Configuration</li>
+  <li>修改 Hostname</li>
+  <li>DNS Server 修改为自己路由器</li>
+</ol>
+
+<h3 id="创建用户">创建用户</h3>
+
+<ol>
+  <li>添加 Group： Accounts / Groups / Add</li>
+  <li>添加 User： Accounts / Users / Add<br />
+ 勾选： Samba Authentication ，否则这个用户无法使用samba</li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="创建存储池">创建存储池</h3>
+
+<ol>
+  <li>Storage / Pools / CreatePool
+    <ol>
+      <li>Name: your-pool-name ，后面没法修改</li>
+      <li>简单使用 Data VDev就好了</li>
+    </ol>
+
+    <p>pool 可以包含多个 vdev，但是一个 vdev 损坏，整个存储池也无法使用</p>
+  </li>
+  <li>创建好之后，pool 就挂载到 <code class="highlighter-rouge">/mnt/your-pool-name/</code> 上使用</li>
+  <li>创建dataset ： Storage / Pools / Add Dataset
+    <ol>
+      <li>Names &amp; comments: 自己随意</li>
+      <li>Sync: 缓存的写入方式，是否等待缓存写完<br />
+ Standard: 由客户端判断缓存是否写完<br />
+ Always: 等待缓存的文件再写入硬盘<br />
+ Disable： 只要写入缓存就算完成</li>
+      <li>compress level
+        <ul>
+          <li>默认 lz4</li>
+          <li>zstd 据说和 lz4 差不多</li>
+        </ul>
+      </li>
+      <li>Enable Atime<br />
+ Access time，每次被访问，都记录下访问时间</li>
+      <li>Encryption Options： 默认继承pool的设置，也即 non-encrypted</li>
+      <li>zfs Deduplicaton: zfs的去重功能</li>
+      <li>case sensitive： 文件名大小写敏感</li>
+      <li>ShareType： 默认选 Generic 就好</li>
+    </ol>
+  </li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="smb共享设置">smb共享设置</h3>
+
+<ol>
+  <li>启动smb service： Service &gt; 打开 SMB &gt; 勾选 Start Automatically</li>
+  <li>配置dataset 的 smb 设置
+    <ol>
+      <li>Sharing &gt; Windows Shares(SMB)</li>
+      <li>选中要分享的 dataset。</li>
+      <li>Purpose: Default share parameters1.</li>
+      <li>提交。</li>
+    </ol>
+  </li>
+  <li>弹出提醒配置ACL权限，取消就使用UGO配置权限，否则点击“”</li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="设置用户权限">设置用户权限</h3>
+
+<p>有2中用户权限体系：UGO 和 ACL</p>
+
+<p>UGO 即 Linux User-Group-Other 权限系统。<br />
+ACL 相较UGO 复杂些。</p>
+
+<ul>
+  <li>UGO 设置权限</li>
+</ul>
+
+<ol>
+  <li>Storage &gt; Pools 选择要设置的 dataset，操作菜单  Edit Permissions</li>
+  <li>Access 的位置修改 UGO设置</li>
+  <li>Owner 的位置，勾选 Apply User ，user选择要设置的user，来修改dataset的所有者</li>
+  <li>勾选 Apply Permissions Recursively</li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<ul>
+  <li>ACL 设置权限</li>
+</ul>
+
+<ol>
+  <li>Storage &gt; Pools &gt; 需要设置dataset，右键菜单 Edit Permissions</li>
+  <li>USE ACL MANAGER</li>
+  <li>Create an ACL &gt; Select a preset ACL &gt; Default ACL Options ，选 Open</li>
+  <li>进入ACL设置界面，里面可以设置</li>
+  <li>dataset的 owner 和 group</li>
+  <li>
+    <p>配置Access Control List， owner@ , group@, everyone@， user, group<br />
+ owner@ , group@, everyone@ 对应 UGO<br />
+ user 指针对特定用户，特别是不再dataset 所有组的用户；</p>
+
+    <ol>
+      <li>ACL Type: Allow</li>
+      <li>Permissions Type:
+        <ul>
+          <li>Basic</li>
+        </ul>
+        <ul>
+          <li>Permissions: Read只读） / Traverse（只能遍历）/ Modify（可读可写） / Full Control（可读可写，可改权限）<br />
+      * Advanced (比较复杂，待补充。。。）</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<p>进入命令行，<code class="highlighter-rouge">getfacl your-dataset-dir</code> 可以查看ACL的设置</p>
+
+<h2 id="技巧">技巧</h2>
+
+<h3 id="bios-打开硬盘热插拔">BIOS 打开硬盘热插拔</h3>
+
+<p>微星主板： Advanced &gt; Integrated Peripherals &gt; SATAX Hot Plug 选择 Enable</p>
+
+<p>使用阵列卡，热插拔一般是自动打开的。</p>
+
+<h3 id="阵列降级恢复">阵列降级、恢复</h3>
+
+<p>raidz1，坏一块盘，就是显示降级（DEGRADED），可以正常使用，但是再坏一块盘，数据就损坏了。</p>
+
+<p>插入新盘，就开始恢复，进入 resilvering status</p>
+
+<p>Storage &gt; Pools &gt; 设置（齿轮图标） &gt; status &gt; 出问题的硬盘，操作菜单，选择 replace &gt; 开始重建</p>
+
+<p>raidz1，坏一块盘，系统不可用，进不去web管理页面，重启系统，可以进入管理页面，同时显示pool不可用。</p>
+
+<h3 id="设置-email-提醒">设置 email 提醒</h3>
+
+<p>System &gt; Email &gt; 设置发送email的 SMTP 设置，发送的目的地址是 root 帐号的邮箱</p>
+
+<h3 id="修改-hostname-和-domain">修改 hostname 和 domain</h3>
+
+<p>Network &gt; Global Configuration</p>
+
+<h3 id="ssh-登陆">ssh 登陆</h3>
+
+<ol>
+  <li>Service 中开启 SSH</li>
+  <li>点击 编辑铅笔图标，进入 configure</li>
+  <li>勾选 Log in as Root with password， 否则root登陆不进去</li>
+  <li>勾选 Allow Password Authentication</li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

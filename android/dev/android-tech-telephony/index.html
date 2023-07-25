@@ -1,0 +1,810 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Android 技术专题系列之二 －－ telephony &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="android, telephony, sms">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 技术专题系列之二 －－ telephony">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/android/dev/android-tech-telephony/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/android/dev/android-tech-telephony/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">Android 技术专题系列之二 －－ telephony</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2014-10-16T00:00:00+08:00">October 16, 2014</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <p>摘自：<a href="http://www.360doc.com/content/10/0526/13/1526449_29599306.shtml">http://www.360doc.com/content/10/0526/13/1526449_29599306.shtml</a></p>
+
+<h2 id="第一部分-c代码">第一部分 c代码</h2>
+
+<p>Android源码中，hardware/ril目录中包含着Android的telephony底层源码。这个目录下包含着三个子目录，下面是对三个子目录的具体分析。</p>
+
+<h3 id="目录hardwarerilinclude分析">目录hardware/ril/include分析：</h3>
+
+<p>只有一个头文件ril.h包含在此目录下。ril.h中定义了76个如下类型的宏：RIL_REQUEST_XXX ，…</p>
+
+<p>这些宏代表着客户进程可以向Android telephony发送的命令，包括SIM卡相关的功能，打电话，发短信，网络信号查询等。好像没有操作地址本的功能？</p>
+
+<h3 id="目录hardwarerillibril分析">目录hardware/ril/libril分析。</h3>
+
+<p>本目录下代码负责与客户进程进行交互。在接收客户进程命令后，调用相应函数进行处理，然后将命令响应结果传回客户进程。在收到来自网络端的事件后，也传给客户进程。</p>
+
+<p>文件ril_commands.h：列出了telephony可以接收的命令；每个命令对应的处理函数；以及命令响应的处理函数。</p>
+
+<p>文件ril_unsol_commands.h：列出了telephony可以接收的事件类型；对每个事件的处理函数；以及WAKE Type???</p>
+
+<p>文件ril_event.h/cpp：处理与事件源(端口，modem等）相关的功能。ril_event_loop监视所有注册的事件源，当某事件源有数据到来时，相应事件源的回调函数被触发（firePending -&gt; ev-&gt;func())</p>
+
+<p>文件ril.cpp：</p>
+
+<p>RIL_register函数：打开监听端口，接收来自客户进程的命令请求 （s_fdListen = android_get_control_socket(SOCKET_NAME_RIL);），当与某客户进程连接建立时，调用listenCallback函数；创建一单独线程监视并处理所有事件源 （通过ril_event_loop)</p>
+
+<p>listenCallback函数：当与客户进程连接建立时，此函数被调用。此函数接着调用processCommandsCallback处理来自客户进程的命令请求</p>
+
+<p>processCommandsCallback函数：具体处理来自客户进程的命令请求。对每一个命令，ril_commands.h中都规定了对应的命 令处理函数（dispatchXXX），processCommandsCallback会调用这个命令处理函数进行处理。</p>
+
+<p>dispatch系列函数：此函数接收来自客户进程的命令己相应参数，并调用onRequest进行处理。</p>
+
+<p>RIL_onUnsolicitedResponse函数：将来自网络端的事件封装（通过调用responseXXX）后传给客户进程。</p>
+
+<p>RIL_onRequestComplete函数：将命令的最终响应结构封装（通过调用responseXXX）后传给客户进程。</p>
+
+<p>response系列函数：对每一个命令，都规定了一个对应的response函数来处理命令的最终响应；对每一个网络端的事件，也规定了一个对应的 response函数来处理此事件。response函数可被onUnsolicitedResponse或者onRequestComplete调用。</p>
+
+<h3 id="目录hardwarerilreference-ril分析本目录下代码主要负责与modem进行交互">目录hardware/ril/reference-ril分析。本目录下代码主要负责与modem进行交互。</h3>
+
+<p>文件reference-ril.c：此文件核心是两个函数：onRequest和onUnsolicited</p>
+
+<p>onRequest 函数：在这个函数里，对每一个RIL_REQUEST_XXX请求，都转化成相应的AT command，发送给modem，然后睡眠等待。当收到此AT command的最终响应后，线程被唤醒，将响应传给客户进程（RIL_onRequestComplete -&gt; sendResponse）。</p>
+
+<p>onUnsolicited函数：这个函数处理modem从网络端收到的各种事件，如网络信号变化，拨入的电话，收到短信等。然后将时间传给客户进程 （RIL_onUnsolicitedResponse -&gt; sendResponse）</p>
+
+<p>文件atchannel.c：负责向modem读写数据。其中，写数据(主要是AT command)功能运行在主线程中，读数据功能运行在一个单独的读线程中。</p>
+
+<p>函数at_send_command_full_nolock：运行在主线程里面。将一个AT command命令写入modem后进入睡眠状态（使用 pthread_cond_wait或类似函数），直到modem读线程将其唤醒。唤醒后此函数获得了AT command的最终响应并返回。</p>
+
+<p>函数readerLoop运行在一个单独的读线程里面，负责从modem中读取数据。读到的数据可分为三种类型：网络端传入的事件；modem对当前AT command的部分响应；modem对当前AT command的全部响应。对第三种类型的数据（AT command的全部响应），读线程唤醒（pthread_cond_signal）睡眠状态的主线程。</p>
+
+<h2 id="java代码">Java代码</h2>
+
+<p>Android中，telephony相关的java代码主要在下列目录中：</p>
+
+<ol>
+  <li>frameworks/base/telephony/java/android/telephony</li>
+  <li>frameworks/base/telephony/java/com/android/internal/telephony</li>
+  <li>frameworks/base/services/java/com/android/server/TelephonyRegistry.java</li>
+  <li>packages/apps/Phone</li>
+</ol>
+
+<p>其中，目录1中的代码提供Android telephony的公开接口，任何具有权限的第三方应用都可使用，如接口类TelephonyManager。<br />
+目录2/3中的代码提供一系列内部接口，目前第三方应用还不能使用。当前似乎只有packages/apps/Phone能够使用<br />
+目录4是一个特殊应用，或者理解为一个平台内部进程。其他应用通过intent方式调用这个进程的服务。</p>
+
+<p>TelephonyManager主要使用两个服务来访问telephony功能：</p>
+
+<ol>
+  <li>ITelephony， 提供与telephony 进行操作，交互的接口，在packages/apps/Phone中由PhoneInterfaceManager.java实现。</li>
+  <li>ITelephonyRegistry, 提供登记telephony事件的接口。由frameworks/base/services/java/com/android/server/TelephonyRegistry.java实现。</li>
+</ol>
+
+<p>interface CommandsInterface 描述了对电话的所有操作接口，如命令， 查询状态，以及电话事件监听等</p>
+
+<p>class BaseCommands是CommandsInterface的直接派生类，实现了电话事件的处理(发送message给对应的handler)。</p>
+
+<p>而class RIL又派生自BaseCommands。RIL负责实际实现CommandsInterface中的接口方法。RIL通过Socket和rild守护进 程进行通讯。对于每一个命令接口方法，如acceptCall，或者状态查询，将它转换成对应的RIL_REQUEST_XXX，发送给rild。线程 RILReceiver监听socket,当有数据上报时，读取该数据并处理。读取的数据有两种，</p>
+
+<ol>
+  <li>电话事件，RIL_UNSOL_xxx, RIL读取相应数据后，发送message给对应的handler （详见函数processUnsolicited）</li>
+  <li>命令的异步响应。(详见函数processSolicited)</li>
+</ol>
+
+<p>interface Phone描述了对电话的所有操作接口。 PhoneBase直接从Phone 派生而来。而另外两个类，CDMAPhone和GSMPhone，又从PhoneBase派生而来，分别代表对CDMA 和GSM的操作。</p>
+
+<p>PhoneProxy也从Phone直接派生而来。当当前不需要区分具体是CDMA Phone还是GSM Phone时，可使用PhoneProxy。</p>
+
+<p>抽象类Call代表一个call，有两个派生类CdmaCall和GsmCall。</p>
+
+<p>interface PhoneNotifier定义电话事件的通知方法</p>
+
+<p>DefaultPhoneNotifier从PhoneNotifier派生而来。在其方法实现中，通过调用service ITelephonyRegistry来发布电话事件。</p>
+
+<p>service ITelephonyRegistey由frameworks/base/services/java/com/android/server /TelephonyRegistry.java实现。这个类通过广播intent，从而触发对应的broadcast receiver。</p>
+
+<p>在PhoneApp创建时，</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">   <span class="n">sPhoneNotifier</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultPhoneNotifier</span><span class="o">();</span>
+   <span class="o">...</span>
+   <span class="n">sCommandsInterface</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RIL</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">networkMode</span><span class="o">,</span> <span class="n">cdmaSubscription</span><span class="o">);</span></code></pre></figure>
+
+<p>然后根据当前phone是cdma还是gsm,创建对应的phone，如</p>
+
+<p>sProxyPhone = new PhoneProxy(new GSMPhone(context,<br />
+                            sCommandsInterface, sPhoneNotifier));</p>
+
+<p>下面我们来研究一个电话打出去的流程。</p>
+
+<ol>
+  <li>TwelveKeyDialer.java, onKeyUp()</li>
+  <li>TwelveKeyDialer.java, placeCall()</li>
+  <li>OutgoingCallBroadcaster.java, onCreate()<br />
+ sendOrderedBroadcast(broadcastIntent, PERMISSION,<br />
+             new OutgoingCallReceiver(), null, Activity.RESULT_OK, number, null);</li>
+  <li>OutgoingCallBroadcaster.java, OutgoingCallReceiver<br />
+ doReceive -&gt; context.startActivity(newIntent);</li>
+  <li>InCallScreen.java, onCreate/onNewIntent</li>
+  <li>InCallScreen.java, placeCall</li>
+  <li>PhoneUtils.java, placeCall</li>
+  <li>GSMPhone.java, dial</li>
+  <li>GsmCallTracker.java, dial</li>
+  <li>RIL.java, dial<br />
+  RILRequest rr = RILRequest.obtain(RIL_REQUEST_DIAL, result);<br />
+  …<br />
+  send(rr);</li>
+</ol>
+
+<p>下面来研究一个incoming call的流程：</p>
+
+<ol>
+  <li>创建GsmPhone时，mCT = new GsmCallTracker(this);</li>
+  <li>创建GsmCallTracker时:<br />
+ cm.registerForCallStateChanged(this, EVENT_CALL_STATE_CHANGE, null); –&gt;    <br />
+ mCallStateRegistrants.add(r);</li>
+  <li>RIL中的RILReceiver线程首先读取从rild中传来的数据：processResponse -&gt; processUnsolicited</li>
+  <li>对应于incoming call,RIL收到RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED 消息，触发mCallStateRegistrants中的所有记录。</li>
+  <li>GsmCallTracker处理EVENT_CALL_STATE_CHANGE，调用pollCallsWhenSafe</li>
+  <li>函数pllCallsWhenSafe 处理：<br />
+  lastRelevantPoll = obtainMessage(EVENT_POLL_CALLS_RESULT);<br />
+  cm.getCurrentCalls(lastRelevantPoll);</li>
+  <li>RIL::getCurrentCalls<br />
+ RILRequest rr = RILRequest.obtain(RIL_REQUEST_GET_CURRENT_CALLS, result);<br />
+ …<br />
+ send(rr);</li>
+  <li>接着RIL调用processSolicited处理RIL_REQUEST_GET_CURRENT_CALLS的返回结果</li>
+  <li>GsmCallTracker的handleMessage被触发，处理事件EVENT_POLL_CALLS_RESULT,调用函数  <br />
+ handlePollCalls</li>
+  <li>
+    <p>handlPollCalls 调用<br />
+phone.notifyNewRingingConnection(newRinging);</p>
+  </li>
+  <li>PhoneApp中创建CallNotifier</li>
+  <li>CallNotifier注册：<br />
+registerForNewRingingConnection -&gt; mNewRingingConnectionRegistrants.addUnique(h, what, obj);</li>
+</ol>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a><a href="/tags#telephony" title="Pages tagged telephony" class="tag"><span class="term">telephony</span></a><a href="/tags#sms" title="Pages tagged sms" class="tag"><span class="term">sms</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

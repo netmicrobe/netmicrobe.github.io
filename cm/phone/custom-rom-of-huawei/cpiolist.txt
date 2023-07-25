@@ -1,0 +1,84 @@
+compress_level:6
+dir . 0755
+dir acct 0755
+slink bugreports /data/user_de/0/com.android.shell/files/bugreports 0644
+dir cache 0770
+slink charger /sbin/charger 0644
+dir config 0500
+slink d /sys/kernel/debug 0644
+dir data 0771
+slink default.prop system/etc/prop.default 0600
+dir dev 0755
+dir dload 0755
+file dload/update_huawei_dload.zip initrd/dload\update_huawei_dload.zip 0644
+slink etc /system/etc 0644
+file fstab.zram1024m initrd/fstab.zram1024m 0640
+file fstab.zram1280m initrd/fstab.zram1280m 0640
+file fstab.zram1536m initrd/fstab.zram1536m 0640
+file fstab.zram2240m initrd/fstab.zram2240m 0640
+file fstab.zram256m initrd/fstab.zram256m 0640
+file fstab.zram512m initrd/fstab.zram512m 0640
+file fstab.zram768m initrd/fstab.zram768m 0640
+file init initrd/init 0750
+file init.environ.rc initrd/init.environ.rc 0750
+file init.rc initrd/init.rc 0750
+file init.supersu.rc initrd/init.supersu.rc 0750
+file init.usb.configfs.rc initrd/init.usb.configfs.rc 0750
+file init.usb.rc initrd/init.usb.rc 0750
+file init.zygote32.rc initrd/init.zygote32.rc 0750
+file init.zygote64_32.rc initrd/init.zygote64_32.rc 0750
+dir mnt 0755
+dir oem 0755
+dir patch 0755
+dir patch/cust 0755
+dir patch/cust/upper 0755
+dir patch/cust/work 0755
+dir patch/product 0755
+dir patch/product/upper 0755
+dir patch/product/work 0755
+dir patch/system 0755
+dir patch/system/upper 0755
+dir patch/system/work 0755
+dir patch/vendor 0755
+dir patch/vendor/upper 0755
+dir patch/vendor/work 0755
+dir patch_hw 0755
+dir proc 0755
+dir res 0755
+file res/keys initrd/res\keys 0644
+file res/native_packages.xml initrd/res\native_packages.xml 0644
+file resetFactory.cfg initrd/resetFactory.cfg 0644
+dir res/.su 0750
+file res/.su/root.tar initrd/res\.su\root.tar 0750
+file rootscan.conf initrd/rootscan.conf 0644
+dir sbin 0750
+file sbin/adbd initrd/sbin\adbd 0750
+file sbin/charger initrd/sbin\charger 0750
+file sbin/cota initrd/sbin\cota 0750
+file sbin/cust initrd/sbin\cust 0750
+file sbin/cust_init initrd/sbin\cust_init 0750
+file sbin/factory_reset initrd/sbin\factory_reset 0750
+file sbin/fbe_bypass.sh initrd/sbin\fbe_bypass.sh 0700
+file sbin/fsck.f2fs_s initrd/sbin\fsck.f2fs_s 0750
+file sbin/hdbd initrd/sbin\hdbd 0750
+file sbin/huawei_dload initrd/sbin\huawei_dload 0750
+file sbin/hw_ueventd initrd/sbin\hw_ueventd 0750
+file sbin/kmsgcat initrd/sbin\kmsgcat 0750
+file sbin/launch_daemonsu.sh initrd/sbin\launch_daemonsu.sh 0700
+file sbin/logctl_service initrd/sbin\logctl_service 0750
+file sbin/ntfs-3gd initrd/sbin\ntfs-3gd 0750
+file sbin/oeminfo_nvm_server initrd/sbin\oeminfo_nvm_server 0750
+file sbin/resize.f2fs_s initrd/sbin\resize.f2fs_s 0750
+file sbin/tar initrd/sbin\tar 0750
+slink sbin/ueventd ../init 0750
+file sbin/volisnotd initrd/sbin\volisnotd 0750
+slink sbin/watchdogd ../init 0750
+file sbin/xlogcat-early initrd/sbin\xlogcat-early 0750
+slink sdcard /storage/self/primary 0644
+file sepolicy initrd/sepolicy 0644
+dir storage 0751
+dir sys 0755
+dir system 0755
+file ueventd.rc initrd/ueventd.rc 0644
+dir vendor 0755
+file version.prop initrd/version.prop 0644

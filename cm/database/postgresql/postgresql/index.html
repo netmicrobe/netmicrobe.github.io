@@ -1,0 +1,1208 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>postgresql &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="cm, database, postgresql">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postgresql">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/database/postgresql/postgresql/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/database/postgresql/postgresql/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">postgresql</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2016-10-20T00:00:00+08:00">October 20, 2016</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <h2 id="admin">Admin</h2>
+
+<h3 id="在-centos-6-上安装">在 centos 6 上安装</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>yum list \*postgre\*
+yum install postgresql-server.i686 postgresql.i686 postgresql-contrib.i686
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>安装完成后，会添加一个linux用户：postgres</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>$ id postgres
+uid=26(postgres) gid=26(postgres) groups=26(postgres)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>安装完成后设置下自启动</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>service postgresql initdb
+chkconfig postgresql on 
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>centOS上执行后，数据文件默认存放 /var/lib/pgsql/data</p>
+
+<p>或者</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>root# mkdir /usr/local/pgsql/data
+root# chown postgres /usr/local/pgsql/data
+root# su postgres
+postgres$ initdb -D /usr/local/pgsql/data
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="启动-postgresql-daemon">启动 postgresql daemon</h3>
+
+<p>可以通过service、postgres命令、postgresql 的 pg_ctl 命令来启动数据库服务器。</p>
+
+<p>启动后，pid 存放在数据目录的 postmaster.pid 文件中。</p>
+
+<h4 id="service-启动">service 启动</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>service postgresql start
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>默认的数据库文件地址：/var/lib/pgsql</p>
+
+<h4 id="手动启动">手动启动</h4>
+
+<p>以 postgresql 的账号登录后，再执行如下启动命令。</p>
+
+<ul>
+  <li>前台启动</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ su postgres -c 'postgres -D /usr/local/pgsql/data'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>后台启动</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ postgres -D /usr/local/pgsql/data &gt; logfile 2&gt;&amp;1 &amp;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="pg_ctl-启动">pg_ctl 启动</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>pg_ctl start -D /usr/local/pgsql/data -l logfile
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>会在后台启动 postgresql daemon。</p>
+
+<h3 id="关闭数据库服务器">关闭数据库服务器</h3>
+
+<p>pg_ctl stop、service stop 都可以关闭。</p>
+
+<p>手动关闭可以执行：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ kill -INT `head -1 /usr/local/pgsql/data/postmaster.pid`
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="开放远程tcpip连接数据库">开放远程tcpip连接数据库</h3>
+
+<ol>
+  <li>
+    <p>开放远程连接<br />
+  修改 data/postgresql.conf 将 <em>listen_address = “localhost”</em> 改为 <em>listen_address = “*”</em></p>
+  </li>
+  <li>
+    <p>开放权限<br />
+  在 data/pg_hba.conf 中添加<br />
+  host    all         all         192.168.56.0/24          trust</p>
+  </li>
+  <li>
+    <p>重启 postgresql<br />
+  service postgresql restart</p>
+  </li>
+  <li>
+    <p>测试是否成功<br />
+  在远程机器上使用 psql 测试：<br />
+  psql -h server-address -U postgres</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>如果还连接不上？</p>
+
+    <p>可能是被 iptables 挡住了。</p>
+  </li>
+</ul>
+
+<h2 id="数据库操作">数据库操作</h2>
+
+<h3 id="创建数据库">创建数据库</h3>
+
+<p>createdb mydb</p>
+
+<h3 id="删除数据库">删除数据库</h3>
+
+<p>dropdb mydb</p>
+
+<h3 id="创建用户">创建用户</h3>
+
+<p>CREATE USER foo WITH PASSWORD ‘secret’;</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre>CREATE USER name [ [ WITH ] option [ ... ] ]
+
+where option can be:
+    
+      SUPERUSER | NOSUPERUSER
+    | CREATEDB | NOCREATEDB
+    | CREATEROLE | NOCREATEROLE
+    | CREATEUSER | NOCREATEUSER
+    | INHERIT | NOINHERIT
+    | LOGIN | NOLOGIN
+    | CONNECTION LIMIT connlimit
+    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD 'password'
+    | VALID UNTIL 'timestamp' 
+    | IN ROLE rolename [, ...]
+    | IN GROUP rolename [, ...]
+    | ROLE rolename [, ...]
+    | ADMIN rolename [, ...]
+    | USER rolename [, ...]
+    | SYSID uid 
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>CREATE USER is now an alias for CREATE ROLE. The only difference is that when the command is spelled CREATE USER, LOGIN is assumed by default, whereas NOLOGIN is assumed when the command is spelled CREATE ROLE.</p>
+
+<ul>
+  <li>参考：<a href="https://www.postgresql.org/docs/8.4/static/sql-createuser.html">https://www.postgresql.org/docs/8.4/static/sql-createuser.html</a></li>
+</ul>
+
+<h3 id="权限管理">权限管理</h3>
+
+<p>权限管理文件在 /var/lib/pgsql/data/pg_hba.conf 文件中</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre># TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+
+# "local" is for Unix domain socket connections only
+local   all         all                               ident
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          ident
+# IPv6 local connections:
+host    all         all         ::1/128               ident
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>一共支持 7 种格式：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>local      database  user  auth-method  [auth-options]
+host       database  user  CIDR-address  auth-method  [auth-options]
+hostssl    database  user  CIDR-address  auth-method  [auth-options]
+hostnossl  database  user  CIDR-address  auth-method  [auth-options]
+host       database  user  IP-address  IP-mask  auth-method  [auth-options]
+hostssl    database  user  IP-address  IP-mask  auth-method  [auth-options]
+hostnossl  database  user  IP-address  IP-mask  auth-method  [auth-options]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p>database</p>
+
+    <ul>
+      <li>可能的值：
+        <ul>
+          <li>db1-name,db2-name,…</li>
+          <li><b><u>all</u></b> specifies that it matches all databases.</li>
+          <li><b><u>sameuser</u></b> specifies that the record matches if the requested database has the same name as the requested user.</li>
+          <li><b><u>samerole 或 samegroup</u></b>  specifies that the requested user must be a member of the role with the same name as the requested database.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>user</p>
+    <ul>
+      <li>可能的值
+        <ul>
+          <li>user1,user2,…</li>
+          <li><b><u>all</u></b> specifies that it matches all users.</li>
+          <li><b><u>+group-name</u></b></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="role-角色">role 角色</h4>
+
+<ul>
+  <li>参考： <a href="https://www.postgresql.org/docs/8.4/static/user-manag.html">https://www.postgresql.org/docs/8.4/static/user-manag.html</a></li>
+</ul>
+
+<p>PostgreSQL manages database access permissions using the concept of roles.</p>
+
+<p>A role can be thought of as either a database user, or a group of database users, depending on how the role is set up.</p>
+
+<p>Roles can own database objects (for example, tables) and can assign privileges on those objects to other roles to control who has access to which objects.</p>
+
+<p>Furthermore, it is possible to grant membership in a role to another role, thus allowing the member role use of privileges assigned to the role it is a member of.</p>
+
+<h5 id="默认存在的role">默认存在的role</h5>
+
+<p>和运行initdb时的用户一个名字，postgres，是“superuser”。</p>
+
+<ul>
+  <li>
+    <p>创建、删除 role</p>
+
+    <p>CREATE ROLE name;<br />
+DROP ROLE name;</p>
+
+    <p>命令方式</p>
+
+    <p>createuser name<br />
+dropuser name</p>
+  </li>
+  <li>
+    <p>列出所有 role</p>
+
+    <p>SELECT rolname FROM pg_roles;</p>
+
+    <p>或者 pgsql 的命令：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \du
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>role的属性
+    <ul>
+      <li>login privilege ，使用CREATE USER 默认具有 LOGIN 属性，或者 CREATE ROLE rolename <strong>LOGIN</strong></li>
+      <li>superuser status ，如果是 superuser，无视所有权限检查。 CREATE ROLE name <strong>SUPERUSER</strong></li>
+      <li>database creation， 角色是否能够创建数据库，CREATE ROLE name <strong>CREATEDB</strong></li>
+      <li>role creation， 是否能够创建、删除角色。CREATE ROLE name <strong>CREATEROLE</strong> ，如果要操作 superuser 类型的角色，也需要 SUPERUSER 的权限的。</li>
+      <li>password ， 指定密码， CREATE ROLE name <strong>PASSWORD</strong> ‘string’</li>
+    </ul>
+  </li>
+  <li>
+    <p>关闭 role 的索引扫描</p>
+
+    <p>ALTER ROLE name SET enable_indexscan TO off;</p>
+
+    <p>重新与此role连接数据库。</p>
+  </li>
+  <li>
+    <p>privileges</p>
+
+    <p>There are several different kinds of privilege: <strong>SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE</strong></p>
+
+    <p>To assign privileges, <strong>GRANT UPDATE ON accounts TO joe;</strong></p>
+
+    <p>To revoke a privilege, <strong>REVOKE ALL ON accounts FROM PUBLIC;</strong></p>
+
+    <p>object‘s ownship 不能 grant 和 revoke，可以将ownship整体转交其他user，同时 owner 自己可以 revoke 一些敏感 privilege，如，将table变为read-only ，来防止误操作。</p>
+  </li>
+  <li>
+    <p>设置 角色关系</p>
+
+    <p><strong>GRANT</strong> group_role <strong>TO</strong> role1, … ;<br />
+role1 变为 group_role 成员</p>
+
+    <p><strong>REVOKE</strong> group_role <strong>FROM</strong> role1, … ;<br />
+role1 从 group_role 移出</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>CREATE ROLE joe LOGIN **INHERIT**;
+CREATE ROLE admin **NOINHERIT**;
+CREATE ROLE wheel NOINHERIT;
+GRANT admin TO joe;
+GRANT wheel TO admin;
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+    <p>joe 登录后，因为 INHERIT 声明，就有 joe 和 admin 的权限；但是没有 wheel 的权限，因为 admin 是 NOINHERIT ，阻断了继承关系。</p>
+
+    <p>主动设置了 admin 身份： <strong>SET ROLE admin;</strong> ，会话拥有 admin 的 privileges，而没有 joe 的 privileges。</p>
+
+    <p>主动设置 wheel 身份： <strong>SET ROLE wheel;</strong> ，会话拥有 wheel 的 privileges ，而没有 joe 或者 admin 的 privilegess。</p>
+
+    <p>恢复为 自己的身份： <strong>RESET ROLE;</strong></p>
+
+    <ul>
+      <li>
+        <p>特殊 privilege（LOGIN, SUPERUSER, CREATEDB, and CREATEROLE）不能被 inherite</p>
+
+        <p>they are never inherited as ordinary privileges on database objects are. You must actually SET ROLE to a specific role having one of these attributes in order to make use of the attribute.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="客户端">客户端</h2>
+
+<h3 id="命令行客户端-psql">命令行客户端 psql</h3>
+
+<h4 id="登录数据库">登录数据库</h4>
+
+<p>psql mydb  登录成功将会显示</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>psql (8.4.22)
+Type "help" for help.
+ 
+mydb=&gt;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="查看帮助">查看帮助</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \h
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="退出登录">退出登录</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \q
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="查看当前连接的数据库">查看当前连接的数据库</h4>
+
+<p>命令提示符就显示的是 database_name=&gt;</p>
+
+<h4 id="所有数据库">所有数据库</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \l
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>或<br />
+psql -l</p>
+
+<h4 id="切换数据库">切换数据库</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>\connect DBNAME
+或
+\c DBNAME
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="所有表格">所有表格</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \d
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="所有列">所有列</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \d table_name
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="表格详情">表格详情</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mydb=&gt; \d+ table_name
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="pgadmin-图形客户端">pgAdmin 图形客户端</h3>
+
+<p>官网： <a href="https://pgadmin.org/">https://pgadmin.org/</a></p>
+
+<h2 id="sql">SQL</h2>
+
+<h3 id="scheme-信息查询">scheme 信息查询</h3>
+
+<h4 id="当前数据库">当前数据库</h4>
+
+<p>SELECT current_database();</p>
+
+<h4 id="所有数据库-1">所有数据库</h4>
+
+<p>SELECT * FROM pg_database;</p>
+
+<h4 id="可用的proc">可用的proc</h4>
+
+<p>SELECT * FROM pg_proc WHERE proname LIKE ‘current%’;</p>
+
+<h4 id="所有表">所有表</h4>
+
+<p>SELECT table_name FROM information_schema.tables WHERE table_schema = ‘public’;</p>
+
+<h4 id="所有列-1">所有列</h4>
+
+<p>SELECT column_name FROM information_schema.columns WHERE table_name =’your-table’;</p>
+
+<h3 id="操作sql">操作SQL</h3>
+
+<h4 id="create-database">CREATE DATABASE</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>CREATE DATABASE name
+    [ [ WITH ] [ OWNER [=] dbowner ]
+           [ TEMPLATE [=] template ]
+           [ ENCODING [=] encoding ]
+           [ LC_COLLATE [=] lc_collate ]
+           [ LC_CTYPE [=] lc_ctype ]
+           [ TABLESPACE [=] tablespace ]
+           [ CONNECTION LIMIT [=] connlimit ] ]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>参考<br />
+** <a href="https://www.postgresql.org/docs/8.4/static/sql-createdatabase.html">https://www.postgresql.org/docs/8.4/static/sql-createdatabase.html</a></li>
+</ul>
+
+<h4 id="createdrop-table">CREATE/DROP TABLE</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>CREATE TABLE weather (
+    city            varchar(80),
+    temp_lo         int,           -- low temperature
+    temp_hi         int,           -- high temperature
+    prcp            real,          -- precipitation
+    date            date
+);
+
+CREATE TABLE cities (
+    name            varchar(80),
+    location        point          -- 坐标数据类型，PostgreSql独有的数据类型
+);
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>DROP TABLE tablename;
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="copy-从文件insert数据">COPY 从文件insert数据</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>COPY weather FROM '/home/user/weather.txt'
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://www.postgresql.org/docs/8.4/static/index.html">PostgreSQL 8.4.22 Documentation</a></p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#cm" title="Pages tagged cm" class="tag"><span class="term">cm</span></a><a href="/tags#database" title="Pages tagged database" class="tag"><span class="term">database</span></a><a href="/tags#postgresql" title="Pages tagged postgresql" class="tag"><span class="term">postgresql</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,2966 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>android volley 上传文件 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="http, networking, android, volley">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android volley 上传文件">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/android/android-volley-upload/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/android/android-volley-upload/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">android volley 上传文件</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-03-07T00:00:00+08:00">March 07, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.simplifiedcoding.net/upload-image-to-server/#Volley-MultiPart-Request">https://www.simplifiedcoding.net/upload-image-to-server/#Volley-MultiPart-Request</a></li>
+      <li><a href="https://my.oschina.net/u/1177694/blog/491834">https://my.oschina.net/u/1177694/blog/491834</a></li>
+      <li><a href="https://gist.github.com/anggadarkprince/a7c536da091f4b26bb4abf2f92926594">https://gist.github.com/anggadarkprince/a7c536da091f4b26bb4abf2f92926594</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="实现-multipartform-data-不借助第三方库">实现 multipart/form-data ，不借助第三方库</h3>
+
+<ul>
+  <li>VolleyMultipartRequest.java
+    <ul>
+      <li>CLASS VolleyMultipartRequest</li>
+      <li>CLASS VolleyMultipartRequest.DataPart</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">net</span><span class="o">.</span><span class="na">simplifiedlearning</span><span class="o">.</span><span class="na">androiduploadimage</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.AuthFailureError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.NetworkResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.ParseError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.HttpHeaderParser</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Created by Belal on 10/24/2017.
+ */</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VolleyMultipartRequest</span> <span class="kd">extends</span> <span class="n">Request</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">twoHyphens</span> <span class="o">=</span> <span class="s">"--"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">lineEnd</span> <span class="o">=</span> <span class="s">"\r\n"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="s">"apiclient-"</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+
+  <span class="kd">private</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="n">mListener</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">mErrorListener</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">mHeaders</span><span class="o">;</span>
+
+
+  <span class="kd">public</span> <span class="nf">VolleyMultipartRequest</span><span class="o">(</span><span class="kt">int</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">errorListener</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mErrorListener</span> <span class="o">=</span> <span class="n">errorListener</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">mHeaders</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="n">mHeaders</span> <span class="o">:</span> <span class="kd">super</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBodyContentType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"multipart/form-data;boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getBody</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="c1">// populate text payload</span>
+      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getParams</span><span class="o">();</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">textParse</span><span class="o">(</span><span class="n">dos</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="n">getParamsEncoding</span><span class="o">());</span>
+      <span class="o">}</span>
+
+      <span class="c1">// populate data byte payload</span>
+      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">getByteData</span><span class="o">();</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">data</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">data</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dataParse</span><span class="o">(</span><span class="n">dos</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+      <span class="o">}</span>
+
+      <span class="c1">// close multipart form data after text and file data</span>
+      <span class="n">dos</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+
+      <span class="k">return</span> <span class="n">bos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Custom method handle data payload.
+   *
+   * @return Map data part label with data byte
+   * @throws AuthFailureError
+   */</span>
+  <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="nf">getByteData</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span>
+          <span class="n">response</span><span class="o">,</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">e</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mListener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deliverError</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mErrorListener</span><span class="o">.</span><span class="na">onErrorResponse</span><span class="o">(</span><span class="n">error</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Parse string map into data output stream by key and value.
+   *
+   * @param dataOutputStream data output stream handle string parsing
+   * @param params       string inputs collection
+   * @param encoding     encode the inputs, default UTF-8
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">textParse</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">,</span> <span class="n">String</span> <span class="n">encoding</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">buildTextPart</span><span class="o">(</span><span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+      <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">uee</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Encoding not supported: "</span> <span class="o">+</span> <span class="n">encoding</span><span class="o">,</span> <span class="n">uee</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Parse data into data output stream.
+   *
+   * @param dataOutputStream data output stream handle file attachment
+   * @param data       loop through data
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dataParse</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">data</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">buildDataPart</span><span class="o">(</span><span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Write string data into header and data output stream.
+   *
+   * @param dataOutputStream data output stream handle string parsing
+   * @param parameterName  name of input
+   * @param parameterValue   value of input
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">buildTextPart</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterName</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterValue</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\""</span> <span class="o">+</span> <span class="n">parameterName</span> <span class="o">+</span> <span class="s">"\""</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">parameterValue</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Write data file into header and data output stream.
+   *
+   * @param dataOutputStream data output stream handle data parsing
+   * @param dataFile     data byte as DataPart from collection
+   * @param inputName    name of data input
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">buildDataPart</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">DataPart</span> <span class="n">dataFile</span><span class="o">,</span> <span class="n">String</span> <span class="n">inputName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\""</span> <span class="o">+</span>
+        <span class="n">inputName</span> <span class="o">+</span> <span class="s">"\"; filename=\""</span> <span class="o">+</span> <span class="n">dataFile</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\""</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">().</span><span class="na">trim</span><span class="o">().</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Type: "</span> <span class="o">+</span> <span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+
+    <span class="n">ByteArrayInputStream</span> <span class="n">fileInputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+    <span class="kt">int</span> <span class="n">bytesAvailable</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+
+    <span class="kt">int</span> <span class="n">maxBufferSize</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">bytesAvailable</span><span class="o">,</span> <span class="n">maxBufferSize</span><span class="o">);</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">];</span>
+
+    <span class="kt">int</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+
+    <span class="k">while</span> <span class="o">(</span><span class="n">bytesRead</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+      <span class="n">bytesAvailable</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+      <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">bytesAvailable</span><span class="o">,</span> <span class="n">maxBufferSize</span><span class="o">);</span>
+      <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kd">class</span> <span class="nc">DataPart</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">DataPart</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="n">DataPart</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">fileName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="n">content</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="n">String</span> <span class="nf">getFileName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getContent</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="n">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="upload-image-to-server">Upload Image to Server</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">net</span><span class="o">.</span><span class="na">simplifiedlearning</span><span class="o">.</span><span class="na">androiduploadimage</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.Manifest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.pm.PackageManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.net.Uri</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Build</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.provider.MediaStore</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.provider.Settings</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.content.ContextCompat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.EditText</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.ImageView</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.AuthFailureError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.NetworkResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.Volley</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.json.JSONException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+  <span class="c1">//ImageView to display image selected</span>
+  <span class="n">ImageView</span> <span class="n">imageView</span><span class="o">;</span>
+
+  <span class="c1">//edittext for getting the tags input</span>
+  <span class="n">EditText</span> <span class="n">editTextTags</span><span class="o">;</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+    <span class="c1">//initializing views</span>
+    <span class="n">imageView</span> <span class="o">=</span> <span class="o">(</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageView</span><span class="o">);</span>
+    <span class="n">editTextTags</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">editTextTags</span><span class="o">);</span>
+
+    <span class="c1">//checking the permission</span>
+    <span class="c1">//if the permission is not given we will open setting to add permission</span>
+    <span class="c1">//else app will not open</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">SDK_INT</span> <span class="o">&gt;=</span> <span class="n">Build</span><span class="o">.</span><span class="na">VERSION_CODES</span><span class="o">.</span><span class="na">M</span> <span class="o">&amp;&amp;</span> <span class="n">ContextCompat</span><span class="o">.</span><span class="na">checkSelfPermission</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>
+        <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">READ_EXTERNAL_STORAGE</span><span class="o">)</span>
+        <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Settings</span><span class="o">.</span><span class="na">ACTION_APPLICATION_DETAILS_SETTINGS</span><span class="o">,</span>
+          <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"package:"</span> <span class="o">+</span> <span class="n">getPackageName</span><span class="o">()));</span>
+      <span class="n">finish</span><span class="o">();</span>
+      <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+      <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+
+
+    <span class="c1">//adding click listener to button</span>
+    <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">buttonUploadImage</span><span class="o">).</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">//if the tags edittext is empty</span>
+        <span class="c1">//we will throw input error</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">editTextTags</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">().</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+          <span class="n">editTextTags</span><span class="o">.</span><span class="na">setError</span><span class="o">(</span><span class="s">"Enter tags first"</span><span class="o">);</span>
+          <span class="n">editTextTags</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">();</span>
+          <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">//if everything is ok we will open image chooser</span>
+        <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_PICK</span><span class="o">,</span> <span class="n">MediaStore</span><span class="o">.</span><span class="na">Images</span><span class="o">.</span><span class="na">Media</span><span class="o">.</span><span class="na">EXTERNAL_CONTENT_URI</span><span class="o">);</span>
+        <span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onActivityResult</span><span class="o">(</span><span class="n">requestCode</span><span class="o">,</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">resultCode</span> <span class="o">==</span> <span class="n">RESULT_OK</span> <span class="o">&amp;&amp;</span> <span class="n">data</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+
+      <span class="c1">//getting the image Uri</span>
+      <span class="n">Uri</span> <span class="n">imageUri</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+      <span class="k">try</span> <span class="o">{</span>
+        <span class="c1">//getting bitmap object from uri</span>
+        <span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="o">=</span> <span class="n">MediaStore</span><span class="o">.</span><span class="na">Images</span><span class="o">.</span><span class="na">Media</span><span class="o">.</span><span class="na">getBitmap</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">imageUri</span><span class="o">);</span>
+
+        <span class="c1">//displaying selected image to imageview</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="na">setImageBitmap</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+
+        <span class="c1">//calling the method uploadBitmap to upload image</span>
+        <span class="n">uploadBitmap</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="cm">/*
+  * The method is taking Bitmap as an argument
+  * then it will return the byte[] array for the given bitmap
+  * and we will send this array to the server
+  * here we are using PNG Compression with 80% quality
+  * you can give quality between 0 to 100
+  * 0 means worse quality
+  * 100 means best quality
+  * */</span>
+  <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getFileDataFromDrawable</span><span class="o">(</span><span class="n">Bitmap</span> <span class="n">bitmap</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">byteArrayOutputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="n">bitmap</span><span class="o">.</span><span class="na">compress</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">CompressFormat</span><span class="o">.</span><span class="na">PNG</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="n">byteArrayOutputStream</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">byteArrayOutputStream</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">uploadBitmap</span><span class="o">(</span><span class="kd">final</span> <span class="n">Bitmap</span> <span class="n">bitmap</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="c1">//getting the tag from the edittext</span>
+    <span class="kd">final</span> <span class="n">String</span> <span class="n">tags</span> <span class="o">=</span> <span class="n">editTextTags</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+
+    <span class="c1">//our custom volley request</span>
+    <span class="n">VolleyMultipartRequest</span> <span class="n">volleyMultipartRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VolleyMultipartRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">EndPoints</span><span class="o">.</span><span class="na">UPLOAD_URL</span><span class="o">,</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+              <span class="n">JSONObject</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">));</span>
+              <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">obj</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"message"</span><span class="o">),</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">},</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">error</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+          <span class="o">}</span>
+        <span class="o">})</span> <span class="o">{</span>
+
+      <span class="cm">/*
+      * If you want to add more parameters with the image
+      * you can do it here
+      * here we have only one parameter with the image
+      * which is tags
+      * */</span>
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getParams</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"tags"</span><span class="o">,</span> <span class="n">tags</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="cm">/*
+      * Here we are passing image by renaming it with a unique name
+      * */</span>
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="nf">getByteData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">long</span> <span class="n">imagename</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"pic"</span><span class="o">,</span> <span class="k">new</span> <span class="n">DataPart</span><span class="o">(</span><span class="n">imagename</span> <span class="o">+</span> <span class="s">".png"</span><span class="o">,</span> <span class="n">getFileDataFromDrawable</span><span class="o">(</span><span class="n">bitmap</span><span class="o">)));</span>
+        <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+      <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="c1">//adding the request to volley</span>
+    <span class="n">Volley</span><span class="o">.</span><span class="na">newRequestQueue</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">add</span><span class="o">(</span><span class="n">volleyMultipartRequest</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="使用-apache-httpmime-库的方法">使用 Apache httpmime 库的方法</h3>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">compile</span> <span class="s1">'org.apache.httpcomponents:httpmime:4.5.5'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>或者，下载 jar 包：</p>
+<ul>
+  <li>apache download page &gt;http://hc.apache.org/downloads.cgi&gt;</li>
+  <li><a href="http://download.csdn.net/download/chequer_lkp/8102751">httpmime-4.2.5.jar</a></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">volley</span><span class="o">.</span><span class="na">toolbox</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.http.entity.mime.MultipartEntity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.entity.mime.content.FileBody</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.entity.mime.content.StringBody</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.AuthFailureError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.NetworkResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyLog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.common.utils.CLog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.common.utils.FileUtil</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultipartRequest</span> <span class="kd">extends</span> <span class="n">Request</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="n">MultipartEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MultipartEntity</span><span class="o">();</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">mListener</span><span class="o">;</span>
+
+  <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">mFileParts</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">mFilePartName</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">mParams</span><span class="o">;</span>
+  <span class="cm">/**
+   * 单个文件
+   * @param url
+   * @param errorListener
+   * @param listener
+   * @param filePartName
+   * @param file
+   * @param params
+   */</span>
+  <span class="kd">public</span> <span class="nf">MultipartRequest</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">errorListener</span><span class="o">,</span>
+      <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span> <span class="n">String</span> <span class="n">filePartName</span><span class="o">,</span> <span class="n">File</span> <span class="n">file</span><span class="o">,</span>
+      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+
+    <span class="n">mFileParts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">mFileParts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">mFilePartName</span> <span class="o">=</span> <span class="n">filePartName</span><span class="o">;</span>
+    <span class="n">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="n">mParams</span> <span class="o">=</span> <span class="n">params</span><span class="o">;</span>
+    <span class="n">buildMultipartEntity</span><span class="o">();</span>
+  <span class="o">}</span>
+  <span class="cm">/**
+   * 多个文件，对应一个key
+   * @param url
+   * @param errorListener
+   * @param listener
+   * @param filePartName
+   * @param files
+   * @param params
+   */</span>
+  <span class="kd">public</span> <span class="nf">MultipartRequest</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">errorListener</span><span class="o">,</span>
+      <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span> <span class="n">String</span> <span class="n">filePartName</span><span class="o">,</span>
+      <span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">files</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="n">mFilePartName</span> <span class="o">=</span> <span class="n">filePartName</span><span class="o">;</span>
+    <span class="n">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="n">mFileParts</span> <span class="o">=</span> <span class="n">files</span><span class="o">;</span>
+    <span class="n">mParams</span> <span class="o">=</span> <span class="n">params</span><span class="o">;</span>
+    <span class="n">buildMultipartEntity</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">buildMultipartEntity</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mFileParts</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mFileParts</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">File</span> <span class="n">file</span> <span class="o">:</span> <span class="n">mFileParts</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">entity</span><span class="o">.</span><span class="na">addPart</span><span class="o">(</span><span class="n">mFilePartName</span><span class="o">,</span> <span class="k">new</span> <span class="n">FileBody</span><span class="o">(</span><span class="n">file</span><span class="o">));</span>
+      <span class="o">}</span>
+      <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">();</span>
+      <span class="n">CLog</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">mFileParts</span><span class="o">.</span><span class="na">size</span><span class="o">()+</span><span class="s">"个，长度："</span><span class="o">+</span><span class="n">l</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">mParams</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mParams</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">mParams</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+          <span class="n">entity</span><span class="o">.</span><span class="na">addPart</span><span class="o">(</span>
+              <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span>
+              <span class="k">new</span> <span class="nf">StringBody</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">Charset</span>
+                  <span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)));</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">VolleyLog</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="s">"UnsupportedEncodingException"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBodyContentType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContentType</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getBody</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">entity</span><span class="o">.</span><span class="na">writeTo</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">VolleyLog</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="s">"IOException writing to ByteArrayOutputStream"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">bos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">CLog</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"parseNetworkResponse"</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">VolleyLog</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headers</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">response</span><span class="o">.</span><span class="na">headers</span>
+            <span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+          <span class="n">VolleyLog</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">"="</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">String</span> <span class="n">parsed</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">parsed</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">,</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCharset</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headers</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">parsed</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="n">parsed</span><span class="o">,</span>
+        <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+  <span class="o">}</span>
+
+
+  <span class="cm">/*
+   * (non-Javadoc)
+   * 
+   * @see com.android.volley.Request#getHeaders()
+   */</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="n">VolleyLog</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"getHeaders"</span><span class="o">);</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">headers</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">headers</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Collections</span><span class="o">.</span><span class="na">emptyMap</span><span class="o">()))</span> <span class="o">{</span>
+      <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+    <span class="o">}</span>
+
+
+    <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">String</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mListener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="github---anggadarkprince-的方法">github - anggadarkprince 的方法</h3>
+
+<ul>
+  <li>come from :
+    <ul>
+      <li>Upload file with Multipart Request Volley Android <a href="https://gist.github.com/anggadarkprince/a7c536da091f4b26bb4abf2f92926594">https://gist.github.com/anggadarkprince/a7c536da091f4b26bb4abf2f92926594</a></li>
+    </ul>
+  </li>
+  <li>AppHelper.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.drawable.BitmapDrawable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.drawable.Drawable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Sketch Project Studio
+ * Created by Angga on 12/04/2016 14.27.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppHelper</span> <span class="o">{</span>  
+  
+  <span class="cm">/**
+   * Turn drawable resource into byte array.
+   *
+   * @param context parent context
+   * @param id    drawable resource id
+   * @return byte array
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getFileDataFromDrawable</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Drawable</span> <span class="n">drawable</span> <span class="o">=</span> <span class="n">ContextCompat</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+    <span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="o">=</span> <span class="o">((</span><span class="n">BitmapDrawable</span><span class="o">)</span> <span class="n">drawable</span><span class="o">).</span><span class="na">getBitmap</span><span class="o">();</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">byteArrayOutputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="n">bitmap</span><span class="o">.</span><span class="na">compress</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">CompressFormat</span><span class="o">.</span><span class="na">PNG</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">byteArrayOutputStream</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">byteArrayOutputStream</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Turn drawable into byte array.
+   *
+   * @param drawable data
+   * @return byte array
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getFileDataFromDrawable</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Drawable</span> <span class="n">drawable</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="o">=</span> <span class="o">((</span><span class="n">BitmapDrawable</span><span class="o">)</span> <span class="n">drawable</span><span class="o">).</span><span class="na">getBitmap</span><span class="o">();</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">byteArrayOutputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="n">bitmap</span><span class="o">.</span><span class="na">compress</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">CompressFormat</span><span class="o">.</span><span class="na">JPEG</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="n">byteArrayOutputStream</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">byteArrayOutputStream</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>VolleyMultipartRequest.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">sketchproject</span><span class="o">.</span><span class="na">infogue</span><span class="o">.</span><span class="na">modules</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.AuthFailureError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.NetworkResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.ParseError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.HttpHeaderParser</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Custom request to make multipart header and upload file.
+ * 
+ * Sketch Project Studio
+ * Created by Angga on 27/04/2016 12.05.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VolleyMultipartRequest</span> <span class="kd">extends</span> <span class="n">Request</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">twoHyphens</span> <span class="o">=</span> <span class="s">"--"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">lineEnd</span> <span class="o">=</span> <span class="s">"\r\n"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">boundary</span> <span class="o">=</span> <span class="s">"apiclient-"</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+
+  <span class="kd">private</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="n">mListener</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">mErrorListener</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">mHeaders</span><span class="o">;</span>
+
+  <span class="cm">/**
+   * Default constructor with predefined header and post method.
+   *
+   * @param url       request destination
+   * @param headers     predefined custom header
+   * @param listener    on success achieved 200 code from request
+   * @param errorListener on error http or library timeout
+   */</span>
+  <span class="kd">public</span> <span class="nf">VolleyMultipartRequest</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">errorListener</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mErrorListener</span> <span class="o">=</span> <span class="n">errorListener</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mHeaders</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Constructor with option method and default header configuration.
+   *
+   * @param method    method for now accept POST and GET only
+   * @param url       request destination
+   * @param listener    on success event handler
+   * @param errorListener on error event handler
+   */</span>
+  <span class="kd">public</span> <span class="nf">VolleyMultipartRequest</span><span class="o">(</span><span class="kt">int</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span>
+                  <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span> <span class="n">errorListener</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">mErrorListener</span> <span class="o">=</span> <span class="n">errorListener</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">mHeaders</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="n">mHeaders</span> <span class="o">:</span> <span class="kd">super</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBodyContentType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"multipart/form-data;boundary="</span> <span class="o">+</span> <span class="n">boundary</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getBody</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="n">ByteArrayOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="n">DataOutputStream</span> <span class="n">dos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="c1">// populate text payload</span>
+      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getParams</span><span class="o">();</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">textParse</span><span class="o">(</span><span class="n">dos</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="n">getParamsEncoding</span><span class="o">());</span>
+      <span class="o">}</span>
+
+      <span class="c1">// populate data byte payload</span>
+      <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">getByteData</span><span class="o">();</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">data</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">data</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dataParse</span><span class="o">(</span><span class="n">dos</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+      <span class="o">}</span>
+
+      <span class="c1">// close multipart form data after text and file data</span>
+      <span class="n">dos</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+
+      <span class="k">return</span> <span class="n">bos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Custom method handle data payload.
+   *
+   * @return Map data part label with data byte
+   * @throws AuthFailureError
+   */</span>
+  <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="nf">getByteData</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span>
+          <span class="n">response</span><span class="o">,</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">e</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mListener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deliverError</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mErrorListener</span><span class="o">.</span><span class="na">onErrorResponse</span><span class="o">(</span><span class="n">error</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Parse string map into data output stream by key and value.
+   *
+   * @param dataOutputStream data output stream handle string parsing
+   * @param params       string inputs collection
+   * @param encoding     encode the inputs, default UTF-8
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">textParse</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">,</span> <span class="n">String</span> <span class="n">encoding</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">buildTextPart</span><span class="o">(</span><span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+      <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">uee</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Encoding not supported: "</span> <span class="o">+</span> <span class="n">encoding</span><span class="o">,</span> <span class="n">uee</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Parse data into data output stream.
+   *
+   * @param dataOutputStream data output stream handle file attachment
+   * @param data       loop through data
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">dataParse</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">data</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">buildDataPart</span><span class="o">(</span><span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Write string data into header and data output stream.
+   *
+   * @param dataOutputStream data output stream handle string parsing
+   * @param parameterName  name of input
+   * @param parameterValue   value of input
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">buildTextPart</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterName</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterValue</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\""</span> <span class="o">+</span> <span class="n">parameterName</span> <span class="o">+</span> <span class="s">"\""</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="c1">//dataOutputStream.writeBytes("Content-Type: text/plain; charset=UTF-8" + lineEnd);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">parameterValue</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Write data file into header and data output stream.
+   *
+   * @param dataOutputStream data output stream handle data parsing
+   * @param dataFile     data byte as DataPart from collection
+   * @param inputName    name of data input
+   * @throws IOException
+   */</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">buildDataPart</span><span class="o">(</span><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span><span class="o">,</span> <span class="n">DataPart</span> <span class="n">dataFile</span><span class="o">,</span> <span class="n">String</span> <span class="n">inputName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">twoHyphens</span> <span class="o">+</span> <span class="n">boundary</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Disposition: form-data; name=\""</span> <span class="o">+</span>
+        <span class="n">inputName</span> <span class="o">+</span> <span class="s">"\"; filename=\""</span> <span class="o">+</span> <span class="n">dataFile</span><span class="o">.</span><span class="na">getFileName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\""</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">().</span><span class="na">trim</span><span class="o">().</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="s">"Content-Type: "</span> <span class="o">+</span> <span class="n">dataFile</span><span class="o">.</span><span class="na">getType</span><span class="o">()</span> <span class="o">+</span> <span class="n">lineEnd</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+
+    <span class="n">ByteArrayInputStream</span> <span class="n">fileInputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">dataFile</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+    <span class="kt">int</span> <span class="n">bytesAvailable</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+
+    <span class="kt">int</span> <span class="n">maxBufferSize</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">bytesAvailable</span><span class="o">,</span> <span class="n">maxBufferSize</span><span class="o">);</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bufferSize</span><span class="o">];</span>
+
+    <span class="kt">int</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+
+    <span class="k">while</span> <span class="o">(</span><span class="n">bytesRead</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+      <span class="n">bytesAvailable</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+      <span class="n">bufferSize</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">bytesAvailable</span><span class="o">,</span> <span class="n">maxBufferSize</span><span class="o">);</span>
+      <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bufferSize</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">dataOutputStream</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">lineEnd</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Simple data container use for passing byte file
+   */</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataPart</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+
+    <span class="cm">/**
+     * Default data part
+     */</span>
+    <span class="kd">public</span> <span class="nf">DataPart</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Constructor with data.
+     *
+     * @param name label of data
+     * @param data byte data
+     */</span>
+    <span class="kd">public</span> <span class="nf">DataPart</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">fileName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="n">content</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Constructor with mime data type.
+     *
+     * @param name   label of data
+     * @param data   byte data
+     * @param mimeType mime data like "image/jpeg"
+     */</span>
+    <span class="kd">public</span> <span class="nf">DataPart</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">mimeType</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">fileName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+      <span class="n">content</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+      <span class="n">type</span> <span class="o">=</span> <span class="n">mimeType</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Getter file name.
+     *
+     * @return file name
+     */</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getFileName</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Setter file name.
+     *
+     * @param fileName string file name
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFileName</span><span class="o">(</span><span class="n">String</span> <span class="n">fileName</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">fileName</span> <span class="o">=</span> <span class="n">fileName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Getter content.
+     *
+     * @return byte file data
+     */</span>
+    <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getContent</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Setter content.
+     *
+     * @param content byte file data
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setContent</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Getter mime type.
+     *
+     * @return mime type
+     */</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Setter mime type.
+     *
+     * @param type mime type
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setType</span><span class="o">(</span><span class="n">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>VolleySingleton.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">sketchproject</span><span class="o">.</span><span class="na">infogue</span><span class="o">.</span><span class="na">modules</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.util.LruCache</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.RequestQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.ImageLoader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.Volley</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Singleton volley to populate request into single queue.
+ * 
+ * Sketch Project Studio
+ * Created by Angga on 22/04/2016 22.58.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VolleySingleton</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">VolleySingleton</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">RequestQueue</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">ImageLoader</span> <span class="n">mImageLoader</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">Context</span> <span class="n">mCtx</span><span class="o">;</span>
+
+  <span class="cm">/**
+   * Private constructor, only initialization from getInstance.
+   *
+   * @param context parent context
+   */</span>
+  <span class="kd">private</span> <span class="nf">VolleySingleton</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mCtx</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+    <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">getRequestQueue</span><span class="o">();</span>
+
+    <span class="n">mImageLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageLoader</span><span class="o">(</span><span class="n">mRequestQueue</span><span class="o">,</span>
+        <span class="k">new</span> <span class="n">ImageLoader</span><span class="o">.</span><span class="na">ImageCache</span><span class="o">()</span> <span class="o">{</span>
+          <span class="kd">private</span> <span class="kd">final</span> <span class="n">LruCache</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Bitmap</span><span class="o">&gt;</span> <span class="n">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LruBitmapCache</span><span class="o">(</span><span class="n">mCtx</span><span class="o">);</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="n">Bitmap</span> <span class="nf">getBitmap</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+          <span class="o">}</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putBitmap</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Bitmap</span> <span class="n">bitmap</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">bitmap</span><span class="o">);</span>
+          <span class="o">}</span>
+        <span class="o">});</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Singleton construct design pattern.
+   *
+   * @param context parent context
+   * @return single instance of VolleySingleton
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">VolleySingleton</span> <span class="nf">getInstance</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">mInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VolleySingleton</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Get current request queue.
+   *
+   * @return RequestQueue
+   */</span>
+  <span class="kd">public</span> <span class="n">RequestQueue</span> <span class="nf">getRequestQueue</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mRequestQueue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// getApplicationContext() is key, it keeps you from leaking the</span>
+      <span class="c1">// Activity or BroadcastReceiver if someone passes one in.</span>
+      <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">Volley</span><span class="o">.</span><span class="na">newRequestQueue</span><span class="o">(</span><span class="n">mCtx</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Add new request depend on type like string, json object, json array request.
+   *
+   * @param req new request
+   * @param &lt;T&gt; request type
+   */</span>
+  <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">addToRequestQueue</span><span class="o">(</span><span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">req</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getRequestQueue</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">req</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * Get image loader.
+   *
+   * @return ImageLoader
+   */</span>
+  <span class="kd">public</span> <span class="n">ImageLoader</span> <span class="nf">getImageLoader</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">mImageLoader</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>MainActivity.java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117</pre></td><td class="code"><pre><span class="cm">/**
+ * Sketch Project Studio
+ * Created by Angga 20/04/2016 19:32
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">EditText</span> <span class="n">mNameInput</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">EditText</span> <span class="n">mLocationInput</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">EditText</span> <span class="n">mAboutInput</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">EditText</span> <span class="n">mContact</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="n">ImageView</span> <span class="n">mAvatarImage</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">ImageView</span> <span class="n">mCoverImage</span><span class="o">;</span>
+  
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    
+    <span class="n">mNameInput</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">input_name</span><span class="o">);</span>
+    <span class="n">mLocationInput</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">input_location</span><span class="o">);</span>
+    <span class="n">mAboutInput</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">input_about</span><span class="o">);</span>
+    <span class="n">mContact</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">input_contact</span><span class="o">);</span>
+    
+    <span class="n">mAvatarImage</span> <span class="o">=</span> <span class="o">(</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">avatar</span><span class="o">);</span>
+    <span class="n">mCoverImage</span> <span class="o">=</span> <span class="o">(</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">cover</span><span class="o">);</span>
+    
+    <span class="c1">// do anything before post data.. or triggered after button clicked</span>
+    <span class="n">saveProfileAccount</span><span class="o">();</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">saveProfileAccount</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// loading or check internet connection or something...</span>
+    <span class="c1">// ... then</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"http://www.angga-ari.com/api/something/awesome"</span><span class="o">;</span>
+    <span class="n">VolleyMultipartRequest</span> <span class="n">multipartRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VolleyMultipartRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">NetworkResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">resultResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+          <span class="n">JSONObject</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">resultResponse</span><span class="o">);</span>
+          <span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"status"</span><span class="o">);</span>
+          <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"message"</span><span class="o">);</span>
+
+          <span class="k">if</span> <span class="o">(</span><span class="n">status</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Constant</span><span class="o">.</span><span class="na">REQUEST_SUCCESS</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// tell everybody you have succed upload image and post strings</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">"Messsage"</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">"Unexpected"</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+          <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">},</span> <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">NetworkResponse</span> <span class="n">networkResponse</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">networkResponse</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">errorMessage</span> <span class="o">=</span> <span class="s">"Unknown error"</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">networkResponse</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">TimeoutError</span><span class="o">.</span><span class="na">class</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">errorMessage</span> <span class="o">=</span> <span class="s">"Request timeout"</span><span class="o">;</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">error</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">NoConnectionError</span><span class="o">.</span><span class="na">class</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">errorMessage</span> <span class="o">=</span> <span class="s">"Failed to connect server"</span><span class="o">;</span>
+          <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+          <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">networkResponse</span><span class="o">.</span><span class="na">data</span><span class="o">);</span>
+          <span class="k">try</span> <span class="o">{</span>
+            <span class="n">JSONObject</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"status"</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"message"</span><span class="o">);</span>
+            
+            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="s">"Error Status"</span><span class="o">,</span> <span class="n">status</span><span class="o">);</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="s">"Error Message"</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">networkResponse</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">404</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">errorMessage</span> <span class="o">=</span> <span class="s">"Resource not found"</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">networkResponse</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">401</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">message</span><span class="o">+</span><span class="s">" Please login again"</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">networkResponse</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">400</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">message</span><span class="o">+</span> <span class="s">" Check your inputs"</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">networkResponse</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">500</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">message</span><span class="o">+</span><span class="s">" Something is getting wrong"</span><span class="o">;</span>
+            <span class="o">}</span>
+          <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">"Error"</span><span class="o">,</span> <span class="n">errorMessage</span><span class="o">);</span>
+        <span class="n">error</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+    <span class="o">})</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getParams</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"api_token"</span><span class="o">,</span> <span class="s">"gh659gjhvdyudo973823tt9gvjf7i6ric75r76"</span><span class="o">);</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">mNameInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"location"</span><span class="o">,</span> <span class="n">mLocationInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"about"</span><span class="o">,</span> <span class="n">mAvatarInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"contact"</span><span class="o">,</span> <span class="n">mContactInput</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="nf">getByteData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DataPart</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="c1">// file name could found file base or direct access from real path</span>
+        <span class="c1">// for now just get bitmap data from ImageView</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"avatar"</span><span class="o">,</span> <span class="k">new</span> <span class="n">DataPart</span><span class="o">(</span><span class="s">"file_avatar.jpg"</span><span class="o">,</span> <span class="n">AppHelper</span><span class="o">.</span><span class="na">getFileDataFromDrawable</span><span class="o">(</span><span class="n">getBaseContext</span><span class="o">(),</span> <span class="n">mAvatarImage</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">()),</span> <span class="s">"image/jpeg"</span><span class="o">));</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"cover"</span><span class="o">,</span> <span class="k">new</span> <span class="n">DataPart</span><span class="o">(</span><span class="s">"file_cover.jpg"</span><span class="o">,</span> <span class="n">AppHelper</span><span class="o">.</span><span class="na">getFileDataFromDrawable</span><span class="o">(</span><span class="n">getBaseContext</span><span class="o">(),</span> <span class="n">mCoverImage</span><span class="o">.</span><span class="na">getDrawable</span><span class="o">()),</span> <span class="s">"image/jpeg"</span><span class="o">));</span>
+
+        <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+      <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="n">VolleySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getBaseContext</span><span class="o">()).</span><span class="na">addToRequestQueue</span><span class="o">(</span><span class="n">multipartRequest</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#http" title="Pages tagged http" class="tag"><span class="term">http</span></a><a href="/tags#networking" title="Pages tagged networking" class="tag"><span class="term">networking</span></a><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a><a href="/tags#volley" title="Pages tagged volley" class="tag"><span class="term">volley</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

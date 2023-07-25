@@ -1,0 +1,1021 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>在Oracle云上使用cloud-init脚本创建初始用户 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="mkpasswd">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Oracle云上使用cloud-init脚本创建初始用户">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/linux/%E5%9C%A8Oracle%E4%BA%91%E4%B8%8A%E4%BD%BF%E7%94%A8cloud-init%E8%84%9A%E6%9C%AC%E5%88%9B%E5%BB%BA%E5%88%9D%E5%A7%8B%E7%94%A8%E6%88%B7/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/linux/%E5%9C%A8Oracle%E4%BA%91%E4%B8%8A%E4%BD%BF%E7%94%A8cloud-init%E8%84%9A%E6%9C%AC%E5%88%9B%E5%BB%BA%E5%88%9D%E5%A7%8B%E7%94%A8%E6%88%B7/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">在Oracle云上使用cloud-init脚本创建初始用户</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2022-01-22T00:00:00+08:00">January 22, 2022</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.oc-blog.com/2021/10/06/direct-console-access-to-your-linux-instances-from-the-oci-console/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=direct-console-access-to-your-linux-instances-from-the-oci-console">Oracle Cloud Blog - Direct Console access to your Linux Instances from the OCI Console</a></li>
+      <li><a href="https://readthedocs.org/projects/cloudinit/downloads/pdf/latest/">could-init Release 21.4 - pdf</a></li>
+      <li><a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html">Cloud config examples</a></li>
+      <li><a href="https://plugins.jenkins.io/oracle-cloud-infrastructure-compute/">Oracle Cloud Infrastructure Compute</a></li>
+      <li><a href="https://enabling-cloud.github.io/oci-learning/manual/CreatingComputeInstance.html">oci-learning - Creating Compute Instance</a></li>
+      <li><a href="https://martincarstenbach.wordpress.com/2018/11/30/bootstrapping-a-vm-image-in-oracle-cloud-infrastructure-using-cloud-init/">Martins Blog - Bootstrapping a VM image in Oracle Cloud Infrastructure using cloud-init</a></li>
+      <li><a href="https://github.com/AnykeyNL/OCI-Cloudinit-Backdoors/blob/main/linux-cloudinit.txt">github - AnykeyNL/OCI-Cloudinit-Backdoors - OCI-Cloudinit-Backdoors/linux-cloudinit.txt</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Compute/References/serialconsole.htm">Troubleshooting Instances Using Instance Console Connections</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Oracle Cloud 上创建实例的时候，默认都是设置公钥登录，但是如果密钥没输入正确，就白瞎这台虚拟机了，登不上呀。</p>
+
+<p>可以临时创建 Console Connection ，上传新的公钥，但是进去之后发现，还TM要输入帐号和密码，默认根本没密码呀。。。woc！！</p>
+
+<p>这里使用 cloud-init 脚本，在虚拟机创建的时候，创建一个可以用来从console connection登录、且可sudo的帐号。</p>
+
+<ol>
+  <li>创建 instance，配置主要参数后，点击“Create”按钮上面的“Show Advanced Options”</li>
+  <li>Management 》Paste cloud-init script<br />
+ ~~~<br />
+ #cloud-config<br />
+ users:
+    <ul>
+      <li>default</li>
+      <li>
+        <p>name: backdoor<br />
+sudo: ALL=(ALL) NOPASSWD:ALL<br />
+lock_passwd: false<br />
+passwd: $6$MFhXlUHt$JG.sn2M4ReeZ.V/TDs8AWJzhA1anX0iUbE0WvfR8v/8d4eGv8v6EwhyiKO.6VixMaC8/dG.YQce01QV8w1.dZ0<br />
+ ~~~<br />
+ 以上脚本，创建了一个名为 <strong>backddor</strong> 的用户，密码为 <code class="highlighter-rouge">1LoveOracle!!</code>，但是他没有公钥，所以他没法通过ssh登录。</p>
+      </li>
+      <li>passwd 密文的生成方法：
+        <div class="language-bash highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>  yay -S mkpasswd
+  mkpasswd --method<span class="o">=</span>SHA-512 --salt<span class="o">=</span>MFhXlUHt
+  <span class="c"># 输入密码后回车，会生成密文</span>
+</pre></td></tr></tbody></table>
+</div>
+        </div>
+        <p>以上例子中的密文开头部分 <code class="highlighter-rouge">$6$MFhXlUHt$</code> ，<code class="highlighter-rouge">6</code> 表示加密方法是 SHA-512，当然可以换其他加密方法，例如，SHA-265 对应 <code class="highlighter-rouge">5</code>，详情可查看 mkpasswd 的帮助文档。<code class="highlighter-rouge">MFhXlUHt</code> 就是执行mkpasswd时，传入的salt参数。</p>
+      </li>
+    </ul>
+  </li>
+  <li>点击 create ，创建实例</li>
+  <li>实例详情页面，左侧导航 Resources 》Console Connection</li>
+  <li>点击 Create local Connection ，上传当前linux电脑的 public key</li>
+  <li>创建完成后，点击 connection 对应的三个竖排点，出现的菜单中选择 <code class="highlighter-rouge">Copy serial console connection for Linux/Mac</code></li>
+  <li>将拷贝好的命令，在当前linux电脑执行。就可以通过Oracle的代理连上虚拟机了。</li>
+  <li>这时候输入用户名和密码就能进去操作了。</li>
+  <li><code class="highlighter-rouge">sudo -i</code> 可以提权到root</li>
+</ol>
+
+<h3 id="cloud-init-脚本-users-配置参考">cloud-init 脚本 users 配置参考</h3>
+
+<p>Cloud config examples<br />
+Including users and groups</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</pre></td><td class="code"><pre><span class="c">#cloud-config</span>
+<span class="c"># Add groups to the system</span>
+<span class="c"># The following example adds the ubuntu group with members 'root' and 'sys'</span>
+<span class="c"># and the empty group cloud-users.</span>
+groups:
+  - ubuntu: <span class="o">[</span>root,sys]
+  - cloud-users
+
+<span class="c"># Add users to the system. Users are added after groups are added.</span>
+<span class="c"># Note: Most of these configuration options will not be honored if the user</span>
+<span class="c">#       already exists. Following options are the exceptions and they are</span>
+<span class="c">#       applicable on already-existing users:</span>
+<span class="c">#       - 'plain_text_passwd', 'hashed_passwd', 'lock_passwd', 'sudo',</span>
+<span class="c">#         'ssh_authorized_keys', 'ssh_redirect_user'.</span>
+users:
+  - default
+  - name: foobar
+    gecos: Foo B. Bar
+    primary_group: foobar
+    groups: users
+    selinux_user: staff_u
+    expiredate: <span class="s1">'2032-09-01'</span>
+    ssh_import_id:
+      - lp:falcojr
+      - gh:TheRealFalcon
+    lock_passwd: <span class="nb">false
+    </span>passwd: <span class="nv">$6$j212wezy$7H</span>/1LT4f9/N3wpgNunhsIqtMj62OKiS3nyNwuizouQc3u7MbYCarYeAHWYPYb2FT.lbioDm2RrkJPb9BZMN1O/
+  - name: barfoo
+    gecos: Bar B. Foo
+    sudo: <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD:ALL
+    groups: users, admin
+    ssh_import_id:
+      - lp:falcojr
+      - gh:TheRealFalcon
+    lock_passwd: <span class="nb">true
+    </span>ssh_authorized_keys:
+      - &lt;ssh pub key 1&gt;
+      - &lt;ssh pub key 2&gt;
+  - name: cloudy
+    gecos: Magic Cloud App Daemon User
+    inactive: <span class="s1">'5'</span>
+    system: <span class="nb">true</span>
+  - name: fizzbuzz
+    sudo: False
+    ssh_authorized_keys:
+      - &lt;ssh pub key 1&gt;
+      - &lt;ssh pub key 2&gt;
+  - snapuser: joe@joeuser.io
+  - name: nosshlogins
+    ssh_redirect_user: <span class="nb">true</span>
+
+<span class="c"># Valid Values:</span>
+<span class="c">#   name: The user's login name</span>
+<span class="c">#   expiredate: Date on which the user's account will be disabled.</span>
+<span class="c">#   gecos: The user name's real name, i.e. "Bob B. Smith"</span>
+<span class="c">#   homedir: Optional. Set to the local path you want to use. Defaults to</span>
+<span class="c">#           /home/&lt;username&gt;</span>
+<span class="c">#   primary_group: define the primary group. Defaults to a new group created</span>
+<span class="c">#           named after the user.</span>
+<span class="c">#   groups:  Optional. Additional groups to add the user to. Defaults to none</span>
+<span class="c">#   selinux_user:  Optional. The SELinux user for the user's login, such as</span>
+<span class="c">#           "staff_u". When this is omitted the system will select the default</span>
+<span class="c">#           SELinux user.</span>
+<span class="c">#   lock_passwd: Defaults to true. Lock the password to disable password login</span>
+<span class="c">#   inactive: Number of days after password expires until account is disabled</span>
+<span class="c">#   passwd: The hash -- not the password itself -- of the password you want</span>
+<span class="c">#           to use for this user. You can generate a safe hash via:</span>
+<span class="c">#               mkpasswd --method=SHA-512 --rounds=4096</span>
+<span class="c">#           (the above command would create from stdin an SHA-512 password hash</span>
+<span class="c">#           with 4096 salt rounds)</span>
+<span class="c">#</span>
+<span class="c">#           Please note: while the use of a hashed password is better than</span>
+<span class="c">#               plain text, the use of this feature is not ideal. Also,</span>
+<span class="c">#               using a high number of salting rounds will help, but it should</span>
+<span class="c">#               not be relied upon.</span>
+<span class="c">#</span>
+<span class="c">#               To highlight this risk, running John the Ripper against the</span>
+<span class="c">#               example hash above, with a readily available wordlist, revealed</span>
+<span class="c">#               the true password in 12 seconds on a i7-2620QM.</span>
+<span class="c">#</span>
+<span class="c">#               In other words, this feature is a potential security risk and is</span>
+<span class="c">#               provided for your convenience only. If you do not fully trust the</span>
+<span class="c">#               medium over which your cloud-config will be transmitted, then you</span>
+<span class="c">#               should use SSH authentication only.</span>
+<span class="c">#</span>
+<span class="c">#               You have thus been warned.</span>
+<span class="c">#   no_create_home: When set to true, do not create home directory.</span>
+<span class="c">#   no_user_group: When set to true, do not create a group named after the user.</span>
+<span class="c">#   no_log_init: When set to true, do not initialize lastlog and faillog database.</span>
+<span class="c">#   ssh_import_id: Optional. Import SSH ids</span>
+<span class="c">#   ssh_authorized_keys: Optional. [list] Add keys to user's authorized keys file</span>
+<span class="c">#   ssh_redirect_user: Optional. [bool] Set true to block ssh logins for cloud</span>
+<span class="c">#       ssh public keys and emit a message redirecting logins to</span>
+<span class="c">#       use &lt;default_username&gt; instead. This option only disables cloud</span>
+<span class="c">#       provided public-keys. An error will be raised if ssh_authorized_keys</span>
+<span class="c">#       or ssh_import_id is provided for the same user.</span>
+<span class="c">#</span>
+<span class="c">#       ssh_authorized_keys.</span>
+<span class="c">#   sudo: Defaults to none. Accepts a sudo rule string, a list of sudo rule</span>
+<span class="c">#         strings or False to explicitly deny sudo usage. Examples:</span>
+<span class="c">#</span>
+<span class="c">#         Allow a user unrestricted sudo access.</span>
+<span class="c">#             sudo:  ALL=(ALL) NOPASSWD:ALL</span>
+<span class="c">#</span>
+<span class="c">#         Adding multiple sudo rule strings.</span>
+<span class="c">#             sudo:</span>
+<span class="c">#               - ALL=(ALL) NOPASSWD:/bin/mysql</span>
+<span class="c">#               - ALL=(ALL) ALL</span>
+<span class="c">#</span>
+<span class="c">#         Prevent sudo access for a user.</span>
+<span class="c">#             sudo: False</span>
+<span class="c">#</span>
+<span class="c">#         Note: Please double check your syntax and make sure it is valid.</span>
+<span class="c">#               cloud-init does not parse/check the syntax of the sudo</span>
+<span class="c">#               directive.</span>
+<span class="c">#   system: Create the user as a system user. This means no home directory.</span>
+<span class="c">#   snapuser: Create a Snappy (Ubuntu-Core) user via the snap create-user</span>
+<span class="c">#             command available on Ubuntu systems.  If the user has an account</span>
+<span class="c">#             on the Ubuntu SSO, specifying the email will allow snap to</span>
+<span class="c">#             request a username and any public ssh keys and will import</span>
+<span class="c">#             these into the system with username specifed by SSO account.</span>
+<span class="c">#             If 'username' is not set in SSO, then username will be the</span>
+<span class="c">#             shortname before the email domain.</span>
+<span class="c">#</span>
+
+<span class="c"># Default user creation:</span>
+<span class="c">#</span>
+<span class="c"># Unless you define users, you will get a 'ubuntu' user on ubuntu systems with the</span>
+<span class="c"># legacy permission (no password sudo, locked user, etc). If however, you want</span>
+<span class="c"># to have the 'ubuntu' user in addition to other users, you need to instruct</span>
+<span class="c"># cloud-init that you also want the default user. To do this use the following</span>
+<span class="c"># syntax:</span>
+<span class="c">#   users:</span>
+<span class="c">#     - default</span>
+<span class="c">#     - bob</span>
+<span class="c">#     - ....</span>
+<span class="c">#  foobar: ...</span>
+<span class="c">#</span>
+<span class="c"># users[0] (the first user in users) overrides the user directive.</span>
+<span class="c">#</span>
+<span class="c"># The 'default' user above references the distro's config:</span>
+<span class="c"># system_info:</span>
+<span class="c">#   default_user:</span>
+<span class="c">#     name: Ubuntu</span>
+<span class="c">#     plain_text_passwd: 'ubuntu'</span>
+<span class="c">#     home: /home/ubuntu</span>
+<span class="c">#     shell: /bin/bash</span>
+<span class="c">#     lock_passwd: True</span>
+<span class="c">#     gecos: Ubuntu</span>
+<span class="c">#     groups: [adm, audio, cdrom, dialout, floppy, video, plugdev, dip, netdev]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#mkpasswd" title="Pages tagged mkpasswd" class="tag"><span class="term">mkpasswd</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

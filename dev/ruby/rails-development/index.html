@@ -1,0 +1,1062 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>rails 开发 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="rails, rake, scaffold, command">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rails 开发">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/ruby/rails-development/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/ruby/rails-development/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">rails 开发</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-07-30T00:00:00+08:00">July 30, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <hr />
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://guides.rubyonrails.org/v4.2/">Ruby on Rails Guides (v4.2.10)</a></li>
+      <li><a href="https://ruby-china.github.io/rails-guides/active_record_basics.html">Active Record 基础</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="i18n-资源">i18n 资源</h2>
+
+<p>在 config/locales/en.yml 定义</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="s">label_xc_tags_title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Tags'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>在任何view中都可以使用，例如：</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;legend&gt;</span><span class="cp">&lt;%=</span> <span class="n">l</span><span class="p">(</span><span class="ss">:label_xc_tags_title</span><span class="p">)</span><span class="cp">%&gt;</span><span class="nt">&lt;/legend&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="model">model</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://ruby-china.github.io/rails-guides/active_record_basics.html">ruby-china - Active Record 基础</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="设置多对多关系">设置多对多关系</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c1"># FILE: app/models/issue.rb</span>
+<span class="n">has_and_belongs_to_many</span> <span class="ss">:xc_tags</span><span class="p">,</span> <span class="ss">:join_table</span> <span class="o">=&gt;</span> <span class="ss">:xc_tags_issues</span>
+
+<span class="c1"># FILE: app/models/xc_tag.rb</span>
+<span class="n">has_and_belongs_to_many</span> <span class="ss">:issues</span><span class="p">,</span> <span class="ss">:join_table</span> <span class="o">=&gt;</span> <span class="ss">:xc_tags_issues</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="view">view</h2>
+
+<h3 id="跨controller跨格式引用view">跨controller，跨格式，引用view</h3>
+
+<ul>
+  <li>跨controller ： <code class="highlighter-rouge">render(:partial =&gt; 'another-controller/its-partial-view')</code></li>
+  <li>跨格式 ： <code class="highlighter-rouge">render(..., :local =&gt; {:format =&gt; 'html'})</code></li>
+</ul>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre># app/views/xc_tags/tagissue.js.erb
+
+<span class="c">&lt;%# 更新issue备注（历史记录） %&gt;
+&lt;% htmlstr = "&lt;h3&gt;#{l(:label_history)}&lt;/h3&gt;" %&gt;
+&lt;% htmlstr += render(:partial =&gt; 'issues/history', :locals =&gt; {:format =&gt; 'html', :issue =&gt; @issue, :journals =&gt; @issue.journals }) %&gt;
+&lt;% htmlstr.gsub!('"', '\\"') %&gt;
+&lt;% htmlstr.gsub!("\n", ' ') %&gt;
+$("#history").html("&lt;%= htmlstr.html_safe %&gt;</span>");
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="routes">routes</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://guides.rubyonrails.org/v4.2/routing.html">https://guides.rubyonrails.org/v4.2/routing.html</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="默认-route-和-helper-简单的例子">默认 route 和 helper 简单的例子</h3>
+
+<p><code class="highlighter-rouge">resources :photos</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>HTTP Verb</td>
+      <td>Path</td>
+      <td>Controller#Action</td>
+      <td>Used for</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/photos</td>
+      <td>photos#index</td>
+      <td>display a list of all photos</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/photos/new</td>
+      <td>photos#new</td>
+      <td>return an HTML form for creating a new photo</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/photos</td>
+      <td>photos#create</td>
+      <td>create a new photo</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/photos/:id</td>
+      <td>photos#show</td>
+      <td>display a specific photo</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/photos/:id/edit</td>
+      <td>photos#edit</td>
+      <td>return an HTML form for editing a photo</td>
+    </tr>
+    <tr>
+      <td>PATCH/PUT</td>
+      <td>/photos/:id</td>
+      <td>photos#update</td>
+      <td>update a specific photo</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>/photos/:id</td>
+      <td>photos#destroy</td>
+      <td>delete a specific photo</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+    <p>path helpers：</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">photos_path</code> returns <code class="highlighter-rouge">/photos</code></li>
+      <li><code class="highlighter-rouge">new_photo_path</code> returns <code class="highlighter-rouge">/photos/new</code></li>
+      <li><code class="highlighter-rouge">edit_photo_path(:id)</code> returns <code class="highlighter-rouge">/photos/:id/edit</code> (如，edit_photo_path(10) returns /photos/10/edit)</li>
+      <li><code class="highlighter-rouge">photo_path(:id)</code> returns /photos/:id (如， photo_path(10) returns /photos/10)</li>
+    </ul>
+  </li>
+  <li>
+    <p>url helpers:<br />
+把 path helpers 函数名中path替换为url就行了，例如，photos_url ，就是比 photos_path 多了 协议和host的前缀，如，http://your-host/photos</p>
+  </li>
+</ul>
+
+<h3 id="嵌入式的route--nested-resources">嵌入式的route / Nested Resources</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Magazine</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">has_many</span> <span class="ss">:ads</span>
+<span class="k">end</span>
+ 
+<span class="k">class</span> <span class="nc">Ad</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:magazine</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>route 规则</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>resources :magazines do
+  resources :ads
+end
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>HTTP Verb</td>
+      <td>Path</td>
+      <td>Controller#Action</td>
+      <td>Used for</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/magazines/:magazine_id/ads</td>
+      <td>ads#index</td>
+      <td>display a list of all ads for a specific magazine</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/magazines/:magazine_id/ads/new</td>
+      <td>ads#new</td>
+      <td>return an HTML form for creating a new ad belonging to a specific magazine</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/magazines/:magazine_id/ads</td>
+      <td>ads#create</td>
+      <td>create a new ad belonging to a specific magazine</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/magazines/:magazine_id/ads/:id</td>
+      <td>ads#show</td>
+      <td>display a specific ad belonging to a specific magazine</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/magazines/:magazine_id/ads/:id/edit</td>
+      <td>ads#edit</td>
+      <td>return an HTML form for editing an ad belonging to a specific magazine</td>
+    </tr>
+    <tr>
+      <td>PATCH/PUT</td>
+      <td>/magazines/:magazine_id/ads/:id</td>
+      <td>ads#update</td>
+      <td>update a specific ad belonging to a specific magazine</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>/magazines/:magazine_id/ads/:id</td>
+      <td>ads#destroy</td>
+      <td>delete a specific ad belonging to a specific magazine</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="命令行列出所有可用routes">命令行列出所有可用routes</h3>
+
+<p>在 <code class="highlighter-rouge">config/route.rb</code> 中配置 route</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">routes</span>
+
+<span class="c1"># 某个controller 的 routes</span>
+<span class="no">CONTROLLER</span><span class="o">=</span><span class="n">users</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">routes</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="helper-生成-path-url">helper 生成 path url</h4>
+
+<p><code class="highlighter-rouge">route.rb</code> 中： <code class="highlighter-rouge">get '/patients/:id', to: 'patients#show', as: 'patient'</code></p>
+
+<p>controller 中： <code class="highlighter-rouge">@patient = Patient.find(17)</code></p>
+
+<p>view 中 <code class="highlighter-rouge">&lt;%= link_to 'Patient Record', patient_path(@patient) %&gt;</code> 会生成链接指向 <code class="highlighter-rouge">/patients/17</code></p>
+
+<h4 id="默认-route-规则">默认 route 规则</h4>
+
+<p><code class="highlighter-rouge">route.rb</code> 中规则从上到下匹配，先匹配先生效。</p>
+
+<p><code class="highlighter-rouge">GET /patients/17</code> 匹配 <code class="highlighter-rouge">get '/patients/:id', to: 'patients#show'</code></p>
+
+<ul>
+  <li><code class="highlighter-rouge">resources :objects</code></li>
+</ul>
+
+<p>一句route 配置规则，就能覆盖 index, show, new, edit, create, update and destroy actions。</p>
+
+<h3 id="开发模式直接网页查看-routes">开发模式直接网页查看 routes</h3>
+
+<p><code class="highlighter-rouge">http://localhost:3000/rails/info/routes</code></p>
+
+<h2 id="命令行工具">命令行工具</h2>
+
+<ul>
+  <li><a href="https://guides.rubyonrails.org/command_line.html">rubyonrails.org - The Rails Command Line</a></li>
+</ul>
+
+<h3 id="自动生成crud">自动生成CRUD</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># 会同时生成：db的migraton脚本、model、contorller、view代码</span>
+bundle <span class="nb">exec </span>rails generate scaffold XcJtag name:string color:string
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="生成-controller">生成 controller</h3>
+
+<ul>
+  <li>语法</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>bin/rails generate controller NAME [action action] [options]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li>例子</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>bin/rails generate controller CreditCards open debit credit close
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="database-migration">database migration</h2>
+
+<ul>
+  <li><a href="https://ruby-china.github.io/rails-guides/active_record_migrations.html">ruby-china - Active Record 迁移</a></li>
+</ul>
+
+<h3 id="简单的例子">简单的例子</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">CreateXcJtags</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+  <span class="k">def</span> <span class="nf">up</span>
+    <span class="n">create_table</span> <span class="ss">:xc_jtags</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:color</span>  <span class="c1"># css style 语法</span>
+
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span> <span class="ss">null: </span><span class="kp">false</span>
+    <span class="k">end</span>
+
+    <span class="n">create_join_table</span> <span class="ss">:journals</span><span class="p">,</span> <span class="ss">:xc_jtags</span><span class="p">,</span> <span class="ss">:table_name</span> <span class="o">=&gt;</span> <span class="ss">:xc_jtags_journals</span>
+
+    <span class="no">XcJtag</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nb">name</span><span class="ss">:"自动QA"</span><span class="p">,</span> <span class="n">color</span><span class="ss">:"color:white; background-color:greenyellow;"</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">down</span>
+    <span class="n">drop_table</span> <span class="ss">:xc_jtags</span>
+    <span class="n">drop_table</span> <span class="ss">:xc_jtags_journals</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="执行-migration">执行 migration</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>
+bundle <span class="nb">exec </span>rake db:migrate
+
+<span class="c"># migrate 到指定版本</span>
+bundle <span class="nb">exec </span>rake db:migrate <span class="nv">VERSION</span><span class="o">=</span>20080906120000
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="回滚-migration">回滚 migration</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c"># 回退一个migration</span>
+bundle <span class="nb">exec </span>rake db:rollback
+
+<span class="c"># 回退 3个migration</span>
+bundle <span class="nb">exec </span>rake db:rollback <span class="nv">STEP</span><span class="o">=</span>3
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#rails" title="Pages tagged rails" class="tag"><span class="term">rails</span></a><a href="/tags#rake" title="Pages tagged rake" class="tag"><span class="term">rake</span></a><a href="/tags#scaffold" title="Pages tagged scaffold" class="tag"><span class="term">scaffold</span></a><a href="/tags#command" title="Pages tagged command" class="tag"><span class="term">command</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

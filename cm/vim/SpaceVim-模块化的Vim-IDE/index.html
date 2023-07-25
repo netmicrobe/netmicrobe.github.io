@@ -1,0 +1,1086 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>SpaceVim-模块化的Vim-IDE &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="editor, 编辑器">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpaceVim-模块化的Vim-IDE">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/vim/SpaceVim-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84Vim-IDE/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/vim/SpaceVim-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84Vim-IDE/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">SpaceVim-模块化的Vim-IDE</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2020-12-11T00:00:00+08:00">December 11, 2020</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://spacevim.org/cn/">SpaceVim 中文官网</a></li>
+      <li><a href="https://github.com/SpaceVim/SpaceVim">Github - SpaceVim</a></li>
+      <li><a href="https:///github.com/Gabirel/Hack-SpaceVim">Hack-SpaceVim：Tell you how to hack SpaceVim</a></li>
+      <li><a href="https://spacevim.org/cn/use-vim-as-ide/">spacevim.org - 使用 Vim 搭建基本开发环境</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="在-manjaro-上安装">在 Manjaro 上安装</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>sudo pacman -S neovim
+curl -sLf https://spacevim.org/cn/install.sh | bash
+# 或
+curl -sLf https://spacevim.org/install.sh | bash
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="卸载">卸载</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+rm -fr ~/.SpaceVim
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="配置">配置</h2>
+
+<p>快捷键 <code class="highlighter-rouge">SPC f v d</code> 打开配置文件</p>
+
+<p>初次启动时，SpaceVim 弹出一个选择目录（basic 模式、 dark_powerd 模式），用户需要选择合适自己的配置模板。 此时，SpaceVim 将自动在 <code class="highlighter-rouge">$HOME</code> 目录生成 <code class="highlighter-rouge">~/.SpaceVim.d/init.toml</code>。 所有用户配置文件都可以存储在 <code class="highlighter-rouge">~/.SpaceVim.d/</code>。</p>
+
+<h3 id="插件">插件</h3>
+
+<p>如果你需要添加 github 上的插件，只需要在 SpaceVim 配置文件中添加 [[custom_plugins]] 片段：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>[[custom_plugins]]
+    repo = "lilydjwg/colorizer"
+    on_cmd = ["ColorHighlight", "ColorToggle"]
+    merged = false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">one_cmd</code> 选项使得这个插件延迟加载。 该插件会在第一次执行 ColorHighlight 或者 ColorToggle 命令时被加载。</p>
+
+<p><code class="highlighter-rouge">merged</code> 选项用于设定是否合并该插件的文件夹，如果 merged 是 true，那么，这一插件内的文件将被合并到： <code class="highlighter-rouge">~/.cache/vimfiles/.cache/init.vim/</code> 或者 <code class="highlighter-rouge">~/.cache/vimfiles/.cache/vimrc/</code>， 这依据当前使用的是 Neovim 还是 Vim。</p>
+
+<p>除了 on_cmd 以外，还有一些其它的选项，可以通过 <code class="highlighter-rouge">:h dein-options</code> 查阅。</p>
+
+<h4 id="禁用插件">禁用插件</h4>
+
+<p>SpaceVim 默认安装了一些插件，如果需要禁用某个插件，可以通过 <code class="highlighter-rouge">~/.SpaceVim.d/init.toml</code> 的 <code class="highlighter-rouge">[options]</code> 片段中的 <code class="highlighter-rouge">disabled_plugins</code> 这一选项来操作：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[options]
+    # 请注意，该值为一个 List，每一个选项为插件的名称，而非 github 仓库地址。
+    disabled_plugins = ["clighter", "clighter8"]
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="spacevim-的模块">SpaceVim 的模块</h3>
+
+<p>使用模块的方式来组织和管理插件，将相关功能的插件组织成一个模块，启用/禁用效率更加高。同时也节省了很多寻找插件和配置插件的时间。</p>
+
+<p>在 SpaceVim 中，一个模块是一个单个的 Vim 文件，例如，autocomplete 模块存储在 autoload/SpaceVim/layers/autocomplete.vim，在这个文件内有以下几个公共函数：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">SpaceVim#layers#autocomplete#plugins()</code>: 返回该模块插件列表</li>
+  <li><code class="highlighter-rouge">SpaceVim#layers#autocomplete#config()</code>: 模块相关设置</li>
+  <li><code class="highlighter-rouge">SpaceVim#layers#autocomplete#set_variable()</code>: 模块选项设置函数</li>
+</ul>
+
+<h3 id="启动函数">启动函数</h3>
+
+<p>由于 toml 配置的局限性，SpaceVim 提供了两种启动函数 <code class="highlighter-rouge">bootstrap_before</code> 和 <code class="highlighter-rouge">bootstrap_after</code>，在该函数内可以使用 Vim script。 可通过 <code class="highlighter-rouge">~/.SpaceVim.d/init.toml</code> 的 <code class="highlighter-rouge">[options]</code> 片段中的这两个选项 <code class="highlighter-rouge">bootstrap_before</code> 和 <code class="highlighter-rouge">bootstrap_after</code> 来指定函数名称，例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[options]
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after  = "myspacevim#after"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>启动函数文件应放置在 Vim &amp;runtimepath 的 autoload 文件夹内。例如：</p>
+
+<p>文件名：<code class="highlighter-rouge">~/.SpaceVim.d/autoload/myspacevim.vim</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>function! myspacevim#before() abort
+    let g:neomake_c_enabled_makers = ['clang']
+    nnoremap jk &lt;esc&gt;
+endfunction
+
+function! myspacevim#after() abort
+    iunmap jk
+endfunction
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>函数 <code class="highlighter-rouge">bootstrap_before</code> 将在读取用户配置后执行，而函数 <code class="highlighter-rouge">bootstrap_after</code> 将在 VimEnter autocmd 之后执行。</p>
+
+<p>如果你需要添加自定义以 <code class="highlighter-rouge">SPC</code> 为前缀的快捷键，你需要使用 bootstrap function，在其中加入：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>function! myspacevim#before() abort
+    call SpaceVim#custom#SPCGroupName(['G'], '+TestGroup')
+    call SpaceVim#custom#SPC('nore', ['G', 't'], 'echom 1', 'echomessage 1', 1)
+endfunction
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="vim-兼容模式">Vim 兼容模式</h3>
+
+<p>以下为 SpaceVim 中与 Vim 默认情况下的一些差异。</p>
+
+<p>按键 <code class="highlighter-rouge">s</code> 是删除光标下的字符，但是在 SpaceVim 中， 它是Normal模式窗口快捷键的前缀，这一功能可以使用选项 windows_leader 来修改，默认是 s。 如果需要使用按键 <code class="highlighter-rouge">s</code> 的原生功能，可以将该选项设置为空。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    windows_leader = ''
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>按键 <code class="highlighter-rouge">,</code> 是重复上一次的搜索 f、F、t 和 T ，但在 SpaceVim 中默认被用作为语言专用的前缀键。如果需要禁用此选项， 可设置 enable_language_specific_leader = false。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    enable_language_specific_leader = false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>按键 <code class="highlighter-rouge">q</code> 是录制宏，但是在 SpaceVim 中被设置为了智能关闭窗口，设置该功能的选项是 windows_smartclose，默认值是 q， 可以通过将该选项设置成空字符串来禁用该功能，同时也可以设置成其他按键。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    windows_smartclose = ''
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>命令行模式下 <code class="highlighter-rouge">Ctrl-a</code> 按键在 SpaceVim 中被修改为了移动光标至命令行行首。<br />
+命令行模式下 <code class="highlighter-rouge">Ctrl-b</code> 按键被映射为方向键 <code class="highlighter-rouge">&lt;Left&gt;</code>, 用以向左移动光标。<br />
+命令行模式下 <code class="highlighter-rouge">Ctrl-f</code> 按键被映射为方向键 <code class="highlighter-rouge">&lt;Right&gt;</code>, 用以向右移动光标。<br />
+可以通过设置 <code class="highlighter-rouge">vimcompatible = true</code> 来启用 Vim 兼容模式，而在兼容模式下，以上所有差异将不存在。 当然，也可通过对应的选项禁用某一个差异。例如，恢复逗号 , 的原始功能，可以通过禁用语言专用的前缀键：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    enable_language_specific_leader = false
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="ui-界面设置">UI 界面设置</h3>
+
+<h4 id="颜色主题-colorscheme">颜色主题 colorscheme</h4>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://spacevim.org/cn/layers/colorscheme/">https://spacevim.org/cn/layers/colorscheme/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>默认的颜色主题采用的是 <code class="highlighter-rouge">gruvbox</code>。</p>
+
+<ul>
+  <li><strong>修改主题设置</strong></li>
+</ul>
+
+<p><code class="highlighter-rouge">~/.SpaceVim.d/init.toml</code> 的 <code class="highlighter-rouge">[options]</code> 片段中修改 <code class="highlighter-rouge">colorscheme</code> 选项。例如，使用 Vim 自带的内置主题 desert：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[options]
+    colorscheme = "desert"
+    colorscheme_bg = "dark"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>快捷键</td>
+      <td>功能描述</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">SPC T n</code></td>
+      <td>切换至下一个随机主题</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">SPC T s</code></td>
+      <td>通过 Unite 选择主题</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="字体设置">字体设置</h4>
+
+<p>默认字体使用 <code class="highlighter-rouge">SourceCodePro Nerd Font Mono</code></p>
+
+<p>如果需要修改 SpaceVim 的字体，可以在 <code class="highlighter-rouge">~/.SpaceVim.d/init.toml</code> 的 <code class="highlighter-rouge">[options]</code>片段中修改选项 <code class="highlighter-rouge">guifont</code>，默认值为：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    guifont = "SourceCodePro Nerd Font Mono:h11"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="高亮">高亮</h4>
+
+<p>快捷键	功能描述<br />
+SPC t h h	高亮当前行<br />
+SPC t h i	高亮代码对齐线<br />
+SPC t h c	高亮光标所在列<br />
+SPC t h s	启用/禁用语法高亮<br />
+SPC t i	切换显示当前对齐(TODO)<br />
+SPC t n	显示/隐藏行号<br />
+SPC t b	切换背景色<br />
+SPC t c	切换 conceal 模式<br />
+SPC t p	切换 paste 模式<br />
+SPC t t	打开 Tab 管理器<br />
+SPC T ~	显示/隐藏 Buffer 结尾空行行首的 ~<br />
+SPC T F	切换全屏(TODO)<br />
+SPC T f	显示/隐藏 Vim 边框(GUI)<br />
+SPC T m	显示/隐藏菜单栏<br />
+SPC T t	显示/隐藏工具栏</p>
+
+<h2 id="使用">使用</h2>
+
+<h3 id="快捷键导航-leader-键">快捷键导航 <code class="highlighter-rouge">&lt;leader&gt;</code> 键</h3>
+
+<p>leader 键默认为： <code class="highlighter-rouge">\</code></p>
+
+<p><code class="highlighter-rouge">leader + 数字</code> ： 切换文件tab</p>
+
+<p>如果需要修改 <code class="highlighter-rouge">&lt;Leader&gt;</code> 键则需要使用启动函数修改 <code class="highlighter-rouge">g:mapleader</code> 的值， 比如使用逗号 , 作为 <code class="highlighter-rouge">&lt;Leader&gt;</code> 按键。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>function! myspacevim#before() abort
+    let g:mapleader = ','
+endfunction
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="快捷导航键-延迟设置">快捷导航键 延迟设置</h4>
+
+<p>默认情况下，快捷键导航将在输入延迟超过 1000ms 后打开，你可以通过修改 Vim 的 ‘timeoutlen’ 选项来修改成适合自己的延迟时间长度。</p>
+
+<h4 id="快捷导航键-呼出的菜单操作">快捷导航键 呼出的菜单操作</h4>
+
+<p>按键	功能描述<br />
+u	撤销按键<br />
+n	向下翻页<br />
+p	向上翻页</p>
+
+<h3 id="文件树">文件树</h3>
+
+<p>SpaceVim 使用 vimfiler 作为默认的文件树插件，</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>[options]
+    # 文件树插件可选值包括：
+    # - vimfiler （默认）
+    # - nerdtree
+    # - defx
+    filemanager = "defx"
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>打开 / 关闭 文件树  <code class="highlighter-rouge">F3</code> 或  <code class="highlighter-rouge">SPC f t</code> 或 <code class="highlighter-rouge">SPC f T</code></p>
+
+<ul>
+  <li><strong>文件树内的快捷键</strong></li>
+</ul>
+
+<p><code class="highlighter-rouge">&lt;Left&gt;</code> / <code class="highlighter-rouge">h</code>	移至父目录，并关闭文件夹<br />
+<code class="highlighter-rouge">&lt;Down&gt;</code> / <code class="highlighter-rouge">j</code>	向下移动光标<br />
+<code class="highlighter-rouge">&lt;Up&gt;</code> / <code class="highlighter-rouge">k</code>	向上移动光标<br />
+<code class="highlighter-rouge">&lt;Right&gt;</code> / <code class="highlighter-rouge">l</code>	展开目录，或打开文件<br />
+<code class="highlighter-rouge">N</code>	在光标位置新建文件<br />
+<code class="highlighter-rouge">y y</code>	复制光标下文件路径至系统剪切板<br />
+<code class="highlighter-rouge">y Y</code>	复制光标下文件至系统剪切板<br />
+<code class="highlighter-rouge">P</code>	在光标位置黏贴文件<br />
+<code class="highlighter-rouge">.</code>	切换显示隐藏文件<br />
+<code class="highlighter-rouge">s v</code>	分屏编辑该文件<br />
+<code class="highlighter-rouge">s g</code>	垂直分屏编辑该文件<br />
+<code class="highlighter-rouge">p</code>	预览文件<br />
+<code class="highlighter-rouge">i</code>	切换至文件夹历史<br />
+<code class="highlighter-rouge">v</code>	快速查看<br />
+<code class="highlighter-rouge">&gt;</code>	放大文件树窗口宽度<br />
+<code class="highlighter-rouge">&lt;</code>	缩小文件树窗口宽度<br />
+<code class="highlighter-rouge">g x</code>	使用相关程序执行该文件<br />
+<code class="highlighter-rouge">'</code>	标记光标下的文件（夹）<br />
+<code class="highlighter-rouge">V</code>	清除所有标记<br />
+<code class="highlighter-rouge">Ctrl+r</code>	刷新页面</p>
+
+<ul>
+  <li><strong>文件树中打开文件</strong></li>
+</ul>
+
+<p><code class="highlighter-rouge">l</code> / <code class="highlighter-rouge">&lt;Enter&gt;</code>	打开文件<br />
+<code class="highlighter-rouge">sg</code>	分屏打开文件<br />
+<code class="highlighter-rouge">sv</code>	垂直分屏打开文件</p>
+
+<h3 id="移动光标以及滚屏的快捷键">移动光标以及滚屏的快捷键</h3>
+
+<p>快捷键	功能描述<br />
+<code class="highlighter-rouge">H</code>	移动光标至屏幕顶部<br />
+<code class="highlighter-rouge">L</code>	移动光标至屏幕底部<br />
+<code class="highlighter-rouge">&lt;</code>	向左移动文本<br />
+<code class="highlighter-rouge">&gt;</code>	向右移动文本<br />
+<code class="highlighter-rouge">}</code>	向前移动一个段落<br />
+<code class="highlighter-rouge"><span class="p">{</span></code>	向后移动一个段落<br />
+<code class="highlighter-rouge">Ctrl-f</code>	向下翻页 (<code class="highlighter-rouge">Ctrl-f</code> / <code class="highlighter-rouge">Ctrl-d</code>)<br />
+<code class="highlighter-rouge">Ctrl-b</code>	向上翻页 (<code class="highlighter-rouge">C-b</code> / <code class="highlighter-rouge">C-u</code>)<br />
+<code class="highlighter-rouge">Ctrl-e</code>	向下滚屏 (<code class="highlighter-rouge">3 Ctrl-e/j</code>)<br />
+<code class="highlighter-rouge">Ctrl-y</code>	向上滚屏 (<code class="highlighter-rouge">3Ctrl-y/k</code>)<br />
+<code class="highlighter-rouge">Ctrl-Shift-Up</code>	向上移动当前行<br />
+<code class="highlighter-rouge">Ctrl-Shift-Down</code>	向下移动当前行</p>
+
+<p>按键	功能描述<br />
+<code class="highlighter-rouge">&lt;F2&gt;</code>	打开、关闭语法树<br />
+<code class="highlighter-rouge">&lt;F3&gt;</code>	打开、关闭文件树<br />
+<code class="highlighter-rouge">Ctrl-&lt;Down&gt;</code>	切换至下方窗口<br />
+<code class="highlighter-rouge">Ctrl-&lt;Up&gt;</code>	切换至上方窗口<br />
+<code class="highlighter-rouge">Ctrl-&lt;Left&gt;</code>	切换至左边窗口<br />
+<code class="highlighter-rouge">Ctrl-&lt;Right&gt;</code>	切换至右边窗口</p>
+
+<h3 id="编辑">编辑</h3>
+
+<h4 id="移动文本块">移动文本块</h4>
+
+<p>快捷键	功能描述<br />
+<code class="highlighter-rouge">&lt;</code> / <code class="highlighter-rouge">Shift-Tab</code>	向左移动文本<br />
+<code class="highlighter-rouge">&gt;</code> / <code class="highlighter-rouge">Tab</code>	向右移动文本<br />
+<code class="highlighter-rouge">Ctrl-Shift-Up</code>	向上移动选中行<br />
+<code class="highlighter-rouge">Ctrl-Shift-Down</code>	向下移动选中行</p>
+
+<h3 id="代码缩进">代码缩进</h3>
+
+<p>默认的代码缩进值是 2，缩进的大小由选项 default_indent 设置， 如果希望使用 4 个空格作为缩进，只需要在 SpaceVim 配置文件中加入如下内容：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>[options]
+    default_indent = 4
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">default_indent</code> 这一选项的值，将被赋值到 Vim 的选项：<code class="highlighter-rouge">&amp;tabstop</code>、<code class="highlighter-rouge">&amp;softtabstop</code> 和 <code class="highlighter-rouge">&amp;shiftwidth</code>。默认情况下，输入的 <code class="highlighter-rouge">&lt;Tab&gt;</code> 会被自动展开成对应缩进数量的空格， 可通过设置选项 expand_tab 的值为 false 来禁用这一特性：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>[options]
+    default_indent = 4
+    expand_tab = true
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="复制粘贴">复制粘贴</h3>
+
+<p>如果 <code class="highlighter-rouge">has('unnamedplus')</code> 返回 1，那么快捷键 <code class="highlighter-rouge">&lt;Leader&gt; y</code> 使用的寄存器是 <code class="highlighter-rouge">+</code>， 否则，这个快捷键使用的寄存器是 <code class="highlighter-rouge">*</code>， 可以阅读 <code class="highlighter-rouge">:h registers</code> 获取更多关于寄存器相关的内容。</p>
+
+<p>快捷键	功能描述<br />
+<code class="highlighter-rouge">&lt;Leader&gt; y</code>	复制文本至系统剪切板<br />
+<code class="highlighter-rouge">&lt;Leader&gt; p</code>	粘贴系统剪切板文字至当前位置之后<br />
+<code class="highlighter-rouge">&lt;Leader&gt; P</code>	粘贴系统剪切板文字至当前位置之前</p>
+
+<h3 id="文本编码格式">文本编码格式</h3>
+
+<p>SpaceVim 默认使用 utf-8 码进行编码。下面是 utf-8 编码的四个设置：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>fileencodings (fencs) : ucs-bom, utf-8, default, latin1
+fileencoding (fenc) : utf-8
+encoding (enc) : utf-8
+termencoding (tenc) : utf-8 (only supported in Vim)
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>修复混乱的显示：<code class="highlighter-rouge">SPC e a</code> 是自动选择文件编码的按键映射。在选择好文件编码方式后，你可以运行下面的代码来修复编码：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>set enc=utf-8
+write
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#editor" title="Pages tagged editor" class="tag"><span class="term">editor</span></a><a href="/tags#编辑器" title="Pages tagged 编辑器" class="tag"><span class="term">编辑器</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

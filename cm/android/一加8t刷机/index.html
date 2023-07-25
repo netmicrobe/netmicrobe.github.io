@@ -1,0 +1,1168 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>一加8T - kebab刷机 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="rom, adb, fastboot, bootloader, root, unlock, twrp">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一加8T - kebab刷机">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/android/%E4%B8%80%E5%8A%A08t%E5%88%B7%E6%9C%BA/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/android/%E4%B8%80%E5%8A%A08t%E5%88%B7%E6%9C%BA/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">一加8T - kebab刷机</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2021-11-06T00:00:00+08:00">November 06, 2021</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考：
+    <ul>
+      <li><a href="https://forum.xda-developers.com/c/oneplus-8t.11579/">xda - oneplus 8T</a></li>
+      <li><a href="https://www.oneplusbbs.com/thread-6250344-1.html">OnePlus 8T ColorOS 12 × Android 12 正式版升级指南</a></li>
+      <li><a href="https://pan.baidu.com/share/init?surl=oc4_M9mClOLT544HVel2GQ&amp;pwd=1234">https://pan.baidu.com/share/init?surl=oc4_M9mClOLT544HVel2GQ&amp;pwd=1234</a></li>
+      <li><a href="https://www.daxiaamu.com/6801/">一加OnePlus 8/8Pro/8T/9R 氧OS 12降级到氧OS 11教程</a></li>
+      <li><a href="https://www.daxiaamu.com/6753/">一加OnePlus 8/Pro、8T 发布氧OS 12 × Android 12公测第一版更新 OxygenOS 12 C.10</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<p>一加8T 氢OS在某个版本开始，可以安装和浏览 Play Store，但是无法下载，一直显示下载中。。。</p>
+
+<p>可以刷氧OS来解决：</p>
+<ol>
+  <li>下载 氧OS 全量包，例如，<code class="highlighter-rouge">OnePlus8TOxygen_15.O.29_OTA_0290_all_2110091944_3d8159dff77f4ef1.zip</code></li>
+  <li>将zip包拷贝到根目录</li>
+  <li>设置》系统》系统更新》本地升级》选择刚拷贝进手机的氧OS全量zip包</li>
+  <li>升级完成重启</li>
+  <li>原来氢OS安装的软件、指纹等设置都还在</li>
+  <li></li>
+</ol>
+
+<h2 id="一加8t的model">一加8T的model</h2>
+
+<p>OnePlus 8T model numbers</p>
+
+<ul>
+  <li>KB2000 (Chinese variant)</li>
+  <li>KB2001 (Indian variant) / 印度</li>
+  <li>KB2003 (European variant)</li>
+  <li>KB2005 (International variant) / 北美</li>
+  <li>KB2007 (T-Mobile variant)</li>
+</ul>
+
+<p>OS releases</p>
+
+<ul>
+  <li>KB05AA: International software (Global)</li>
+  <li>KB05BA: European software</li>
+  <li>KB05DA: Indian software</li>
+  <li>
+    <p>KB09CB: T-Mobile software (carrier locked)</p>
+  </li>
+  <li>International (KB05AA)</li>
+  <li>Europe (KB05BA) EUEX 、EEA</li>
+  <li>India (KB05DA)</li>
+</ul>
+
+<h2 id="降级救砖">降级&amp;救砖</h2>
+
+<ul>
+  <li><a href="https://www.oneplusbbs.com/forum.php?mod=viewthread&amp;tid=5749685">第三方ROM 8T官方氢OS1.2-4.5-5.6线刷降级救砖教程—9008降级救砖</a></li>
+  <li><a href="https://mega.nz/folder/DfgV1IaK#YWSQTog0pnTh5icN7qbqYQ">kebab_15_O.12_201015 救砖包</a></li>
+  <li><a href="https://androidfilehost.com/?fid=2188818919693750637">kebab_15_O.12_210201.zip</a></li>
+  <li><a href="https://bbs.oneplus.com/thread/5689136">OnePlus8T 官方ROM+9008救砖包</a>
+    <ul>
+      <li>https://cloud.189.cn/t/eU3aMvU3aeee</li>
+      <li>https://pan.baidu.com/s/1zYzZ2PNjNKFhSjmDDDPO0g?pwd=r5hc</li>
+    </ul>
+  </li>
+  <li><a href="https://bbs.oneplus.com/thread/5668200?mod=viewthread&amp;tid=5668200">一加8t 救砖！！</a></li>
+  <li><a href="https://bbs.oneplus.com/thread/4446250?mod=viewthread&amp;tid=4446250">【推荐】一加手机15种机型线刷救砖资源★附教程</a></li>
+  <li><a href="https://onfix.cn/course/4281?bid=786&amp;mid=25274">一加（OnePlus） OnePlus 8 线刷救砖详细教程，氢OS 与 ColorOS 互刷线刷教程</a></li>
+  <li><a href=""></a></li>
+</ul>
+
+<p>请刷入的版本确保等于大于出厂版本，（如购买时版本为 “氢OS11.5.6”  则不能刷入 “氢OS11.1.2” ！</p>
+
+<h3 id="线刷步骤">线刷步骤</h3>
+
+<ol>
+  <li>Windows 10 上安装电脑USB驱动程序 <code class="highlighter-rouge">Qualcomm_USB_Host_Drivers_1.00.53_20180705_w7_w10.exe</code>
+    <ol>
+      <li>打开之后选择第一个 <code class="highlighter-rouge">WWAN-DHCP is not used to get IPAddress</code>之后点击Next</li>
+      <li>一路Next到安装结束。</li>
+    </ol>
+  </li>
+  <li>下载并解压救砖包<br />
+ 例如：
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre> kebab_15_O.30_211221_repack
+ ├── build_path.txt
+ ├── DLLS
+ │   └── libMESAPI.dll
+ ├── kebab_15_O.30_211221.ops
+ ├── md5sum_pack.md5
+ ├── MsmDownloadTool V4.0.exe
+ ├── MsmDownloadTool V4.0_factory.exe
+ ├── MsmDownloadTool V4.0_Win7.exe
+ ├── rev_OverSeas_211221_1330_release_OPBugReport_OTA-BLOCK_Signed_fp2112211330_cve2021-12-01_ufs_Oxygen-OS-11.0.12.12.KB05AA
+ └── UFS_FW
+     ├── SELEN_UFS3.0_128GB_P09.bin
+     ├── SELEN_UFS3.0_256GB_P09.bin
+     ├── SELEN_UFS 3.1_V5_256Gb TLC_128GB_P13.bin
+     └── SELEN_UFS 3.1_V5_256Gb TLC_256GB_P13.bin
+
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>双击启动 <code class="highlighter-rouge">MsmDownloadTool V4.0.exe</code></li>
+  <li>显示Login对话框
+    <ol>
+      <li>User type 选择 Others</li>
+      <li>点击Next</li>
+    </ol>
+  </li>
+  <li>进入 MsmDownloadTool 的主界面</li>
+  <li>刷机
+    <ol>
+      <li>MsmDownloadTool 界面，如果是氢OS,选择H2,如果是氧OS,选择O2</li>
+      <li>连接手机，进入系统，执行 <code class="highlighter-rouge">adb reboot edl</code>，随后手机进入<code class="highlighter-rouge">edl模式</code></li>
+      <li>MsmDownloadTool 出现串口号：COMx ；连接状态：已连接</li>
+      <li>点击 Start 开始刷机<br />
+ 在点击Start之前不能停留太长，大概15s后，edl模式自动退出，连接状态变为<code class="highlighter-rouge">N/A</code>，启动进系统</li>
+      <li>刷完后，自动进入系统</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="edl-模式">EDL 模式</h3>
+
+<p>EDL / Emergency Download Mode，独立于 bootloader， 通过 Firehose 或 Sahara 协议来强制刷写固件。</p>
+
+<p>进入EDL模式的方法：</p>
+
+<ol>
+  <li>从系统进入： 执行 <code class="highlighter-rouge">adb reboot edl</code></li>
+  <li>从关机状态进入： 同时按住音量 ：加减（不要按开机键）， 手机插上数据线</li>
+  <li>从fastboot进入，研究了下目前没成功
+    <ul>
+      <li>方法一，修改 fastboot 可执行文件，来支持 reboot 进 EDL<br />
+ 参考 <a href="https://forum.xda-developers.com/t/guide-how-to-reboot-to-edl-from-fastboot.3394292/">How to reboot to EDL from fastboot</a> 要修改 fastboot 可执行文件。<br />
+ 下载了帖子里改好的 <a href="https://forum.xda-developers.com/attachments/fastboot_edl-7z.3775693/">fastboot_edl.exe</a>，在 bootloader 模式下执行 <code class="highlighter-rouge">fastboot_edl.exe reboot-edl</code>，<code class="highlighter-rouge">并没有进入EDL模式</code>，而是重启进系统了。</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>方法二，看 oem 本身是不是支持。<br />
+  参考 <a href="https://www.getdroidtips.com/5-methods-to-enter-edl-mode-on-any-xiaomi-smartphones-qualcomm/">What is EDL Mode? How to Enter EDL Mode on Any Qualcomm Device</a>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>  fastboot oem edl
+  <span class="c"># or</span>
+  fastboot reboot-edl
+  <span class="c"># or</span>
+  fastboot reboot edl
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="救砖路径">救砖路径</h3>
+
+<h4 id="kebab_15_o30_211221_repack-救砖包">kebab_15_O.30_211221_repack 救砖包</h4>
+
+<ul>
+  <li>救砖
+    <ul>
+      <li>kebab_15_O.30_211221_repack
+        <ul>
+          <li>版本号：Oxygen OS 11.0.12.KB05AA</li>
+          <li>型号： KB2000</li>
+          <li>Android 11</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Oxygen OS中系统升级
+    <ul>
+      <li>KB2005_11_F.13_full_update_e61f1cf7c6a55e531113091deadfb7acb96901da.zip
+        <ul>
+          <li>版本号：KB2005_11_F.13</li>
+          <li>硬件版本： KB2005_11</li>
+          <li>Android 13</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="fastboot-windows-driver">fastboot windows driver</h4>
+
+<p>https://www.thecustomdroid.com/qualcomm-hs-usb-qdloader-9008-drivers/<br />
+https://gsmusbdrivers.com/download/qualcomm-hs-usb-qdloader-9008-driver-64-bit-windows/<br />
+https://www.systweak.com/blogs/update-qualcomm-hs-usb-qdloader-9008-driver/</p>
+
+<h3 id="一加8tcoloros-12-降级回氢os技巧和降级包地址">一加8TColorOS 12 降级回氢OS技巧和降级包地址</h3>
+
+<ul>
+  <li><a href="https://www.oneplusbbs.com/thread-6312664-1.html">一加8TColorOS 12 降级回氢OS技巧和降级包地址</a></li>
+  <li><a href="https://mp.weixin.qq.com/s/OhEtjg8D9_SJx3_Im6LygA">一加 8 Pro &amp; 一加 8T ColorOS 12 × Android 12 降级教程</a></li>
+</ul>
+
+<h4 id="从-coloros-121--kb2000_11_c28-降级到-hydrongen-os-1101212kb05">从 ColorOS 12.1 / KB2000_11_C.28 降级到 Hydrongen OS 11.0.12.12.KB05</h4>
+
+<ol>
+  <li>ColorOS 》 设置 》关于本机 》点击“版本号”多次，开启开发者模式，才能使用本地刷OS包</li>
+  <li>本地刷包： 设置 》关于本机 》点击版本 》右上角三个点菜单 》本地安装</li>
+  <li>选中拷贝到根目录的 <code class="highlighter-rouge">OnePlus8THydrogen_15.H.31_OTA_0310_all_2110102354_downgrade_for_ColorOS_99349128626740e3.zip</code></li>
+  <li>点击“立即解压”，提示 <code class="highlighter-rouge">将会清空所有数据</code>，点击“已备份、继续”</li>
+  <li>解压十多分钟后，还要点击下“立即安装”</li>
+  <li>启动后，系统版本恢复到氢OS： Hydrongen OS 11.0.12.12.KB05</li>
+  <li>
+    <hr />
+  </li>
+  <li>据说：降级后由于数据清空将导致部分系统自带基础应用丢失，请务必按照以下步骤下载并安装全量包！</li>
+  <li>
+    <hr />
+  </li>
+  <li>拷贝<code class="highlighter-rouge">OnePlus8THydrogen_15.H.31_OTA_0310_all_2110102354_c1fc5e100ad14e1d.zip</code>到根目录</li>
+  <li>氢OS 设置 》系统 》 系统更新 》右上角齿轮图标 》本地升级</li>
+  <li>选中<code class="highlighter-rouge">OnePlus8THydrogen_15.H.31_OTA_0310_all_2110102354_c1fc5e100ad14e1d.zip</code> 》立即升级</li>
+  <li>升级发现 确实多了很多app，是不是系统自带基础应用丢失，不确定，很多预置第三方app都进来了。</li>
+  <li>— — — 再升级回 ColorOS</li>
+  <li>方法一： 系统自动下载ColorOS的升级包，安装后，升级到 KB2000_11_C.07，然后提示下载 ColorOS 12.1 / KB2000_11_C.28</li>
+  <li>方法二： 手动刷</li>
+  <li><code class="highlighter-rouge">ColorOS 12 C.07</code> / <code class="highlighter-rouge">KB2000_11_C.07</code> / <code class="highlighter-rouge">6016ebd34f1c4646b2ba5bb68c4b4cdf.zip</code> 拷贝到根目录<br />
+ 氢OS 设置 》系统 》 系统更新 》右上角齿轮图标 》本地升级</li>
+  <li><code class="highlighter-rouge">ColorOS 12.1 C.28</code> / <code class="highlighter-rouge">KB2000_11_C.28</code> / <code class="highlighter-rouge">b26ad2c2a2504967902ec2eb69b6c472.zip</code> 拷贝到根目录<br />
+设置 》关于本机 》点击“版本号”多次，开启开发者模式<br />
+设置 》关于本机 》点击版本 》右上角三个点菜单 》本地安装</li>
+  <li></li>
+  <li></li>
+</ol>
+
+<h3 id="可能出现的问题">可能出现的问题</h3>
+
+<p>①：自动检测DDR失败；解决办法：</p>
+
+<p>1、win7/win10必须禁用驱动更新签名。</p>
+
+<p>解决方法：（点击通知，找到并进入“所有设置。在所有设置中找到并进入“更新和安全”。<br />
+找到恢复，点击“高级启动”下的“立即重启”并重启电脑。重启后选择“疑难解答”<br />
+选择“高级选项”选择“启动设置”。点击“重启”按提示输入“7”禁用驱动程序强制签名。）</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>  ②： COM端不显示手机；解决办法： 1、  检查手机是否彻底关机。 解决方法：（能正常进入系统的情况下直接关机即可， 不能正常进入系统的情况下长安开机键不放10秒左右，手机黑屏即可）如以上方法不行请更换OPPO旗下或其他品牌Type-C线（实测华为全部型号数据线都不可用）
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="解锁">解锁</h2>
+
+<ol>
+  <li>开启开发者选项，进入开发者选项，勾选 “OEM 解锁”</li>
+  <li>解锁<br />
+ 注意：解锁后所有数据丢失，系统重置！！
+    <div class="language-sh highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> <span class="c"># 重启进入bootloader, 执行如下命令，</span>
+ <span class="c"># 或者 关闭手机，同时按下 音量上 + 音量下 + 电源键</span>
+ adb reboot bootloader
+    
+ fastboot devices
+ fastboot oem device-info
+ fastboot oem unlock
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h2 id="官方rom">官方rom</h2>
+
+<ul>
+  <li>氢OS下载
+    <ul>
+      <li><a href="https://www.oneplusbbs.com/thread-5729195-1.html">官方公告 OnePlus 8T 版本更新汇总帖（ 8 月 20 日更新）</a></li>
+      <li><a href="https://www.oneplus.com/cn/support/softwareupgrade/details?code=PM1605601419569">OnePlus 8T 官网 下载页 - 只有最新版</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>氧OS
+    <ul>
+      <li><a href="https://gauss-componentotacostmanual-eu.allawnofs.com/remove-c982bd1fd368874f5e87a370e589a8a9/component-ota/22/08/01/c65f2ab203504c70935f8157dbc73e01.zip">OxygenOS 12.1 C.33 Full ROM (EUEX)</a></li>
+      <li><a href="https://gauss-componentotacostmanual-in.allawnofs.com/remove-c0aca3e153b2ffa3b97e6978d5881470/component-ota/22/10/19/2126251555694cc49fde3f9ddcecbab3.zip">OxygenOS 12 C.36 INDIA</a></li>
+      <li><a href="https://www.thecustomdroid.com/oneplus-8t-oxygenos-ota-updates/">Download OnePlus 8T OxygenOS OTA Updates &amp; How to Install (Latest: OxygenOS 11.0.11.11)</a></li>
+      <li><a href="https://www.oneplusbbs.com/forum.php?mod=viewthread&amp;tid=5743763">一加8T氧OS国际版全量包</a></li>
+      <li><a href="https://www.xda-developers.com/tag/oxygenos">xda - oxygenos</a></li>
+      <li>
+        <hr />
+      </li>
+      <li>International (KB05AA)</li>
+      <li>Europe (KB05BA) EUEX 、EEA</li>
+      <li>India (KB05DA)</li>
+      <li>OnePlus 8T OxygenOS 12.1 C.36
+        <ul>
+          <li><a href="https://gauss-componentotacostmanual-sg.allawnofs.com/remove-c0aca3e153b2ffa3b97e6978d5881470/component-ota/22/10/19/2126251555694cc49fde3f9ddcecbab3.zip">Global</a></li>
+          <li><a href="https://gauss-componentotacostmanual-eu.allawnofs.com/remove-c0aca3e153b2ffa3b97e6978d5881470/component-ota/22/10/19/2126251555694cc49fde3f9ddcecbab3.zip">Europe</a></li>
+          <li><a href="https://gauss-componentotacostmanual-in.allawnofs.com/remove-c0aca3e153b2ffa3b97e6978d5881470/component-ota/22/10/19/2126251555694cc49fde3f9ddcecbab3.zip">India</a></li>
+        </ul>
+      </li>
+      <li>OnePlus 8T OxygenOS 12.1 C.35 GLO</li>
+      <li><a href="https://android.googleapis.com/packages/ota-api/package/2b1673dd2c4d3fb3c0fc3c39b94599875d6b8f86.zip">Increment (KB2005_11_C.33) 400多M</a></li>
+      <li>OnePlus 8T OxygenOS 12.1 C.33 GLO
+        <ul>
+          <li><a href="https://android.googleapis.com/packages/ota-api/package/1acb02ce051ac1f235f1ed269264de2b5621382b.zip">Increment (KB2005_11_C.21) 800M+</a></li>
+        </ul>
+      </li>
+      <li><a href="https://gauss-componentotacostmanual-sg.allawnofs.com/remove-91a56efb7408c189852f11d7a059ae38/component-ota/22/06/15/2504246e371f4bffa3b44029c38cebf4.zip">OnePlus 8T OxygenOS 12.1 C.21 IND</a></li>
+      <li><a href="https://component-ota-afs.coloros.com/component-ota/22/06/10/75a5842477b34ad98011d76bd3c540ab.zip">OnePlus 8T ColorOS 12.1 C.29</a></li>
+      <li><a href="https://gauss-componentotacostmanual-sg.allawnofs.com/remove-80272dd071ce1e970b422884a4b89f01/component-ota/22/05/18/41ed7cd8d3f4402c9f94b5853596d512.zip">OnePlus 8T OxygenOS 12.1 C.20 EUEX</a></li>
+      <li><a href="https://gauss-componentotacostmanual-sg.allawnofs.com/remove-c508ccd91dfe1649169715cd19481268/component-ota/22/05/27/5be04e85bcce4002be2382df691e60bb.zip">OnePlus 8T OxygenOS 12.1 C.20 IND</a></li>
+      <li><a href="https://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.15_GLO_1032_2204021904/patch/amazone2/INT/OnePlus8TOxygen/OnePlus8TOxygen_15.E.15_GLO_1032_2204021904/OnePlus8TOxygen_15.E.15_OTA_1032_all_2204021904_381685994.zip">OnePlus 8T OxygenOS 12.1 C.15 EEA</a></li>
+      <li><a href="https://component-ota-afs.coloros.com/component-ota/22/04/08/c65e4c7cfe4a4ef6a26f0714132498fb.zip">OnePlus 8T ColorOS 12 C.21</a></li>
+      <li><a href="https://android.googleapis.com/packages/ota-api/package/435fc808f603bbc8a63ce30fd944676a65a61d6f.zip">OnePlus 8T OxygenOS 12 C.11 GLO</a></li>
+      <li><a href="https://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.31_GLO_0310_2202182356/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.31_GLO_0310_2202182356/OnePlus8TOxygen_15.E.31_OTA_0310_all_2202182356_c7bd2.zip">OnePlus 8T OxygenOS 11.0.13.13.KB05BA</a></li>
+      <li><a href="https://otafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.29_GLO_0290_2202182359/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.29_GLO_0290_2202182359/OnePlus8TOxygen_15.I.29_OTA_0290_all_2202182359_e054f01fb15b914.zip">OnePlus 8T OxygenOS 11.0.12.12.KB05DA</a></li>
+      <li><a href="https://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.30_GLO_0300_2112211346/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.30_GLO_0300_2112211346/OnePlus8TOxygen_15.E.30_OTA_0300_all_2112211346_c9165fe0b44.zip">OnePlus 8T Oxygen OS 11.0.12.12.KB05BA</a></li>
+      <li><a href="https://otafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.28_GLO_0280_2112211346/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.28_GLO_0280_2112211346/OnePlus8TOxygen_15.I.28_OTA_0280_all_2112211346_f7f2831d.zip">OnePlus 8T OxygenOS 11.0.11.11.KB05DA</a></li>
+      <li><a href="http://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.29_GLO_0290_2110091931/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.29_GLO_0290_2110091931/OnePlus8TOxygen_15.E.29_OTA_0290_all_2110091931_31fe07.zip">OnePlus 8T Oxygen OS 11.0.11.11.KB05BA</a></li>
+      <li><a href="https://oxygenos.oneplus.net/OnePlus8TOxygen_15.O.29_OTA_0290_all_2110091944_3d8159dff77f4ef1.zip">OnePlus 8T Oxygen OS 11.0.11.11.KB05AA</a></li>
+      <li><a href="http://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.28_GLO_0280_2107310147/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.28_GLO_0280_2107310147/OnePlus8TOxygen_15.E.28_OTA_0280_all_2107310147_ddcd.zip">OnePlus 8T Oxygen OS 11.0.10.10.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.I.26_GLO_0260_2107310159/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.26_GLO_0260_2107310159/OnePlus8TOxygen_15.I.26_OTA_0260_all_2107310159_9fbbe0c.zip">OnePlus 8T Oxygen OS 11.0.9.9.KB05DA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.27_GLO_0270_2107120935/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.27_GLO_0270_2107120935/OnePlus8TOxygen_15.E.27_OTA_0270_all_2107120935_b276b8.zip">OnePlus 8T Oxygen OS 11.0.9.9.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.26_GLO_0260_2106020020/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.26_GLO_0260_2106020020/OnePlus8TOxygen_15.E.26_OTA_0260_all_2106020020_e8382.zip">OnePlus 8T Oxygen OS 11.0.8.14.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.25_GLO_0250_2106020024/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.25_GLO_0250_2106020024/OnePlus8TOxygen_15.I.25_OTA_0250_all_2106020024_0b64095f.zip">OnePlus 8T Oxygen OS 11.0.8.14.KB05DA</a></li>
+      <li><a href="http://otafsc-cost.h2os.com/OnePlus8T_CH/OnePlus8THydrogen_15.H.24_0245_2104251757/patch/CHN/OnePlus8THydrogen/OnePlus8THydrogen_15.H.24_0245_2104251757/OnePlus8THydrogen_15.H.24_OTA_0245_all_2104251757_1277ce43.zip">OnePlus 8T Hydrogen OS 11.0.8.14.KB05</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.23_GLO_0230_2103221814/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.23_GLO_0230_2103221814/OnePlus8TOxygen_15.I.23_OTA_0230_all_2103221814_db7a.zip">OnePlus 8T Oxygen OS 11.0.8.12.KB05DA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.24_GLO_0240_2103221851/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.24_GLO_0240_2103221851/OnePlus8TOxygen_15.E.24_OTA_0240_all_2103221851_61b94dd7e29.zip">OnePlus 8T Oxygen OS 11.0.8.12.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.23_GLO_0230_2103221814/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.23_GLO_0230_2103221814/OnePlus8TOxygen_15.I.23_OTA_0230_all_2103221814_db7a.zip">OnePlus 8T Oxygen OS 11.0.8.12.KB05DA</a></li>
+      <li><a href="https://oxygenos.oneplus.net/OnePlus8TOxygen_15.O.23_OTA_0230_all_2103221818_1608f9eff23e4166.zip">OnePlus 8T Oxygen OS 11.0.8.11.KB05AA</a></li>
+      <li><a href="https://download.h2os.com/OnePlus8T/MP/OnePlus8THydrogen_15.H.22_OTA_0220_all_2102101834_d27b615cdf9342d4.zip">OnePlus 8T Hydrogen OS 11.0.7.11.KB05</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/OnePlus8TOxygen_15.I.22_OTA_0220_all_2102011820_4231c4.zip">OnePlus 8T Oxygen OS 11.0.7.9.KB05AA</a></li>
+      <li><a href="http://otafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.23_GLO_0230_2102011823/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.23_GLO_0230_2102011823/OnePlus8TOxygen_15.E.23_OTA_0230_all_2102011823_d38dd558655966a.zip">OnePlus 8T Oxygen OS 11.0.7.10.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/OnePlus8TOxygen_15.I.22_OTA_0220_all_2102011820_4231c4.zip">OnePlus 8T Oxygen OS 11.0.7.9.KB05AA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.22_GLO_0220_2102011820/OnePlus8TOxygen_15.I.22_OTA_0220_all_2102011820_4231c4.zip">OnePlus 8T Oxygen OS 11.0.7.9.KB05DA</a></li>
+      <li><a href="https://oxygenos.oneplus.net/OnePlus8TOxygen_15.O.21_OTA_0215_all_2101010247_ec6a7bddc57f444a.zip">OnePlus 8T Oxygen OS 11.0.6.8.KB05AA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.22_GLO_0225_2101010528/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.22_GLO_0225_2101010528/OnePlus8TOxygen_15.E.22_OTA_0225_all_2101010528_6e6210b451.zip">OnePlus 8T Oxygen OS 11.0.6.9.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.21_GLO_0215_2101010519/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.21_GLO_0215_2101010519/OnePlus8TOxygen_15.I.21_OTA_0215_all_2101010519_66bcd10b196c3.zip">OnePlus 8T Oxygen OS 11.0.6.8.KB05DA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.22_GLO_0225_2101010528/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.22_GLO_0225_2101010528/OnePlus8TOxygen_15.E.22_OTA_0225_all_2101010528_6e6210b451.zip">OnePlus 8T Oxygen OS 11.0.6.9.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_EEA/OnePlus8TOxygen_15.E.22_GLO_0220_2012171750/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.E.22_GLO_0220_2012171750/OnePlus8TOxygen_15.E.22_OTA_0220_all_2012171750_874406d14b.zip">OnePlus 8T Oxygen OS 11.0.6.8.KB05BA</a></li>
+      <li><a href="http://otaafsg-cost.h2os.com/OnePlus8T_IND/OnePlus8TOxygen_15.I.21_GLO_0215_2101010519/patch/amazone2/GLO/OnePlus8TOxygen/OnePlus8TOxygen_15.I.21_GLO_0215_2101010519/OnePlus8TOxygen_15.I.21_OTA_0215_all_2101010519_66bcd10b196c3.zip">OnePlus 8T Oxygen OS 11.0.6.8.KB05DA</a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>jiu</p>
+
+<h2 id="twrp">TWRP</h2>
+
+<ul>
+  <li><a href="https://dl.twrp.me/kebab/">8T TWRP 官方下载</a>
+    <ul>
+      <li><a href="https://twrp.me/oneplus/oneplus8t.html">https://twrp.me/oneplus/oneplus8t.html</a></li>
+      <li><a href="https://github.com/TeamWin/android_device_oneplus_kebab">https://github.com/TeamWin/android_device_oneplus_kebab</a></li>
+    </ul>
+  </li>
+  <li><a href="https://forum.xda-developers.com/t/closed-no-longer-maintained-recovery-11-official-teamwin-recovery-project-8t-kebab-2022-03-09.4302449/">No longer maintained - RECOVERY - 11 - OFFICIAL - TeamWin Recovery Project (8T / Kebab) (2022-03-09)</a></li>
+  <li><a href="https://www.getdroidtips.com/twrp-recovery-oneplus-8-root/">How to Install Official TWRP Recovery on OnePlus 8 and OnePlus 8T and Root it</a></li>
+</ul>
+
+<h2 id="firmware">firmware</h2>
+
+<ul>
+  <li><a href="https://mega.nz/folder/W7JhwTAT#Yu6cxqvJcAC28cy0m_kkQA">OSS Firmware</a></li>
+  <li><a href="https://androidfilehost.com/?w=files&amp;flid=326582">OSS Firmware - DDR0 &amp; DDR1</a></li>
+  <li><a href="https://www.mediafire.com/folder/2gpefcni2siwo/OnePlus_8T_(KB200x)">OnePlus 8T (KB200x) Firmware - mediafire.com</a></li>
+</ul>
+
+<h2 id="os">os</h2>
+
+<ul>
+  <li>lineage
+    <ul>
+      <li><strong>下载</strong>
+        <ul>
+          <li><a href="https://download.lineageos.org/devices/kebab">Official Download</a></li>
+          <li><a href="https://www.lineageoslog.com/19.1/kebab">https://www.lineageoslog.com/19.1/kebab</a></li>
+        </ul>
+      </li>
+      <li><strong>指南</strong>
+        <ul>
+          <li><a href="https://wiki.lineageos.org/devices/kebab/install">Install LineageOS on kebab</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Evolution X
+    <ul>
+      <li><a href="https://evolution-x.org">evolution-x Official Site</a></li>
+      <li><a href="https://evolution-x.org/device/kebab">evolution-x.org - OnePlus8T</a></li>
+      <li>Source code: <a href="https://github.com/Evolution-X">https://github.com/Evolution-X</a></li>
+      <li><a href="https://forum.xda-developers.com/t/rom-13-0_r30-official-evolution-x-7-6-2-03-05-2023.4480927/"> ROM  13.0_r30  OFFICIAL  Evolution X 7.6.2  03/05/2023 </a></li>
+      <li>
+        <p><a href="https://sourceforge.net/projects/evolution-x/files/kebab/">Evolution - OnePlus8T - Download</a></p>
+      </li>
+      <li>rom:</li>
+    </ul>
+    <p><a href="https://sourceforge.net/projects/evolution-x/files/kebab/evolution_kebab-ota-tq1a.230205.002-03050512-unsigned.zip/download">https://sourceforge.net/projects/evolution-x/files/kebab/evolution_kebab-ota-tq1a.230205.002-03050512-unsigned.zip/download</a></p>
+
+    <ul>
+      <li>recovery:</li>
+    </ul>
+    <p><a href="https://sourceforge.net/projects/evolution-x/files/kebab/recovery_erofs/recovery.img/download">https://sourceforge.net/projects/evolution-x/files/kebab/recovery_erofs/recovery.img/download</a></p>
+
+    <ul>
+      <li>vbmeta:</li>
+    </ul>
+    <p><a href="https://sourceforge.net/projects/evolution-x/files/kebab/vbmeta/vbmeta.img/download">https://sourceforge.net/projects/evolution-x/files/kebab/vbmeta/vbmeta.img/download</a></p>
+
+    <ul>
+      <li>copy_partitions:</li>
+    </ul>
+    <p><a href="https://sourceforge.net/projects/evolution-x/files/kebab/copy_partitions/copy_partitions.zip/download">https://sourceforge.net/projects/evolution-x/files/kebab/copy_partitions/copy_partitions.zip/download</a></p>
+  </li>
+  <li>crDroid
+    <ul>
+      <li><a href="https://crdroid.net/downloads">crDroid - Download</a></li>
+      <li><a href="https://crdroid.net/kebab/">crDroid - oneplus 8t - Download</a></li>
+      <li><a href="https://sourceforge.net/projects/crdroid/files/kebab/">crDroid - sourceforge - Download</a></li>
+    </ul>
+  </li>
+  <li>Project Elixir
+    <ul>
+      <li><a href="https://projectelixiros.com">Official Site</a>
+        <ul>
+          <li><a href="https://github.com/Project-Elixir/docs">https://github.com/Project-Elixir/docs</a></li>
+          <li><a href="https://github.com/ProjectElixir-Devices">Project Elixir • Devices</a></li>
+          <li><a href="https://github.com/ProjectElixir-Devices/Wiki">https://github.com/ProjectElixir-Devices/Wiki</a></li>
+        </ul>
+      </li>
+      <li><a href="https://projectelixiros.com/device/kebab">Official Site - Oneplus8T - Download</a>
+        <ul>
+          <li><a href="https://www.pling.com/p/1962779/">https://www.pling.com/p/1962779/</a></li>
+        </ul>
+      </li>
+      <li><a href="https://github.com/ProjectElixir-Devices/Wiki/blob/tiramisu/kebab.md">Oneplus8T 刷机步骤</a></li>
+    </ul>
+  </li>
+  <li>Pixel Experience
+    <ul>
+      <li><a href="https://download.pixelexperience.org">Pixel Experience Official Site</a></li>
+      <li><a href="https://get.pixelexperience.org/kebab">Pixel Experience - OnePlus8T - Download</a></li>
+      <li><a href="https://telegra.ph/How-to-install-Pixel-Experience-11-25">Guide: Installing Pixel Experience</a></li>
+      <li><a href="https://wiki.pixelexperience.org/devices/kebab/build/">Build for kebab</a></li>
+    </ul>
+  </li>
+  <li>PixelPlusUI
+    <ul>
+      <li><a href="https://www.pling.com/p/1598507/">PixelPlusUI Official Site - kebab / lemon</a><br />
+Oneplus只支持： 7Pro, 8Pro, 8T, 9R</li>
+    </ul>
+  </li>
+  <li>PEX / Pixel Extended
+    <ul>
+      <li>Source code: https://github.com/PixelExtended</li>
+      <li><a href="https://forum.xda-developers.com/t/rom-13-0-oneplus8t-unofficial-pixel-extended-rom-v5-5-04-03-2023.4542681/">https://forum.xda-developers.com/t/rom-13-0-oneplus8t-unofficial-pixel-extended-rom-v5-5-04-03-2023.4542681/</a></li>
+      <li>下载链接： <a href="https://mega.nz/folder/XQQXBBRY#C2QRb3qh1MIXty1KlgxMhw">https://mega.nz/folder/XQQXBBRY#C2QRb3qh1MIXty1KlgxMhw</a></li>
+    </ul>
+  </li>
+  <li>Nameless AOSP for OnePlus 8T/9R
+    <ul>
+      <li><a href="https://forum.xda-developers.com/t/rom-official-oos-cam-oneplus-8t-9r-12-1-0_r11-nameless-aosp-2022-07-23.4403295/">https://forum.xda-developers.com/t/rom-official-oos-cam-oneplus-8t-9r-12-1-0_r11-nameless-aosp-2022-07-23.4403295/</a></li>
+    </ul>
+
+    <p>Android OS version: 12L/12.1<br />
+Security patch level: July 2022<br />
+Build author/Device Maintainer: Chandu Dyavanapelli<br />
+Kernel Source code: https://github.com/chandu078/kernel_oneplus_kebab<br />
+Source code: https://github.com/Nameless-AOSP</p>
+
+    <ul>
+      <li>下载地址： <a href="https://sourceforge.net/projects/nameless-aosp/files/kebab/">https://sourceforge.net/projects/nameless-aosp/files/kebab/</a></li>
+    </ul>
+  </li>
+  <li>riceDroid
+    <ul>
+      <li><a href="https://forum.xda-developers.com/t/rom-tiramisu-aosp-oos12-kebab-lemonades-ricedroidoss-v10-2-android-project-official.4544059/">riceDroidOSSv10.2androidproject-OFFICIAL</a><br />
+source: https://jie-fang.github.io/blog/basics-of-ricing<br />
+下载链接： <a href="https://drive.google.com/file/d/1ebPwoNOOycNWGzHKo1rT1VSRlzYdawjc/view?usp=sharing">https://drive.google.com/file/d/1ebPwoNOOycNWGzHKo1rT1VSRlzYdawjc/view?usp=sharing</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#rom" title="Pages tagged rom" class="tag"><span class="term">rom</span></a><a href="/tags#adb" title="Pages tagged adb" class="tag"><span class="term">adb</span></a><a href="/tags#fastboot" title="Pages tagged fastboot" class="tag"><span class="term">fastboot</span></a><a href="/tags#bootloader" title="Pages tagged bootloader" class="tag"><span class="term">bootloader</span></a><a href="/tags#root" title="Pages tagged root" class="tag"><span class="term">root</span></a><a href="/tags#unlock" title="Pages tagged unlock" class="tag"><span class="term">unlock</span></a><a href="/tags#twrp" title="Pages tagged twrp" class="tag"><span class="term">twrp</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

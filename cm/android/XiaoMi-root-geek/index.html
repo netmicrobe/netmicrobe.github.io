@@ -1,0 +1,1053 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>小米5x/8se 解锁、root、刷机、玩机 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="adb, fastboot, bootloader, root, unlock, twrp">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小米5x/8se 解锁、root、刷机、玩机">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/cm/android/XiaoMi-root-geek/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/cm/android/XiaoMi-root-geek/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">小米5x/8se 解锁、root、刷机、玩机</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-04-20T00:00:00+08:00">April 20, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li><a href="http://www.miui.com/download.html">小米ROM官方下载</a></li>
+      <li><a href="http://www.miui.com/shuaji-329.html">小米官网刷机教程</a></li>
+      <li>小米5x <em>tiffany</em>
+        <ul>
+          <li><a href="http://en.miui.com/forum-141-1.html">http://en.miui.com/forum-141-1.html</a></li>
+          <li><a href="https://www.getdroidtips.com/root-twrp-xiaomi-mi-5x-tiffany/">How To Root And Install TWRP Recovery For Xiaomi Mi 5X [tiffany]</a></li>
+          <li><a href="http://www.stechguide.com/install-twrp-recovery-and-root-xiaomi-mi-5x/">Unlock Bootloader, Install TWRP Recovery and Root Xiaomi Mi 5X (Tiffany)</a></li>
+          <li><a href="https://www.getdroidtips.com/dotos-xiaomi-mi-5x/">How To Install dotOS on Xiaomi Mi 5X based on Android 8.1 Oreo</a></li>
+          <li><a href="https://github.com/Mi5xDevs/android_device_xiaomi_tiffany">Device configuration for Xiaomi Mi 5X</a></li>
+          <li><a href="http://en.miui.com/thread-1110001-1-1.html">Mi 5X Oxygen/Tiffany TWRP 3.1.1</a></li>
+          <li><a href="http://en.miui.com/thread-840402-1-1.html">All about Mi 5X from AliExpress (fake firmware, bricks and etc)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="解锁">解锁</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://www.romzhijia.net/shuaji/22013.html">https://www.romzhijia.net/shuaji/22013.html</a></li>
+      <li><a href="http://www.romleyuan.com/lec/read?id=83">http://www.romleyuan.com/lec/read?id=83</a></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>申请解锁<br />
+ 到2020年情况变了，小米越来越。。。不打算再买小米了。</p>
+
+    <ol>
+      <li>设置 -&gt; 更多设置 -&gt; 开发者选项 -&gt; 设备解锁状态 -&gt; 绑定帐号和设备<br />
+ <strong>注意</strong> 小米账号绑定的手机号来上网，否则绑定不了。<br />
+ 如果还绑定不了，手机卡流量上网，重新再手机上登录下小米账号。再绑定“账号和设备”试试。<br />
+ lj小米。。。</li>
+      <li>需要登录小米账号后，到开发者选项将设备和账号绑定0-1000小时，一般默认为168小时，部分新机实际几百小时，具体绑定时间，我们解锁的时候会提示。</li>
+      <li>访问 <a href="https://unlock.update.miui.com">https://unlock.update.miui.com</a> 去申请</li>
+      <li>申请通过下载unlock工具 miflash_unlock-*.zip</li>
+    </ol>
+  </li>
+  <li>
+    <p>小米账号登录 <a href="http://en.miui.com/unlock/download_en.html">http://en.miui.com/unlock/download_en.html</a> 下载unlock工具 miflash_unlock-en-2.3.803.10.zip</p>
+  </li>
+  <li>
+    <p>安装unlock工具，并在工具中用小米账号登录</p>
+  </li>
+  <li>
+    <p>关机, 同时按住<code class="highlighter-rouge">音量下键</code>和<code class="highlighter-rouge">电源键</code>进入 Fastboot mode;</p>
+  </li>
+  <li>
+    <p>将手机连上电脑，点击 “Unlock”.</p>
+  </li>
+  <li>
+    <p>解锁成功，重启进入 fastboot 模式，输入 <code class="highlighter-rouge">fastboot oem device-info</code> 查看是否unlock成功。</p>
+  </li>
+</ol>
+
+<ul>
+  <li>2020年之前申请解锁的方法（留个纪念）
+    <ol>
+      <li>小米账号登录手机 15 天之后才能解锁</li>
+      <li>小米账号登录 <a href="http://www.miui.com/unlock/index_en.html">http://www.miui.com/unlock/index_en.html</a> 申请解锁</li>
+      <li>大概半小时内会批准通过，收到一条短信提醒</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="小米8se-在-fastboot-模式下掉连接">小米8SE 在 fastboot 模式下，掉连接</h3>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://blog.csdn.net/gmaaa123/article/details/102882838">进入fastboot模式后，一连接刷机助手就变成press any key to shutdown</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </li>
+  <li>
+    <p>问题描述</p>
+
+    <p>小米8SE 在 fastboot 模式下，Windows10 执行2次fastboot就找不到设备了，自然小米的 <strong>unlock 程序也识别不到手机！！</strong></p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>C:\Users\wi&gt;fastboot devices
+c676c6b3        fastboot
+
+C:\Users\wi&gt;fastboot devices
+????????????    fastboot
+
+C:\Users\wi&gt;fastboot devices
+
+C:\Users\wi&gt;fastboot devices
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>解决方法：</li>
+</ul>
+
+<ol>
+  <li>
+    <p>win10系统 连接的USB2.0接口（我感觉这一步没啥用）</p>
+  </li>
+  <li>
+    <p>修改注册表</p>
+
+    <p>以管理员权限执行如下bat批处理文件 <a href="fix-win10-usb-drop.bat">fix-win10-usb-drop.bat</a>：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre> @echo off
+ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\18D1D00D0100" /v "osvc" /t REG_BINARY /d "0000" /f
+ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\18D1D00D0100" /v "SkipContainerIdQuery" /t REG_BINARY /d "01000000" /f
+ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags\18D1D00D0100" /v "SkipBOSDescriptorQuery" /t REG_BINARY /d "01000000" /f
+     
+ pause
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="小米8-se-提示-current-account-is-not-bound-to-this-device">小米8 SE 提示 “Current account is not bound to this device”</h3>
+
+<ol>
+  <li>开机 》设置 》更多设置 》开发者选项</li>
+  <li>OEM解锁，开启</li>
+  <li>设备解锁状态 》绑定帐号和设备</li>
+</ol>
+
+<h2 id="小米-fastboot-oem-命令">小米 fastboot oem 命令</h2>
+
+<ul>
+  <li>ref
+    <ul>
+      <li><a href="https://askubuntu.com/a/705541">AskUbuntu - no permissions fastboot - fastboot and adb not working</a></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>fastboot oem device-info
+fastboot oem lock
+fastboot oem unlock
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>如果出现错误： <code class="highlighter-rouge">no permissions (user in plugdev group; are your udev rules wrong?); </code>，尝试如下方法：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo $(which fastboot) devices
+sudo $(which fastboot) reboot
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h2 id="root">ROOT</h2>
+
+<ol>
+  <li>刷了开发版</li>
+  <li>安全中心 》应用管理 》权限 》ROOT权限管理</li>
+</ol>
+
+<h2 id="刷机">刷机</h2>
+
+<h3 id="方法1系统内升级">方法1：系统内升级</h3>
+
+<ol>
+  <li>
+    <p>下载 MIUI_ROM 最新安装包 <a href="http://www.miui.com/download.html">http://www.miui.com/download.html</a></p>
+  </li>
+  <li>
+    <p>将手机连接电脑，将 zip 包拷贝至内置存储 /downloaded_rom 文件夹下，或仅包含”英文或数字”路径的文件夹下，然后进入“系统更新”：</p>
+  </li>
+  <li>MIUI 6/7/8/9：点右上角“…”选择“手动选择安装包” ，然后选择 zip 包。
+    <ul>
+      <li>带BL锁机型：<br />
+只能选择<a href="http://www.miui.com/download.html">MIUI官方下载页</a>中<strong>最新版本</strong><br />
+进行卡刷升级，非最新外发版本不支持卡刷。</li>
+    </ul>
+  </li>
+  <li>选择正确完整包后，系统会自动开始升级，完成之后，重启进入新系统。</li>
+</ol>
+
+<h3 id="方法2通过-recovery-升级">方法2：通过 Recovery 升级</h3>
+
+<p>因Recovery界面不同，不适用mtk平台的红米手机也不适用带有BL锁的机型。</p>
+
+<ol>
+  <li>下载 MIUI_ROM 最新安装包</li>
+  <li>电脑上操作，重命名zip文件包为 update.zip 拷贝至内置存储 <strong>根目录</strong>。</li>
+  <li>进入Recovery模式
+    <ul>
+      <li>开机状态下：进入“系统更新”，点右上角“…”选择“重启到恢复模式（Recovery）”，点击“立即重启” 进入Recovery模式。</li>
+      <li>关机状态下：同时按住<code class="highlighter-rouge">音量上+电源键开机</code>，屏幕亮起松开电源键保持长按音量键 进入Recovery模式。</li>
+    </ul>
+  </li>
+  <li>Recovery界面进行卡刷。<br />
+ 选择“简体中文”并确认（音量键选择电源键确认），<br />
+ 选择“将update选择“简体中文”并确认（音量键选择电源键确认），<br />
+ 选择“将update.zip安装至系统一”并确认。<br />
+ 选择确认后等待完成，选择重启至系统一即可。</li>
+</ol>
+
+<h3 id="方法3线刷">方法3：线刷</h3>
+
+<p>不适用部分红米手机（如下列表没有的机型则不支持）。</p>
+
+<ol>
+  <li>下载 通用刷机工具<br />
+ <a href="http://bigota.d.miui.com/tools/MiFlash2017-12-12-0-ex.zip">http://bigota.d.miui.com/tools/MiFlash2017-12-12-0-ex.zip</a><br />
+ (大小:36M，MD5:9d3bb2ba44b75ef1a840483f599bb419)<br />
+ (如需安装驱动，执行XiaoMiFlash.exe运行后，点击左上角Driver,再点击安装即可)</li>
+  <li>
+    <p>下载 线刷fastboot版本<br />
+ <a href="http://www.miui.com/shuaji-393.html">http://www.miui.com/shuaji-393.html</a><br />
+ (请检查文件后缀名是否为”.tgz”，如果为”.gz” 请重新命名后缀为”.tgz”）</p>
+  </li>
+  <li>
+    <p>进入Fastboot模式<br />
+ 关机状态下，同时按住 音量下+电源键 进入Fastboot模式将手机USB连接电脑。</p>
+  </li>
+  <li>线刷包下载完成后解压，打开线刷包文件夹</li>
+  <li>打开刷机工具，贴入线刷包的解压路径</li>
+  <li>刷机工具，点击“加载设备”，刷机程序会自动识别手机；点击“刷机”后开始刷机。</li>
+  <li>然后等待，工具显示刷机成功，手机会自动开机。</li>
+</ol>
+
+<ul>
+  <li><strong>注意</strong> 刷机工具最下方，不要选择“clean all and lock”，选择“Clean All”</li>
+</ul>
+
+<h2 id="remount-system-rewritable">remount /system rewritable</h2>
+
+<p>参考： <a href="https://blog.csdn.net/yapingmcu/article/details/53203549">https://blog.csdn.net/yapingmcu/article/details/53203549</a></p>
+
+<pre><code class="language-bat">&gt;adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as D:\sdk_full\platform-tools\adb.exe
+
+&gt;adb root
+
+&gt;adb disable-verity
+Verity disabled on /system
+Now reboot your device for settings to take effect
+
+&gt;adb reboot
+
+&gt;adb root
+
+&gt;adb remount
+remount succeeded
+
+&gt;adb shell
+tiffany:/ # mount | grep system
+/dev/block/mmcblk0p24 on /system type ext4 (rw,seclabel,relatime,discard,data=ordered)
+</code></pre>
+
+<h2 id="修改按键映射">修改按键映射</h2>
+
+<ul>
+  <li>参考
+    <ul>
+      <li><a href="https://zhidao.baidu.com/question/1800869515413680627.html">https://zhidao.baidu.com/question/1800869515413680627.html</a></li>
+      <li><a href="http://tieba.baidu.com/p/1899865022?traceid=">http://tieba.baidu.com/p/1899865022?traceid=</a></li>
+      <li><a href="https://blog.csdn.net/mcgrady_tracy/article/details/47358689">android kl文件</a></li>
+      <li><a href="https://blog.csdn.net/kc58236582/article/details/49925267">android 添加按键（一) kl文件 kcm文件</a></li>
+      <li><a href="https://blog.csdn.net/u013308744/article/details/49274069">android kl 文件的作用</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="android-kl文件">android kl文件</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="c"># 查看手机的input设备</span>
+adb shell cat /proc/bus/input/devices
+
+<span class="c"># 或者</span>
+adb shell getevent -p
+
+<span class="c"># 或者</span>
+adb shell dumpsys input
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre><span class="c"># 小米5x 的执行效果</span>
+<span class="c"># ft5435_ts 是触控按键</span>
+<span class="c"># fts_ts 可能是触摸屏，有这么个属性 touch.size.calibration: geometric</span>
+
+<span class="gp">$ </span>adb shell cat /proc/bus/input/devices
+
+...
+
+I: <span class="nv">Bus</span><span class="o">=</span>0018 <span class="nv">Vendor</span><span class="o">=</span>0000 <span class="nv">Product</span><span class="o">=</span>0000 <span class="nv">Version</span><span class="o">=</span>0000
+N: <span class="nv">Name</span><span class="o">=</span><span class="s2">"ft5435_ts"</span>
+P: <span class="nv">Phys</span><span class="o">=</span>
+S: <span class="nv">Sysfs</span><span class="o">=</span>/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input1
+U: <span class="nv">Uniq</span><span class="o">=</span>
+H: <span class="nv">Handlers</span><span class="o">=</span>mdss_fb kgsl event1
+B: <span class="nv">PROP</span><span class="o">=</span>2
+B: <span class="nv">EV</span><span class="o">=</span>b
+B: <span class="nv">KEY</span><span class="o">=</span>400 0 0 100040008800 0 0
+B: <span class="nv">ABS</span><span class="o">=</span>260800000000000
+
+I: <span class="nv">Bus</span><span class="o">=</span>0018 <span class="nv">Vendor</span><span class="o">=</span>0000 <span class="nv">Product</span><span class="o">=</span>0000 <span class="nv">Version</span><span class="o">=</span>0000
+N: <span class="nv">Name</span><span class="o">=</span><span class="s2">"fts_ts"</span>
+P: <span class="nv">Phys</span><span class="o">=</span>
+S: <span class="nv">Sysfs</span><span class="o">=</span>/devices/soc/78b7000.i2c/i2c-3/3-0040/input/input2
+U: <span class="nv">Uniq</span><span class="o">=</span>
+H: <span class="nv">Handlers</span><span class="o">=</span>mdss_fb kgsl event2
+B: <span class="nv">PROP</span><span class="o">=</span>2
+B: <span class="nv">EV</span><span class="o">=</span>b
+B: <span class="nv">KEY</span><span class="o">=</span>400 0 0 100040000800 0 0
+B: <span class="nv">ABS</span><span class="o">=</span>261800000000000
+
+...
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="实战小米5x交换-home-键-和-返回键的位置">【实战】小米5x：交换 Home 键 和 返回键的位置</h3>
+
+<ol>
+  <li>编辑 /system/usr/keylayout/Generic.kl
+    <ol>
+      <li><code class="highlighter-rouge">key 158   BACK</code> 改为 <code class="highlighter-rouge">key 172   BACK</code></li>
+      <li><code class="highlighter-rouge">key 172   HOME</code> 改为 <code class="highlighter-rouge">key 158   HOME</code></li>
+    </ol>
+  </li>
+  <li><code class="highlighter-rouge">adb shell cat /proc/bus/input/devices</code> 查看 input 设备名称，这里是 <em>ft5435_ts</em></li>
+  <li>编辑 /system/usr/keylayout/ft5435_ts.kl
+    <ol>
+      <li><code class="highlighter-rouge">key 172    HOME    VIRTUAL</code> 改为 <code class="highlighter-rouge">key 158    HOME    VIRTUAL</code></li>
+      <li><code class="highlighter-rouge">key 158    BACK    VIRTUAL</code> 改为 <code class="highlighter-rouge">key 172    BACK    VIRTUAL</code></li>
+    </ol>
+  </li>
+  <li>重启手机</li>
+</ol>
+
+<h2 id="使用屏幕的虚拟导航按键--enable-on-screen-buttons">使用屏幕的虚拟导航按键 / Enable On-Screen buttons</h2>
+
+<p>屏幕上显示back、home、menu三剑客按键。</p>
+
+<p>修改 /system/build.prop 中添加 <code class="highlighter-rouge">qemu.hw.mainkeys=0</code> 或者已有该属性，就改其值为 0。</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#adb" title="Pages tagged adb" class="tag"><span class="term">adb</span></a><a href="/tags#fastboot" title="Pages tagged fastboot" class="tag"><span class="term">fastboot</span></a><a href="/tags#bootloader" title="Pages tagged bootloader" class="tag"><span class="term">bootloader</span></a><a href="/tags#root" title="Pages tagged root" class="tag"><span class="term">root</span></a><a href="/tags#unlock" title="Pages tagged unlock" class="tag"><span class="term">unlock</span></a><a href="/tags#twrp" title="Pages tagged twrp" class="tag"><span class="term">twrp</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

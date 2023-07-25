@@ -1,0 +1,2168 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>android http 开发 &#8211; wi's Tech Blog</title>
+<meta name="description" content="notes, articles, or reproduced">
+<meta name="keywords" content="http, networking, library, android, volley">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android http 开发">
+<meta property="og:description" content="notes, articles, or reproduced">
+<meta property="og:url" content="/dev/android/android-http-programming/">
+<meta property="og:site_name" content="wi's Tech Blog">
+<meta property="og:image" content="/images/images/avatar.png">
+
+
+
+
+
+<link rel="canonical" href="/dev/android/android-http-programming/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="wi's Tech Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+
+<meta http-equiv="cleartype" content="on">
+
+<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/assets/js/scripts.min.js"></script>
+
+<!-- table of content -->
+<script type="text/javascript" src="/assets/js/vendor/toc.js"></script>
+
+
+<!-- Load Modernizr -->
+<script type="text/javascript" src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+
+<!-- Mathjax Support -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="header-menu header-menu-top">
+    <ul class="header-item-container">
+      <li class="header-item-title header-toggle "><a href="#menu"><i class="fa fa-bars"></i></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/avatar.png" alt="wi's Tech Blog">
+          
+          <a href="/" class="title"> wi's Tech Blog</a>
+        </a>
+      </li>
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/favorites">fav</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/categories">Categories</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/tags">Tags</a></li>
+            
+        
+      
+        
+        
+
+
+        
+            
+                <li class="header-item "><a href="/">Home</a></li>
+            
+        
+      
+      <li class="header-item"><a href="/search"><i class="fa fa-search"></i></a></li>
+    </ul>
+  </div>
+
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/tags"><h3>Tags</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#UML">UML</a></li>
+            
+              
+                <li><a href="/categories/#Windows">Windows</a></li>
+            
+              
+                <li><a href="/categories/#adb">adb</a></li>
+            
+              
+                <li><a href="/categories/#adt">adt</a></li>
+            
+              
+                <li><a href="/categories/#android">android</a></li>
+            
+              
+                <li><a href="/categories/#apache">apache</a></li>
+            
+              
+                <li><a href="/categories/#apple">apple</a></li>
+            
+              
+                <li><a href="/categories/#bat">bat</a></li>
+            
+              
+                <li><a href="/categories/#blog">blog</a></li>
+            
+              
+                <li><a href="/categories/#blog_sample">blog_sample</a></li>
+            
+              
+                <li><a href="/categories/#browser">browser</a></li>
+            
+              
+                <li><a href="/categories/#burpsuite">burpsuite</a></li>
+            
+              
+                <li><a href="/categories/#centos">centos</a></li>
+            
+              
+                <li><a href="/categories/#chrome">chrome</a></li>
+            
+              
+                <li><a href="/categories/#cm">cm</a></li>
+            
+              
+                <li><a href="/categories/#common">common</a></li>
+            
+              
+                <li><a href="/categories/#css">css</a></li>
+            
+              
+                <li><a href="/categories/#cygwin">cygwin</a></li>
+            
+              
+                <li><a href="/categories/#database">database</a></li>
+            
+              
+                <li><a href="/categories/#db">db</a></li>
+            
+              
+                <li><a href="/categories/#dev">dev</a></li>
+            
+              
+                <li><a href="/categories/#device">device</a></li>
+            
+              
+                <li><a href="/categories/#diff">diff</a></li>
+            
+              
+                <li><a href="/categories/#disk">disk</a></li>
+            
+              
+                <li><a href="/categories/#diy">diy</a></li>
+            
+              
+                <li><a href="/categories/#dns">dns</a></li>
+            
+              
+                <li><a href="/categories/#doc">doc</a></li>
+            
+              
+                <li><a href="/categories/#docker">docker</a></li>
+            
+              
+                <li><a href="/categories/#efi">efi</a></li>
+            
+              
+                <li><a href="/categories/#emacs">emacs</a></li>
+            
+              
+                <li><a href="/categories/#email">email</a></li>
+            
+              
+                <li><a href="/categories/#emulator">emulator</a></li>
+            
+              
+                <li><a href="/categories/#english">english</a></li>
+            
+              
+                <li><a href="/categories/#esxi">esxi</a></li>
+            
+              
+                <li><a href="/categories/#excel">excel</a></li>
+            
+              
+                <li><a href="/categories/#exsi">exsi</a></li>
+            
+              
+                <li><a href="/categories/#favorites">favorites</a></li>
+            
+              
+                <li><a href="/categories/#ftp">ftp</a></li>
+            
+              
+                <li><a href="/categories/#game">game</a></li>
+            
+              
+                <li><a href="/categories/#git">git</a></li>
+            
+              
+                <li><a href="/categories/#gitlab">gitlab</a></li>
+            
+              
+                <li><a href="/categories/#go">go</a></li>
+            
+              
+                <li><a href="/categories/#golang">golang</a></li>
+            
+              
+                <li><a href="/categories/#hardware">hardware</a></li>
+            
+              
+                <li><a href="/categories/#ide">ide</a></li>
+            
+              
+                <li><a href="/categories/#internet">internet</a></li>
+            
+              
+                <li><a href="/categories/#java">java</a></li>
+            
+              
+                <li><a href="/categories/#javascript">javascript</a></li>
+            
+              
+                <li><a href="/categories/#jekyll">jekyll</a></li>
+            
+              
+                <li><a href="/categories/#jenkins">jenkins</a></li>
+            
+              
+                <li><a href="/categories/#jmeter">jmeter</a></li>
+            
+              
+                <li><a href="/categories/#kate">kate</a></li>
+            
+              
+                <li><a href="/categories/#kde">kde</a></li>
+            
+              
+                <li><a href="/categories/#ldap">ldap</a></li>
+            
+              
+                <li><a href="/categories/#learn">learn</a></li>
+            
+              
+                <li><a href="/categories/#learning">learning</a></li>
+            
+              
+                <li><a href="/categories/#links">links</a></li>
+            
+              
+                <li><a href="/categories/#linux">linux</a></li>
+            
+              
+                <li><a href="/categories/#living">living</a></li>
+            
+              
+                <li><a href="/categories/#mac">mac</a></li>
+            
+              
+                <li><a href="/categories/#mac-os">mac-os</a></li>
+            
+              
+                <li><a href="/categories/#macos">macos</a></li>
+            
+              
+                <li><a href="/categories/#mail">mail</a></li>
+            
+              
+                <li><a href="/categories/#manjaro">manjaro</a></li>
+            
+              
+                <li><a href="/categories/#markdown">markdown</a></li>
+            
+              
+                <li><a href="/categories/#maven">maven</a></li>
+            
+              
+                <li><a href="/categories/#memcached">memcached</a></li>
+            
+              
+                <li><a href="/categories/#microsoft">microsoft</a></li>
+            
+              
+                <li><a href="/categories/#moco">moco</a></li>
+            
+              
+                <li><a href="/categories/#mysql">mysql</a></li>
+            
+              
+                <li><a href="/categories/#nas">nas</a></li>
+            
+              
+                <li><a href="/categories/#ndk">ndk</a></li>
+            
+              
+                <li><a href="/categories/#netbean">netbean</a></li>
+            
+              
+                <li><a href="/categories/#network">network</a></li>
+            
+              
+                <li><a href="/categories/#netwrok">netwrok</a></li>
+            
+              
+                <li><a href="/categories/#nginx">nginx</a></li>
+            
+              
+                <li><a href="/categories/#nodejs">nodejs</a></li>
+            
+              
+                <li><a href="/categories/#notepad++">notepad++</a></li>
+            
+              
+                <li><a href="/categories/#office">office</a></li>
+            
+              
+                <li><a href="/categories/#open-course">open-course</a></li>
+            
+              
+                <li><a href="/categories/#openkm">openkm</a></li>
+            
+              
+                <li><a href="/categories/#openwrt">openwrt</a></li>
+            
+              
+                <li><a href="/categories/#outlook">outlook</a></li>
+            
+              
+                <li><a href="/categories/#pdf">pdf</a></li>
+            
+              
+                <li><a href="/categories/#perl">perl</a></li>
+            
+              
+                <li><a href="/categories/#phone">phone</a></li>
+            
+              
+                <li><a href="/categories/#php">php</a></li>
+            
+              
+                <li><a href="/categories/#postgresql">postgresql</a></li>
+            
+              
+                <li><a href="/categories/#product">product</a></li>
+            
+              
+                <li><a href="/categories/#python">python</a></li>
+            
+              
+                <li><a href="/categories/#rails">rails</a></li>
+            
+              
+                <li><a href="/categories/#redmine">redmine</a></li>
+            
+              
+                <li><a href="/categories/#regex">regex</a></li>
+            
+              
+                <li><a href="/categories/#router">router</a></li>
+            
+              
+                <li><a href="/categories/#ruby">ruby</a></li>
+            
+              
+                <li><a href="/categories/#search-engine">search-engine</a></li>
+            
+              
+                <li><a href="/categories/#security">security</a></li>
+            
+              
+                <li><a href="/categories/#sed">sed</a></li>
+            
+              
+                <li><a href="/categories/#ssh">ssh</a></li>
+            
+              
+                <li><a href="/categories/#streaming">streaming</a></li>
+            
+              
+                <li><a href="/categories/#study">study</a></li>
+            
+              
+                <li><a href="/categories/#subversion">subversion</a></li>
+            
+              
+                <li><a href="/categories/#tcpdump">tcpdump</a></li>
+            
+              
+                <li><a href="/categories/#tech">tech</a></li>
+            
+              
+                <li><a href="/categories/#testing">testing</a></li>
+            
+              
+                <li><a href="/categories/#testlink">testlink</a></li>
+            
+              
+                <li><a href="/categories/#text">text</a></li>
+            
+              
+                <li><a href="/categories/#tomcat">tomcat</a></li>
+            
+              
+                <li><a href="/categories/#ubuntu">ubuntu</a></li>
+            
+              
+                <li><a href="/categories/#ufw">ufw</a></li>
+            
+              
+                <li><a href="/categories/#vbs">vbs</a></li>
+            
+              
+                <li><a href="/categories/#vim">vim</a></li>
+            
+              
+                <li><a href="/categories/#virtual-box">virtual-box</a></li>
+            
+              
+                <li><a href="/categories/#virtualbox">virtualbox</a></li>
+            
+              
+                <li><a href="/categories/#virtualization">virtualization</a></li>
+            
+              
+                <li><a href="/categories/#vm">vm</a></li>
+            
+              
+                <li><a href="/categories/#vpn">vpn</a></li>
+            
+              
+                <li><a href="/categories/#web">web</a></li>
+            
+              
+                <li><a href="/categories/#windows">windows</a></li>
+            
+              
+                <li><a href="/categories/#xampp">xampp</a></li>
+            
+              
+                <li><a href="/categories/#收藏夹">收藏夹</a></li>
+            
+              
+                <li><a href="/categories/#测试工具">测试工具</a></li>
+            
+              
+                <li><a href="/categories/#玩机">玩机</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/favorites"><h3>fav</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="post" >
+<div id="main" role="main" >
+  <article class="hentry">
+    <div class="entry-content">
+        
+      <h1 class="post-title entry-title">android http 开发</h1>
+      
+        <h3><span class="entry-date date published updated"><time datetime="2018-02-24T00:00:00+08:00">February 24, 2018</time></span></h3>
+      
+      
+      
+      
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 60);
+  return false
+})
+
+$(".toc-button").on('click', function(){
+  $(".toc").toggle();
+});
+
+
+$(window).click(function(evt){
+  if( !evt.target.matches('.toc') 
+      && !evt.target.matches('.toc>ul') 
+      && !evt.target.matches('.toc-button') ) {
+    $('.toc').each(function(){
+      if( $(this).is(":visible") ) {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<div class="float-toc">
+    <i class="toc-button fa fa-list-ol" aria-hidden="true"></i>
+  <div id="toc"></div>
+</div>
+
+      
+      
+      <ul>
+  <li>参考
+    <ul>
+      <li>Volley - Project Home <a href="https://github.com/google/volley">https://github.com/google/volley</a></li>
+      <li>Volley - API Refer <a href="http://griosf.github.io/android-volley/index.html?overview-summary.html">http://griosf.github.io/android-volley/index.html?overview-summary.html</a></li>
+      <li>How To Simplify Networking In Android: Introducing The Volley HTTP Library <a href="https://www.smashingmagazine.com/2017/03/simplify-android-networking-volley-http-library/">https://www.smashingmagazine.com/2017/03/simplify-android-networking-volley-http-library/</a></li>
+      <li>&lt;&gt;</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="http-libraries">http libraries</h2>
+
+<ul>
+  <li><strong>Android Volley</strong> <a href="https://developer.android.com/training/volley/index.html">https://developer.android.com/training/volley/index.html</a></li>
+  <li><strong>Retrofit</strong> <a href="https://square.github.io/retrofit/">https://square.github.io/retrofit/</a></li>
+  <li><strong>Okhttp</strong> <a href="http://square.github.io/okhttp/">http://square.github.io/okhttp/</a></li>
+</ul>
+
+<h2 id="volley">Volley</h2>
+
+<ul>
+  <li>Volley is a networking library developed by Google and introduced at Google I/O 2013.</li>
+  <li>Volley is not suitable for large download or streaming operations, since Volley holds all responses in memory during parsing.  For large download operations, consider using an alternative like <code class="highlighter-rouge">[DownloadManager]</code>.</li>
+</ul>
+
+<p>In Volley, all network calls are asynchronous by default, so you don’t have to worry about performing tasks in the background anymore. Volley considerably simplifies networking with its cool set of features.</p>
+
+<h3 id="volleys-architecture">VOLLEY’S ARCHITECTURE</h3>
+
+<p>Before looking at the code, let’s get ourselves elbow-deep in Volley and understand its architecture. Below is a high-level architectural diagram of Volley’s flow. It works in a very simple way:</p>
+
+<ol>
+  <li>Volley runs one cache processing thread and a pool of network dispatch threads.</li>
+  <li>Network call requests are first triaged by the cache thread. If the response can be served from the cache, then the cached response is parsed by <code class="highlighter-rouge">CacheDispatcher</code> and delivered back to the main thread, the UI thread.</li>
+  <li>If the result is not available in the cache, then a network request needs to be made to get the required data, for which the request is placed in the network queue.</li>
+  <li>The first available network thread (<code class="highlighter-rouge">NetworkDispatcher</code>) takes the request from the queue. It then performs the HTTP request, parses the response on the worker thread and writes the response to cache. It then delivers the parsed response back to the main thread.</li>
+</ol>
+
+<p><img src="volley-architecture-large-preview-opt.png" alt="" /></p>
+
+<hr />
+
+<p><img src="volley-request-lifetime.png" alt="" /></p>
+
+<h3 id="add-volley-to-your-project-easily">Add Volley To Your Project Easily</h3>
+
+<h4 id="添加网络访问的permission-androidpermissioninternet">添加网络访问的permission <code class="highlighter-rouge">android.permission.INTERNET</code></h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="方法1通过gradle引用">方法1，通过gradle引用</h4>
+
+<p>The easiest way to add Volley to your project is to add the following dependency to your app’s build.gradle file.</p>
+
+<ul>
+  <li><strong>APP/BUILD.GRADLE</strong></li>
+</ul>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">dependencies</span> <span class="o">{</span>
+  <span class="n">implementation</span> <span class="s1">'com.android.volley:volley:x.y.z'</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="k">dependencies</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">implementation</span> <span class="s1">'com.android.volley:volley:1.1.0'</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="方法2直接下载volley源代码">方法2，直接下载volley源代码</h4>
+
+<p>Another way to do this is by cloning the Volley repository. Build Volley with Ant, copy the built volley.jar file in the libs folder, and then create an entry in build.gradle to use the jar file. Here’s how:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>git clone https://github.com/google/volley
+<span class="nb">cd </span>volley
+android update project -p .
+ant jar
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>You can find the generated volley.jar in Volley’s bin folder. Copy it to your libs folder in Android Studio, and add the entry below to app/build.gradle:</p>
+
+<ul>
+  <li><strong>APP/BUILD.GRADLE</strong>
+    <div class="language-gradle highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">dependencies</span> <span class="o">{</span>
+  <span class="n">compile</span> <span class="nf">files</span><span class="o">(</span><span class="s1">'libs/volley.jar'</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ul>
+
+<h3 id="cancel-a-request">Cancel a Request</h3>
+
+<p>To cancel a request, call <code class="highlighter-rouge">cancel()</code> on your Request object. Once cancelled, Volley guarantees that your response handler will never be called. What this means in practice is that you can cancel all of your pending requests in your activity’s <code class="highlighter-rouge">onStop()</code> method and you don’t have to litter your response handlers with checks for <code class="highlighter-rouge">getActivity() == null</code>, whether <code class="highlighter-rouge">onSaveInstanceState()</code> has been called already, or other defensive boilerplate.</p>
+
+<p>To take advantage of this behavior, you would typically have to track all in-flight requests in order to be able to cancel them at the appropriate time. There is an easier way: you can associate a tag object with each request. You can then use this tag to provide a scope of requests to cancel. For example, you can tag all of your requests with the <code class="highlighter-rouge">Activity they</code> are being made on behalf of, and call <code class="highlighter-rouge">requestQueue.cancelAll(this)</code> from <code class="highlighter-rouge">onStop()</code>. Similarly, you could tag all thumbnail image requests in a <code class="highlighter-rouge">ViewPager</code> tab with their respective tabs and cancel on swipe to make sure that the new tab isn’t being held up by requests from another one.</p>
+
+<p>Here is an example that uses a string value for the tag:</p>
+
+<ol>
+  <li>
+    <p>Define your tag and add it to your requests.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre> <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">"MyTag"</span><span class="o">;</span>
+ <span class="n">StringRequest</span> <span class="n">stringRequest</span><span class="o">;</span> <span class="c1">// Assume this exists.</span>
+ <span class="n">RequestQueue</span> <span class="n">mRequestQueue</span><span class="o">;</span>  <span class="c1">// Assume this exists.</span>
+
+ <span class="c1">// Set the tag on the request.</span>
+ <span class="n">stringRequest</span><span class="o">.</span><span class="na">setTag</span><span class="o">(</span><span class="n">TAG</span><span class="o">);</span>
+
+ <span class="c1">// Add the request to the RequestQueue.</span>
+ <span class="n">mRequestQueue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stringRequest</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+  <li>
+    <p>In your activity’s onStop() method, cancel all requests that have this tag.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre> <span class="nd">@Override</span>
+ <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStop</span> <span class="o">()</span> <span class="o">{</span>
+     <span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
+     <span class="k">if</span> <span class="o">(</span><span class="n">mRequestQueue</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">mRequestQueue</span><span class="o">.</span><span class="na">cancelAll</span><span class="o">(</span><span class="n">TAG</span><span class="o">);</span>
+     <span class="o">}</span>
+ <span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="hello-world-with-volley-handling-standard-string-requests">“Hello World” With Volley: Handling Standard String Requests</h3>
+
+<p>shows you how to make a request on https://api.ipify.org/?format=json, get the response and update the text view of your app</p>
+
+<p>use Volley by creating a <code class="highlighter-rouge">RequestQueue</code> and passing it <code class="highlighter-rouge">Request</code> objects.<br />
+The <code class="highlighter-rouge">RequestQueue</code> manages the worker threads and makes the network calls in the background. It also takes care of writing to cache and parsing the response.</p>
+
+<ul>
+  <li><strong>MainActivity.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">chetan</span><span class="o">.</span><span class="na">androidnetworking</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.Toolbar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.RequestQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.StringRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.Volley</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+    <span class="c1">//Set the title of Toolbar</span>
+    <span class="n">Toolbar</span> <span class="n">toolbar</span> <span class="o">=</span> <span class="o">(</span><span class="n">Toolbar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toolbar</span><span class="o">);</span>
+    <span class="n">setSupportActionBar</span><span class="o">(</span><span class="n">toolbar</span><span class="o">);</span>
+
+    <span class="c1">//Get the ID of button that will perform the network call</span>
+    <span class="n">Button</span> <span class="n">btn</span> <span class="o">=</span>  <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+    <span class="k">assert</span> <span class="n">btn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ipify.org/?format=json"</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="n">TextView</span> <span class="n">txtView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="k">assert</span> <span class="n">txtView</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="c1">//Request a string response from the URL resource</span>
+        <span class="n">StringRequest</span> <span class="n">stringRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span>
+            <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">()</span> <span class="o">{</span>
+              <span class="nd">@Override</span>
+              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">String</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Display the response string.</span>
+                <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Response is: "</span> <span class="o">+</span> <span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+              <span class="o">}</span>
+            <span class="o">},</span>
+            <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+              <span class="nd">@Override</span>
+              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Oops! That didn't work!"</span><span class="o">);</span>
+              <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">);</span>
+
+        <span class="c1">//Instantiate the RequestQueue and add the request to the queue</span>
+        <span class="n">RequestQueue</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">Volley</span><span class="o">.</span><span class="na">newRequestQueue</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stringRequest</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="set-up-a-network-and-cache">Set Up a Network and Cache</h3>
+
+<p>A RequestQueue needs two things to do its job: a network to perform transport of the requests, and a cache to handle caching. There are standard implementations of these available in the Volley toolbox:</p>
+<ul>
+  <li><code class="highlighter-rouge">DiskBasedCache</code> provides a one-file-per-response cache with an in-memory index</li>
+  <li><code class="highlighter-rouge">BasicNetwork</code> provides a network transport based on your preferred HTTP client.
+    <ul>
+      <li><code class="highlighter-rouge">BasicNetwork</code> is Volley’s default network implementation. A BasicNetwork must be initialized with the HTTP client your app is using to connect to the network. Typically this is an <code class="highlighter-rouge">HttpURLConnection</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="caching-responses-with-volley">Caching Responses With Volley</h4>
+
+<p>To set up the cache, we have to implement a disk-based cache and add the cache object to the <code class="highlighter-rouge">RequestQueue</code>.</p>
+
+<p>I set up a <code class="highlighter-rouge">HttpURLConnection</code> to make the network requests. Volley’s toolbox provides a standard cache implementation via the <code class="highlighter-rouge">DiskBasedCache</code> class, which caches the data directly on the hard disk.</p>
+
+<ul>
+  <li><strong>MainActivity.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">chetan</span><span class="o">.</span><span class="na">androidnetworking</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v7.widget.Toolbar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Button</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.RequestQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.VolleyError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.BasicNetwork</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.DiskBasedCache</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.HurlStack</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.StringRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.Volley</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+     <span class="c1">//Set the title of Toolbar</span>
+    <span class="n">Toolbar</span> <span class="n">toolbar</span> <span class="o">=</span> <span class="o">(</span><span class="n">Toolbar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toolbar</span><span class="o">);</span>
+    <span class="n">setSupportActionBar</span><span class="o">(</span><span class="n">toolbar</span><span class="o">);</span>
+
+    <span class="c1">//Get the ID of button, which will perform the network call</span>
+    <span class="n">Button</span> <span class="n">btn</span> <span class="o">=</span>  <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+    <span class="k">assert</span> <span class="n">btn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ipify.org/?format=json"</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="n">TextView</span> <span class="n">txtView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="k">assert</span> <span class="n">txtView</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="c1">// Setup 1 MB disk-based cache for Volley</span>
+        <span class="n">Cache</span> <span class="n">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DiskBasedCache</span><span class="o">(</span><span class="n">getCacheDir</span><span class="o">(),</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">);</span>
+
+        <span class="c1">// Use HttpURLConnection as the HTTP client</span>
+        <span class="n">Network</span> <span class="n">network</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicNetwork</span><span class="o">(</span><span class="k">new</span> <span class="n">HurlStack</span><span class="o">());</span>
+
+        <span class="n">StringRequest</span> <span class="n">stringRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span>
+            <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">()</span> <span class="o">{</span>
+              <span class="nd">@Override</span>
+              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">String</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Display the string response on the UI</span>
+                <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Response is: "</span> <span class="o">+</span> <span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+              <span class="o">}</span>
+            <span class="o">},</span> 
+            <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+              <span class="nd">@Override</span>
+              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Oops! That didn't work!"</span><span class="o">);</span>
+              <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">);</span>
+
+        <span class="c1">// Instantiate the RequestQueue with the cache and network, start the request</span>
+        <span class="c1">// and add it to the queue</span>
+        <span class="n">RequestQueue</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequestQueue</span><span class="o">(</span><span class="n">cache</span><span class="o">,</span> <span class="n">network</span><span class="o">);</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stringRequest</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="use-a-singleton-pattern">Use a Singleton Pattern</h3>
+
+<p>A key concept is that the RequestQueue must be instantiated with the Application context, not an Activity context. 这种做法保证 RequestQueue 与 app 同寿，而不是 activity。</p>
+
+<h4 id="an-example-of-a-singleton-class-that-provides-requestqueue-and-imageloader-functionality">an example of a singleton class that provides RequestQueue and ImageLoader functionality:</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySingleton</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">MySingleton</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">RequestQueue</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">ImageLoader</span> <span class="n">mImageLoader</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">Context</span> <span class="n">mCtx</span><span class="o">;</span>
+
+  <span class="kd">private</span> <span class="nf">MySingleton</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mCtx</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+    <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">getRequestQueue</span><span class="o">();</span>
+
+    <span class="n">mImageLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageLoader</span><span class="o">(</span><span class="n">mRequestQueue</span><span class="o">,</span>
+        <span class="k">new</span> <span class="n">ImageLoader</span><span class="o">.</span><span class="na">ImageCache</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">private</span> <span class="kd">final</span> <span class="n">LruCache</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Bitmap</span><span class="o">&gt;</span>
+          <span class="n">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LruCache</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Bitmap</span><span class="o">&gt;(</span><span class="mi">20</span><span class="o">);</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="n">Bitmap</span> <span class="nf">getBitmap</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+      <span class="o">}</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putBitmap</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Bitmap</span> <span class="n">bitmap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">bitmap</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">MySingleton</span> <span class="nf">getInstance</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">mInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MySingleton</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">RequestQueue</span> <span class="nf">getRequestQueue</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mRequestQueue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// getApplicationContext() is key, it keeps you from leaking the</span>
+      <span class="c1">// Activity or BroadcastReceiver if someone passes one in.</span>
+      <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">Volley</span><span class="o">.</span><span class="na">newRequestQueue</span><span class="o">(</span><span class="n">mCtx</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">addToRequestQueue</span><span class="o">(</span><span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">req</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getRequestQueue</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">req</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">ImageLoader</span> <span class="nf">getImageLoader</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">mImageLoader</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span><span class="c1">//END OF CLASS MySingleton</span>
+
+<span class="c1">// Get a RequestQueue</span>
+<span class="n">RequestQueue</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">()).</span>
+    <span class="n">getRequestQueue</span><span class="o">();</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Add a request (in this example, called stringRequest) to your RequestQueue.</span>
+<span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">addToRequestQueue</span><span class="o">(</span><span class="n">stringRequest</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="setting-up-singleton-class-for-requestqueue">Setting Up Singleton Class For RequestQueue</h4>
+
+<p>Creating a <code class="highlighter-rouge">RequestQueue</code> as a singleton is recommended, so that the <code class="highlighter-rouge">RequestQueue</code> lasts for the lifetime of your app.</p>
+
+<ul>
+  <li><strong>VolleyController.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre>
+<span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">chetan</span><span class="o">.</span><span class="na">androidnetworking</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.RequestQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.ImageLoader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.Volley</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VolleyController</span>  <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">VolleyController</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">RequestQueue</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">Context</span> <span class="n">mCtx</span><span class="o">;</span>
+
+  <span class="kd">private</span> <span class="nf">VolleyController</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mCtx</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+    <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">getRequestQueue</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">VolleyController</span> <span class="nf">getInstance</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// If instance is not available, create it. If available, reuse and return the object.</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">mInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VolleyController</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mInstance</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">RequestQueue</span> <span class="nf">getRequestQueue</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">mRequestQueue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// getApplicationContext() is key. It should not be activity context,</span>
+      <span class="c1">// or else RequestQueue won't last for the lifetime of your app</span>
+      <span class="n">mRequestQueue</span> <span class="o">=</span> <span class="n">Volley</span><span class="o">.</span><span class="na">newRequestQueue</span><span class="o">(</span><span class="n">mCtx</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">mRequestQueue</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span>  <span class="kt">void</span> <span class="nf">addToRequestQueue</span><span class="o">(</span><span class="n">Request</span> <span class="n">req</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getRequestQueue</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">req</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="making-a-standard-request">Making a Standard Request</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">StringRequest</code>. Specify a URL and receive a raw string in response. See Setting Up a Request Queue for an example.</li>
+  <li><code class="highlighter-rouge">JsonObjectRequest</code> and <code class="highlighter-rouge">JsonArrayRequest</code> (both subclasses of <code class="highlighter-rouge">JsonRequest</code>). Specify a URL and get a JSON object or array (respectively) in response.</li>
+</ul>
+
+<h4 id="request-json">Request JSON</h4>
+
+<p>Volley provides the following classes for JSON requests:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">JsonArrayRequest</code> — A request for retrieving a <code class="highlighter-rouge">JSONArray</code> response body at a given URL.</li>
+  <li><code class="highlighter-rouge">JsonObjectRequest</code> — A request for retrieving a <code class="highlighter-rouge">JSONObject</code> response body at a given URL, allowing for an optional JSONObject to be passed in as part of the request body.</li>
+</ul>
+
+<p>Both classes are based on the common base class JsonRequest. You use them following the same basic pattern you use for other types of requests. For example, this snippet fetches a JSON feed and displays it as text in the UI:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="n">TextView</span> <span class="n">mTxtDisplay</span><span class="o">;</span>
+<span class="n">ImageView</span> <span class="n">mImageView</span><span class="o">;</span>
+<span class="n">mTxtDisplay</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">txtDisplay</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"http://my-json-feed"</span><span class="o">;</span>
+
+<span class="n">JsonObjectRequest</span> <span class="n">jsObjRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JsonObjectRequest</span>
+        <span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">&lt;</span><span class="n">JSONObject</span><span class="o">&gt;()</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mTxtDisplay</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Response: "</span> <span class="o">+</span> <span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">},</span> <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// TODO Auto-generated method stub</span>
+
+    <span class="o">}</span>
+<span class="o">});</span>
+
+<span class="c1">// Access the RequestQueue through your singleton class.</span>
+<span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">addToRequestQueue</span><span class="o">(</span><span class="n">jsObjRequest</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="implementing-a-custom-request">Implementing a Custom Request</h3>
+
+<h4 id="write-a-custom-request">Write a Custom Request</h4>
+
+<ul>
+  <li>Extend the <code class="highlighter-rouge">Request&lt;T&gt;</code> class, where <code class="highlighter-rouge">&lt;T&gt;</code> represents the type of parsed response the request expects. So if your parsed response is a string, for example, create your custom request by extending <code class="highlighter-rouge">Request&lt;String&gt;</code>. See the Volley toolbox classes StringRequest and ImageRequest for examples of extending <code class="highlighter-rouge">Request&lt;T&gt;</code>.</li>
+  <li>Implement the abstract methods <code class="highlighter-rouge">parseNetworkResponse()</code> and <code class="highlighter-rouge">deliverResponse()</code>, described in more detail below.</li>
+</ul>
+
+<h4 id="parsenetworkresponse">parseNetworkResponse</h4>
+
+<p>A Response encapsulates a parsed response for delivery, for a given type (such as string, image, or JSON). Here is a sample implementation of parseNetworkResponse():</p>
+
+<ul>
+  <li><code class="highlighter-rouge">parseNetworkResponse()</code> takes as its parameter a NetworkResponse, which contains the response payload as a <code class="highlighter-rouge">byte[]</code>, HTTP status code, and response headers.</li>
+  <li>Your implementation must return a <code class="highlighter-rouge">Response&lt;T&gt;</code>, which contains your typed response object and cache metadata or an error, such as in the case of a parse failure.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span>
+        <span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">,</span>
+        <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCharset</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headers</span><span class="o">));</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">json</span><span class="o">,</span> <span class="n">clazz</span><span class="o">),</span>
+    <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="c1">// handle errors</span>
+<span class="o">...</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="deliverresponse">deliverResponse</h4>
+
+<p>Volley calls you back on the main thread with the object you returned in parseNetworkResponse(). Most requests invoke a callback interface here, for example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">T</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">listener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="example-gsonrequest">Example: GsonRequest</h4>
+
+<p><a href="https://github.com/google/gson">Gson</a> is a library for converting Java objects to and from JSON using reflection. You can define Java objects that have the same names as their corresponding JSON keys, pass Gson the class object, and Gson will fill in the fields for you. Here’s a complete implementation of a Volley request that uses Gson for parsing:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GsonRequest</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Gson</span> <span class="n">gson</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gson</span><span class="o">();</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Listener</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">;</span>
+
+  <span class="cm">/**
+   * Make a GET request and return a parsed object from JSON.
+   *
+   * @param url URL of the request to make
+   * @param clazz Relevant class object, for Gson's reflection
+   * @param headers Map of request headers
+   */</span>
+  <span class="kd">public</span> <span class="nf">GsonRequest</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">,</span>
+      <span class="n">Listener</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">listener</span><span class="o">,</span> <span class="n">ErrorListener</span> <span class="n">errorListener</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">clazz</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">listener</span> <span class="o">=</span> <span class="n">listener</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">headers</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">headers</span> <span class="o">:</span> <span class="kd">super</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">T</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span>
+          <span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">,</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCharset</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headers</span><span class="o">));</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span>
+          <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">json</span><span class="o">,</span> <span class="n">clazz</span><span class="o">),</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">e</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JsonSyntaxException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">e</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h4 id="json-requests-例子">JSON Requests 例子</h4>
+
+<p>Below is the code for creating a custom <code class="highlighter-rouge">JSONObject Request</code> in Volley. You can handle <code class="highlighter-rouge">ImageRequest</code> types in the same manner.</p>
+
+<ul>
+  <li><strong>CustomJSONObjectRequest.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">chetan</span><span class="o">.</span><span class="na">androidnetworking</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.android.volley.NetworkResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.ParseError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Request</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response.ErrorListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.Response.Listener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.android.volley.toolbox.HttpHeaderParser</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.json.JSONException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomJSONObjectRequest</span> <span class="kd">extends</span> <span class="n">Request</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="n">Listener</span> <span class="n">listener</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">;</span>
+  <span class="n">Priority</span> <span class="n">mPriority</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">CustomJSONObjectRequest</span><span class="o">(</span><span class="kt">int</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">,</span>
+                   <span class="n">Listener</span> <span class="n">responseListener</span><span class="o">,</span> <span class="n">ErrorListener</span> <span class="n">errorListener</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">errorListener</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">listener</span> <span class="o">=</span> <span class="n">responseListener</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">params</span> <span class="o">=</span> <span class="n">params</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getParams</span><span class="o">()</span>
+      <span class="kd">throws</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">volley</span><span class="o">.</span><span class="na">AuthFailureError</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+  <span class="o">};</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="n">Response</span> <span class="nf">parseNetworkResponse</span><span class="o">(</span><span class="n">NetworkResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">jsonString</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">data</span><span class="o">,</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCharset</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headers</span><span class="o">));</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">jsonString</span><span class="o">),</span>
+          <span class="n">HttpHeaderParser</span><span class="o">.</span><span class="na">parseCacheHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">e</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">je</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="k">new</span> <span class="n">ParseError</span><span class="o">(</span><span class="n">je</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">deliverResponse</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">listener</span><span class="o">.</span><span class="na">onResponse</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><strong>VolleyCallback.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">chetan</span><span class="o">.</span><span class="na">androidnetworking</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.json.JSONException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">VolleyCallback</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span><span class="o">;</span>
+  <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="n">String</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><strong>MainActivity.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="n">Toolbar</span> <span class="n">toolbar</span> <span class="o">=</span> <span class="o">(</span><span class="n">Toolbar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toolbar</span><span class="o">);</span>
+    <span class="n">setSupportActionBar</span><span class="o">(</span><span class="n">toolbar</span><span class="o">);</span>
+
+    <span class="n">Button</span> <span class="n">btn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+    <span class="k">assert</span> <span class="n">btn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ipify.org/?format=json"</span><span class="o">;</span>
+
+        <span class="kd">final</span> <span class="n">TextView</span> <span class="n">txtView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="k">assert</span> <span class="n">txtView</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">makeRequest</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="k">new</span> <span class="n">VolleyCallback</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span> <span class="o">{</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"Hurray!!"</span><span class="o">,</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"My IP is: %s"</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">)));</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setTextColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+          <span class="o">}</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="n">String</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{}</span>
+        <span class="o">});</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+
+  <span class="o">}</span>
+  <span class="c1">// Custom JSON Request Handler</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRequest</span><span class="o">(</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="kd">final</span> <span class="n">VolleyCallback</span> <span class="n">callback</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">CustomJSONObjectRequest</span> <span class="n">rq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CustomJSONObjectRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span>
+        <span class="n">url</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">()</span> <span class="o">{</span>
+          <span class="c1">//Pass response to success callback</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="s">"Response"</span><span class="o">,</span> <span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">try</span> <span class="o">{</span>
+              <span class="n">String</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">);</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">ip</span> <span class="o">!=</span> <span class="s">"null"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">callback</span><span class="o">.</span><span class="na">onSuccess</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+              <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">},</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{}</span>
+        <span class="o">})</span> <span class="o">{</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+            <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+            <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+          <span class="o">}</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getParams</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+            <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+          <span class="o">}</span>
+    <span class="o">};</span>
+
+  <span class="c1">// Request added to the RequestQueue</span>
+  <span class="n">VolleyController</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">()).</span><span class="na">addToRequestQueue</span><span class="o">(</span><span class="n">rq</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="request-an-image-with-volley">Request An Image With Volley</h3>
+
+<p>Volley offers the following classes for requesting images:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ImageRequest</code> This is used to get an image at the given URL. It also helps with resizing images to the size you need, and all of this happens in the worker thread.</li>
+  <li><code class="highlighter-rouge">ImageLoader</code> This class handles the loading and caching of images from remote URLs.</li>
+  <li><code class="highlighter-rouge">NetworkImageView</code> This replaces ImageView when the image is being fetched from a URL via the network call. It also cancels pending requests if the ImageView detaches and is no longer available.</li>
+</ul>
+
+<p>For caching images, you should use the in-memory LruBitmapCache class, which extends <code class="highlighter-rouge">LruCache</code>.</p>
+
+<h3 id="retry-mechanism-in-volley">Retry Mechanism In Volley</h3>
+
+<p>Volley does retry network calls if you have set the retry policy for your requests. We can change the retry values for each request using setRetryPolicy(). This is implemented in the DefaultRetryPolicy class of Android. You can set the retry policy for a request in this manner:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">rq</span><span class="o">.</span><span class="na">setRetryPolicy</span><span class="o">(</span><span class="k">new</span> <span class="n">DefaultRetryPolicy</span><span class="o">(</span><span class="n">DefaultRetryPolicy</span><span class="o">.</span><span class="na">TIMEOUT_MS</span><span class="o">,</span> <span class="n">DefaultRetryPolicy</span><span class="o">.</span><span class="na">DEFAULT_MAX_RETRIES</span><span class="o">,</span>
+                <span class="n">DefaultRetryPolicy</span><span class="o">.</span><span class="na">DEFAULT_BACKOFF_MULT</span><span class="o">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="volley-error-handling">Volley: Error-Handling</h3>
+
+<p>Volley can catch network errors very easily, and you don’t have to bother much with cases in which there is a loss of network connectivity. In my app, I’ve chosen to handle network errors with the error message “No Internet access.”</p>
+
+<p>The code below shows how to handle <code class="highlighter-rouge">NoConnection</code> errors.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="n">Toolbar</span> <span class="n">toolbar</span> <span class="o">=</span> <span class="o">(</span><span class="n">Toolbar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">toolbar</span><span class="o">);</span>
+    <span class="n">setSupportActionBar</span><span class="o">(</span><span class="n">toolbar</span><span class="o">);</span>
+
+    <span class="n">Button</span> <span class="n">btn</span> <span class="o">=</span>  <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button</span><span class="o">);</span>
+    <span class="k">assert</span> <span class="n">btn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.ipify.org/?format=json"</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="n">TextView</span> <span class="n">txtView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">textView3</span><span class="o">);</span>
+        <span class="k">assert</span> <span class="n">txtView</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="n">makeRequest</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="k">new</span> <span class="n">VolleyCallback</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span> <span class="o">{</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"Hurray!!"</span><span class="o">,</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"My IP is: %s"</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">)));</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setTextColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+          <span class="o">}</span>
+
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="n">String</span> <span class="n">result</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"Oops!!"</span><span class="o">,</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+            <span class="n">txtView</span><span class="o">.</span><span class="na">setTextColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+          <span class="o">}</span>
+        <span class="o">});</span>
+      <span class="o">}</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRequest</span><span class="o">(</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="kd">final</span> <span class="n">VolleyCallback</span> <span class="n">callback</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">CustomJSONObjectRequest</span> <span class="n">rq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CustomJSONObjectRequest</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span>
+        <span class="n">url</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">Listener</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="s">"Response"</span><span class="o">,</span> <span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">try</span> <span class="o">{</span>
+              <span class="n">String</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"ip"</span><span class="o">);</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">ip</span> <span class="o">!=</span> <span class="s">"null"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">callback</span><span class="o">.</span><span class="na">onSuccess</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+              <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">},</span>
+        <span class="k">new</span> <span class="n">Response</span><span class="o">.</span><span class="na">ErrorListener</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nd">@Override</span>
+          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onErrorResponse</span><span class="o">(</span><span class="n">VolleyError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="s">"Response"</span><span class="o">,</span> <span class="n">error</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="n">String</span> <span class="n">err</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">error</span> <span class="k">instanceof</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">volley</span><span class="o">.</span><span class="na">NoConnectionError</span><span class="o">){</span>
+              <span class="n">err</span> <span class="o">=</span> <span class="s">"No internet Access!"</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">try</span> <span class="o">{</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">err</span> <span class="o">!=</span> <span class="s">"null"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">callback</span><span class="o">.</span><span class="na">onError</span><span class="o">(</span><span class="n">err</span><span class="o">);</span>
+              <span class="o">}</span>
+              <span class="k">else</span> <span class="o">{</span>
+                <span class="n">callback</span><span class="o">.</span><span class="na">onError</span><span class="o">(</span><span class="n">error</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+              <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">})</span> <span class="o">{</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+        <span class="n">headers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getParams</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+        <span class="k">return</span> <span class="n">params</span><span class="o">;</span>
+      <span class="o">}</span>
+
+    <span class="o">};</span>
+    <span class="n">rq</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Priority</span><span class="o">.</span><span class="na">HIGH</span><span class="o">);</span>
+    <span class="n">VolleyController</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">()).</span><span class="na">addToRequestQueue</span><span class="o">(</span><span class="n">rq</span><span class="o">);</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="volley-adding-request-headers">Volley: Adding Request Headers</h3>
+
+<p>To make API calls to third-party REST APIs, you need to pass API access tokens or have support for different authorization types. Volley lets you do that easily. Add the headers to the HTTP GET call using the headers.put(key,value) method call:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AuthFailureError</span> <span class="o">{</span>
+  <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+  <span class="n">headers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="volley-prioritizing-requests">Volley: Prioritizing Requests</h3>
+
+<p>Setting priorities for your network calls is required in order to differentiate between critical operations, such as fetching the status of a resource and pulling its meta data. You don’t want to compromise a critical operation, which is why you should implement priorities. Below is an example that demonstrates how you can use Volley to set priorities. Here, we are using the <code class="highlighter-rouge">CustomJSONObjectRequest</code> class, which we defined earlier, to implement the <code class="highlighter-rouge">setPriority()</code> and <code class="highlighter-rouge">getPriority()</code> methods, and then in the MainActivity class, we are setting the appropriate priority for our request. As a rule of thumb, you can use these priorities for the relevant operations:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">Priority</span><span class="o">.</span><span class="na">LOW</span> <span class="c1">// images, thumbnails</span>
+<span class="n">Priority</span><span class="o">.</span><span class="na">NORMAL</span> <span class="c1">// standard queries</span>
+<span class="n">Priority</span><span class="o">.</span><span class="na">HIGH</span> <span class="c1">// descriptions, lists</span>
+<span class="n">Priority</span><span class="o">.</span><span class="na">IMMEDIATE</span> <span class="c1">// login, logout</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><strong>CustomJSONObjectRequest.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPriority</span><span class="o">(</span><span class="n">Priority</span> <span class="n">priority</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">mPriority</span> <span class="o">=</span> <span class="n">priority</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">Priority</span> <span class="nf">getPriority</span><span class="o">()</span> <span class="o">{</span>
+   <span class="c1">// Priority is set to NORMAL by default</span>
+   <span class="k">return</span> <span class="n">mPriority</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">mPriority</span> <span class="o">:</span> <span class="n">Priority</span><span class="o">.</span><span class="na">NORMAL</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<ul>
+  <li><strong>MainActivity.java</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1">// set priority to HIGH</span>
+<span class="n">rq</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">Request</span><span class="o">.</span><span class="na">Priority</span><span class="o">.</span><span class="na">HIGH</span><span class="o">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<h3 id="advantages-of-volley">Advantages Of Volley</h3>
+
+<p>Volley is a useful library and can save the day for a developer. It’s an integral part of my toolkit, and it would be a huge win for a development team in any project. Let’s review Volley’s benefits:</p>
+
+<ul>
+  <li>It is responsive to user interactions, because all network processes happen asynchronously. The UI thread always remain free to handle any user interaction.</li>
+  <li>It handles networking tasks asynchronously. Whenever a network request is made, a background thread is created to process network calls.</li>
+  <li>Volley improves the lag time between requests because it can make multiple requests without the overhead of thread management.</li>
+  <li>Google has made considerable efforts to improve the performance of the Volley library by improving memory usage patterns and by passing callbacks to the main thread in a batch. This reduces context switching and will make your app faster.</li>
+</ul>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags#http" title="Pages tagged http" class="tag"><span class="term">http</span></a><a href="/tags#networking" title="Pages tagged networking" class="tag"><span class="term">networking</span></a><a href="/tags#library" title="Pages tagged library" class="tag"><span class="term">library</span></a><a href="/tags#android" title="Pages tagged android" class="tag"><span class="term">android</span></a><a href="/tags#volley" title="Pages tagged volley" class="tag"><span class="term">volley</span></a></span>
+        
+        
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    
+    
+  </article>
+</div><!-- /#main -->
+</div><!-- post container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  // embeded-iframe
+  $(window).load(function(){
+    $('.embeded-iframe').each(function(){
+      $(this).height($(this).contents().find('html').height());
+    });
+  });
+</script>
+
+
+
+
+
+<div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2023 wi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+<script src="/assets/js/main.js?20230725301728281823445"></script>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>
